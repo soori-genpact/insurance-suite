@@ -174,6 +174,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary_override'
+                        id: '0fbaa6243bd9cb1005ad7564c3e45a99'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_bind'
+                            element: 'assigned_to'
+                        }
+                    },
+                    {
                         table: 'sys_ui_page'
                         id: '101a8e9d453241a094428aa869d1585a'
                         key: {
@@ -195,6 +203,14 @@ declare global {
                             name: 'x_gegis_ins_policy_quote_bind'
                             element: 'quote_status'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary_override'
+                        id: '13eb62243b1dcb1005ad7564c3e45adf'
+                        key: {
+                            name: 'x_gegis_ins_policy_risk_assess'
+                            element: 'number'
                         }
                     },
                     {
@@ -245,6 +261,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary_override'
+                        id: '1feb62243b1dcb1005ad7564c3e45aac'
+                        key: {
+                            name: 'x_gegis_ins_policy_submission'
+                            element: 'assigned_to'
+                        }
+                    },
+                    {
                         table: 'ua_table_licensing_config'
                         id: '200a9b2b3dff433daf39b2e46f01a380'
                         key: {
@@ -258,6 +282,30 @@ declare global {
                             name: 'x_gegis_ins_policy_ai_task'
                             element: 'intake_case'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary_override'
+                        id: '23eba2243b1dcb1005ad7564c3e45a23'
+                        key: {
+                            name: 'x_gegis_ins_policy_exposure'
+                            element: 'assigned_to'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary_override'
+                        id: '23eba2243b1dcb1005ad7564c3e45a55'
+                        key: {
+                            name: 'x_gegis_ins_policy_ai_task'
+                            element: 'assignment_group'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary_override'
+                        id: '23eba2243b1dcb1005ad7564c3e45a5b'
+                        key: {
+                            name: 'x_gegis_ins_policy_ai_task'
+                            element: 'assigned_to'
                         }
                     },
                     {
@@ -283,6 +331,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_exposure'
                             element: 'exposure_amount'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary_override'
+                        id: '2eba66243bd9cb1005ad7564c3e45a4f'
+                        deleted: true
+                        key: {
+                            name: 'x_gegis_ins_policy_intake_case'
+                            element: 'number'
                         }
                     },
                     {
@@ -325,6 +382,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'intake_case'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary_override'
+                        id: '3abaa6243bd9cb1005ad7564c3e45a15'
+                        deleted: true
+                        key: {
+                            name: 'x_gegis_ins_policy_intake_case'
+                            element: 'assignment_group'
                         }
                     },
                     {
@@ -381,6 +447,31 @@ declare global {
                         key: {
                             category: 'x_gegis_ins_policy_intake_case'
                             prefix: 'IC'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary_override'
+                        id: '47baa6243bd9cb1005ad7564c3e45a68'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_bind'
+                            element: 'number'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary_override'
+                        id: '4bbaa6243bd9cb1005ad7564c3e45a61'
+                        key: {
+                            name: 'x_gegis_ins_policy_orch_case'
+                            element: 'assigned_to'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary_override'
+                        id: '4fbaa6243bd9cb1005ad7564c3e45a1c'
+                        deleted: true
+                        key: {
+                            name: 'x_gegis_ins_policy_intake_case'
+                            element: 'assigned_to'
                         }
                     },
                     {
@@ -459,8 +550,33 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary_override'
+                        id: '57eb62243b1dcb1005ad7564c3e45acc'
+                        key: {
+                            name: 'x_gegis_ins_policy_clearance'
+                            element: 'number'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary_override'
+                        id: '57eb62243b1dcb1005ad7564c3e45ad2'
+                        key: {
+                            name: 'x_gegis_ins_policy_clearance'
+                            element: 'assignment_group'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary_override'
+                        id: '57eb62243b1dcb1005ad7564c3e45ad8'
+                        key: {
+                            name: 'x_gegis_ins_policy_clearance'
+                            element: 'assigned_to'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '58d39a4907e44c63b02685616dd93598'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_intake_case'
                             element: 'blob_url'
@@ -497,6 +613,14 @@ declare global {
                             name: 'x_gegis_ins_policy_clearance'
                             element: 'clearance_result'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary_override'
+                        id: '5feb62243b1dcb1005ad7564c3e45a4e'
+                        key: {
+                            name: 'x_gegis_ins_policy_submission'
+                            element: 'assignment_group'
                         }
                     },
                     {
@@ -547,6 +671,22 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'insured_name'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary_override'
+                        id: '6beba2243b1dcb1005ad7564c3e45a0a'
+                        key: {
+                            name: 'x_gegis_ins_policy_exposure'
+                            element: 'number'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary_override'
+                        id: '6beba2243b1dcb1005ad7564c3e45a10'
+                        key: {
+                            name: 'x_gegis_ins_policy_exposure'
+                            element: 'assignment_group'
                         }
                     },
                     {
@@ -707,6 +847,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary_override'
+                        id: '83baa6243bd9cb1005ad7564c3e45a30'
+                        key: {
+                            name: 'x_gegis_ins_policy_orch_case'
+                            element: 'number'
+                        }
+                    },
+                    {
                         table: 'sys_ux_lib_asset'
                         id: '8665190bab0d479f91b44239a454b788'
                         key: {
@@ -787,6 +935,14 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'policy_type'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary_override'
+                        id: '97eb62243b1dcb1005ad7564c3e45a45'
+                        key: {
+                            name: 'x_gegis_ins_policy_submission'
+                            element: 'number'
                         }
                     },
                     {
@@ -989,6 +1145,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary_override'
+                        id: 'c3baa6243bd9cb1005ad7564c3e45a36'
+                        key: {
+                            name: 'x_gegis_ins_policy_orch_case'
+                            element: 'assignment_group'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'c5dac908951a4167975f3a1e98968703'
                         key: {
@@ -1012,6 +1176,14 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_intake_case'
                             element: 'insured_name'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary_override'
+                        id: 'cbbaa6243bd9cb1005ad7564c3e45a93'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_bind'
+                            element: 'assignment_group'
                         }
                     },
                     {
@@ -1072,6 +1244,14 @@ declare global {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'subscription'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary_override'
+                        id: 'd7eb62243b1dcb1005ad7564c3e45af1'
+                        key: {
+                            name: 'x_gegis_ins_policy_risk_assess'
+                            element: 'assignment_group'
                         }
                     },
                     {
@@ -1139,6 +1319,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary_override'
+                        id: 'e7eb62243b1dcb1005ad7564c3e45af7'
+                        key: {
+                            name: 'x_gegis_ins_policy_risk_assess'
+                            element: 'assigned_to'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'ea6513f4e79d4cfbab5659cdb3e32b14'
                         key: {
@@ -1156,6 +1344,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary_override'
+                        id: 'ebeba2243b1dcb1005ad7564c3e45a29'
+                        key: {
+                            name: 'x_gegis_ins_policy_ai_task'
+                            element: 'number'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'ec8e1f2f073c4682babf88528d2cf070'
                         key: {
@@ -1167,6 +1363,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: 'eeab3b017c964ff08df5bcd70b9b5035'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_intake_case'
                             element: 'blob_url'

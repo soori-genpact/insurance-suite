@@ -16,7 +16,6 @@ export default function createIntakeCase(request, response) {
         var brokerName = body.broker_name || "";
         var brokerEmail = body.broker_email || "";
         var insuredName = body.insured_name || "";
-        var blobUrl = body.blob_url || "";
         var sourceEmailId = body.source_email_id || "";
         var shortDescription = body.short_description || "";
 
@@ -30,7 +29,6 @@ export default function createIntakeCase(request, response) {
         gr.setValue("broker_name", brokerName);
         gr.setValue("broker_email", brokerEmail);
         gr.setValue("insured_name", insuredName);
-        gr.setValue("blob_url", blobUrl);
         gr.setValue("source_email_id", sourceEmailId);
         gr.setValue("short_description", shortDescription);
         var sysId = gr.insert();
