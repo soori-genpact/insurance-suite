@@ -154,3 +154,40 @@ Enables full TypeScript autocompletion for platform APIs and your custom tables.
 | `npx now-sdk install --auth <alias>` | Deploy to a specific instance |
 | `npx now-sdk build && npx now-sdk install` | Build then deploy in one step |
 | `npx now-sdk dependencies` | Fetch type definitions for IDE autocomplete |
+
+---
+
+## Troubleshooting
+
+### ERROR: Unable to install application as application was null
+
+**Cause:** The `scopeId` in `now.config.json` is the `sys_id` of the `sys_app` record from the **original instance**. A fresh PDI has never had this app installed — it has no matching record, so the SDK receives null.
+
+**This is not a roles issue.** `admin` is the correct user.
+
+**Fix — first-time deploy to a new instance:**
+
+1. On the target instance, create the app via **App Engine Studio → Create app**
+   - Name: `Policy Suite`
+   - Scope: `x_gegis_ins_policy`
+
+2. Find the new app's `sys_id`:
+   ```
+   https://<instance>.service-now.com/sys_app_list.do?sysparm_query=scope%3Dx_gegis_ins_policy
+   ```
+
+3. Update `now.config.json`:
+   ```json
+   {
+       "scope": "x_gegis_ins_policy",
+       "scopeId": "<new-sys_id-from-this-instance>",
+       "name": "Policy Suite"
+   }
+   ```
+
+4. Deploy again:
+   ```bash
+   now-sdk build && now-sdk deploy --auth <alias>
+   ```
+
+> `scopeId` is instance-specific. Each PDI or environment will have a different `sys_id` for the same scoped app. When switching target instances, always verify the `scopeId` matches that instance's `sys_app` record.
