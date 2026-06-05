@@ -4,7 +4,7 @@ import './SubmissionList.css'
 
 export default function SubmissionList({ submissions, onSelect, selectedSysId }) {
     if (submissions.length === 0) {
-        return <div className="no-submissions">No submissions yet. Create one to start the orchestration workflow.</div>
+        return <div className="no-submissions">No submissions yet. Create one to start the workflow.</div>
     }
 
     return (
@@ -13,11 +13,12 @@ export default function SubmissionList({ submissions, onSelect, selectedSysId })
                 <thead>
                     <tr>
                         <th>Number</th>
-                        <th>Insured</th>
-                        <th>Policy Type</th>
-                        <th>Subscription</th>
+                        <th>Primary Insured</th>
+                        <th>Transaction</th>
+                        <th>Line of Business</th>
+                        <th>Status</th>
                         <th>Effective</th>
-                        <th>Expiration</th>
+                        <th>Expiry</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,15 +32,16 @@ export default function SubmissionList({ submissions, onSelect, selectedSysId })
                                 onClick={() => onSelect(submission)}
                             >
                                 <td className="mono">{displayValue(submission.number)}</td>
-                                <td>{displayValue(submission.insured_name)}</td>
-                                <td>{displayValue(submission.policy_type) || '—'}</td>
+                                <td>{displayValue(submission.primary_insured_display) || '—'}</td>
+                                <td>{displayValue(submission.transaction_type) || '—'}</td>
+                                <td>{displayValue(submission.line_of_business) || '—'}</td>
                                 <td>
-                                    <span className="subscription-badge">
-                                        {displayValue(submission.subscription) || 'All Cases'}
+                                    <span className="status-badge">
+                                        {displayValue(submission.overall_status) || '—'}
                                     </span>
                                 </td>
-                                <td>{displayValue(submission.effective_date) || '—'}</td>
-                                <td>{displayValue(submission.expiration_date) || '—'}</td>
+                                <td>{displayValue(submission.policy_effective_date) || '—'}</td>
+                                <td>{displayValue(submission.policy_expiry_date) || '—'}</td>
                             </tr>
                         )
                     })}

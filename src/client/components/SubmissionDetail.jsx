@@ -2,22 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { displayValue, rawValue } from '../services/fieldValue'
 import './SubmissionDetail.css'
 
-// Maps a sub-case group to the "result" field that best summarizes its status,
-// plus a CSS modifier for color-coding that value.
 const RESULT_FIELD = {
-    clearance: { field: 'clearance_result', tone: (v) => v },
-    risk: { field: 'risk_level', tone: (v) => v },
-    quote: { field: 'quote_status', tone: (v) => v },
+    clearance: { field: 'clearance_status' },
+    exposure:  { field: 'exposure_status' },
+    risk:      { field: 'appetite_decision' },
+    qnb:       { field: 'qnb_status' },
 }
 
 function caseResult(groupKey, record) {
     const config = RESULT_FIELD[groupKey]
-    if (!config) {
-        return null
-    }
+    if (!config) return null
     const value = rawValue(record[config.field])
     const label = displayValue(record[config.field])
-    return value ? { value, label, tone: config.tone(value) } : null
+    return value ? { value, label } : null
 }
 
 export default function SubmissionDetail({ submission, service, onClose }) {
@@ -33,24 +30,10 @@ export default function SubmissionDetail({ submission, service, onClose }) {
         setError(null)
         service
             .getSubCases(submissionSysId)
-            .then((result) => {
-                if (!cancelled) {
-                    setData(result)
-                }
-            })
-            .catch((err) => {
-                if (!cancelled) {
-                    setError(err.message || 'Failed to load sub-cases')
-                }
-            })
-            .finally(() => {
-                if (!cancelled) {
-                    setLoading(false)
-                }
-            })
-        return () => {
-            cancelled = true
-        }
+            .then((result) => { if (!cancelled) setData(result) })
+            .catch((err) => { if (!cancelled) setError(err.message || 'Failed to load cases') })
+            .finally(() => { if (!cancelled) setLoading(false) })
+        return () => { cancelled = true }
     }, [submissionSysId, service])
 
     return (
@@ -58,7 +41,7 @@ export default function SubmissionDetail({ submission, service, onClose }) {
             <div className="detail-header">
                 <div>
                     <span className="detail-number">{displayValue(submission.number)}</span>
-                    <h2>{displayValue(submission.insured_name)}</h2>
+                    <h2>{displayValue(submission.primary_insured_display) || '—'}</h2>
                 </div>
                 <button type="button" className="close-button" onClick={onClose} aria-label="Close panel">
                     ×
@@ -67,69 +50,68 @@ export default function SubmissionDetail({ submission, service, onClose }) {
 
             <dl className="detail-meta">
                 <div>
-                    <dt>Policy Type</dt>
-                    <dd>{displayValue(submission.policy_type) || '—'}</dd>
+                    <dt>Broker</dt>
+                    <dd>{displayValue(submission.primary_broker_display) || '—'}</dd>
                 </div>
                 <div>
-                    <dt>Subscription</dt>
-                    <dd>{displayValue(submission.subscription) || 'All Cases'}</dd>
+                    <dt>Transaction</dt>
+                    <dd>{displayValue(submission.transaction_type) || '—'}</dd>
+                </div>
+                <div>
+                    <dt>Line of Business</dt>
+                    <dd>{displayValue(submission.line_of_business) || '—'}</dd>
+                </div>
+                <div>
+                    <dt>Status</dt>
+                    <dd>{displayValue(submission.overall_status) || '—'}</dd>
                 </div>
                 <div>
                     <dt>Effective</dt>
-                    <dd>{displayValue(submission.effective_date) || '—'}</dd>
+                    <dd>{displayValue(submission.policy_effective_date) || '—'}</dd>
                 </div>
                 <div>
-                    <dt>Expiration</dt>
-                    <dd>{displayValue(submission.expiration_date) || '—'}</dd>
+                    <dt>Expiry</dt>
+                    <dd>{displayValue(submission.policy_expiry_date) || '—'}</dd>
+                </div>
+                <div>
+                    <dt>Currency</dt>
+                    <dd>{displayValue(submission.policy_currency) || '—'}</dd>
                 </div>
             </dl>
 
-            <h3 className="section-title">Orchestrated Cases</h3>
+            <h3 className="section-title">Module Cases</h3>
 
             {loading && <div className="detail-loading">Loading cases…</div>}
             {error && <div className="detail-error">{error}</div>}
 
             {!loading && !error && data && (
-                <>
-                    {data.orchestration ? (
-                        <div className="orch-banner">
-                            <span className="mono">{displayValue(data.orchestration.number)}</span>
-                            <span>{displayValue(data.orchestration.short_description)}</span>
-                        </div>
-                    ) : (
-                        <div className="orch-banner orch-banner--empty">
-                            No orchestration case found yet. It is created right after the submission is inserted.
-                        </div>
-                    )}
-
-                    <div className="case-groups">
-                        {data.groups.map((group) => (
-                            <div className="case-group" key={group.key}>
-                                <div className="case-group-header">
-                                    <span>{group.label}</span>
-                                    <span className="case-count">{group.records.length}</span>
-                                </div>
-                                {group.records.length === 0 ? (
-                                    <div className="case-empty">Not in subscription</div>
-                                ) : (
-                                    group.records.map((record) => {
-                                        const result = caseResult(group.key, record)
-                                        return (
-                                            <div className="case-row" key={rawValue(record.sys_id)}>
-                                                <span className="mono">{displayValue(record.number)}</span>
-                                                {result && (
-                                                    <span className={`result-badge tone-${result.tone}`}>
-                                                        {result.label}
-                                                    </span>
-                                                )}
-                                            </div>
-                                        )
-                                    })
-                                )}
+                <div className="case-groups">
+                    {data.groups.map((group) => (
+                        <div className="case-group" key={group.key}>
+                            <div className="case-group-header">
+                                <span>{group.label}</span>
+                                <span className="case-count">{group.records.length}</span>
                             </div>
-                        ))}
-                    </div>
-                </>
+                            {group.records.length === 0 ? (
+                                <div className="case-empty">No cases found</div>
+                            ) : (
+                                group.records.map((record) => {
+                                    const result = caseResult(group.key, record)
+                                    return (
+                                        <div className="case-row" key={rawValue(record.sys_id)}>
+                                            <span className="mono">{displayValue(record.number)}</span>
+                                            {result && (
+                                                <span className={`result-badge tone-${result.value}`}>
+                                                    {result.label}
+                                                </span>
+                                            )}
+                                        </div>
+                                    )
+                                })
+                            )}
+                        </div>
+                    ))}
+                </div>
             )}
         </aside>
     )

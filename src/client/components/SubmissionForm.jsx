@@ -1,30 +1,44 @@
 import React, { useState } from 'react'
 import './SubmissionForm.css'
 
-// Choices mirror the x_gegis_ins_policy_submission table definition.
-const POLICY_TYPES = [
-    { value: 'general_liability', label: 'General Liability' },
-    { value: 'property', label: 'Property' },
-    { value: 'workers_comp', label: 'Workers Compensation' },
-    { value: 'commercial_auto', label: 'Commercial Auto' },
-    { value: 'umbrella', label: 'Umbrella' },
+const TRANSACTION_TYPES = [
+    { value: 'new', label: 'New' },
+    { value: 'renewal', label: 'Renewal' },
+    { value: 'endorsement', label: 'Endorsement' },
 ]
 
-const SUBSCRIPTIONS = [
-    { value: 'all', label: 'All Cases' },
-    { value: 'clearance_only', label: 'Clearance Only' },
-    { value: 'risk_only', label: 'Risk Assessment Only' },
-    { value: 'exposure_only', label: 'Exposure Only' },
-    { value: 'quote_only', label: 'Quote & Bind Only' },
+const LINES_OF_BUSINESS = [
+    { value: 'property', label: 'Property' },
+    { value: 'workers_comp', label: 'Workers Comp' },
+    { value: 'auto', label: 'Auto' },
+]
+
+const CURRENCIES = [
+    { value: 'usd', label: 'USD' },
+    { value: 'gbp', label: 'GBP' },
+    { value: 'eur', label: 'EUR' },
+    { value: 'cad', label: 'CAD' },
+    { value: 'aud', label: 'AUD' },
+    { value: 'jpy', label: 'JPY' },
+    { value: 'chf', label: 'CHF' },
+]
+
+const SOURCE_CHANNELS = [
+    { value: 'email', label: 'Email' },
+    { value: 'portal', label: 'Portal' },
+    { value: 'api', label: 'API' },
+    { value: 'broker_upload', label: 'Broker Upload' },
 ]
 
 const INITIAL = {
-    insured_name: '',
-    policy_type: 'general_liability',
-    subscription: 'all',
-    effective_date: '',
-    expiration_date: '',
-    blob_url: '',
+    transaction_type: 'new',
+    line_of_business: 'property',
+    policy_currency: 'usd',
+    policy_effective_date: '',
+    policy_expiry_date: '',
+    primary_insured_display: '',
+    primary_broker_display: '',
+    source_channel: 'email',
 }
 
 export default function SubmissionForm({ onSubmit, onCancel }) {
@@ -50,17 +64,16 @@ export default function SubmissionForm({ onSubmit, onCancel }) {
                     </button>
                 </div>
                 <p className="form-hint">
-                    Creating a submission spawns its orchestration case and sub-cases automatically based on the
-                    selected subscription.
+                    Creating a submission automatically spawns Clearance, Exposure, Risk, and Quote &amp; Bind cases.
                 </p>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
-                        <label htmlFor="insured_name">Insured Name *</label>
+                        <label htmlFor="primary_insured_display">Primary Insured *</label>
                         <input
                             type="text"
-                            id="insured_name"
-                            name="insured_name"
-                            value={formData.insured_name}
+                            id="primary_insured_display"
+                            name="primary_insured_display"
+                            value={formData.primary_insured_display}
                             onChange={handleChange}
                             required
                             maxLength={200}
@@ -68,74 +81,113 @@ export default function SubmissionForm({ onSubmit, onCancel }) {
                         />
                     </div>
 
-                    <div className="form-row">
-                        <div className="form-group">
-                            <label htmlFor="policy_type">Policy Type</label>
-                            <select
-                                id="policy_type"
-                                name="policy_type"
-                                value={formData.policy_type}
-                                onChange={handleChange}
-                            >
-                                {POLICY_TYPES.map((opt) => (
-                                    <option key={opt.value} value={opt.value}>
-                                        {opt.label}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="subscription">Subscription</label>
-                            <select
-                                id="subscription"
-                                name="subscription"
-                                value={formData.subscription}
-                                onChange={handleChange}
-                            >
-                                {SUBSCRIPTIONS.map((opt) => (
-                                    <option key={opt.value} value={opt.value}>
-                                        {opt.label}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                    </div>
-
-                    <div className="form-row">
-                        <div className="form-group">
-                            <label htmlFor="effective_date">Effective Date</label>
-                            <input
-                                type="date"
-                                id="effective_date"
-                                name="effective_date"
-                                value={formData.effective_date}
-                                onChange={handleChange}
-                            />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="expiration_date">Expiration Date</label>
-                            <input
-                                type="date"
-                                id="expiration_date"
-                                name="expiration_date"
-                                value={formData.expiration_date}
-                                onChange={handleChange}
-                            />
-                        </div>
-                    </div>
-
                     <div className="form-group">
-                        <label htmlFor="blob_url">Data Blob URL</label>
+                        <label htmlFor="primary_broker_display">Primary Broker</label>
                         <input
-                            type="url"
-                            id="blob_url"
-                            name="blob_url"
-                            value={formData.blob_url}
+                            type="text"
+                            id="primary_broker_display"
+                            name="primary_broker_display"
+                            value={formData.primary_broker_display}
                             onChange={handleChange}
-                            placeholder="https://..."
+                            maxLength={200}
                         />
+                    </div>
+
+                    <div className="form-row">
+                        <div className="form-group">
+                            <label htmlFor="transaction_type">Transaction Type *</label>
+                            <select
+                                id="transaction_type"
+                                name="transaction_type"
+                                value={formData.transaction_type}
+                                onChange={handleChange}
+                                required
+                            >
+                                {TRANSACTION_TYPES.map((opt) => (
+                                    <option key={opt.value} value={opt.value}>
+                                        {opt.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="line_of_business">Line of Business *</label>
+                            <select
+                                id="line_of_business"
+                                name="line_of_business"
+                                value={formData.line_of_business}
+                                onChange={handleChange}
+                                required
+                            >
+                                {LINES_OF_BUSINESS.map((opt) => (
+                                    <option key={opt.value} value={opt.value}>
+                                        {opt.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div className="form-row">
+                        <div className="form-group">
+                            <label htmlFor="policy_effective_date">Effective Date *</label>
+                            <input
+                                type="date"
+                                id="policy_effective_date"
+                                name="policy_effective_date"
+                                value={formData.policy_effective_date}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="policy_expiry_date">Expiry Date *</label>
+                            <input
+                                type="date"
+                                id="policy_expiry_date"
+                                name="policy_expiry_date"
+                                value={formData.policy_expiry_date}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <div className="form-row">
+                        <div className="form-group">
+                            <label htmlFor="policy_currency">Currency *</label>
+                            <select
+                                id="policy_currency"
+                                name="policy_currency"
+                                value={formData.policy_currency}
+                                onChange={handleChange}
+                                required
+                            >
+                                {CURRENCIES.map((opt) => (
+                                    <option key={opt.value} value={opt.value}>
+                                        {opt.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="source_channel">Source Channel</label>
+                            <select
+                                id="source_channel"
+                                name="source_channel"
+                                value={formData.source_channel}
+                                onChange={handleChange}
+                            >
+                                {SOURCE_CHANNELS.map((opt) => (
+                                    <option key={opt.value} value={opt.value}>
+                                        {opt.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
                     </div>
 
                     <div className="form-actions">
