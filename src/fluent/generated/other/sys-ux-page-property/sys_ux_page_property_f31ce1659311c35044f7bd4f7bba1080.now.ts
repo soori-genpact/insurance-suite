@@ -7,15 +7,7 @@ Record({
         name: 'chrome_toolbar',
         page: 'e728e92593dd835044f7bd4f7bba1020',
         required_translations: `[ {
-  "message" : "List",
-  "code" : "",
-  "comment" : ""
-}, {
-  "message" : "Record",
-  "code" : "",
-  "comment" : ""
-}, {
-  "message" : "Simple List",
+  "message" : "Home",
   "code" : "",
   "comment" : ""
 } ]`,
@@ -28,24 +20,7 @@ Record({
         "id": "list",
         "label": {
             "translatable": true,
-            "message": "List"
-        },
-        "icon": "accessibility-fill",
-        "routeInfo": {
-            "route": "list"
-        },
-        "group": "top",
-        "order": 100,
-        "badge": {},
-        "presence": {},
-        "availability": {},
-        "viewportInfo": {}
-    },
-    {
-        "id": "list",
-        "label": {
-            "translatable": true,
-            "message": "List"
+            "message": "Home"
         },
         "icon": "action-ai-sparkle-fill",
         "routeInfo": {
@@ -57,41 +32,8 @@ Record({
         "presence": {},
         "availability": {},
         "viewportInfo": {}
-    },
-    {
-        "id": "simplelist",
-        "label": {
-            "translatable": true,
-            "message": "Simple List"
-        },
-        "icon": "activity-fill",
-        "routeInfo": {
-            "route": "simplelist"
-        },
-        "group": "top",
-        "order": 200,
-        "badge": {},
-        "presence": {},
-        "availability": {},
-        "viewportInfo": {}
-    },
-    {
-        "id": "record",
-        "label": {
-            "translatable": true,
-            "message": "Record"
-        },
-        "icon": "accessibility-outline",
-        "routeInfo": {
-            "route": "record"
-        },
-        "group": "top",
-        "order": 300,
-        "badge": {},
-        "presence": {},
-        "availability": {},
-        "viewportInfo": {}
     }
 ]`,
+        suffix: 'chrome_toolbar',
     },
 })

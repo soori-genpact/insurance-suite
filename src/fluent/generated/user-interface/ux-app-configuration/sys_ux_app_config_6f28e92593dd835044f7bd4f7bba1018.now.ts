@@ -7,7 +7,7 @@ Record({
         active: true,
         disable_auto_reflow: false,
         encode_query_string: false,
-        landing_path: 'home',
+        landing_path: 'list',
         name: 'Insurance Policy Suite',
         icon: 'ai_sparkle_fill',
     },
