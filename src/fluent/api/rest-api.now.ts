@@ -1,7 +1,7 @@
 import { RestApi } from "@servicenow/sdk/core";
 import createIntakeCase from "../../server/intake-case-handler.js";
 import upsertSubmission from "../../server/submission-handler.js";
-import createAiTask from "../../server/ai-task-handler.js";
+import createCaseTask from "../../server/case-task-handler.js";
 
 RestApi({
   $id: Now.ID["policy_suite_api"],
@@ -16,7 +16,7 @@ RestApi({
       method: "POST",
       script: createIntakeCase,
       name: "Create Intake Case",
-      shortDescription: "Creates a new intake case record with optional blob attachments",
+      shortDescription: "Creates an intake case from any inbound channel (email, portal, API)",
       version: 1,
     },
     {
@@ -29,12 +29,12 @@ RestApi({
       version: 1,
     },
     {
-      $id: Now.ID["route_ai_task"],
-      path: "/ai-task",
+      $id: Now.ID["route_case_task"],
+      path: "/case-task",
       method: "POST",
-      script: createAiTask,
-      name: "Create AI Task",
-      shortDescription: "Creates an AI extraction task when AI processing fails",
+      script: createCaseTask,
+      name: "Create Case Task",
+      shortDescription: "Creates a case sub-task for any module (clearance, exposure, risk, qnb, extraction, document)",
       version: 1,
     },
   ],

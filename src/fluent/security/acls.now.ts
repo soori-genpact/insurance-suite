@@ -1080,6 +1080,120 @@ export const aclExtractionFieldDelete = Acl({
     adminOverrides: true,
 })
 
+// ── INTAKE CASE ───────────────────────────────────────────────────────────────
+
+export const aclIntakeCaseRead = Acl({
+    $id: Now.ID['acl_ink_read'],
+    type: 'record',
+    table: 'x_gegis_ins_policy_intake_case',
+    operation: 'read',
+    roles: [underwriterRole, operationalRole, integrationRole],
+    adminOverrides: true,
+})
+
+export const aclIntakeCaseCreate = Acl({
+    $id: Now.ID['acl_ink_create'],
+    type: 'record',
+    table: 'x_gegis_ins_policy_intake_case',
+    operation: 'create',
+    roles: [integrationRole, operationalRole],
+    adminOverrides: true,
+})
+
+export const aclIntakeCaseWrite = Acl({
+    $id: Now.ID['acl_ink_write'],
+    type: 'record',
+    table: 'x_gegis_ins_policy_intake_case',
+    operation: 'write',
+    roles: [integrationRole, operationalRole],
+    adminOverrides: true,
+})
+
+export const aclIntakeCaseDelete = Acl({
+    $id: Now.ID['acl_ink_delete'],
+    type: 'record',
+    table: 'x_gegis_ins_policy_intake_case',
+    operation: 'delete',
+    roles: [adminRole],
+    adminOverrides: true,
+})
+
+// ── CASE TASK ─────────────────────────────────────────────────────────────────
+
+export const aclCaseTaskRead = Acl({
+    $id: Now.ID['acl_tsk_read'],
+    type: 'record',
+    table: 'x_gegis_ins_policy_case_task',
+    operation: 'read',
+    roles: [underwriterRole, operationalRole, complianceOfficerRole, integrationRole],
+    adminOverrides: true,
+})
+
+export const aclCaseTaskCreate = Acl({
+    $id: Now.ID['acl_tsk_create'],
+    type: 'record',
+    table: 'x_gegis_ins_policy_case_task',
+    operation: 'create',
+    roles: [underwriterRole, operationalRole, integrationRole],
+    adminOverrides: true,
+})
+
+export const aclCaseTaskWrite = Acl({
+    $id: Now.ID['acl_tsk_write'],
+    type: 'record',
+    table: 'x_gegis_ins_policy_case_task',
+    operation: 'write',
+    roles: [underwriterRole, operationalRole, integrationRole],
+    adminOverrides: true,
+})
+
+export const aclCaseTaskDelete = Acl({
+    $id: Now.ID['acl_tsk_delete'],
+    type: 'record',
+    table: 'x_gegis_ins_policy_case_task',
+    operation: 'delete',
+    roles: [adminRole],
+    adminOverrides: true,
+})
+
+// ── BASE CASE ─────────────────────────────────────────────────────────────────
+
+export const aclBaseCaseRead = Acl({
+    $id: Now.ID['acl_bcs_read'],
+    type: 'record',
+    table: 'x_gegis_ins_policy_base_case',
+    operation: 'read',
+    roles: [underwriterRole, operationalRole, complianceOfficerRole, integrationRole],
+    adminOverrides: true,
+})
+
+export const aclBaseCaseCreate = Acl({
+    $id: Now.ID['acl_bcs_create'],
+    type: 'record',
+    table: 'x_gegis_ins_policy_base_case',
+    operation: 'create',
+    roles: [operationalRole, integrationRole],
+    adminOverrides: true,
+})
+
+export const aclBaseCaseWrite = Acl({
+    $id: Now.ID['acl_bcs_write'],
+    type: 'record',
+    table: 'x_gegis_ins_policy_base_case',
+    operation: 'write',
+    roles: [operationalRole, integrationRole],
+    adminOverrides: true,
+})
+
+export const aclBaseCaseDelete = Acl({
+    $id: Now.ID['acl_bcs_delete'],
+    type: 'record',
+    table: 'x_gegis_ins_policy_base_case',
+    operation: 'delete',
+    roles: [adminRole],
+    adminOverrides: true,
+})
+
 // ── REST API — ENDPOINT ACL ───────────────────────────────────────────────────
 
 export const aclRestApiExecute = Acl({

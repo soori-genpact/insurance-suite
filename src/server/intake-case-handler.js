@@ -3,8 +3,9 @@ import { RESTMessageV2 } from "@servicenow/glide/sn_ws";
 import { RESTAPIRequest, RESTAPIResponse } from "@servicenow/glide/sn_ws_int";
 
 /**
- * Handler for creating an Intake Case record.
- * Downloads attachments from blob URLs and attaches them to the case.
+ * POST /intake-case
+ * Creates an Intake Case from any inbound channel (email, portal, API, etc.).
+ * Optionally downloads and attaches files from blob URLs.
  *
  * @param {RESTAPIRequest} request
  * @param {RESTAPIResponse} response
@@ -13,70 +14,66 @@ export default function createIntakeCase(request, response) {
     try {
         var body = request.body.data;
 
-        var brokerName = body.broker_name || "";
-        var brokerEmail = body.broker_email || "";
-        var insuredName = body.insured_name || "";
-        var sourceEmailId = body.source_email_id || "";
-        var shortDescription = body.short_description || "";
+        var sender = body.sender || "";
+        var senderEmail = body.sender_email || "";
+        var recipient = body.recipient || "";
+        var subject = body.subject || "";
+        var bodyText = body.body || "";
+        var channel = body.channel || "email";
 
-        if (!insuredName) {
+        if (!subject) {
             response.setStatus(400);
-            return { error: "insured_name is required" };
+            return { error: "subject is required" };
         }
 
         var gr = new GlideRecord("x_gegis_ins_policy_intake_case");
         gr.initialize();
-        gr.setValue("broker_name", brokerName);
-        gr.setValue("broker_email", brokerEmail);
-        gr.setValue("insured_name", insuredName);
-        gr.setValue("source_email_id", sourceEmailId);
-        gr.setValue("short_description", shortDescription);
+        gr.setValue("sender", sender);
+        gr.setValue("sender_email", senderEmail);
+        gr.setValue("recipient", recipient);
+        gr.setValue("subject", subject);
+        gr.setValue("body", bodyText);
+        gr.setValue("channel", channel);
+        gr.setValue("intake_status", "new");
+        gr.setValue("short_description", subject);
         var sysId = gr.insert();
 
         if (!sysId) {
             response.setStatus(500);
-            return { error: "Failed to create intake case record" };
+            return { error: "Failed to create intake case" };
         }
 
-        // Handle attachment downloads from blob URLs
         var attachmentUrls = body.attachment_urls;
         if (attachmentUrls && attachmentUrls.length > 0) {
             var gsa = new GlideSysAttachment();
-
             for (var i = 0; i < attachmentUrls.length; i++) {
                 try {
                     var url = attachmentUrls[i];
-                    var restMessage = new RESTMessageV2();
-                    restMessage.setHttpMethod("GET");
-                    restMessage.setEndpoint(url);
-                    var restResponse = restMessage.execute();
-                    var responseBody = restResponse.getBody();
-                    var contentType = restResponse.getHeader("Content-Type") || "application/octet-stream";
-
-                    // Extract filename from URL or use a default
-                    var fileName = url.substring(url.lastIndexOf("/") + 1) || "attachment_" + i;
-                    // Remove query params from filename
+                    var rm = new RESTMessageV2();
+                    rm.setHttpMethod("GET");
+                    rm.setEndpoint(url);
+                    var rmResp = rm.execute();
+                    var contentType = rmResp.getHeader("Content-Type") || "application/octet-stream";
+                    var fileName = url.substring(url.lastIndexOf("/") + 1) || ("attachment_" + i);
                     if (fileName.indexOf("?") > -1) {
                         fileName = fileName.substring(0, fileName.indexOf("?"));
                     }
-
-                    gsa.write(gr, fileName, contentType, responseBody);
+                    gsa.write(gr, fileName, contentType, rmResp.getBody());
                 } catch (attachErr) {
-                    gs.error("Failed to download attachment from URL: " + attachmentUrls[i] + " Error: " + attachErr.message);
+                    gs.error("IntakeCaseHandler: attachment download failed for " + attachmentUrls[i] + " — " + attachErr.message);
                 }
             }
         }
 
-        var number = gr.getValue("number");
         response.setStatus(201);
         return {
             result: {
                 sys_id: sysId.toString(),
-                number: number
-            }
+                number: gr.getValue("number"),
+            },
         };
     } catch (e) {
-        gs.error("Error in createIntakeCase: " + e.message);
+        gs.error("IntakeCaseHandler: " + e.message);
         response.setStatus(500);
         return { error: "Internal server error: " + e.message };
     }
