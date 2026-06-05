@@ -1627,6 +1627,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: '0a26f72650b64e328d72f100edb3a856'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'primary_broker_display'
@@ -2564,6 +2565,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'transaction_type'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '186bdc9e406c48d3949846730d960265'
+                        key: {
+                            name: 'x_gegis_ins_policy_submission_party'
+                            element: 'role'
+                            value: 'other'
                         }
                     },
                     {
@@ -5062,7 +5072,7 @@ declare global {
                     {
                         table: 'sn_glider_source_artifact_m2m'
                         id: '3c513e94fafb495a84c9e0171b085546'
-                        deleted: false
+                        deleted: true
                         key: {
                             application_file: 'f034cd3b609e4662b31688c7071cf835'
                             source_artifact: '84a31431a5bf481ea1898fc0e1550bf1'
@@ -6476,6 +6486,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: '51f0558b1d6448da988c445c31159701'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'primary_broker_display'
@@ -9797,6 +9808,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: '7ff39b36c84b484581b589515d509b17'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'primary_insured_display'
@@ -10002,6 +10014,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '825e621a63a14fb184ff399fdbc50df1'
+                        key: {
+                            name: 'x_gegis_ins_policy_submission'
+                            element: 'primary_broker'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '82e2855e10d5451484094fc243b81a31'
                         key: {
@@ -10202,7 +10223,7 @@ declare global {
                     {
                         table: 'sys_ux_lib_asset'
                         id: '8665190bab0d479f91b44239a454b788'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy/vendor-react-dom--003b9c7e'
                         }
@@ -11034,6 +11055,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '96934dedcb1a47a7b75576fc3b4301ca'
+                        deleted: false
                         key: {
                             name: 'x_gegis_ins_policy_submission_party'
                             element: 'role'
@@ -11999,6 +12021,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'a547ebe6fd3e440aa2715904614469bd'
+                        key: {
+                            name: 'x_gegis_ins_policy_submission_party'
+                            element: 'role'
+                            value: 'co_broker'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'a563017accc04d4c9cdb29a1e6f88c9b'
                         key: {
@@ -12668,6 +12699,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: 'af9d2b9671354c249a108febcda42e74'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'primary_insured_display'
@@ -14336,6 +14368,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'caeaa8dafece44669dd4e54624952c95'
+                        deleted: false
                         key: {
                             name: 'x_gegis_ins_policy_submission_party'
                             element: 'role'
@@ -15765,6 +15798,15 @@ declare global {
                     },
                     {
                         table: 'sys_documentation'
+                        id: 'e59f150b263d4657ba11a711fdc98c41'
+                        key: {
+                            name: 'x_gegis_ins_policy_submission'
+                            element: 'primary_insured'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
                         id: 'e5c424881d884bdb8b6f4cf63d16b432'
                         key: {
                             name: 'x_gegis_ins_policy_risk_factor'
@@ -16004,6 +16046,14 @@ declare global {
                                     name: 'x_gegis_ins_policy.underwriter'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'e9baf161ce6748af8b916d3f8b2c29c8'
+                        key: {
+                            name: 'x_gegis_ins_policy_submission'
+                            element: 'primary_insured'
                         }
                     },
                     {
@@ -16352,7 +16402,7 @@ declare global {
                     {
                         table: 'sys_ux_lib_asset'
                         id: 'f034cd3b609e4662b31688c7071cf835'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy/vendor-react-dom--003b9c7e.js.map'
                         }
@@ -17053,6 +17103,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'fa4186a69234477f8d41e2832f556f79'
+                        key: {
+                            name: 'x_gegis_ins_policy_submission_party'
+                            element: 'role'
+                            value: 'co_insured'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'fa825b9f151a47e586d1c9ab6f13a920'
                         key: {
@@ -17218,7 +17277,7 @@ declare global {
                     {
                         table: 'sn_glider_source_artifact_m2m'
                         id: 'fd84f5be5c4c4119a658b171ed29fe1d'
-                        deleted: false
+                        deleted: true
                         key: {
                             application_file: '8665190bab0d479f91b44239a454b788'
                             source_artifact: '84a31431a5bf481ea1898fc0e1550bf1'
@@ -17299,6 +17358,14 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_document'
                             element: 'document_type'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'ff2237b63e8d400ba2dc89e5d5afa050'
+                        key: {
+                            name: 'x_gegis_ins_policy_submission'
+                            element: 'primary_broker'
                         }
                     },
                     {

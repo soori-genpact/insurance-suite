@@ -64,7 +64,7 @@ export class SubmissionService {
         params.set('sysparm_display_value', 'all')
         params.set(
             'sysparm_fields',
-            'sys_id,number,primary_insured_display,primary_broker_display,transaction_type,line_of_business,policy_effective_date,policy_expiry_date,overall_status,policy_currency,sys_created_on'
+            'sys_id,number,primary_insured,primary_insured.name,primary_broker,primary_broker.name,transaction_type,line_of_business,policy_effective_date,policy_expiry_date,overall_status,policy_currency,sys_created_on'
         )
         params.set('sysparm_query', 'ORDERBYDESCsys_created_on')
 

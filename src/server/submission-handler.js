@@ -27,13 +27,13 @@ export default function upsertSubmission(request, response) {
         var numberOfLocations = body.number_of_locations || "";
         var natureOfBusiness = body.nature_of_business || "";
         var overallStatus = body.overall_status || "open";
-        var primaryInsuredDisplay = body.primary_insured_display || "";
-        var primaryBrokerDisplay = body.primary_broker_display || "";
+        var primaryInsured = body.primary_insured || "";
+        var primaryBroker = body.primary_broker || "";
         var intakeCaseSysId = body.intake_case_sys_id || "";
 
-        if (!transactionType || !lineOfBusiness || !policyEffectiveDate || !policyExpiryDate || !policyCurrency) {
+        if (!transactionType || !lineOfBusiness || !policyEffectiveDate || !policyExpiryDate || !policyCurrency || !primaryInsured) {
             response.setStatus(400);
-            return { error: "transaction_type, line_of_business, policy_effective_date, policy_expiry_date, and policy_currency are required" };
+            return { error: "transaction_type, line_of_business, policy_effective_date, policy_expiry_date, policy_currency, and primary_insured are required" };
         }
 
         var gr = new GlideRecord("x_gegis_ins_policy_submission");
@@ -63,8 +63,8 @@ export default function upsertSubmission(request, response) {
         if (numberOfLocations) gr.setValue("number_of_locations", numberOfLocations);
         if (natureOfBusiness) gr.setValue("nature_of_business", natureOfBusiness);
         if (overallStatus) gr.setValue("overall_status", overallStatus);
-        if (primaryInsuredDisplay) gr.setValue("primary_insured_display", primaryInsuredDisplay);
-        if (primaryBrokerDisplay) gr.setValue("primary_broker_display", primaryBrokerDisplay);
+        if (primaryInsured) gr.setValue("primary_insured", primaryInsured);
+        if (primaryBroker) gr.setValue("primary_broker", primaryBroker);
 
         var sysId;
         if (isUpdate) {

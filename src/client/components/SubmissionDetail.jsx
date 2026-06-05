@@ -41,7 +41,7 @@ export default function SubmissionDetail({ submission, service, onClose }) {
             <div className="detail-header">
                 <div>
                     <span className="detail-number">{displayValue(submission.number)}</span>
-                    <h2>{displayValue(submission.primary_insured_display) || '—'}</h2>
+                    <h2>{displayValue(submission.primary_insured) || '—'}</h2>
                 </div>
                 <button type="button" className="close-button" onClick={onClose} aria-label="Close panel">
                     ×
@@ -51,7 +51,7 @@ export default function SubmissionDetail({ submission, service, onClose }) {
             <dl className="detail-meta">
                 <div>
                     <dt>Broker</dt>
-                    <dd>{displayValue(submission.primary_broker_display) || '—'}</dd>
+                    <dd>{displayValue(submission.primary_broker) || '—'}</dd>
                 </div>
                 <div>
                     <dt>Transaction</dt>
