@@ -157,6 +157,71 @@ Enables full TypeScript autocompletion for platform APIs and your custom tables.
 
 ---
 
+## PDI Setup Guidelines
+
+Follow these steps **once per fresh PDI** before running any deploy or IDE sync.
+
+### Step 1 — Register the Company Key
+
+The scope `x_gegis_ins_policy` uses company key `gegis`. Every PDI must have this registered or the IDE sync and deploy will be blocked.
+
+Run this in **Scripts - Background** (`https://<pdi>.service-now.com/sys.scripts.do`):
+
+```javascript
+var gr = new GlideRecord('sys_properties');
+gr.addQuery('name', 'sn_appauthor.all_company_keys');
+gr.query();
+if (gr.next()) {
+    var existing = gr.getValue('value');
+    if (existing.indexOf('gegis') === -1) {
+        gr.setValue('value', existing ? existing + ',gegis' : 'gegis');
+        gr.update();
+        gs.info('Updated: ' + gr.getValue('value'));
+    } else {
+        gs.info('gegis already present: ' + existing);
+    }
+} else {
+    gr.initialize();
+    gr.setValue('name', 'sn_appauthor.all_company_keys');
+    gr.setValue('value', 'gegis');
+    gr.insert();
+    gs.info('Property created with value: gegis');
+}
+```
+
+### Step 2 — Import from Source Control (Studio)
+
+1. Open **Studio** on the PDI: `https://<pdi>.service-now.com/studio.do`
+2. Click **Import from Source Control**
+3. Supply the git repo URL and credentials
+4. Studio will read `sn_source_control.properties` → find the app under `43b656ac3bdd8b1005ad7564c3e45a73/` → create the `sys_app` record on the instance automatically
+
+> The repo already contains the required Studio manifest files (`sn_source_control.properties` and the `sys_app` XML). Do not re-create them.
+
+### Step 3 — Authenticate the SDK
+
+```bash
+now-sdk auth --add https://<pdi>.service-now.com --type basic --alias PDI
+now-sdk auth --use PDI
+```
+
+### Step 4 — Build & Deploy
+
+```bash
+now-sdk build && now-sdk deploy --auth PDI
+```
+
+### PDI Setup Checklist
+
+| # | Step | Command / Location |
+|---|---|---|
+| 1 | Register company key `gegis` | Scripts - Background (script above) |
+| 2 | Import app from source control | Studio → Import from Source Control |
+| 3 | Add SDK auth credentials | `now-sdk auth --add ... --alias PDI` |
+| 4 | Build and deploy | `now-sdk build && now-sdk deploy --auth PDI` |
+
+---
+
 ## Troubleshooting
 
 ### ERROR: Unable to install application as application was null
