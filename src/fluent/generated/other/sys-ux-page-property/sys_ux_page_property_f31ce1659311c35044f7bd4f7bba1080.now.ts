@@ -11,7 +11,11 @@ Record({
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "Records",
+  "message" : "Record",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Simple List",
   "code" : "",
   "comment" : ""
 } ]`,
@@ -19,41 +23,75 @@ Record({
         sys_domain_path: 'global',
         type: 'json',
         unique_name: 'x_gegis_ins_policy.e728e92593dd835044f7bd4f7bba1020.root.global.chrome_toolbar',
-        value: `[\r
-    {\r
-        "id": "record",\r
-        "label": {\r
-            "translatable": true,\r
-            "message": "Records"\r
-        },\r
-        "icon": "abc-fill",\r
-        "routeInfo": {\r
-            "route": "record"\r
-        },\r
-        "group": "top",\r
-        "order": 200,\r
-        "badge": {},\r
-        "presence": {},\r
-        "availability": {},\r
-        "viewportInfo": {}\r
-    },\r
-    {\r
-        "id": "list",\r
-        "label": {\r
-            "translatable": true,\r
-            "message": "List"\r
-        },\r
-        "icon": "accessibility-fill",\r
-        "routeInfo": {\r
-            "route": "list"\r
-        },\r
-        "group": "top",\r
-        "order": 100,\r
-        "badge": {},\r
-        "presence": {},\r
-        "availability": {},\r
-        "viewportInfo": {}\r
-    }\r
+        value: `[
+    {
+        "id": "list",
+        "label": {
+            "translatable": true,
+            "message": "List"
+        },
+        "icon": "accessibility-fill",
+        "routeInfo": {
+            "route": "list"
+        },
+        "group": "top",
+        "order": 100,
+        "badge": {},
+        "presence": {},
+        "availability": {},
+        "viewportInfo": {}
+    },
+    {
+        "id": "list",
+        "label": {
+            "translatable": true,
+            "message": "List"
+        },
+        "icon": "action-ai-sparkle-fill",
+        "routeInfo": {
+            "route": "list"
+        },
+        "group": "top",
+        "order": 100,
+        "badge": {},
+        "presence": {},
+        "availability": {},
+        "viewportInfo": {}
+    },
+    {
+        "id": "simplelist",
+        "label": {
+            "translatable": true,
+            "message": "Simple List"
+        },
+        "icon": "activity-fill",
+        "routeInfo": {
+            "route": "simplelist"
+        },
+        "group": "top",
+        "order": 200,
+        "badge": {},
+        "presence": {},
+        "availability": {},
+        "viewportInfo": {}
+    },
+    {
+        "id": "record",
+        "label": {
+            "translatable": true,
+            "message": "Record"
+        },
+        "icon": "accessibility-outline",
+        "routeInfo": {
+            "route": "record"
+        },
+        "group": "top",
+        "order": 300,
+        "badge": {},
+        "presence": {},
+        "availability": {},
+        "viewportInfo": {}
+    }
 ]`,
     },
 })

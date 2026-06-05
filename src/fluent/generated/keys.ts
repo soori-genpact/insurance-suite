@@ -13,6 +13,18 @@ declare global {
                         table: 'sys_uib_screen_test_values'
                         id: '0909ed2d93dd835044f7bd4f7bba10ef'
                     }
+                    '2598752533d94bd07ef8f499ed5c7bf2': {
+                        table: 'm2m_app_config_theme'
+                        id: '2598752533d94bd07ef8f499ed5c7bf2'
+                    }
+                    '299835a533d94bd07ef8f499ed5c7ba0': {
+                        table: 'sys_ux_page_property'
+                        id: '299835a533d94bd07ef8f499ed5c7ba0'
+                    }
+                    '2cd6312d33994bd07ef8f499ed5c7bd1': {
+                        table: 'sys_ux_screen_type'
+                        id: '2cd6312d33994bd07ef8f499ed5c7bd1'
+                    }
                     '3009e56993dd835044f7bd4f7bba1073': {
                         table: 'sys_ux_screen_type'
                         id: '3009e56993dd835044f7bd4f7bba1073'
@@ -20,6 +32,7 @@ declare global {
                     '3409ed2d93dd835044f7bd4f7bba1095': {
                         table: 'sys_ux_app_route'
                         id: '3409ed2d93dd835044f7bd4f7bba1095'
+                        deleted: true
                     }
                     '37c869a993dd835044f7bd4f7bba10bf': {
                         table: 'sys_uib_search_facet_item_m2m_element'
@@ -53,9 +66,21 @@ declare global {
                         table: 'sys_scope_privilege'
                         id: '64856da1939d835044f7bd4f7bba1078'
                     }
+                    '64d6312d33994bd07ef8f499ed5c7be6': {
+                        table: 'sys_ux_macroponent'
+                        id: '64d6312d33994bd07ef8f499ed5c7be6'
+                    }
                     '675865e593dd835044f7bd4f7bba108b': {
                         table: 'sys_ux_app_route'
                         id: '675865e593dd835044f7bd4f7bba108b'
+                    }
+                    '68d6312d33994bd07ef8f499ed5c7bdd': {
+                        table: 'sys_uib_search_facet_item_m2m_element'
+                        id: '68d6312d33994bd07ef8f499ed5c7bdd'
+                    }
+                    '699835a533d94bd07ef8f499ed5c7bc8': {
+                        table: 'sys_ux_page_property'
+                        id: '699835a533d94bd07ef8f499ed5c7bc8'
                     }
                     '6f28e92593dd835044f7bd4f7bba1018': {
                         table: 'sys_ux_app_config'
@@ -85,9 +110,21 @@ declare global {
                         table: 'sys_ux_client_script'
                         id: '8d09ed2d93dd835044f7bd4f7bba10ce'
                     }
+                    a19835a533d94bd07ef8f499ed5c7bab: {
+                        table: 'sys_ux_page_property'
+                        id: 'a19835a533d94bd07ef8f499ed5c7bab'
+                    }
                     a738e96593dd835044f7bd4f7bba1083: {
                         table: 'sys_security_acl'
                         id: 'a738e96593dd835044f7bd4f7bba1083'
+                    }
+                    a8d6712d33994bd07ef8f499ed5c7b3a: {
+                        table: 'sys_ux_client_script'
+                        id: 'a8d6712d33994bd07ef8f499ed5c7b3a'
+                    }
+                    acd6312d33994bd07ef8f499ed5c7bd7: {
+                        table: 'sys_ux_app_route'
+                        id: 'acd6312d33994bd07ef8f499ed5c7bd7'
                     }
                     acl_ait_create: {
                         table: 'sys_security_acl'
@@ -733,6 +770,10 @@ declare global {
                         table: 'sys_ux_screen_type'
                         id: 'af5865e593dd835044f7bd4f7bba1081'
                     }
+                    b0d6712d33994bd07ef8f499ed5c7bb1: {
+                        table: 'sys_ux_screen'
+                        id: 'b0d6712d33994bd07ef8f499ed5c7bb1'
+                    }
                     b3c8a9a993dd835044f7bd4f7bba1058: {
                         table: 'sys_ux_macroponent'
                         id: 'b3c8a9a993dd835044f7bd4f7bba1058'
@@ -744,6 +785,10 @@ declare global {
                     bc68e5e593dd835044f7bd4f7bba1024: {
                         table: 'sys_ux_screen'
                         id: 'bc68e5e593dd835044f7bd4f7bba1024'
+                    }
+                    bcd6712d33994bd07ef8f499ed5c7bb8: {
+                        table: 'sys_uib_screen_test_values'
+                        id: 'bcd6712d33994bd07ef8f499ed5c7bb8'
                     }
                     bom_json: {
                         table: 'sys_module'
@@ -776,6 +821,10 @@ declare global {
                     f35865e593dd835044f7bd4f7bba10cc: {
                         table: 'sys_ux_macroponent'
                         id: 'f35865e593dd835044f7bd4f7bba10cc'
+                    }
+                    f718712533d94bd07ef8f499ed5c7b46: {
+                        table: 'sys_uib_screen_test_values'
+                        id: 'f718712533d94bd07ef8f499ed5c7b46'
                     }
                     ins_app_menu: {
                         table: 'sys_app_application'

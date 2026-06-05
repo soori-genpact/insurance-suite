@@ -20,10 +20,10 @@ Record({
             "collapsingMenuId": 0,
             "primaryItems": [],
             "secondaryItems": []
-        }
+        },
+        "notificationsEnabled": false
     },
     "publicPage": {
-        "menuEnabled": false,
         "searchEnabled": false,
         "logoRoute": {},
         "actionButtons": []
