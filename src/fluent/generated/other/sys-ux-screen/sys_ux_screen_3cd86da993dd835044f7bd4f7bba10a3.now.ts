@@ -46,5 +46,6 @@ Record({
         screen_type: '3fc869a993dd835044f7bd4f7bba107d',
         sys_domain: 'global',
         sys_domain_path: '/',
+        event_mappings: '[]',
     },
 })

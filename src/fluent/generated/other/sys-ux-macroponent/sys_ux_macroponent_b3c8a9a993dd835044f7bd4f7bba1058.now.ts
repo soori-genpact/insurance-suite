@@ -967,37 +967,8 @@ Record({
                 "type": "CONTEXT_BINDING"
             },
             "listMenuConfigurationId": {
-                "transform": {
-                    "operands": {
-                        "container": [
-                            {
-                                "binding": {
-                                    "address": [
-                                        "listConfigId"
-                                    ],
-                                    "category": "app"
-                                },
-                                "type": "CONTEXT_BINDING"
-                            },
-                            {
-                                "binding": {
-                                    "address": [
-                                        "listConfigId"
-                                    ],
-                                    "category": "app"
-                                },
-                                "type": "CONTEXT_BINDING"
-                            },
-                            {
-                                "type": "JSON_LITERAL",
-                                "value": "d305c0a873601010a0a79329faf6a7cb"
-                            }
-                        ],
-                        "type": "LIST_CONTAINER"
-                    },
-                    "operator": "IF"
-                },
-                "type": "CLIENT_TRANSFORM"
+                "type": "JSON_LITERAL",
+                "value": "ae420e69339d4bd07ef8f499ed5c7bb7"
             },
             "listTitle": {
                 "type": "JSON_LITERAL",
@@ -1176,5 +1147,7 @@ Record({
 }`,
         schema_version: '1.0.0',
         style_config: '{}',
+        bundles: '[]',
+        state_properties: '[]',
     },
 })

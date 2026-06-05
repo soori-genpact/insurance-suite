@@ -9,9 +9,14 @@ declare global {
                         table: 'sys_uib_screen_test_values'
                         id: '0568e5e593dd835044f7bd4f7bba1079'
                     }
+                    '0692c2e9339d4bd07ef8f499ed5c7bff': {
+                        table: 'sys_ux_list_category'
+                        id: '0692c2e9339d4bd07ef8f499ed5c7bff'
+                    }
                     '0909ed2d93dd835044f7bd4f7bba10ef': {
                         table: 'sys_uib_screen_test_values'
                         id: '0909ed2d93dd835044f7bd4f7bba10ef'
+                        deleted: true
                     }
                     '2598752533d94bd07ef8f499ed5c7bf2': {
                         table: 'm2m_app_config_theme'
@@ -28,6 +33,7 @@ declare global {
                     '3009e56993dd835044f7bd4f7bba1073': {
                         table: 'sys_ux_screen_type'
                         id: '3009e56993dd835044f7bd4f7bba1073'
+                        deleted: true
                     }
                     '3409ed2d93dd835044f7bd4f7bba1095': {
                         table: 'sys_ux_app_route'
@@ -61,6 +67,14 @@ declare global {
                     '3fc869a993dd835044f7bd4f7bba107d': {
                         table: 'sys_ux_screen_type'
                         id: '3fc869a993dd835044f7bd4f7bba107d'
+                    }
+                    '4bc2822d339d4bd07ef8f499ed5c7b73': {
+                        table: 'sys_ux_list'
+                        id: '4bc2822d339d4bd07ef8f499ed5c7b73'
+                    }
+                    '54938eed339d4bd07ef8f499ed5c7b76': {
+                        table: 'sys_ux_list'
+                        id: '54938eed339d4bd07ef8f499ed5c7b76'
                     }
                     '64856da1939d835044f7bd4f7bba1078': {
                         table: 'sys_scope_privilege'
@@ -102,13 +116,23 @@ declare global {
                         table: 'sys_ux_page_property'
                         id: '7438216593dd835044f7bd4f7bba109f'
                     }
+                    '8713ca6d339d4bd07ef8f499ed5c7bc4': {
+                        table: 'sys_ux_list'
+                        id: '8713ca6d339d4bd07ef8f499ed5c7bc4'
+                    }
                     '8909ed2d93dd835044f7bd4f7bba10dc': {
                         table: 'sys_ux_screen'
                         id: '8909ed2d93dd835044f7bd4f7bba10dc'
+                        deleted: true
                     }
                     '8d09ed2d93dd835044f7bd4f7bba10ce': {
                         table: 'sys_ux_client_script'
                         id: '8d09ed2d93dd835044f7bd4f7bba10ce'
+                        deleted: true
+                    }
+                    '8d6342ed339d4bd07ef8f499ed5c7b26': {
+                        table: 'sys_ux_list'
+                        id: '8d6342ed339d4bd07ef8f499ed5c7b26'
                     }
                     a19835a533d94bd07ef8f499ed5c7bab: {
                         table: 'sys_ux_page_property'
@@ -766,6 +790,10 @@ declare global {
                         table: 'sys_security_acl'
                         id: 'e3fe2f82518f4c2296fb7efdb252fd38'
                     }
+                    ae420e69339d4bd07ef8f499ed5c7bb7: {
+                        table: 'sys_ux_list_menu_config'
+                        id: 'ae420e69339d4bd07ef8f499ed5c7bb7'
+                    }
                     af5865e593dd835044f7bd4f7bba1081: {
                         table: 'sys_ux_screen_type'
                         id: 'af5865e593dd835044f7bd4f7bba1081'
@@ -805,6 +833,7 @@ declare global {
                     c909ed2d93dd835044f7bd4f7bba10c7: {
                         table: 'sys_ux_macroponent'
                         id: 'c909ed2d93dd835044f7bd4f7bba10c7'
+                        deleted: true
                     }
                     e35865e593dd835044f7bd4f7bba1093: {
                         table: 'sys_uib_search_facet_item_m2m_element'
@@ -813,6 +842,10 @@ declare global {
                     e728e92593dd835044f7bd4f7bba1020: {
                         table: 'sys_ux_page_registry'
                         id: 'e728e92593dd835044f7bd4f7bba1020'
+                    }
+                    f0d34e2133dd4bd07ef8f499ed5c7b82: {
+                        table: 'sys_ux_list'
+                        id: 'f0d34e2133dd4bd07ef8f499ed5c7b82'
                     }
                     f31ce1659311c35044f7bd4f7bba1080: {
                         table: 'sys_ux_page_property'
