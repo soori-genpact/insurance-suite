@@ -1,0 +1,48 @@
+import { Table, StringColumn, ReferenceColumn, DateColumn, IntegerColumn, DecimalColumn } from '@servicenow/sdk/core'
+
+export const x_gegis_ins_policy_loss_record = Table({
+    name: 'x_gegis_ins_policy_loss_record',
+    label: 'Loss Record',
+    schema: {
+        risk_case: ReferenceColumn({
+            label: 'Risk case',
+            referenceTable: 'x_gegis_ins_policy_risk_case',
+            mandatory: true,
+        }),
+        period_of_insurance: StringColumn({ label: 'Period of insurance', maxLength: 100 }),
+        date_of_loss: DateColumn({ label: 'Date of loss' }),
+        peril: StringColumn({
+            label: 'Peril',
+            dropdown: 'dropdown_with_none',
+            choices: {
+                fire: { label: 'Fire', sequence: 0 },
+                flood: { label: 'Flood', sequence: 1 },
+                windstorm: { label: 'Windstorm', sequence: 2 },
+                terrorism: { label: 'Terrorism', sequence: 3 },
+                earthquake: { label: 'Earthquake', sequence: 4 },
+                eq_california: { label: 'EQ California', sequence: 5 },
+                tsunami: { label: 'Tsunami', sequence: 6 },
+                srcc: { label: 'SRCC', sequence: 7 },
+                boiler_and_machinery: { label: 'Boiler & Machinery', sequence: 8 },
+                cbi_named: { label: 'CBI Named', sequence: 9 },
+                cbi_unnamed: { label: 'CBI Unnamed', sequence: 10 },
+                hail: { label: 'Hail', sequence: 11 },
+                service_interruption: { label: 'Service Interruption', sequence: 12 },
+                civil_authority: { label: 'Civil Authority', sequence: 13 },
+                course_of_construction: { label: 'Course of Construction', sequence: 14 },
+                theft: { label: 'Theft', sequence: 15 },
+                liability: { label: 'Liability', sequence: 16 },
+                bi: { label: 'BI', sequence: 17 },
+                other: { label: 'Other', sequence: 18 },
+            },
+        }),
+        losses_outstanding_usd: DecimalColumn({ label: 'O/S (USD)' }),
+        loss_paid_incl_os_payments: DecimalColumn({ label: 'Paid incl. O/S payments' }),
+        total_paid_and_outstanding: DecimalColumn({ label: 'Total paid + O/S' }),
+        total_number_of_losses: IntegerColumn({ label: 'No. of losses' }),
+        description: StringColumn({ label: 'Description', maxLength: 2000 }),
+    },
+    allowWebServiceAccess: true,
+    accessibleFrom: 'public',
+    actions: ['read', 'update', 'delete', 'create'],
+})

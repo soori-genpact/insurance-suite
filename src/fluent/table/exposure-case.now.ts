@@ -1,29 +1,30 @@
-import { Table, ReferenceColumn, StringColumn, DecimalColumn, OverrideColumn } from '@servicenow/sdk/core'
+import { Table, StringColumn, ReferenceColumn, DecimalColumn, OverrideColumn } from '@servicenow/sdk/core'
 
-export const x_gegis_ins_policy_exposure = Table({
-    name: 'x_gegis_ins_policy_exposure',
+export const x_gegis_ins_policy_exposure_case = Table({
+    name: 'x_gegis_ins_policy_exposure_case',
     label: 'Exposure Case',
     extends: 'task',
     autoNumber: { prefix: 'EXP', number: 1000 },
     schema: {
-        orchestration_case: ReferenceColumn({
-            label: 'Orchestration Case',
-            referenceTable: 'x_gegis_ins_policy_orch_case',
+        number: OverrideColumn({ baseTable: 'task' }),
+        submission: ReferenceColumn({
+            label: 'Submission',
+            referenceTable: 'x_gegis_ins_policy_submission',
+            mandatory: true,
         }),
-        submission: ReferenceColumn({ label: 'Submission', referenceTable: 'x_gegis_ins_policy_submission' }),
-        exposure_type: StringColumn({ label: 'Exposure Type', maxLength: 100 }),
-        exposure_amount: DecimalColumn({ label: 'Exposure Amount' }),
-        assigned_to: OverrideColumn({
-            baseTable: 'task',
-            referenceQualifier: 'active=true',
+        exposure_status: StringColumn({
+            label: 'Exposure status',
+            mandatory: true,
+            dropdown: 'dropdown_with_none',
+            choices: {
+                pending: { label: 'Pending', sequence: 0 },
+                data_entry: { label: 'Data Entry', sequence: 1 },
+                in_review: { label: 'In Review', sequence: 2 },
+                complete: { label: 'Complete', sequence: 3 },
+            },
         }),
-        number: OverrideColumn({
-            baseTable: 'task',
-        }),
-        assignment_group: OverrideColumn({
-            baseTable: 'task',
-            referenceQualifier: 'active=true',
-        }),
+        total_tiv: DecimalColumn({ label: 'Total TIV' }),
+        notes: StringColumn({ label: 'Notes', maxLength: 4000 }),
     },
     allowWebServiceAccess: true,
     accessibleFrom: 'public',

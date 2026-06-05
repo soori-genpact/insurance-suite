@@ -1,0 +1,38 @@
+import { Table, StringColumn, ReferenceColumn, DecimalColumn, BooleanColumn } from '@servicenow/sdk/core'
+
+export const x_gegis_ins_policy_wc_exposure = Table({
+    name: 'x_gegis_ins_policy_wc_exposure',
+    label: 'WC Exposure',
+    schema: {
+        exposure_case: ReferenceColumn({
+            label: 'Exposure case',
+            referenceTable: 'x_gegis_ins_policy_exposure_case',
+            mandatory: true,
+        }),
+        exposures: StringColumn({ label: 'Exposures', maxLength: 500 }),
+        payroll_exposure: DecimalColumn({ label: 'Payroll exposure' }),
+        covered_states: StringColumn({ label: 'Covered states', maxLength: 500 }),
+        each_accident_limit: DecimalColumn({ label: 'Each accident limit' }),
+        each_employee_disease_limit: DecimalColumn({ label: 'Each employee disease limit' }),
+        disease_aggregate_limit: DecimalColumn({ label: 'Disease aggregate limit' }),
+        personal_adv_injury_limit: DecimalColumn({ label: 'Pers/adv injury limit' }),
+        sum_insured_percent: DecimalColumn({ label: 'Sum insured %' }),
+        damage_premises_rented: DecimalColumn({ label: 'Damage to rented premises' }),
+        mental_anguish: BooleanColumn({ label: 'Mental anguish' }),
+        owned_property_liability: BooleanColumn({ label: 'Owned property liability' }),
+        non_owned_watercraft: BooleanColumn({ label: 'Non-owned watercraft' }),
+        personal_injury_liability: BooleanColumn({ label: 'Personal injury liability' }),
+        foreign_liability: BooleanColumn({ label: 'Foreign liability' }),
+        fellow_employee_exclusion: BooleanColumn({ label: 'Fellow employee exclusion' }),
+        exclude_advertising_injury: BooleanColumn({ label: 'Exclude adv injury' }),
+        exclude_products: BooleanColumn({ label: 'Exclude products' }),
+        pest_herb_fungi_applicator: BooleanColumn({ label: 'Pest/herb/fungi applicator' }),
+        equipment_dealers_endorsement: BooleanColumn({ label: 'Equip dealers endorsement' }),
+        data_breach_coverage_required: BooleanColumn({ label: 'Data breach required' }),
+        data_breach_expenses_limit: DecimalColumn({ label: 'Data breach limit' }),
+        data_breach_expenses_deductible: DecimalColumn({ label: 'Data breach deductible' }),
+    },
+    allowWebServiceAccess: true,
+    accessibleFrom: 'public',
+    actions: ['read', 'update', 'delete', 'create'],
+})
