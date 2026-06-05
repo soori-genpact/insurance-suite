@@ -1,4 +1,4 @@
-import '@servicenow/sdk/global'
+﻿import '@servicenow/sdk/global'
 
 declare global {
     namespace Now {
@@ -653,6 +653,38 @@ declare global {
                         table: 'sys_script'
                         id: '1cb75efae3e64060a49835016fa9aedc'
                     }
+                    ins_app_menu: {
+                        table: 'sys_app_application'
+                        id: '6ba431550fcd4763b5c8c0968426bb2a'
+                    }
+                    mod_clearance_cases: {
+                        table: 'sys_app_module'
+                        id: '5990fda860314119b3301bf2aae81503'
+                    }
+                    mod_intake_cases: {
+                        table: 'sys_app_module'
+                        id: '5d67848541244f98bb6396376eef72b0'
+                    }
+                    mod_my_tasks_completed: {
+                        table: 'sys_app_module'
+                        id: 'b2131ffa01fd4216b3d7eeba81f6450a'
+                    }
+                    mod_my_tasks_open: {
+                        table: 'sys_app_module'
+                        id: 'd8c1c63ce2ad4065852a91a386f38abe'
+                    }
+                    mod_qnb_cases: {
+                        table: 'sys_app_module'
+                        id: 'a03693e4423f49af9353d439e647a66f'
+                    }
+                    mod_risk_cases: {
+                        table: 'sys_app_module'
+                        id: '6498c6020bbc4729b1e4fc7e8954a839'
+                    }
+                    mod_sep_my_tasks: {
+                        table: 'sys_app_module'
+                        id: 'ccbdce0e8aed4afdb0b2d00708f0607c'
+                    }
                     package_json: {
                         table: 'sys_module'
                         id: '4b563d2be203406f8a71fb8fdc3b1a3e'
@@ -983,15 +1015,6 @@ declare global {
                             name: 'x_gegis_ins_policy_exposure_item'
                             element: 'currency'
                             value: 'cad'
-                        }
-                    },
-                    {
-                        table: 'sys_dictionary'
-                        id: '0325aac6bc79421b8bfe02cc2036be18'
-                        deleted: true
-                        key: {
-                            name: 'x_gegis_ins_policy_risk_assess'
-                            element: 'orchestration_case'
                         }
                     },
                     {
@@ -1454,16 +1477,6 @@ declare global {
                             name: 'x_gegis_ins_policy_wc_exposure'
                             element: 'each_accident_limit'
                             language: 'en'
-                        }
-                    },
-                    {
-                        table: 'sys_choice'
-                        id: '0b90f275cedb4115bcbe37915417e784'
-                        deleted: true
-                        key: {
-                            name: 'x_gegis_ins_policy_risk_assess'
-                            element: 'risk_level'
-                            value: 'medium'
                         }
                     },
                     {
@@ -2033,15 +2046,6 @@ declare global {
                             name: 'x_gegis_ins_policy_existing_policy'
                             element: 'line_of_business'
                             value: 'auto'
-                        }
-                    },
-                    {
-                        table: 'sys_dictionary_override'
-                        id: '13eb62243b1dcb1005ad7564c3e45adf'
-                        deleted: true
-                        key: {
-                            name: 'x_gegis_ins_policy_risk_assess'
-                            element: 'number'
                         }
                     },
                     {
@@ -4327,15 +4331,6 @@ declare global {
                         }
                     },
                     {
-                        table: 'sys_number'
-                        id: '33a1b28018c6490b9661cae717d38e52'
-                        deleted: true
-                        key: {
-                            category: 'x_gegis_ins_policy_risk_assess'
-                            prefix: 'RSK'
-                        }
-                    },
-                    {
                         table: 'sys_security_acl_role'
                         id: '33df1aa08b4f42e88de502a827530183'
                         key: {
@@ -6512,15 +6507,6 @@ declare global {
                         }
                     },
                     {
-                        table: 'sys_dictionary'
-                        id: '5534efecad164992b222a68bfc4fb724'
-                        deleted: true
-                        key: {
-                            name: 'x_gegis_ins_policy_risk_assess'
-                            element: 'risk_score'
-                        }
-                    },
-                    {
                         table: 'sys_documentation'
                         id: '555a8f7589344d6e9a79ba0f10769c68'
                         key: {
@@ -7701,16 +7687,6 @@ declare global {
                         }
                     },
                     {
-                        table: 'sys_documentation'
-                        id: '6401410c433543b9a16e017e2dddc514'
-                        deleted: true
-                        key: {
-                            name: 'x_gegis_ins_policy_risk_assess'
-                            element: 'risk_level'
-                            language: 'en'
-                        }
-                    },
-                    {
                         table: 'sys_choice'
                         id: '643a262e87024d2d89cd2a8d783c7ffb'
                         key: {
@@ -7871,16 +7847,6 @@ declare global {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'transaction_type'
                             value: 'endorsement'
-                        }
-                    },
-                    {
-                        table: 'sys_choice'
-                        id: '673a7889a3994af789368745ffc95b57'
-                        deleted: true
-                        key: {
-                            name: 'x_gegis_ins_policy_risk_assess'
-                            element: 'risk_level'
-                            value: 'low'
                         }
                     },
                     {
@@ -8945,16 +8911,6 @@ declare global {
                         }
                     },
                     {
-                        table: 'sys_choice'
-                        id: '751bc93f501c4c008cc28e8fee54a623'
-                        deleted: true
-                        key: {
-                            name: 'x_gegis_ins_policy_risk_assess'
-                            element: 'risk_level'
-                            value: 'high'
-                        }
-                    },
-                    {
                         table: 'sys_security_acl_role'
                         id: '751f7d6666654226b21d7c6d5d262479'
                         key: {
@@ -9358,16 +9314,6 @@ declare global {
                         }
                     },
                     {
-                        table: 'sys_documentation'
-                        id: '7c104aa02b63414ca9443766b817447e'
-                        deleted: true
-                        key: {
-                            name: 'x_gegis_ins_policy_risk_assess'
-                            element: 'NULL'
-                            language: 'en'
-                        }
-                    },
-                    {
                         table: 'sn_glider_source_artifact_m2m'
                         id: '7c15699aa67f43e8a670c1486f96c6b8'
                         key: {
@@ -9467,15 +9413,6 @@ declare global {
                             name: 'x_gegis_ins_policy_loss_record'
                             element: 'loss_paid_incl_os_payments'
                             language: 'en'
-                        }
-                    },
-                    {
-                        table: 'sys_dictionary'
-                        id: '7d9a0bf56cbd45b080edd99eea0f8ccb'
-                        deleted: true
-                        key: {
-                            name: 'x_gegis_ins_policy_risk_assess'
-                            element: 'risk_level'
                         }
                     },
                     {
@@ -10486,16 +10423,6 @@ declare global {
                         }
                     },
                     {
-                        table: 'sys_documentation'
-                        id: '8e4daf5f59d04d67811c4cdf862fcf5d'
-                        deleted: true
-                        key: {
-                            name: 'x_gegis_ins_policy_risk_assess'
-                            element: 'risk_score'
-                            language: 'en'
-                        }
-                    },
-                    {
                         table: 'sys_dictionary'
                         id: '8e4fd78b04ef4587bb4df147dce40db9'
                         key: {
@@ -10695,14 +10622,6 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_party'
                             element: 'industry'
-                        }
-                    },
-                    {
-                        table: 'ua_table_licensing_config'
-                        id: '91e17705da3e410695e05d2fd19ce3f1'
-                        deleted: true
-                        key: {
-                            name: 'x_gegis_ins_policy_risk_assess'
                         }
                     },
                     {
@@ -12049,16 +11968,6 @@ declare global {
                         }
                     },
                     {
-                        table: 'sys_documentation'
-                        id: 'a953d7de55c64b878e5e7d18db673020'
-                        deleted: true
-                        key: {
-                            name: 'x_gegis_ins_policy_risk_assess'
-                            element: 'submission'
-                            language: 'en'
-                        }
-                    },
-                    {
                         table: 'sys_choice'
                         id: 'a96cfc54ea4e40faa5dcbe52eeb41883'
                         key: {
@@ -12452,16 +12361,6 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_exposure_peril'
                             element: 'new_sub_limit_amount'
-                        }
-                    },
-                    {
-                        table: 'sys_choice'
-                        id: 'adc131f832b142e9b528db4faf903e37'
-                        deleted: true
-                        key: {
-                            name: 'x_gegis_ins_policy_risk_assess'
-                            element: 'risk_level'
-                            value: 'critical'
                         }
                     },
                     {
@@ -12993,15 +12892,6 @@ declare global {
                                     name: 'x_gegis_ins_policy.risk_analyst'
                                 }
                             }
-                        }
-                    },
-                    {
-                        table: 'sys_dictionary'
-                        id: 'b6b55b01451c45c6b44db7f9e2c90f6f'
-                        deleted: true
-                        key: {
-                            name: 'x_gegis_ins_policy_risk_assess'
-                            element: 'NULL'
                         }
                     },
                     {
@@ -14605,15 +14495,6 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
-                        id: 'd3bf6a7c0a41418288d5a95fc5f3f38c'
-                        deleted: true
-                        key: {
-                            name: 'x_gegis_ins_policy_risk_assess'
-                            element: 'submission'
-                        }
-                    },
-                    {
-                        table: 'sys_dictionary'
                         id: 'd3fba116006844a799fef91b8002fc25'
                         key: {
                             name: 'x_gegis_ins_policy_policy'
@@ -14826,15 +14707,6 @@ declare global {
                                     name: 'x_gegis_ins_policy.risk_analyst'
                                 }
                             }
-                        }
-                    },
-                    {
-                        table: 'sys_dictionary_override'
-                        id: 'd7eb62243b1dcb1005ad7564c3e45af1'
-                        deleted: true
-                        key: {
-                            name: 'x_gegis_ins_policy_risk_assess'
-                            element: 'assignment_group'
                         }
                     },
                     {
@@ -15521,15 +15393,6 @@ declare global {
                         }
                     },
                     {
-                        table: 'sys_choice_set'
-                        id: 'e2726d272fd54d048930631603393833'
-                        deleted: true
-                        key: {
-                            name: 'x_gegis_ins_policy_risk_assess'
-                            element: 'risk_level'
-                        }
-                    },
-                    {
                         table: 'sys_dictionary'
                         id: 'e2a9251fc92644bbad10ad327cd491f6'
                         key: {
@@ -15565,14 +15428,6 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_wc_exposure'
                             element: 'disease_aggregate_limit'
-                        }
-                    },
-                    {
-                        table: 'sys_db_object'
-                        id: 'e3404fd39aa9487292627b8c575b28ae'
-                        deleted: true
-                        key: {
-                            name: 'x_gegis_ins_policy_risk_assess'
                         }
                     },
                     {
@@ -15760,15 +15615,6 @@ declare global {
                             name: 'x_gegis_ins_policy_top_risk'
                             element: 'new_renewal_currency'
                             value: 'eur'
-                        }
-                    },
-                    {
-                        table: 'sys_dictionary_override'
-                        id: 'e7eb62243b1dcb1005ad7564c3e45af7'
-                        deleted: true
-                        key: {
-                            name: 'x_gegis_ins_policy_risk_assess'
-                            element: 'assigned_to'
                         }
                     },
                     {
@@ -17221,16 +17067,6 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_document'
                             element: 'status'
-                        }
-                    },
-                    {
-                        table: 'sys_documentation'
-                        id: 'fffdfc78ccbb4127a6506fbe479ac784'
-                        deleted: true
-                        key: {
-                            name: 'x_gegis_ins_policy_risk_assess'
-                            element: 'orchestration_case'
-                            language: 'en'
                         }
                     },
                 ]
