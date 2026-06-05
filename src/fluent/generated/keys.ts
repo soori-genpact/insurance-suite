@@ -1,4 +1,4 @@
-﻿import '@servicenow/sdk/global'
+import '@servicenow/sdk/global'
 
 declare global {
     namespace Now {
@@ -4331,6 +4331,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_db_object'
+                        id: '338d5d29931d835044f7bd4f7bba10c1'
+                        deleted: true
+                        key: {
+                            name: 'x_gegis_ins_policy_risk_assess'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '33df1aa08b4f42e88de502a827530183'
                         key: {
@@ -4821,7 +4829,7 @@ declare global {
                     {
                         table: 'sn_glider_source_artifact_m2m'
                         id: '3c513e94fafb495a84c9e0171b085546'
-                        deleted: true
+                        deleted: false
                         key: {
                             application_file: 'f034cd3b609e4662b31688c7071cf835'
                             source_artifact: '84a31431a5bf481ea1898fc0e1550bf1'
@@ -9961,7 +9969,7 @@ declare global {
                     {
                         table: 'sys_ux_lib_asset'
                         id: '8665190bab0d479f91b44239a454b788'
-                        deleted: true
+                        deleted: false
                         key: {
                             name: 'x_gegis_ins_policy/vendor-react-dom--003b9c7e'
                         }
@@ -12892,6 +12900,15 @@ declare global {
                                     name: 'x_gegis_ins_policy.risk_analyst'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'b6b55b01451c45c6b44db7f9e2c90f6f'
+                        deleted: true
+                        key: {
+                            name: 'x_gegis_ins_policy_risk_assess'
+                            element: 'NULL'
                         }
                     },
                     {
@@ -16089,7 +16106,7 @@ declare global {
                     {
                         table: 'sys_ux_lib_asset'
                         id: 'f034cd3b609e4662b31688c7071cf835'
-                        deleted: true
+                        deleted: false
                         key: {
                             name: 'x_gegis_ins_policy/vendor-react-dom--003b9c7e.js.map'
                         }
@@ -16955,7 +16972,7 @@ declare global {
                     {
                         table: 'sn_glider_source_artifact_m2m'
                         id: 'fd84f5be5c4c4119a658b171ed29fe1d'
-                        deleted: true
+                        deleted: false
                         key: {
                             application_file: '8665190bab0d479f91b44239a454b788'
                             source_artifact: '84a31431a5bf481ea1898fc0e1550bf1'
