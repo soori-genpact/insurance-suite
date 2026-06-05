@@ -1,103 +1,91 @@
-import React, { useState, useEffect, useMemo } from 'react'
-import { IncidentService } from './services/IncidentService'
-import IncidentList from './components/IncidentList'
-import IncidentForm from './components/IncidentForm'
+import React, { useState, useEffect, useMemo, useCallback } from 'react'
+import { SubmissionService } from './services/SubmissionService'
+import { rawValue } from './services/fieldValue'
+import SubmissionList from './components/SubmissionList'
+import SubmissionForm from './components/SubmissionForm'
+import SubmissionDetail from './components/SubmissionDetail'
 import './app.css'
 
 export default function App() {
-    const [incidents, setIncidents] = useState([])
+    const [submissions, setSubmissions] = useState([])
     const [loading, setLoading] = useState(true)
-    const [showForm, setShowForm] = useState(false)
-    const [selectedIncident, setSelectedIncident] = useState(null)
     const [error, setError] = useState(null)
+    const [showForm, setShowForm] = useState(false)
+    const [selected, setSelected] = useState(null)
 
-    const incidentService = useMemo(() => new IncidentService(), [])
+    const service = useMemo(() => new SubmissionService(), [])
 
-    const refreshIncidents = async () => {
+    const refresh = useCallback(async () => {
         try {
             setLoading(true)
             setError(null)
-            const data = await incidentService.list()
-            setIncidents(data)
+            const data = await service.list()
+            setSubmissions(data)
         } catch (err) {
-            setError('Failed to load incidents: ' + (err.message || 'Unknown error'))
+            setError('Failed to load submissions: ' + (err.message || 'Unknown error'))
             console.error(err)
         } finally {
             setLoading(false)
         }
-    }
+    }, [service])
 
     useEffect(() => {
-        void refreshIncidents()
-    }, [])
+        void refresh()
+    }, [refresh])
 
-    const handleCreateClick = () => {
-        setSelectedIncident(null)
-        setShowForm(true)
-    }
-
-    const handleEditClick = (incident) => {
-        setSelectedIncident(incident)
-        setShowForm(true)
-    }
-
-    const handleFormClose = () => {
-        setShowForm(false)
-        setSelectedIncident(null)
-    }
-
-    const handleFormSubmit = async (formData) => {
-        setLoading(true)
+    const handleCreate = async (formData) => {
         try {
-            if (selectedIncident) {
-                const sysId =
-                    typeof selectedIncident.sys_id === 'object'
-                        ? selectedIncident.sys_id.value
-                        : selectedIncident.sys_id
-                await incidentService.update(sysId, formData)
-            } else {
-                await incidentService.create(formData)
-            }
+            await service.create(formData)
             setShowForm(false)
-            await refreshIncidents()
+            await refresh()
         } catch (err) {
-            setError('Failed to save incident: ' + (err.message || 'Unknown error'))
+            setError('Failed to create submission: ' + (err.message || 'Unknown error'))
             console.error(err)
-        } finally {
-            setLoading(false)
         }
     }
 
+    const selectedSysId = selected ? rawValue(selected.sys_id) : null
+
     return (
-        <div className="incident-app">
+        <div className="policy-suite-app">
             <header className="app-header">
-                <h1>Incident Response Manager</h1>
-                <button className="create-button" onClick={handleCreateClick}>
-                    Create New Incident
+                <div>
+                    <h1>Policy Suite</h1>
+                    <p className="app-subtitle">Submission intake & case orchestration</p>
+                </div>
+                <button className="create-button" onClick={() => setShowForm(true)}>
+                    + New Submission
                 </button>
             </header>
 
             {error && (
                 <div className="error-message">
-                    {error}
+                    <span>{error}</span>
                     <button onClick={() => setError(null)}>Dismiss</button>
                 </div>
             )}
 
             {loading ? (
-                <div className="loading">Loading...</div>
+                <div className="loading">Loading…</div>
             ) : (
-                <IncidentList
-                    incidents={incidents}
-                    onEdit={handleEditClick}
-                    onRefresh={refreshIncidents}
-                    service={incidentService}
-                />
+                <div className={`app-body ${selected ? 'app-body--split' : ''}`}>
+                    <SubmissionList
+                        submissions={submissions}
+                        onSelect={setSelected}
+                        selectedSysId={selectedSysId}
+                    />
+                    {selected && (
+                        <SubmissionDetail
+                            key={selectedSysId}
+                            submission={selected}
+                            service={service}
+                            onClose={() => setSelected(null)}
+                        />
+                    )}
+                </div>
             )}
 
-            {showForm && (
-                <IncidentForm incident={selectedIncident} onSubmit={handleFormSubmit} onCancel={handleFormClose} />
-            )}
+            {showForm && <SubmissionForm onSubmit={handleCreate} onCancel={() => setShowForm(false)} />}
         </div>
     )
 }

@@ -58,6 +58,7 @@ declare global {
                     {
                         table: 'sn_glider_source_artifact_m2m'
                         id: '002646286d014eb1bd952a26da99b96f'
+                        deleted: true
                         key: {
                             application_file: '8665190bab0d479f91b44239a454b788'
                             source_artifact: '01ebe44c639a4bec91af41390ea1aac3'
@@ -74,6 +75,7 @@ declare global {
                     {
                         table: 'sn_glider_source_artifact'
                         id: '01ebe44c639a4bec91af41390ea1aac3'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_incident_manager.do - BYOUI Files'
                         }
@@ -184,6 +186,7 @@ declare global {
                     {
                         table: 'sys_ui_page'
                         id: '101a8e9d453241a094428aa869d1585a'
+                        deleted: true
                         key: {
                             endpoint: 'x_gegis_ins_policy_incident_manager.do'
                         }
@@ -436,6 +439,7 @@ declare global {
                     {
                         table: 'sn_glider_source_artifact_m2m'
                         id: '46576b2050d64b94937506fa51357bce'
+                        deleted: true
                         key: {
                             application_file: 'f034cd3b609e4662b31688c7071cf835'
                             source_artifact: '01ebe44c639a4bec91af41390ea1aac3'
@@ -804,6 +808,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sn_glider_source_artifact_m2m'
+                        id: '7c15699aa67f43e8a670c1486f96c6b8'
+                        key: {
+                            application_file: '7849a5ab9ca840f185d0e047ed91f620'
+                            source_artifact: '84a31431a5bf481ea1898fc0e1550bf1'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '7d9a0bf56cbd45b080edd99eea0f8ccb'
                         key: {
@@ -826,6 +838,13 @@ declare global {
                             name: 'x_gegis_ins_policy_clearance'
                             element: 'submission'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_page'
+                        id: '82e295371439493d85e70a6e9bcab90b'
+                        key: {
+                            endpoint: 'x_gegis_ins_policy_submissions.do'
                         }
                     },
                     {
@@ -855,8 +874,16 @@ declare global {
                         }
                     },
                     {
+                        table: 'sn_glider_source_artifact'
+                        id: '84a31431a5bf481ea1898fc0e1550bf1'
+                        key: {
+                            name: 'x_gegis_ins_policy_submissions.do - BYOUI Files'
+                        }
+                    },
+                    {
                         table: 'sys_ux_lib_asset'
                         id: '8665190bab0d479f91b44239a454b788'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy/vendor-react-dom--003b9c7e'
                         }
@@ -1012,6 +1039,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sn_glider_source_artifact_m2m'
+                        id: 'a69ca2948a0b406db29a1d4d210cdd68'
+                        key: {
+                            application_file: '82e295371439493d85e70a6e9bcab90b'
+                            source_artifact: '84a31431a5bf481ea1898fc0e1550bf1'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'a953d7de55c64b878e5e7d18db673020'
                         key: {
@@ -1048,6 +1083,7 @@ declare global {
                     {
                         table: 'sn_glider_source_artifact_m2m'
                         id: 'ad35e59c496e44dd9f376360855eb5b1'
+                        deleted: true
                         key: {
                             application_file: 'd8a255b60f754258ae248610d7ea40e1'
                             source_artifact: '01ebe44c639a4bec91af41390ea1aac3'
@@ -1281,6 +1317,7 @@ declare global {
                     {
                         table: 'sn_glider_source_artifact_m2m'
                         id: 'dccbc0d15cd247a8bd9ff52af673a56e'
+                        deleted: true
                         key: {
                             application_file: '101a8e9d453241a094428aa869d1585a'
                             source_artifact: '01ebe44c639a4bec91af41390ea1aac3'
@@ -1324,6 +1361,14 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_risk_assess'
                             element: 'assigned_to'
+                        }
+                    },
+                    {
+                        table: 'sn_glider_source_artifact_m2m'
+                        id: 'ea62929eef594eb6a7b0b06f5babd9d6'
+                        key: {
+                            application_file: 'd8a255b60f754258ae248610d7ea40e1'
+                            source_artifact: '84a31431a5bf481ea1898fc0e1550bf1'
                         }
                     },
                     {
@@ -1372,6 +1417,7 @@ declare global {
                     {
                         table: 'sys_ux_lib_asset'
                         id: 'f034cd3b609e4662b31688c7071cf835'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy/vendor-react-dom--003b9c7e.js.map'
                         }
@@ -1404,6 +1450,7 @@ declare global {
                     {
                         table: 'sn_glider_source_artifact_m2m'
                         id: 'f72bfa7d020f49b6907f797d3b060553'
+                        deleted: true
                         key: {
                             application_file: '7849a5ab9ca840f185d0e047ed91f620'
                             source_artifact: '01ebe44c639a4bec91af41390ea1aac3'
