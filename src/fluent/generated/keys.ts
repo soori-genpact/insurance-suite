@@ -1082,6 +1082,10 @@ declare global {
                         table: 'sys_pd_activity'
                         id: 'fb0e906d172e50349ff70dbde2a24a39'
                     }
+                    fdbb0abd93d5475044f7bd4f7bba1001: {
+                        table: 'sys_kmf_module_key_policy'
+                        id: 'fdbb0abd93d5475044f7bd4f7bba1001'
+                    }
                     ff606471935547d0ce18b5d97bba10d9: {
                         table: 'par_visualization'
                         id: 'ff606471935547d0ce18b5d97bba10d9'
@@ -1470,6 +1474,21 @@ declare global {
                             name: 'x_gegis_ins_policy_mfl_pml'
                             element: 'risk_case'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_section'
+                        id: '02cd8eb19319475044f7bd4f7bba1017'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            caption: 'Rules'
+                            view: {
+                                id: 'Default view'
+                                key: {
+                                    name: 'NULL'
+                                }
+                            }
+                            sys_domain: 'global'
                         }
                     },
                     {
@@ -2130,6 +2149,44 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_section'
+                        id: '0acd8eb19319475044f7bd4f7bba1018'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            caption: 'Display'
+                            view: {
+                                id: 'Default view'
+                                key: {
+                                    name: 'NULL'
+                                }
+                            }
+                            sys_domain: 'global'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_form_section'
+                        id: '0acd8eb19319475044f7bd4f7bba1050'
+                        key: {
+                            sys_ui_form: {
+                                id: 'cecd8eb19319475044f7bd4f7bba1019'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            sys_ui_section: {
+                                id: '0acd8eb19319475044f7bd4f7bba1018'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'Display'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '0af77076b16e462aa025ce99421381bf'
                         key: {
@@ -2501,6 +2558,21 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'predominant_state'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_section'
+                        id: '0ecd8eb19319475044f7bd4f7bba1013'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            caption: 'Limits & Deducatbles'
+                            view: {
+                                id: 'Default view'
+                                key: {
+                                    name: 'NULL'
+                                }
+                            }
+                            sys_domain: 'global'
                         }
                     },
                     {
@@ -2892,6 +2964,74 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_element'
+                        id: '12cd8eb19319475044f7bd4f7bba1089'
+                        key: {
+                            sys_ui_section: {
+                                id: '88fb02fd93d5475044f7bd4f7bba10a2'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'NULL'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: 'default_selected'
+                            position: '6'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_element'
+                        id: '12cd8eb19319475044f7bd4f7bba1094'
+                        key: {
+                            sys_ui_section: {
+                                id: '0ecd8eb19319475044f7bd4f7bba1013'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'Limits & Deducatbles'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: '.split'
+                            position: '3'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_element'
+                        id: '12cd8eb19319475044f7bd4f7bba10a3'
+                        key: {
+                            sys_ui_section: {
+                                id: '86cd8eb19319475044f7bd4f7bba1015'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'Rating & Financials'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: 'cause_of_loss_form'
+                            position: '4'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_element'
+                        id: '12cd8eb19319475044f7bd4f7bba10b4'
+                        key: {
+                            sys_ui_section: {
+                                id: '0acd8eb19319475044f7bd4f7bba1018'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'Display'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: 'display_order'
+                            position: '0'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '12de7bb1b96047129bda8713cf725c2b'
                         key: {
@@ -3275,6 +3415,57 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_element'
+                        id: '16cd8eb19319475044f7bd4f7bba1087'
+                        key: {
+                            sys_ui_section: {
+                                id: '88fb02fd93d5475044f7bd4f7bba10a2'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'NULL'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: 'coverage_code'
+                            position: '4'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_element'
+                        id: '16cd8eb19319475044f7bd4f7bba1092'
+                        key: {
+                            sys_ui_section: {
+                                id: '0ecd8eb19319475044f7bd4f7bba1013'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'Limits & Deducatbles'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: 'minimum_limit'
+                            position: '1'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_element'
+                        id: '16cd8eb19319475044f7bd4f7bba10a1'
+                        key: {
+                            sys_ui_section: {
+                                id: '86cd8eb19319475044f7bd4f7bba1015'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'Rating & Financials'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: 'valuation_basis'
+                            position: '2'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '16ea95cfefed4774955e10323af02986'
                         key: {
@@ -3651,6 +3842,74 @@ declare global {
                         id: '1abc79fe0674469aa208805b5fb54f6e'
                         key: {
                             name: 'x_gegis_ins_policy_risk_case'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_element'
+                        id: '1acd8eb19319475044f7bd4f7bba1085'
+                        key: {
+                            sys_ui_section: {
+                                id: '88fb02fd93d5475044f7bd4f7bba10a2'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'NULL'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: 'coverage_category'
+                            position: '2'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_element'
+                        id: '1acd8eb19319475044f7bd4f7bba109f'
+                        key: {
+                            sys_ui_section: {
+                                id: '86cd8eb19319475044f7bd4f7bba1015'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'Rating & Financials'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: 'coinsurance_pct'
+                            position: '0'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_element'
+                        id: '1acd8eb19319475044f7bd4f7bba10ac'
+                        key: {
+                            sys_ui_section: {
+                                id: '02cd8eb19319475044f7bd4f7bba1017'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'Rules'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: 'eligibility_rule_ref'
+                            position: '2'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_element'
+                        id: '1acd8eb19319475044f7bd4f7bba10b7'
+                        key: {
+                            sys_ui_section: {
+                                id: '0acd8eb19319475044f7bd4f7bba1018'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'Display'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: 'description'
+                            position: '4'
                         }
                     },
                     {
@@ -4192,6 +4451,74 @@ declare global {
                             name: 'x_gegis_ins_policy_submission_party'
                             element: 'role'
                             value: 'additional_insured'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_element'
+                        id: '1ecd8eb19319475044f7bd4f7bba1083'
+                        key: {
+                            sys_ui_section: {
+                                id: '88fb02fd93d5475044f7bd4f7bba10a2'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'NULL'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: 'coverage_name'
+                            position: '0'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_element'
+                        id: '1ecd8eb19319475044f7bd4f7bba1095'
+                        key: {
+                            sys_ui_section: {
+                                id: '0ecd8eb19319475044f7bd4f7bba1013'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'Limits & Deducatbles'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: 'maximum_limit'
+                            position: '5'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_element'
+                        id: '1ecd8eb19319475044f7bd4f7bba10aa'
+                        key: {
+                            sys_ui_section: {
+                                id: '02cd8eb19319475044f7bd4f7bba1017'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'Rules'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: 'applicable_states'
+                            position: '0'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_element'
+                        id: '1ecd8eb19319475044f7bd4f7bba10b5'
+                        key: {
+                            sys_ui_section: {
+                                id: '0acd8eb19319475044f7bd4f7bba1018'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'Display'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: 'status'
+                            position: '2'
                         }
                     },
                     {
@@ -5721,6 +6048,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: '2f85fbce41554628acd801049eebded6'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_category'
                             element: 'status'
@@ -6223,6 +6551,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: '34c87571d8074b07bef65130d284cf2b'
+                        deleted: false
                         key: {
                             sys_ui_section: {
                                 id: '52a9f9759355475044f7bd4f7bba1017'
@@ -6952,6 +7281,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: '3d979cc0519144c5b3facb1838584cc2'
+                        deleted: false
                         key: {
                             sys_ui_section: {
                                 id: '52a9f9759355475044f7bd4f7bba1017'
@@ -7442,6 +7772,29 @@ declare global {
                             name: 'x_gegis_ins_policy_policy_risk'
                             element: 'NULL'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_form_section'
+                        id: '42cd8eb19319475044f7bd4f7bba1021'
+                        key: {
+                            sys_ui_form: {
+                                id: 'cecd8eb19319475044f7bd4f7bba1019'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            sys_ui_section: {
+                                id: '0ecd8eb19319475044f7bd4f7bba1013'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'Limits & Deducatbles'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
                         }
                     },
                     {
@@ -8302,6 +8655,29 @@ declare global {
                             name: 'x_gegis_ins_policy_policy'
                             element: 'status'
                             value: 'bound'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_form_section'
+                        id: '4acd8eb19319475044f7bd4f7bba101f'
+                        key: {
+                            sys_ui_form: {
+                                id: 'cecd8eb19319475044f7bd4f7bba1019'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            sys_ui_section: {
+                                id: '88fb02fd93d5475044f7bd4f7bba10a2'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'NULL'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
                         }
                     },
                     {
@@ -10589,6 +10965,7 @@ declare global {
                     {
                         table: 'sys_choice_set'
                         id: '5f7ddc89ee92467dbf517215024aa541'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_category'
                             element: 'status'
@@ -13996,6 +14373,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '81c7905bd0da4a23a0442c9df60035ba'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_category'
                             element: 'status'
@@ -14358,6 +14736,44 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_section'
+                        id: '86cd8eb19319475044f7bd4f7bba1015'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            caption: 'Rating & Financials'
+                            view: {
+                                id: 'Default view'
+                                key: {
+                                    name: 'NULL'
+                                }
+                            }
+                            sys_domain: 'global'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_form_section'
+                        id: '86cd8eb19319475044f7bd4f7bba1028'
+                        key: {
+                            sys_ui_form: {
+                                id: 'cecd8eb19319475044f7bd4f7bba1019'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            sys_ui_section: {
+                                id: '86cd8eb19319475044f7bd4f7bba1015'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'Rating & Financials'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '86d04e5ac1144f0488289c73005a4a2d'
                         key: {
@@ -14567,6 +14983,21 @@ declare global {
                                     name: 'x_gegis_ins_policy.admin'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_ui_section'
+                        id: '88fb02fd93d5475044f7bd4f7bba10a2'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            caption: 'NULL'
+                            view: {
+                                id: 'Default view'
+                                key: {
+                                    name: 'NULL'
+                                }
+                            }
+                            sys_domain: 'global'
                         }
                     },
                     {
@@ -15260,6 +15691,57 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_element'
+                        id: '92cd8eb19319475044f7bd4f7bba1088'
+                        key: {
+                            sys_ui_section: {
+                                id: '88fb02fd93d5475044f7bd4f7bba10a2'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'NULL'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: 'active_status'
+                            position: '5'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_element'
+                        id: '92cd8eb19319475044f7bd4f7bba1093'
+                        key: {
+                            sys_ui_section: {
+                                id: '0ecd8eb19319475044f7bd4f7bba1013'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'Limits & Deducatbles'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: 'deductible_type'
+                            position: '2'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_element'
+                        id: '92cd8eb19319475044f7bd4f7bba10a2'
+                        key: {
+                            sys_ui_section: {
+                                id: '86cd8eb19319475044f7bd4f7bba1015'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'Rating & Financials'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: '.end_split'
+                            position: '3'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '92dcb8b5e4484f6989f39f0fea7b9119'
                         key: {
@@ -15535,6 +16017,57 @@ declare global {
                                     name: 'x_gegis_ins_policy.operational'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_ui_element'
+                        id: '96cd8eb19319475044f7bd4f7bba1086'
+                        key: {
+                            sys_ui_section: {
+                                id: '88fb02fd93d5475044f7bd4f7bba10a2'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'NULL'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: '.split'
+                            position: '3'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_element'
+                        id: '96cd8eb19319475044f7bd4f7bba1091'
+                        key: {
+                            sys_ui_section: {
+                                id: '0ecd8eb19319475044f7bd4f7bba1013'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'Limits & Deducatbles'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: 'limit_type'
+                            position: '0'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_element'
+                        id: '96cd8eb19319475044f7bd4f7bba10a0'
+                        key: {
+                            sys_ui_section: {
+                                id: '86cd8eb19319475044f7bd4f7bba1015'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'Rating & Financials'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: '.split'
+                            position: '1'
                         }
                     },
                     {
@@ -16063,6 +16596,74 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_element'
+                        id: '9acd8eb19319475044f7bd4f7bba1084'
+                        key: {
+                            sys_ui_section: {
+                                id: '88fb02fd93d5475044f7bd4f7bba10a2'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'NULL'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: 'coverage_selection'
+                            position: '1'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_element'
+                        id: '9acd8eb19319475044f7bd4f7bba1096'
+                        key: {
+                            sys_ui_section: {
+                                id: '0ecd8eb19319475044f7bd4f7bba1013'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'Limits & Deducatbles'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: 'default_deductible'
+                            position: '6'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_element'
+                        id: '9acd8eb19319475044f7bd4f7bba10ab'
+                        key: {
+                            sys_ui_section: {
+                                id: '02cd8eb19319475044f7bd4f7bba1017'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'Rules'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: '.split'
+                            position: '1'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_element'
+                        id: '9acd8eb19319475044f7bd4f7bba10b6'
+                        key: {
+                            sys_ui_section: {
+                                id: '0acd8eb19319475044f7bd4f7bba1018'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'Display'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: '.end_split'
+                            position: '3'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '9ace2e8902c74bf2a7c430b4df4e70ff'
                         key: {
@@ -16340,6 +16941,40 @@ declare global {
                             name: 'x_gegis_ins_policy_location'
                             element: 'city'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_element'
+                        id: '9ecd8eb19319475044f7bd4f7bba1094'
+                        key: {
+                            sys_ui_section: {
+                                id: '0ecd8eb19319475044f7bd4f7bba1013'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'Limits & Deducatbles'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: 'default_limit'
+                            position: '4'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_element'
+                        id: '9ecd8eb19319475044f7bd4f7bba10b4'
+                        key: {
+                            sys_ui_section: {
+                                id: '0acd8eb19319475044f7bd4f7bba1018'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'Display'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: '.split'
+                            position: '1'
                         }
                     },
                     {
@@ -17359,6 +17994,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: 'aac0894e45384dd08e81af5e095b115a'
+                        deleted: false
                         key: {
                             sys_ui_section: {
                                 id: '52a9f9759355475044f7bd4f7bba1017'
@@ -17381,6 +18017,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: 'aae1e7f15fca4af7b1ed44d482ad9be1'
+                        deleted: false
                         key: {
                             sys_ui_section: {
                                 id: '52a9f9759355475044f7bd4f7bba1017'
@@ -18006,6 +18643,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'b2e1a529a25e4029afcca0eb8a238a02'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_category'
                             element: 'status'
@@ -19201,6 +19839,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: 'c0c07241450c40f79684330b83048bad'
+                        deleted: false
                         key: {
                             sys_ui_section: {
                                 id: '52a9f9759355475044f7bd4f7bba1017'
@@ -19463,6 +20102,29 @@ declare global {
                             name: 'x_gegis_ins_policy_exposure_item'
                             element: 'currency'
                             value: 'aud'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_form_section'
+                        id: 'c2cd8eb19319475044f7bd4f7bba103c'
+                        key: {
+                            sys_ui_form: {
+                                id: 'cecd8eb19319475044f7bd4f7bba1019'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
+                            sys_ui_section: {
+                                id: '02cd8eb19319475044f7bd4f7bba1017'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage'
+                                    caption: 'Rules'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                }
+                            }
                         }
                     },
                     {
@@ -20124,6 +20786,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: 'ca7e771aeef544e6b9ea049f3ce9b0af'
+                        deleted: false
                         key: {
                             sys_ui_section: {
                                 id: '52a9f9759355475044f7bd4f7bba1017'
@@ -20415,6 +21078,20 @@ declare global {
                             name: 'x_gegis_ins_policy_quote_risk'
                             element: 'location'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_form'
+                        id: 'cecd8eb19319475044f7bd4f7bba1019'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            view: {
+                                id: 'Default view'
+                                key: {
+                                    name: 'NULL'
+                                }
+                            }
+                            sys_domain: 'global'
                         }
                     },
                     {
@@ -21010,6 +21687,29 @@ declare global {
                             }
                             element: 'description'
                             position: '7'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_element'
+                        id: 'd6661a672bd6418abf38e66d764c1ff7'
+                        deleted: true
+                        key: {
+                            sys_ui_section: {
+                                id: '52a9f9759355475044f7bd4f7bba1017'
+                                key: {
+                                    name: 'x_gegis_ins_policy_coverage_category'
+                                    caption: 'Behavior'
+                                    view: {
+                                        id: 'Default view'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                }
+                            }
+                            element: '.end_split'
+                            position: '6'
                         }
                     },
                     {
@@ -22633,6 +23333,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'e877099471824d388680d3ddc18830ee'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_category'
                             element: 'status'
@@ -23350,6 +24051,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: 'f162b801f7e34eed846a36874dda9961'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_category'
                             element: 'status'

@@ -50,18 +50,6 @@ export const x_gegis_ins_policy_coverage_category = Table({
             label: 'Display order',
             mandatory: true,
         }),
-
-        // ── Lifecycle ─────────────────────────────────────────────────────────
-        status: StringColumn({
-            label: 'Status',
-            mandatory: true,
-            dropdown: 'dropdown_with_none',
-            choices: {
-                draft:     { label: 'Draft',     sequence: 0 },
-                published: { label: 'Published', sequence: 1 },
-                archived:  { label: 'Archived',  sequence: 2 },
-            },
-        }),
     },
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
