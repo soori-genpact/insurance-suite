@@ -6,10 +6,10 @@ Scope: `x_gegis_ins_policy` | SDK: `@servicenow/sdk` v4.6.x
 
 ## Prerequisites
 
-| Requirement | Version |
-|---|---|
-| Node.js | 20+ (LTS) |
-| npm | bundled with Node.js |
+| Requirement     | Version                                                   |
+| --------------- | --------------------------------------------------------- |
+| Node.js         | 20+ (LTS)                                                 |
+| npm             | bundled with Node.js                                      |
 | Instance access | Admin or developer role on target PDI/enterprise instance |
 
 ---
@@ -44,6 +44,7 @@ npx now-sdk auth --add https://<your-instance>.service-now.com --type basic
 ```
 
 You will be prompted for:
+
 - **Alias** — a short label (e.g. `dev`, `uat`, `prod`)
 - **Username** — your ServiceNow username
 - **Password** — your ServiceNow password
@@ -142,18 +143,18 @@ Enables full TypeScript autocompletion for platform APIs and your custom tables.
 
 ## Quick Reference
 
-| Command | What It Does |
-|---|---|
-| `npx now-sdk auth --list` | Show all stored instance credentials |
-| `npx now-sdk auth --add <url> --type basic` | Add basic-auth credentials for an instance |
-| `npx now-sdk auth --add <url> --type oauth` | Add OAuth credentials for an instance |
-| `npx now-sdk auth --use <alias>` | Set default instance |
-| `npx now-sdk auth --delete <alias>` | Remove stored credentials |
-| `npx now-sdk build` | Compile and validate all fluent source files |
-| `npx now-sdk install` | Deploy built artifacts to the default instance |
-| `npx now-sdk install --auth <alias>` | Deploy to a specific instance |
-| `npx now-sdk build && npx now-sdk install` | Build then deploy in one step |
-| `npx now-sdk dependencies` | Fetch type definitions for IDE autocomplete |
+| Command                                     | What It Does                                   |
+| ------------------------------------------- | ---------------------------------------------- |
+| `npx now-sdk auth --list`                   | Show all stored instance credentials           |
+| `npx now-sdk auth --add <url> --type basic` | Add basic-auth credentials for an instance     |
+| `npx now-sdk auth --add <url> --type oauth` | Add OAuth credentials for an instance          |
+| `npx now-sdk auth --use <alias>`            | Set default instance                           |
+| `npx now-sdk auth --delete <alias>`         | Remove stored credentials                      |
+| `npx now-sdk build`                         | Compile and validate all fluent source files   |
+| `npx now-sdk install`                       | Deploy built artifacts to the default instance |
+| `npx now-sdk install --auth <alias>`        | Deploy to a specific instance                  |
+| `npx now-sdk build && npx now-sdk install`  | Build then deploy in one step                  |
+| `npx now-sdk dependencies`                  | Fetch type definitions for IDE autocomplete    |
 
 ---
 
@@ -168,25 +169,36 @@ The scope `x_gegis_ins_policy` uses company key `gegis`. Every PDI must have thi
 Run this in **Scripts - Background** (`https://<pdi>.service-now.com/sys.scripts.do`):
 
 ```javascript
-var gr = new GlideRecord('sys_properties');
-gr.addQuery('name', 'sn_appauthor.all_company_keys');
+var gr = new GlideRecord("sys_properties");
+gr.addQuery("name", "sn_appauthor.all_company_keys");
 gr.query();
 if (gr.next()) {
-    var existing = gr.getValue('value');
-    if (existing.indexOf('gegis') === -1) {
-        gr.setValue('value', existing ? existing + ',gegis' : 'gegis');
-        gr.update();
-        gs.info('Updated: ' + gr.getValue('value'));
-    } else {
-        gs.info('gegis already present: ' + existing);
-    }
+  var existing = gr.getValue("value");
+  if (existing.indexOf("gegis") === -1) {
+    gr.setValue("value", existing ? existing + ",gegis" : "gegis");
+    gr.update();
+    gs.info("Updated: " + gr.getValue("value"));
+  } else {
+    gs.info("gegis already present: " + existing);
+  }
 } else {
-    gr.initialize();
-    gr.setValue('name', 'sn_appauthor.all_company_keys');
-    gr.setValue('value', 'gegis');
-    gr.insert();
-    gs.info('Property created with value: gegis');
+  gr.initialize();
+  gr.setValue("name", "sn_appauthor.all_company_keys");
+  gr.setValue("value", "gegis");
+  gr.insert();
+  gs.info("Property created with value: gegis");
 }
+```
+
+```javascript
+var current = gs.getProperty("sn_appauthor.all_company_keys", "");
+if (current.split(",").indexOf("gegis") === -1) {
+  gs.setProperty(
+    "sn_appauthor.all_company_keys",
+    current ? current + ",gegis" : "gegis",
+  );
+}
+gs.info(gs.getProperty("sn_appauthor.all_company_keys"));
 ```
 
 ### Step 2 — Import from Source Control (Studio)
@@ -213,12 +225,12 @@ now-sdk build && now-sdk deploy --auth PDI
 
 ### PDI Setup Checklist
 
-| # | Step | Command / Location |
-|---|---|---|
-| 1 | Register company key `gegis` | Scripts - Background (script above) |
-| 2 | Import app from source control | Studio → Import from Source Control |
-| 3 | Add SDK auth credentials | `now-sdk auth --add ... --alias PDI` |
-| 4 | Build and deploy | `now-sdk build && now-sdk deploy --auth PDI` |
+| #   | Step                           | Command / Location                           |
+| --- | ------------------------------ | -------------------------------------------- |
+| 1   | Register company key `gegis`   | Scripts - Background (script above)          |
+| 2   | Import app from source control | Studio → Import from Source Control          |
+| 3   | Add SDK auth credentials       | `now-sdk auth --add ... --alias PDI`         |
+| 4   | Build and deploy               | `now-sdk build && now-sdk deploy --auth PDI` |
 
 ---
 
@@ -237,16 +249,18 @@ now-sdk build && now-sdk deploy --auth PDI
    - Scope: `x_gegis_ins_policy`
 
 2. Find the new app's `sys_id`:
+
    ```
    https://<instance>.service-now.com/sys_app_list.do?sysparm_query=scope%3Dx_gegis_ins_policy
    ```
 
 3. Update `now.config.json`:
+
    ```json
    {
-       "scope": "x_gegis_ins_policy",
-       "scopeId": "<new-sys_id-from-this-instance>",
-       "name": "Policy Suite"
+     "scope": "x_gegis_ins_policy",
+     "scopeId": "<new-sys_id-from-this-instance>",
+     "name": "Policy Suite"
    }
    ```
 

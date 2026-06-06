@@ -10,6 +10,14 @@ export const x_gegis_ins_policy_quote = Table({
             referenceTable: 'x_gegis_ins_policy_qnb_case',
             mandatory: true,
         }),
+        product: ReferenceColumn({
+            label: 'Product',
+            referenceTable: 'x_gegis_ins_policy_product',
+        }),
+        insured: ReferenceColumn({
+            label: 'Insured',
+            referenceTable: 'x_gegis_ins_policy_party',
+        }),
         quote_number: StringColumn({ label: 'Quote number', maxLength: 20, mandatory: true, unique: true }),
         version: IntegerColumn({ label: 'Version' }),
         status: StringColumn({
