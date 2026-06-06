@@ -44,10 +44,6 @@ Form({
                             type: 'table_field',
                         },
                         {
-                            field: 'status',
-                            type: 'table_field',
-                        },
-                        {
                             field: 'display_order',
                             type: 'table_field',
                         },
