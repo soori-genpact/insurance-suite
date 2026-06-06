@@ -10,6 +10,10 @@ Record({
   "message" : "Home",
   "code" : "",
   "comment" : ""
+}, {
+  "message" : "List",
+  "code" : "",
+  "comment" : ""
 } ]`,
         sys_domain: 'global',
         sys_domain_path: 'global',
@@ -17,12 +21,29 @@ Record({
         unique_name: 'x_gegis_ins_policy.e728e92593dd835044f7bd4f7bba1020.root.global.chrome_toolbar',
         value: `[
     {
-        "id": "list",
+        "id": "home",
         "label": {
             "translatable": true,
             "message": "Home"
         },
-        "icon": "action-ai-sparkle-fill",
+        "icon": "home-outline",
+        "routeInfo": {
+            "route": "home"
+        },
+        "group": "top",
+        "order": 100,
+        "badge": {},
+        "presence": {},
+        "availability": {},
+        "viewportInfo": {}
+    },
+    {
+        "id": "list",
+        "label": {
+            "translatable": true,
+            "message": "List"
+        },
+        "icon": "list-key-outline",
         "routeInfo": {
             "route": "list"
         },
