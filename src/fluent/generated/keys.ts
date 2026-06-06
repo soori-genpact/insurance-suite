@@ -1148,6 +1148,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '00438b7e26b84318a7be597a8c0f220f'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'type'
+                            value: 'reinstatement'
+                        }
+                    },
+                    {
                         table: 'sys_user_role'
                         id: '005a621f596c45dbb6bd9a1730c97444'
                         key: {
@@ -1236,6 +1245,13 @@ declare global {
                         }
                     },
                     {
+                        table: 'ua_table_licensing_config'
+                        id: '00f2b17a4250455885281539ec036270'
+                        key: {
+                            name: 'x_gegis_ins_policy_exclusion'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '00f6f7cbeee94cbf9532aac2a85ec1a0'
                         key: {
@@ -1276,6 +1292,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_orch_case'
                             element: 'intake_case'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '0196fe94089344d290751fac38ee9e5b'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'occupancy'
+                            value: 'education'
                         }
                     },
                     {
@@ -1352,6 +1377,21 @@ declare global {
                         }
                     },
                     {
+                        table: 'ua_table_licensing_config'
+                        id: '029ac2390e4c4ac1bd48884b93274a13'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '02b1d89469c042da9699af1ae520f466'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy'
+                            element: 'quote'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '02b4871561634a3abe6fa66169ac4001'
                         deleted: true
@@ -1377,6 +1417,13 @@ declare global {
                             name: 'x_gegis_ins_policy_intake_case'
                             element: 'intake_status'
                             value: 'processed'
+                        }
+                    },
+                    {
+                        table: 'sys_db_object'
+                        id: '02de734f19d344159e464ce5ea142a39'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
                         }
                     },
                     {
@@ -1408,6 +1455,15 @@ declare global {
                             name: 'x_gegis_ins_policy_exposure_item'
                             element: 'currency'
                             value: 'cad'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '032437a9959c4ae388cc31c86664a560'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_party'
+                            element: 'NULL'
+                            language: 'en'
                         }
                     },
                     {
@@ -1524,6 +1580,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '046c465f129b4b50ac0676a96d1f12cd'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'sum_insured'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_db_object'
                         id: '047a249667a2431889d397060e401b66'
                         deleted: true
@@ -1539,6 +1604,14 @@ declare global {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'assignment_group'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: '04c82fbbafb64b89901cc7acde73796c'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'occupancy'
                         }
                     },
                     {
@@ -1582,6 +1655,40 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_db_object'
+                        id: '053b410afde941219f8c6248c24c4805'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '05851d2ec1a546c3aa08aa1d9195b9ed'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'status'
+                            value: 'draft'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '05a85fda87d44704b8d676b8c7a53361'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_option_coverage'
+                            element: 'quote_option'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '05c3630c90254a03a4d499408d837311'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'description'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '05ded71d491649b18660ec4957c6acc3'
                         key: {
@@ -1592,6 +1699,15 @@ declare global {
                                     name: 'x_gegis_ins_policy.integration'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '0617d873569040e0a58dad4b669f6172'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'coverage_selection'
+                            value: 'required'
                         }
                     },
                     {
@@ -1606,6 +1722,23 @@ declare global {
                                     name: 'x_gegis_ins_policy.compliance_officer'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '0641981bc2af42c7b38044d67d9b87bc'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'description'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '065d3ad5ec794fbab44ec99f89d6429e'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor_entry'
+                            element: 'multiplier'
+                            language: 'en'
                         }
                     },
                     {
@@ -1671,6 +1804,22 @@ declare global {
                     },
                     {
                         table: 'sys_documentation'
+                        id: '07ecd0af30814646b6be7a7d5faa97bb'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'status'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_db_object'
+                        id: '08497a3a84454c17aae892301551b164'
+                        key: {
+                            name: 'x_gegis_ins_policy_product_coverage_term_option'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
                         id: '0875a242aae1469697f2000d57d9c9d0'
                         deleted: false
                         key: {
@@ -1693,12 +1842,39 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '088c7ade7ad14bac848fec2f0e9a92e6'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_party'
+                            element: 'party_role'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '08a0ac1a63c442d4ac7038e07f8f4f0a'
                         key: {
                             name: 'x_gegis_ins_policy_document'
                             element: 'status'
                             value: 'final'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '08a3a3702b5949e99c822f218f99c56f'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage'
+                            element: 'policy_risk'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '08a52c14ce264cc9846a1b8cbf7ca49c'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_option_coverage_term'
+                            element: 'selected_value'
+                            language: 'en'
                         }
                     },
                     {
@@ -1719,6 +1895,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice_set'
+                        id: '0981642fffb0415da3d50f49c7147e79'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'status'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '098905be0147426789ab344285f7afa7'
                         deleted: true
@@ -1734,6 +1918,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_quote_option'
                             element: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '09a2e8e7065e438ba0d18c5f6b38162f'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'minimum_limit'
+                            language: 'en'
                         }
                     },
                     {
@@ -1759,6 +1952,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '09c0724d0f1f4f96a605daad186735eb'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'coverage_selection'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '09c3abcb606246968375df1927bf8c45'
                         deleted: true
@@ -1774,6 +1976,13 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_quote'
                             element: 'quote_number'
+                        }
+                    },
+                    {
+                        table: 'sys_db_object'
+                        id: '09d7fac88e0b41e99cf52e80b748a7a9'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage'
                         }
                     },
                     {
@@ -1827,6 +2036,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '0ab8163b334148c1bccf075fed0deb8e'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage'
+                            element: 'coverage'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '0abaac64921d4ed582067b367fba0805'
                         key: {
@@ -1874,6 +2092,23 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '0b435f7b63cd434e94a49f77499c8ac8'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage_term'
+                            element: 'term_type'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '0b9a190c3c6c48758b5c1e0a9c46a875'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'default_selected'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '0bdba8ca52154fa8b61f27804b94443b'
                         key: {
@@ -1893,6 +2128,15 @@ declare global {
                                     name: 'x_gegis_ins_policy.integration'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '0bf7435ade9e41828d2f9c655bc1e77c'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'vehicle_type'
+                            value: 'private_car'
                         }
                     },
                     {
@@ -1976,11 +2220,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '0c9d531a6b3449b197baba48f78bca4a'
+                        key: {
+                            name: 'x_gegis_ins_policy_product_coverage'
+                            element: 'product'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice_set'
                         id: '0ca568e665c3483ebe7ce0af7aae79b2'
                         key: {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'overall_status'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '0ce5ea6842d54ff5be6516578e4cda45'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'type'
+                            language: 'en'
                         }
                     },
                     {
@@ -2008,6 +2270,14 @@ declare global {
                             name: 'x_gegis_ins_policy_exposure'
                             element: 'orchestration_case'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '0d18ee68ffde42d9a31ea0c5d2180245'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_party'
+                            element: 'account'
                         }
                     },
                     {
@@ -2041,6 +2311,23 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: '0d8fc66c3ad3445e991ffeb843ffa3d2'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '0db6ffc977eb49f096314af633ef78ed'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'category_name'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: '0dd92d2e265b4ac6a46d67adc998b6dc'
                         key: {
                             name: 'x_gegis_ins_policy_exposure_item'
@@ -2056,6 +2343,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '0e094b403f654d6195edee4656907811'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'quote'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '0e0fa3d8b0b84be2893b13f107718e9e'
                         key: {
@@ -2066,6 +2362,20 @@ declare global {
                                     name: 'x_gegis_ins_policy.operational'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_db_object'
+                        id: '0e314570114443f88ea1e8c1311ca455'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                        }
+                    },
+                    {
+                        table: 'ua_table_licensing_config'
+                        id: '0e4659ba971545d78be0fbeb3b4696ad'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
                         }
                     },
                     {
@@ -2088,6 +2398,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_exposure_item'
                             element: 'sum_insured'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '0e557819c5324e999bd8c46f327b4741'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'construction'
+                            value: 'joisted_masonry'
                         }
                     },
                     {
@@ -2135,6 +2454,23 @@ declare global {
                                     name: 'x_gegis_ins_policy.admin'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '0fa9d0579c0a4dcc8ce8cdcb3d6d2669'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table'
+                            element: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '0fb72a170c674a15845b7aa7c65c9671'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'coverage_selection'
+                            value: 'required'
                         }
                     },
                     {
@@ -2221,6 +2557,14 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: '1054d36c91434a278391e11e7ec58420'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'display_order'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: '107929df94ab4a5db308a003bf945b69'
                         key: {
                             name: 'x_gegis_ins_policy_clearance_check'
@@ -2234,6 +2578,15 @@ declare global {
                             name: 'x_gegis_ins_policy_exposure_item'
                             element: 'pd_contents'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '10a05fd8ba7c4764aa9816dc164ee8b6'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'vehicle_type'
+                            value: 'two_wheeler'
                         }
                     },
                     {
@@ -2290,6 +2643,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '114255fc550d40a88d7c3607d77d1f7f'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'factor_type'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '1177eeb1c304464da9eeba619f538908'
                         key: {
@@ -2331,6 +2692,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_intake_case'
                             element: 'source_email_id'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '121e66c9d33448d7ae66605d6171923c'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'occupancy'
+                            value: 'hospitality'
                         }
                     },
                     {
@@ -2441,6 +2811,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '12e1db12e9b74481bc637943d32b4a75'
+                        key: {
+                            name: 'x_gegis_ins_policy_product_coverage_term_option'
+                            element: 'premium_impact'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '12e700b8b5de497cb04285d5dea40d5c'
                         key: {
@@ -2456,6 +2834,23 @@ declare global {
                             name: 'x_gegis_ins_policy_loss_record'
                             element: 'peril'
                             value: 'theft'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '130ff5ec1de84226a7dd89b07050c35b'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'construction'
+                            value: 'joisted_masonry'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '131c1c23e567432eb2dd9350dee0c30c'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy'
+                            element: 'product'
                         }
                     },
                     {
@@ -2477,11 +2872,37 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '13c744fc0ac14548b94cc4eec4713921'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'product_code'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_db_object'
                         id: '13eb6402273842f39260ce0ccfdcccf7'
                         deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_quote_bind'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '140face82ad443a5b4bd162505fd1881'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_party'
+                            element: 'policy'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '14262ffc37ad4998b2eb570719a47c50'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'occupancy'
+                            value: 'education'
                         }
                     },
                     {
@@ -2589,6 +3010,15 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '14b99b0145a74a0ca71c494d67b007c9'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'zone'
+                            value: 'rural'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '14c713ee2e014d1185bc2bbb410c3c75'
                         key: {
                             name: 'x_gegis_ins_policy_loss_record'
@@ -2622,6 +3052,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '153fa71b721c43828c79906d78192024'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'maximum_value'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '154147a344cf4c23b46e952e535cdd77'
                         key: {
@@ -2652,6 +3090,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '160cf079ca124a8cba01ed331c2a3957'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'display_order'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '161be236434c47d7a698642e48ec39bb'
                         key: {
@@ -2662,6 +3109,14 @@ declare global {
                                     name: 'x_gegis_ins_policy.underwriter'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: '162f0bd68ab449118405bfae73b3958a'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'status'
                         }
                     },
                     {
@@ -2712,6 +3167,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '170cb8571a544feb9dcfd75f015c15ab'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage_term'
+                            element: 'term_type'
+                            value: 'limit'
+                        }
+                    },
+                    {
                         table: 'sys_db_object'
                         id: '17203dfb82a546689518f66e751bf5e9'
                         key: {
@@ -2746,6 +3210,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '174e5e9ec94c446aa0c1849273201b56'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'valuation_basis'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '1759d27808a84ed9a4f55910294b1aa2'
                         key: {
@@ -2756,6 +3229,32 @@ declare global {
                                     name: 'x_gegis_ins_policy.operational'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '178bb45a6343400dbbee1e66d413276c'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'applicable_states'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '17969c05bee94949a4e2f4d747bdcfec'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'occupancy'
+                            value: 'warehouse'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '17e3a8fa466e45169506010a11a0e1b7'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage_term'
+                            element: 'term_name'
+                            language: 'en'
                         }
                     },
                     {
@@ -2811,6 +3310,14 @@ declare global {
                             name: 'x_gegis_ins_policy_submission_party'
                             element: 'role'
                             value: 'other'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: '18754e92f63b4a79a68fec14abc6eba3'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'occupancy'
                         }
                     },
                     {
@@ -2872,11 +3379,36 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice_set'
+                        id: '191ae830a79441a1877c6a92dc3f4567'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table'
+                            element: 'rate_type'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '194bc204e75e4668bd5168e297834c55'
                         key: {
                             name: 'x_gegis_ins_policy_exposure_item'
                             element: 'line_of_business'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '1955bbe7587f4fdb8f0085e657447185'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'construction'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '196ad20f88014c39a503e44defc7e483'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'occupancy'
                             language: 'en'
                         }
                     },
@@ -2947,6 +3479,14 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '1a90582c57f44f44a74a3ed6aeaab01f'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'protection'
                         }
                     },
                     {
@@ -3026,6 +3566,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '1b9629f327014c0d8bbdb2c53a0e408e'
+                        key: {
+                            name: 'x_gegis_ins_policy_condition'
+                            element: 'code'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '1b97b1103449496498c92724dc117f08'
                         deleted: true
@@ -3045,6 +3594,24 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_major_exclusion'
                             element: 'choice_value'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '1bb139c2e48e4b80bee26b02ab9684c3'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'engine_cc'
+                            value: 'any'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '1bc18b4de4464d28baf0ec31fd0b9878'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'occupancy'
                             language: 'en'
                         }
                     },
@@ -3117,11 +3684,29 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '1c13b243efdf4c8fb512802e364384e9'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_party'
+                            element: 'party_role'
+                            value: 'policyholder'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '1c16e51513254615af914559f91592ce'
                         key: {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'overall_status'
                             value: 'open'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '1c34b2ea7bab40f9beca1e4ed5ac11f3'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'data_type'
+                            language: 'en'
                         }
                     },
                     {
@@ -3174,6 +3759,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '1c813cf4f33245518370c204c4299059'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'occupancy'
+                            value: 'restaurant'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '1c8f72a1e10541eeb37b490482c5a918'
                         key: {
@@ -3216,6 +3810,23 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '1ce1e1f7219d4b6b82986dbf1b4d52fb'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'applies_to'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '1d1042f32a684c5fae59c89a33632a29'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '1d2f1f6ecef04e878aa7094923500721'
                         key: {
@@ -3235,6 +3846,15 @@ declare global {
                             name: 'x_gegis_ins_policy_quote'
                             element: 'currency'
                             value: 'jpy'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '1d6336ceb35440b1add45b4e0eda365b'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'required'
+                            language: 'en'
                         }
                     },
                     {
@@ -3282,6 +3902,15 @@ declare global {
                             name: 'x_gegis_ins_policy_exposure_peril'
                             element: 'peril'
                             value: 'srcc'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '1e1947e8d41544e197ad332fe819617f'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'exposure'
+                            value: 'rural_low'
                         }
                     },
                     {
@@ -3337,6 +3966,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '1e55cad147bb4123b6febf2651cae0ac'
+                        key: {
+                            name: 'x_gegis_ins_policy_submission'
+                            element: 'line_of_business'
+                            value: 'motor'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '1e608c16554841e9b89199089e4b26bc'
                         key: {
@@ -3369,6 +4007,15 @@ declare global {
                             name: 'x_gegis_ins_policy_auto_exposure'
                             element: 'NULL'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '1eab8e6a35384fe78d6c2ef8dc0099cb'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage_term'
+                            element: 'term_type'
+                            value: 'waiting_period'
                         }
                     },
                     {
@@ -3407,6 +4054,15 @@ declare global {
                                     name: 'x_gegis_ins_policy.integration'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '1f2363e187044ace802a647a7f724d9e'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'coverage_selection'
+                            value: 'optional'
                         }
                     },
                     {
@@ -3471,6 +4127,15 @@ declare global {
                         id: '1fee9c1362d64d48acd19b4bb052c145'
                         key: {
                             name: 'x_gegis_ins_policy_wc_exposure'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '1ff05a727d064306a06cb365102bd6b0'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'protection'
+                            value: 'full_suppression'
                         }
                     },
                     {
@@ -3559,6 +4224,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '20c8921af83f427fbd6aa4ba4960ed76'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'term_type'
+                            value: 'fee'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '20dbb722333f429e8987ef82043c7875'
                         key: {
@@ -3572,6 +4246,23 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_policy'
                             element: 'expiry_date'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '21178f3fe5f148d9826c7e16e5f81b21'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'description'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '2125dbc684a34d229d6da1d59e38ac03'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'risk_type'
+                            value: 'business_interruption'
                         }
                     },
                     {
@@ -3610,6 +4301,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_party'
                             element: 'fei_number'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '21751afc60c14666abc0760272817899'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'vehicle_type'
+                            language: 'en'
                         }
                     },
                     {
@@ -3665,6 +4365,14 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: '21e9347370894e86a0fc5760abbd7998'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'sum_insured'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: '21f806e851f14dd5b73d832cdf825ea6'
                         key: {
                             name: 'x_gegis_ins_policy_vehicle'
@@ -3689,6 +4397,14 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: '222d0d6a08aa4934bfdaadd54c5f9ef5'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage'
+                            element: 'coverage_premium'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: '224d8eb775d24bb99572149aeb79be0f'
                         key: {
                             name: 'x_gegis_ins_policy_wc_exposure'
@@ -3702,6 +4418,13 @@ declare global {
                             name: 'x_gegis_ins_policy_qnb_case'
                             element: 'NULL'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'ua_table_licensing_config'
+                        id: '227acd3f3dd045f3a48f34e0180bdca9'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage'
                         }
                     },
                     {
@@ -3732,11 +4455,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '22e8c5e80a574fdc8605f707feaab80c'
+                        key: {
+                            name: 'x_gegis_ins_policy_condition'
+                            element: 'description'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '22f28fa0810f45c898c5985eaf17e2a2'
                         key: {
                             name: 'x_gegis_ins_policy_qnb_case'
                             element: 'resulting_policy'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '2333db6b10674d869137d523b9cef34d'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'coverage_selection'
+                            value: 'optional'
                         }
                     },
                     {
@@ -3798,6 +4539,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '2419353c12c9488faff9d192a0c4bdc3'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'occupancy'
+                            value: 'education'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '2438b72bd1e1401490860fb39252e649'
                         key: {
@@ -3828,11 +4578,38 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '245f2f5989e84e1eb57cac9ba5353859'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table'
+                            element: 'lob'
+                            value: 'property'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '24aa890ab0004e4f8c08fcbb3663327a'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'occupancy'
+                            value: 'manufacturing'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '24add2efa6144718b6ef928cd74caa8e'
                         key: {
                             name: 'x_gegis_ins_policy_clearance_case'
                             element: 'cleared_by'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '24dfd9cbf2b74f1bb564ebf09086c44e'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'coinsurance_pct'
+                            language: 'en'
                         }
                     },
                     {
@@ -3998,6 +4775,23 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '271f07d3c5374501ae2ef4ccf88e8d10'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'limit_type'
+                            value: 'combined_single_limit'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '273940b8ce974e028c6327a7d3ac074d'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '276db9b1495647c08c1018af88e36ab8'
                         key: {
@@ -4028,6 +4822,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '277fe4c08be34934bba4b1cf4b4a6bf6'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'protection'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '279159ba40b1473387099bc7fa5b7f9a'
                         key: {
@@ -4042,6 +4845,15 @@ declare global {
                         key: {
                             name: 'var__m_sys_pd_process_input_6b97ac759359075044f7bd4f7bba1063'
                             element: 'parent_record'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '279fc9a4b98b42a0ba5ccc5fccdd6b1a'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'coverage'
                             language: 'en'
                         }
                     },
@@ -4074,6 +4886,15 @@ declare global {
                             name: 'x_gegis_ins_policy_loss_record'
                             element: 'peril'
                             value: 'earthquake'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '2802d438091b435bb29fa57eeabaac32'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'NULL'
+                            language: 'en'
                         }
                     },
                     {
@@ -4119,12 +4940,38 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '287cb064f6d24a4aa6ace18745c2da63'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'name'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '28bf16318f644616a7d04ade107ce773'
                         key: {
                             name: 'x_gegis_ins_policy_submission_party'
                             element: 'role'
                             value: 'co_applicant'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '28cc86cf261b4b409ac9b0d190961d88'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'occupancy'
+                            value: 'it_office'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '28d027aa50b0428cb0ee58849f6ecb1b'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'zone'
+                            value: 'metro'
                         }
                     },
                     {
@@ -4137,6 +4984,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '28de75092e294521a19b282df7ad7e55'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'data_type'
+                            value: 'percentage'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '28e245cac5074b0ea26ca501c3c5d13f'
                         deleted: true
@@ -4144,6 +5000,15 @@ declare global {
                             name: 'x_gegis_ins_policy_intake_case'
                             element: 'broker_email'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '29180ee461f74b2895661cecb03ce6b2'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'data_type'
+                            value: 'date'
                         }
                     },
                     {
@@ -4171,6 +5036,22 @@ declare global {
                             name: 'x_gegis_ins_policy_exposure_peril'
                             element: 'peril'
                             value: 'course_of_construction'
+                        }
+                    },
+                    {
+                        table: 'ua_table_licensing_config'
+                        id: '296a4c13491d4dc6aa225e7aee17b127'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_condition'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '29cc82830c834524a35c9e0ec060d555'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'occupancy'
+                            value: 'warehouse'
                         }
                     },
                     {
@@ -4213,6 +5094,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice_set'
+                        id: '2a353a0eec0c4522917220d4d99ee9d6'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'exposure'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '2a3557faac5e47b98c281e6a113e1a7e'
                         deleted: true
@@ -4240,6 +5129,23 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_exposure_item'
                             element: 'currency'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '2ae3a641155e4522b583ec4a4232d269'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'lob'
+                            value: 'workers_comp'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '2af58536ba734ae0bcfc36fe3f90b77b'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'exposure'
                         }
                     },
                     {
@@ -4293,6 +5199,32 @@ declare global {
                     },
                     {
                         table: 'sys_documentation'
+                        id: '2bc02348ea0841c18a8ade7b2b578856'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor_entry'
+                            element: 'condition_value'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '2bcb9014b5164d79987dbbe1ba23f366'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'occupancy'
+                            value: 'office'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '2bec2337e83544f18fed66c11ddb063f'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'description'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
                         id: '2c044b97f0d9465d94ca9ff4db9b0914'
                         key: {
                             name: 'x_gegis_ins_policy_wc_exposure'
@@ -4307,6 +5239,14 @@ declare global {
                             name: 'x_gegis_ins_policy_document'
                             element: 'document_type'
                             value: 'acord'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '2c64523152a942a9bda7ade065b70b72'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'construction'
                         }
                     },
                     {
@@ -4332,6 +5272,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_major_exclusion'
                             element: 'exclusion_type'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '2cc25661919241ffb1bab8ded2baf4f8'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'line_of_business'
+                            value: 'motor'
                         }
                     },
                     {
@@ -4396,6 +5345,23 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '2d7cb2cb309b4fecae2ce0cbde96eb71'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'exposure'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '2d95a27cab884213b3359af20d3062cc'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_option_coverage'
+                            element: 'coverage_premium'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '2d997452d0634aa5a6ca92dd3d0f7276'
                         deleted: true
@@ -4407,6 +5373,22 @@ declare global {
                                     name: 'x_gegis_ins_policy.integration'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '2ddf012f495a4fe4b18ba84f0531ec4c'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table'
+                            element: 'coverage'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: '2de9412b25e84b13b9579dc230efc49c'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage_term'
+                            element: 'term_type'
                         }
                     },
                     {
@@ -4504,6 +5486,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '2f22d5272d354310bf43d99f70ce78d8'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'NULL'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '2f2b9ea7f7aa4a8eb9b615b7512a665b'
                         key: {
@@ -4536,6 +5527,14 @@ declare global {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'nature_of_business'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '2f85fbce41554628acd801049eebded6'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'status'
                         }
                     },
                     {
@@ -4655,6 +5654,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '30fbe63973354423a942b946800ae4ef'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'line_of_business'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '310580ddc60b4d69a19f389e33a96054'
                         key: {
@@ -4693,11 +5700,28 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '314e1abc9ddd47248c9317436d46624c'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table'
+                            element: 'expiry_date'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_number'
                         id: '31517fd2cd8947769951e49c488abdd9'
                         key: {
                             category: 'x_gegis_ins_policy_clearance_case'
                             prefix: 'CLR'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '3180bedee871448ca167bf54735f787e'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'product_name'
                         }
                     },
                     {
@@ -4711,6 +5735,13 @@ declare global {
                                     name: 'x_gegis_ins_policy.operational'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'ua_table_licensing_config'
+                        id: '31bb0439d075423bb5526e2f1391df2e'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
                         }
                     },
                     {
@@ -4740,6 +5771,13 @@ declare global {
                                     name: 'x_gegis_ins_policy.risk_analyst'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_db_object'
+                        id: '3213518a77094b6fb8c3363a234543e3'
+                        key: {
+                            name: 'x_gegis_ins_policy_product_coverage'
                         }
                     },
                     {
@@ -4847,11 +5885,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '32ffb9affb7e42afa85b30adaf1717bf'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'protection'
+                            value: 'sprinklered'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '3316b14f5bf04cc79a044cda72b698cc'
                         key: {
                             name: 'x_gegis_ins_policy_qnb_case'
                             element: 'underwriter'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '331a2a83b96a4ffbace9590b816df8e8'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'term_type'
+                            value: 'deductible'
                         }
                     },
                     {
@@ -4921,6 +5977,30 @@ declare global {
                         }
                     },
                     {
+                        table: 'ua_table_licensing_config'
+                        id: '33fc5f83e5d34d3ab7177a7aed493a60'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_party'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: '343aa8971e954a04baf751c094b3cf0e'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'exposure'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '348ae27d058a4d11b43b48db542fbd1b'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'construction'
+                            value: 'fire_resistive'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '348d8e814064491fa8e06d2bb0cea6d6'
                         key: {
@@ -4955,6 +6035,15 @@ declare global {
                             name: 'x_gegis_ins_policy_clearance'
                             element: 'orchestration_case'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '353cf60b298a49468f97dfd7b3e52e2f'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'construction'
+                            value: 'frame'
                         }
                     },
                     {
@@ -5082,6 +6171,15 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '3684a6a06cbb4b6a937cc031479bc090'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'engine_cc'
+                            value: 'upto_1500cc'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '3693733e67994ce795dcad109ac9dc74'
                         key: {
                             name: 'x_gegis_ins_policy_submission_party'
@@ -5122,6 +6220,32 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '3740caf73a3d4c818af6906c81b7905b'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy'
+                            element: 'line_of_business'
+                            value: 'motor'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '375853380a73425ab52c529e5e59a4df'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'help_text'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '375abb29181948ddacc1927a2c8bddb4'
+                        key: {
+                            name: 'x_gegis_ins_policy_condition'
+                            element: 'name'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '37810cef65414c719f17bde89f2d4080'
                         key: {
@@ -5132,6 +6256,15 @@ declare global {
                                     name: 'x_gegis_ins_policy.compliance_officer'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '37c339ca0fbd4f25b93c9d53d180656c'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'engine_cc'
+                            language: 'en'
                         }
                     },
                     {
@@ -5248,6 +6381,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '392b667d4328415bab0cbdbfeaf52945'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_party'
+                            element: 'party_role'
+                            value: 'broker'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '393be818662f47a2997ea3e3c800e362'
                         key: {
@@ -5269,6 +6411,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_clearance_check'
                             element: 'related_record'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '395b07608cf54af0bca837446c08f7cf'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage'
+                            element: 'mandatory'
+                            language: 'en'
                         }
                     },
                     {
@@ -5311,6 +6462,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '39f3aa348cf5488dbf95988202083b81'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'protection'
+                            value: 'partial_sprinkler'
+                        }
+                    },
+                    {
                         table: 'sys_variable_value'
                         id: '3a18ecb59359075044f7bd4f7bba10ef'
                         key: {
@@ -5320,11 +6480,29 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '3a1f04358f6f4c65893bf957e8ab1aea'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'occupancy'
+                            value: 'retail_mall'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '3a26c778dd40415e970ce168954915c6'
                         key: {
                             name: 'x_gegis_ins_policy_exposure_case'
                             element: 'exposure_status'
                             value: 'data_entry'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '3a5f593a8fd648ffb6ced6726bac94b1'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'protection'
+                            value: 'partial_sprinkler'
                         }
                     },
                     {
@@ -5359,6 +6537,13 @@ declare global {
                                     name: 'x_gegis_ins_policy.integration'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'ua_table_licensing_config'
+                        id: '3a9c96812b0343a08e255d8d50d91f38'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
                         }
                     },
                     {
@@ -5428,6 +6613,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '3c4eed8a6a6b47b5b81bf90c4e7bfb43'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'exposure'
+                            value: 'suburban_medium'
+                        }
+                    },
+                    {
                         table: 'sn_glider_source_artifact_m2m'
                         id: '3c513e94fafb495a84c9e0171b085546'
                         deleted: false
@@ -5437,11 +6631,36 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '3c8785b726cb414ab1602c67ef05ce64'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage_term'
+                            element: 'policy_coverage'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: '3cfb154a9609487c8ca54a92d4c429e6'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'construction'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '3d259b126b084df2a6b3922945487db5'
                         key: {
                             name: 'x_gegis_ins_policy_exposure_item'
                             element: 'machinery'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '3d2fc20bf80240e695d5b7ae0c24da51'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'exposure'
                         }
                     },
                     {
@@ -5464,6 +6683,15 @@ declare global {
                             name: 'x_gegis_ins_policy_policy'
                             element: 'renewed_from'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '3d7c94fdf875468598e1d759f466bd91'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'factor_type'
+                            value: 'loading'
                         }
                     },
                     {
@@ -5600,11 +6828,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '3ea9102e9c734f81b838ad7c211be8cb'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_condition'
+                            element: 'NULL'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice_set'
                         id: '3eaee81411c343f2ab2257cd7bb5deb4'
                         key: {
                             name: 'x_gegis_ins_policy_bind'
                             element: 'status'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '3f03160945174ff3bedd9b0180c52b21'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'applies_to'
+                            value: 'policy'
                         }
                     },
                     {
@@ -5653,6 +6899,15 @@ declare global {
                     },
                     {
                         table: 'sys_documentation'
+                        id: '40215f3f64054c299b27316120772132'
+                        key: {
+                            name: 'x_gegis_ins_policy_product_coverage'
+                            element: 'coverage'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
                         id: '4032e7ebb4f64e4fb5ecc80bf3005dcd'
                         key: {
                             name: 'x_gegis_ins_policy_submission_party'
@@ -5666,6 +6921,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_clearance_check'
                             element: 'method'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '404e9be71d7b45818f4cb7a5f08055c3'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'deductible_type'
+                            value: 'waiting_period'
                         }
                     },
                     {
@@ -5688,10 +6952,28 @@ declare global {
                     },
                     {
                         table: 'sys_documentation'
+                        id: '40b99580afed47839f0901a2a3693f60'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'display_order'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
                         id: '40b9be1f1ce74c288e1b27d0ec1cb377'
                         key: {
                             name: 'x_gegis_ins_policy_auto_exposure'
                             element: 'rental_amount_per_day'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '40c477b3e9c54476ac75981a26e1cef1'
+                        key: {
+                            name: 'x_gegis_ins_policy_exclusion'
+                            element: 'code'
                             language: 'en'
                         }
                     },
@@ -5735,6 +7017,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '41ada68547924a0c92738e635b75f1a8'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'occupancy'
+                            value: 'it_office'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '41c5f2b9d7774aa58dc8cf6e2c87b53d'
                         key: {
@@ -5769,11 +7060,47 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '41d6e23486c442069d9c6753fe0c867e'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'applies_to'
+                            value: 'coverage'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '41e327949873479aa32297a34de315ea'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'eligibility_rule'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '41e832e367324c37b1e435da9b0923d4'
                         key: {
                             name: 'x_gegis_ins_policy_clearance_check'
                             element: 'disposition'
                             value: 'not_applicable'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '4209d9e6b4cf4c19b6b8debeeb8b0e57'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'valuation_basis'
+                            value: 'rcv'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '42614497173645b1b2f89b8364864768'
+                        key: {
+                            name: 'x_gegis_ins_policy_condition'
+                            element: 'name'
+                            language: 'en'
                         }
                     },
                     {
@@ -5801,6 +7128,32 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '42ae56f9b69c4a758dc1f1dcabe0336a'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'occupancy'
+                            value: 'restaurant'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '42cd679f024e4d679798a117772851a0'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'NULL'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '42dd46a0923b4c7ca1bed1a3ce62e861'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'coverage_name'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '42ed2329776c4d31b16b14a30bdd231b'
                         key: {
@@ -5819,6 +7172,13 @@ declare global {
                                     name: 'x_gegis_ins_policy.compliance_officer'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'ua_table_licensing_config'
+                        id: '43001a0d66024370ab51e3a184ebb5f9'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_option_coverage_term'
                         }
                     },
                     {
@@ -5850,6 +7210,15 @@ declare global {
                                     name: 'x_gegis_ins_policy.approver'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '43a6da9a393e4673ad1b94f56d664575'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table'
+                            element: 'effective_date'
+                            language: 'en'
                         }
                     },
                     {
@@ -5916,11 +7285,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '442d2030f7084c1eace53f9ad7bba73d'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'coverage_selection'
+                            value: 'excluded'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '443ff85088994167927f8c9e935f2d21'
                         key: {
                             name: 'x_gegis_ins_policy_document'
                             element: 'page_count'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '44760b43d95c468ea5de4263c7ea0bad'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'construction'
+                            value: 'fire_resistive'
                         }
                     },
                     {
@@ -5951,6 +7338,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '44c4acb9fa6c49fb8c8b8ae05eb669d5'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'status'
+                            value: 'draft'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '44c85669fa264ca6bd238e5506921143'
                         key: {
@@ -5960,12 +7356,28 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '44d813c8ec7d48a3833823332f88ccd2'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'effective_date'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '44da03dc461a417fb85eca39ffa3d444'
                         key: {
                             name: 'x_gegis_ins_policy_mfl_pml'
                             element: 'original_currency'
                             value: 'chf'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '44e66626e16149098ffebb60876824fc'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage'
+                            element: 'NULL'
                         }
                     },
                     {
@@ -6007,6 +7419,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '4548815a399649d892f40699e79bb227'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'risk_type'
+                            value: 'contents'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '45627f09ab26409d8835581b2c193081'
                         key: {
@@ -6026,6 +7447,14 @@ declare global {
                             name: 'x_gegis_ins_policy_vehicle'
                             element: 'vehicle_type'
                             value: 'bus'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '45867484cebe4fb89fdeb71bfdf2d0a5'
+                        key: {
+                            name: 'x_gegis_ins_policy_product_coverage'
+                            element: 'mandatory'
                         }
                     },
                     {
@@ -6108,6 +7537,15 @@ declare global {
                     },
                     {
                         table: 'sys_documentation'
+                        id: '46a002c67b6a4e0ca0fa9fd05cb4c7c8'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_option_coverage'
+                            element: 'quote_risk'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
                         id: '46a580fa441d40868ca9af58d33e9437'
                         key: {
                             name: 'x_gegis_ins_policy_party'
@@ -6142,6 +7580,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '4727292280ec4a689420fa432d8918be'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote'
+                            element: 'insured'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '4734408e70674b518937a96354964414'
                         key: {
@@ -6161,6 +7608,14 @@ declare global {
                             name: 'x_gegis_ins_policy_exposure_item'
                             element: 'extra_expenses'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: '475d1d395b3d4a7090cbcb10e1b24f95'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'engine_cc'
                         }
                     },
                     {
@@ -6221,6 +7676,24 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '48519d40fa4c4a73b6abb5aaa053abcf'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'cause_of_loss_form'
+                            value: 'basic'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '48736f752c3d48a9805103c8682c9f2e'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table'
+                            element: 'rate_type'
+                            value: 'flat'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '487c092268364d7eb0f51949cbb08d76'
                         key: {
@@ -6275,6 +7748,50 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '48fbef5d803e41d3aee577457fd90aa8'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'NULL'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '4915435ae5df4b238547de900053847d'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'data_type'
+                            value: 'integer'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '49194cc285d14ba588b69392d915f2bc'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote'
+                            element: 'product'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '4921c6cceea248898699ef9f7741e7da'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'deductible_type'
+                            value: 'per_occurrence'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '4965d80dc16b464c93a299c4c457a860'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'construction'
+                            value: 'non_combustible'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '497e96258a8a49239fc79ca518eaba49'
                         key: {
@@ -6289,6 +7806,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_document'
                             element: 'uploaded_date'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '49daa73453064d4ca514e58ffca440b2'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'occupancy'
+                            value: 'restaurant'
                         }
                     },
                     {
@@ -6469,6 +7995,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '4c0582e1171b4141b66f35f45dc26704'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_option_coverage_term'
+                            element: 'quote_option_coverage'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '4c362878954f41e598d454e1067d039f'
                         key: {
@@ -6543,11 +8078,37 @@ declare global {
                     },
                     {
                         table: 'sys_documentation'
+                        id: '4d5d63a2a52045de8d1fc7ac9ce91256'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'applicable_states'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '4d98953df25a4f0c878e8c414a411c6d'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'eligibility_rule_ref'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
                         id: '4da21635addc41f980d98e7615aa5f47'
                         key: {
                             name: 'x_gegis_ins_policy_extraction_field'
                             element: 'target_table'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: '4da9f37d4a7b489786a168c95aeee46f'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'risk_type'
                         }
                     },
                     {
@@ -6570,6 +8131,15 @@ declare global {
                                     name: 'x_gegis_ins_policy.underwriter'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '4e41dfd092f84894aa1cc77f9bf0d6e9'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'risk_type'
+                            value: 'contents'
                         }
                     },
                     {
@@ -6598,6 +8168,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '4eb160e861304713bba8431faab3e7be'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote'
+                            element: 'insured'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '4eb52c2b71e94e04a5c8d0d509c0af11'
                         key: {
@@ -6608,6 +8186,15 @@ declare global {
                                     name: 'x_gegis_ins_policy.operational'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '4ecf13b40b2444748877d6ef41dbdf93'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'occupancy'
+                            value: 'healthcare'
                         }
                     },
                     {
@@ -6629,11 +8216,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '4f1625f83c9f4d36a591d3f8ecd77489'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage_term'
+                            element: 'term_type'
+                            value: 'deductible'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '4f2f0428eabb4e0883d1b0f735b7a454'
                         key: {
                             name: 'x_gegis_ins_policy_wc_exposure'
                             element: 'exclude_products'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '4f99d10566984f12a7dbf16a3f712e99'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor_entry'
+                            element: 'condition_label'
                             language: 'en'
                         }
                     },
@@ -6660,6 +8265,14 @@ declare global {
                             name: 'x_gegis_ins_policy_exposure_item'
                             element: 'crime_coverage'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: '4fcc2ef7738c415ab1e5635faa06687f'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'lob'
                         }
                     },
                     {
@@ -6696,6 +8309,23 @@ declare global {
                                     name: 'x_gegis_ins_policy.operational'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '501b4f01593948c79cf7bef222cb689d'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'status'
+                            value: 'voided'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '501df2a479f045c4832faa05a6be8bdf'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_option'
+                            element: 'version'
                         }
                     },
                     {
@@ -6767,6 +8397,14 @@ declare global {
                             name: 'x_gegis_ins_policy_exposure_item'
                             element: 'exposure_case'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '50e64c1f729f489ca6153b5700968d16'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table'
+                            element: 'name'
                         }
                     },
                     {
@@ -6858,6 +8496,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '51dc5d74074a457f91c6200bcba95de9'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'construction'
+                            value: 'masonry'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '51f055395ada422a9750021d57918301'
                         key: {
@@ -6895,6 +8542,40 @@ declare global {
                             name: 'x_gegis_ins_policy_top_risk'
                             element: 'new_renewal_currency'
                             value: 'chf'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '524a23207a3347fe9e184925a5ccb798'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage_term'
+                            element: 'term_name'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '5268669e150e481ab6afb187602191fc'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_option_coverage_term'
+                            element: 'NULL'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '52bea61542f841e487e679a390d26afa'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'lob'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '52cc38edb2624aa687be156f4852852d'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'status'
                         }
                     },
                     {
@@ -6943,6 +8624,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '533a7394dcb64fda89dbeab052a6cfd8'
+                        key: {
+                            name: 'x_gegis_ins_policy_product_coverage_term_option'
+                            element: 'premium_impact'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_user_role'
                         id: '53403077201349448f91c17ea274e6dc'
                         key: {
@@ -6963,6 +8653,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_existing_policy'
                             element: 'policy_number'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '535bde8ffbb24fbda2d8a9cdd73eb9f3'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy'
+                            element: 'status'
+                            value: 'active'
                         }
                     },
                     {
@@ -7007,6 +8706,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '53de2f3bbba54f2285bdea215b0be683'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'limit_type'
+                            value: 'per_occurrence'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '53fa0e8b5086467498f6da736a5aac74'
                         key: {
@@ -7019,6 +8727,22 @@ declare global {
                         id: '540755eb66b440bb8be2567de7f33ce8'
                         key: {
                             name: 'x_gegis_ins_policy_loss_summary'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '541b666730dd49a99b2459a77cad5204'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'code'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '542058674af34ec9b61b248681aaec1c'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor_entry'
+                            element: 'NULL'
                         }
                     },
                     {
@@ -7070,6 +8794,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '54b0e5e5aa9f40ef9f16048455db9cbe'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'construction'
+                            value: 'modified_fire_resistive'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '54b17c3e762441e29d86bfc63d89178c'
                         key: {
@@ -7085,6 +8818,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_orch_case'
                             element: 'submission'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '54b772d0fce74baabd672de633ec9f02'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'line_of_business'
+                            language: 'en'
                         }
                     },
                     {
@@ -7109,6 +8851,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_major_exclusion'
                             element: 'risk_case'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '54ec1fbf098a4e6093082e5281222b5b'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_exclusion'
+                            element: 'NULL'
+                            language: 'en'
                         }
                     },
                     {
@@ -7141,12 +8892,38 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '55188d104dad48518031f5a0088fe7cf'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table'
+                            element: 'expiry_date'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '55278d99b9724b36960ad4166412f291'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'applies_to'
+                            value: 'risk'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '555a8f7589344d6e9a79ba0f10769c68'
                         key: {
                             name: 'x_gegis_ins_policy_quote'
                             element: 'status'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '555adfb816ee432ca3db0c4c57599e82'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'exposure'
+                            value: 'coastal'
                         }
                     },
                     {
@@ -7171,6 +8948,24 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '558a4614afde4381880089fb1d6d8e31'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'zone'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '55ce102b1af4470a9e847769d64a9823'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'status'
+                            value: 'archived'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '55dec9ed23a145fea40a22fd2d9010df'
                         deleted: true
@@ -7185,6 +8980,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_clearance_check'
                             element: 'result_summary'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '56246eb02c7a4f6ea70b147ea58efbf6'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'policy'
                             language: 'en'
                         }
                     },
@@ -7211,6 +9015,15 @@ declare global {
                             name: 'x_gegis_ins_policy_quote'
                             element: 'currency'
                             value: 'gbp'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '5674a12a6672463a9d176cc19051de3d'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'exposure'
+                            value: 'urban_low'
                         }
                     },
                     {
@@ -7252,6 +9065,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '573872af182a4b6692ecc9341e27df16'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor_entry'
+                            element: 'rate_factor'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '575d7ef6af9b42768c754d4f24b18e24'
                         key: {
@@ -7262,6 +9083,15 @@ declare global {
                                     name: 'x_gegis_ins_policy.integration'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '578d0150fad14d02a38f0ad1df3d60cc'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'occupancy'
+                            value: 'hospitality'
                         }
                     },
                     {
@@ -7325,6 +9155,13 @@ declare global {
                             name: 'x_gegis_ins_policy_quote'
                             element: 'currency'
                             value: 'usd'
+                        }
+                    },
+                    {
+                        table: 'ua_table_licensing_config'
+                        id: '58063c23ab964f9fa8dcf764e6abc75d'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
                         }
                     },
                     {
@@ -7394,6 +9231,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '58878d8e468245a4b51baa53ad5f65c5'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'help_text'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '58d39a4907e44c63b02685616dd93598'
                         deleted: true
@@ -7426,6 +9271,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice_set'
+                        id: '592880a602754affa8fdbae11cc3203e'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'applies_to'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '595317d5cd78429ebe785fe6fdcdcbae'
                         key: {
@@ -7449,6 +9302,24 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_policy'
                             element: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '59657465515844a1a5676a0a0ee932b0'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'minimum_value'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '596894fbdc4346639ce0a25904bf5277'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table'
+                            element: 'rate_type'
+                            value: 'percentage'
                         }
                     },
                     {
@@ -7526,6 +9397,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '5a1aa53f65d94300929e28173ba99f89'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'protection'
+                            value: 'sprinklered'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '5a23f849eb8c4baeaf0d9ae698cb97a3'
                         key: {
@@ -7547,12 +9427,60 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '5a3af0de3d564ac2a3871e6deeef40d4'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'status'
+                            value: 'pending_approval'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '5a5adebc8cbf4f1d82aeeedb470cf4f4'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage'
+                            element: 'status'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '5a838f3c4247439a8bd16825032f99cb'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'term_type'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '5a8cc78c133947f694293ad484cc234f'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'protection'
+                            value: 'no_sprinkler'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '5a8f872f7a2e413f93313ffaa00aa643'
                         key: {
                             name: 'x_gegis_ins_policy_party'
                             element: 'industry'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_db_object'
+                        id: '5ac0f733faa9465b95fa06524fa7712a'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_condition'
+                        }
+                    },
+                    {
+                        table: 'sys_db_object'
+                        id: '5ac27c24854d41bf83d4046a82fccb2e'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
                         }
                     },
                     {
@@ -7599,6 +9527,31 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '5b4187ae474644489de2eb187ebf5b02'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'occupancy'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '5b6afd3430494b68944b45b6fbabb572'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor_entry'
+                            element: 'condition_label'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '5b918c0c3df74e838ffeda4593258f8f'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'protection'
+                            value: 'no_sprinkler'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '5b9eb13226d240ed9af8d8eb539ddec8'
                         key: {
@@ -7609,6 +9562,32 @@ declare global {
                                     name: 'x_gegis_ins_policy.underwriter'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '5bb08c53660f477ea96a2192b9ff5027'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'status'
+                            value: 'published'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: '5c07acc3244841e6b9c8af1ed86435d3'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'type'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '5c42a75f0c904c40911ca9cd1411625e'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'protection'
+                            value: 'sprinklered'
                         }
                     },
                     {
@@ -7683,6 +9662,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '5cc8550d8d4d4731b37c563183bff0ec'
+                        key: {
+                            name: 'x_gegis_ins_policy_product_coverage_term_option'
+                            element: 'coverage_term_option'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '5cd45961eedd41a48dd09492f2cbd143'
                         key: {
@@ -7731,6 +9718,23 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '5d21ab8918394b9f9a92831b00b36aa3'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'exposure'
+                            value: 'urban_low'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '5d2d4dc6b3ae44d0851af0231fb27e21'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_option_coverage'
+                            element: 'quote_option'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '5d5f214121d3491e960183500436042c'
                         key: {
@@ -7762,6 +9766,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice_set'
+                        id: '5d8dfd140191416da163be9ea6c9f620'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'valuation_basis'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '5d8f69cf17bc4858bb858a98ecf05b90'
                         key: {
@@ -7776,6 +9788,24 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_extraction_field'
                             element: 'page_number'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '5dbef23e1c984527b70ce4bf78a112f1'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'status'
+                            value: 'completed'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '5dc948be7ae04f3598cdeb131352f7cf'
+                        key: {
+                            name: 'x_gegis_ins_policy_product_coverage_term_option'
+                            element: 'coverage_term_option'
+                            language: 'en'
                         }
                     },
                     {
@@ -7842,6 +9872,13 @@ declare global {
                         }
                     },
                     {
+                        table: 'ua_table_licensing_config'
+                        id: '5e7b78a9a0cf4fbc96ab0d4998b5f400'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_option_coverage'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '5e7e1425238b4138841bf112cd738f6e'
                         key: {
@@ -7852,10 +9889,26 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: '5e7eb8d2c7504dd19718d7dd48ac564d'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_condition'
+                            element: 'coverage'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: '5e86041549ea4ee9afce860fbcc78b0a'
                         key: {
                             name: 'x_gegis_ins_policy_auto_exposure'
                             element: 'garage_keepers'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '5e896226c447428ca6bbae52ab72cdbf'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_party'
+                            element: 'is_primary'
                         }
                     },
                     {
@@ -7948,6 +10001,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice_set'
+                        id: '5f7ddc89ee92467dbf517215024aa541'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'status'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '5fb0fbfbb22a48898fdb0e999a0fdf12'
                         deleted: true
@@ -7972,6 +10033,15 @@ declare global {
                             name: 'x_gegis_ins_policy_document'
                             element: 'scope'
                             value: 'common'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '5fd330b7c9464ab29ca7dc92c00c87a9'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'coverage_selection'
+                            language: 'en'
                         }
                     },
                     {
@@ -8058,6 +10128,22 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice_set'
+                        id: '60db77df03b946ecadbe246a58e4065d'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'coverage_selection'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '60f6d42d252d4abfaec5ea4f75c0bbe6'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage'
+                            element: 'policy'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '60fe63be900c4e138eb88ed787c3c629'
                         key: {
@@ -8102,6 +10188,15 @@ declare global {
                             name: 'x_gegis_ins_policy_loss_record'
                             element: 'peril'
                             value: 'cbi_unnamed'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '6177a446e2324335b231e52413591f68'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'deductible_type'
+                            value: 'percentage'
                         }
                     },
                     {
@@ -8166,6 +10261,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_document'
                             element: 'uploaded_by'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '6230efe8cabf4e3ca6c9e0c4473ff95c'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'status'
                             language: 'en'
                         }
                     },
@@ -8291,6 +10395,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice_set'
+                        id: '639df88b92df40cc9efc269680824562'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_party'
+                            element: 'party_role'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '63ab2da051af4332a463c5b4ac2db6f4'
                         key: {
@@ -8370,6 +10482,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '6460f670967e4f3e8edf3eb35214062a'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'coverage_selection'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '64a64364fbd040b88bb66f4d85b6ce4a'
                         key: {
@@ -8400,10 +10520,27 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: '6538467824944657bca69f7285b032db'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'effective_date'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: '65593a62489f4c54868de82208cec112'
                         key: {
                             name: 'x_gegis_ins_policy_quote_option'
                             element: 'terms'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '656c926b43724c6f971f80334e78fcb8'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_exclusion'
+                            element: 'coverage'
+                            language: 'en'
                         }
                     },
                     {
@@ -8417,6 +10554,14 @@ declare global {
                                     name: 'x_gegis_ins_policy.broker'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '658aabfb8e054eebaf8cb86fbf8cf90c'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'display_order'
                         }
                     },
                     {
@@ -8458,11 +10603,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '660786072ce94d72a3655a6703ebb3e7'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'effective_date'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice_set'
                         id: '6626ea0d47cb41679089005976b9c66a'
                         key: {
                             name: 'x_gegis_ins_policy_quote_option'
                             element: 'line_of_business'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '663aa4c0b7a04872b6f856ab50e4a1ab'
+                        key: {
+                            name: 'x_gegis_ins_policy_product_coverage'
+                            element: 'mandatory'
+                            language: 'en'
                         }
                     },
                     {
@@ -8492,12 +10655,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '66b7cb1766704647919b3a7b1e935d2b'
+                        key: {
+                            name: 'x_gegis_ins_policy_condition'
+                            element: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '66e4259711ef4dac8a223b174e526802'
                         key: {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'transaction_type'
                             value: 'endorsement'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '66f7cc889f164bc692ccf489127a2596'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_party'
+                            element: 'party_role'
+                            value: 'named_insured'
                         }
                     },
                     {
@@ -8541,11 +10721,28 @@ declare global {
                     },
                     {
                         table: 'sys_documentation'
+                        id: '67bbefb351b04289a5468c367aff3071'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'minimum_coverages'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
                         id: '67efd43f6ba846e682a9a77917c53047'
                         key: {
                             name: 'x_gegis_ins_policy_risk_case'
                             element: 'assessed_by'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '680b7afb192446f9b688865f24463938'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'display_order'
                         }
                     },
                     {
@@ -8592,6 +10789,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '68e6bd83bb954b91926c67d146517ea1'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'limit_type'
+                            value: 'aggregate'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '68ee39c760b2433da607aeca0b6ed3dc'
                         key: {
@@ -8610,6 +10816,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '69552cf76a9343e99d4ea8842c9ba70f'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'occupancy'
+                            value: 'hospitality'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '696cf9b263484cbfa9232857353e7b59'
                         key: {
@@ -8625,6 +10840,24 @@ declare global {
                             name: 'x_gegis_ins_policy_quote'
                             element: 'currency'
                             value: 'cad'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '69a8074b77e543d7b426d3550543c9ab'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'active_status'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '69c25516f7e04568b344d72401fa6e0c'
+                        key: {
+                            name: 'x_gegis_ins_policy_product_coverage_term_option'
+                            element: 'is_product_default'
+                            language: 'en'
                         }
                     },
                     {
@@ -8745,6 +10978,14 @@ declare global {
                             name: 'x_gegis_ins_policy_location'
                             element: 'construction_type'
                             value: 'non_combustible'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '6abedc5700fb4d3da0e6dd1a51a4f17d'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_condition'
+                            element: 'NULL'
                         }
                     },
                     {
@@ -8894,6 +11135,31 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: '6bf0078858e44b8aaa2497ad345a8b14'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '6c0196d24eca418c83a39ed535caebc5'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'description'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: '6c111304920148b3a6392fae90b34bea'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'risk_type'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: '6c17e5e4a05f40ad92eb9d04beaacede'
                         key: {
                             name: 'x_gegis_ins_policy_loss_summary'
@@ -8964,6 +11230,14 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: '6d33eb3527e64d8e88370f119898e390'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'rate_table'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: '6d3f5f105cb441bda0f9b5811d317c79'
                         deleted: true
                         key: {
@@ -9024,6 +11298,15 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '6d91ceda25ed407d989486f9b9fb535d'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'data_type'
+                            value: 'currency'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '6d9e5c453cf5470c88880ccf2631c3d8'
                         key: {
                             name: 'x_gegis_ins_policy_extraction'
@@ -9048,6 +11331,23 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '6df67a7abad7494aa804b509694b9d82'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'affects_rating'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '6e0db8d6affa4ebdbf962efe196502e6'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'cause_of_loss_form'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '6e0efefd13bf4f1f81384991a2e09523'
                         key: {
@@ -9057,11 +11357,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '6e43b047385b4a2587f46e19e1a32c61'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'occupancy'
+                            value: 'it_office'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '6e448c92408245c095808d68ffe4ce84'
                         key: {
                             name: 'x_gegis_ins_policy_extraction'
                             element: 'extraction_method'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '6e52790366224b7aa452844816db3b5a'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'dependency_rule'
+                            language: 'en'
                         }
                     },
                     {
@@ -9088,6 +11406,14 @@ declare global {
                             name: 'x_gegis_ins_policy_auto_exposure'
                             element: 'full_glass_coverage'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '6ea8cd6916b34ba59fc63abf9dd8b1e8'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'engine_cc'
                         }
                     },
                     {
@@ -9203,6 +11529,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '6f96563bda8d40e58e3e7712a7031ccd'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'effective_date'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '6f9b036a133041f0a3c9bc00216050d4'
                         key: {
@@ -9230,6 +11565,15 @@ declare global {
                             name: 'x_gegis_ins_policy_quote_option'
                             element: 'limit'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '701b5b071fe04209a6bc9f8194edf809'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'protection'
+                            value: 'fire_alarm_only'
                         }
                     },
                     {
@@ -9263,6 +11607,22 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_bind'
                             element: 'effective_date'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: '709b1b512267472abaaa5ddabce90d83'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'coverage_selection'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: '70a124db0b4d4fe88c0dc812784472ff'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'deductible_type'
                         }
                     },
                     {
@@ -9302,6 +11662,31 @@ declare global {
                     },
                     {
                         table: 'sys_documentation'
+                        id: '70e6d0aaa89542169dba0b12eb6fa552'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'default_deductible'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '70edc232b82e471dbee6220d73ec1d47'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'product_code'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '7135cc3323244abc8b28c7fa1e74f70a'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'active'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
                         id: '7140e5938ba0490182538bdd40d8bf6c'
                         deleted: true
                         key: {
@@ -9323,6 +11708,24 @@ declare global {
                         id: '71fffa17e5dc4d68971b710745481b0e'
                         key: {
                             name: 'x_gegis_ins_policy_submission_party'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '720195ab93c7440f80c1864afda81fde'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'exposure'
+                            value: 'flood_zone'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '720b489581724603ab60646eede05ef6'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'risk_type'
+                            value: 'equipment'
                         }
                     },
                     {
@@ -9389,6 +11792,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '726a0f94caf948d68eb2c0e736d66b41'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor_entry'
+                            element: 'condition_value'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '72710ccb61e04836a4e7ad15fa6da4f9'
                         key: {
@@ -9441,6 +11852,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '729fc836f6ef4714bfde4ac520b39af4'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'description'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'ua_table_licensing_config'
                         id: '72a7132d62884d21aa017d43f50f177c'
                         key: {
@@ -9479,6 +11899,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '72c2fa38ab30495fb7e3867fdd768743'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_option_coverage_term'
+                            element: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '72dcbb335a5044028184d6fcb66d9feb'
                         key: {
@@ -9505,6 +11933,32 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_submission_party'
                             element: 'relationship_to_primary'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '730f16429391492b830ffdaafd5d7375'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'construction'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: '731a6723599f4ac0901a7ac8bc20190e'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'line_of_business'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '731d1cef81464073b58677f701a79b96'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'expiration_date'
+                            language: 'en'
                         }
                     },
                     {
@@ -9547,6 +12001,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '73a1508ba6b74eea9cea460591904b21'
+                        key: {
+                            name: 'x_gegis_ins_policy_product_coverage_term_option'
+                            element: 'product_coverage'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '73a8708d9cbe4650b482d6bf0252c698'
                         key: {
@@ -9557,6 +12020,13 @@ declare global {
                                     name: 'x_gegis_ins_policy.approver'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_db_object'
+                        id: '73bf7cfa87504eb09698a7aacad5747d'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_option_coverage'
                         }
                     },
                     {
@@ -9595,6 +12065,24 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_qnb_case'
                             element: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '742732d4ec0242a882b598c81d6e45c7'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'construction'
+                            value: 'masonry'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '742d1ada82f045199a7b53c3279877f9'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'display_order'
+                            language: 'en'
                         }
                     },
                     {
@@ -9684,6 +12172,24 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '759c40d183944f2d8d6f4eb83837bab9'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage_term'
+                            element: 'term_type'
+                            value: 'coinsurance'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '75d273b45ecb4d4a90f153c98cc7c0f7'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'construction'
+                            value: 'masonry'
+                        }
+                    },
+                    {
                         table: 'sys_user_role_contains'
                         id: '75ed5a24cfbc474599447500ce4123c7'
                         key: {
@@ -9748,6 +12254,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '766fba9c6d4e49dd92f8ff7c2c5074f8'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table'
+                            element: 'lob'
+                            value: 'auto'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '768ed078344d40f1b64a9b1f665e7d98'
                         key: {
@@ -9775,6 +12290,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '770ec9777fa7455992a8709cff61aed0'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'default_limit'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '7744e3992b66455994bdc952e9e1e1c2'
                         key: {
@@ -9785,6 +12308,15 @@ declare global {
                                     name: 'x_gegis_ins_policy.compliance_officer'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '777d715e0f7f4afd8a9d52f180299308'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'type'
+                            value: 'new_business'
                         }
                     },
                     {
@@ -9802,6 +12334,14 @@ declare global {
                             name: 'x_gegis_ins_policy_exposure_case'
                             element: 'submission'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '77f2886d53a442a99c0dd5745a6f0c9b'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'deductible_type'
                         }
                     },
                     {
@@ -9829,12 +12369,28 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice_set'
+                        id: '785255a1cdfb46a3803de14faead8651'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'data_type'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '78534f475c7643b9898490f613ab6546'
                         key: {
                             name: 'x_gegis_ins_policy_quote'
                             element: 'status'
                             value: 'accepted'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '78561c181156410a8b5961247031349a'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'cause_of_loss_form'
                         }
                     },
                     {
@@ -9860,6 +12416,14 @@ declare global {
                             name: 'x_gegis_ins_policy_intake_case'
                             element: 'body'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '7939ceaa9d7b4bb9b15a443fdf327362'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'NULL'
                         }
                     },
                     {
@@ -9890,6 +12454,13 @@ declare global {
                         }
                     },
                     {
+                        table: 'ua_table_licensing_config'
+                        id: '79b9ba61e22340f9a8fa5ebe39c28725'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '7a177252ec1a41f4b456f6788ac9f830'
                         key: {
@@ -9911,6 +12482,15 @@ declare global {
                         key: {
                             document_key: 'fb0e906d172e50349ff70dbde2a24a39'
                             variable: '49ed24875b00001070e4492c11f91aa5'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '7a1b351af1054ceb8e150c8236cf2670'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_party'
+                            element: 'party_role'
+                            value: 'additional_insured'
                         }
                     },
                     {
@@ -9985,6 +12565,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '7a9b3bf63bf844d9a3144e84dba04230'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy'
+                            element: 'quote_option'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_db_object'
                         id: '7aa5a3642165427eb4f051821670d030'
                         deleted: true
@@ -10007,6 +12596,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_exposure_item'
                             element: 'building'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '7ab956d52da14bc0b9a70bff2477417f'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'factor_type'
                             language: 'en'
                         }
                     },
@@ -10050,6 +12648,23 @@ declare global {
                         id: '7b79589717124fb98d1604e38cd94f8c'
                         key: {
                             name: 'x_gegis_ins_policy_loss_record'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '7b891a9dc13040168a4b377a0d1cd6f1'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'exposure'
+                            value: 'industrial_high'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '7ba4b034f8d048a89b0ec26095c08385'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'eligibility_rule'
                         }
                     },
                     {
@@ -10130,6 +12745,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '7c40bca8d085417187433aefd224b8c2'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'protection'
+                            value: 'full_suppression'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '7c53e769706d470fa77912cc75d610f8'
                         key: {
@@ -10156,6 +12780,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '7cd0420774994697bfc978322fe29fc7'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_condition'
+                            element: 'condition'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '7cf4381e60954bb294133b1e100db7a6'
                         key: {
@@ -10170,6 +12802,14 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'line_of_business'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '7d0e8a20827c4e6a8b4b3f65b9296434'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'protection'
                         }
                     },
                     {
@@ -10191,10 +12831,37 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '7dae8773a9cd4608961104a562e66425'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'risk_type'
+                            value: 'business_interruption'
+                        }
+                    },
+                    {
                         table: 'sys_db_object'
                         id: '7db19b140a3d4fdc9ced1b75bce09b78'
                         key: {
                             name: 'x_gegis_ins_policy_exposure_case'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '7db1d50ff75548fcab186bcd43e27b7c'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'limit_type'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '7dda1f00edf04712bc74903984167595'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'type'
+                            value: 'cancellation'
                         }
                     },
                     {
@@ -10272,6 +12939,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '7f2fc75e87b34ea5b6e7725335e92fb3'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'exposure'
+                            value: 'industrial_high'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '7f3c83fc027e4bdc942d7c1324b9ca7d'
                         key: {
@@ -10285,6 +12961,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '7f4537fad63a43e489dc033f8d6f3821'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'lob'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '7f4a42cb58a5407f9b1232cc8a75b5bc'
                         key: {
@@ -10295,6 +12979,15 @@ declare global {
                                     name: 'x_gegis_ins_policy.integration'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '7f6586d0c1b2445bb5686df105731046'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'risk_type'
+                            language: 'en'
                         }
                     },
                     {
@@ -10317,6 +13010,15 @@ declare global {
                                     name: 'x_gegis_ins_policy.operational'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '7fd1f82843e94dd98f3065301cb8c8be'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_party'
+                            element: 'party_role'
+                            value: 'loss_payee'
                         }
                     },
                     {
@@ -10383,6 +13085,15 @@ declare global {
                                     name: 'x_gegis_ins_policy.operational'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '807c8359508b41ad924c1804cc5be6c7'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'occupancy'
+                            value: 'retail_mall'
                         }
                     },
                     {
@@ -10453,6 +13164,32 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '80d7687b0062454db5fe55bdbba01eb2'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'occupancy'
+                            value: 'warehouse'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '80ec8e316d4f4d6ab45f5bdceeb5e4a5'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'coverage_selection'
+                            value: 'excluded'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '810372df426d442182c7b0a69979c152'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'description'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '8105c1f5a8b346fe99482faed7fc1a30'
                         key: {
@@ -10510,6 +13247,41 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '81b7bf3244a24953958979fd4bf0bab4'
+                        key: {
+                            name: 'x_gegis_ins_policy_product_coverage'
+                            element: 'NULL'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '81c7905bd0da4a23a0442c9df60035ba'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'status'
+                            value: 'archived'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '81dae3f5b2864727bd5c0568f2bd6c16'
+                        key: {
+                            name: 'x_gegis_ins_policy_product_coverage'
+                            element: 'product'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '81f845e7d89647e7927eeb6fcadca55f'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'NULL'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '81fc6912fd844b08a41309f2dca3b85a'
                         key: {
@@ -10537,12 +13309,37 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '82416ecf68cf4afaaa8aacb1cc1e5345'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'term_name'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '825e621a63a14fb184ff399fdbc50df1'
                         key: {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'primary_broker'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '828b6d63bd184742aaa2f55478f68ea8'
+                        key: {
+                            name: 'x_gegis_ins_policy_product_coverage'
+                            element: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '829ce85ccf7c4191951fa2816cb115cb'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'lob'
+                            value: 'auto'
                         }
                     },
                     {
@@ -10559,6 +13356,13 @@ declare global {
                         id: '82e295371439493d85e70a6e9bcab90b'
                         key: {
                             endpoint: 'x_gegis_ins_policy_submissions.do'
+                        }
+                    },
+                    {
+                        table: 'sys_db_object'
+                        id: '8328850035c24c0db710eb6b6b28c1df'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_party'
                         }
                     },
                     {
@@ -10617,6 +13421,13 @@ declare global {
                             name: 'x_gegis_ins_policy_quote'
                             element: 'version'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'ua_table_licensing_config'
+                        id: '8392098ccff34fb89fce1eeb83846af7'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
                         }
                     },
                     {
@@ -10696,6 +13507,22 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '854fcc02b3d74e82b005b3928d875cfb'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'description'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'ua_table_licensing_config'
+                        id: '85536a4a4679488db74f09b41d2b9a7b'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '855ad917dd1d4a5cbdff07da94f298fd'
                         key: {
@@ -10706,6 +13533,14 @@ declare global {
                                     name: 'x_gegis_ins_policy.operational'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: '8561dd3cf0d549278a7d31281b5f8476'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'status'
                         }
                     },
                     {
@@ -10744,6 +13579,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '86323a1e40dc4001b6883648307512c3'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'term_code'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_ux_lib_asset'
                         id: '8665190bab0d479f91b44239a454b788'
                         deleted: false
@@ -10760,10 +13604,27 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '86a5d8deb0724ea9bdbc4c3a403592c7'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'construction'
+                            value: 'frame'
+                        }
+                    },
+                    {
                         table: 'sys_db_object'
                         id: '86ae5acae57947e8b3b309b46e9145e2'
                         key: {
                             name: 'x_gegis_ins_policy_quote_option'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '86d04e5ac1144f0488289c73005a4a2d'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_option_coverage_term'
+                            element: 'coverage_term_option'
                         }
                     },
                     {
@@ -10829,6 +13690,24 @@ declare global {
                     },
                     {
                         table: 'sys_documentation'
+                        id: '877580192fa541799202fc9edf9b1a52'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'rate_value'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '878021a62aa04025833ce961a59e645f'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'code'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
                         id: '878f9edf0281494bb96d51bf767d9720'
                         deleted: true
                         key: {
@@ -10868,6 +13747,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '881bc6fb0ed34a5cb8906c73a428183e'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_party'
+                            element: 'party_role'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '881eb93f71144ab9924e187a30c68384'
                         key: {
@@ -10887,6 +13774,14 @@ declare global {
                                     name: 'x_gegis_ins_policy.integration'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '8842cc89b487476d98f590b40c3e0d47'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'rate_value'
                         }
                     },
                     {
@@ -10973,11 +13868,36 @@ declare global {
                     },
                     {
                         table: 'sys_documentation'
+                        id: '89983d2d8c974b6e8c820924760db83d'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'status'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
                         id: '899ebfefe76544a6b138f21cdd1ff75e'
                         key: {
                             name: 'x_gegis_ins_policy_loss_record'
                             element: 'losses_outstanding_usd'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '89dfa20c4d024e9db873a709fd55ccbc'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'version'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '89ed6412783348b3b38e08d4c9660b74'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'expiration_date'
                         }
                     },
                     {
@@ -10989,11 +13909,43 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '8a29f0927aba4ac19a075d21c712db5f'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'affects_rating'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '8a38b3615ab64f4cb52b607de85b2a37'
+                        key: {
+                            name: 'x_gegis_ins_policy_exclusion'
+                            element: 'code'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '8a3ee3ce68e74868a75507113be5da9a'
                         key: {
                             name: 'x_gegis_ins_policy_loss_record'
                             element: 'date_of_loss'
+                        }
+                    },
+                    {
+                        table: 'sys_db_object'
+                        id: '8a9bbccca2494c858bef7f75925fbd8d'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '8af1a306d3a04f648c71ce1966f1b6bd'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'valuation_basis'
                         }
                     },
                     {
@@ -11047,6 +13999,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_document'
                             element: 'notes'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '8c496d25bb8549ff99804edc9181abf9'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage_term'
+                            element: 'selected_value'
+                            language: 'en'
                         }
                     },
                     {
@@ -11156,6 +14117,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '8dcf6dbe175142fcaeb79d9992227fef'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'coverage_name'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '8de5f40bd6644a138cdaa5d3ffa1ccb3'
                         key: {
@@ -11208,6 +14178,13 @@ declare global {
                         }
                     },
                     {
+                        table: 'ua_table_licensing_config'
+                        id: '8e451fd2068d4dcf8cdbd6a0b3dd4a2c'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage_term'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '8e48377faf0f48c7ac358f83e47bc05a'
                         key: {
@@ -11226,10 +14203,61 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: '8e8090b78c4f4af58ac2e077ce02361f'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'vehicle_type'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '8ea2fbc841314f7893b1df65bdefb313'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'cause_of_loss_form'
+                            value: 'named_perils'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '8eba61c980b5416ca696df5550a8150b'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'valuation_basis'
+                            value: 'agreed_value'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '8ebe662c568f4c21ab5acd22bb2f24fd'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'construction'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: '8eccb0b36c814c80b146436132eb344a'
                         key: {
                             name: 'x_gegis_ins_policy_policy'
                             element: 'total_premium'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '8edbd909d65547a48670c8818ef7ac62'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'premium_delta'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '8f172009c5c0482bb7969d3b4859e93c'
+                        key: {
+                            name: 'x_gegis_ins_policy_product_coverage_term_option'
+                            element: 'product_coverage'
                         }
                     },
                     {
@@ -11257,6 +14285,15 @@ declare global {
                             name: 'x_gegis_ins_policy_auto_exposure'
                             element: 'garage_keepers'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '8f85d312be554749b708145b31506a0c'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'status'
+                            value: 'rejected'
                         }
                     },
                     {
@@ -11436,6 +14473,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '9205079b29cb482f8c44ab8bfb3907da'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_option_coverage'
+                            element: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '921a9e4c682049418e41dac4ee5d7bab'
                         key: {
@@ -11451,6 +14496,15 @@ declare global {
                             name: 'x_gegis_ins_policy_exposure_peril'
                             element: 'waiting_period_days_new'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '92dcb8b5e4484f6989f39f0fea7b9119'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'vehicle_type'
+                            value: 'commercial'
                         }
                     },
                     {
@@ -11481,6 +14535,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '93a2a907d3384b5da08d3132140412e6'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'term_name'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '93ac445b63f24abc925baef374098315'
                         key: {
@@ -11494,11 +14557,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '93c37ad67f334777ade07f83d7469a03'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'occupancy'
+                            value: 'office'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '93c8ac1582374c0dbc8855b66d353e41'
                         key: {
                             name: 'x_gegis_ins_policy_mfl_pml'
                             element: 'risk_case'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '94227a1442624e3da5463ee7f3e42e49'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'category_code'
+                            language: 'en'
                         }
                     },
                     {
@@ -11557,6 +14638,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '94e6c1520a9b4ed8be1d59e0eb36ec82'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'exposure'
+                            value: 'rural_low'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '94fe2694dad64903ab58e606d8180d06'
                         key: {
@@ -11602,6 +14692,24 @@ declare global {
                             name: 'x_gegis_ins_policy_top_risk'
                             element: 'impact'
                             value: 'critical'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '95fd3d45883d4183b2a79b299276e218'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'NULL'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '960d600ad17b450fb4ee5985e0ac90ed'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'term_type'
+                            value: 'premium'
                         }
                     },
                     {
@@ -11651,6 +14759,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '96d16e007cb04b4ca88680f0da9231a9'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_exclusion'
+                            element: 'coverage'
+                        }
+                    },
+                    {
                         table: 'sys_choice_set'
                         id: '96dfc816f01549458a2e9dcf43656ce7'
                         deleted: true
@@ -11677,6 +14793,24 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '970f3c27f4b84be3adf3b053dc1e8635'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_party'
+                            element: 'is_primary'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '9740703df6764f95a8a15f15957d7bab'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'factor_type'
+                            value: 'discount'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '974a1a6b5e414b67b28575cb80743beb'
                         deleted: true
@@ -11691,12 +14825,36 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '97506fd2032b482c96d902b096f2725e'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'coverage_category'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '975b656810f34734ac8c4dabbe2f2469'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_option_coverage'
+                            element: 'product_coverage'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '97987925e7ec4629bd44313b9fc4659b'
                         key: {
                             name: 'x_gegis_ins_policy_exposure_peril'
                             element: 'peril'
                             value: 'eq_california'
+                        }
+                    },
+                    {
+                        table: 'sys_db_object'
+                        id: '979d115b6cdc4b45a7489d753c239ea0'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
                         }
                     },
                     {
@@ -11727,12 +14885,28 @@ declare global {
                         }
                     },
                     {
+                        table: 'ua_table_licensing_config'
+                        id: '97e9430a4f9744a9b98e4d89d57c5227'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_exclusion'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary_override'
                         id: '97eb62243b1dcb1005ad7564c3e45a45'
                         deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'number'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '9804c05bdfae418daee7b4a8793591ec'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'lob'
+                            value: 'motor'
                         }
                     },
                     {
@@ -11758,6 +14932,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_exposure_peril'
                             element: 'expiring_sub_limit_amount'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '984675173aea4fac964f41712da2d6cc'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_party'
+                            element: 'account'
                             language: 'en'
                         }
                     },
@@ -11806,11 +14989,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '9906fdae9d824028b1cae8bcd4fbc340'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'line_of_business'
+                            value: 'auto'
+                        }
+                    },
+                    {
                         table: 'sys_db_object'
                         id: '991a44c0ee534d98bf2b241ceef414d2'
                         deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_ai_task'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '992664018e784336ac77e42b062feda2'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'exposure'
+                            value: 'suburban_medium'
                         }
                     },
                     {
@@ -11896,6 +15097,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice_set'
+                        id: '99e3502c1d194d85a776236d58565156'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'protection'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '9a0aaeeb2fd348b1af0ad347374034d9'
                         key: {
@@ -11927,6 +15136,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '9a3483a47bbc4ca893b3b614f1f812bb'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'line_of_business'
+                            value: 'property'
+                        }
+                    },
+                    {
                         table: 'sys_choice_set'
                         id: '9a43c63ec9b44af1a3bd1a2ac9f29fd1'
                         key: {
@@ -11946,6 +15164,15 @@ declare global {
                                     name: 'x_gegis_ins_policy.operational'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '9a7c920aa0fd40759b06e908f93cc9d4'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'valuation_basis'
+                            value: 'functional_replacement'
                         }
                     },
                     {
@@ -11976,6 +15203,22 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'subscription'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '9a9e90772da049c2a511660320001da4'
+                        key: {
+                            name: 'x_gegis_ins_policy_product_coverage'
+                            element: 'coverage'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '9ac7f1abfa4d46d6a243fc7ec3f9380b'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'occupancy'
                         }
                     },
                     {
@@ -12014,6 +15257,14 @@ declare global {
                             name: 'x_gegis_ins_policy_top_risk'
                             element: 'risk_case'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '9b86c62f857c466abe428819d36b4428'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'occupancy'
                         }
                     },
                     {
@@ -12057,11 +15308,29 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '9c18381976264b718e738347f4937158'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'construction'
+                            value: 'non_combustible'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '9c267dbaa6b3413c810f002ae0e91b4c'
                         key: {
                             name: 'x_gegis_ins_policy_submission_party'
                             element: 'relationship_to_primary'
                             value: 'subsidiary'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '9c38f86846a34b54b1a2d18f55446ca4'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy'
+                            element: 'product'
+                            language: 'en'
                         }
                     },
                     {
@@ -12109,6 +15378,15 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '9c90ef758df44742a0e52526c85389ff'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'limit_type'
+                            value: 'per_location'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '9ca8ffb684ef42e7824b3428a24b8823'
                         key: {
                             name: 'x_gegis_ins_policy_submission_party'
@@ -12122,6 +15400,24 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_loss_summary'
                             element: 'loss_period_to'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '9d645c5c8b0a4be2b59f7c73335b53a3'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'type'
+                            value: 'renewal'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '9da4cb3ef71d4055a104b8347589e78e'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'status'
+                            value: 'draft'
                         }
                     },
                     {
@@ -12150,11 +15446,28 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '9e5b136efc62425c8bf61bd82e10011b'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'term_code'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary_override'
                         id: '9e5fe20712e64b68a6f6a8808e34721f'
                         key: {
                             name: 'x_gegis_ins_policy_exposure_case'
                             element: 'number'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '9e81655ecddb43fea916e1e158ebc1b0'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'engine_cc'
+                            value: 'upto_350cc'
                         }
                     },
                     {
@@ -12194,6 +15507,14 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'policy_currency'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: '9eff43c984d24b94870a0e55d945fc23'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'occupancy'
                         }
                     },
                     {
@@ -12279,6 +15600,15 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '9fb2d750d95e4790b6d445c2ecff246d'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table'
+                            element: 'lob'
+                            value: 'workers_comp'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '9fce26c12b464e6b8147a46b53e29b20'
                         key: {
                             name: 'x_gegis_ins_policy_submission'
@@ -12292,6 +15622,14 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_auto_exposure'
                             element: 'bodily_injury_occurrence_limit'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '9fd38fc6f8da44f8b031a2feb9ec3968'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'type'
                         }
                     },
                     {
@@ -12319,6 +15657,23 @@ declare global {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'subscription'
                             value: 'quote_only'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'a0b4aa8c47d341b6bbc7b193b354d06d'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage'
+                            element: 'coverage'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'a0c279ea959244b2b1e88d31f0354b31'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'applicable_states'
+                            language: 'en'
                         }
                     },
                     {
@@ -12366,6 +15721,13 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_db_object'
+                        id: 'a13eaa104d3e40b3b1878712eca102dc'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage_term'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'a14a6d54921a47eb9dae14e8428668a7'
                         key: {
@@ -12392,6 +15754,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_auto_exposure'
                             element: 'roadside_assistance'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'a1de72fd306946e08591cfba3a678db3'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'risk_type'
+                            value: 'vehicle'
                         }
                     },
                     {
@@ -12427,6 +15798,14 @@ declare global {
                                     name: 'x_gegis_ins_policy.integration'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'a1eae1fe82c24494a237c53d8e5789cc'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'default_value'
                         }
                     },
                     {
@@ -12466,6 +15845,14 @@ declare global {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'policy_type'
                             value: 'commercial_auto'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'a298e5cf435c499faa5c68ccc1e87e83'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'data_type'
                         }
                     },
                     {
@@ -12514,6 +15901,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: 'a32a0931ea1b4773835bf76f1ad8b615'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'policy'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'a34a155a12584bdca2574560af13e216'
                         key: {
@@ -12546,11 +15941,35 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'a3697f8a0a0048e5bae282d500148ebe'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table'
+                            element: 'coverage'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_db_object'
+                        id: 'a3cd16b4a4d1405b81739f6d4af086c1'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'a3eb20a1ef5a4e4a9757561aa7267adc'
                         key: {
                             name: 'x_gegis_ins_policy_document'
                             element: 'file_size_kb'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'a4147e76a17e430c975ba8bfab9dc10d'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage_term'
+                            element: 'NULL'
                         }
                     },
                     {
@@ -12572,6 +15991,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice_set'
+                        id: 'a4772f74ca9b4957b67e8b8b665ef08c'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'term_type'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'a498bce6798945e6b52049f6f65941e9'
                         key: {
@@ -12590,12 +16017,30 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'a4aafae8cc604444a98805a7e6bb4b28'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'description'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'a4d4a9f48fe8473c92522abf643d87f7'
                         key: {
                             name: 'x_gegis_ins_policy_exposure_peril'
                             element: 'expiring_status'
                             value: 'included'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'a4da64ebd34148a58cb14f7b939339b2'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'lob'
+                            value: 'property'
                         }
                     },
                     {
@@ -12653,6 +16098,14 @@ declare global {
                             name: 'x_gegis_ins_policy_wc_exposure'
                             element: 'foreign_liability'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'a60795eaa43f4f2b8b011f08e6f4f9c2'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage_term'
+                            element: 'policy_coverage'
                         }
                     },
                     {
@@ -12831,6 +16284,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'a8669f538b5b4ecd9b7e38749b92ddd8'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'default_limit'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: 'a8b6120ce488493c821738d689f755ab'
                         key: {
@@ -12841,6 +16303,15 @@ declare global {
                                     name: 'x_gegis_ins_policy.admin'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'a93c94e0590d4e02815ec1eac4eab7a6'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'maximum_value'
+                            language: 'en'
                         }
                     },
                     {
@@ -12935,6 +16406,13 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_db_object'
+                        id: 'a9de5e26dcef42cc8d82ae993a508c7d'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_exclusion'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'aa248bdc9e66451183e48cd49db56730'
                         key: {
@@ -12973,6 +16451,24 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'aa99d375f4c54989bb4471143adba32d'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'policy'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'aab63aae5c704a289d3f785e2f6859a1'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'term_type'
+                            value: 'percentage'
+                        }
+                    },
+                    {
                         table: 'sys_choice_set'
                         id: 'aabd474271464e08853bb668f3060d5a'
                         key: {
@@ -12996,6 +16492,15 @@ declare global {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'assigned_to'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'ab2e3ac067b740279b5f751fd87f6fda'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'data_type'
+                            value: 'duration'
                         }
                     },
                     {
@@ -13031,6 +16536,14 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_auto_exposure'
                             element: 'vehicle_operated_by_employees'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'aba67ce6bdb44e34aa1051087ba44c7b'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage'
+                            element: 'policy_risk'
                         }
                     },
                     {
@@ -13170,6 +16683,41 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'ac69502d81ed4477a9f749c075e0d9e6'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'deductible_type'
+                            value: 'flat'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'ac6b7f1e469c4d62afb292ef8feb27d8'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'term_type'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'ac7fb815d1894f1481397e861e1f6878'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'valuation_basis'
+                            value: 'acv'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: 'ac8f86e877c849049f1c8e0496e0a642'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'vehicle_type'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'ac9978aad6ef49168470768726220220'
                         key: {
@@ -13299,6 +16847,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'af0096dc99de4747a4265800aeece423'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'default_value'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'ua_table_licensing_config'
                         id: 'af16cf1245864621ac2acded636f61cb'
                         key: {
@@ -13311,6 +16868,22 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_loss_record'
                             element: 'total_number_of_losses'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'af1e92ed47414c68ab06c56fcf360820'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'coverage_code'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'af60f236a33f4fce82de3c57e6b5b21e'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'minimum_limit'
                         }
                     },
                     {
@@ -13399,6 +16972,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: 'b0fdd54a25c9464fbf0b85fd71a05b6c'
+                        key: {
+                            name: 'x_gegis_ins_policy_product_coverage'
+                            element: 'base_premium'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'b14793d482da48209a3cf56a7582b2f5'
                         key: {
@@ -13408,11 +16989,46 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'b148112267194d03acc05fe3fb3babd8'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote'
+                            element: 'product'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'b148c9a09dc24487b8ac87cfed09eb02'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_option_coverage'
+                            element: 'coverage_premium'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'b163733da1d049399faf7345b0fb2566'
                         key: {
                             name: 'x_gegis_ins_policy_bind'
                             element: 'qnb_case'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: 'b1a274faf0ae44e6b1f35e3a033cde8d'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'factor_type'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'b1ebb16566b7492bace05aa956c5a915'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'risk_type'
+                            language: 'en'
                         }
                     },
                     {
@@ -13438,6 +17054,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: 'b2203cd9d32949c1921a16461a649010'
+                        key: {
+                            name: 'x_gegis_ins_policy_product_coverage_term_option'
+                            element: 'is_product_default'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'b22b01787eb14b4ea5f986a4e33dd099'
                         key: {
@@ -13453,6 +17077,15 @@ declare global {
                             name: 'x_gegis_ins_policy_intake_case'
                             element: 'sender_email'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'b2e1a529a25e4029afcca0eb8a238a02'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'status'
+                            value: 'published'
                         }
                     },
                     {
@@ -13483,6 +17116,15 @@ declare global {
                                     name: 'x_gegis_ins_policy.integration'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'b37d0aa17ae14bf68df2e2a795325c8b'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'protection'
+                            value: 'fire_alarm_only'
                         }
                     },
                     {
@@ -13541,11 +17183,27 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'b41153afbbee4eba83184a8fe10473f8'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage'
+                            element: 'NULL'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice_set'
                         id: 'b45be3dd28c14fd1a1737deeffb87710'
                         key: {
                             name: 'x_gegis_ins_policy_policy'
                             element: 'territory'
+                        }
+                    },
+                    {
+                        table: 'sys_db_object'
+                        id: 'b46a2491ef8541fda1ce8c495f2ee9a8'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_option_coverage_term'
                         }
                     },
                     {
@@ -13587,6 +17245,14 @@ declare global {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'overall_status'
                             value: 'quoted'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'b4bdffc446534cc9bc03f30f35d16604'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'status'
                         }
                     },
                     {
@@ -13668,6 +17334,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'b59bae565dfb4802aa0e73a542ab8af0'
+                        key: {
+                            name: 'x_gegis_ins_policy_exclusion'
+                            element: 'NULL'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: 'b5bf476c8cd94174949eaa8a5065851e'
                         deleted: true
@@ -13730,6 +17405,15 @@ declare global {
                                     name: 'x_gegis_ins_policy.integration'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'b66d2ba76dc34072b2d8a584a9c26612'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'version'
+                            language: 'en'
                         }
                     },
                     {
@@ -13801,6 +17485,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'b6ad5b4dfe594f359f0e56884b09e82d'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'occupancy'
+                            value: 'retail_mall'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'b6b55b01451c45c6b44db7f9e2c90f6f'
                         deleted: true
@@ -13847,10 +17540,28 @@ declare global {
                     },
                     {
                         table: 'sys_documentation'
+                        id: 'b70fcc2036c44fe0924e05441830e370'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'construction'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
                         id: 'b7192cb774b24ab59072cfab8b850134'
                         key: {
                             name: 'x_gegis_ins_policy_extraction_field'
                             element: 'page_number'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'b767ecf348a24a27af6cea14d59759bc'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor_entry'
+                            element: 'rate_factor'
                             language: 'en'
                         }
                     },
@@ -13869,6 +17580,31 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'b7bd95142e2d4ba7a8ba736769ab6381'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy'
+                            element: 'quote'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_db_object'
+                        id: 'b7f932f71a384bb58ded4b5d7ccdc69e'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'b82b54dc9d754209a1686a9a505cc1d3'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'term_type'
+                            value: 'limit'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'b83dcdc4d42d4c67859dfa0cdcf76589'
                         key: {
@@ -13878,10 +17614,36 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: 'b841ae7e822e4f9ba9111f1225a1dfcf'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'premium_delta'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: 'b8421e6e28144cd3a4de4296b0beec41'
                         key: {
                             name: 'x_gegis_ins_policy_exposure_case'
                             element: 'exposure_status'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'b843b8c17a5c4072b4654cc8eedd8da5'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage'
+                            element: 'coverage_premium'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'b8b30d9f2cff4a11b25853f18acd3eeb'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table'
+                            element: 'lob'
+                            language: 'en'
                         }
                     },
                     {
@@ -13920,6 +17682,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'b939443750ab43c0babf64cb8a66fd1f'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'risk_type'
+                            value: 'vehicle'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'b93d10e30e624e4e91064b57d9f3d71b'
                         key: {
@@ -13937,12 +17708,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'b94aa0f8ba66464b893010cdb8543b47'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage_term'
+                            element: 'selected_label'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice_set'
                         id: 'b951ee8043b24d6a96264240396fd3bb'
                         deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_clearance'
                             element: 'clearance_result'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'b9a69e97fca04eca8bbea0dc70555f81'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'required'
                         }
                     },
                     {
@@ -13992,6 +17780,15 @@ declare global {
                             name: 'x_gegis_ins_policy_top_risk'
                             element: 'new_renewal_currency'
                             value: 'aud'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'ba63fd5e545d4d178ddd4c34cb033d5b'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'occupancy'
+                            value: 'office'
                         }
                     },
                     {
@@ -14098,12 +17895,28 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice_set'
+                        id: 'bc56db01c5e7409a837edbde3ab16b41'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table'
+                            element: 'lob'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'bc8d443a50aa483497b2b483ed83e216'
                         key: {
                             name: 'x_gegis_ins_policy_case_task'
                             element: 'category'
                             value: 'extraction'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'bc90774e925545fe90c546c17bff6ce9'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'active_status'
                         }
                     },
                     {
@@ -14142,6 +17955,15 @@ declare global {
                             name: 'x_gegis_ins_policy_clearance_check'
                             element: 'reviewed_by'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'bd3dbdb5ae65411683041701676af6cd'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'occupancy'
+                            value: 'healthcare'
                         }
                     },
                     {
@@ -14199,6 +18021,15 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: 'bdace3a42e7640b4845378be3866223a'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage_term'
+                            element: 'term_type'
+                            value: 'sublimit'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: 'bdb050c31a3944b0b0171aedfdc50d43'
                         key: {
                             name: 'x_gegis_ins_policy_qnb_case'
@@ -14212,6 +18043,14 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_submission_party'
                             element: 'contact_name'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'bdcc07a8455e4621928a1658de82e883'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'minimum_coverages'
                         }
                     },
                     {
@@ -14270,6 +18109,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: 'be5147c5b67b494692d361cb7b4950a1'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'location'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: 'be52ebd3998346acb1197f614c1c12a8'
                         key: {
@@ -14305,6 +18152,23 @@ declare global {
                             name: 'x_gegis_ins_policy_auto_exposure'
                             element: 'roadside_assistance'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'befd3e31779e4ba59c49137432ba59c3'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table'
+                            element: 'name'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'bf50e09cb18f4364b629ac06e6c4500c'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'NULL'
                         }
                     },
                     {
@@ -14377,6 +18241,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: 'c009e26e726349f1a1f432074e31868f'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy'
+                            element: 'quote_option'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'c045b40eedb04eda8e9df95a64abe69d'
                         key: {
@@ -14404,6 +18276,23 @@ declare global {
                     },
                     {
                         table: 'sys_documentation'
+                        id: 'c14eff3a6419418983c4cb3d7f95c7d4'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_condition'
+                            element: 'coverage'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'c15b41c8a69941b59a72f2dbda7a85dd'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table'
+                            element: 'rate_type'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
                         id: 'c15df8a6979b4d90ae4702f8065dd878'
                         key: {
                             name: 'x_gegis_ins_policy_vehicle'
@@ -14427,6 +18316,14 @@ declare global {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'policy_currency'
                             value: 'cad'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: 'c194e9111b144f2f845c9084efa3b935'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'protection'
                         }
                     },
                     {
@@ -14475,6 +18372,41 @@ declare global {
                             name: 'x_gegis_ins_policy_exposure_case'
                             element: 'exposure_status'
                             value: 'in_review'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'c1fab6ec1a794b048ce81391d1c3233d'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'coverage_code'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: 'c2032ab0832b4507909b93c04df342d6'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'zone'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'c211f5266a8c4cdc827c80736b17d0c4'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'construction'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'c2187df85300494792438163bf080a9c'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'NULL'
+                            language: 'en'
                         }
                     },
                     {
@@ -14614,6 +18546,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: 'c347b4a33fcc4ff3be408cfd104093e1'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_option_coverage'
+                            element: 'product_coverage'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'c3767316ffa5468b88aa6b8736716907'
                         key: {
@@ -14638,6 +18578,22 @@ declare global {
                             name: 'x_gegis_ins_policy_vehicle'
                             element: 'vehicle_type'
                             value: 'medium_truck'
+                        }
+                    },
+                    {
+                        table: 'ua_table_licensing_config'
+                        id: 'c3fa242853e7490892509a0884d81b0d'
+                        key: {
+                            name: 'x_gegis_ins_policy_product_coverage'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'c3fbbbedb41340f69fabb306927373fb'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_exclusion'
+                            element: 'exclusion'
+                            language: 'en'
                         }
                     },
                     {
@@ -14721,6 +18677,24 @@ declare global {
                     },
                     {
                         table: 'sys_documentation'
+                        id: 'c55d8b636b744f94a614ab472f030d16'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'rate_table'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'c576da54a31d4799a5265cb4369e840e'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'status'
+                            value: 'published'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
                         id: 'c59a3588ecea46e0b817e461a347b9ff'
                         key: {
                             name: 'x_gegis_ins_policy_mfl_pml'
@@ -14793,11 +18767,29 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: 'c68d2acc04944d34a800c9d35c74753f'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage'
+                            element: 'status'
+                            value: 'cancelled'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: 'c6c9278bc4704e53aa22bdd5320b99b6'
                         key: {
                             name: 'x_gegis_ins_policy_location'
                             element: 'construction_type'
                             value: 'joisted_masonry'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'c6d952b9a1dd4b8895ebc9360e41f1dc'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table'
+                            element: 'NULL'
+                            language: 'en'
                         }
                     },
                     {
@@ -14845,11 +18837,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'c73d43e3478c4440b75b251a32463db8'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'occupancy'
+                            value: 'manufacturing'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'c740fd8f060b4845bf1fc8f845691650'
                         key: {
                             name: 'x_gegis_ins_policy_policy'
                             element: 'NULL'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'c7518344dbff405088d0ddea1f8fd568'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'maximum_limit'
                             language: 'en'
                         }
                     },
@@ -14876,6 +18886,22 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_vehicle'
                             element: 'make'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'c7cfae5014024ddeadb568c03d63fe7c'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'protection'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'c7d8d98465d44993b65efa72b32eceb4'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor_entry'
+                            element: 'multiplier'
                         }
                     },
                     {
@@ -14932,6 +18958,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'c82649f7f041427485caae022ecc1d1b'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'status'
+                            value: 'archived'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'c82ad58dd3654908920fe6a82676dab3'
                         key: {
@@ -14972,6 +19007,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'c991f098b50b41b9b4d6034759e9986b'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'occupancy'
+                            value: 'manufacturing'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'c9d7f811953f47ecaf4d270bf6d8345d'
                         key: {
@@ -14999,6 +19043,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'ca11f53de32a4fd18a88453a6ffa95ca'
+                        key: {
+                            name: 'x_gegis_ins_policy_product_coverage_term_option'
+                            element: 'NULL'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'ca1ed4ee7d9d40708fd5c742bc316717'
                         key: {
@@ -15007,11 +19060,28 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'ca23fa38d81a45998e108f7d0736901e'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage'
+                            element: 'policy'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'ca60fa3bd0944be7ba526d96c3e40f15'
                         key: {
                             name: 'x_gegis_ins_policy_vehicle'
                             element: 'garaging_zip_code'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'cacd2f13385f4b24851564065d0fa83a'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_party'
+                            element: 'NULL'
                         }
                     },
                     {
@@ -15047,12 +19117,47 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: 'cbaee59478f945aa835b2164fbce80b2'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage_term'
+                            element: 'selected_label'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'cbafcd3fa9fe44ff8188c70e6e4c6780'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'vehicle_type'
+                            value: 'taxi'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'cbb0e474f0fd4aaaaf0b1b880acc9b97'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_condition'
+                            element: 'condition'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary_override'
                         id: 'cbbaa6243bd9cb1005ad7564c3e45a93'
                         deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_quote_bind'
                             element: 'assignment_group'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'cbeb8e39c68e48559947dab35aaca050'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'name'
+                            language: 'en'
                         }
                     },
                     {
@@ -15098,6 +19203,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'cd34537fcfa043a1986076d2f61f1272'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table'
+                            element: 'rate_type'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'cd3d176be0ef4e679f7050c39d799a04'
                         deleted: true
@@ -15114,6 +19228,23 @@ declare global {
                             name: 'x_gegis_ins_policy_case_task'
                             element: 'category'
                             value: 'general'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'cdaaf33e649e47e3bbf702c39e38a886'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'cause_of_loss_form'
+                            value: 'broad'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'cdc79bf568d54e64a627351fd9a10b0b'
+                        key: {
+                            name: 'x_gegis_ins_policy_condition'
+                            element: 'code'
                         }
                     },
                     {
@@ -15149,6 +19280,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'ce65e28ec37b46668c17fdcf74f1f849'
+                        key: {
+                            name: 'x_gegis_ins_policy_exclusion'
+                            element: 'description'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: 'ce690dfa1ffb43fe8cfaa7078fb595f1'
                         key: {
@@ -15162,12 +19302,37 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: 'ce6914bb5e974a1886fe0b8e379c5d3c'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_option_coverage_term'
+                            element: 'selected_value'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'cebae17d277d47b4aed738d387242331'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'location'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'cefa6287356e4e57891324a29ede1948'
                         key: {
                             name: 'x_gegis_ins_policy_extraction'
                             element: 'extraction_method'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'cf032f9ae1e84c649f1eefe0881c733e'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_option_coverage'
+                            element: 'quote_risk'
                         }
                     },
                     {
@@ -15232,6 +19397,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice_set'
+                        id: 'cfee2fd1a7af417bbf490f541c1a5b5e'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'cause_of_loss_form'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'cffea41dd23d484db1e9698ff4483bf3'
                         deleted: true
@@ -15252,10 +19425,25 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: 'd00be24c9ace4cfba79626f9b3a6f39a'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_exclusion'
+                            element: 'exclusion'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: 'd01f302259e04ba6be24424e6e6d771d'
                         key: {
                             name: 'x_gegis_ins_policy_extraction_field'
                             element: 'target_column'
+                        }
+                    },
+                    {
+                        table: 'ua_table_licensing_config'
+                        id: 'd0278fee2fea4f2ab6f4d19be109f1f7'
+                        key: {
+                            name: 'x_gegis_ins_policy_condition'
                         }
                     },
                     {
@@ -15317,6 +19505,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: 'd0d0ea73cd8640e688abeda1dde61051'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'applies_to'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'd0ea8edfe60d407f89b065a68ee6e1d5'
                         key: {
@@ -15347,6 +19543,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'd16a4dedf26f48e9930d4e522da10a07'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'NULL'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'd1a545c73b8d4ee59831e637cabe7243'
                         key: {
@@ -15364,12 +19569,30 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'd1e77c87231a49f8a704ea83dda25698'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'risk_type'
+                            value: 'building'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'd1eaa72513ae437c91cf8de358b9d978'
                         key: {
                             name: 'x_gegis_ins_policy_top_risk'
                             element: 'impact'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'd201fc8016b941429b14e86b96a9a3e7'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'construction'
+                            value: 'modified_fire_resistive'
                         }
                     },
                     {
@@ -15410,6 +19633,24 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: 'd2cb08fcba1849cc91d0338b2b42f379'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'zone'
+                            value: 'any'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'd2e4cb70be7f429ea2db575e367b13c4'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage'
+                            element: 'status'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: 'd2f7a231dcd04534a198255ad0464e13'
                         key: {
                             name: 'x_gegis_ins_policy_loss_record'
@@ -15423,6 +19664,48 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_exposure_peril'
                             element: 'peril'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'd337cef9609140199ae79dacb926ab04'
+                        key: {
+                            name: 'x_gegis_ins_policy_product_coverage_term_option'
+                            element: 'available'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: 'd33e534be4db4b8c869c4fbb26b2cc93'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'limit_type'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'd35a1a5bd1c743f1ba186a9d122e75db'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'default_deductible'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'd3a3d3967665441487d92d6a67e221fd'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'dependency_rule'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'd3a5acc553f84b8cb9760a6a1e9c5262'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'occupancy'
+                            language: 'en'
                         }
                     },
                     {
@@ -15456,6 +19739,14 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_exposure_item'
                             element: 'exposure_case'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'd4a37bd696e040b1b81b234862e2ccec'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'NULL'
                         }
                     },
                     {
@@ -15514,6 +19805,14 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: 'd55f16cbddf44a05bd8a5be5cd6148fd'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'status'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: 'd5638c077be04b53bef48c51c36f3e9d'
                         key: {
                             name: 'x_gegis_ins_policy_location'
@@ -15531,6 +19830,13 @@ declare global {
                                     name: 'x_gegis_ins_policy.admin'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_db_object'
+                        id: 'd5cc27c850aa4f54bacd23e3ce2c4a79'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
                         }
                     },
                     {
@@ -15589,6 +19895,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'd6df90b70271494698ff61d2dad75d13'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'exposure'
+                            value: 'flood_zone'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: 'd6e241c956e24298a9e875e40b65cfdd'
                         key: {
@@ -15608,6 +19923,32 @@ declare global {
                             name: 'x_gegis_ins_policy_document'
                             element: 'document_type'
                             value: 'survey_report'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'd71621acb6cf4545b0d3a827a2d38cc8'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'protection'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'd71eae8721e74861960267ca34e49e86'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_option'
+                            element: 'version'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_number'
+                        id: 'd7a58477eb29469f91ee6d7dfd9dab67'
+                        key: {
+                            category: 'x_gegis_ins_policy_policy'
+                            prefix: 'POL'
                         }
                     },
                     {
@@ -15722,6 +20063,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: 'd8d6b759270644858c6550ac661821fd'
+                        key: {
+                            name: 'x_gegis_ins_policy_extraction'
+                            element: 'version'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: 'd8d7d9a7bb6d43fbb22b68837d303568'
                         deleted: true
@@ -15759,6 +20108,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_location'
                             element: 'submission'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'd93e74d3dfce4d8d98b1cbcd3998b4f3'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'risk_type'
+                            value: 'equipment'
                         }
                     },
                     {
@@ -15800,12 +20158,28 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: 'd9c367b05ce4478cb3435f9bc4173118'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'minimum_value'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'd9d306764bd9432197bae31028cbe720'
                         key: {
                             name: 'x_gegis_ins_policy_risk_case'
                             element: 'risk_grade'
                             value: 'c'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'd9eebb5d647743559acecba8aeeb37f5'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table'
+                            element: 'effective_date'
                         }
                     },
                     {
@@ -15847,11 +20221,37 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'da416686a2684a8e99070176e2b713fb'
+                        key: {
+                            name: 'x_gegis_ins_policy_product_coverage'
+                            element: 'base_premium'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'da5d8a3c8b37454696835ff10e02fba2'
                         key: {
                             name: 'x_gegis_ins_policy_bind'
                             element: 'bound_by'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: 'da6deb18491e4644bb50480a4075ff84'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'protection'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'da7a76836fb5453f9566652bbc2e2942'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'risk_type'
+                            value: 'building'
                         }
                     },
                     {
@@ -15894,6 +20294,13 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_db_object'
+                        id: 'db060f7eb1b844d798fe8f9c66e5100d'
+                        key: {
+                            name: 'x_gegis_ins_policy_condition'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: 'db09a6897a744991a029fae002073306'
                         key: {
@@ -15925,6 +20332,31 @@ declare global {
                                     name: 'x_gegis_ins_policy.broker'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'db332d8d7bd44d85ad46ca51c91d613e'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table'
+                            element: 'lob'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'db35e678065c482697c649d1ba11007c'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'factor_type'
+                            value: 'multiplier'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'db502d85b83647acb0d76dc2c188b895'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage_term'
+                            element: 'selected_value'
                         }
                     },
                     {
@@ -15976,12 +20408,30 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'dc032c8bbb604bffb78f7b5940618ab7'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'deductible_type'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'dc18796843c14dbba98b3acdc5f2a055'
                         deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_quote_bind'
                             element: 'premium_amount'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'dc6a0c436e5d4ce190c2860f034a59f7'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'protection'
+                            value: 'no_sprinkler'
                         }
                     },
                     {
@@ -16008,6 +20458,21 @@ declare global {
                             name: 'x_gegis_ins_policy_policy'
                             element: 'originating_qnb_case'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'dd0421ac7c844d40ab7847b5b2a75afe'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'coinsurance_pct'
+                        }
+                    },
+                    {
+                        table: 'sys_db_object'
+                        id: 'dd179bcc24af4eb0a871833d0cd959a8'
+                        key: {
+                            name: 'x_gegis_ins_policy_exclusion'
                         }
                     },
                     {
@@ -16075,6 +20540,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: 'de027d75eb294e09ae08cf408a7d8ebb'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'category_code'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'de0e4c09d71b403590cc2321dae7ce48'
                         key: {
@@ -16115,6 +20588,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_auto_exposure'
                             element: 'supplemental_spousal_liability'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'de99092c80554b1faa3497ca9318035d'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'deductible_type'
+                            value: 'per_location'
                         }
                     },
                     {
@@ -16181,6 +20663,24 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'df92e5614f8342cb970be6bdc1dd35e4'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'construction'
+                            value: 'non_combustible'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'df965bf5833b4e3b87d70ba494d0b068'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'construction'
+                            value: 'joisted_masonry'
+                        }
+                    },
+                    {
                         table: 'sys_db_object'
                         id: 'dfb001e41e6e4254b188c313fc489890'
                         key: {
@@ -16188,10 +20688,36 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'dfb161835bd148d6a90608f12620ae30'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'coverage_category'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'ua_table_licensing_config'
                         id: 'dfb45361d6ea4e358391c5764d87c616'
                         key: {
                             name: 'x_gegis_ins_policy_document'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'dfdc550e495e4d14801ee6de106778fd'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'quote'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'dffa02349f364d20824590a7ef7455fd'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'engine_cc'
+                            value: 'above_1500cc'
                         }
                     },
                     {
@@ -16213,6 +20739,23 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: 'e05fe16396484b16802dd58ec87828c8'
+                        key: {
+                            name: 'x_gegis_ins_policy_exclusion'
+                            element: 'name'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'e06183b422b542f89c2bd9fbc5f8e828'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'exposure'
+                            value: 'coastal'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'e067f5258c1f42b086ce6dbbadcbaaac'
                         key: {
@@ -16228,6 +20771,32 @@ declare global {
                             name: 'x_gegis_ins_policy_location'
                             element: 'longitude'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'e08b8d7d2b4f455f919340b3382fc6df'
+                        key: {
+                            name: 'x_gegis_ins_policy_exclusion'
+                            element: 'name'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'e095e8e36afe42d6b28a3f6618f06e4b'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'zone'
+                            value: 'urban'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'e0ba444ee8bd49e6bd2788eaa653963d'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'zone'
                         }
                     },
                     {
@@ -16278,6 +20847,37 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_bind'
                             element: 'accepted_quote'
+                        }
+                    },
+                    {
+                        table: 'ua_table_licensing_config'
+                        id: 'e1a55f89397848199871d73912f491c6'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'e1afa54e0aed41868a835985b0a49404'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'construction'
+                            value: 'fire_resistive'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'e1b3f4df107042ee9fdb5763d7daa59f'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'eligibility_rule_ref'
+                        }
+                    },
+                    {
+                        table: 'ua_table_licensing_config'
+                        id: 'e2204c70ddf94041ab4d022929ab41e3'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor_entry'
                         }
                     },
                     {
@@ -16333,6 +20933,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'e2b08df6894f4df09eb24d026504a7af'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage_term'
+                            element: 'term_type'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'e2b9507fed8a493295f30b2086f4b66f'
                         key: {
@@ -16356,10 +20965,61 @@ declare global {
                     },
                     {
                         table: 'sys_dictionary'
+                        id: 'e2e1c13ac39d4108977570e54fa7b88f'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'e2e1d2a505fa4b7daaeb61eb48bb8ed4'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'status'
+                            value: 'approved'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
                         id: 'e32ffd5df64e4c698cdc6cd3281d3005'
                         key: {
                             name: 'x_gegis_ins_policy_wc_exposure'
                             element: 'disease_aggregate_limit'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'e332bb9ab4f747838437410c5c83cb2a'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'protection'
+                            value: 'fire_alarm_only'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'e3690ec2c12b46d69eda5bb6eabf4907'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'limit_type'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'e37c9ed146bf461a8bbf7d9853617ea2'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'risk_type'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'e38552723f7e4dceadc74f4f34a61814'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'protection'
+                            language: 'en'
                         }
                     },
                     {
@@ -16416,6 +21076,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'e45dcd720e624c3fa4c8687a21eeb43d'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'exposure'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'e476e727d022449ba86dfe5035733dfd'
                         key: {
@@ -16446,6 +21115,22 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: 'e4ffb77aedba414fb83957b251e93d1d'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'maximum_limit'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'e570ef3889f44d01b15aac0c5a3b6665'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'applicable_states'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'e59f150b263d4657ba11a711fdc98c41'
                         key: {
@@ -16461,6 +21146,15 @@ declare global {
                             name: 'x_gegis_ins_policy_risk_factor'
                             element: 'weight'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'e5e8b6798f8e4a21839063c71775f4b5'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'data_type'
+                            value: 'text'
                         }
                     },
                     {
@@ -16567,6 +21261,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: 'e7be161fb15a47c6b7894ba00f2ad093'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_option_coverage_term'
+                            element: 'quote_option_coverage'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'e7d9ef26557c4ab5b24f9cc2d68bf02b'
                         key: {
@@ -16640,6 +21342,15 @@ declare global {
                             name: 'x_gegis_ins_policy_exposure_item'
                             element: 'indemnity_period_months'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'e877099471824d388680d3ddc18830ee'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'status'
+                            value: 'draft'
                         }
                     },
                     {
@@ -16744,6 +21455,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'e9fc86bb6a2148c2adb02c9cdbd11217'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_option_coverage_term'
+                            element: 'coverage_term_option'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: 'ea31d71851114107874e0ddf9fb4f7fa'
                         key: {
@@ -16780,6 +21500,31 @@ declare global {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'subscription'
                             value: 'risk_only'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'ead028f68a914a7caa48ca25d2929e46'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'line_of_business'
+                            value: 'workers_comp'
+                        }
+                    },
+                    {
+                        table: 'ua_table_licensing_config'
+                        id: 'eb13fb3a1a934a76ba79c6bfa9fd0574'
+                        key: {
+                            name: 'x_gegis_ins_policy_product_coverage_term_option'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'eb1accecc03043028040c5283a50df1e'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage'
+                            element: 'status'
+                            value: 'active'
                         }
                     },
                     {
@@ -16835,6 +21580,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'eb634c3b4d3f45bca82868ae0083f718'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'limit_type'
+                            value: 'per_item'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: 'eb8c949093804ac4aa1dbd3f6f786e44'
                         key: {
@@ -16853,6 +21607,14 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_quote'
                             element: 'status'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'eba2475fdfda4f77b2e8f1ec79fba672'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'description'
                         }
                     },
                     {
@@ -16887,6 +21649,23 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: 'ec1d4f7c5ffb47359715140616b63c4b'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'construction'
+                            value: 'frame'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'ec3d9cb94892430699342f0661836949'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'default_selected'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: 'ec8e1f2f073c4682babf88528d2cf070'
                         deleted: true
                         key: {
@@ -16910,6 +21689,14 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_exposure_item'
                             element: 'equipment_breakdown_ext_rated'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'ecc598224dab43d486c27c33d7907780'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'policy'
                         }
                     },
                     {
@@ -16939,6 +21726,31 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_quote_option'
                             element: 'terms'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: 'ed313f655f3549b7ad40d75eed7a78f7'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage'
+                            element: 'status'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'ed47ada63b64452fb667f66346a6a9b5'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_exclusion'
+                            element: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'eda80c0f46fb4b84a75136266ba609ef'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'active'
                             language: 'en'
                         }
                     },
@@ -16994,6 +21806,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: 'eee85544681c4b68929aab5a0d1870eb'
+                        key: {
+                            name: 'x_gegis_ins_policy_exclusion'
+                            element: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'ef03868aa40247358b4be087fe5055ae'
                         key: {
@@ -17014,6 +21834,14 @@ declare global {
                                     name: 'x_gegis_ins_policy.operational'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'ef29c533a7a640d1a79e0dc3829c1bb6'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'category_name'
                         }
                     },
                     {
@@ -17086,6 +21914,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'f0291d3041c746529b4f85ce9f20f08a'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'location'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: 'f02a511e2ca44d53a394ead2aff5abad'
                         deleted: true
@@ -17105,6 +21942,15 @@ declare global {
                         deleted: false
                         key: {
                             name: 'x_gegis_ins_policy/vendor-react-dom--003b9c7e.js.map'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'f037e2c6f5354b72af2e01b1f16e56f5'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor_entry'
+                            element: 'NULL'
+                            language: 'en'
                         }
                     },
                     {
@@ -17142,12 +21988,47 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: 'f0f299a6a50447f8b2ea6a9708e88664'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'location'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'f0fef3e762ba49e38cf79434cefb43e9'
                         key: {
                             name: 'x_gegis_ins_policy_mfl_pml'
                             element: 'mfl_or_pml'
                             value: 'pml'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'f114be4a3ecb4cbbafb30c008f7f24e5'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'construction'
+                            value: 'modified_fire_resistive'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'f153ed85d4794d40b16c2ffe0d615649'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'term_type'
+                            value: 'duration'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'f162b801f7e34eed846a36874dda9961'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'status'
+                            language: 'en'
                         }
                     },
                     {
@@ -17165,6 +22046,14 @@ declare global {
                             name: 'x_gegis_ins_policy_clearance'
                             element: 'clearance_result'
                             value: 'cleared'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'f1722f0cf61f490bb6f734f0ced433fe'
+                        key: {
+                            name: 'x_gegis_ins_policy_product_coverage_term_option'
+                            element: 'available'
                         }
                     },
                     {
@@ -17194,6 +22083,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice_set'
+                        id: 'f220d198e4f74ad9a658a690522c975a'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'construction'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'f240202673a34f7d8eb9c07fcc4d3f7b'
                         key: {
@@ -17211,11 +22108,29 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: 'f27c30d1e5674771b6217a4a8c084417'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_transaction'
+                            element: 'type'
+                            value: 'endorsement'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: 'f28f294966354299bac58c21d84c865e'
                         key: {
                             name: 'x_gegis_ins_policy_mfl_pml'
                             element: 'original_currency'
                             value: 'jpy'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'f2d5f35b3672409ebbfa7c6700795ea1'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage_term'
+                            element: 'NULL'
+                            language: 'en'
                         }
                     },
                     {
@@ -17240,6 +22155,14 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_party'
                             element: 'party_type'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'f33caf49630a4ba6bb709702f28d7372'
+                        key: {
+                            name: 'x_gegis_ins_policy_condition'
+                            element: 'description'
                         }
                     },
                     {
@@ -17336,6 +22259,15 @@ declare global {
                     },
                     {
                         table: 'sys_documentation'
+                        id: 'f44c9e5d661840e8b2f7c33af9d631e3'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'NULL'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
                         id: 'f44d7c6681884820872e69d10fa7ba6d'
                         key: {
                             name: 'x_gegis_ins_policy_quote'
@@ -17366,6 +22298,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'f47eaa76b3d34e2b8e474bada9f6a466'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage'
+                            element: 'status'
+                            value: 'expired'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: 'f4ab90e3f9dc4cbb9c9ca5591af965c7'
                         key: {
@@ -17376,6 +22317,14 @@ declare global {
                                     name: 'x_gegis_ins_policy.risk_analyst'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'f4b94dc644ef4165977e62243821e845'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_term'
+                            element: 'coverage'
                         }
                     },
                     {
@@ -17415,6 +22364,15 @@ declare global {
                             name: 'x_gegis_ins_policy_bind'
                             element: 'bound_premium'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'f51c37239c714256851593fb2eb0a95f'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table'
+                            element: 'rate_type'
+                            value: 'per_mille'
                         }
                     },
                     {
@@ -17472,6 +22430,15 @@ declare global {
                     },
                     {
                         table: 'sys_documentation'
+                        id: 'f5e3acf025f44146bd29dfb936846af8'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_option_coverage'
+                            element: 'NULL'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
                         id: 'f5e4c57cb82f4bab9fbbd7641fd9ace2'
                         key: {
                             name: 'x_gegis_ins_policy_exposure_case'
@@ -17502,6 +22469,15 @@ declare global {
                         key: {
                             document_key: 'fb0e906d172e50349ff70dbde2a24a39'
                             variable: 'c23322e91bbb001094630f28cc4bcbae'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'f621dd80c2a44b75b883eaacc31df2aa'
+                        key: {
+                            name: 'x_gegis_ins_policy_product'
+                            element: 'product_name'
+                            language: 'en'
                         }
                     },
                     {
@@ -17536,6 +22512,23 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: 'f69ba2b2d09d4936a105318ff484f1c3'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                            element: 'coverage_selection'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'f6d8f5200fb044bcb9d7184fb5caa9f4'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'protection'
+                            value: 'partial_sprinkler'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'f706aee8ca14451ca6b9545634101ff7'
                         key: {
@@ -17551,6 +22544,31 @@ declare global {
                         key: {
                             application_file: '7849a5ab9ca840f185d0e047ed91f620'
                             source_artifact: '01ebe44c639a4bec91af41390ea1aac3'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'f73cc4d5cfbb4deca186ad53d441b8a2'
+                        key: {
+                            name: 'x_gegis_ins_policy_exclusion'
+                            element: 'description'
+                        }
+                    },
+                    {
+                        table: 'sys_choice_set'
+                        id: 'f74aa1c392034c61867b9f848ab3f1ee'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'construction'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'f7542932f31847e489e8878809294f51'
+                        key: {
+                            name: 'x_gegis_ins_policy_extraction'
+                            element: 'version'
+                            language: 'en'
                         }
                     },
                     {
@@ -17623,6 +22641,14 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_exposure_item'
                             element: 'location'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'f82a0f9b53bc4e44b1ff12819bd9f014'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'risk_type'
                         }
                     },
                     {
@@ -17745,6 +22771,15 @@ declare global {
                         id: 'f977990448164bc59b87235b11967231'
                         key: {
                             name: 'x_gegis_ins_policy_quote_option'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'f99e3e08d84042a0b7734ccc9caa6f58'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'protection'
+                            value: 'full_suppression'
                         }
                     },
                     {
@@ -17908,6 +22943,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'fb8605f31fa5481b823dc61a16c43d13'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table'
+                            element: 'lob'
+                            value: 'motor'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'fba52cca28c14988a9fe8f2a706c3ac3'
                         key: {
@@ -17934,6 +22978,13 @@ declare global {
                                     name: 'x_gegis_ins_policy.approver'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'ua_table_licensing_config'
+                        id: 'fbe9d9c8659c4d949da279d801639a98'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
                         }
                     },
                     {
@@ -17985,6 +23036,21 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_db_object'
+                        id: 'fccc6dcabbd441b1b45c8df03c63d600'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor_entry'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'fd053c5013da4690a1a4378df0c0e01c'
+                        key: {
+                            name: 'x_gegis_ins_policy_product_coverage_term_option'
+                            element: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: 'fd7f3b0f7350495495bf6b4315a7abde'
                         key: {
@@ -18016,11 +23082,46 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'fdac566e78884bf69d29dd44747d3100'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage'
+                            element: 'cause_of_loss_form'
+                            value: 'special'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'fdb4118a404c45cbb6d0bcf171b09a06'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_party'
+                            element: 'policy'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'fdbce469aa9f4911bdbb87da99de6c94'
                         key: {
                             name: 'x_gegis_ins_policy_quote'
                             element: 'total_premium'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: 'fdbe252817404b4aa80d09109f385750'
+                        key: {
+                            name: 'x_gegis_ins_policy_quote_risk'
+                            element: 'occupancy'
+                            value: 'healthcare'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'fde602e836ae48f2a25c9a710fd6ae35'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_risk'
+                            element: 'NULL'
                         }
                     },
                     {
@@ -18074,6 +23175,13 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_db_object'
+                        id: 'fe39dd6d8488425bba5808bae2dca390'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_category'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'fe6dd93461a24a539b56e22f67a97025'
                         key: {
@@ -18093,6 +23201,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'fe90fdc034144bf6b6b80c31456d89f6'
+                        key: {
+                            name: 'x_gegis_ins_policy_condition'
+                            element: 'NULL'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'fe9ba13f8c674523b21bcf3f4e4c6d5f'
                         key: {
@@ -18106,6 +23223,14 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_document'
                             element: 'document_type'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'ff197c929e7b4260841da248296baff5'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage'
+                            element: 'mandatory'
                         }
                     },
                     {
