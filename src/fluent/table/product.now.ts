@@ -1,4 +1,5 @@
 import { Table, StringColumn, DateTimeColumn, VersionColumn, ListColumn, MultiLineTextColumn } from '@servicenow/sdk/core'
+import { LOB_CHOICES } from './choices'
 
 export const x_gegis_ins_policy_product = Table({
     name: 'x_gegis_ins_policy_product',
@@ -13,6 +14,12 @@ export const x_gegis_ins_policy_product = Table({
             label: 'Product code',
             mandatory: true,
             maxLength: 100,
+        }),
+        line_of_business: StringColumn({
+            label: 'Line of business',
+            mandatory: true,
+            dropdown: 'dropdown_with_none',
+            choices: LOB_CHOICES,
         }),
         effective_date: DateTimeColumn({
             label: 'Effective date',

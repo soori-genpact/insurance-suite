@@ -1,4 +1,5 @@
 import { Table, StringColumn, ReferenceColumn, DateColumn, DateTimeColumn, IntegerColumn } from '@servicenow/sdk/core'
+import { LOB_CHOICES } from './choices'
 
 export const x_gegis_ins_policy_submission = Table({
     name: 'x_gegis_ins_policy_submission',
@@ -20,11 +21,7 @@ export const x_gegis_ins_policy_submission = Table({
             label: 'Lines in scope',
             mandatory: true,
             dropdown: 'dropdown_with_none',
-            choices: {
-                property: { label: 'Property', sequence: 0 },
-                workers_comp: { label: 'Workers Comp', sequence: 1 },
-                auto: { label: 'Auto', sequence: 2 },
-            },
+            choices: LOB_CHOICES,
         }),
         source_channel: StringColumn({
             label: 'Source channel',
