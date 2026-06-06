@@ -1,14 +1,28 @@
 import { Table, StringColumn, ReferenceColumn, DateColumn, DecimalColumn } from '@servicenow/sdk/core'
+import { LOB_CHOICES } from './choices'
 
 export const x_gegis_ins_policy_policy = Table({
     name: 'x_gegis_ins_policy_policy',
     label: 'Policy',
+    autoNumber: { prefix: 'POL', number: 1000 },
     schema: {
         policy_number: StringColumn({ label: 'Policy number', maxLength: 40, mandatory: true, unique: true }),
         insured: ReferenceColumn({
             label: 'Insured',
             referenceTable: 'x_gegis_ins_policy_party',
             mandatory: true,
+        }),
+        quote: ReferenceColumn({
+            label: 'Quote',
+            referenceTable: 'x_gegis_ins_policy_quote',
+        }),
+        quote_option: ReferenceColumn({
+            label: 'Quote option',
+            referenceTable: 'x_gegis_ins_policy_quote_option',
+        }),
+        product: ReferenceColumn({
+            label: 'Product',
+            referenceTable: 'x_gegis_ins_policy_product',
         }),
         effective_date: DateColumn({ label: 'Effective date', mandatory: true }),
         expiry_date: DateColumn({ label: 'Expiry date', mandatory: true }),
@@ -17,21 +31,18 @@ export const x_gegis_ins_policy_policy = Table({
             mandatory: true,
             dropdown: 'dropdown_with_none',
             choices: {
-                bound: { label: 'Bound', sequence: 0 },
-                in_force: { label: 'In-Force', sequence: 1 },
-                cancelled: { label: 'Cancelled', sequence: 2 },
-                expired: { label: 'Expired', sequence: 3 },
-                non_renewed: { label: 'Non-Renewed', sequence: 4 },
+                active:      { label: 'Active',      sequence: 0 },
+                bound:       { label: 'Bound',       sequence: 1 },
+                in_force:    { label: 'In-Force',    sequence: 2 },
+                cancelled:   { label: 'Cancelled',   sequence: 3 },
+                expired:     { label: 'Expired',     sequence: 4 },
+                non_renewed: { label: 'Non-Renewed', sequence: 5 },
             },
         }),
         line_of_business: StringColumn({
-            label: 'Lines',
+            label: 'Line of business',
             dropdown: 'dropdown_with_none',
-            choices: {
-                property: { label: 'Property', sequence: 0 },
-                workers_comp: { label: 'Workers Comp', sequence: 1 },
-                auto: { label: 'Auto', sequence: 2 },
-            },
+            choices: LOB_CHOICES,
         }),
         total_premium: DecimalColumn({ label: 'Total premium' }),
         currency: StringColumn({
