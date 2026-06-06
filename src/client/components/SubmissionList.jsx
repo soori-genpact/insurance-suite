@@ -32,7 +32,7 @@ export default function SubmissionList({ submissions, onSelect, selectedSysId })
                                 onClick={() => onSelect(submission)}
                             >
                                 <td className="mono">{displayValue(submission.number)}</td>
-                                <td>{displayValue(submission.primary_insured_display) || '—'}</td>
+                                <td>{displayValue(submission.primary_insured) || '—'}</td>
                                 <td>{displayValue(submission.transaction_type) || '—'}</td>
                                 <td>{displayValue(submission.line_of_business) || '—'}</td>
                                 <td>

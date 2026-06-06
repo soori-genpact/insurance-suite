@@ -92,8 +92,15 @@ export const x_gegis_ins_policy_submission = Table({
                 lapsed: { label: 'Lapsed', sequence: 6 },
             },
         }),
-        primary_insured_display: StringColumn({ label: 'Primary insured', maxLength: 200 }),
-        primary_broker_display: StringColumn({ label: 'Primary broker', maxLength: 200 }),
+        primary_insured: ReferenceColumn({
+            label: 'Primary insured',
+            referenceTable: 'x_gegis_ins_policy_party',
+            mandatory: true,
+        }),
+        primary_broker: ReferenceColumn({
+            label: 'Primary broker',
+            referenceTable: 'x_gegis_ins_policy_party',
+        }),
     },
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
