@@ -14,6 +14,10 @@ Record({
   "message" : "List",
   "code" : "",
   "comment" : ""
+}, {
+  "message" : "Pipeline",
+  "code" : "",
+  "comment" : ""
 } ]`,
         sys_domain: 'global',
         sys_domain_path: 'global',
@@ -49,6 +53,23 @@ Record({
         },
         "group": "top",
         "order": 100,
+        "badge": {},
+        "presence": {},
+        "availability": {},
+        "viewportInfo": {}
+    },
+    {
+        "id": "pipeline",
+        "label": {
+            "translatable": true,
+            "message": "Pipeline"
+        },
+        "icon": "binoculars-outline",
+        "routeInfo": {
+            "route": "pipeline"
+        },
+        "group": "top",
+        "order": 200,
         "badge": {},
         "presence": {},
         "availability": {},
