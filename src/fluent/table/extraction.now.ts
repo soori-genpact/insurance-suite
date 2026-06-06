@@ -1,4 +1,4 @@
-import { Table, StringColumn, ReferenceColumn, DateTimeColumn, DecimalColumn } from '@servicenow/sdk/core'
+import { Table, StringColumn, ReferenceColumn, DateTimeColumn, DecimalColumn, VersionColumn } from '@servicenow/sdk/core'
 
 export const x_gegis_ins_policy_extraction = Table({
     name: 'x_gegis_ins_policy_extraction',
@@ -38,6 +38,7 @@ export const x_gegis_ins_policy_extraction = Table({
         confidence_overall: DecimalColumn({ label: 'Overall confidence' }),
         extracted_date: DateTimeColumn({ label: 'Extracted date' }),
         model_version: StringColumn({ label: 'Model version', maxLength: 50 }),
+        version: VersionColumn({ label: 'Version' }),
     },
     allowWebServiceAccess: true,
     accessibleFrom: 'public',

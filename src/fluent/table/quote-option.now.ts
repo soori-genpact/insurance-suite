@@ -1,4 +1,4 @@
-import { Table, StringColumn, ReferenceColumn, DecimalColumn } from '@servicenow/sdk/core'
+import { Table, StringColumn, ReferenceColumn, DecimalColumn, VersionColumn } from '@servicenow/sdk/core'
 
 export const x_gegis_ins_policy_quote_option = Table({
     name: 'x_gegis_ins_policy_quote_option',
@@ -24,6 +24,7 @@ export const x_gegis_ins_policy_quote_option = Table({
         premium: DecimalColumn({ label: 'Premium' }),
         commission_rate: DecimalColumn({ label: 'Commission rate' }),
         terms: StringColumn({ label: 'Terms', maxLength: 2000 }),
+        version: VersionColumn({ label: 'Version' }),
     },
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
