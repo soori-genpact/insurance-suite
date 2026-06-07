@@ -64,9 +64,29 @@ Record({
             "translatable": true,
             "message": "Pipeline"
         },
-        "icon": "binoculars-outline",
+        "icon": "envelope-arrow-outline",
         "routeInfo": {
             "route": "pipeline"
+        },
+        "group": "top",
+        "order": 200,
+        "badge": {},
+        "presence": {},
+        "availability": {},
+        "viewportInfo": {}
+    },
+    {
+        "id": "products",
+        "label": {
+            "translatable": true,
+            "message": "Products"
+        },
+        "icon": "database-component-outline",
+        "routeInfo": {
+            "route": "simplelist",
+            "fields": {
+                "table": "x_gegis_ins_policy_product"
+            }
         },
         "group": "top",
         "order": 200,
