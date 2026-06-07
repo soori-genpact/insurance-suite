@@ -5,7 +5,7 @@ Form({
     view: default_view,
     sections: [
         {
-            caption: '',
+            caption: 'General',
             content: [
                 {
                     layout: 'two-column',
