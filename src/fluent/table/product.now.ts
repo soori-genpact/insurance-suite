@@ -1,4 +1,4 @@
-import { Table, StringColumn, DateTimeColumn, VersionColumn, ListColumn, MultiLineTextColumn } from '@servicenow/sdk/core'
+import { Table, StringColumn, DateTimeColumn, ListColumn, MultiLineTextColumn } from '@servicenow/sdk/core'
 import { LOB_CHOICES } from './choices'
 
 export const x_gegis_ins_policy_product = Table({
@@ -46,8 +46,9 @@ export const x_gegis_ins_policy_product = Table({
             label: 'Description',
             maxLength: 2000,
         }),
-        version: VersionColumn({
+        version: StringColumn({
             label: 'Version',
+            maxLength: 20,
         }),
     },
     allowWebServiceAccess: true,

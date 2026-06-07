@@ -1,4 +1,4 @@
-import { Table, StringColumn, ReferenceColumn, DateColumn, IntegerColumn, DecimalColumn } from '@servicenow/sdk/core'
+import { Table, StringColumn, ReferenceColumn, DateColumn, DecimalColumn } from '@servicenow/sdk/core'
 
 export const x_gegis_ins_policy_quote = Table({
     name: 'x_gegis_ins_policy_quote',
@@ -19,7 +19,7 @@ export const x_gegis_ins_policy_quote = Table({
             referenceTable: 'x_gegis_ins_policy_party',
         }),
         quote_number: StringColumn({ label: 'Quote number', maxLength: 20, mandatory: true, unique: true }),
-        version: IntegerColumn({ label: 'Version' }),
+        version: StringColumn({ label: 'Version', maxLength: 20 }),
         status: StringColumn({
             label: 'Status',
             mandatory: true,

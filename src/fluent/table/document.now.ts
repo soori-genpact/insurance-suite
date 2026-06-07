@@ -59,7 +59,7 @@ export const x_gegis_ins_policy_document = Table({
         page_count: IntegerColumn({ label: 'Page count' }),
         uploaded_by: ReferenceColumn({ label: 'Uploaded by', referenceTable: 'sys_user' }),
         uploaded_date: DateTimeColumn({ label: 'Uploaded date' }),
-        version: IntegerColumn({ label: 'Version' }),
+        version: StringColumn({ label: 'Version', maxLength: 20 }),
         status: StringColumn({
             label: 'Status',
             dropdown: 'dropdown_with_none',
