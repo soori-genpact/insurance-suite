@@ -39,6 +39,36 @@ Record({
             "targetId": "expUwReviewSubmitDecision",
             "type": "CLIENT_SCRIPT"
         }
+    ],
+    "EXP_UW_APPROVE": [
+        {
+            "broker": null,
+            "clientScript": {
+                "payload": {"type": "JSON_LITERAL", "value": {}},
+                "sysId": "ec000001000000000000000000000017"
+            },
+            "conditional": null,
+            "declarativeAction": null,
+            "event": null,
+            "operation": null,
+            "targetId": "expUwApproveHandler",
+            "type": "CLIENT_SCRIPT"
+        }
+    ],
+    "EXP_UW_REJECT": [
+        {
+            "broker": null,
+            "clientScript": {
+                "payload": {"type": "JSON_LITERAL", "value": {}},
+                "sysId": "ec000001000000000000000000000018"
+            },
+            "conditional": null,
+            "declarativeAction": null,
+            "event": null,
+            "operation": null,
+            "targetId": "expUwRejectHandler",
+            "type": "CLIENT_SCRIPT"
+        }
     ]
 }`,
         keyboard_shortcuts: '{}',
@@ -196,6 +226,24 @@ Record({
         "name": "errorMessage",
         "readOnly": false,
         "valueType": "string"
+    },
+    {
+        "defaultValue": true,
+        "description": "True when mode=review (Activity 3.1) — drives Continue button visibility",
+        "fieldType": "boolean",
+        "label": "isReviewMode",
+        "name": "isReviewMode",
+        "readOnly": false,
+        "valueType": "boolean"
+    },
+    {
+        "defaultValue": false,
+        "description": "True when mode=signoff (Activity 3.2) — drives Approve/Reject button visibility",
+        "fieldType": "boolean",
+        "label": "isSignoffMode",
+        "name": "isSignoffMode",
+        "readOnly": false,
+        "valueType": "boolean"
     }
 ]`,
         style_config: '{}',

@@ -23,6 +23,10 @@ async function handler({ api, event, helpers }) {
     const { sysId, table, mode } = api.props;
     if (!sysId) return;
 
+    // Drive button visibility from state so isHidden bindings in the composition react
+    api.setState('isReviewMode', mode !== 'signoff');
+    api.setState('isSignoffMode', mode === 'signoff');
+
     try {
         // Load the Exposure Case
         const caseResp = await fetch(

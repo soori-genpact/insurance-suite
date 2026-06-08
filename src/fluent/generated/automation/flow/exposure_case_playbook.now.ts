@@ -26,7 +26,7 @@ Record({
         active: 'true',
         category: 'user',
         color: '#137333',
-        icon: 'document-check-outline',
+        icon: 'check-circle-outline',
     },
 })
 
@@ -164,7 +164,7 @@ Record({
         source: '851bf6de33dd43547ef8f499ed5c7bd5',
         source_type: 'sys_hub_flow',
         system_level: 'false',
-        wait_for_completion: 'false',
+        wait_for_completion: 'true',
     },
 })
 
@@ -222,7 +222,7 @@ Record({
         source: '851bf6de33dd43547ef8f499ed5c7bd5',
         source_type: 'sys_hub_flow',
         system_level: 'false',
-        wait_for_completion: 'false',
+        wait_for_completion: 'true',
     },
 })
 
@@ -250,7 +250,7 @@ Record({
         source: '851bf6de33dd43547ef8f499ed5c7bd5',
         source_type: 'sys_hub_flow',
         system_level: 'false',
-        wait_for_completion: 'false',
+        wait_for_completion: 'true',
     },
 })
 
