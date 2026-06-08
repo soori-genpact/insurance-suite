@@ -1,0 +1,30 @@
+import { Record } from '@servicenow/sdk/core'
+
+Record({
+    $id: Now.ID['ec000001000000000000000000000001'],
+    table: 'sys_pd_process_definition',
+    data: {
+        access: 'public',
+        active: 'true',
+        allow_as_nested: 'true',
+        data_retention_period_override: '6_week',
+        description: 'Exposure Case Playbook — manages exposure data entry, TIV calculation, underwriter review, and case completion',
+        designer_state: '{"diagram":{"hiddenElements":{"edges":{}}}}',
+        execution_type: 'record_driven',
+        label: 'Exposure Case Playbook',
+        launcher_show_record_form: 'false',
+        name: 'exposure_case_playbook',
+        permission: '{}',
+        process_type: '52c6d3eeff1be2102c2fffffffffff44',
+        public_access: 'false',
+        restartable: 'RESTARTABLE_FALSE',
+        run_on_pad_engine: 'false',
+        run_strategy: 'run_once',
+        run_strategy_on_process_definition: 'true',
+        schema_version: '3',
+        start_non_blocking: 'true',
+        status: 'published',
+        sync_state: 'COMPLETE',
+        view_type: 'DIAGRAM',
+    },
+})
