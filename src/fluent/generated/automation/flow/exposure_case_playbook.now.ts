@@ -121,7 +121,7 @@ Record({
         active: 'true',
         stage: 'ec000001000000000000000000000005',
         process_definition: 'ec000001000000000000000000000001',
-        activity_type: 'd4dde0875b00001070e4492c11f91a90',
+        activity_type: 'e12af577871333003058d1a936cb0ba4',
         start_rule: 'immediate',
         restart_rule: 'run_once',
         ai_agent_enabled: 'false',
@@ -132,10 +132,11 @@ Record({
         experience_display_preferences:
             'associated_table=advanced;associated_record=advanced;experience_status_table=advanced;experience_status_record=advanced;tagline=advanced;icon=advanced;title=advanced;description=advanced;footer=advanced;is_automated=advanced;',
         public_access: 'false',
-        source: '851bf6de33dd43547ef8f499ed5c7bd5',
+        source: 'cb18ceef1b230010affd0e55cc4bcbf2',
         source_type: 'sys_hub_flow',
         system_level: 'false',
         wait_for_completion: 'false',
+        input_display_preferences: 'taskinput=standard;wait=standard;',
     },
 })
 

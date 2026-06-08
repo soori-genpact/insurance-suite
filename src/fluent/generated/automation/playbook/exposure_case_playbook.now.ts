@@ -8,7 +8,8 @@ Record({
         active: 'true',
         allow_as_nested: 'true',
         data_retention_period_override: '6_week',
-        description: 'Exposure Case Playbook — manages exposure data entry, TIV calculation, underwriter review, and case completion',
+        description:
+            'Exposure Case Playbook — manages exposure data entry, TIV calculation, underwriter review, and case completion',
         designer_state: '{"diagram":{"hiddenElements":{"edges":{}}}}',
         execution_type: 'record_driven',
         label: 'Exposure Case Playbook',
@@ -26,5 +27,6 @@ Record({
         status: 'published',
         sync_state: 'COMPLETE',
         view_type: 'DIAGRAM',
+        snapshot: '5f2dd822339587547ef8f499ed5c7bc4',
     },
 })

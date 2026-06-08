@@ -18,7 +18,7 @@ Record({
         document: 'sys_pd_activity_definition',
         document_key: 'ec000001000000000000000000000009',
         order: 100,
-        value: '<p>{<!-- -->{vl.Simple Instruction./start.message}}</p>',
+        value: '<p>A new Exposure Case has been created. Please begin the exposure data entry process.</p>',
         variable: '267e68875b00001070e4492c11f91a34',
     },
 })

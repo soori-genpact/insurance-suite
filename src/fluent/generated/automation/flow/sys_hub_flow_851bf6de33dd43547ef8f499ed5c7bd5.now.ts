@@ -31,10 +31,11 @@ export const insurance_suite_manual_activity = Subflow(
                 choices: {
                     yes: {
                         label: 'Yes',
-                        sequence: 1,
+                        sequence: 2,
                     },
                     no: {
                         label: 'No',
+                        sequence: 1,
                     },
                 },
             }),
@@ -85,8 +86,8 @@ export const insurance_suite_manual_activity = Subflow(
                         uuid: '91dd9245-b28d-48f9-b924-c3f94e77ab00',
                     },
                     {
-                        record: wfa.dataPill(actionInstance_1.record, 'reference'),
                         table_name: 'sys_flow_data',
+                        record: wfa.dataPill(actionInstance_1.record, 'reference'),
                         values: TemplateValue({
                             state: 'SKIPPED',
                         }),
@@ -112,8 +113,8 @@ export const insurance_suite_manual_activity = Subflow(
                         uuid: '36200886-e130-46df-8a92-dbe217661e58',
                     },
                     {
-                        record: wfa.dataPill(actionInstance_1.record, 'reference'),
                         table_name: 'sys_flow_data',
+                        record: wfa.dataPill(actionInstance_1.record, 'reference'),
                         values: TemplateValue({
                             state: 'COMPLETE',
                         }),
@@ -132,12 +133,12 @@ export const insurance_suite_manual_activity = Subflow(
                 uuid: '244c9255-c82b-47e3-8c53-ff7314f9f02d',
             },
             {
-                record: wfa.dataPill(actionInstance_1.record, 'reference'),
-                table_name: 'sys_flow_data',
-                conditions: 'stateINCOMPLETE,SKIPPED,ERROR,CANCELLED',
-                timeout_flag: false,
                 timeout_duration: '',
+                table_name: 'sys_flow_data',
                 timeout_schedule: '',
+                timeout_flag: false,
+                record: wfa.dataPill(actionInstance_1.record, 'reference'),
+                conditions: 'stateINCOMPLETE,SKIPPED,ERROR,CANCELLED',
             }
         )
     }
