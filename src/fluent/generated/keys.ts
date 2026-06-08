@@ -1170,98 +1170,6 @@ declare global {
                         table: 'sys_pd_activity'
                         id: 'eb0d8a99cb86fd3c4aaf6baf1fa9004a'
                     }
-                    ec000001000000000000000000000001: {
-                        table: 'sys_pd_process_definition'
-                        id: 'ec000001000000000000000000000001'
-                    }
-                    ec000001000000000000000000000002: {
-                        table: 'sys_flow_record_trigger'
-                        id: 'ec000001000000000000000000000002'
-                    }
-                    ec000001000000000000000000000003: {
-                        table: 'sys_trigger_runner_mapping'
-                        id: 'ec000001000000000000000000000003'
-                    }
-                    ec000001000000000000000000000005: {
-                        table: 'sys_pd_stage'
-                        id: 'ec000001000000000000000000000005'
-                    }
-                    ec000001000000000000000000000006: {
-                        table: 'sys_pd_stage'
-                        id: 'ec000001000000000000000000000006'
-                    }
-                    ec000001000000000000000000000007: {
-                        table: 'sys_pd_stage'
-                        id: 'ec000001000000000000000000000007'
-                    }
-                    ec000001000000000000000000000008: {
-                        table: 'sys_pd_stage'
-                        id: 'ec000001000000000000000000000008'
-                    }
-                    ec000001000000000000000000000009: {
-                        table: 'sys_pd_activity_definition'
-                        id: 'ec000001000000000000000000000009'
-                    }
-                    ec00000100000000000000000000000a: {
-                        table: 'sys_pd_activity_definition'
-                        id: 'ec00000100000000000000000000000a'
-                    }
-                    ec00000100000000000000000000000b: {
-                        table: 'sys_pd_activity_definition'
-                        id: 'ec00000100000000000000000000000b'
-                    }
-                    ec00000100000000000000000000000c: {
-                        table: 'sys_pd_activity_definition'
-                        id: 'ec00000100000000000000000000000c'
-                    }
-                    ec00000100000000000000000000000d: {
-                        table: 'sys_pd_activity_definition'
-                        id: 'ec00000100000000000000000000000d'
-                    }
-                    ec00000100000000000000000000000e: {
-                        table: 'sys_pd_activity_definition'
-                        id: 'ec00000100000000000000000000000e'
-                    }
-                    ec00000100000000000000000000000f: {
-                        table: 'sys_pd_activity_type'
-                        id: 'ec00000100000000000000000000000f'
-                    }
-                    ec000001000000000000000000000010: {
-                        table: 'sys_pd_activity_type'
-                        id: 'ec000001000000000000000000000010'
-                    }
-                    ec000001000000000000000000000011: {
-                        table: 'sys_ux_macroponent'
-                        id: 'ec000001000000000000000000000011'
-                    }
-                    ec000001000000000000000000000012: {
-                        table: 'sys_ux_macroponent'
-                        id: 'ec000001000000000000000000000012'
-                    }
-                    ec000001000000000000000000000013: {
-                        table: 'sys_ux_client_script'
-                        id: 'ec000001000000000000000000000013'
-                    }
-                    ec000001000000000000000000000014: {
-                        table: 'sys_ux_client_script'
-                        id: 'ec000001000000000000000000000014'
-                    }
-                    ec000001000000000000000000000015: {
-                        table: 'sys_ux_client_script'
-                        id: 'ec000001000000000000000000000015'
-                    }
-                    ec000001000000000000000000000016: {
-                        table: 'sys_ux_client_script'
-                        id: 'ec000001000000000000000000000016'
-                    }
-                    ec000001000000000000000000000022: {
-                        table: 'sys_pd_ux_activity_config'
-                        id: 'ec000001000000000000000000000022'
-                    }
-                    ec000001000000000000000000000023: {
-                        table: 'sys_pd_ux_activity_config'
-                        id: 'ec000001000000000000000000000023'
-                    }
                     eebcd4bd93d147d0ce18b5d97bba109c: {
                         table: 'par_visualization'
                         id: 'eebcd4bd93d147d0ce18b5d97bba109c'
@@ -3867,21 +3775,6 @@ declare global {
                         }
                     },
                     {
-                        table: 'sys_ui_section'
-                        id: '15818cae331147547ef8f499ed5c7bd2'
-                        key: {
-                            name: 'var__m_sys_pd_activity_type_prop_ec000001000000000000000000000010'
-                            caption: 'NULL'
-                            view: {
-                                id: 'Default view'
-                                key: {
-                                    name: 'NULL'
-                                }
-                            }
-                            sys_domain: 'global'
-                        }
-                    },
-                    {
                         table: 'sys_security_acl_role'
                         id: '161be236434c47d7a698642e48ec39bb'
                         key: {
@@ -5475,14 +5368,6 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_party'
                             element: 'fei_number'
-                        }
-                    },
-                    {
-                        table: 'sys_variable_value'
-                        id: '216e7616335183547ef8f499ed5c7b17'
-                        key: {
-                            document_key: 'ec00000100000000000000000000000b'
-                            variable: '49ed24875b00001070e4492c11f91aa5'
                         }
                     },
                     {
@@ -8326,14 +8211,6 @@ declare global {
                         key: {
                             document_key: 'fb0e906d172e50349ff70dbde2a24a39'
                             variable: '55628762c3211010381b60bc0eba8fec'
-                        }
-                    },
-                    {
-                        table: 'sys_variable_value'
-                        id: '3e2eb6d2335183547ef8f499ed5c7b91'
-                        key: {
-                            document_key: 'ec000001000000000000000000000009'
-                            variable: '49ed24875b00001070e4492c11f91aa5'
                         }
                     },
                     {
@@ -12175,14 +12052,6 @@ declare global {
                         }
                     },
                     {
-                        table: 'sys_element_mapping'
-                        id: '616e7616335183547ef8f499ed5c7b16'
-                        key: {
-                            field: 'associated_record'
-                            id: 'ec00000100000000000000000000000b'
-                        }
-                    },
-                    {
                         table: 'sys_security_acl_role'
                         id: '61833a8c55a547f9afc88a2157598e34'
                         key: {
@@ -12798,14 +12667,6 @@ declare global {
                         }
                     },
                     {
-                        table: 'sys_element_mapping'
-                        id: '66edfe52335183547ef8f499ed5c7b4f'
-                        key: {
-                            field: 'experience_status_record'
-                            id: 'ec00000100000000000000000000000e'
-                        }
-                    },
-                    {
                         table: 'sys_choice'
                         id: '66f7cc889f164bc692ccf489127a2596'
                         key: {
@@ -13159,14 +13020,6 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_location'
                             element: 'construction_type'
-                        }
-                    },
-                    {
-                        table: 'sys_variable_value'
-                        id: '6aedfe52335183547ef8f499ed5c7b51'
-                        key: {
-                            document_key: 'ec00000100000000000000000000000e'
-                            variable: '49ed24875b00001070e4492c11f91aa5'
                         }
                     },
                     {
@@ -15383,14 +15236,6 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_policy_risk'
                             element: 'risk_type'
-                        }
-                    },
-                    {
-                        table: 'sys_element_mapping'
-                        id: '7e2eb6d2335183547ef8f499ed5c7b90'
-                        key: {
-                            field: 'experience_status_record'
-                            id: 'ec000001000000000000000000000009'
                         }
                     },
                     {
@@ -19037,21 +18882,6 @@ declare global {
                         }
                     },
                     {
-                        table: 'sys_ui_section'
-                        id: 'a44140ea331147547ef8f499ed5c7b47'
-                        key: {
-                            name: 'var__m_sys_pd_activity_type_prop_ec00000100000000000000000000000f'
-                            caption: 'NULL'
-                            view: {
-                                id: 'Default view'
-                                key: {
-                                    name: 'NULL'
-                                }
-                            }
-                            sys_domain: 'global'
-                        }
-                    },
-                    {
                         table: 'sys_choice'
                         id: 'a449a2e52ba34013a4297e6ee50a77d9'
                         key: {
@@ -19431,22 +19261,6 @@ declare global {
                         }
                     },
                     {
-                        table: 'sys_element_mapping'
-                        id: 'a96e7616335183547ef8f499ed5c7b15'
-                        key: {
-                            field: 'experience_status_record'
-                            id: 'ec00000100000000000000000000000b'
-                        }
-                    },
-                    {
-                        table: 'sys_variable_value'
-                        id: 'a96e7616335183547ef8f499ed5c7b16'
-                        key: {
-                            document_key: 'ec00000100000000000000000000000b'
-                            variable: '267e68875b00001070e4492c11f91a34'
-                        }
-                    },
-                    {
                         table: 'sys_security_acl_role'
                         id: 'a978c913ee9644119ea25c456ec97d45'
                         key: {
@@ -19682,14 +19496,6 @@ declare global {
                             }
                             element: 'display_order'
                             position: '3'
-                        }
-                    },
-                    {
-                        table: 'sys_variable_value'
-                        id: 'aaedfe52335183547ef8f499ed5c7b50'
-                        key: {
-                            document_key: 'ec00000100000000000000000000000e'
-                            variable: '267e68875b00001070e4492c11f91a34'
                         }
                     },
                     {
@@ -20690,14 +20496,6 @@ declare global {
                         key: {
                             document_key: 'fb0e906d172e50349ff70dbde2a24a39'
                             variable: '8793d6feb70100101a6ddb91de11a98f'
-                        }
-                    },
-                    {
-                        table: 'sys_variable_value'
-                        id: 'b62eb6d2335183547ef8f499ed5c7b91'
-                        key: {
-                            document_key: 'ec000001000000000000000000000009'
-                            variable: '267e68875b00001070e4492c11f91a34'
                         }
                     },
                     {
@@ -24873,15 +24671,6 @@ declare global {
                         }
                     },
                     {
-                        table: 'sys_documentation'
-                        id: 'e2597ad233dd43547ef8f499ed5c7b43'
-                        key: {
-                            name: 'var__m_sys_pd_process_input_ec000001000000000000000000000001'
-                            element: 'parent_record'
-                            language: 'en'
-                        }
-                    },
-                    {
                         table: 'sys_choice'
                         id: 'e29ff87c7ae04228877a405ec2473196'
                         key: {
@@ -25667,203 +25456,6 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_ai_task'
                             element: 'number'
-                        }
-                    },
-                    {
-                        table: 'sys_element_mapping'
-                        id: 'ec000001000000000000000000000030'
-                        deleted: false
-                        key: {
-                            field: 'associated_record'
-                            id: 'ec000001000000000000000000000009'
-                        }
-                    },
-                    {
-                        table: 'sys_element_mapping'
-                        id: 'ec000001000000000000000000000031'
-                        deleted: true
-                        key: {
-                            field: 'associated_table'
-                            id: 'ec000001000000000000000000000009'
-                        }
-                    },
-                    {
-                        table: 'sys_element_mapping'
-                        id: 'ec000001000000000000000000000032'
-                        key: {
-                            field: 'description'
-                            id: 'ec000001000000000000000000000009'
-                        }
-                    },
-                    {
-                        table: 'sys_element_mapping'
-                        id: 'ec000001000000000000000000000033'
-                        key: {
-                            field: 'is_automated'
-                            id: 'ec000001000000000000000000000009'
-                        }
-                    },
-                    {
-                        table: 'sys_element_mapping'
-                        id: 'ec000001000000000000000000000034'
-                        key: {
-                            field: 'title'
-                            id: 'ec000001000000000000000000000009'
-                        }
-                    },
-                    {
-                        table: 'sys_element_mapping'
-                        id: 'ec000001000000000000000000000035'
-                        key: {
-                            field: 'message'
-                            id: 'ec000001000000000000000000000009'
-                        }
-                    },
-                    {
-                        table: 'sys_element_mapping'
-                        id: 'ec000001000000000000000000000040'
-                        key: {
-                            field: 'sysId'
-                            id: 'ec00000100000000000000000000000a'
-                        }
-                    },
-                    {
-                        table: 'sys_element_mapping'
-                        id: 'ec000001000000000000000000000041'
-                        key: {
-                            field: 'table'
-                            id: 'ec00000100000000000000000000000a'
-                        }
-                    },
-                    {
-                        table: 'sys_element_mapping'
-                        id: 'ec000001000000000000000000000042'
-                        key: {
-                            field: 'title'
-                            id: 'ec00000100000000000000000000000a'
-                        }
-                    },
-                    {
-                        table: 'sys_element_mapping'
-                        id: 'ec000001000000000000000000000050'
-                        key: {
-                            field: 'description'
-                            id: 'ec00000100000000000000000000000b'
-                        }
-                    },
-                    {
-                        table: 'sys_element_mapping'
-                        id: 'ec000001000000000000000000000051'
-                        key: {
-                            field: 'is_automated'
-                            id: 'ec00000100000000000000000000000b'
-                        }
-                    },
-                    {
-                        table: 'sys_element_mapping'
-                        id: 'ec000001000000000000000000000052'
-                        key: {
-                            field: 'title'
-                            id: 'ec00000100000000000000000000000b'
-                        }
-                    },
-                    {
-                        table: 'sys_element_mapping'
-                        id: 'ec000001000000000000000000000053'
-                        deleted: true
-                        key: {
-                            field: 'message'
-                            id: 'ec00000100000000000000000000000b'
-                        }
-                    },
-                    {
-                        table: 'sys_element_mapping'
-                        id: 'ec000001000000000000000000000060'
-                        key: {
-                            field: 'sysId'
-                            id: 'ec00000100000000000000000000000c'
-                        }
-                    },
-                    {
-                        table: 'sys_element_mapping'
-                        id: 'ec000001000000000000000000000061'
-                        key: {
-                            field: 'table'
-                            id: 'ec00000100000000000000000000000c'
-                        }
-                    },
-                    {
-                        table: 'sys_element_mapping'
-                        id: 'ec000001000000000000000000000062'
-                        key: {
-                            field: 'mode'
-                            id: 'ec00000100000000000000000000000c'
-                        }
-                    },
-                    {
-                        table: 'sys_element_mapping'
-                        id: 'ec000001000000000000000000000070'
-                        key: {
-                            field: 'sysId'
-                            id: 'ec00000100000000000000000000000d'
-                        }
-                    },
-                    {
-                        table: 'sys_element_mapping'
-                        id: 'ec000001000000000000000000000071'
-                        key: {
-                            field: 'table'
-                            id: 'ec00000100000000000000000000000d'
-                        }
-                    },
-                    {
-                        table: 'sys_element_mapping'
-                        id: 'ec000001000000000000000000000072'
-                        key: {
-                            field: 'mode'
-                            id: 'ec00000100000000000000000000000d'
-                        }
-                    },
-                    {
-                        table: 'sys_element_mapping'
-                        id: 'ec000001000000000000000000000080'
-                        key: {
-                            field: 'associated_record'
-                            id: 'ec00000100000000000000000000000e'
-                        }
-                    },
-                    {
-                        table: 'sys_element_mapping'
-                        id: 'ec000001000000000000000000000081'
-                        key: {
-                            field: 'description'
-                            id: 'ec00000100000000000000000000000e'
-                        }
-                    },
-                    {
-                        table: 'sys_element_mapping'
-                        id: 'ec000001000000000000000000000082'
-                        key: {
-                            field: 'is_automated'
-                            id: 'ec00000100000000000000000000000e'
-                        }
-                    },
-                    {
-                        table: 'sys_element_mapping'
-                        id: 'ec000001000000000000000000000084'
-                        deleted: true
-                        key: {
-                            field: 'message'
-                            id: 'ec00000100000000000000000000000e'
-                        }
-                    },
-                    {
-                        table: 'sys_element_mapping'
-                        id: 'ec0000010000000000000000000000a0'
-                        deleted: true
-                        key: {
-                            field: 'parent_record'
-                            id: 'ec000001000000000000000000000004'
                         }
                     },
                     {
