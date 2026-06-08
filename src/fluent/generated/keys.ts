@@ -38,14 +38,17 @@ declare global {
                     '11cc3cae0d777854e268be337ebd2297': {
                         table: 'sys_pd_lane'
                         id: '11cc3cae0d777854e268be337ebd2297'
+                        deleted: true
                     }
                     '132dd822339587547ef8f499ed5c7be4': {
                         table: 'sys_flow_compiled_flow_chunk'
                         id: '132dd822339587547ef8f499ed5c7be4'
+                        deleted: true
                     }
                     '172dd822339587547ef8f499ed5c7bc6': {
                         table: 'sys_pd_snapshot_chunk'
                         id: '172dd822339587547ef8f499ed5c7bc6'
+                        deleted: true
                     }
                     '1c8fd9399351475044f7bd4f7bba1019': {
                         table: 'sys_app_module'
@@ -54,10 +57,12 @@ declare global {
                     '1f2dd822339587547ef8f499ed5c7bc6': {
                         table: 'sys_pd_snapshot_chunk'
                         id: '1f2dd822339587547ef8f499ed5c7bc6'
+                        deleted: true
                     }
                     '1f2dd822339587547ef8f499ed5c7be5': {
                         table: 'sys_flow_compiled_flow_chunk'
                         id: '1f2dd822339587547ef8f499ed5c7be5'
+                        deleted: true
                     }
                     '210a5cf193d147d0ce18b5d97bba1020': {
                         table: 'm2m_app_config_theme'
@@ -75,6 +80,7 @@ declare global {
                     '291b7ade33dd43547ef8f499ed5c7b8e': {
                         table: 'sys_hub_flow_logic_instance_v2'
                         id: '291b7ade33dd43547ef8f499ed5c7b8e'
+                        deleted: true
                     }
                     '299835a533d94bd07ef8f499ed5c7ba0': {
                         table: 'sys_ux_page_property'
@@ -101,10 +107,12 @@ declare global {
                     '351b7ade33dd43547ef8f499ed5c7b92': {
                         table: 'sys_hub_flow_logic_instance_v2'
                         id: '351b7ade33dd43547ef8f499ed5c7b92'
+                        deleted: true
                     }
                     '351b7ade33dd43547ef8f499ed5c7b99': {
                         table: 'sys_hub_action_instance_v2'
                         id: '351b7ade33dd43547ef8f499ed5c7b99'
+                        deleted: true
                     }
                     '37c869a993dd835044f7bd4f7bba10bf': {
                         table: 'sys_uib_search_facet_item_m2m_element'
@@ -182,10 +190,12 @@ declare global {
                     '552d0e05ed7a67d24013fb4f4312efb2': {
                         table: 'sys_pd_activity'
                         id: '552d0e05ed7a67d24013fb4f4312efb2'
+                        deleted: true
                     }
                     '56593ad233dd43547ef8f499ed5c7bfb': {
                         table: 'sys_pd_process_input'
                         id: '56593ad233dd43547ef8f499ed5c7bfb'
+                        deleted: true
                     }
                     '58bf12e933198bd07ef8f499ed5c7b37': {
                         table: 'm2m_app_config_theme'
@@ -195,6 +205,7 @@ declare global {
                     '5b2dd822339587547ef8f499ed5c7be4': {
                         table: 'sys_flow_compiled_flow_chunk'
                         id: '5b2dd822339587547ef8f499ed5c7be4'
+                        deleted: true
                     }
                     '5be3ec638c9fea70c9dd578cf838f63b': {
                         table: 'sys_pd_trigger_instance'
@@ -203,10 +214,12 @@ declare global {
                     '5f2dd822339587547ef8f499ed5c7bc4': {
                         table: 'sys_pd_snapshot'
                         id: '5f2dd822339587547ef8f499ed5c7bc4'
+                        deleted: true
                     }
                     '5f2dd822d395875474c10b253c9ec1e2': {
                         table: 'sys_flow_compiled_flow'
                         id: '5f2dd822d395875474c10b253c9ec1e2'
+                        deleted: true
                     }
                     '64856da1939d835044f7bd4f7bba1078': {
                         table: 'sys_scope_privilege'
@@ -223,10 +236,12 @@ declare global {
                     '651b7ade33dd43547ef8f499ed5c7b7e': {
                         table: 'sys_hub_flow_logic_instance_v2'
                         id: '651b7ade33dd43547ef8f499ed5c7b7e'
+                        deleted: true
                     }
                     '664cb77d3583804651a3422c8ee46bff': {
                         table: 'sys_pd_lane'
                         id: '664cb77d3583804651a3422c8ee46bff'
+                        deleted: true
                     }
                     '66c275399351475044f7bd4f7bba100b': {
                         table: 'sys_app_module'
@@ -283,6 +298,7 @@ declare global {
                     '7d1b7ade33dd43547ef8f499ed5c7b93': {
                         table: 'sys_hub_flow_logic_instance_v2'
                         id: '7d1b7ade33dd43547ef8f499ed5c7b93'
+                        deleted: true
                     }
                     '7eb8947d939147d0ce18b5d97bba10ad': {
                         table: 'sys_ux_screen_type'
@@ -307,6 +323,7 @@ declare global {
                     '851bf6de33dd43547ef8f499ed5c7bd5': {
                         table: 'sys_hub_flow'
                         id: '851bf6de33dd43547ef8f499ed5c7bd5'
+                        deleted: true
                     }
                     '8713ca6d339d4bd07ef8f499ed5c7bc4': {
                         table: 'sys_ux_list'
@@ -345,18 +362,22 @@ declare global {
                     '932dd822339587547ef8f499ed5c7be5': {
                         table: 'sys_flow_compiled_flow_chunk'
                         id: '932dd822339587547ef8f499ed5c7be5'
+                        deleted: true
                     }
                     '9484774113ae3f0f2b1fcc824ae8cd9a': {
                         table: 'sys_pd_activity'
                         id: '9484774113ae3f0f2b1fcc824ae8cd9a'
+                        deleted: true
                     }
                     '972dd822339587547ef8f499ed5c7be1': {
                         table: 'sys_pd_snapshot_chunk'
                         id: '972dd822339587547ef8f499ed5c7be1'
+                        deleted: true
                     }
                     '9b2dd822339587547ef8f499ed5c7be6': {
                         table: 'sys_pd_snapshot_input'
                         id: '9b2dd822339587547ef8f499ed5c7be6'
+                        deleted: true
                     }
                     a19835a533d94bd07ef8f499ed5c7bab: {
                         table: 'sys_ux_page_property'
@@ -1049,14 +1070,17 @@ declare global {
                     b51b7ade33dd43547ef8f499ed5c7b96: {
                         table: 'sys_hub_action_instance_v2'
                         id: 'b51b7ade33dd43547ef8f499ed5c7b96'
+                        deleted: true
                     }
                     b6a3012ffffbb274c76363211f3de01e: {
                         table: 'sys_pd_lane'
                         id: 'b6a3012ffffbb274c76363211f3de01e'
+                        deleted: true
                     }
                     b71af78c1130c0694d5b6883b97a388b: {
                         table: 'sys_pd_lane'
                         id: 'b71af78c1130c0694d5b6883b97a388b'
+                        deleted: true
                     }
                     b868a5e593dd835044f7bd4f7bba10cd: {
                         table: 'sys_ux_client_script'
@@ -1065,6 +1089,7 @@ declare global {
                     b91b7ade33dd43547ef8f499ed5c7b98: {
                         table: 'sys_hub_action_instance_v2'
                         id: 'b91b7ade33dd43547ef8f499ed5c7b98'
+                        deleted: true
                     }
                     bc68e5e593dd835044f7bd4f7bba1024: {
                         table: 'sys_ux_screen'
@@ -1085,10 +1110,12 @@ declare global {
                     c46137bd4e30ddeef369ec97491f84dd: {
                         table: 'sys_pd_activity'
                         id: 'c46137bd4e30ddeef369ec97491f84dd'
+                        deleted: true
                     }
                     c5d5ef3bdad4bd547df380e4d916b13a: {
                         table: 'sys_pd_activity'
                         id: 'c5d5ef3bdad4bd547df380e4d916b13a'
+                        deleted: true
                     }
                     c8682cf59359075044f7bd4f7bba1042: {
                         table: 'sys_pd_snapshot_chunk'
@@ -1106,6 +1133,7 @@ declare global {
                     c953c4a15912860a800fea29fbec60ba: {
                         table: 'sys_pd_activity'
                         id: 'c953c4a15912860a800fea29fbec60ba'
+                        deleted: true
                     }
                     cc682cf59359075044f7bd4f7bba1041: {
                         table: 'sys_pd_snapshot_chunk'
@@ -1123,13 +1151,47 @@ declare global {
                         table: 'par_visualization'
                         id: 'cffe94f9931547d0ce18b5d97bba10cb'
                     }
+                    'clearance-check-for-duplicates': {
+                        table: 'sys_pd_activity_definition'
+                        id: '90a2fbe84a8d41da9c994ec3f2b7a4db'
+                    }
+                    'clearance-check-for-sanctions': {
+                        table: 'sys_pd_activity_definition'
+                        id: '587c7c3a37614b558d5aa24f852de842'
+                    }
+                    'clearance-confirm-data-review': {
+                        table: 'sys_pd_activity_definition'
+                        id: '6711a168afc840558053b9cecf5e1a43'
+                    }
+                    'clearance-extract': {
+                        table: 'sys_pd_activity_definition'
+                        id: '49b609632d0941caa050e175207d0fc4'
+                    }
+                    'clearance-initiate-submission-request': {
+                        table: 'sys_pd_activity_definition'
+                        id: '45c5037568a5483aa51faf7ed0171f45'
+                    }
+                    'clearance-insured-verification': {
+                        table: 'sys_pd_activity_definition'
+                        id: 'fc55cee1a7e043c98226101ab33c41a0'
+                    }
+                    'clearance-playbook': {
+                        table: 'sys_pd_process_definition'
+                        id: '73a4c8d503164d1b8d767102677f7115'
+                    }
+                    'clearance-quality-assurance': {
+                        table: 'sys_pd_activity_definition'
+                        id: 'cd946d8c9b834524b23dadb0c732fdf4'
+                    }
                     d2ef58d7b41338b4c96b1a5e1365ce16: {
                         table: 'sys_pd_activity'
                         id: 'd2ef58d7b41338b4c96b1a5e1365ce16'
+                        deleted: true
                     }
                     d32dd822339587547ef8f499ed5c7bc7: {
                         table: 'sys_pd_snapshot_chunk'
                         id: 'd32dd822339587547ef8f499ed5c7bc7'
+                        deleted: true
                     }
                     d5c91cb193d147d0ce18b5d97bba1051: {
                         table: 'sys_uib_screen_test_values'
@@ -1169,6 +1231,7 @@ declare global {
                     eb0d8a99cb86fd3c4aaf6baf1fa9004a: {
                         table: 'sys_pd_activity'
                         id: 'eb0d8a99cb86fd3c4aaf6baf1fa9004a'
+                        deleted: true
                     }
                     eebcd4bd93d147d0ce18b5d97bba109c: {
                         table: 'par_visualization'
@@ -1205,10 +1268,12 @@ declare global {
                     f91b7ade33dd43547ef8f499ed5c7b90: {
                         table: 'sys_hub_flow_logic_instance_v2'
                         id: 'f91b7ade33dd43547ef8f499ed5c7b90'
+                        deleted: true
                     }
                     f91b7ade33dd43547ef8f499ed5c7bb3: {
                         table: 'sys_hub_action_instance_v2'
                         id: 'f91b7ade33dd43547ef8f499ed5c7bb3'
+                        deleted: true
                     }
                     fb0e906d172e50349ff70dbde2a24a39: {
                         table: 'sys_pd_activity'
@@ -1608,6 +1673,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: '014d50a2339587547ef8f499ed5c7b6c'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: '414d9c62339587547ef8f499ed5c7b47'
@@ -1625,6 +1691,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: '014d50a2339587547ef8f499ed5c7b72'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: '414d9c62339587547ef8f499ed5c7b47'
@@ -1642,6 +1709,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '0151402e331147547ef8f499ed5c7bb0'
+                        deleted: true
                         key: {
                             field: 'associated_record'
                             id: 'c46137bd4e30ddeef369ec97491f84dd'
@@ -1650,6 +1718,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '0151402e331147547ef8f499ed5c7bb1'
+                        deleted: true
                         key: {
                             field: 'title'
                             id: 'c46137bd4e30ddeef369ec97491f84dd'
@@ -1658,6 +1727,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '0151402e331147547ef8f499ed5c7bb4'
+                        deleted: true
                         key: {
                             document_key: 'c46137bd4e30ddeef369ec97491f84dd'
                             variable: '49ed24875b00001070e4492c11f91aa5'
@@ -1666,6 +1736,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '015144ea331147547ef8f499ed5c7b18'
+                        deleted: true
                         key: {
                             document_key: 'c46137bd4e30ddeef369ec97491f84dd'
                             variable: '991b3ade33dd43547ef8f499ed5c7b7f'
@@ -2217,6 +2288,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: '054d50a2339587547ef8f499ed5c7b70'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: '414d9c62339587547ef8f499ed5c7b47'
@@ -2343,20 +2415,20 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '074e91f5c4ec4b8f942173558211800a'
+                        key: {
+                            name: 'x_gegis_ins_policy_policy_coverage_term'
+                            element: 'policy_coverage'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '075d6c85b1e948deb8f92d5f8a8670ee'
                         key: {
                             name: 'x_gegis_ins_policy_quote_risk'
                             element: 'occupancy'
                             value: 'warehouse'
-                        }
-                    },
-                    {
-                        table: 'sys_dictionary'
-                        id: '074e91f5c4ec4b8f942173558211800a'
-                        key: {
-                            name: 'x_gegis_ins_policy_policy_coverage_term'
-                            element: 'policy_coverage'
                         }
                     },
                     {
@@ -2465,6 +2537,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: '094d50a2339587547ef8f499ed5c7b6e'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: '414d9c62339587547ef8f499ed5c7b47'
@@ -2482,6 +2555,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '0951402e331147547ef8f499ed5c7bb1'
+                        deleted: true
                         key: {
                             document_key: 'c46137bd4e30ddeef369ec97491f84dd'
                             variable: '78f334b8c763001085f5532bb4c26009'
@@ -2490,6 +2564,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '095144ea331147547ef8f499ed5c7b17'
+                        deleted: true
                         key: {
                             field: 'wait'
                             id: 'c46137bd4e30ddeef369ec97491f84dd'
@@ -3037,6 +3112,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '0d51402e331147547ef8f499ed5c7bb2'
+                        deleted: true
                         key: {
                             document_key: 'c46137bd4e30ddeef369ec97491f84dd'
                             variable: '9c6b7e22c3211010381b60bc0eba8f98'
@@ -3399,6 +3475,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '1088a619deb44a76bda56d536487906e'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_policy_transaction'
                             element: 'status'
@@ -3461,6 +3538,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '10c7c0ee335547547ef8f499ed5c7b49'
+                        deleted: true
                         key: {
                             field: 'show_checklist'
                             id: 'c953c4a15912860a800fea29fbec60ba'
@@ -3469,6 +3547,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '10c7c0ee335547547ef8f499ed5c7b4d'
+                        deleted: true
                         key: {
                             document_key: 'c953c4a15912860a800fea29fbec60ba'
                             variable: 'e9ae23190700101070e493d0fad300c1'
@@ -3529,6 +3608,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '11104c2e33dd07547ef8f499ed5c7be5'
+                        deleted: true
                         key: {
                             document_key: '552d0e05ed7a67d24013fb4f4312efb2'
                             variable: '196df29e331183547ef8f499ed5c7ba7'
@@ -3537,6 +3617,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '11104c2e33dd07547ef8f499ed5c7beb'
+                        deleted: true
                         key: {
                             document_key: '552d0e05ed7a67d24013fb4f4312efb2'
                             variable: '9c6b7e22c3211010381b60bc0eba8f98'
@@ -3841,6 +3922,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '144140ea331147547ef8f499ed5c7b2b'
+                        deleted: true
                         key: {
                             document_key: 'eb0d8a99cb86fd3c4aaf6baf1fa9004a'
                             variable: '196df29e331183547ef8f499ed5c7ba7'
@@ -3928,6 +4010,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '14c7c0ee335547547ef8f499ed5c7b4e'
+                        deleted: true
                         key: {
                             document_key: 'c953c4a15912860a800fea29fbec60ba'
                             variable: '05bee8875b00001070e4492c11f91afb'
@@ -3936,6 +4019,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '14c7c0ee335547547ef8f499ed5c7b4f'
+                        deleted: true
                         key: {
                             document_key: 'c953c4a15912860a800fea29fbec60ba'
                             variable: '7cb449e85b41001070e4492c11f91a06'
@@ -3969,6 +4053,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '15104c2e33dd07547ef8f499ed5c7be9'
+                        deleted: true
                         key: {
                             field: 'title'
                             id: '552d0e05ed7a67d24013fb4f4312efb2'
@@ -3977,6 +4062,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '15104c2e33dd07547ef8f499ed5c7bec'
+                        deleted: true
                         key: {
                             document_key: '552d0e05ed7a67d24013fb4f4312efb2'
                             variable: '49ed24875b00001070e4492c11f91aa5'
@@ -4075,6 +4161,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '16a1cc22335147547ef8f499ed5c7bda'
+                        deleted: true
                         key: {
                             document_key: 'c5d5ef3bdad4bd547df380e4d916b13a'
                             variable: '991b3ade33dd43547ef8f499ed5c7b7f'
@@ -4406,6 +4493,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '18c7c0ee335547547ef8f499ed5c7b2b'
+                        deleted: true
                         key: {
                             field: 'associated_table'
                             id: 'c953c4a15912860a800fea29fbec60ba'
@@ -4414,6 +4502,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '18c7c0ee335547547ef8f499ed5c7b49'
+                        deleted: true
                         key: {
                             document_key: 'c953c4a15912860a800fea29fbec60ba'
                             variable: '6688ff5d0700101070e493d0fad300f6'
@@ -4431,6 +4520,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '19104c2e33dd07547ef8f499ed5c7be8'
+                        deleted: true
                         key: {
                             field: 'description'
                             id: '552d0e05ed7a67d24013fb4f4312efb2'
@@ -4439,6 +4529,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: '19130ccdd8a140d5a1dd66b06536e5d2'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: '7c2ac803c0a544fa92f6a03ca584eb44'
@@ -4478,6 +4569,7 @@ declare global {
                     {
                         table: 'sys_choice_set'
                         id: '19663bc51ade466089a3f357b0efd276'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_policy_risk'
                             element: 'exposure'
@@ -4495,6 +4587,7 @@ declare global {
                     {
                         table: 'sys_hub_flow_input'
                         id: '196df29e331183547ef8f499ed5c7ba7'
+                        deleted: true
                         key: {
                             model: '851bf6de33dd43547ef8f499ed5c7bd5'
                             element: 'taskinput'
@@ -4969,6 +5062,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '1cc7c0ee335547547ef8f499ed5c7b27'
+                        deleted: true
                         key: {
                             field: 'assigned_to'
                             id: 'c953c4a15912860a800fea29fbec60ba'
@@ -4977,6 +5071,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '1cc7c0ee335547547ef8f499ed5c7b47'
+                        deleted: true
                         key: {
                             field: 'experience_status_table'
                             id: 'c953c4a15912860a800fea29fbec60ba'
@@ -4985,6 +5080,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '1cc7c0ee335547547ef8f499ed5c7b4a'
+                        deleted: true
                         key: {
                             document_key: 'c953c4a15912860a800fea29fbec60ba'
                             variable: '63fd1eeac7e60010bfbaf89f51c26059'
@@ -4993,6 +5089,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '1cc7c0ee335547547ef8f499ed5c7b4b'
+                        deleted: true
                         key: {
                             document_key: 'c953c4a15912860a800fea29fbec60ba'
                             variable: '1d27b10ac7200010bfbaf89f51c26016'
@@ -5018,6 +5115,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '1d104c2e33dd07547ef8f499ed5c7be7'
+                        deleted: true
                         key: {
                             field: 'experience_status_table'
                             id: '552d0e05ed7a67d24013fb4f4312efb2'
@@ -5026,6 +5124,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '1d104c2e33dd07547ef8f499ed5c7be9'
+                        deleted: true
                         key: {
                             document_key: '552d0e05ed7a67d24013fb4f4312efb2'
                             variable: '78f334b8c763001085f5532bb4c26009'
@@ -5056,6 +5155,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: '1d7d83b6c1ae4adb981dd5f9421e2d2d'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_condition'
                             element: 'name'
@@ -6471,6 +6571,7 @@ declare global {
                     {
                         table: 'sys_hub_flow_output'
                         id: '291b7ade33dd43547ef8f499ed5c7b1d'
+                        deleted: true
                         key: {
                             model: '851bf6de33dd43547ef8f499ed5c7bd5'
                             element: 'record'
@@ -6593,6 +6694,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '2a60b00d2da24b468810f3b0527f4fb9'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_table_entry'
                             element: 'occupancy'
@@ -7338,6 +7440,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '30d140e2335147547ef8f499ed5c7be1'
+                        deleted: true
                         key: {
                             field: 'associated_record'
                             id: 'd2ef58d7b41338b4c96b1a5e1365ce16'
@@ -7346,6 +7449,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '30d140e2335147547ef8f499ed5c7be4'
+                        deleted: true
                         key: {
                             document_key: 'd2ef58d7b41338b4c96b1a5e1365ce16'
                             variable: 'eb0474b8c763001085f5532bb4c260f5'
@@ -7605,6 +7709,7 @@ declare global {
                     {
                         table: 'sys_ui_form'
                         id: '32c043a036f04e53a23d505d98e5080b'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_category'
                             view: {
@@ -7822,6 +7927,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '35077eeea1ed40c0b5a1a90a2cc9f1db'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_policy_risk'
                             element: 'exposure'
@@ -8363,6 +8469,7 @@ declare global {
                     {
                         table: 'sys_db_object'
                         id: '3a2e2953d65241bdb57b13d62bed3e45'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_term'
                         }
@@ -8546,6 +8653,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '3cd140e2335147547ef8f499ed5c7bdf'
+                        deleted: true
                         key: {
                             field: 'footer'
                             id: 'd2ef58d7b41338b4c96b1a5e1365ce16'
@@ -8554,6 +8662,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '3cd140e2335147547ef8f499ed5c7be2'
+                        deleted: true
                         key: {
                             document_key: 'd2ef58d7b41338b4c96b1a5e1365ce16'
                             variable: '8793d6feb70100101a6ddb91de11a98f'
@@ -8649,6 +8758,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: '3d9d892a2d4b4af69fddd789395f86f9'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: 'd0eb5ebcb8fe4e44ade3f1afe27f2f5b'
@@ -8984,8 +9094,18 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '41252c57444b4b36b4f1ec58c2bb5d6e'
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_factor'
+                            element: 'lob'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_ui_section'
                         id: '414d9c62339587547ef8f499ed5c7b47'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_exposure_case'
                             caption: 'NULL'
@@ -9001,6 +9121,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '4151402e331147547ef8f499ed5c7bae'
+                        deleted: true
                         key: {
                             field: 'experience_status_record'
                             id: 'c46137bd4e30ddeef369ec97491f84dd'
@@ -9009,6 +9130,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '4151402e331147547ef8f499ed5c7baf'
+                        deleted: true
                         key: {
                             field: 'is_automated'
                             id: 'c46137bd4e30ddeef369ec97491f84dd'
@@ -9017,18 +9139,10 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '4151402e331147547ef8f499ed5c7bb3'
+                        deleted: true
                         key: {
                             document_key: 'c46137bd4e30ddeef369ec97491f84dd'
                             variable: 'eb0474b8c763001085f5532bb4c260f5'
-                        }
-                    },
-                    {
-                        table: 'sys_documentation'
-                        id: '41252c57444b4b36b4f1ec58c2bb5d6e'
-                        key: {
-                            name: 'x_gegis_ins_policy_rate_factor'
-                            element: 'lob'
-                            language: 'en'
                         }
                     },
                     {
@@ -9821,6 +9935,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: '482ae8ab49654abbbcc86327c482807a'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage'
                             element: 'coinsurance_pct'
@@ -10057,6 +10172,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '4a3a8e33d80c4f3fb494ea73c4ff42d7'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_term'
                             element: 'data_type'
@@ -10224,6 +10340,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '4bc736bd6e64439d9ed6c2042548c1b7'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_term'
                             element: 'term_type'
@@ -10372,6 +10489,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '4d51402e331147547ef8f499ed5c7bb1'
+                        deleted: true
                         key: {
                             document_key: 'c46137bd4e30ddeef369ec97491f84dd'
                             variable: '8793d6feb70100101a6ddb91de11a98f'
@@ -10380,6 +10498,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '4d5144ea331147547ef8f499ed5c7b17'
+                        deleted: true
                         key: {
                             field: 'taskinput'
                             id: 'c46137bd4e30ddeef369ec97491f84dd'
@@ -10419,6 +10538,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: '4e3d1462339587547ef8f499ed5c7bc0'
+                        deleted: true
                         key: {
                             name: 'var__m_sys_pd_snapshot_input_c23d1462339587547ef8f499ed5c7b80'
                             element: 'parent_record'
@@ -10641,6 +10761,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '50c7c0ee335547547ef8f499ed5c7b48'
+                        deleted: true
                         key: {
                             field: 'tagline'
                             id: 'c953c4a15912860a800fea29fbec60ba'
@@ -10649,6 +10770,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '50c7c0ee335547547ef8f499ed5c7b4b'
+                        deleted: true
                         key: {
                             document_key: 'c953c4a15912860a800fea29fbec60ba'
                             variable: '8c1ef8e40f100010f5bf5ae9c4767ed6'
@@ -10657,6 +10779,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '50c7c0ee335547547ef8f499ed5c7b4c'
+                        deleted: true
                         key: {
                             document_key: 'c953c4a15912860a800fea29fbec60ba'
                             variable: '576de7780f1300102920c912d4767e52'
@@ -10692,6 +10815,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '51104c2e33dd07547ef8f499ed5c7be6'
+                        deleted: true
                         key: {
                             field: 'experience_status_record'
                             id: '552d0e05ed7a67d24013fb4f4312efb2'
@@ -10700,6 +10824,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '51104c2e33dd07547ef8f499ed5c7be8'
+                        deleted: true
                         key: {
                             field: 'associated_record'
                             id: '552d0e05ed7a67d24013fb4f4312efb2'
@@ -10708,6 +10833,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '51104c2e33dd07547ef8f499ed5c7bea'
+                        deleted: true
                         key: {
                             document_key: '552d0e05ed7a67d24013fb4f4312efb2'
                             variable: '8793d6feb70100101a6ddb91de11a98f'
@@ -11101,6 +11227,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: '54649bc26a1f4127b07c306e28aa8876'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_table_entry'
                             element: 'vehicle_type'
@@ -11169,6 +11296,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '54c7c0ee335547547ef8f499ed5c7b49'
+                        deleted: true
                         key: {
                             field: 'form_view'
                             id: 'c953c4a15912860a800fea29fbec60ba'
@@ -11177,6 +11305,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '54c7c0ee335547547ef8f499ed5c7b4d'
+                        deleted: true
                         key: {
                             document_key: 'c953c4a15912860a800fea29fbec60ba'
                             variable: '54c49bc60f3200102920c912d4767ee2'
@@ -11243,14 +11372,6 @@ declare global {
                         }
                     },
                     {
-                        table: 'sys_variable_value'
-                        id: '55104c2e33dd07547ef8f499ed5c7beb'
-                        key: {
-                            document_key: '552d0e05ed7a67d24013fb4f4312efb2'
-                            variable: 'eb0474b8c763001085f5532bb4c260f5'
-                        }
-                    },
-                    {
                         table: 'sys_dictionary'
                         id: '55006ce7fd0545d387cb0c30c9d164d7'
                         key: {
@@ -11259,11 +11380,30 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_variable_value'
+                        id: '55104c2e33dd07547ef8f499ed5c7beb'
+                        deleted: true
+                        key: {
+                            document_key: '552d0e05ed7a67d24013fb4f4312efb2'
+                            variable: 'eb0474b8c763001085f5532bb4c260f5'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '5513f2a4bc624b81909463961808af87'
                         key: {
                             name: 'x_gegis_ins_policy_vehicle'
                             element: 'vehicle_type'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '551b3ade33dd43547ef8f499ed5c7b89'
+                        deleted: true
+                        key: {
+                            name: 'var__m_sys_hub_flow_input_851bf6de33dd43547ef8f499ed5c7bd5'
+                            element: 'wait'
+                            language: 'en'
                         }
                     },
                     {
@@ -11279,15 +11419,6 @@ declare global {
                                 }
                             }
                             sys_domain: 'global'
-                        }
-                    },
-                    {
-                        table: 'sys_documentation'
-                        id: '551b3ade33dd43547ef8f499ed5c7b89'
-                        key: {
-                            name: 'var__m_sys_hub_flow_input_851bf6de33dd43547ef8f499ed5c7bd5'
-                            element: 'wait'
-                            language: 'en'
                         }
                     },
                     {
@@ -11590,6 +11721,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: '583f72ef791d42029d5367644eca0305'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_factor'
                             element: 'lob'
@@ -11664,6 +11796,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '58c7c0ee335547547ef8f499ed5c7b4e'
+                        deleted: true
                         key: {
                             document_key: 'c953c4a15912860a800fea29fbec60ba'
                             variable: '4f0e5d7e736100104a905ee515f6a70b'
@@ -11704,6 +11837,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: '59180794247140b099f8e8fe1559d35d'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_term'
                             element: 'affects_rating'
@@ -11721,6 +11855,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '591b3ade33dd43547ef8f499ed5c7b83'
+                        deleted: true
                         key: {
                             name: 'var__m_sys_hub_flow_input_851bf6de33dd43547ef8f499ed5c7bd5'
                             element: 'wait'
@@ -11756,6 +11891,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '5959bc88bb35498d90415dac64316128'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage'
                             element: 'coverage_selection'
@@ -11950,6 +12086,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '5aa1cc22335147547ef8f499ed5c7bda'
+                        deleted: true
                         key: {
                             document_key: 'c5d5ef3bdad4bd547df380e4d916b13a'
                             variable: '196df29e331183547ef8f499ed5c7ba7'
@@ -12038,6 +12175,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '5b32c4562e984af89c2120e9a7c8ccbb'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_term'
                             element: 'data_type'
@@ -12139,6 +12277,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '5cc7c0ee335547547ef8f499ed5c7b2b'
+                        deleted: true
                         key: {
                             field: 'is_automated'
                             id: 'c953c4a15912860a800fea29fbec60ba'
@@ -12147,6 +12286,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '5cc7c0ee335547547ef8f499ed5c7b46'
+                        deleted: true
                         key: {
                             field: 'form_fields'
                             id: 'c953c4a15912860a800fea29fbec60ba'
@@ -12155,6 +12295,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '5cc7c0ee335547547ef8f499ed5c7b49'
+                        deleted: true
                         key: {
                             document_key: 'c953c4a15912860a800fea29fbec60ba'
                             variable: '5e5272b2c3211010381b60bc0eba8f13'
@@ -12211,6 +12352,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '5d104c2e33dd07547ef8f499ed5c7be8'
+                        deleted: true
                         key: {
                             field: 'tagline'
                             id: '552d0e05ed7a67d24013fb4f4312efb2'
@@ -12591,6 +12733,7 @@ declare global {
                     {
                         table: 'sys_db_object'
                         id: '5f7cbedce5a84956b38d79be998707c8'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_quote_option_coverage_term'
                         }
@@ -12670,6 +12813,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: '60043ec8b6de454ea9cda5f92d522a90'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: '7c2ac803c0a544fa92f6a03ca584eb44'
@@ -12736,6 +12880,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: '60878684d3ab4f2081b4481aaab39a81'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage'
                             element: 'coverage_code'
@@ -13058,6 +13203,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: '62fb67045c624ef99efb4b5a9bfb7569'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: 'c3dff75a476148a9a6c9cce16dfadb94'
@@ -13377,6 +13523,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: '650931e1894e467e96f76a3df4387815'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_quote_option_coverage'
                             element: 'quote_risk'
@@ -13442,6 +13589,16 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '65b7e82e8d484215bec4976b7e56ea85'
+                        deleted: true
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table_entry'
+                            element: 'zone'
+                            value: 'any'
+                        }
+                    },
+                    {
                         table: 'sys_ui_element'
                         id: '65d4e4ec1e7e46daac42cda8d104f22a'
                         key: {
@@ -13466,19 +13623,11 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: '65f904da6bbe47e2a21f673296a376bd'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_policy_party'
                             element: 'account'
                             language: 'en'
-                        }
-                    },
-                    {
-                        table: 'sys_choice'
-                        id: '65b7e82e8d484215bec4976b7e56ea85'
-                        key: {
-                            name: 'x_gegis_ins_policy_rate_table_entry'
-                            element: 'zone'
-                            value: 'any'
                         }
                     },
                     {
@@ -13561,6 +13710,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: '670f5ef2539241bc8d0cbebb34868090'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_condition'
                             element: 'coverage'
@@ -13609,6 +13759,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: '67a2c908d718497d955074522c4cf602'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_quote_risk'
                             element: 'protection'
@@ -13618,6 +13769,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: '67a984d94c0f4d6b87f3f787c7e33271'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_policy_coverage_term'
                             element: 'policy_coverage'
@@ -14022,6 +14174,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '6b636d61e93141d9804cb486bbdc84bf'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_table_entry'
                             element: 'occupancy'
@@ -14357,6 +14510,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: '6e1517c6f66944cc9d4b79cda23943ee'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: 'ed1003ebba444a5683442fcb5644986a'
@@ -14472,6 +14626,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: '6ee9816b457c42aaada21bebf03d6e1c'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_product_coverage'
                             element: 'mandatory'
@@ -14481,6 +14636,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: '6eec22a9a1f04a48a714654a64d031d7'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_factor_entry'
                             element: 'rate_factor'
@@ -14719,6 +14875,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '70d140e2335147547ef8f499ed5c7bde'
+                        deleted: true
                         key: {
                             document_key: 'd2ef58d7b41338b4c96b1a5e1365ce16'
                             variable: '991b3ade33dd43547ef8f499ed5c7b7f'
@@ -14727,6 +14884,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '70d140e2335147547ef8f499ed5c7be0'
+                        deleted: true
                         key: {
                             field: 'is_automated'
                             id: 'd2ef58d7b41338b4c96b1a5e1365ce16'
@@ -14735,6 +14893,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '70d140e2335147547ef8f499ed5c7be3'
+                        deleted: true
                         key: {
                             document_key: 'd2ef58d7b41338b4c96b1a5e1365ce16'
                             variable: 'ec5d96eac7e60010bfbaf89f51c2605d'
@@ -14770,6 +14929,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: '71f546a1bcbb4752bf9e228dfea65d72'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_category'
                             element: 'coverage_selection'
@@ -15152,6 +15312,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '73e916b078b6406ebf00a6568a0c2018'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_table_entry'
                             element: 'protection'
@@ -15248,6 +15409,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '74d140e2335147547ef8f499ed5c7be1'
+                        deleted: true
                         key: {
                             field: 'description'
                             id: 'd2ef58d7b41338b4c96b1a5e1365ce16'
@@ -15256,6 +15418,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '74d140e2335147547ef8f499ed5c7be4'
+                        deleted: true
                         key: {
                             document_key: 'd2ef58d7b41338b4c96b1a5e1365ce16'
                             variable: '267e68875b00001070e4492c11f91a34'
@@ -15415,6 +15578,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: '767f8b104c8d400a9836dbf0dce51e19'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: '02cd8eb19319475044f7bd4f7bba1017'
@@ -15473,6 +15637,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: '7713db9d2225477786287bc895243431'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_term'
                             element: 'maximum_value'
@@ -15608,6 +15773,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '78d140e2335147547ef8f499ed5c7bdd'
+                        deleted: true
                         key: {
                             field: 'wait'
                             id: 'd2ef58d7b41338b4c96b1a5e1365ce16'
@@ -15697,6 +15863,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: '796648d14af54e1e88a809a284b6d60c'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_exclusion'
                             element: 'NULL'
@@ -15721,20 +15888,22 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '79ca756d97724a8e803d87a319f538e4'
+                        deleted: true
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_condition'
+                            element: 'condition'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '79ecd3b267e24d079e277e82e8931047'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_quote_risk'
                             element: 'construction'
                             value: 'fire_resistive'
-                        }
-                    },
-                    {
-                        table: 'sys_dictionary'
-                        id: '79ca756d97724a8e803d87a319f538e4'
-                        key: {
-                            name: 'x_gegis_ins_policy_coverage_condition'
-                            element: 'condition'
                         }
                     },
                     {
@@ -15930,6 +16099,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: '7b5eb9fc3d06426680f13e7bb089e11b'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_condition'
                             element: 'NULL'
@@ -15971,6 +16141,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: '7bb340192a524ebd8e3ba7db9f91ea50'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage'
                             element: 'cause_of_loss_form'
@@ -15987,6 +16158,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: '7bf6473d23464abba58290a2ed44c08c'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_policy_coverage'
                             element: 'policy'
@@ -16040,6 +16212,7 @@ declare global {
                     {
                         table: 'sys_ui_section'
                         id: '7c2ac803c0a544fa92f6a03ca584eb44'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_product'
                             caption: 'Lifecycle & Availability'
@@ -16140,6 +16313,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: '7d169fa594644bdbab7d6a7718fcbb78'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_table_entry'
                             element: 'engine_cc'
@@ -16175,6 +16349,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: '7d72c0ea335147547ef8f499ed5c7beb'
+                        deleted: true
                         key: {
                             name: 'var__m_sys_pd_snapshot_input_6d7280ea335147547ef8f499ed5c7b18'
                             element: 'parent_record'
@@ -16264,6 +16439,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: '7ecc35a5c0b640998da5648fb5f104d2'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage'
                             element: 'coverage_category'
@@ -16571,6 +16747,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: '814d50a2339587547ef8f499ed5c7b71'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: '414d9c62339587547ef8f499ed5c7b47'
@@ -16588,6 +16765,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '8151402e331147547ef8f499ed5c7bb2'
+                        deleted: true
                         key: {
                             document_key: 'c46137bd4e30ddeef369ec97491f84dd'
                             variable: 'ec5d96eac7e60010bfbaf89f51c2605d'
@@ -16605,6 +16783,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: '816911f1fa0247dbae61508ee039d364'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: '0acd8eb19319475044f7bd4f7bba1018'
@@ -16653,6 +16832,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: '81c47312c1a84fd79a6aac47dccd18d2'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_category'
                             element: 'display_order'
@@ -16696,6 +16876,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: '8238096fd8824d4b9ad83d736a3ad1c0'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_factor'
                             element: 'description'
@@ -16903,6 +17084,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: '848d0ccf636444c1b397a31ca7f298bd'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: 'c3dff75a476148a9a6c9cce16dfadb94'
@@ -16940,6 +17122,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: '854d50a2339587547ef8f499ed5c7b6f'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: '414d9c62339587547ef8f499ed5c7b47'
@@ -16957,6 +17140,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '8551402e331147547ef8f499ed5c7bae'
+                        deleted: true
                         key: {
                             field: 'associated_table'
                             id: 'c46137bd4e30ddeef369ec97491f84dd'
@@ -16965,6 +17149,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '8551402e331147547ef8f499ed5c7baf'
+                        deleted: true
                         key: {
                             field: 'icon'
                             id: 'c46137bd4e30ddeef369ec97491f84dd'
@@ -16973,6 +17158,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '8551402e331147547ef8f499ed5c7bb0'
+                        deleted: true
                         key: {
                             field: 'description'
                             id: 'c46137bd4e30ddeef369ec97491f84dd'
@@ -16981,6 +17167,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '8551402e331147547ef8f499ed5c7bb3'
+                        deleted: true
                         key: {
                             document_key: 'c46137bd4e30ddeef369ec97491f84dd'
                             variable: '267e68875b00001070e4492c11f91a34'
@@ -17037,6 +17224,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: '85805f756fec48ea99db2704b831de0f'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: 'c3dff75a476148a9a6c9cce16dfadb94'
@@ -17380,6 +17568,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: '894d50a2339587547ef8f499ed5c7b6d'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: '414d9c62339587547ef8f499ed5c7b47'
@@ -17397,6 +17586,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '8951402e331147547ef8f499ed5c7bad'
+                        deleted: true
                         key: {
                             document_key: 'c46137bd4e30ddeef369ec97491f84dd'
                             variable: '196df29e331183547ef8f499ed5c7ba7'
@@ -17756,6 +17946,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: '8ea8be39e45c48ff8dc1030456f3fee2'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage'
                             element: 'maximum_limit'
@@ -17764,6 +17955,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: '8ec1cce5e8d54a778e2a9d1bcaacee51'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: 'd0eb5ebcb8fe4e44ade3f1afe27f2f5b'
@@ -17914,6 +18106,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: '902e7f9417fa47ee862565b3c836315b'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_quote_risk'
                             element: 'NULL'
@@ -17937,19 +18130,19 @@ declare global {
                         }
                     },
                     {
-                        table: 'sys_dictionary'
-                        id: '906b791a1b884b1a8c835a77e77990bc'
-                        key: {
-                            name: 'x_gegis_ins_policy_coverage_exclusion'
-                            element: 'exclusion'
-                        }
-                    },
-                    {
                         table: 'sys_choice_set'
                         id: '906182aa305040a4872051aeef3f9ff9'
                         key: {
                             name: 'x_gegis_ins_policy_policy_risk'
                             element: 'occupancy'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: '906b791a1b884b1a8c835a77e77990bc'
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_exclusion'
+                            element: 'exclusion'
                         }
                     },
                     {
@@ -17973,6 +18166,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: '90bc198213264c98a8888c9c0ec93a96'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: 'aa7caaa021924809b38312fcca1050d2'
@@ -17995,6 +18189,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '90c7c0ee335547547ef8f499ed5c7b2c'
+                        deleted: true
                         key: {
                             field: 'associated_record'
                             id: 'c953c4a15912860a800fea29fbec60ba'
@@ -18003,6 +18198,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '90c7c0ee335547547ef8f499ed5c7b47'
+                        deleted: true
                         key: {
                             field: 'pending_title'
                             id: 'c953c4a15912860a800fea29fbec60ba'
@@ -18011,6 +18207,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '90c7c0ee335547547ef8f499ed5c7b4a'
+                        deleted: true
                         key: {
                             document_key: 'c953c4a15912860a800fea29fbec60ba'
                             variable: '71ae56b6b74100101a6ddb91de11a9a1'
@@ -18060,6 +18257,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '91104c2e33dd07547ef8f499ed5c7be7'
+                        deleted: true
                         key: {
                             field: 'is_automated'
                             id: '552d0e05ed7a67d24013fb4f4312efb2'
@@ -18123,6 +18321,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '91909f9efcfe42b394d3268a097712bc'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_quote_risk'
                             element: 'exposure'
@@ -18132,6 +18331,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: '91a0cf6826e846739706e4fbf3b8380a'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_quote_risk'
                             element: 'risk_type'
@@ -18202,6 +18402,7 @@ declare global {
                     {
                         table: 'sys_ui_section'
                         id: '93373158774940e98f8378d832e271dd'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_category'
                             caption: 'Behavior'
@@ -18263,20 +18464,21 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_dictionary'
+                        id: '944dbf009b834478af5dd73236674fc1'
+                        deleted: true
+                        key: {
+                            name: 'x_gegis_ins_policy_coverage_exclusion'
+                            element: 'coverage'
+                        }
+                    },
+                    {
                         table: 'sys_ui_element'
                         id: '944f0e6d9355c35044f7bd4f7bba1081'
                         key: {
                             sys_ui_section: '1c4f06219355c35044f7bd4f7bba109d'
                             element: 'assessed_date'
                             position: '3'
-                        }
-                    },
-                    {
-                        table: 'sys_dictionary'
-                        id: '944dbf009b834478af5dd73236674fc1'
-                        key: {
-                            name: 'x_gegis_ins_policy_coverage_exclusion'
-                            element: 'coverage'
                         }
                     },
                     {
@@ -18338,6 +18540,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '94c7c0ee335547547ef8f499ed5c7b48'
+                        deleted: true
                         key: {
                             field: 'record_fields'
                             id: 'c953c4a15912860a800fea29fbec60ba'
@@ -18346,6 +18549,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '94c7c0ee335547547ef8f499ed5c7b4c'
+                        deleted: true
                         key: {
                             document_key: 'c953c4a15912860a800fea29fbec60ba'
                             variable: '13597d8ac7200010bfbaf89f51c2609e'
@@ -18389,6 +18593,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '95104c2e33dd07547ef8f499ed5c7be6'
+                        deleted: true
                         key: {
                             field: 'associated_table'
                             id: '552d0e05ed7a67d24013fb4f4312efb2'
@@ -18397,6 +18602,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '95104c2e33dd07547ef8f499ed5c7bea'
+                        deleted: true
                         key: {
                             document_key: '552d0e05ed7a67d24013fb4f4312efb2'
                             variable: 'ec5d96eac7e60010bfbaf89f51c2605d'
@@ -18449,6 +18655,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '95818cae331147547ef8f499ed5c7b32'
+                        deleted: true
                         key: {
                             document_key: '9484774113ae3f0f2b1fcc824ae8cd9a'
                             variable: '991b3ade33dd43547ef8f499ed5c7b7f'
@@ -18482,6 +18689,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: '95f0213aeb244fe9b38bcd19c539e53b'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_table'
                             element: 'lob'
@@ -18532,6 +18740,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: '966fcda9b25f49a2bba74d5855a152bf'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage'
                             element: 'applicable_states'
@@ -18608,6 +18817,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: '96edd15946454e318a3eb37e04a1d459'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_quote_option'
                             element: 'version'
@@ -18624,6 +18834,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: '96f344ae339147547ef8f499ed5c7bb8'
+                        deleted: true
                         key: {
                             name: 'var__m_sys_pd_snapshot_input_daf304ae339147547ef8f499ed5c7ba9'
                             element: 'parent_record'
@@ -18799,6 +19010,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '98c7c0ee335547547ef8f499ed5c7b26'
+                        deleted: true
                         key: {
                             field: 'assignment_group'
                             id: 'c953c4a15912860a800fea29fbec60ba'
@@ -18807,6 +19019,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '98c7c0ee335547547ef8f499ed5c7b2d'
+                        deleted: true
                         key: {
                             field: 'title'
                             id: 'c953c4a15912860a800fea29fbec60ba'
@@ -18815,6 +19028,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '98c7c0ee335547547ef8f499ed5c7b4d'
+                        deleted: true
                         key: {
                             document_key: 'c953c4a15912860a800fea29fbec60ba'
                             variable: '4612be72c3211010381b60bc0eba8f47'
@@ -18823,6 +19037,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '99104c2e33dd07547ef8f499ed5c7beb'
+                        deleted: true
                         key: {
                             document_key: '552d0e05ed7a67d24013fb4f4312efb2'
                             variable: '267e68875b00001070e4492c11f91a34'
@@ -18839,6 +19054,7 @@ declare global {
                     {
                         table: 'sys_hub_flow_input'
                         id: '991b3ade33dd43547ef8f499ed5c7b7f'
+                        deleted: true
                         key: {
                             model: '851bf6de33dd43547ef8f499ed5c7bd5'
                             element: 'wait'
@@ -18882,6 +19098,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '9981b8a838554c00b11c44627ad2c411'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_table'
                             element: 'rate_type'
@@ -19062,6 +19279,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: '9a61f015adf74c929720b942afb07fb0'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage'
                             element: 'coverage_selection'
@@ -19420,6 +19638,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '9cc7c0ee335547547ef8f499ed5c7b28'
+                        deleted: true
                         key: {
                             document_key: 'c953c4a15912860a800fea29fbec60ba'
                             variable: '4f9fdae51bbb001094630f28cc4bcb66'
@@ -19428,6 +19647,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '9cc7c0ee335547547ef8f499ed5c7b2a'
+                        deleted: true
                         key: {
                             field: 'experience_status_record'
                             id: 'c953c4a15912860a800fea29fbec60ba'
@@ -19436,6 +19656,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '9cc7c0ee335547547ef8f499ed5c7b2c'
+                        deleted: true
                         key: {
                             field: 'description'
                             id: 'c953c4a15912860a800fea29fbec60ba'
@@ -19444,6 +19665,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '9cc7c0ee335547547ef8f499ed5c7b4e'
+                        deleted: true
                         key: {
                             document_key: 'c953c4a15912860a800fea29fbec60ba'
                             variable: 'd803775a5b01001031a67d6f7281c7aa'
@@ -19461,6 +19683,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: '9d104c2e33dd07547ef8f499ed5c7be3'
+                        deleted: true
                         key: {
                             document_key: '552d0e05ed7a67d24013fb4f4312efb2'
                             variable: '991b3ade33dd43547ef8f499ed5c7b7f'
@@ -19469,6 +19692,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '9d1b3ade33dd43547ef8f499ed5c7b82'
+                        deleted: true
                         key: {
                             name: 'var__m_sys_hub_flow_input_851bf6de33dd43547ef8f499ed5c7bd5'
                             element: 'wait'
@@ -19558,6 +19782,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: '9e0c44e7a9c14c5abc0ac58b15b506b5'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_term'
                             element: 'minimum_value'
@@ -19623,6 +19848,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '9e8dca16467d489d9a95903237aec31a'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_table_entry'
                             element: 'vehicle_type'
@@ -19677,6 +19903,7 @@ declare global {
                     {
                         table: 'sys_db_object'
                         id: '9efe78a1573849729a6c263f325e26c6'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_product_coverage_term_option'
                         }
@@ -19852,6 +20079,7 @@ declare global {
                     {
                         table: 'sys_ui_section'
                         id: 'a06bac05b135439cb9ccd06df491d530'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_product'
                             caption: 'Basic Information'
@@ -20021,6 +20249,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: 'a20131e9b292478e9f1bfaead396e548'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage'
                             element: 'minimum_limit'
@@ -20056,6 +20285,7 @@ declare global {
                     {
                         table: 'sys_ui_form'
                         id: 'a290f28972a34d3496e49ad082aa4025'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage'
                             view: {
@@ -20330,6 +20560,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'a564022a6aa4490a874a0e6745bc0ed3'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_policy_transaction'
                             element: 'status'
@@ -20388,6 +20619,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: 'a65f95ac8bc94df7a42e09fba4b8f985'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_exclusion'
                             element: 'NULL'
@@ -20572,6 +20804,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'a8b3b1fb8ac54298b69ebbdd5b0af484'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_policy_risk'
                             element: 'exposure'
@@ -20881,6 +21114,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'ab4c27f51c7c4b05a1d42363f6337e8d'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_policy_transaction'
                             element: 'status'
@@ -21012,6 +21246,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: 'ac266da9a33a42e3995de2e9ec76fe3a'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_policy_coverage_term'
                             element: 'selected_value'
@@ -21206,6 +21441,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'ad9010a3ebcb44a2b346952f27096584'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_factor'
                             element: 'lob'
@@ -21402,6 +21638,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: 'b0d140e2335147547ef8f499ed5c7bdf'
+                        deleted: true
                         key: {
                             field: 'experience_status_record'
                             id: 'd2ef58d7b41338b4c96b1a5e1365ce16'
@@ -21410,6 +21647,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: 'b0d140e2335147547ef8f499ed5c7be2'
+                        deleted: true
                         key: {
                             document_key: 'd2ef58d7b41338b4c96b1a5e1365ce16'
                             variable: '55628762c3211010381b60bc0eba8fec'
@@ -21434,6 +21672,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: 'b11609282fc94de09ad6ef836cfb3d2a'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_exclusion'
                             element: 'exclusion'
@@ -21468,6 +21707,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: 'b1de4d70c7324b90846b8a45cb9c99cb'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: '02cd8eb19319475044f7bd4f7bba1017'
@@ -21576,6 +21816,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: 'b3950f05307a461e97a3a377519027b6'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: 'ed1003ebba444a5683442fcb5644986a'
@@ -21704,6 +21945,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: 'b4ae651f68bb4b518043ae94fbf73a16'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_table_entry'
                             element: 'vehicle_type'
@@ -21743,6 +21985,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: 'b4d140e2335147547ef8f499ed5c7be0'
+                        deleted: true
                         key: {
                             field: 'icon'
                             id: 'd2ef58d7b41338b4c96b1a5e1365ce16'
@@ -21751,6 +21994,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: 'b4d140e2335147547ef8f499ed5c7be3'
+                        deleted: true
                         key: {
                             document_key: 'd2ef58d7b41338b4c96b1a5e1365ce16'
                             variable: '24bdf44673030010fe4a6da44cf6a707'
@@ -21794,6 +22038,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: 'b52086f7343d4a68a93811cd5c36495f'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage'
                             element: 'valuation_basis'
@@ -22000,6 +22245,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: 'b6c7bbc489d14c5db981b3477052d2e2'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_factor'
                             element: 'applies_to'
@@ -22009,6 +22255,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'b6e52c7292db418db146c6e92d315547'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_product'
                             element: 'line_of_business'
@@ -22071,6 +22318,7 @@ declare global {
                     {
                         table: 'sys_choice_set'
                         id: 'b716f20c2c2c48b4aae42984513af439'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_quote_risk'
                             element: 'construction'
@@ -22124,6 +22372,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: 'b8029e15378a45798737565c52bb589b'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: 'aa7caaa021924809b38312fcca1050d2'
@@ -22170,6 +22419,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: 'b8d140e2335147547ef8f499ed5c7be1'
+                        deleted: true
                         key: {
                             field: 'tagline'
                             id: 'd2ef58d7b41338b4c96b1a5e1365ce16'
@@ -22178,6 +22428,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: 'b8d140e2335147547ef8f499ed5c7be4'
+                        deleted: true
                         key: {
                             document_key: 'd2ef58d7b41338b4c96b1a5e1365ce16'
                             variable: '661d304673030010fe4a6da44cf6a7b1'
@@ -22208,6 +22459,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: 'b8ef0bb9315b4926b139899d03239491'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_quote_option_coverage'
                             element: 'product_coverage'
@@ -22396,6 +22648,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: 'ba9abe7951ed496eab754b76ed0e342e'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_policy_party'
                             element: 'NULL'
@@ -22405,6 +22658,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: 'baabb114b160438a97890ed864b1ace7'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: 'aa7caaa021924809b38312fcca1050d2'
@@ -22454,6 +22708,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'bb0312405c654d74add5a28ce7856b0c'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_category'
                             element: 'coverage_selection'
@@ -22509,6 +22764,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: 'bbd4af2ba31342678ea98f503a9addd4'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage'
                             element: 'default_selected'
@@ -22582,6 +22838,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: 'bcd140e2335147547ef8f499ed5c7bdd'
+                        deleted: true
                         key: {
                             field: 'taskinput'
                             id: 'd2ef58d7b41338b4c96b1a5e1365ce16'
@@ -22879,6 +23136,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'bfb77c5eeba14fe7bd2beb996795d209'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_policy_risk'
                             element: 'exposure'
@@ -22938,6 +23196,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: 'c151402e331147547ef8f499ed5c7bb1'
+                        deleted: true
                         key: {
                             document_key: 'c46137bd4e30ddeef369ec97491f84dd'
                             variable: '55628762c3211010381b60bc0eba8fec'
@@ -23144,6 +23403,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: 'c2a4a9536882413283b90bad6ea4b002'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage'
                             element: 'description'
@@ -23268,6 +23528,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: 'c3c92aefa6f445298d1e15b00e6f4c28'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: 'ed1003ebba444a5683442fcb5644986a'
@@ -23349,6 +23610,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: 'c4939e21d5c546b1af8960c9c47ac4c5'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_table'
                             element: 'NULL'
@@ -23403,6 +23665,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: 'c551402e331147547ef8f499ed5c7bb2'
+                        deleted: true
                         key: {
                             document_key: 'c46137bd4e30ddeef369ec97491f84dd'
                             variable: '24bdf44673030010fe4a6da44cf6a707'
@@ -23419,6 +23682,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: 'c575f70032e94b438cf7446f749eb3b8'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_table_entry'
                             element: 'engine_cc'
@@ -23572,6 +23836,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: 'c71d924090ac4e9b8bf3a60d7bc28ac8'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage'
                             element: 'maximum_limit'
@@ -23783,6 +24048,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: 'c8cf415d419e46029f15a5c753341a35'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_quote_risk'
                             element: 'quote'
@@ -23791,6 +24057,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: 'c8d2fc18065b498786b93f1f65b7efdc'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_condition'
                             element: 'code'
@@ -23817,6 +24084,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: 'c9363749750c4348a959d013fa82cb99'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage'
                             element: 'default_limit'
@@ -23848,6 +24116,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: 'c951402e331147547ef8f499ed5c7bae'
+                        deleted: true
                         key: {
                             field: 'footer'
                             id: 'c46137bd4e30ddeef369ec97491f84dd'
@@ -23856,6 +24125,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: 'c951402e331147547ef8f499ed5c7baf'
+                        deleted: true
                         key: {
                             field: 'experience_status_table'
                             id: 'c46137bd4e30ddeef369ec97491f84dd'
@@ -23864,6 +24134,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: 'c951402e331147547ef8f499ed5c7bb0'
+                        deleted: true
                         key: {
                             field: 'tagline'
                             id: 'c46137bd4e30ddeef369ec97491f84dd'
@@ -23872,6 +24143,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: 'c951402e331147547ef8f499ed5c7bb3'
+                        deleted: true
                         key: {
                             document_key: 'c46137bd4e30ddeef369ec97491f84dd'
                             variable: '661d304673030010fe4a6da44cf6a7b1'
@@ -23907,6 +24179,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'ca03c51fc6664def9eed09bb700ac90d'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_table_entry'
                             element: 'construction'
@@ -24066,6 +24339,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: 'cc53ccb1747f4e20b35e7c7a3a65ff5a'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: '5525ec2558df4ce1a6b1dc36de27bb5c'
@@ -24130,6 +24404,7 @@ declare global {
                     {
                         table: 'sys_choice_set'
                         id: 'cd21f60cb2894161b72f7c3546239737'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_factor'
                             element: 'factor_type'
@@ -24157,6 +24432,7 @@ declare global {
                     {
                         table: 'sys_choice_set'
                         id: 'cd6731a4bb2c403aa29aa1c44c42eef9'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_policy_risk'
                             element: 'occupancy'
@@ -24173,6 +24449,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: 'cd984f14d0d64ed7a74cfbccf9ab3ded'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_product'
                             element: 'expiration_date'
@@ -24235,6 +24512,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: 'cedf3ea204cc42fdbf681a4b31e1149a'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_factor_entry'
                             element: 'condition_label'
@@ -24261,6 +24539,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: 'cf2f78def894415397e7742c1d9618d7'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_exclusion'
                             element: 'NULL'
@@ -24322,6 +24601,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: 'cfc425d966274d369751095ad0f23f09'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_quote'
                             element: 'product'
@@ -24488,6 +24768,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: 'd0c7c0ee335547547ef8f499ed5c7b29'
+                        deleted: true
                         key: {
                             document_key: 'c953c4a15912860a800fea29fbec60ba'
                             variable: '3499c6631b630010affd0e55cc4bcb90'
@@ -24496,6 +24777,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: 'd0c7c0ee335547547ef8f499ed5c7b2b'
+                        deleted: true
                         key: {
                             field: 'footer'
                             id: 'c953c4a15912860a800fea29fbec60ba'
@@ -24504,6 +24786,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: 'd0c7c0ee335547547ef8f499ed5c7b2d'
+                        deleted: true
                         key: {
                             field: 'attachments_read_only'
                             id: 'c953c4a15912860a800fea29fbec60ba'
@@ -24520,6 +24803,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'd0d1cd53b0b142eeba460b509512d90a'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_category'
                             element: 'coverage_selection'
@@ -24538,6 +24822,7 @@ declare global {
                     {
                         table: 'sys_ui_section'
                         id: 'd0eb5ebcb8fe4e44ade3f1afe27f2f5b'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage'
                             caption: 'General'
@@ -24562,6 +24847,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: 'd10b551e5e5f4261a3298ed425c95d06'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_term'
                             element: 'required'
@@ -24588,6 +24874,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'd14037aa03db4208bcafd38f4185577e'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_policy_risk'
                             element: 'construction'
@@ -24650,6 +24937,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'd1aa5709f4ff474d8f7e2bb519275e44'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_policy_risk'
                             element: 'risk_type'
@@ -24742,20 +25030,22 @@ declare global {
                         }
                     },
                     {
-                        table: 'sys_dictionary'
-                        id: 'd2863cea0dcc4dfea91c586a8bd00978'
-                        key: {
-                            name: 'x_gegis_ins_policy_rate_table'
-                            element: 'rate_type'
-                        }
-                    },
-                    {
                         table: 'sys_choice'
                         id: 'd274d1edd80f4c9db8f323df6f4d07ff'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_table_entry'
                             element: 'engine_cc'
                             value: 'above_1500cc'
+                        }
+                    },
+                    {
+                        table: 'sys_dictionary'
+                        id: 'd2863cea0dcc4dfea91c586a8bd00978'
+                        deleted: true
+                        key: {
+                            name: 'x_gegis_ins_policy_rate_table'
+                            element: 'rate_type'
                         }
                     },
                     {
@@ -24820,6 +25110,7 @@ declare global {
                     {
                         table: 'sys_ui_form_section'
                         id: 'd3f67b2a8eb14b53989787dc2113e497'
+                        deleted: true
                         key: {
                             sys_ui_form: {
                                 id: 'f33cf31073284d13a2adcd94619d7a00'
@@ -24915,6 +25206,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: 'd4c7c0ee335547547ef8f499ed5c7b27'
+                        deleted: true
                         key: {
                             field: 'wait'
                             id: 'c953c4a15912860a800fea29fbec60ba'
@@ -24923,6 +25215,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: 'd4c7c0ee335547547ef8f499ed5c7b2a'
+                        deleted: true
                         key: {
                             field: 'pending_description'
                             id: 'c953c4a15912860a800fea29fbec60ba'
@@ -24931,6 +25224,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: 'd4c7c0ee335547547ef8f499ed5c7b2c'
+                        deleted: true
                         key: {
                             field: 'icon'
                             id: 'c953c4a15912860a800fea29fbec60ba'
@@ -24939,6 +25233,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: 'd4c7c0ee335547547ef8f499ed5c7b47'
+                        deleted: true
                         key: {
                             field: 'show_sla'
                             id: 'c953c4a15912860a800fea29fbec60ba'
@@ -24947,6 +25242,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: 'd4c7c0ee335547547ef8f499ed5c7b4a'
+                        deleted: true
                         key: {
                             document_key: 'c953c4a15912860a800fea29fbec60ba'
                             variable: '77edf4e40f100010f5bf5ae9c4767edb'
@@ -24955,6 +25251,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: 'd4c7c0ee335547547ef8f499ed5c7b4b'
+                        deleted: true
                         key: {
                             document_key: 'c953c4a15912860a800fea29fbec60ba'
                             variable: 'ad4db04673030010fe4a6da44cf6a798'
@@ -24997,6 +25294,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: 'd5104c2e33dd07547ef8f499ed5c7be7'
+                        deleted: true
                         key: {
                             field: 'icon'
                             id: '552d0e05ed7a67d24013fb4f4312efb2'
@@ -25005,6 +25303,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: 'd5104c2e33dd07547ef8f499ed5c7be9'
+                        deleted: true
                         key: {
                             document_key: '552d0e05ed7a67d24013fb4f4312efb2'
                             variable: '55628762c3211010381b60bc0eba8fec'
@@ -25042,6 +25341,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'd5c568787cd246578c347dcf41d6b93f'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_quote_risk'
                             element: 'exposure'
@@ -25074,6 +25374,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: 'd5ea4ce7536d404989900303a9f92b5d'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_policy_coverage'
                             element: 'coverage_premium'
@@ -25083,6 +25384,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: 'd64d8f917f924dda83c2f94d27af42ff'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_term'
                             element: 'coverage'
@@ -25122,6 +25424,7 @@ declare global {
                     {
                         table: 'sys_ui_section'
                         id: 'd696682a5c364f2d9db38983e5c70e8f'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage'
                             caption: 'Rating & Financials'
@@ -25145,6 +25448,7 @@ declare global {
                     {
                         table: 'sys_ui_section'
                         id: 'd6ce1206b2ee4198ae5202dd3a586100'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_category'
                             caption: 'Basic Information'
@@ -25325,6 +25629,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: 'd8c7c0ee335547547ef8f499ed5c7b48'
+                        deleted: true
                         key: {
                             field: 'attachment_source'
                             id: 'c953c4a15912860a800fea29fbec60ba'
@@ -25333,6 +25638,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: 'd8c7c0ee335547547ef8f499ed5c7b4c'
+                        deleted: true
                         key: {
                             document_key: 'c953c4a15912860a800fea29fbec60ba'
                             variable: 'fbc1f11b5b40001070e4492c11f91a45'
@@ -25372,6 +25678,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: 'd9104c2e33dd07547ef8f499ed5c7be2'
+                        deleted: true
                         key: {
                             field: 'wait'
                             id: '552d0e05ed7a67d24013fb4f4312efb2'
@@ -25380,6 +25687,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: 'd9104c2e33dd07547ef8f499ed5c7be3'
+                        deleted: true
                         key: {
                             field: 'taskinput'
                             id: '552d0e05ed7a67d24013fb4f4312efb2'
@@ -25388,6 +25696,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: 'd9104c2e33dd07547ef8f499ed5c7be6'
+                        deleted: true
                         key: {
                             field: 'footer'
                             id: '552d0e05ed7a67d24013fb4f4312efb2'
@@ -25396,6 +25705,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: 'd9104c2e33dd07547ef8f499ed5c7bea'
+                        deleted: true
                         key: {
                             document_key: '552d0e05ed7a67d24013fb4f4312efb2'
                             variable: '24bdf44673030010fe4a6da44cf6a707'
@@ -25437,6 +25747,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: 'd9818cae331147547ef8f499ed5c7b32'
+                        deleted: true
                         key: {
                             document_key: '9484774113ae3f0f2b1fcc824ae8cd9a'
                             variable: '196df29e331183547ef8f499ed5c7ba7'
@@ -25493,6 +25804,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: 'd9ed1a1c64804e0daaf2452247f6e6e8'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: 'd0eb5ebcb8fe4e44ade3f1afe27f2f5b'
@@ -25523,6 +25835,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'da0bc8ce5df94861a5f74688c1265bbb'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_quote_risk'
                             element: 'risk_type'
@@ -25540,6 +25853,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'da2edd4a2e20416fad84b28a2a0e3b67'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_product'
                             element: 'line_of_business'
@@ -25558,6 +25872,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: 'da34e061e30d4af69adb500e8ce7b7e8'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: 'c3dff75a476148a9a6c9cce16dfadb94'
@@ -25705,6 +26020,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'db9534e3a3fb4f3599259f597584639c'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_table_entry'
                             element: 'construction'
@@ -25722,6 +26038,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: 'dbb3e791dc4949128b1a50db2152cc0b'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: '02cd8eb19319475044f7bd4f7bba1017'
@@ -25802,6 +26119,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: 'dc4140ea331147547ef8f499ed5c7b2a'
+                        deleted: true
                         key: {
                             document_key: 'eb0d8a99cb86fd3c4aaf6baf1fa9004a'
                             variable: '991b3ade33dd43547ef8f499ed5c7b7f'
@@ -25826,6 +26144,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: 'dcc7c0ee335547547ef8f499ed5c7b27'
+                        deleted: true
                         key: {
                             document_key: 'c953c4a15912860a800fea29fbec60ba'
                             variable: '024026291bbb001094630f28cc4bcb03'
@@ -25834,6 +26153,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: 'dcc7c0ee335547547ef8f499ed5c7b4d'
+                        deleted: true
                         key: {
                             document_key: 'c953c4a15912860a800fea29fbec60ba'
                             variable: '9a0c340673030010fe4a6da44cf6a7de'
@@ -25869,6 +26189,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: 'dd104c2e33dd07547ef8f499ed5c7beb'
+                        deleted: true
                         key: {
                             document_key: '552d0e05ed7a67d24013fb4f4312efb2'
                             variable: '661d304673030010fe4a6da44cf6a7b1'
@@ -25936,6 +26257,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: 'ddb05f81749547508607d7355fd1e4c0'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage'
                             element: 'eligibility_rule_ref'
@@ -26112,6 +26434,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: 'df5e170106694a53bf80308d3868582e'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_product'
                             element: 'applicable_states'
@@ -26138,6 +26461,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'dfa195ed7caa4cffbaf14c37429ba8b1'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage'
                             element: 'deductible_type'
@@ -26197,6 +26521,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'e026fd726f1b41acaa7ab985dad9714e'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage'
                             element: 'valuation_basis'
@@ -26408,6 +26733,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: 'e32d1c22339587547ef8f499ed5c7b9d'
+                        deleted: true
                         key: {
                             name: 'var__m_sys_pd_snapshot_input_5f2dd822339587547ef8f499ed5c7bc4'
                             element: 'parent_record'
@@ -26513,6 +26839,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: 'e476d8fc069f4bb690729654047f3ca8'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: '93373158774940e98f8378d832e271dd'
@@ -26582,6 +26909,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: 'e51b7ade33dd43547ef8f499ed5c7b41'
+                        deleted: true
                         key: {
                             name: 'var__m_sys_hub_flow_output_851bf6de33dd43547ef8f499ed5c7bd5'
                             element: 'record'
@@ -26591,6 +26919,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: 'e584b4c369bd431997737c6f8fe2fabe'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_factor'
                             element: 'factor_type'
@@ -26617,6 +26946,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: 'e5ec3052666147d490737dde6d7d7513'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_factor'
                             element: 'NULL'
@@ -26695,6 +27025,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: 'e6b85cf6d0254d0487d5ca182e0c596c'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_policy_coverage_term'
                             element: 'term_name'
@@ -26712,6 +27043,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: 'e709891e3ce54e938633a88e8c52997c'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_table'
                             element: 'name'
@@ -26760,6 +27092,7 @@ declare global {
                     {
                         table: 'sys_choice_set'
                         id: 'e771db3c05c14dc99d7e47f8e88b317d'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_term'
                             element: 'term_type'
@@ -26793,6 +27126,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'e7b6b660ccf34428913d01fad2762687'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_product'
                             element: 'status'
@@ -26811,6 +27145,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: 'e7e83bda77eb46f5b7761d266ec7b170'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_quote_option_coverage_term'
                             element: 'quote_option_coverage'
@@ -26905,6 +27240,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'e8787b10fcb348a6abcf60e1eb1cf673'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_table_entry'
                             element: 'occupancy'
@@ -26956,6 +27292,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: 'e8b19cf6134941bcb67bfa03c41d5bb3'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_policy_transaction'
                             element: 'effective_date'
@@ -27004,6 +27341,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: 'e96df29e331183547ef8f499ed5c7bae'
+                        deleted: true
                         key: {
                             name: 'var__m_sys_hub_flow_input_851bf6de33dd43547ef8f499ed5c7bd5'
                             element: 'taskinput'
@@ -27142,6 +27480,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: 'eb74308a12674276af2008fdf53cf3fe'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage'
                             element: 'default_limit'
@@ -27201,6 +27540,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: 'ec7276db1a5d430ca7c35f17d9753828'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage'
                             element: 'coverage_name'
@@ -27210,6 +27550,7 @@ declare global {
                     {
                         table: 'sys_choice_set'
                         id: 'ec76099fbae04a69b056cfe39ad4c6ef'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage'
                             element: 'status'
@@ -27228,6 +27569,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'ec91b0be4c964b56a585e09f29d6563b'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_policy_risk'
                             element: 'occupancy'
@@ -27284,6 +27626,7 @@ declare global {
                     {
                         table: 'sys_ui_section'
                         id: 'ed1003ebba444a5683442fcb5644986a'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage'
                             caption: 'Limits & Deducatbles'
@@ -27325,6 +27668,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: 'ee07cfea77354bb8b7ef2c597904ea9d'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: 'd6ce1206b2ee4198ae5202dd3a586100'
@@ -27364,6 +27708,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'ee8cc3115e3b4c2fb64c8993b39066b4'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_table_entry'
                             element: 'zone'
@@ -27474,6 +27819,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: 'ef4c195f35334e11b77ff669dc7e5df2'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_product_coverage'
                             element: 'base_premium'
@@ -27595,6 +27941,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'f07dab9a66334e6c8175e989d1bf02c8'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_factor'
                             element: 'applies_to'
@@ -27638,6 +27985,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: 'f0f973b9b8e84feb9103270a0ba74f1b'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_policy_transaction'
                             element: 'NULL'
@@ -27935,6 +28283,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: 'f4aa05b8314c43e08042a9879a63e3ba'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_policy_risk'
                             element: 'occupancy'
@@ -27956,6 +28305,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: 'f4d140e2335147547ef8f499ed5c7bde'
+                        deleted: true
                         key: {
                             document_key: 'd2ef58d7b41338b4c96b1a5e1365ce16'
                             variable: '196df29e331183547ef8f499ed5c7ba7'
@@ -27964,6 +28314,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: 'f4d140e2335147547ef8f499ed5c7bdf'
+                        deleted: true
                         key: {
                             field: 'associated_table'
                             id: 'd2ef58d7b41338b4c96b1a5e1365ce16'
@@ -27972,6 +28323,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: 'f4d140e2335147547ef8f499ed5c7be2'
+                        deleted: true
                         key: {
                             document_key: 'd2ef58d7b41338b4c96b1a5e1365ce16'
                             variable: '78f334b8c763001085f5532bb4c26009'
@@ -28155,6 +28507,7 @@ declare global {
                     {
                         table: 'sys_dictionary'
                         id: 'f6ed2a5cae394068af1ae08051d01de9'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_product'
                             element: 'applicable_states'
@@ -28180,6 +28533,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'f728a4cce47e4df49efef92a80257971'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_policy_risk'
                             element: 'occupancy'
@@ -28240,6 +28594,7 @@ declare global {
                     {
                         table: 'sys_choice_set'
                         id: 'f7df40d533bf4deb80b47b83f2652ed2'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_table'
                             element: 'lob'
@@ -28342,6 +28697,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: 'f8d140e2335147547ef8f499ed5c7be0'
+                        deleted: true
                         key: {
                             field: 'experience_status_table'
                             id: 'd2ef58d7b41338b4c96b1a5e1365ce16'
@@ -28350,6 +28706,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: 'f8d140e2335147547ef8f499ed5c7be3'
+                        deleted: true
                         key: {
                             document_key: 'd2ef58d7b41338b4c96b1a5e1365ce16'
                             variable: '9c6b7e22c3211010381b60bc0eba8f98'
@@ -28440,6 +28797,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: 'f97a99831bb0407d9656bf17334281c8'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: '105cd9523eec434d8505ea84b69c5bf4'
@@ -28462,6 +28820,7 @@ declare global {
                     {
                         table: 'sys_ui_form_section'
                         id: 'f98685ed8a9c4f6586ddaad8d02c7521'
+                        deleted: true
                         key: {
                             sys_ui_form: {
                                 id: '32c043a036f04e53a23d505d98e5080b'
@@ -28554,6 +28913,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: 'fa118077d7d94d97ab4d1b4ec6ba89f0'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: '0acd8eb19319475044f7bd4f7bba1018'
@@ -28678,6 +29038,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: 'fb273a582731412d9be02ccfcd8337de'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_policy_risk'
                             element: 'location'
@@ -28749,6 +29110,7 @@ declare global {
                     {
                         table: 'sys_db_object'
                         id: 'fbfc28dd88d543e7af71f4f869770d7d'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_policy_coverage'
                         }
@@ -28813,6 +29175,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: 'fcd140e2335147547ef8f499ed5c7be1'
+                        deleted: true
                         key: {
                             field: 'title'
                             id: 'd2ef58d7b41338b4c96b1a5e1365ce16'
@@ -28821,6 +29184,7 @@ declare global {
                     {
                         table: 'sys_variable_value'
                         id: 'fcd140e2335147547ef8f499ed5c7be4'
+                        deleted: true
                         key: {
                             document_key: 'd2ef58d7b41338b4c96b1a5e1365ce16'
                             variable: '49ed24875b00001070e4492c11f91aa5'
@@ -28878,6 +29242,7 @@ declare global {
                     {
                         table: 'sys_documentation'
                         id: 'fdbbfe51776d4ac59b4c892169400514'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage_category'
                             element: 'active'
@@ -28999,6 +29364,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'fec20f80b9ed46848a7488c04370ab04'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_coverage'
                             element: 'cause_of_loss_form'
@@ -29054,6 +29420,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'ff362150931b4b61ad322a2f0be0f5cf'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_rate_table_entry'
                             element: 'occupancy'
@@ -29072,6 +29439,7 @@ declare global {
                     {
                         table: 'sys_ui_element'
                         id: 'ff63aabe00e94142834d0b3a89d75870'
+                        deleted: true
                         key: {
                             sys_ui_section: {
                                 id: 'd0eb5ebcb8fe4e44ade3f1afe27f2f5b'
@@ -29117,6 +29485,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'ffbe9d40f1884a1fab1a88cc9826e292'
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy_quote_risk'
                             element: 'construction'
