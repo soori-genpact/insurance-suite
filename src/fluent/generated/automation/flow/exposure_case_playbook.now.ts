@@ -124,6 +124,17 @@ Record({
         start_rule: 'immediate',
         restart_rule: 'run_once',
         ai_agent_enabled: 'false',
+        access: 'public',
+        ai_agent_field_display_preferences:
+            'enable_ai_agent=all;ai_agent_execution_mode=all;ai_agent_run_as=all;ai_agent_objective=all;',
+        enable_ai_agent: 'off',
+        experience_display_preferences:
+            'associated_table=advanced;associated_record=advanced;experience_status_table=advanced;experience_status_record=advanced;tagline=advanced;icon=advanced;title=advanced;description=advanced;footer=advanced;is_automated=advanced;',
+        public_access: 'false',
+        source: '851bf6de33dd43547ef8f499ed5c7bd5',
+        source_type: 'sys_hub_flow',
+        system_level: 'false',
+        wait_for_completion: 'false',
     },
 })
 
@@ -143,6 +154,15 @@ Record({
         start_rule: 'after_prior_stage_completion',
         restart_rule: 'run_once',
         ai_agent_enabled: 'false',
+        access: 'public',
+        ai_agent_field_display_preferences:
+            'enable_ai_agent=all;ai_agent_execution_mode=all;ai_agent_run_as=all;ai_agent_objective=all;',
+        enable_ai_agent: 'off',
+        public_access: 'false',
+        source: '851bf6de33dd43547ef8f499ed5c7bd5',
+        source_type: 'sys_hub_flow',
+        system_level: 'false',
+        wait_for_completion: 'false',
     },
 })
 
@@ -162,6 +182,17 @@ Record({
         start_rule: 'after_prior_activity_completion',
         restart_rule: 'run_once',
         ai_agent_enabled: 'false',
+        access: 'public',
+        ai_agent_field_display_preferences:
+            'enable_ai_agent=all;ai_agent_execution_mode=all;ai_agent_run_as=all;ai_agent_objective=all;',
+        enable_ai_agent: 'off',
+        experience_display_preferences:
+            'associated_table=advanced;associated_record=advanced;experience_status_table=advanced;experience_status_record=advanced;tagline=advanced;icon=advanced;title=advanced;description=advanced;footer=advanced;is_automated=advanced;',
+        public_access: 'false',
+        source: '851bf6de33dd43547ef8f499ed5c7bd5',
+        source_type: 'sys_hub_flow',
+        system_level: 'false',
+        wait_for_completion: 'false',
     },
 })
 
@@ -181,6 +212,15 @@ Record({
         start_rule: 'after_prior_stage_completion',
         restart_rule: 'run_once',
         ai_agent_enabled: 'false',
+        access: 'public',
+        ai_agent_field_display_preferences:
+            'enable_ai_agent=all;ai_agent_execution_mode=all;ai_agent_run_as=all;ai_agent_objective=all;',
+        enable_ai_agent: 'off',
+        public_access: 'false',
+        source: '851bf6de33dd43547ef8f499ed5c7bd5',
+        source_type: 'sys_hub_flow',
+        system_level: 'false',
+        wait_for_completion: 'false',
     },
 })
 
@@ -200,6 +240,15 @@ Record({
         start_rule: 'after_prior_activity_completion',
         restart_rule: 'run_once',
         ai_agent_enabled: 'false',
+        access: 'public',
+        ai_agent_field_display_preferences:
+            'enable_ai_agent=all;ai_agent_execution_mode=all;ai_agent_run_as=all;ai_agent_objective=all;',
+        enable_ai_agent: 'off',
+        public_access: 'false',
+        source: '851bf6de33dd43547ef8f499ed5c7bd5',
+        source_type: 'sys_hub_flow',
+        system_level: 'false',
+        wait_for_completion: 'false',
     },
 })
 
@@ -219,6 +268,17 @@ Record({
         start_rule: 'after_prior_stage_completion',
         restart_rule: 'run_once',
         ai_agent_enabled: 'false',
+        access: 'public',
+        ai_agent_field_display_preferences:
+            'enable_ai_agent=all;ai_agent_execution_mode=all;ai_agent_run_as=all;ai_agent_objective=all;',
+        enable_ai_agent: 'off',
+        experience_display_preferences:
+            'associated_table=advanced;associated_record=advanced;experience_status_table=advanced;experience_status_record=advanced;tagline=advanced;icon=advanced;title=advanced;description=advanced;footer=advanced;is_automated=advanced;',
+        public_access: 'false',
+        source: '851bf6de33dd43547ef8f499ed5c7bd5',
+        source_type: 'sys_hub_flow',
+        system_level: 'false',
+        wait_for_completion: 'false',
     },
 })
 
