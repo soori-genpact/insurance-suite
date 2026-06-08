@@ -53,6 +53,7 @@ Record({
 })
 
 // ─── Stage 1: Initiation ──────────────────────────────────────────────────────
+// NOTE: field name is `process_definition` (NOT `sys_pd_process_definition`)
 
 Record({
     $id: Now.ID['ec000001000000000000000000000005'],
@@ -62,7 +63,7 @@ Record({
         description: 'Initiate the exposure review process and notify the assigned analyst',
         order: '100',
         active: 'true',
-        sys_pd_process_definition: 'ec000001000000000000000000000001',
+        process_definition: 'ec000001000000000000000000000001',
     },
 })
 
@@ -76,7 +77,7 @@ Record({
         description: 'Enter and validate exposure item data, locations, and TIV values',
         order: '200',
         active: 'true',
-        sys_pd_process_definition: 'ec000001000000000000000000000001',
+        process_definition: 'ec000001000000000000000000000001',
     },
 })
 
@@ -90,7 +91,7 @@ Record({
         description: 'Underwriter reviews the exposure summary and provides sign-off',
         order: '300',
         active: 'true',
-        sys_pd_process_definition: 'ec000001000000000000000000000001',
+        process_definition: 'ec000001000000000000000000000001',
     },
 })
 
@@ -104,7 +105,7 @@ Record({
         description: 'Finalize and complete the exposure case',
         order: '400',
         active: 'true',
-        sys_pd_process_definition: 'ec000001000000000000000000000001',
+        process_definition: 'ec000001000000000000000000000001',
     },
 })
 
@@ -119,7 +120,7 @@ Record({
         order: '100',
         active: 'true',
         stage: 'ec000001000000000000000000000005',
-        sys_pd_process_definition: 'ec000001000000000000000000000001',
+        process_definition: 'ec000001000000000000000000000001',
         activity_type: 'd4dde0875b00001070e4492c11f91a90',
         start_rule: 'immediate',
         restart_rule: 'run_once',
@@ -138,7 +139,7 @@ Record({
         order: '100',
         active: 'true',
         stage: 'ec000001000000000000000000000006',
-        sys_pd_process_definition: 'ec000001000000000000000000000001',
+        process_definition: 'ec000001000000000000000000000001',
         activity_type: 'ec00000100000000000000000000000f',
         start_rule: 'after_prior_stage_completion',
         restart_rule: 'run_once',
@@ -146,7 +147,7 @@ Record({
     },
 })
 
-// ─── Activity 2.2 — Validate & Update Status (Script) ────────────────────────
+// ─── Activity 2.2 — Validate & Update Status (Instruction / automated) ────────
 
 Record({
     $id: Now.ID['ec00000100000000000000000000000b'],
@@ -157,7 +158,7 @@ Record({
         order: '200',
         active: 'true',
         stage: 'ec000001000000000000000000000006',
-        sys_pd_process_definition: 'ec000001000000000000000000000001',
+        process_definition: 'ec000001000000000000000000000001',
         activity_type: 'd4dde0875b00001070e4492c11f91a90',
         start_rule: 'after_prior_activity_completion',
         restart_rule: 'run_once',
@@ -176,7 +177,7 @@ Record({
         order: '100',
         active: 'true',
         stage: 'ec000001000000000000000000000007',
-        sys_pd_process_definition: 'ec000001000000000000000000000001',
+        process_definition: 'ec000001000000000000000000000001',
         activity_type: 'ec000001000000000000000000000010',
         start_rule: 'after_prior_stage_completion',
         restart_rule: 'run_once',
@@ -195,7 +196,7 @@ Record({
         order: '200',
         active: 'true',
         stage: 'ec000001000000000000000000000007',
-        sys_pd_process_definition: 'ec000001000000000000000000000001',
+        process_definition: 'ec000001000000000000000000000001',
         activity_type: 'ec000001000000000000000000000010',
         start_rule: 'after_prior_activity_completion',
         restart_rule: 'run_once',
@@ -214,7 +215,7 @@ Record({
         order: '100',
         active: 'true',
         stage: 'ec000001000000000000000000000008',
-        sys_pd_process_definition: 'ec000001000000000000000000000001',
+        process_definition: 'ec000001000000000000000000000001',
         activity_type: 'd4dde0875b00001070e4492c11f91a90',
         start_rule: 'after_prior_stage_completion',
         restart_rule: 'run_once',
@@ -223,27 +224,9 @@ Record({
 })
 
 // ─── Element Mappings — Activity 1.1 (Exposure Review Initiated) ──────────────
-
-Record({
-    $id: Now.ID['ec000001000000000000000000000030'],
-    table: 'sys_element_mapping',
-    data: {
-        field: 'associated_record',
-        id: 'ec000001000000000000000000000009',
-        table: 'var__m_sys_pd_activity_type_prop_d4dde0875b00001070e4492c11f91a90',
-        value: '{{vl.Simple Instruction.ec000001000000000000000000000009./end.record}}',
-    },
-})
-
-Record({
-    $id: Now.ID['ec000001000000000000000000000031'],
-    table: 'sys_element_mapping',
-    data: {
-        field: 'associated_table',
-        id: 'ec000001000000000000000000000009',
-        table: 'var__m_sys_pd_activity_type_prop_d4dde0875b00001070e4492c11f91a90',
-    },
-})
+// Only `{{act.SYS_ID.field}}` patterns are safe to pre-define.
+// `{{vl.Simple Instruction.UUID./end}}` patterns contain PAD-generated UUIDs
+// and must be left for PAD to populate when the playbook is first saved in Studio.
 
 Record({
     $id: Now.ID['ec000001000000000000000000000032'],
@@ -252,7 +235,7 @@ Record({
         field: 'description',
         id: 'ec000001000000000000000000000009',
         table: 'var__m_sys_pd_activity_type_prop_d4dde0875b00001070e4492c11f91a90',
-        value: '{{vl.Simple Instruction./start.message}}',
+        value: 'A new Exposure Case has been created. Please begin the exposure data entry process.',
     },
 })
 
@@ -263,7 +246,7 @@ Record({
         field: 'is_automated',
         id: 'ec000001000000000000000000000009',
         table: 'var__m_sys_pd_activity_type_prop_d4dde0875b00001070e4492c11f91a90',
-        value: '{{vl.Simple Instruction./start.automated}}',
+        value: 'false',
     },
 })
 
@@ -333,7 +316,7 @@ Record({
         field: 'description',
         id: 'ec00000100000000000000000000000b',
         table: 'var__m_sys_pd_activity_type_prop_d4dde0875b00001070e4492c11f91a90',
-        value: '{{vl.Simple Instruction./start.message}}',
+        value: 'Validating exposure data completeness. Updating status to In Review.',
     },
 })
 
@@ -356,17 +339,6 @@ Record({
         id: 'ec00000100000000000000000000000b',
         table: 'var__m_sys_pd_activity_type_prop_d4dde0875b00001070e4492c11f91a90',
         value: '{{act.ec00000100000000000000000000000b.label}}',
-    },
-})
-
-Record({
-    $id: Now.ID['ec000001000000000000000000000053'],
-    table: 'sys_element_mapping',
-    data: {
-        field: 'message',
-        id: 'ec00000100000000000000000000000b',
-        table: 'var__m_sys_hub_flow_input_2b8b42e31b630010affd0e55cc4bcbe9',
-        value: '{{act.ec00000100000000000000000000000b.description}}',
     },
 })
 
@@ -446,10 +418,10 @@ Record({
     $id: Now.ID['ec000001000000000000000000000080'],
     table: 'sys_element_mapping',
     data: {
-        field: 'associated_record',
+        field: 'description',
         id: 'ec00000100000000000000000000000e',
         table: 'var__m_sys_pd_activity_type_prop_d4dde0875b00001070e4492c11f91a90',
-        value: '{{vl.Simple Instruction.ec00000100000000000000000000000e./end.record}}',
+        value: 'The Exposure Case has been reviewed and approved by the Underwriter. Exposure status is now Complete.',
     },
 })
 
@@ -457,10 +429,10 @@ Record({
     $id: Now.ID['ec000001000000000000000000000081'],
     table: 'sys_element_mapping',
     data: {
-        field: 'description',
+        field: 'is_automated',
         id: 'ec00000100000000000000000000000e',
         table: 'var__m_sys_pd_activity_type_prop_d4dde0875b00001070e4492c11f91a90',
-        value: '{{vl.Simple Instruction./start.message}}',
+        value: 'false',
     },
 })
 
@@ -468,60 +440,10 @@ Record({
     $id: Now.ID['ec000001000000000000000000000082'],
     table: 'sys_element_mapping',
     data: {
-        field: 'is_automated',
-        id: 'ec00000100000000000000000000000e',
-        table: 'var__m_sys_pd_activity_type_prop_d4dde0875b00001070e4492c11f91a90',
-        value: '{{vl.Simple Instruction./start.automated}}',
-    },
-})
-
-Record({
-    $id: Now.ID['ec000001000000000000000000000083'],
-    table: 'sys_element_mapping',
-    data: {
         field: 'title',
         id: 'ec00000100000000000000000000000e',
         table: 'var__m_sys_pd_activity_type_prop_d4dde0875b00001070e4492c11f91a90',
         value: '{{act.ec00000100000000000000000000000e.label}}',
-    },
-})
-
-Record({
-    $id: Now.ID['ec000001000000000000000000000084'],
-    table: 'sys_element_mapping',
-    data: {
-        field: 'message',
-        id: 'ec00000100000000000000000000000e',
-        table: 'var__m_sys_hub_flow_input_2b8b42e31b630010affd0e55cc4bcbe9',
-        value: '{{act.ec00000100000000000000000000000e.description}}',
-    },
-})
-
-// ─── Process Input Mapping (triggerRecord → parent_record) ────────────────────
-
-Record({
-    $id: Now.ID['ec0000010000000000000000000000a0'],
-    table: 'sys_element_mapping',
-    data: {
-        field: 'parent_record',
-        id: 'ec000001000000000000000000000004',
-        table: 'var__m_sys_pd_process_input_ec000001000000000000000000000001',
-        value: '{{triggerRecord}}',
-    },
-})
-
-// ─── Trigger Runner Mapping ───────────────────────────────────────────────────
-
-Record({
-    $id: Now.ID['ec000001000000000000000000000003'],
-    table: 'sys_trigger_runner_mapping',
-    data: {
-        active: 'true',
-        data: '{"trigger_on_unique_change":"org.mozilla.javascript.UniqueTag@4cd3eeab: NOT_FOUND","parent_record":{"elementMapping":"{{triggerRecord}}","variableValue":null,"elementMappingOrVariableValue":"{{triggerRecord}}"},"run_trigger":"org.mozilla.javascript.UniqueTag@4cd3eeab: NOT_FOUND"}',
-        identifier: 'ec000001000000000000000000000004',
-        identifier_type: 'playbook',
-        runner: 'PDTriggerRunner',
-        trigger: 'ec000001000000000000000000000002',
     },
 })
 
@@ -543,5 +465,23 @@ Record({
         sys_domain: 'global',
         sys_domain_path: '/',
         table: 'x_gegis_ins_policy_exposure_case',
+    },
+})
+
+// ─── Trigger Runner Mapping ───────────────────────────────────────────────────
+// `identifier` = the playbook's own sys_id (process_definition sys_id).
+// PAD resolves the process input binding when the playbook is first published
+// and creates the var__m_sys_pd_process_input_* virtual table automatically.
+
+Record({
+    $id: Now.ID['ec000001000000000000000000000003'],
+    table: 'sys_trigger_runner_mapping',
+    data: {
+        active: 'true',
+        data: '{"trigger_on_unique_change":"org.mozilla.javascript.UniqueTag@4cd3eeab: NOT_FOUND","parent_record":{"elementMapping":"{{triggerRecord}}","variableValue":null,"elementMappingOrVariableValue":"{{triggerRecord}}"},"run_trigger":"org.mozilla.javascript.UniqueTag@4cd3eeab: NOT_FOUND"}',
+        identifier: 'ec000001000000000000000000000001',
+        identifier_type: 'playbook',
+        runner: 'PDTriggerRunner',
+        trigger: 'ec000001000000000000000000000002',
     },
 })
