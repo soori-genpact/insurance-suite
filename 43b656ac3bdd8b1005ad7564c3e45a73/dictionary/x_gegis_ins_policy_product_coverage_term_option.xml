@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="b7b0747453a543107d5fd301a0490ef4" label="Product Coverage Term Option" max_length="40" name="x_gegis_ins_policy_product_coverage_term_option" type="collection">
+        <element label="Product coverage" mandatory="true" max_length="32" name="product_coverage" reference="x_gegis_ins_policy_product_coverage" type="reference"/>
+        <element label="Premium impact" max_length="20" name="premium_impact" type="decimal"/>
+        <element label="Is product default" max_length="40" name="is_product_default" type="boolean"/>
+        <element label="Available" max_length="40" name="available" type="boolean"/>
+        <element label="Coverage term option" mandatory="true" max_length="32" name="coverage_term_option" reference="x_gegis_ins_policy_coverage_term_option" type="reference"/>
+        <index name="index">
+            <element name="coverage_term_option"/>
+        </index>
+        <index name="index2">
+            <element name="product_coverage"/>
+        </index>
+    </element>
+</database>

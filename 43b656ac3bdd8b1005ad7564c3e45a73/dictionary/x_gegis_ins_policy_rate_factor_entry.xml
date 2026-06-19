@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="fe90703453a543107d5fd301a0490e32" label="Rate Factor Entry" max_length="40" name="x_gegis_ins_policy_rate_factor_entry" type="collection">
+        <element label="Rate factor" mandatory="true" max_length="32" name="rate_factor" reference="x_gegis_ins_policy_rate_factor" type="reference"/>
+        <element label="Multiplier" mandatory="true" max_length="20" name="multiplier" type="decimal"/>
+        <element label="Condition value" mandatory="true" max_length="20" name="condition_value" type="decimal"/>
+        <element label="Condition label" mandatory="true" max_length="200" name="condition_label" type="string"/>
+        <index name="index">
+            <element name="rate_factor"/>
+        </index>
+    </element>
+</database>

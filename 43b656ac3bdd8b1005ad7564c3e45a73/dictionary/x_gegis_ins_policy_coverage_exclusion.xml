@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="ddb0fc3453a543107d5fd301a0490e29" label="Coverage Exclusion" max_length="40" name="x_gegis_ins_policy_coverage_exclusion" type="collection">
+        <element label="Exclusion" mandatory="true" max_length="32" name="exclusion" reference="x_gegis_ins_policy_exclusion" type="reference"/>
+        <element label="Coverage" mandatory="true" max_length="32" name="coverage" reference="x_gegis_ins_policy_coverage" type="reference"/>
+        <index name="index">
+            <element name="coverage"/>
+        </index>
+        <index name="index2">
+            <element name="exclusion"/>
+        </index>
+    </element>
+</database>

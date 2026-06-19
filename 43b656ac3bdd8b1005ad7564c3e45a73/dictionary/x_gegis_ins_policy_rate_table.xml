@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="e7b0747453a543107d5fd301a0490e03" label="Rate Table" max_length="40" name="x_gegis_ins_policy_rate_table" type="collection">
+        <element choice="1" label="Rate type" mandatory="true" max_length="40" name="rate_type" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Flat" sequence="2" value="flat"/>
+                <element inactive_on_update="false" label="Percentage" sequence="1" value="percentage"/>
+                <element inactive_on_update="false" label="Per Mille (‰)" sequence="0" value="per_mille"/>
+            </choice>
+        </element>
+        <element label="Expiry date" max_length="40" name="expiry_date" type="glide_date"/>
+        <element choice="1" label="LOB" mandatory="true" max_length="40" name="lob" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Auto" sequence="2" value="auto"/>
+                <element inactive_on_update="false" label="Workers Comp" sequence="1" value="workers_comp"/>
+                <element inactive_on_update="false" label="Motor" sequence="3" value="motor"/>
+                <element inactive_on_update="false" label="Property" sequence="0" value="property"/>
+            </choice>
+        </element>
+        <element label="Coverage" mandatory="true" max_length="32" name="coverage" reference="x_gegis_ins_policy_coverage" type="reference"/>
+        <element label="Name" mandatory="true" max_length="200" name="name" type="string"/>
+        <element label="Effective date" mandatory="true" max_length="40" name="effective_date" type="glide_date"/>
+        <index name="index">
+            <element name="coverage"/>
+        </index>
+    </element>
+</database>

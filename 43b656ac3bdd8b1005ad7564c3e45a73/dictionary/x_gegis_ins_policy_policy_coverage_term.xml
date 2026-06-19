@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="4990bcf053a543107d5fd301a0490e21" label="Policy Coverage Term" max_length="40" name="x_gegis_ins_policy_policy_coverage_term" type="collection">
+        <element choice="1" label="Term type" mandatory="true" max_length="40" name="term_type" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Limit" sequence="0" value="limit"/>
+                <element inactive_on_update="false" label="Waiting Period" sequence="3" value="waiting_period"/>
+                <element inactive_on_update="false" label="Deductible" sequence="1" value="deductible"/>
+                <element inactive_on_update="false" label="Coinsurance" sequence="4" value="coinsurance"/>
+                <element inactive_on_update="false" label="Sublimit" sequence="2" value="sublimit"/>
+            </choice>
+        </element>
+        <element label="Term name" mandatory="true" max_length="200" name="term_name" type="string"/>
+        <element label="Policy coverage" mandatory="true" max_length="32" name="policy_coverage" reference="x_gegis_ins_policy_policy_coverage" type="reference"/>
+        <element label="Selected value" max_length="20" name="selected_value" type="decimal"/>
+        <element label="Selected label" max_length="200" name="selected_label" type="string"/>
+        <index name="index">
+            <element name="policy_coverage"/>
+        </index>
+    </element>
+</database>

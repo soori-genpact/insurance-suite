@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="f790f03453a543107d5fd301a0490e41" label="Exposure Item" max_length="40" name="x_gegis_ins_policy_exposure_item" type="collection">
+        <element choice="1" label="Line of business" mandatory="true" max_length="40" name="line_of_business" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Workers Comp" sequence="1" value="workers_comp"/>
+                <element inactive_on_update="false" label="Auto" sequence="2" value="auto"/>
+                <element inactive_on_update="false" label="Property" sequence="0" value="property"/>
+            </choice>
+        </element>
+        <element label="BI website wait (days)" max_length="40" name="bi_website_waiting_period" type="integer"/>
+        <element label="Physical damage total" max_length="20" name="physical_damage_total" type="decimal"/>
+        <element label="Extended income days" max_length="40" name="extended_income_days" type="integer"/>
+        <element label="PD contents" max_length="20" name="pd_contents" type="decimal"/>
+        <element label="Sum insured" max_length="20" name="sum_insured" type="decimal"/>
+        <element label="Flood" max_length="40" name="flood" type="boolean"/>
+        <element label="Require stock blanket limit" max_length="40" name="blanket_stock" type="boolean"/>
+        <element label="Employee theft limit" max_length="20" name="employee_theft_limit" type="decimal"/>
+        <element label="Audit period" max_length="50" name="audit_period" type="string"/>
+        <element label="Earthquake" max_length="40" name="earthquake" type="boolean"/>
+        <element label="Location" max_length="32" name="location" reference="x_gegis_ins_policy_location" type="reference"/>
+        <element label="Utility svc wait (days)" max_length="40" name="utility_svc_waiting_period" type="integer"/>
+        <element label="PD others" max_length="20" name="pd_others" type="decimal"/>
+        <element label="Payroll limitation" max_length="20" name="payroll_limitation" type="decimal"/>
+        <element label="Machinery" max_length="20" name="machinery" type="decimal"/>
+        <element label="BI total" max_length="20" name="business_interruption_total" type="decimal"/>
+        <element label="Blanket limitation clause" max_length="40" name="blanket_limitation_clause" type="boolean"/>
+        <element label="Computer/fund transfer fraud" max_length="20" name="computer_fund_transfer_fraud_limit" type="decimal"/>
+        <element label="Business travel" max_length="40" name="business_travel" type="boolean"/>
+        <element label="Crime coverage" max_length="40" name="crime_coverage" type="boolean"/>
+        <element label="Equip breakdown ext rated" max_length="40" name="equipment_breakdown_ext_rated" type="boolean"/>
+        <element label="Building" max_length="20" name="building" type="decimal"/>
+        <element label="Extra expenses" max_length="20" name="extra_expenses" type="decimal"/>
+        <element label="Exposure case" mandatory="true" max_length="32" name="exposure_case" reference="x_gegis_ins_policy_exposure_case" type="reference"/>
+        <element label="Dependent props wait (days)" max_length="40" name="dependent_props_waiting_period" type="integer"/>
+        <element label="Stock other than CIO" max_length="20" name="stock_other_than_cio" type="decimal"/>
+        <element label="Indemnity period (months)" max_length="40" name="indemnity_period_months" type="integer"/>
+        <element label="Exclude flood from BI" max_length="40" name="exclude_flood_from_bi" type="boolean"/>
+        <element label="Require BI blanket limit" max_length="40" name="blanket_bi" type="boolean"/>
+        <element label="Forgery/alteration limit" max_length="20" name="forgery_alteration_limit" type="decimal"/>
+        <element label="Spoilage limit" max_length="20" name="spoilage_limit" type="decimal"/>
+        <element label="Electronic vandalism sublimit" max_length="20" name="electronic_vandalism_sublimit" type="decimal"/>
+        <element label="Stock" max_length="20" name="stock" type="decimal"/>
+        <element label="Others BI values" max_length="20" name="others_bi_values" type="decimal"/>
+        <element label="Building &amp; personal property" max_length="40" name="bpp" type="boolean"/>
+        <element label="Civil authority wait (days)" max_length="40" name="civil_authority_waiting_period" type="integer"/>
+        <element choice="1" label="Currency" max_length="40" name="currency" type="string">
+            <choice>
+                <element inactive_on_update="false" label="CAD" sequence="3" value="cad"/>
+                <element inactive_on_update="false" label="JPY" sequence="5" value="jpy"/>
+                <element inactive_on_update="false" label="CHF" sequence="6" value="chf"/>
+                <element inactive_on_update="false" label="EUR" sequence="2" value="eur"/>
+                <element inactive_on_update="false" label="AUD" sequence="4" value="aud"/>
+                <element inactive_on_update="false" label="USD" sequence="0" value="usd"/>
+                <element inactive_on_update="false" label="GBP" sequence="1" value="gbp"/>
+            </choice>
+        </element>
+        <element label="National flood insurance" max_length="40" name="national_flood_insurance" type="boolean"/>
+        <element label="BPP blanket all locations" max_length="40" name="blanket_bpp_all_locations" type="boolean"/>
+        <element label="Employee theft deductible" max_length="20" name="employee_theft_deductible" type="decimal"/>
+        <element label="Hazardous substance limit" max_length="20" name="hazardous_substance_limit" type="decimal"/>
+        <index name="index">
+            <element name="exposure_case"/>
+        </index>
+        <index name="index2">
+            <element name="location"/>
+        </index>
+    </element>
+</database>

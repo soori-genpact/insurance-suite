@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="5cc0f47453a543107d5fd301a0490edf" extends="core_company" label="Party" max_length="40" name="x_gegis_ins_policy_party" type="collection">
+        <element label="SIC description" max_length="200" name="sic_description" type="string"/>
+        <element label="Broker agent org" max_length="200" name="broker_agent_organization" type="string"/>
+        <element label="SIC code" max_length="10" name="sic_code" type="string"/>
+        <element label="Client ID" max_length="40" name="client_id" type="string"/>
+        <element label="Business established" max_length="40" name="business_established" type="glide_date"/>
+        <element choice="1" label="Status" max_length="40" name="status" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Inactive" sequence="1" value="inactive"/>
+                <element inactive_on_update="false" label="Suspended" sequence="2" value="suspended"/>
+                <element inactive_on_update="false" label="Active" sequence="0" value="active"/>
+            </choice>
+        </element>
+        <element choice="1" label="Party type" max_length="40" name="party_type" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Individual" sequence="1" value="individual"/>
+                <element inactive_on_update="false" label="Organization" sequence="0" value="organization"/>
+            </choice>
+        </element>
+        <element label="FEI / FEIN" max_length="20" name="fei_number" type="string"/>
+        <element label="Industry code" max_length="20" name="industry_code" type="string"/>
+        <element label="Industry" max_length="100" name="industry" type="string"/>
+    </element>
+</database>

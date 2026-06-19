@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="70c0387453a543107d5fd301a0490e80" label="Policy" max_length="40" name="x_gegis_ins_policy_policy" type="collection">
+        <element label="Insured" mandatory="true" max_length="32" name="insured" reference="x_gegis_ins_policy_party" type="reference"/>
+        <element choice="1" label="Line of business" max_length="40" name="line_of_business" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Workers Comp" sequence="1" value="workers_comp"/>
+                <element inactive_on_update="false" label="Motor" sequence="3" value="motor"/>
+                <element inactive_on_update="false" label="Auto" sequence="2" value="auto"/>
+                <element inactive_on_update="false" label="Property" sequence="0" value="property"/>
+            </choice>
+        </element>
+        <element choice="1" label="Territory" max_length="40" name="territory" type="string">
+            <choice>
+                <element inactive_on_update="false" label="US" sequence="0" value="us"/>
+                <element inactive_on_update="false" label="APAC" sequence="3" value="apac"/>
+                <element inactive_on_update="false" label="UK" sequence="1" value="uk"/>
+                <element inactive_on_update="false" label="EU" sequence="2" value="eu"/>
+                <element inactive_on_update="false" label="Global" sequence="4" value="global"/>
+            </choice>
+        </element>
+        <element label="Effective date" mandatory="true" max_length="40" name="effective_date" type="glide_date"/>
+        <element label="Originating submission" max_length="32" name="originating_submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element label="Product" max_length="32" name="product" reference="x_gegis_ins_policy_product" type="reference"/>
+        <element label="Originating Q&amp;B" max_length="32" name="originating_qnb_case" reference="x_gegis_ins_policy_qnb_case" type="reference"/>
+        <element label="Policy number" mandatory="true" max_length="40" name="policy_number" type="string" unique="true"/>
+        <element choice="1" label="Status" mandatory="true" max_length="40" name="status" type="string">
+            <choice>
+                <element inactive_on_update="false" label="In-Force" sequence="2" value="in_force"/>
+                <element inactive_on_update="false" label="Expired" sequence="4" value="expired"/>
+                <element inactive_on_update="false" label="Bound" sequence="1" value="bound"/>
+                <element inactive_on_update="false" label="Active" sequence="0" value="active"/>
+                <element inactive_on_update="false" label="Cancelled" sequence="3" value="cancelled"/>
+                <element inactive_on_update="false" label="Non-Renewed" sequence="5" value="non_renewed"/>
+            </choice>
+        </element>
+        <element label="Broker" max_length="32" name="broker" reference="x_gegis_ins_policy_party" type="reference"/>
+        <element label="Quote option" max_length="32" name="quote_option" reference="x_gegis_ins_policy_quote_option" type="reference"/>
+        <element choice="1" label="Currency" max_length="40" name="currency" type="string">
+            <choice>
+                <element inactive_on_update="false" label="CAD" sequence="3" value="cad"/>
+                <element inactive_on_update="false" label="JPY" sequence="5" value="jpy"/>
+                <element inactive_on_update="false" label="CHF" sequence="6" value="chf"/>
+                <element inactive_on_update="false" label="EUR" sequence="2" value="eur"/>
+                <element inactive_on_update="false" label="AUD" sequence="4" value="aud"/>
+                <element inactive_on_update="false" label="GBP" sequence="1" value="gbp"/>
+                <element inactive_on_update="false" label="USD" sequence="0" value="usd"/>
+            </choice>
+        </element>
+        <element label="Expiry date" mandatory="true" max_length="40" name="expiry_date" type="glide_date"/>
+        <element label="Renewed from" max_length="32" name="renewed_from" reference="x_gegis_ins_policy_policy" type="reference"/>
+        <element label="Quote" max_length="32" name="quote" reference="x_gegis_ins_policy_quote" type="reference"/>
+        <element label="Total premium" max_length="20" name="total_premium" type="decimal"/>
+        <index name="index">
+            <element name="broker"/>
+        </index>
+        <index name="index2">
+            <element name="insured"/>
+        </index>
+        <index name="index3">
+            <element name="originating_qnb_case"/>
+        </index>
+        <index name="index4">
+            <element name="originating_submission"/>
+        </index>
+        <index name="index5" unique="true">
+            <element name="policy_number"/>
+        </index>
+        <index name="index6">
+            <element name="product"/>
+        </index>
+        <index name="index7">
+            <element name="quote"/>
+        </index>
+        <index name="index8">
+            <element name="quote_option"/>
+        </index>
+        <index name="index9">
+            <element name="renewed_from"/>
+        </index>
+    </element>
+</database>
