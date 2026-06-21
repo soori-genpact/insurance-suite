@@ -154,3 +154,147 @@ Record({
         table: 'x_gegis_ins_policy_clearance_case',
     },
 })
+Record({
+    $id: Now.ID['3d9b02ed53290b107d5fd301a0490ea6'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'associated_record',
+        id: 'de7e4cad65736cb5f734ecd279c8b003',
+        table: 'var__m_sys_pd_activity_type_prop_def008e553a5c7107d5fd301a0490eac',
+        value: '{{vl.Base Playbook Activity Flow.e17e6678-8e97-4584-a903-cfa6e47fd378./end.record}}',
+    },
+})
+Record({
+    $id: Now.ID['3d9bc6ad53290b107d5fd301a0490ee6'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'associated_table',
+        id: 'de7e4cad65736cb5f734ecd279c8b003',
+        table: 'var__m_sys_pd_activity_type_prop_def008e553a5c7107d5fd301a0490eac',
+    },
+})
+Record({
+    $id: Now.ID['319b02ed53290b107d5fd301a0490ea8'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'description',
+        id: 'de7e4cad65736cb5f734ecd279c8b003',
+        table: 'var__m_sys_pd_activity_type_prop_def008e553a5c7107d5fd301a0490eac',
+        value: '{{vl.Base Playbook Activity Flow./start.message}}',
+    },
+})
+Record({
+    $id: Now.ID['719bc6ad53290b107d5fd301a0490ee7'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'experience_status_record',
+        id: 'de7e4cad65736cb5f734ecd279c8b003',
+        table: 'var__m_sys_pd_activity_type_prop_def008e553a5c7107d5fd301a0490eac',
+        value: '{{vl.Base Playbook Activity Flow.e17e6678-8e97-4584-a903-cfa6e47fd378./end.record}}',
+    },
+})
+Record({
+    $id: Now.ID['719b02ed53290b107d5fd301a0490ea7'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'experience_status_table',
+        id: 'de7e4cad65736cb5f734ecd279c8b003',
+        table: 'var__m_sys_pd_activity_type_prop_def008e553a5c7107d5fd301a0490eac',
+    },
+})
+Record({
+    $id: Now.ID['b19b02ed53290b107d5fd301a0490ea6'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'footer',
+        id: 'de7e4cad65736cb5f734ecd279c8b003',
+        table: 'var__m_sys_pd_activity_type_prop_def008e553a5c7107d5fd301a0490eac',
+    },
+})
+Record({
+    $id: Now.ID['b59b02ed53290b107d5fd301a0490ea7'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'icon',
+        id: 'de7e4cad65736cb5f734ecd279c8b003',
+        table: 'var__m_sys_pd_activity_type_prop_def008e553a5c7107d5fd301a0490eac',
+    },
+})
+Record({
+    $id: Now.ID['f59b02ed53290b107d5fd301a0490ea6'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'is_automated',
+        id: 'de7e4cad65736cb5f734ecd279c8b003',
+        table: 'var__m_sys_pd_activity_type_prop_def008e553a5c7107d5fd301a0490eac',
+        value: '{{vl.Base Playbook Activity Flow./end.automated}}',
+    },
+})
+Record({
+    $id: Now.ID['7d9bc6ad53290b107d5fd301a0490ee4'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'message',
+        id: 'de7e4cad65736cb5f734ecd279c8b003',
+        table: 'var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31',
+        value: '{{act.de7e4cad65736cb5f734ecd279c8b003.description}}',
+    },
+})
+Record({
+    $id: Now.ID['f99b02ed53290b107d5fd301a0490ea7'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'tagline',
+        id: 'de7e4cad65736cb5f734ecd279c8b003',
+        table: 'var__m_sys_pd_activity_type_prop_def008e553a5c7107d5fd301a0490eac',
+    },
+})
+Record({
+    $id: Now.ID['759b02ed53290b107d5fd301a0490ea8'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'title',
+        id: 'de7e4cad65736cb5f734ecd279c8b003',
+        table: 'var__m_sys_pd_activity_type_prop_def008e553a5c7107d5fd301a0490eac',
+        value: '{{act.de7e4cad65736cb5f734ecd279c8b003.label}}',
+    },
+})
+Record({
+    $id: Now.ID['b19bc6ad53290b107d5fd301a0490ee5'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'wait',
+        id: 'de7e4cad65736cb5f734ecd279c8b003',
+        table: 'var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31',
+    },
+})
+Record({
+    $id: Now.ID['a6ca67ea832d0310f70ac6a6feaad3a8'],
+    table: 'sys_trigger_runner_mapping',
+    data: {
+        active: 'true',
+        data: '{"trigger_on_unique_change":"org.mozilla.javascript.UniqueTag@24f3972a: NOT_FOUND","parent_record":{"elementMapping":"{{triggerRecord}}","variableValue":null,"elementMappingOrVariableValue":"{{triggerRecord}}"},"run_trigger":"org.mozilla.javascript.UniqueTag@24f3972a: NOT_FOUND"}',
+        identifier: '5be3ec638c9fea70c9dd578cf838f63b',
+        identifier_type: 'playbook',
+        runner: 'PDTriggerRunner',
+        trigger: 'eeca67ea832d0310f70ac6a6feaad3a6',
+    },
+})
+Record({
+    $id: Now.ID['eeca67ea832d0310f70ac6a6feaad3a6'],
+    table: 'sys_flow_record_trigger',
+    data: {
+        active: 'true',
+        condition: '^EQ',
+        on_delete: 'false',
+        on_insert: 'true',
+        on_update: 'false',
+        run_flow_in: 'background',
+        run_on_extended: 'false',
+        run_when_setting: 'both',
+        run_when_user_setting: 'any',
+        sys_domain: 'global',
+        sys_domain_path: '/',
+        table: 'x_gegis_ins_policy_clearance_case',
+    },
+})

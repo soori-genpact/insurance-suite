@@ -193,6 +193,10 @@ declare global {
                         table: 'sys_ux_macroponent'
                         id: '7eb89c7d939147d0ce18b5d97bba10bf'
                     }
+                    '7f10c4e553a5c7107d5fd301a0490ebc': {
+                        table: 'sys_hub_action_instance_v2'
+                        id: '7f10c4e553a5c7107d5fd301a0490ebc'
+                    }
                     '7f1a82ed33518bd07ef8f499ed5c7bca': {
                         table: 'sys_scope_privilege'
                         id: '7f1a82ed33518bd07ef8f499ed5c7bca'
@@ -861,6 +865,10 @@ declare global {
                         table: 'sys_app_module'
                         id: 'da1f55399351475044f7bd4f7bba10b0'
                     }
+                    db1084e553a5c7107d5fd301a0490e31: {
+                        table: 'sys_hub_flow'
+                        id: 'db1084e553a5c7107d5fd301a0490e31'
+                    }
                     e35865e593dd835044f7bd4f7bba1093: {
                         table: 'sys_uib_search_facet_item_m2m_element'
                         id: 'e35865e593dd835044f7bd4f7bba1093'
@@ -912,6 +920,10 @@ declare global {
                     fdbb0abd93d5475044f7bd4f7bba1001: {
                         table: 'sys_kmf_module_key_policy'
                         id: 'fdbb0abd93d5475044f7bd4f7bba1001'
+                    }
+                    ff10c4e553a5c7107d5fd301a0490eb9: {
+                        table: 'sys_hub_flow_logic_instance_v2'
+                        id: 'ff10c4e553a5c7107d5fd301a0490eb9'
                     }
                     ff606471935547d0ce18b5d97bba10d9: {
                         table: 'par_visualization'
@@ -1305,6 +1317,15 @@ declare global {
                             name: 'x_gegis_ins_policy_product_coverage'
                             element: 'coverage'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '014067ae83a90310f70ac6a6feaad358'
+                        key: {
+                            name: 'var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31'
+                            element: 'wait'
+                            value: 'no'
                         }
                     },
                     {
@@ -1787,6 +1808,16 @@ declare global {
                     },
                     {
                         table: 'sys_documentation'
+                        id: '04bbe0c2536dcb107d5fd301a0490e84'
+                        deleted: false
+                        key: {
+                            name: 'var__m_sys_hub_flow_output_92200ce553a5c7107d5fd301a0490e8a'
+                            element: 'record'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
                         id: '04c10d0b62e348119c71127b7624ca98'
                         key: {
                             name: 'x_gegis_ins_policy_coverage'
@@ -2052,6 +2083,16 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '08bbe0c2536dcb107d5fd301a0490e1c'
+                        deleted: false
+                        key: {
+                            name: 'var__m_sys_hub_flow_input_92200ce553a5c7107d5fd301a0490e8a'
+                            element: 'wait'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '08e88ab6f1f94096b6b4741648fa0e3d'
                         key: {
@@ -2066,6 +2107,16 @@ declare global {
                             name: 'x_gegis_ins_policy_policy_risk'
                             element: 'occupancy'
                             value: 'manufacturing'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '0940e3ae83a90310f70ac6a6feaad368'
+                        deleted: false
+                        key: {
+                            name: 'var__m_sys_hub_flow_input_92200ce553a5c7107d5fd301a0490e8a'
+                            element: 'wait'
+                            value: 'yes'
                         }
                     },
                     {
@@ -5945,6 +5996,23 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '2b1084e553a5c7107d5fd301a0490e76'
+                        key: {
+                            name: 'var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31'
+                            element: 'wait'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_hub_flow_output'
+                        id: '2b10c4e553a5c7107d5fd301a0490e53'
+                        key: {
+                            model: 'db1084e553a5c7107d5fd301a0490e31'
+                            element: 'automated'
+                        }
+                    },
+                    {
                         table: 'sys_ui_section'
                         id: '2b1f066d9355c35044f7bd4f7bba10a9'
                         key: {
@@ -6731,6 +6799,22 @@ declare global {
                         key: {
                             category: 'x_gegis_ins_policy_clearance_case'
                             prefix: 'CLR'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: '319b02ed53290b107d5fd301a0490ea8'
+                        key: {
+                            field: 'description'
+                            id: 'de7e4cad65736cb5f734ecd279c8b003'
+                        }
+                    },
+                    {
+                        table: 'sys_variable_value'
+                        id: '319b02ed53290b107d5fd301a0490eab'
+                        key: {
+                            document_key: 'de7e4cad65736cb5f734ecd279c8b003'
+                            variable: 'def0c06d53a5c7107d5fd301a0490e97'
                         }
                     },
                     {
@@ -7710,6 +7794,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_variable_value'
+                        id: '399b02ed53290b107d5fd301a0490ea8'
+                        key: {
+                            document_key: 'de7e4cad65736cb5f734ecd279c8b003'
+                            variable: 'b6f0046d53a5c7107d5fd301a0490efd'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '39d3448348574b8384fe10197505bb62'
                         key: {
@@ -7998,6 +8090,30 @@ declare global {
                             name: 'x_gegis_ins_policy_rate_factor'
                             element: 'factor_type'
                             value: 'loading'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: '3d9b02ed53290b107d5fd301a0490ea6'
+                        key: {
+                            field: 'associated_record'
+                            id: 'de7e4cad65736cb5f734ecd279c8b003'
+                        }
+                    },
+                    {
+                        table: 'sys_variable_value'
+                        id: '3d9b02ed53290b107d5fd301a0490ea9'
+                        key: {
+                            document_key: 'de7e4cad65736cb5f734ecd279c8b003'
+                            variable: 'c3f0446d53a5c7107d5fd301a0490edf'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: '3d9bc6ad53290b107d5fd301a0490ee6'
+                        key: {
+                            field: 'associated_table'
+                            id: 'de7e4cad65736cb5f734ecd279c8b003'
                         }
                     },
                     {
@@ -8397,6 +8513,16 @@ declare global {
                                     name: 'x_gegis_ins_policy.compliance_officer'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '4140e3ae83a90310f70ac6a6feaad366'
+                        deleted: false
+                        key: {
+                            name: 'var__m_sys_hub_flow_input_92200ce553a5c7107d5fd301a0490e8a'
+                            element: 'wait'
+                            value: 'no'
                         }
                     },
                     {
@@ -9433,6 +9559,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_location'
                             element: 'class_code'
+                        }
+                    },
+                    {
+                        table: 'sys_hub_flow_input'
+                        id: '4a2492a553a90b107d5fd301a0490ed2'
+                        deleted: false
+                        key: {
+                            model: '92200ce553a5c7107d5fd301a0490e8a'
+                            element: 'wait'
                         }
                     },
                     {
@@ -10672,6 +10807,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_hub_flow_output'
+                        id: '562492a553a90b107d5fd301a0490ef4'
+                        deleted: false
+                        key: {
+                            model: '92200ce553a5c7107d5fd301a0490e8a'
+                            element: 'automated'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '5634e332086649d9984c2cfe622b4f6c'
                         key: {
@@ -10759,6 +10903,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_wc_exposure'
                             element: 'payroll_exposure'
+                        }
+                    },
+                    {
+                        table: 'sys_hub_flow_input'
+                        id: '571084e553a5c7107d5fd301a0490e4c'
+                        deleted: true
+                        key: {
+                            model: 'db1084e553a5c7107d5fd301a0490e31'
+                            element: 'message'
                         }
                     },
                     {
@@ -14008,6 +14161,30 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_element_mapping'
+                        id: '719b02ed53290b107d5fd301a0490ea7'
+                        key: {
+                            field: 'experience_status_table'
+                            id: 'de7e4cad65736cb5f734ecd279c8b003'
+                        }
+                    },
+                    {
+                        table: 'sys_variable_value'
+                        id: '719b02ed53290b107d5fd301a0490eaa'
+                        key: {
+                            document_key: 'de7e4cad65736cb5f734ecd279c8b003'
+                            variable: 'cbf0446d53a5c7107d5fd301a0490eb0'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: '719bc6ad53290b107d5fd301a0490ee7'
+                        key: {
+                            field: 'experience_status_record'
+                            id: 'de7e4cad65736cb5f734ecd279c8b003'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '71d6628863d9414ba76235113b080b5a'
                         key: {
@@ -14360,6 +14537,16 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '73aba0c2536dcb107d5fd301a0490ee2'
+                        deleted: true
+                        key: {
+                            name: 'var__m_sys_hub_flow_input_92200ce553a5c7107d5fd301a0490e8a'
+                            element: 'message'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '73bb02279a4f423580eb348f7c0bc81c'
                         key: {
@@ -14595,6 +14782,30 @@ declare global {
                                     name: 'x_gegis_ins_policy.operational'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: '759b02ed53290b107d5fd301a0490ea8'
+                        key: {
+                            field: 'title'
+                            id: 'de7e4cad65736cb5f734ecd279c8b003'
+                        }
+                    },
+                    {
+                        table: 'sys_variable_value'
+                        id: '759b02ed53290b107d5fd301a0490eab'
+                        key: {
+                            document_key: 'de7e4cad65736cb5f734ecd279c8b003'
+                            variable: '66f0c06d53a5c7107d5fd301a0490eeb'
+                        }
+                    },
+                    {
+                        table: 'sys_variable_value'
+                        id: '759bc6ad53290b107d5fd301a0490ee5'
+                        key: {
+                            document_key: 'de7e4cad65736cb5f734ecd279c8b003'
+                            variable: 'eb1084e553a5c7107d5fd301a0490e6c'
                         }
                     },
                     {
@@ -15410,6 +15621,22 @@ declare global {
                             name: 'x_gegis_ins_policy_loss_record'
                             element: 'loss_paid_incl_os_payments'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_variable_value'
+                        id: '7d9b02ed53290b107d5fd301a0490ea8'
+                        key: {
+                            document_key: 'de7e4cad65736cb5f734ecd279c8b003'
+                            variable: 'e2f0046d53a5c7107d5fd301a0490e4a'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: '7d9bc6ad53290b107d5fd301a0490ee4'
+                        key: {
+                            field: 'message'
+                            id: 'de7e4cad65736cb5f734ecd279c8b003'
                         }
                     },
                     {
@@ -16304,6 +16531,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: '87caa7ea832d0310f70ac6a6feaad3a7'
+                        key: {
+                            name: 'var__m_sys_pd_snapshot_input_26ca67ea832d0310f70ac6a6feaad3a9'
+                            element: 'parent_record'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '881eb93f71144ab9924e187a30c68384'
                         key: {
@@ -16623,6 +16859,16 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_exposure_item'
                             element: 'stock'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '8cbbe0c2536dcb107d5fd301a0490e5e'
+                        deleted: false
+                        key: {
+                            name: 'var__m_sys_hub_flow_output_92200ce553a5c7107d5fd301a0490e8a'
+                            element: 'automated'
+                            language: 'en'
                         }
                     },
                     {
@@ -17115,6 +17361,15 @@ declare global {
                             name: 'x_gegis_ins_policy_submission_party'
                             element: 'role'
                             value: 'leader'
+                        }
+                    },
+                    {
+                        table: 'sys_hub_flow_output'
+                        id: '9224d2a553a90b107d5fd301a0490e13'
+                        deleted: false
+                        key: {
+                            model: '92200ce553a5c7107d5fd301a0490e8a'
+                            element: 'record'
                         }
                     },
                     {
@@ -17930,6 +18185,16 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_exposure_item'
                             element: 'employee_theft_deductible'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: '9b1084e553a5c7107d5fd301a0490e6a'
+                        deleted: true
+                        key: {
+                            name: 'var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31'
+                            element: 'message'
+                            language: 'en'
                         }
                     },
                     {
@@ -19173,6 +19438,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_documentation'
+                        id: 'a710c4e553a5c7107d5fd301a0490e51'
+                        key: {
+                            name: 'var__m_sys_hub_flow_output_db1084e553a5c7107d5fd301a0490e31'
+                            element: 'record'
+                            language: 'en'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: 'a7180da2d1b2460b835eeb56cf023785'
                         key: {
@@ -20140,6 +20414,30 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_element_mapping'
+                        id: 'b19b02ed53290b107d5fd301a0490ea6'
+                        key: {
+                            field: 'footer'
+                            id: 'de7e4cad65736cb5f734ecd279c8b003'
+                        }
+                    },
+                    {
+                        table: 'sys_variable_value'
+                        id: 'b19b02ed53290b107d5fd301a0490ea9'
+                        key: {
+                            document_key: 'de7e4cad65736cb5f734ecd279c8b003'
+                            variable: 'f2f0446d53a5c7107d5fd301a0490e38'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'b19bc6ad53290b107d5fd301a0490ee5'
+                        key: {
+                            field: 'wait'
+                            id: 'de7e4cad65736cb5f734ecd279c8b003'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'b1f7e07a658747068ed402bedb5537ce'
                         key: {
@@ -20442,6 +20740,22 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_element_mapping'
+                        id: 'b59b02ed53290b107d5fd301a0490ea7'
+                        key: {
+                            field: 'icon'
+                            id: 'de7e4cad65736cb5f734ecd279c8b003'
+                        }
+                    },
+                    {
+                        table: 'sys_variable_value'
+                        id: 'b59b02ed53290b107d5fd301a0490eaa'
+                        key: {
+                            document_key: 'de7e4cad65736cb5f734ecd279c8b003'
+                            variable: 'd6f0c06d53a5c7107d5fd301a0490e10'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: 'b59e9e93b4fa45ffb3c6268c1db66a18'
                         key: {
@@ -20619,6 +20933,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_quote_risk'
                             element: 'construction'
+                            language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_documentation'
+                        id: 'b710c4e553a5c7107d5fd301a0490ea5'
+                        key: {
+                            name: 'var__m_sys_hub_flow_output_db1084e553a5c7107d5fd301a0490e31'
+                            element: 'automated'
                             language: 'en'
                         }
                     },
@@ -22007,6 +22330,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: 'c54067ae83a90310f70ac6a6feaad359'
+                        key: {
+                            name: 'var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31'
+                            element: 'wait'
+                            value: 'yes'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'c55c9e6b8a30428ba462917977836bb0'
                         key: {
@@ -22426,6 +22758,15 @@ declare global {
                         key: {
                             name: 'x_gegis_ins_policy_submission'
                             element: 'policy_territory'
+                        }
+                    },
+                    {
+                        table: 'sys_hub_flow_input'
+                        id: 'ca2492a553a90b107d5fd301a0490e9c'
+                        deleted: true
+                        key: {
+                            model: '92200ce553a5c7107d5fd301a0490e8a'
+                            element: 'message'
                         }
                     },
                     {
@@ -24604,6 +24945,14 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_hub_flow_output'
+                        id: 'e310c4e553a5c7107d5fd301a0490e4a'
+                        key: {
+                            model: 'db1084e553a5c7107d5fd301a0490e31'
+                            element: 'record'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: 'e3143e0464f344fc961db685eae6c3d7'
                         key: {
@@ -25259,6 +25608,14 @@ declare global {
                                     name: 'x_gegis_ins_policy.underwriter'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_hub_flow_input'
+                        id: 'eb1084e553a5c7107d5fd301a0490e6c'
+                        key: {
+                            model: 'db1084e553a5c7107d5fd301a0490e31'
+                            element: 'wait'
                         }
                     },
                     {
@@ -26159,6 +26516,22 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_element_mapping'
+                        id: 'f59b02ed53290b107d5fd301a0490ea6'
+                        key: {
+                            field: 'is_automated'
+                            id: 'de7e4cad65736cb5f734ecd279c8b003'
+                        }
+                    },
+                    {
+                        table: 'sys_variable_value'
+                        id: 'f59b02ed53290b107d5fd301a0490ea9'
+                        key: {
+                            document_key: 'de7e4cad65736cb5f734ecd279c8b003'
+                            variable: '9ff0846d53a5c7107d5fd301a0490e19'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'f5d6266fd188446d8ce73edca5e94597'
                         key: {
@@ -26505,6 +26878,22 @@ declare global {
                         id: 'f977990448164bc59b87235b11967231'
                         key: {
                             name: 'x_gegis_ins_policy_quote_option'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'f99b02ed53290b107d5fd301a0490ea7'
+                        key: {
+                            field: 'tagline'
+                            id: 'de7e4cad65736cb5f734ecd279c8b003'
+                        }
+                    },
+                    {
+                        table: 'sys_variable_value'
+                        id: 'f99b02ed53290b107d5fd301a0490eaa'
+                        key: {
+                            document_key: 'de7e4cad65736cb5f734ecd279c8b003'
+                            variable: '7af0046d53a5c7107d5fd301a0490e9d'
                         }
                     },
                     {
