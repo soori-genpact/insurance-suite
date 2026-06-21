@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="0f90703453a543107d5fd301a0490e96" label="Policy Transaction" max_length="40" name="x_gegis_ins_policy_policy_transaction" type="collection">
-        <element label="Description" max_length="2000" name="description" type="multi_two_lines"/>
-        <element label="Effective date" mandatory="true" max_length="40" name="effective_date" type="glide_date"/>
         <element choice="1" label="Status" mandatory="true" max_length="40" name="status" type="string">
             <choice>
                 <element inactive_on_update="false" label="Pending Approval" sequence="1" value="pending_approval"/>
@@ -12,6 +10,7 @@
                 <element inactive_on_update="false" label="Voided" sequence="5" value="voided"/>
             </choice>
         </element>
+        <element label="Effective date" mandatory="true" max_length="40" name="effective_date" type="glide_date"/>
         <element choice="1" label="Type" mandatory="true" max_length="40" name="type" type="string">
             <choice>
                 <element inactive_on_update="false" label="Reinstatement" sequence="4" value="reinstatement"/>
@@ -22,6 +21,7 @@
             </choice>
         </element>
         <element label="Premium delta" max_length="20" name="premium_delta" type="decimal"/>
+        <element label="Description" max_length="2000" name="description" type="multi_two_lines"/>
         <element label="Policy" mandatory="true" max_length="32" name="policy" reference="x_gegis_ins_policy_policy" type="reference"/>
         <index name="index">
             <element name="policy"/>

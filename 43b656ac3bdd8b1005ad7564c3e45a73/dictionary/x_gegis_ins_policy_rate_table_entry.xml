@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="44c0f47453a543107d5fd301a0490e15" label="Rate Table Entry" max_length="40" name="x_gegis_ins_policy_rate_table_entry" type="collection">
-        <element choice="1" label="Occupancy" max_length="40" name="occupancy" type="string">
-            <choice>
-                <element inactive_on_update="false" label="Warehouse" sequence="1" value="warehouse"/>
-                <element inactive_on_update="false" label="Healthcare" sequence="6" value="healthcare"/>
-                <element inactive_on_update="false" label="Retail/Mall" sequence="0" value="retail_mall"/>
-                <element inactive_on_update="false" label="Office" sequence="2" value="office"/>
-                <element inactive_on_update="false" label="Manufacturing" sequence="4" value="manufacturing"/>
-                <element inactive_on_update="false" label="Hospitality" sequence="8" value="hospitality"/>
-                <element inactive_on_update="false" label="Restaurant" sequence="5" value="restaurant"/>
-                <element inactive_on_update="false" label="IT/Office" sequence="3" value="it_office"/>
-                <element inactive_on_update="false" label="Education" sequence="7" value="education"/>
-            </choice>
-        </element>
         <element choice="1" label="Zone" max_length="40" name="zone" type="string">
             <choice>
                 <element inactive_on_update="false" label="Any" sequence="3" value="any"/>
                 <element inactive_on_update="false" label="Rural" sequence="2" value="rural"/>
                 <element inactive_on_update="false" label="Metro" sequence="0" value="metro"/>
                 <element inactive_on_update="false" label="Urban" sequence="1" value="urban"/>
+            </choice>
+        </element>
+        <element label="Rate value" mandatory="true" max_length="20" name="rate_value" type="decimal"/>
+        <element choice="1" label="Protection" max_length="40" name="protection" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Partial Sprinkler" sequence="2" value="partial_sprinkler"/>
+                <element inactive_on_update="false" label="Fire Alarm Only" sequence="3" value="fire_alarm_only"/>
+                <element inactive_on_update="false" label="No Sprinkler" sequence="1" value="no_sprinkler"/>
+                <element inactive_on_update="false" label="Full Suppression System" sequence="4" value="full_suppression"/>
+                <element inactive_on_update="false" label="Sprinklered" sequence="0" value="sprinklered"/>
             </choice>
         </element>
         <element choice="1" label="Construction" max_length="40" name="construction" type="string">
@@ -39,17 +36,6 @@
                 <element inactive_on_update="false" label="Commercial" sequence="2" value="commercial"/>
             </choice>
         </element>
-        <element label="Rate table" mandatory="true" max_length="32" name="rate_table" reference="x_gegis_ins_policy_rate_table" type="reference"/>
-        <element label="Rate value" mandatory="true" max_length="20" name="rate_value" type="decimal"/>
-        <element choice="1" label="Protection" max_length="40" name="protection" type="string">
-            <choice>
-                <element inactive_on_update="false" label="Partial Sprinkler" sequence="2" value="partial_sprinkler"/>
-                <element inactive_on_update="false" label="Fire Alarm Only" sequence="3" value="fire_alarm_only"/>
-                <element inactive_on_update="false" label="No Sprinkler" sequence="1" value="no_sprinkler"/>
-                <element inactive_on_update="false" label="Full Suppression System" sequence="4" value="full_suppression"/>
-                <element inactive_on_update="false" label="Sprinklered" sequence="0" value="sprinklered"/>
-            </choice>
-        </element>
         <element choice="1" label="Engine CC" max_length="40" name="engine_cc" type="string">
             <choice>
                 <element inactive_on_update="false" label="Above 1500cc" sequence="2" value="above_1500cc"/>
@@ -58,6 +44,20 @@
                 <element inactive_on_update="false" label="Up to 350cc" sequence="0" value="upto_350cc"/>
             </choice>
         </element>
+        <element choice="1" label="Occupancy" max_length="40" name="occupancy" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Warehouse" sequence="1" value="warehouse"/>
+                <element inactive_on_update="false" label="Healthcare" sequence="6" value="healthcare"/>
+                <element inactive_on_update="false" label="Retail/Mall" sequence="0" value="retail_mall"/>
+                <element inactive_on_update="false" label="Office" sequence="2" value="office"/>
+                <element inactive_on_update="false" label="Manufacturing" sequence="4" value="manufacturing"/>
+                <element inactive_on_update="false" label="Hospitality" sequence="8" value="hospitality"/>
+                <element inactive_on_update="false" label="Restaurant" sequence="5" value="restaurant"/>
+                <element inactive_on_update="false" label="IT/Office" sequence="3" value="it_office"/>
+                <element inactive_on_update="false" label="Education" sequence="7" value="education"/>
+            </choice>
+        </element>
+        <element label="Rate table" mandatory="true" max_length="32" name="rate_table" reference="x_gegis_ins_policy_rate_table" type="reference"/>
         <index name="index">
             <element name="rate_table"/>
         </index>

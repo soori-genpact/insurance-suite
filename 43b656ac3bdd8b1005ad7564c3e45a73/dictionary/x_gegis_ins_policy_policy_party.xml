@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="b190fcf053a543107d5fd301a0490e66" label="Policy Party" max_length="40" name="x_gegis_ins_policy_policy_party" type="collection">
-        <element label="Account" mandatory="true" max_length="32" name="account" reference="x_gegis_ins_policy_party" type="reference"/>
-        <element label="Policy" mandatory="true" max_length="32" name="policy" reference="x_gegis_ins_policy_policy" type="reference"/>
-        <element label="Is primary" max_length="40" name="is_primary" type="boolean"/>
         <element choice="1" label="Party role" mandatory="true" max_length="40" name="party_role" type="string">
             <choice>
                 <element inactive_on_update="false" label="Policyholder" sequence="0" value="policyholder"/>
@@ -12,6 +9,9 @@
                 <element inactive_on_update="false" label="Loss Payee" sequence="1" value="loss_payee"/>
             </choice>
         </element>
+        <element label="Account" mandatory="true" max_length="32" name="account" reference="x_gegis_ins_policy_party" type="reference"/>
+        <element label="Policy" mandatory="true" max_length="32" name="policy" reference="x_gegis_ins_policy_policy" type="reference"/>
+        <element label="Is primary" max_length="40" name="is_primary" type="boolean"/>
         <index name="index">
             <element name="account"/>
         </index>

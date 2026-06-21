@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="28907cf053a543107d5fd301a0490e5c" label="Quote Risk" max_length="40" name="x_gegis_ins_policy_quote_risk" type="collection">
         <element label="Location" max_length="32" name="location" reference="x_gegis_ins_policy_location" type="reference"/>
+        <element label="Quote" mandatory="true" max_length="32" name="quote" reference="x_gegis_ins_policy_quote" type="reference"/>
         <element choice="1" label="Exposure" max_length="40" name="exposure" type="string">
             <choice>
                 <element inactive_on_update="false" label="Urban/Low" sequence="0" value="urban_low"/>
@@ -11,25 +12,6 @@
                 <element inactive_on_update="false" label="Industrial/High" sequence="2" value="industrial_high"/>
             </choice>
         </element>
-        <element choice="1" label="Risk type" mandatory="true" max_length="40" name="risk_type" type="string">
-            <choice>
-                <element inactive_on_update="false" label="Equipment" sequence="4" value="equipment"/>
-                <element inactive_on_update="false" label="Business Interruption" sequence="2" value="business_interruption"/>
-                <element inactive_on_update="false" label="Contents" sequence="1" value="contents"/>
-                <element inactive_on_update="false" label="Vehicle" sequence="3" value="vehicle"/>
-                <element inactive_on_update="false" label="Building" sequence="0" value="building"/>
-            </choice>
-        </element>
-        <element choice="1" label="Protection" max_length="40" name="protection" type="string">
-            <choice>
-                <element inactive_on_update="false" label="Full Suppression System" sequence="4" value="full_suppression"/>
-                <element inactive_on_update="false" label="Sprinklered" sequence="0" value="sprinklered"/>
-                <element inactive_on_update="false" label="No Sprinkler" sequence="1" value="no_sprinkler"/>
-                <element inactive_on_update="false" label="Fire Alarm Only" sequence="3" value="fire_alarm_only"/>
-                <element inactive_on_update="false" label="Partial Sprinkler" sequence="2" value="partial_sprinkler"/>
-            </choice>
-        </element>
-        <element label="Quote" mandatory="true" max_length="32" name="quote" reference="x_gegis_ins_policy_quote" type="reference"/>
         <element choice="1" label="Occupancy" max_length="40" name="occupancy" type="string">
             <choice>
                 <element inactive_on_update="false" label="Education" sequence="7" value="education"/>
@@ -43,6 +25,15 @@
                 <element inactive_on_update="false" label="IT/Office" sequence="3" value="it_office"/>
             </choice>
         </element>
+        <element choice="1" label="Risk type" mandatory="true" max_length="40" name="risk_type" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Equipment" sequence="4" value="equipment"/>
+                <element inactive_on_update="false" label="Business Interruption" sequence="2" value="business_interruption"/>
+                <element inactive_on_update="false" label="Contents" sequence="1" value="contents"/>
+                <element inactive_on_update="false" label="Vehicle" sequence="3" value="vehicle"/>
+                <element inactive_on_update="false" label="Building" sequence="0" value="building"/>
+            </choice>
+        </element>
         <element choice="1" label="Construction" max_length="40" name="construction" type="string">
             <choice>
                 <element inactive_on_update="false" label="Joisted Masonry" sequence="3" value="joisted_masonry"/>
@@ -51,6 +42,15 @@
                 <element inactive_on_update="false" label="Frame" sequence="5" value="frame"/>
                 <element inactive_on_update="false" label="Non-Combustible" sequence="4" value="non_combustible"/>
                 <element inactive_on_update="false" label="Masonry" sequence="2" value="masonry"/>
+            </choice>
+        </element>
+        <element choice="1" label="Protection" max_length="40" name="protection" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Full Suppression System" sequence="4" value="full_suppression"/>
+                <element inactive_on_update="false" label="Sprinklered" sequence="0" value="sprinklered"/>
+                <element inactive_on_update="false" label="No Sprinkler" sequence="1" value="no_sprinkler"/>
+                <element inactive_on_update="false" label="Fire Alarm Only" sequence="3" value="fire_alarm_only"/>
+                <element inactive_on_update="false" label="Partial Sprinkler" sequence="2" value="partial_sprinkler"/>
             </choice>
         </element>
         <index name="index">

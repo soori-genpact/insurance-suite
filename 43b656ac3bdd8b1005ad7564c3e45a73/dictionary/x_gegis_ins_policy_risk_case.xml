@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="f1b0307453a543107d5fd301a0490e73" extends="task" label="Risk Case" max_length="40" name="x_gegis_ins_policy_risk_case" type="collection">
-        <element label="Risk score" max_length="20" name="overall_risk_score" type="decimal"/>
-        <element choice="1" label="Appetite decision" max_length="40" name="appetite_decision" type="string">
-            <choice>
-                <element inactive_on_update="false" label="In Appetite" sequence="0" value="in_appetite"/>
-                <element inactive_on_update="false" label="Refer" sequence="2" value="refer"/>
-                <element inactive_on_update="false" label="Out of Appetite" sequence="1" value="out_of_appetite"/>
-            </choice>
-        </element>
-        <element label="Assessed by" max_length="32" name="assessed_by" reference="sys_user" type="reference"/>
         <element label="Notes" max_length="4000" name="notes" type="string"/>
-        <element label="Referral required" max_length="40" name="referral_required" type="boolean"/>
         <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
-        <element label="Assessed date" max_length="40" name="assessed_date" type="glide_date_time"/>
         <element choice="1" label="Risk grade" max_length="40" name="risk_grade" type="string">
             <choice>
                 <element inactive_on_update="false" label="B" sequence="1" value="b"/>
@@ -22,5 +11,16 @@
                 <element inactive_on_update="false" label="E" sequence="4" value="e"/>
             </choice>
         </element>
+        <element label="Assessed by" max_length="32" name="assessed_by" reference="sys_user" type="reference"/>
+        <element choice="1" label="Appetite decision" max_length="40" name="appetite_decision" type="string">
+            <choice>
+                <element inactive_on_update="false" label="In Appetite" sequence="0" value="in_appetite"/>
+                <element inactive_on_update="false" label="Refer" sequence="2" value="refer"/>
+                <element inactive_on_update="false" label="Out of Appetite" sequence="1" value="out_of_appetite"/>
+            </choice>
+        </element>
+        <element label="Assessed date" max_length="40" name="assessed_date" type="glide_date_time"/>
+        <element label="Referral required" max_length="40" name="referral_required" type="boolean"/>
+        <element label="Risk score" max_length="20" name="overall_risk_score" type="decimal"/>
     </element>
 </database>

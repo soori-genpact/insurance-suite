@@ -313,504 +313,40 @@
             "composition": [
                 {
                     "definition": {
-                        "id": "2d56f06d55f46bbd4e79b5e624beb940",
+                        "id": "4335ba6dca80378f7ba7a67cd6667bec",
                         "type": "MACROPONENT"
                     },
-                    "elementId": "rich_text_1",
-                    "elementLabel": "Description",
-                    "eventMappings": [],
-                    "isHero": false,
-                    "isHidden": {
-                        "type": "JSON_LITERAL",
-                        "value": ""
-                    },
-                    "isNonDestructive": false,
-                    "overrides": null,
-                    "preset": {
-                        "controllerElementId": "playbook_activity_ui_controller",
-                        "disabledEventTargetIds": [],
-                        "id": "86a2dd4299dfe03b5fc42804d508b498"
-                    },
-                    "propertyValues": {},
-                    "slot": "content",
-                    "styles": {
-                        "padding-bottom": "var(--now-static-space--lg)"
-                    }
-                },
-                {
-                    "definition": {
-                        "id": "cfdc0486addc8811fd5249eae681d12d",
-                        "type": "MACROPONENT"
-                    },
-                    "elementId": "label_value_stacked_1",
-                    "elementLabel": "Record Fields",
-                    "eventMappings": [],
-                    "preset": {
-                        "controllerElementId": "playbook_activity_ui_controller",
-                        "disabledEventTargetIds": [],
-                        "id": "b526bcac3e08bf9edc649e31dc744a6a"
-                    },
-                    "propertyValues": {},
-                    "slot": "content",
-                    "styles": null
-                },
-                {
-                    "conditionals": [
-                        {
-                            "condition": {
-                                "script": {
-                                    "apiVersion": "1.0.0",
-                                    "inlineScript": "/**\n  * @param {params} params\n  * @param {api} params.api\n  * @param {any} params.imports\n  */\nfunction evaluateProperty({api}) {\n\treturn api.context.props.associatedRecord &amp;&amp; api.context.props.experienceProperties.show_checklist &amp;&amp; [true, 'true', 'yes', '1'].includes(api.context.props.experienceProperties.show_checklist.value);\n}",
-                                    "scriptSysId": null
-                                },
-                                "type": "CLIENT_TRANSFORM_SCRIPT"
-                            },
-                            "item": {
-                                "definition": {
-                                    "id": "50f337c2a33e187a876827c5f8016f2f",
-                                    "type": "MACROPONENT"
-                                },
-                                "elementId": "sn_checklist_1",
-                                "elementLabel": "Checklist 1",
-                                "eventMappings": [],
-                                "isHero": false,
-                                "isHidden": {
-                                    "type": "JSON_LITERAL",
-                                    "value": false
-                                },
-                                "isNonDestructive": false,
-                                "overrides": null,
-                                "propertyValues": {
-                                    "checklistId": {
-                                        "type": "JSON_LITERAL",
-                                        "value": null
-                                    },
-                                    "documentId": {
-                                        "binding": {
-                                            "address": [
-                                                "associatedRecord"
-                                            ],
-                                            "category": "props"
-                                        },
-                                        "type": "CONTEXT_BINDING"
-                                    },
-                                    "title": {
-                                        "type": "JSON_LITERAL",
-                                        "value": ""
-                                    }
-                                },
-                                "slot": "content",
-                                "styles": {
-                                    "padding-bottom": "var(--proxy-global-space--lg)"
-                                }
-                            }
-                        }
-                    ],
-                    "definition": {
-                        "id": "",
-                        "type": "CONDITIONAL"
-                    },
-                    "elementId": "conditional_checklist",
-                    "elementLabel": "Conditional Checklist",
-                    "eventMappings": [],
-                    "isHero": false,
-                    "isHidden": {
-                        "type": "JSON_LITERAL",
-                        "value": ""
-                    },
-                    "isNonDestructive": false,
-                    "overrides": null,
-                    "propertyValues": {},
-                    "slot": "content",
-                    "styles": {}
-                },
-                {
-                    "definition": {
-                        "id": "0e238931bce36c9fe3b52475c69c85a3",
-                        "type": "MACROPONENT"
-                    },
-                    "elementId": "attachments_1",
-                    "elementLabel": "Attachments",
-                    "eventMappings": [],
-                    "preset": {
-                        "controllerElementId": "playbook_activity_ui_controller",
-                        "disabledEventTargetIds": [],
-                        "id": "6ccbef901721eba885f9e02d566dc3f6"
-                    },
-                    "propertyValues": {
-                        "actionConfigId": {
-                            "type": "JSON_LITERAL",
-                            "value": ""
-                        },
-                        "maxFileSizeAllowed": {
-                            "type": "JSON_LITERAL",
-                            "value": ""
-                        },
-                        "recordDisplayValue": {
-                            "type": "JSON_LITERAL",
-                            "value": ""
-                        },
-                        "skipPreviewForUnsupportedFileTypes": {
-                            "type": "JSON_LITERAL",
-                            "value": false
-                        },
-                        "view": {
-                            "type": "JSON_LITERAL",
-                            "value": ""
-                        }
-                    },
-                    "slot": "below-form",
-                    "styles": null
-                },
-                {
-                    "definition": {
-                        "id": "d356d14b6e293a3020a244b63d278d8f",
-                        "type": "MACROPONENT"
-                    },
-                    "elementId": "column_layout_1",
-                    "elementLabel": "Column layout 1",
+                    "elementId": "stylized_text_1",
+                    "elementLabel": "Stylized text 1",
                     "eventMappings": [],
                     "isHidden": {
                         "type": "JSON_LITERAL",
                         "value": null
                     },
-                    "overrides": {
-                        "composition": [
-                            {
-                                "definition": {
-                                    "id": "d356d14b6e293a3020a244b63d278d8f",
-                                    "type": "MACROPONENT"
-                                },
-                                "elementId": "__uXccccdeehhhBDkJSjjhAAdBhpZalv__column_1",
-                                "elementLabel": "Column 1",
-                                "eventMappings": [],
-                                "isHidden": {
-                                    "type": "JSON_LITERAL",
-                                    "value": null
-                                },
-                                "overrides": {
-                                    "composition": [
-                                        {
-                                            "bundleLink": {
-                                                "bundleInstanceId": "form_1",
-                                                "elementType": "root",
-                                                "originalElementId": "form_default"
-                                            },
-                                            "definition": {
-                                                "id": "cdf8d604a3fda59e69ccd6dd407263d6",
-                                                "type": "MACROPONENT"
-                                            },
-                                            "elementId": "form_default",
-                                            "elementLabel": "Form Default",
-                                            "eventMappings": [],
-                                            "extensionPoints": [],
-                                            "isHero": false,
-                                            "isHidden": {
-                                                "operation": {
-                                                    "left": {
-                                                        "operation": {
-                                                            "left": {
-                                                                "operation": {
-                                                                    "left": {
-                                                                        "binding": {
-                                                                            "address": [
-                                                                                "inputs",
-                                                                                "requireExplicitEventMapping"
-                                                                            ]
-                                                                        },
-                                                                        "type": "DATA_OUTPUT_BINDING"
-                                                                    },
-                                                                    "operator": "AND",
-                                                                    "right": {
-                                                                        "binding": {
-                                                                            "address": [
-                                                                                "record_playbook",
-                                                                                "form",
-                                                                                "uiDomain"
-                                                                            ]
-                                                                        },
-                                                                        "type": "DATA_OUTPUT_BINDING"
-                                                                    }
-                                                                },
-                                                                "type": "BINARY"
-                                                            },
-                                                            "operator": "OR",
-                                                            "right": {
-                                                                "binding": {
-                                                                    "address": [
-                                                                        "record_playbook",
-                                                                        "isLoading"
-                                                                    ]
-                                                                },
-                                                                "type": "DATA_OUTPUT_BINDING"
-                                                            }
-                                                        },
-                                                        "type": "BINARY"
-                                                    },
-                                                    "operator": "OR",
-                                                    "right": {
-                                                        "operation": {
-                                                            "operand": {
-                                                                "binding": {
-                                                                    "address": [
-                                                                        "playbook_activity_ui_controller",
-                                                                        "playbookFormProperties",
-                                                                        "visible"
-                                                                    ]
-                                                                },
-                                                                "type": "DATA_OUTPUT_BINDING"
-                                                            },
-                                                            "operator": "NOT"
-                                                        },
-                                                        "type": "UNARY"
-                                                    }
-                                                },
-                                                "type": "BINARY"
-                                            },
-                                            "isNonDestructive": false,
-                                            "items": [],
-                                            "overrides": null,
-                                            "preset": {
-                                                "controllerElementId": "record_playbook",
-                                                "disabledEventTargetIds": [],
-                                                "id": "a1b046d1f54ab60119e0528a81e4632a"
-                                            },
-                                            "propertyValues": {
-                                                "fields": {
-                                                    "binding": {
-                                                        "address": [
-                                                            "playbook_activity_ui_controller",
-                                                            "playbookFormProperties",
-                                                            "filteredFormFields"
-                                                        ]
-                                                    },
-                                                    "type": "DATA_OUTPUT_BINDING"
-                                                },
-                                                "inRecordPageTab": {
-                                                    "type": "JSON_LITERAL",
-                                                    "value": false
-                                                },
-                                                "inUiBuilder": {
-                                                    "type": "JSON_LITERAL",
-                                                    "value": true
-                                                },
-                                                "isFirstSectionTitleHidden": {
-                                                    "type": "JSON_LITERAL",
-                                                    "value": false
-                                                },
-                                                "isFormOptionsHidden": {
-                                                    "type": "JSON_LITERAL",
-                                                    "value": false
-                                                },
-                                                "isSectionMenuHidden": {
-                                                    "type": "JSON_LITERAL",
-                                                    "value": false
-                                                },
-                                                "isViewSectionHidden": {
-                                                    "type": "JSON_LITERAL",
-                                                    "value": false
-                                                },
-                                                "scrollableHost": {
-                                                    "type": "JSON_LITERAL",
-                                                    "value": null
-                                                },
-                                                "sections": {
-                                                    "binding": {
-                                                        "address": [
-                                                            "playbook_activity_ui_controller",
-                                                            "playbookFormProperties",
-                                                            "filteredFormSections"
-                                                        ]
-                                                    },
-                                                    "type": "DATA_OUTPUT_BINDING"
-                                                }
-                                            },
-                                            "slot": null,
-                                            "styles": null
-                                        },
-                                        {
-                                            "bundleLink": {
-                                                "bundleInstanceId": "form_1",
-                                                "elementType": "root",
-                                                "originalElementId": "domain_form_layout"
-                                            },
-                                            "definition": {
-                                                "id": "b6151414a3cbd00c6e3421d3dee5de8b",
-                                                "type": "MACROPONENT"
-                                            },
-                                            "elementId": "domain_form_layout",
-                                            "elementLabel": "Domain Form Layout",
-                                            "eventMappings": [],
-                                            "extensionPoints": [],
-                                            "isHero": false,
-                                            "isNonDestructive": false,
-                                            "items": [],
-                                            "overrides": null,
-                                            "preset": {
-                                                "controllerElementId": "record_playbook",
-                                                "disabledEventTargetIds": [],
-                                                "id": "83581462835c111ce7b6f31b42c23b26"
-                                            },
-                                            "propertyValues": {},
-                                            "slot": null,
-                                            "styles": null
-                                        }
-                                    ],
-                                    "layout": {
-                                        "default": {
-                                            "children": null,
-                                            "items": [
-                                                {
-                                                    "element_id": "form_default",
-                                                    "styles": {}
-                                                },
-                                                {
-                                                    "element_id": "domain_form_layout",
-                                                    "styles": {}
-                                                }
-                                            ],
-                                            "root": null,
-                                            "styles": {
-                                                "align-items": "stretch",
-                                                "box-sizing": "border-box",
-                                                "flex-direction": "column",
-                                                "height": "100%",
-                                                "justify-content": "flex-start",
-                                                "overflow": "auto"
-                                            },
-                                            "type": "flex"
-                                        },
-                                        "disableAutoReflow": true,
-                                        "version": "3.0.0"
-                                    }
-                                },
-                                "preset": null,
-                                "propertyValues": {
-                                    "hideEmptyStateUi": {
-                                        "type": "JSON_LITERAL",
-                                        "value": true
-                                    },
-                                    "slotWrapperBehavior": {
-                                        "type": "JSON_LITERAL",
-                                        "value": "contents"
-                                    }
-                                },
-                                "scratchPad": {
-                                    "uib": {
-                                        "layout": {
-                                            "column": {
-                                                "columnNumber": 0,
-                                                "id": "default",
-                                                "styleConfig": {
-                                                    "external": {},
-                                                    "internal": {}
-                                                }
-                                            },
-                                            "type": "column"
-                                        },
-                                        "version": "1.0.0"
-                                    }
-                                },
-                                "slot": null,
-                                "styles": null
-                            }
-                        ],
-                        "layout": {
-                            "default": {
-                                "children": null,
-                                "isInline": null,
-                                "items": [
-                                    {
-                                        "element_id": "__uXccccdeehhhBDkJSjjhAAdBhpZalv__column_1",
-                                        "styles": {
-                                            "display": "contents"
-                                        }
-                                    }
-                                ],
-                                "root": null,
-                                "rules": null,
-                                "styles": {
-                                    "box-sizing": "border-box",
-                                    "grid-template-columns": "100fr",
-                                    "grid-template-rows": "1fr",
-                                    "width": "auto"
-                                },
-                                "type": "grid"
-                            },
-                            "disableAutoReflow": true,
-                            "queries": [
-                                {
-                                    "layout": {
-                                        "children": null,
-                                        "isInline": null,
-                                        "items": [],
-                                        "root": null,
-                                        "rules": null,
-                                        "styles": {
-                                            "grid-template-columns": "1fr",
-                                            "height": "fit-content",
-                                            "max-height": "max-content",
-                                            "min-height": "min-content"
-                                        },
-                                        "type": "grid"
-                                    },
-                                    "query": {
-                                        "max-width": 640
-                                    }
-                                }
-                            ],
-                            "version": "3.0.0"
-                        }
+                    "preset": {
+                        "controllerElementId": "record_playbook",
+                        "disabledEventTargetIds": [],
+                        "id": "9586ab8504f82b150ece43f8152c4f25"
                     },
-                    "preset": null,
                     "propertyValues": {
-                        "hideEmptyStateUi": {
-                            "type": "JSON_LITERAL",
-                            "value": true
+                        "configAria": {
+                            "container": {},
+                            "type": "MAP_CONTAINER"
                         },
-                        "slotWrapperBehavior": {
-                            "type": "JSON_LITERAL",
-                            "value": "contents"
-                        }
-                    },
-                    "scratchPad": {
-                        "uib": {
-                            "layout": {
-                                "columnSection": {
-                                    "breakpoints": [
-                                        {
-                                            "behavior": "stack",
-                                            "max-width": 640,
-                                            "styles": {
-                                                "grid-template-columns": "1fr",
-                                                "height": "fit-content",
-                                                "max-height": "max-content",
-                                                "min-height": "min-content"
-                                            }
-                                        }
-                                    ],
-                                    "children": [
-                                        {
-                                            "columnNumber": 1,
-                                            "unit": "%",
-                                            "width": 100
-                                        }
-                                    ],
-                                    "id": "UIB_COLUMN_SECTION_SINGLE_COLUMN_SECTION",
-                                    "styleConfig": {
-                                        "external": {},
-                                        "internal": {}
-                                    }
-                                },
-                                "type": "columnSection"
+                        "text": {
+                            "binding": {
+                                "address": [
+                                    "record_playbook",
+                                    "form",
+                                    "header",
+                                    "subHeadingValue"
+                                ]
                             },
-                            "version": "1.0.0"
+                            "type": "DATA_OUTPUT_BINDING"
                         }
                     },
-                    "slot": "form",
-                    "styles": {
-                        "display": "contents"
-                    }
+                    "slot": "content",
+                    "styles": null
                 }
             ],
             "layout": {}
@@ -1788,6 +1324,7 @@
                 "elementData": {
                     "type": "string"
                 },
+                "label": "Footer (DEPRECATED)",
                 "value": ""
             },
             "form_fields": {
@@ -1853,12 +1390,14 @@
                 "elementData": {
                     "type": "string"
                 },
+                "label": "Tagline (DEPRECATED)",
                 "value": ""
             },
             "title": {
                 "elementData": {
                     "type": "string"
                 },
+                "label": "Title (DEPRECATED)",
                 "value": ""
             }
         },
@@ -2213,136 +1752,6 @@
             "translatable": false
         },
         "valueType": "object"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "ROTeeddUveeddaDEicjjWoDplEXRhtb",
-        "inherited": false,
-        "label": "Table",
-        "mandatory": false,
-        "name": "table",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "RdbghheehhreeddDEMeehhjjpsGyNeddhhrddff",
-        "inherited": false,
-        "label": "sysId",
-        "mandatory": false,
-        "name": "sysId",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "BffXskeehhLjjCEVSjjUeeBeefWKPUjjcc",
-        "inherited": false,
-        "label": "Query",
-        "mandatory": false,
-        "name": "query",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "caNffNvQHAkvGjjgEKjjEHpbakee",
-        "inherited": false,
-        "label": "views",
-        "mandatory": false,
-        "name": "views",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "ZiiHSjeehhSiCUDSjjVcMjjhgEWkVn",
-        "inherited": false,
-        "label": "activityLogs",
-        "mandatory": false,
-        "name": "activityLogs",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "eeoDiiofeehhSBaaaazjjffANaccBpbTqk",
-        "inherited": false,
-        "label": "extraParams",
-        "mandatory": false,
-        "name": "extraParams",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "LkchhLPHjCkrijjfwCliibKDiijjh",
-        "inherited": false,
-        "label": "fields",
-        "mandatory": false,
-        "name": "fields",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "jjfKbafQMAUgMjjWaaDeeeGxiKgu",
-        "inherited": false,
-        "label": "screen",
-        "mandatory": false,
-        "name": "screen",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "jccbnNPXQBkMPjjXeeECiizcggwrQ",
-        "inherited": false,
-        "label": "selectedTabIndex",
-        "mandatory": false,
-        "name": "selectedTabIndex",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "OYgjjIfaapAUTQjjeehheeHbbGHkhhkkU",
-        "inherited": false,
-        "label": "userPrefs",
-        "mandatory": false,
-        "name": "userPrefs",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
     }
 ]</props>
         <required_sys_props/>

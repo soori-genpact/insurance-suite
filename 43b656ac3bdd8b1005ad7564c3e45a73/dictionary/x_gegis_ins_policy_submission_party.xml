@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="baa0383453a543107d5fd301a0490eea" label="Submission Party" max_length="40" name="x_gegis_ins_policy_submission_party" type="collection">
-        <element label="Contact name" max_length="200" name="contact_name" type="string"/>
         <element label="Ownership %" max_length="20" name="ownership_percent" type="decimal"/>
-        <element label="Organization" mandatory="true" max_length="32" name="organization" reference="x_gegis_ins_policy_party" type="reference"/>
+        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
         <element label="Parent organization" max_length="32" name="parent_organization" reference="x_gegis_ins_policy_party" type="reference"/>
+        <element label="Is primary" max_length="40" name="is_primary" type="boolean"/>
+        <element label="Organization" mandatory="true" max_length="32" name="organization" reference="x_gegis_ins_policy_party" type="reference"/>
+        <element label="Sequence" max_length="40" name="sequence" type="integer"/>
         <element choice="1" label="Relationship to primary" max_length="40" name="relationship_to_primary" type="string">
             <choice>
                 <element inactive_on_update="false" label="Affiliate" sequence="2" value="affiliate"/>
@@ -13,10 +15,6 @@
                 <element inactive_on_update="false" label="Joint Venture" sequence="3" value="joint_venture"/>
             </choice>
         </element>
-        <element label="Contact email" max_length="200" name="contact_email" type="string"/>
-        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
-        <element label="Sequence" max_length="40" name="sequence" type="integer"/>
-        <element label="Is primary" max_length="40" name="is_primary" type="boolean"/>
         <element choice="1" label="Role" mandatory="true" max_length="40" name="role" type="string">
             <choice>
                 <element inactive_on_update="false" label="Other" sequence="9" value="other"/>
@@ -31,6 +29,8 @@
                 <element inactive_on_update="false" label="Co-Insured" sequence="2" value="co_insured"/>
             </choice>
         </element>
+        <element label="Contact name" max_length="200" name="contact_name" type="string"/>
+        <element label="Contact email" max_length="200" name="contact_email" type="string"/>
         <element label="Contact phone" max_length="50" name="contact_phone" type="string"/>
         <index name="index">
             <element name="organization"/>

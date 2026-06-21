@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="64b07c3453a543107d5fd301a0490e18" label="Coverage Category" max_length="40" name="x_gegis_ins_policy_coverage_category" type="collection">
-        <element label="Minimum coverages" max_length="40" name="minimum_coverages" type="integer"/>
-        <element label="Display order" mandatory="true" max_length="40" name="display_order" type="integer"/>
-        <element label="Category name" mandatory="true" max_length="200" name="category_name" type="string"/>
         <element choice="1" label="Required / Optional / Excluded" mandatory="true" max_length="40" name="coverage_selection" type="string">
             <choice>
                 <element inactive_on_update="false" label="Required" sequence="0" value="required"/>
@@ -11,8 +8,11 @@
             </choice>
         </element>
         <element label="Eligibility rule" max_length="200" name="eligibility_rule" type="string"/>
+        <element label="Minimum coverages" max_length="40" name="minimum_coverages" type="integer"/>
         <element label="Help text" max_length="1000" name="help_text" type="multi_two_lines"/>
-        <element label="Active" max_length="40" name="active" type="boolean"/>
         <element label="Category code" mandatory="true" max_length="100" name="category_code" type="string"/>
+        <element label="Display order" mandatory="true" max_length="40" name="display_order" type="integer"/>
+        <element label="Category name" mandatory="true" max_length="200" name="category_name" type="string"/>
+        <element label="Active" max_length="40" name="active" type="boolean"/>
     </element>
 </database>

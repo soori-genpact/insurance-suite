@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="2ea0383453a543107d5fd301a0490e53" label="Extraction" max_length="40" name="x_gegis_ins_policy_extraction" type="collection">
         <element label="Extracted date" max_length="40" name="extracted_date" type="glide_date_time"/>
-        <element label="Overall confidence" max_length="20" name="confidence_overall" type="decimal"/>
-        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
-        <element label="Document" mandatory="true" max_length="32" name="document" reference="x_gegis_ins_policy_document" type="reference"/>
-        <element label="Version" max_length="20" name="version" type="string"/>
         <element choice="1" label="Extraction method" max_length="40" name="extraction_method" type="string">
             <choice>
                 <element inactive_on_update="false" label="OCR" sequence="0" value="ocr"/>
@@ -13,7 +9,9 @@
                 <element inactive_on_update="false" label="AI" sequence="1" value="ai"/>
             </choice>
         </element>
+        <element label="Overall confidence" max_length="20" name="confidence_overall" type="decimal"/>
         <element label="Model version" max_length="50" name="model_version" type="string"/>
+        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
         <element choice="1" label="Extraction status" mandatory="true" max_length="40" name="extraction_status" type="string">
             <choice>
                 <element inactive_on_update="false" label="Extracted" sequence="1" value="extracted"/>
@@ -22,6 +20,8 @@
                 <element inactive_on_update="false" label="Failed" sequence="3" value="failed"/>
             </choice>
         </element>
+        <element label="Document" mandatory="true" max_length="32" name="document" reference="x_gegis_ins_policy_document" type="reference"/>
+        <element label="Version" max_length="20" name="version" type="string"/>
         <index name="index">
             <element name="document"/>
         </index>

@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="eca0343453a543107d5fd301a0490e72" label="MFL / PML" max_length="40" name="x_gegis_ins_policy_mfl_pml" type="collection">
-        <element label="% of TIV" max_length="20" name="percent_of_tiv" type="decimal"/>
         <element label="PML amount" max_length="20" name="amount_of_pml" type="decimal"/>
+        <element label="MFL amount" max_length="20" name="amount_of_mfl" type="decimal"/>
+        <element choice="1" label="MFL or PML" max_length="40" name="mfl_or_pml" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Both" sequence="2" value="both"/>
+                <element inactive_on_update="false" label="MFL" sequence="0" value="mfl"/>
+                <element inactive_on_update="false" label="PML" sequence="1" value="pml"/>
+            </choice>
+        </element>
+        <element label="Risk case" mandatory="true" max_length="32" name="risk_case" reference="x_gegis_ins_policy_risk_case" type="reference" unique="true"/>
         <element choice="1" label="Currency" max_length="40" name="original_currency" type="string">
             <choice>
                 <element inactive_on_update="false" label="AUD" sequence="4" value="aud"/>
@@ -13,16 +21,8 @@
                 <element inactive_on_update="false" label="CAD" sequence="3" value="cad"/>
             </choice>
         </element>
-        <element label="MFL amount" max_length="20" name="amount_of_mfl" type="decimal"/>
-        <element choice="1" label="MFL or PML" max_length="40" name="mfl_or_pml" type="string">
-            <choice>
-                <element inactive_on_update="false" label="Both" sequence="2" value="both"/>
-                <element inactive_on_update="false" label="MFL" sequence="0" value="mfl"/>
-                <element inactive_on_update="false" label="PML" sequence="1" value="pml"/>
-            </choice>
-        </element>
-        <element label="Risk case" mandatory="true" max_length="32" name="risk_case" reference="x_gegis_ins_policy_risk_case" type="reference" unique="true"/>
         <element label="Scenario" max_length="2000" name="mfl_pml_scenario" type="string"/>
+        <element label="% of TIV" max_length="20" name="percent_of_tiv" type="decimal"/>
         <index name="index">
             <element name="risk_case"/>
         </index>

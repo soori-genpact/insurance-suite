@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="f380f8f053a543107d5fd301a0490e50" extends="task" label="Intake Case" max_length="40" name="x_gegis_ins_policy_intake_case" type="collection">
-        <element label="Linked submission" max_length="32" name="linked_submission" reference="x_gegis_ins_policy_submission" type="reference"/>
-        <element label="Recipient" max_length="200" name="recipient" type="string"/>
-        <element label="Body" max_length="4000" name="body" type="string"/>
-        <element label="Subject" max_length="500" name="subject" type="string"/>
-        <element label="Sender" max_length="200" name="sender" type="string"/>
-        <element label="Sender email" max_length="200" name="sender_email" type="string"/>
         <element choice="1" label="Channel" max_length="40" name="channel" type="string">
             <choice>
                 <element inactive_on_update="false" label="Fax" sequence="3" value="fax"/>
@@ -15,6 +9,8 @@
                 <element inactive_on_update="false" label="Manual" sequence="4" value="manual"/>
             </choice>
         </element>
+        <element label="Linked submission" max_length="32" name="linked_submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element label="Sender" max_length="200" name="sender" type="string"/>
         <element choice="1" label="Intake status" max_length="40" name="intake_status" type="string">
             <choice>
                 <element inactive_on_update="false" label="Processed" sequence="2" value="processed"/>
@@ -24,5 +20,9 @@
                 <element inactive_on_update="false" label="Needs Review" sequence="4" value="needs_review"/>
             </choice>
         </element>
+        <element label="Subject" max_length="500" name="subject" type="string"/>
+        <element label="Body" max_length="4000" name="body" type="string"/>
+        <element label="Recipient" max_length="200" name="recipient" type="string"/>
+        <element label="Sender email" max_length="200" name="sender_email" type="string"/>
     </element>
 </database>

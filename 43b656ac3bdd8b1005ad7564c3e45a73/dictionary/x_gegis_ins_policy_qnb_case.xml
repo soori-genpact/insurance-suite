@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="49907cf053a543107d5fd301a0490ee2" extends="task" label="Q&amp;B Case" max_length="40" name="x_gegis_ins_policy_qnb_case" type="collection">
+        <element label="Underwriter" max_length="32" name="underwriter" reference="sys_user" type="reference"/>
+        <element label="Notes" max_length="4000" name="notes" type="string"/>
+        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
         <element choice="1" label="Q&amp;B status" mandatory="true" max_length="40" name="qnb_status" type="string">
             <choice>
                 <element inactive_on_update="false" label="NTU" sequence="7" value="ntu"/>
@@ -12,9 +15,6 @@
                 <element inactive_on_update="false" label="Bound" sequence="5" value="bound"/>
             </choice>
         </element>
-        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
-        <element label="Underwriter" max_length="32" name="underwriter" reference="sys_user" type="reference"/>
         <element label="Resulting policy" max_length="32" name="resulting_policy" reference="x_gegis_ins_policy_policy" type="reference"/>
-        <element label="Notes" max_length="4000" name="notes" type="string"/>
     </element>
 </database>
