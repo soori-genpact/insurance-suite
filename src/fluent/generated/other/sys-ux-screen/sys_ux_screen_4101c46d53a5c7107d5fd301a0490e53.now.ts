@@ -145,6 +145,7 @@ Record({
                     "reference": "st_sys_design_system_icon",
                     "type": "reference"
                 },
+                "label": "Icon (DEPRECATED)",
                 "value": ""
             },
             "is_automated": {
@@ -287,6 +288,10 @@ Record({
   "comment" : ""
 }, {
   "message" : "Footer (DEPRECATED)",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Icon (DEPRECATED)",
   "code" : "",
   "comment" : ""
 }, {

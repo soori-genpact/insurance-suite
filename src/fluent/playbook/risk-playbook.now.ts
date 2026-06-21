@@ -1,29 +1,6 @@
 import "@servicenow/sdk/global";
 import { Record } from "@servicenow/sdk/core";
 
-// Risk Playbook Process Definition
-export const riskPlaybook = Record({
-  table: "sys_pd_process_definition",
-  $id: Now.ID["risk-playbook"],
-  data: {
-    label: "Risk Playbook",
-    name: "x_gegis_ins_policy_risk_playbook",
-    description: "Risk Playbook for insurance underwriting risk assessment process",
-    process_type: "52c6d3eeff1be2102c2fffffffffff44",
-    execution_type: "record_driven",
-    access: "public",
-    active: true,
-    view_type: "DIAGRAM",
-    schema_version: 3,
-    run_strategy: "run_once",
-    data_retention_period_override: "6_week",
-    status: "draft",
-    allow_as_nested: true,
-    start_non_blocking: true,
-    run_strategy_on_process_definition: true,
-  },
-});
-
 // Activity 1: Initiate Risk Assessment
 export const initiateRiskAssessment = Record({
   table: "sys_pd_activity_definition",
@@ -31,18 +8,23 @@ export const initiateRiskAssessment = Record({
   data: {
     name: "x_gegis_ins_policy_initiate_risk_assessment",
     label: "Initiate Risk Assessment",
-    source: "cb18ceef1b230010affd0e55cc4bcbf2",
+    source: "db1084e553a5c7107d5fd301a0490e31",
     source_type: "sys_hub_flow",
-    activity_type: "e12af577871333003058d1a936cb0ba4",
+    activity_type: "def008e553a5c7107d5fd301a0490eac",
     access: "public",
     wait_for_completion: true,
-    table: "x_gegis_ins_policy_submission",
+    table: "global",
     active: true,
     experience_display_preferences:
-      "associated_table=all;associated_record=all;experience_status_table=advanced;experience_status_record=advanced;tagline=all;icon=advanced;title=standard;description=standard;pending_title=advanced;pending_description=advanced;record_fields=all;footer=standard;form_view=all;form_fields=all;attachment_source=all;attachments_read_only=standard;show_sla=standard;show_checklist=standard;is_automated=advanced;",
+      "associated_table=standard;associated_record=standard;experience_status_table=advanced;experience_status_record=advanced;description=all;is_automated=advanced;",
     input_display_preferences:
-      "table=all;record=all;assignment_group=standard;assigned_to=standard;",
+      "message=all;wait=all;",
     category: "708801831b0c1010affd0e55cc4bcb81",
+    ai_agent_field_display_preferences:
+        'enable_ai_agent=all;ai_agent_execution_mode=all;ai_agent_run_as=all;ai_agent_objective=all;',
+    enable_ai_agent: 'off',
+    public_access: 'true',
+    system_level: 'true',
   },
 });
 
@@ -53,18 +35,23 @@ export const letterOfAuthority = Record({
   data: {
     name: "x_gegis_ins_policy_letter_of_authority",
     label: "Letter Of Authority",
-    source: "cb18ceef1b230010affd0e55cc4bcbf2",
+    source: "db1084e553a5c7107d5fd301a0490e31",
     source_type: "sys_hub_flow",
-    activity_type: "e12af577871333003058d1a936cb0ba4",
+    activity_type: "def008e553a5c7107d5fd301a0490eac",
     access: "public",
     wait_for_completion: true,
-    table: "x_gegis_ins_policy_submission",
+    table: "global",
     active: true,
     experience_display_preferences:
-      "associated_table=all;associated_record=all;experience_status_table=advanced;experience_status_record=advanced;tagline=all;icon=advanced;title=standard;description=standard;pending_title=advanced;pending_description=advanced;record_fields=all;footer=standard;form_view=all;form_fields=all;attachment_source=all;attachments_read_only=standard;show_sla=standard;show_checklist=standard;is_automated=advanced;",
+      "associated_table=standard;associated_record=standard;experience_status_table=advanced;experience_status_record=advanced;description=all;is_automated=advanced;",
     input_display_preferences:
-      "table=all;record=all;assignment_group=standard;assigned_to=standard;",
+      "message=all;wait=all;",
     category: "708801831b0c1010affd0e55cc4bcb81",
+    ai_agent_field_display_preferences:
+        'enable_ai_agent=all;ai_agent_execution_mode=all;ai_agent_run_as=all;ai_agent_objective=all;',
+    enable_ai_agent: 'off',
+    public_access: 'true',
+    system_level: 'true',
   },
 });
 
@@ -75,18 +62,23 @@ export const underwritingGuidelines = Record({
   data: {
     name: "x_gegis_ins_policy_underwriting_guidelines",
     label: "Underwriting Guidelines",
-    source: "cb18ceef1b230010affd0e55cc4bcbf2",
+    source: "db1084e553a5c7107d5fd301a0490e31",
     source_type: "sys_hub_flow",
-    activity_type: "e12af577871333003058d1a936cb0ba4",
+    activity_type: "def008e553a5c7107d5fd301a0490eac",
     access: "public",
     wait_for_completion: true,
-    table: "x_gegis_ins_policy_submission",
+    table: "global",
     active: true,
     experience_display_preferences:
-      "associated_table=all;associated_record=all;experience_status_table=advanced;experience_status_record=advanced;tagline=all;icon=advanced;title=standard;description=standard;pending_title=advanced;pending_description=advanced;record_fields=all;footer=standard;form_view=all;form_fields=all;attachment_source=all;attachments_read_only=standard;show_sla=standard;show_checklist=standard;is_automated=advanced;",
+      "associated_table=standard;associated_record=standard;experience_status_table=advanced;experience_status_record=advanced;description=all;is_automated=advanced;",
     input_display_preferences:
-      "table=all;record=all;assignment_group=standard;assigned_to=standard;",
+      "message=all;wait=all;",
     category: "708801831b0c1010affd0e55cc4bcb81",
+    ai_agent_field_display_preferences:
+        'enable_ai_agent=all;ai_agent_execution_mode=all;ai_agent_run_as=all;ai_agent_objective=all;',
+    enable_ai_agent: 'off',
+    public_access: 'true',
+    system_level: 'true',
   },
 });
 
@@ -97,18 +89,23 @@ export const benchmarking = Record({
   data: {
     name: "x_gegis_ins_policy_benchmarking",
     label: "Benchmarking",
-    source: "cb18ceef1b230010affd0e55cc4bcbf2",
+    source: "db1084e553a5c7107d5fd301a0490e31",
     source_type: "sys_hub_flow",
-    activity_type: "e12af577871333003058d1a936cb0ba4",
+    activity_type: "def008e553a5c7107d5fd301a0490eac",
     access: "public",
     wait_for_completion: true,
-    table: "x_gegis_ins_policy_submission",
+    table: "global",
     active: true,
     experience_display_preferences:
-      "associated_table=all;associated_record=all;experience_status_table=advanced;experience_status_record=advanced;tagline=all;icon=advanced;title=standard;description=standard;pending_title=advanced;pending_description=advanced;record_fields=all;footer=standard;form_view=all;form_fields=all;attachment_source=all;attachments_read_only=standard;show_sla=standard;show_checklist=standard;is_automated=advanced;",
+      "associated_table=standard;associated_record=standard;experience_status_table=advanced;experience_status_record=advanced;description=all;is_automated=advanced;",
     input_display_preferences:
-      "table=all;record=all;assignment_group=standard;assigned_to=standard;",
+      "message=all;wait=all;",
     category: "708801831b0c1010affd0e55cc4bcb81",
+    ai_agent_field_display_preferences:
+        'enable_ai_agent=all;ai_agent_execution_mode=all;ai_agent_run_as=all;ai_agent_objective=all;',
+    enable_ai_agent: 'off',
+    public_access: 'true',
+    system_level: 'true',
   },
 });
 
@@ -119,18 +116,23 @@ export const surveyResults = Record({
   data: {
     name: "x_gegis_ins_policy_survey_results",
     label: "Survey Results",
-    source: "cb18ceef1b230010affd0e55cc4bcbf2",
+    source: "db1084e553a5c7107d5fd301a0490e31",
     source_type: "sys_hub_flow",
-    activity_type: "e12af577871333003058d1a936cb0ba4",
+    activity_type: "def008e553a5c7107d5fd301a0490eac",
     access: "public",
     wait_for_completion: true,
-    table: "x_gegis_ins_policy_submission",
+    table: "global",
     active: true,
     experience_display_preferences:
-      "associated_table=all;associated_record=all;experience_status_table=advanced;experience_status_record=advanced;tagline=all;icon=advanced;title=standard;description=standard;pending_title=advanced;pending_description=advanced;record_fields=all;footer=standard;form_view=all;form_fields=all;attachment_source=all;attachments_read_only=standard;show_sla=standard;show_checklist=standard;is_automated=advanced;",
+      "associated_table=standard;associated_record=standard;experience_status_table=advanced;experience_status_record=advanced;description=all;is_automated=advanced;",
     input_display_preferences:
-      "table=all;record=all;assignment_group=standard;assigned_to=standard;",
+      "message=all;wait=all;",
     category: "708801831b0c1010affd0e55cc4bcb81",
+    ai_agent_field_display_preferences:
+        'enable_ai_agent=all;ai_agent_execution_mode=all;ai_agent_run_as=all;ai_agent_objective=all;',
+    enable_ai_agent: 'off',
+    public_access: 'true',
+    system_level: 'true',
   },
 });
 
@@ -141,18 +143,23 @@ export const lossPrediction = Record({
   data: {
     name: "x_gegis_ins_policy_loss_prediction",
     label: "Loss Prediction",
-    source: "cb18ceef1b230010affd0e55cc4bcbf2",
+    source: "db1084e553a5c7107d5fd301a0490e31",
     source_type: "sys_hub_flow",
-    activity_type: "e12af577871333003058d1a936cb0ba4",
+    activity_type: "def008e553a5c7107d5fd301a0490eac",
     access: "public",
     wait_for_completion: true,
-    table: "x_gegis_ins_policy_submission",
+    table: "global",
     active: true,
     experience_display_preferences:
-      "associated_table=all;associated_record=all;experience_status_table=advanced;experience_status_record=advanced;tagline=all;icon=advanced;title=standard;description=standard;pending_title=advanced;pending_description=advanced;record_fields=all;footer=standard;form_view=all;form_fields=all;attachment_source=all;attachments_read_only=standard;show_sla=standard;show_checklist=standard;is_automated=advanced;",
+      "associated_table=standard;associated_record=standard;experience_status_table=advanced;experience_status_record=advanced;description=all;is_automated=advanced;",
     input_display_preferences:
-      "table=all;record=all;assignment_group=standard;assigned_to=standard;",
+      "message=all;wait=all;",
     category: "708801831b0c1010affd0e55cc4bcb81",
+    ai_agent_field_display_preferences:
+        'enable_ai_agent=all;ai_agent_execution_mode=all;ai_agent_run_as=all;ai_agent_objective=all;',
+    enable_ai_agent: 'off',
+    public_access: 'true',
+    system_level: 'true',
   },
 });
 
@@ -163,18 +170,23 @@ export const bindPropensity = Record({
   data: {
     name: "x_gegis_ins_policy_bind_propensity",
     label: "Bind Propensity",
-    source: "cb18ceef1b230010affd0e55cc4bcbf2",
+    source: "db1084e553a5c7107d5fd301a0490e31",
     source_type: "sys_hub_flow",
-    activity_type: "e12af577871333003058d1a936cb0ba4",
+    activity_type: "def008e553a5c7107d5fd301a0490eac",
     access: "public",
     wait_for_completion: true,
-    table: "x_gegis_ins_policy_submission",
+    table: "global",
     active: true,
     experience_display_preferences:
-      "associated_table=all;associated_record=all;experience_status_table=advanced;experience_status_record=advanced;tagline=all;icon=advanced;title=standard;description=standard;pending_title=advanced;pending_description=advanced;record_fields=all;footer=standard;form_view=all;form_fields=all;attachment_source=all;attachments_read_only=standard;show_sla=standard;show_checklist=standard;is_automated=advanced;",
+      "associated_table=standard;associated_record=standard;experience_status_table=advanced;experience_status_record=advanced;description=all;is_automated=advanced;",
     input_display_preferences:
-      "table=all;record=all;assignment_group=standard;assigned_to=standard;",
+      "message=all;wait=all;",
     category: "708801831b0c1010affd0e55cc4bcb81",
+    ai_agent_field_display_preferences:
+        'enable_ai_agent=all;ai_agent_execution_mode=all;ai_agent_run_as=all;ai_agent_objective=all;',
+    enable_ai_agent: 'off',
+    public_access: 'true',
+    system_level: 'true',
   },
 });
 
@@ -185,18 +197,23 @@ export const exposureData = Record({
   data: {
     name: "x_gegis_ins_policy_exposure_data",
     label: "Exposure Data",
-    source: "cb18ceef1b230010affd0e55cc4bcbf2",
+    source: "db1084e553a5c7107d5fd301a0490e31",
     source_type: "sys_hub_flow",
-    activity_type: "e12af577871333003058d1a936cb0ba4",
+    activity_type: "def008e553a5c7107d5fd301a0490eac",
     access: "public",
     wait_for_completion: true,
-    table: "x_gegis_ins_policy_submission",
+    table: "global",
     active: true,
     experience_display_preferences:
-      "associated_table=all;associated_record=all;experience_status_table=advanced;experience_status_record=advanced;tagline=all;icon=advanced;title=standard;description=standard;pending_title=advanced;pending_description=advanced;record_fields=all;footer=standard;form_view=all;form_fields=all;attachment_source=all;attachments_read_only=standard;show_sla=standard;show_checklist=standard;is_automated=advanced;",
+      "associated_table=standard;associated_record=standard;experience_status_table=advanced;experience_status_record=advanced;description=all;is_automated=advanced;",
     input_display_preferences:
-      "table=all;record=all;assignment_group=standard;assigned_to=standard;",
+      "message=all;wait=all;",
     category: "708801831b0c1010affd0e55cc4bcb81",
+    ai_agent_field_display_preferences:
+        'enable_ai_agent=all;ai_agent_execution_mode=all;ai_agent_run_as=all;ai_agent_objective=all;',
+    enable_ai_agent: 'off',
+    public_access: 'true',
+    system_level: 'true',
   },
 });
 
@@ -207,18 +224,23 @@ export const fraudDetection = Record({
   data: {
     name: "x_gegis_ins_policy_fraud_detection",
     label: "Fraud Detection",
-    source: "cb18ceef1b230010affd0e55cc4bcbf2",
+    source: "db1084e553a5c7107d5fd301a0490e31",
     source_type: "sys_hub_flow",
-    activity_type: "e12af577871333003058d1a936cb0ba4",
+    activity_type: "def008e553a5c7107d5fd301a0490eac",
     access: "public",
     wait_for_completion: true,
-    table: "x_gegis_ins_policy_submission",
+    table: "global",
     active: true,
     experience_display_preferences:
-      "associated_table=all;associated_record=all;experience_status_table=advanced;experience_status_record=advanced;tagline=all;icon=advanced;title=standard;description=standard;pending_title=advanced;pending_description=advanced;record_fields=all;footer=standard;form_view=all;form_fields=all;attachment_source=all;attachments_read_only=standard;show_sla=standard;show_checklist=standard;is_automated=advanced;",
+      "associated_table=standard;associated_record=standard;experience_status_table=advanced;experience_status_record=advanced;description=all;is_automated=advanced;",
     input_display_preferences:
-      "table=all;record=all;assignment_group=standard;assigned_to=standard;",
+      "message=all;wait=all;",
     category: "708801831b0c1010affd0e55cc4bcb81",
+    ai_agent_field_display_preferences:
+        'enable_ai_agent=all;ai_agent_execution_mode=all;ai_agent_run_as=all;ai_agent_objective=all;',
+    enable_ai_agent: 'off',
+    public_access: 'true',
+    system_level: 'true',
   },
 });
 
@@ -229,18 +251,23 @@ export const underwriterNarrative = Record({
   data: {
     name: "x_gegis_ins_policy_underwriter_narrative",
     label: "Underwriter Narrative",
-    source: "cb18ceef1b230010affd0e55cc4bcbf2",
+    source: "db1084e553a5c7107d5fd301a0490e31",
     source_type: "sys_hub_flow",
-    activity_type: "e12af577871333003058d1a936cb0ba4",
+    activity_type: "def008e553a5c7107d5fd301a0490eac",
     access: "public",
     wait_for_completion: true,
-    table: "x_gegis_ins_policy_submission",
+    table: "global",
     active: true,
     experience_display_preferences:
-      "associated_table=all;associated_record=all;experience_status_table=advanced;experience_status_record=advanced;tagline=all;icon=advanced;title=standard;description=standard;pending_title=advanced;pending_description=advanced;record_fields=all;footer=standard;form_view=all;form_fields=all;attachment_source=all;attachments_read_only=standard;show_sla=standard;show_checklist=standard;is_automated=advanced;",
+      "associated_table=standard;associated_record=standard;experience_status_table=advanced;experience_status_record=advanced;description=all;is_automated=advanced;",
     input_display_preferences:
-      "table=all;record=all;assignment_group=standard;assigned_to=standard;",
+      "message=all;wait=all;",
     category: "708801831b0c1010affd0e55cc4bcb81",
+    ai_agent_field_display_preferences:
+        'enable_ai_agent=all;ai_agent_execution_mode=all;ai_agent_run_as=all;ai_agent_objective=all;',
+    enable_ai_agent: 'off',
+    public_access: 'true',
+    system_level: 'true',
   },
 });
 
@@ -251,17 +278,22 @@ export const riskSummary = Record({
   data: {
     name: "x_gegis_ins_policy_risk_summary",
     label: "Risk Summary",
-    source: "cb18ceef1b230010affd0e55cc4bcbf2",
+    source: "db1084e553a5c7107d5fd301a0490e31",
     source_type: "sys_hub_flow",
-    activity_type: "e12af577871333003058d1a936cb0ba4",
+    activity_type: "def008e553a5c7107d5fd301a0490eac",
     access: "public",
     wait_for_completion: true,
-    table: "x_gegis_ins_policy_submission",
+    table: "global",
     active: true,
     experience_display_preferences:
-      "associated_table=all;associated_record=all;experience_status_table=advanced;experience_status_record=advanced;tagline=all;icon=advanced;title=standard;description=standard;pending_title=advanced;pending_description=advanced;record_fields=all;footer=standard;form_view=all;form_fields=all;attachment_source=all;attachments_read_only=standard;show_sla=standard;show_checklist=standard;is_automated=advanced;",
+      "associated_table=standard;associated_record=standard;experience_status_table=advanced;experience_status_record=advanced;description=all;is_automated=advanced;",
     input_display_preferences:
-      "table=all;record=all;assignment_group=standard;assigned_to=standard;",
+      "message=all;wait=all;",
     category: "708801831b0c1010affd0e55cc4bcb81",
+    ai_agent_field_display_preferences:
+        'enable_ai_agent=all;ai_agent_execution_mode=all;ai_agent_run_as=all;ai_agent_objective=all;',
+    enable_ai_agent: 'off',
+    public_access: 'true',
+    system_level: 'true',
   },
 });

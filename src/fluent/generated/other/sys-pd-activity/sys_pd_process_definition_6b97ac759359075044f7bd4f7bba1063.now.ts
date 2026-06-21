@@ -56,3 +56,43 @@ Record({
         start_rule_name: 'immediate',
     },
 })
+Record({
+    $id: Now.ID['5996c562272642e50dc169213355bd4d'],
+    table: 'sys_pd_activity',
+    data: {
+        active: 'true',
+        activity_definition: 'b0c35e2b1b630010affd0e55cc4bcbca',
+        ai_agent_execution_mode: 'off',
+        ai_agent_run_as: 'playbook_user',
+        description: 'SSSSS',
+        enable_ai_agent: 'false',
+        label: 'Instruction',
+        lane: 'aad6ced21bc6674bb6dec23a02352360',
+        name: 'instruction',
+        order: '2',
+        process_definition: '6b97ac759359075044f7bd4f7bba1063',
+        restart_rule: 'RUN_ONLY_ONCE',
+        start_rule_name: 'after_items',
+        starts_after_activities: 'de7e4cad65736cb5f734ecd279c8b003',
+    },
+})
+Record({
+    $id: Now.ID['17286dd8719c9a8d8c13a6d9a68c5145'],
+    table: 'sys_pd_activity',
+    data: {
+        active: 'true',
+        activity_definition: '4a6ff31553a5c7107d5fd301a0490e61',
+        ai_agent_execution_mode: 'off',
+        ai_agent_run_as: 'playbook_user',
+        description: 'XXXXXXXXXXXXXXXXXX',
+        enable_ai_agent: 'false',
+        label: 'Base Activity',
+        lane: 'aad6ced21bc6674bb6dec23a02352360',
+        name: 'base_activity_1',
+        order: '3',
+        process_definition: '6b97ac759359075044f7bd4f7bba1063',
+        restart_rule: 'RUN_ONLY_ONCE',
+        start_rule_name: 'after_items',
+        starts_after_activities: '5996c562272642e50dc169213355bd4d',
+    },
+})
