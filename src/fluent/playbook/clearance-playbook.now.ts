@@ -26,6 +26,26 @@ export const clearanceInitiateSubmissionRequest = Record({
         system_level: 'true',
     },
 })
+Record({
+    $id: Now.ID['e5ea000153a5c7107d5fd301a0490eb4'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'is_automated',
+        id: '45c5037568a5483aa51faf7ed0171f45',
+        table: 'var__m_sys_pd_activity_type_prop_c1ea000153a5c7107d5fd301a0490eac',
+        value: '{{vl.Base Playbook Activity Flow./start.automated}}',
+    },
+})
+Record({
+    $id: Now.ID['e5ea000153a5c7107d5fd301a0490eb5'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'experience_status_record',
+        id: '45c5037568a5483aa51faf7ed0171f45',
+        table: 'var__m_sys_pd_activity_type_prop_c1ea000153a5c7107d5fd301a0490eac',
+        value: '{{vl.Base Playbook Activity Flow.e17e6678-8e97-4584-a903-cfa6e47fd378./end.record}}',
+    },
+})
 
 // Activity 2: Extract
 export const clearanceExtract = Record({
@@ -50,6 +70,26 @@ export const clearanceExtract = Record({
         enable_ai_agent: 'off',
         public_access: 'true',
         system_level: 'true',
+    },
+})
+Record({
+    $id: Now.ID['e5ea000253a5c7107d5fd301a0490eb4'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'is_automated',
+        id: '49b609632d0941caa050e175207d0fc4',
+        table: 'var__m_sys_pd_activity_type_prop_c1ea000253a5c7107d5fd301a0490eac',
+        value: '{{vl.Base Playbook Activity Flow./start.automated}}',
+    },
+})
+Record({
+    $id: Now.ID['e5ea000253a5c7107d5fd301a0490eb5'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'experience_status_record',
+        id: '49b609632d0941caa050e175207d0fc4',
+        table: 'var__m_sys_pd_activity_type_prop_c1ea000253a5c7107d5fd301a0490eac',
+        value: '{{vl.Base Playbook Activity Flow.e17e6678-8e97-4584-a903-cfa6e47fd378./end.record}}',
     },
 })
 
@@ -78,6 +118,26 @@ export const clearanceInsuredVerification = Record({
         system_level: 'true',
     },
 })
+Record({
+    $id: Now.ID['e5ea000353a5c7107d5fd301a0490eb4'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'is_automated',
+        id: 'fc55cee1a7e043c98226101ab33c41a0',
+        table: 'var__m_sys_pd_activity_type_prop_c1ea000353a5c7107d5fd301a0490eac',
+        value: '{{vl.Base Playbook Activity Flow./start.automated}}',
+    },
+})
+Record({
+    $id: Now.ID['e5ea000353a5c7107d5fd301a0490eb5'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'experience_status_record',
+        id: 'fc55cee1a7e043c98226101ab33c41a0',
+        table: 'var__m_sys_pd_activity_type_prop_c1ea000353a5c7107d5fd301a0490eac',
+        value: '{{vl.Base Playbook Activity Flow.e17e6678-8e97-4584-a903-cfa6e47fd378./end.record}}',
+    },
+})
 
 // Activity 4: Check for Duplicates
 export const clearanceCheckForDuplicates = Record({
@@ -102,6 +162,26 @@ export const clearanceCheckForDuplicates = Record({
         enable_ai_agent: 'off',
         public_access: 'true',
         system_level: 'true',
+    },
+})
+Record({
+    $id: Now.ID['e5ea000453a5c7107d5fd301a0490eb4'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'is_automated',
+        id: '90a2fbe84a8d41da9c994ec3f2b7a4db',
+        table: 'var__m_sys_pd_activity_type_prop_c1ea000453a5c7107d5fd301a0490eac',
+        value: '{{vl.Base Playbook Activity Flow./start.automated}}',
+    },
+})
+Record({
+    $id: Now.ID['e5ea000453a5c7107d5fd301a0490eb5'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'experience_status_record',
+        id: '90a2fbe84a8d41da9c994ec3f2b7a4db',
+        table: 'var__m_sys_pd_activity_type_prop_c1ea000453a5c7107d5fd301a0490eac',
+        value: '{{vl.Base Playbook Activity Flow.e17e6678-8e97-4584-a903-cfa6e47fd378./end.record}}',
     },
 })
 
@@ -130,6 +210,26 @@ export const clearanceCheckForSanctions = Record({
         system_level: 'true',
     },
 })
+Record({
+    $id: Now.ID['e5ea000553a5c7107d5fd301a0490eb4'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'is_automated',
+        id: '587c7c3a37614b558d5aa24f852de842',
+        table: 'var__m_sys_pd_activity_type_prop_c1ea000553a5c7107d5fd301a0490eac',
+        value: '{{vl.Base Playbook Activity Flow./start.automated}}',
+    },
+})
+Record({
+    $id: Now.ID['e5ea000553a5c7107d5fd301a0490eb5'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'experience_status_record',
+        id: '587c7c3a37614b558d5aa24f852de842',
+        table: 'var__m_sys_pd_activity_type_prop_c1ea000553a5c7107d5fd301a0490eac',
+        value: '{{vl.Base Playbook Activity Flow.e17e6678-8e97-4584-a903-cfa6e47fd378./end.record}}',
+    },
+})
 
 // Activity 6: Confirm Data Review
 export const clearanceConfirmDataReview = Record({
@@ -156,6 +256,26 @@ export const clearanceConfirmDataReview = Record({
         system_level: 'true',
     },
 })
+Record({
+    $id: Now.ID['e5ea000653a5c7107d5fd301a0490eb4'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'is_automated',
+        id: '6711a168afc840558053b9cecf5e1a43',
+        table: 'var__m_sys_pd_activity_type_prop_c1ea000653a5c7107d5fd301a0490eac',
+        value: '{{vl.Base Playbook Activity Flow./start.automated}}',
+    },
+})
+Record({
+    $id: Now.ID['e5ea000653a5c7107d5fd301a0490eb5'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'experience_status_record',
+        id: '6711a168afc840558053b9cecf5e1a43',
+        table: 'var__m_sys_pd_activity_type_prop_c1ea000653a5c7107d5fd301a0490eac',
+        value: '{{vl.Base Playbook Activity Flow.e17e6678-8e97-4584-a903-cfa6e47fd378./end.record}}',
+    },
+})
 
 // Activity 7: Quality Assurance
 export const clearanceQualityAssurance = Record({
@@ -180,5 +300,25 @@ export const clearanceQualityAssurance = Record({
         enable_ai_agent: 'off',
         public_access: 'true',
         system_level: 'true',
+    },
+})
+Record({
+    $id: Now.ID['e5ea000753a5c7107d5fd301a0490eb4'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'is_automated',
+        id: 'b3357c1f449949a88717737fde64fa14',
+        table: 'var__m_sys_pd_activity_type_prop_c1ea000753a5c7107d5fd301a0490eac',
+        value: '{{vl.Base Playbook Activity Flow./start.automated}}',
+    },
+})
+Record({
+    $id: Now.ID['e5ea000753a5c7107d5fd301a0490eb5'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'experience_status_record',
+        id: 'b3357c1f449949a88717737fde64fa14',
+        table: 'var__m_sys_pd_activity_type_prop_c1ea000753a5c7107d5fd301a0490eac',
+        value: '{{vl.Base Playbook Activity Flow.e17e6678-8e97-4584-a903-cfa6e47fd378./end.record}}',
     },
 })
