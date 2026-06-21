@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="25b0fc3453a543107d5fd301a0490e9e" label="Quote" max_length="40" name="x_gegis_ins_policy_quote" type="collection">
-        <element label="Quote number" mandatory="true" max_length="20" name="quote_number" type="string" unique="true"/>
+    <element db_object_id="f0883fe2fbed4b58b70efc647befdca5" label="Quote" max_length="40" name="x_gegis_ins_policy_quote" type="collection">
+        <element label="Product" max_length="32" name="product" reference="x_gegis_ins_policy_product" type="reference"/>
         <element choice="1" label="Status" mandatory="true" max_length="40" name="status" type="string">
             <choice>
-                <element inactive_on_update="false" label="Expired" sequence="4" value="expired"/>
                 <element inactive_on_update="false" label="Draft" sequence="0" value="draft"/>
+                <element inactive_on_update="false" label="Expired" sequence="4" value="expired"/>
+                <element inactive_on_update="false" label="Declined" sequence="3" value="declined"/>
                 <element inactive_on_update="false" label="Accepted" sequence="2" value="accepted"/>
                 <element inactive_on_update="false" label="Issued" sequence="1" value="issued"/>
-                <element inactive_on_update="false" label="Declined" sequence="3" value="declined"/>
             </choice>
         </element>
-        <element label="Product" max_length="32" name="product" reference="x_gegis_ins_policy_product" type="reference"/>
-        <element label="Q&amp;B case" mandatory="true" max_length="32" name="qnb_case" reference="x_gegis_ins_policy_qnb_case" type="reference"/>
-        <element label="Valid until" max_length="40" name="valid_until" type="glide_date"/>
-        <element label="Terms &amp; conditions" max_length="4000" name="terms_conditions" type="string"/>
-        <element label="Total premium" max_length="20" name="total_premium" type="decimal"/>
-        <element label="Insured" max_length="32" name="insured" reference="x_gegis_ins_policy_party" type="reference"/>
         <element label="Version" max_length="20" name="version" type="string"/>
+        <element label="Quote number" mandatory="true" max_length="20" name="quote_number" type="string" unique="true"/>
+        <element label="Insured" max_length="32" name="insured" reference="x_gegis_ins_policy_party" type="reference"/>
+        <element label="Q&amp;B case" mandatory="true" max_length="32" name="qnb_case" reference="x_gegis_ins_policy_qnb_case" type="reference"/>
+        <element label="Terms &amp; conditions" max_length="4000" name="terms_conditions" type="string"/>
         <element choice="1" label="Currency" max_length="40" name="currency" type="string">
             <choice>
-                <element inactive_on_update="false" label="JPY" sequence="5" value="jpy"/>
-                <element inactive_on_update="false" label="EUR" sequence="2" value="eur"/>
                 <element inactive_on_update="false" label="GBP" sequence="1" value="gbp"/>
+                <element inactive_on_update="false" label="AUD" sequence="4" value="aud"/>
                 <element inactive_on_update="false" label="USD" sequence="0" value="usd"/>
                 <element inactive_on_update="false" label="CAD" sequence="3" value="cad"/>
                 <element inactive_on_update="false" label="CHF" sequence="6" value="chf"/>
-                <element inactive_on_update="false" label="AUD" sequence="4" value="aud"/>
+                <element inactive_on_update="false" label="JPY" sequence="5" value="jpy"/>
+                <element inactive_on_update="false" label="EUR" sequence="2" value="eur"/>
             </choice>
         </element>
+        <element label="Valid until" max_length="40" name="valid_until" type="glide_date"/>
+        <element label="Total premium" max_length="20" name="total_premium" type="decimal"/>
         <index name="index">
             <element name="insured"/>
         </index>

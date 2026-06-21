@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="deb0707453a543107d5fd301a0490ec6" extends="task" label="Clearance Case" max_length="40" name="x_gegis_ins_policy_clearance_case" type="collection">
+    <element db_object_id="3188bfe2fbed4b58b70efc647befdcd1" extends="task" label="Clearance Case" max_length="40" name="x_gegis_ins_policy_clearance_case" type="collection">
+        <element label="Notes" max_length="4000" name="overall_notes" type="string"/>
         <element label="Cleared date" max_length="40" name="cleared_date" type="glide_date_time"/>
-        <element label="Cleared by" max_length="32" name="cleared_by" reference="sys_user" type="reference"/>
-        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
         <element choice="1" label="Clearance status" mandatory="true" max_length="40" name="clearance_status" type="string">
             <choice>
-                <element inactive_on_update="false" label="Cleared" sequence="2" value="cleared"/>
-                <element inactive_on_update="false" label="Blocked" sequence="4" value="blocked"/>
-                <element inactive_on_update="false" label="Pending" sequence="0" value="pending"/>
-                <element inactive_on_update="false" label="Conditionally Cleared" sequence="3" value="conditionally_cleared"/>
                 <element inactive_on_update="false" label="In Progress" sequence="1" value="in_progress"/>
+                <element inactive_on_update="false" label="Blocked" sequence="4" value="blocked"/>
                 <element inactive_on_update="false" label="Failed" sequence="5" value="failed"/>
+                <element inactive_on_update="false" label="Conditionally Cleared" sequence="3" value="conditionally_cleared"/>
+                <element inactive_on_update="false" label="Pending" sequence="0" value="pending"/>
+                <element inactive_on_update="false" label="Cleared" sequence="2" value="cleared"/>
             </choice>
         </element>
-        <element label="Notes" max_length="4000" name="overall_notes" type="string"/>
+        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element label="Cleared by" max_length="32" name="cleared_by" reference="sys_user" type="reference"/>
     </element>
 </database>

@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="a9a0b43453a543107d5fd301a0490e48" label="Coverage Term" max_length="40" name="x_gegis_ins_policy_coverage_term" type="collection">
+    <element db_object_id="407873e2fbed4b58b70efc647befdcc5" label="Coverage Term" max_length="40" name="x_gegis_ins_policy_coverage_term" type="collection">
+        <element label="Term code" mandatory="true" max_length="100" name="term_code" type="string"/>
+        <element label="Affects rating" max_length="40" name="affects_rating" type="boolean"/>
+        <element label="Maximum value" max_length="20" name="maximum_value" type="decimal"/>
+        <element label="Term name" mandatory="true" max_length="200" name="term_name" type="string"/>
+        <element label="Required" max_length="40" name="required" type="boolean"/>
+        <element label="Minimum value" max_length="20" name="minimum_value" type="decimal"/>
+        <element label="Coverage" mandatory="true" max_length="32" name="coverage" reference="x_gegis_ins_policy_coverage" type="reference"/>
         <element choice="1" label="Data type" max_length="40" name="data_type" type="string">
             <choice>
-                <element inactive_on_update="false" label="Text" sequence="3" value="text"/>
-                <element inactive_on_update="false" label="Percentage" sequence="1" value="percentage"/>
                 <element inactive_on_update="false" label="Date" sequence="4" value="date"/>
+                <element inactive_on_update="false" label="Percentage" sequence="1" value="percentage"/>
+                <element inactive_on_update="false" label="Text" sequence="3" value="text"/>
                 <element inactive_on_update="false" label="Currency" sequence="0" value="currency"/>
                 <element inactive_on_update="false" label="Integer" sequence="2" value="integer"/>
                 <element inactive_on_update="false" label="Duration" sequence="5" value="duration"/>
             </choice>
         </element>
-        <element label="Minimum value" max_length="20" name="minimum_value" type="decimal"/>
-        <element label="Description" max_length="2000" name="description" type="multi_two_lines"/>
         <element choice="1" label="Term type" mandatory="true" max_length="40" name="term_type" type="string">
             <choice>
-                <element inactive_on_update="false" label="Deductible" sequence="1" value="deductible"/>
-                <element inactive_on_update="false" label="Fee" sequence="5" value="fee"/>
-                <element inactive_on_update="false" label="Duration" sequence="2" value="duration"/>
-                <element inactive_on_update="false" label="Premium" sequence="3" value="premium"/>
                 <element inactive_on_update="false" label="Percentage" sequence="4" value="percentage"/>
                 <element inactive_on_update="false" label="Limit" sequence="0" value="limit"/>
+                <element inactive_on_update="false" label="Premium" sequence="3" value="premium"/>
+                <element inactive_on_update="false" label="Duration" sequence="2" value="duration"/>
+                <element inactive_on_update="false" label="Deductible" sequence="1" value="deductible"/>
+                <element inactive_on_update="false" label="Fee" sequence="5" value="fee"/>
             </choice>
         </element>
-        <element label="Term code" mandatory="true" max_length="100" name="term_code" type="string"/>
-        <element label="Coverage" mandatory="true" max_length="32" name="coverage" reference="x_gegis_ins_policy_coverage" type="reference"/>
-        <element label="Affects rating" max_length="40" name="affects_rating" type="boolean"/>
-        <element label="Maximum value" max_length="20" name="maximum_value" type="decimal"/>
-        <element label="Required" max_length="40" name="required" type="boolean"/>
         <element label="Dependency rule" max_length="200" name="dependency_rule" type="string"/>
-        <element label="Term name" mandatory="true" max_length="200" name="term_name" type="string"/>
         <element label="Display order" max_length="40" name="display_order" type="integer"/>
+        <element label="Description" max_length="2000" name="description" type="multi_two_lines"/>
         <element label="Default value" max_length="20" name="default_value" type="decimal"/>
         <index name="index">
             <element name="coverage"/>

@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="01a0743453a543107d5fd301a0490e9e" label="Product" max_length="40" name="x_gegis_ins_policy_product" type="collection">
-        <element label="Effective date" mandatory="true" max_length="40" name="effective_date" type="glide_date_time"/>
+    <element db_object_id="5f6833e2fbed4b58b70efc647befdc81" label="Product" max_length="40" name="x_gegis_ins_policy_product" type="collection">
         <element label="Product code" mandatory="true" max_length="100" name="product_code" type="string"/>
         <element label="Product name" mandatory="true" max_length="200" name="product_name" type="string"/>
-        <element choice="1" label="Status" mandatory="true" max_length="40" name="status" type="string">
-            <choice>
-                <element inactive_on_update="false" label="Draft" sequence="0" value="draft"/>
-                <element inactive_on_update="false" label="Archived" sequence="2" value="archived"/>
-                <element inactive_on_update="false" label="Published" sequence="1" value="published"/>
-            </choice>
-        </element>
-        <element label="Description" max_length="2000" name="description" type="multi_two_lines"/>
         <element label="Version" max_length="20" name="version" type="string"/>
         <element label="Expiration date" mandatory="true" max_length="40" name="expiration_date" type="glide_date_time"/>
+        <element label="Description" max_length="2000" name="description" type="multi_two_lines"/>
+        <element label="Effective date" mandatory="true" max_length="40" name="effective_date" type="glide_date_time"/>
+        <element choice="1" label="Status" mandatory="true" max_length="40" name="status" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Archived" sequence="2" value="archived"/>
+                <element inactive_on_update="false" label="Published" sequence="1" value="published"/>
+                <element inactive_on_update="false" label="Draft" sequence="0" value="draft"/>
+            </choice>
+        </element>
         <element choice="1" label="Line of business" mandatory="true" max_length="40" name="line_of_business" type="string">
             <choice>
-                <element inactive_on_update="false" label="Auto" sequence="2" value="auto"/>
-                <element inactive_on_update="false" label="Motor" sequence="3" value="motor"/>
-                <element inactive_on_update="false" label="Property" sequence="0" value="property"/>
                 <element inactive_on_update="false" label="Workers Comp" sequence="1" value="workers_comp"/>
+                <element inactive_on_update="false" label="Property" sequence="0" value="property"/>
+                <element inactive_on_update="false" label="Motor" sequence="3" value="motor"/>
+                <element inactive_on_update="false" label="Auto" sequence="2" value="auto"/>
             </choice>
         </element>
         <element label="Applicable states" max_length="4000" name="applicable_states" type="glide_list"/>

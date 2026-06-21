@@ -1,65 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="ccb0f83453a543107d5fd301a0490ea1" label="Document" max_length="40" name="x_gegis_ins_policy_document" type="collection">
-        <element label="Received date" max_length="40" name="received_date" type="glide_date_time"/>
+    <element db_object_id="8f78f7e2fbed4b58b70efc647befdca2" label="Document" max_length="40" name="x_gegis_ins_policy_document" type="collection">
         <element label="Notes" max_length="2000" name="notes" type="string"/>
-        <element label="Uploaded date" max_length="40" name="uploaded_date" type="glide_date_time"/>
-        <element label="Uploaded by" max_length="32" name="uploaded_by" reference="sys_user" type="reference"/>
-        <element choice="1" label="File type" max_length="40" name="file_type" type="string">
-            <choice>
-                <element inactive_on_update="false" label="PDF" sequence="0" value="pdf"/>
-                <element inactive_on_update="false" label="Word" sequence="2" value="word"/>
-                <element inactive_on_update="false" label="CSV" sequence="5" value="csv"/>
-                <element inactive_on_update="false" label="Image" sequence="3" value="image"/>
-                <element inactive_on_update="false" label="Excel" sequence="1" value="excel"/>
-                <element inactive_on_update="false" label="Email" sequence="4" value="email"/>
-                <element inactive_on_update="false" label="Other" sequence="6" value="other"/>
-            </choice>
-        </element>
-        <element choice="1" label="Scope" mandatory="true" max_length="40" name="scope" type="string">
-            <choice>
-                <element inactive_on_update="false" label="Exposure" sequence="2" value="exposure"/>
-                <element inactive_on_update="false" label="Clearance" sequence="1" value="clearance"/>
-                <element inactive_on_update="false" label="Risk" sequence="3" value="risk"/>
-                <element inactive_on_update="false" label="Common" sequence="0" value="common"/>
-                <element inactive_on_update="false" label="Quote &amp; Bind" sequence="4" value="quote_and_bind"/>
-            </choice>
-        </element>
         <element label="Document name" max_length="200" name="document_name" type="string"/>
-        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element label="Page count" max_length="40" name="page_count" type="integer"/>
         <element choice="1" label="Status" max_length="40" name="status" type="string">
             <choice>
-                <element inactive_on_update="false" label="Final" sequence="1" value="final"/>
                 <element inactive_on_update="false" label="Superseded" sequence="2" value="superseded"/>
+                <element inactive_on_update="false" label="Final" sequence="1" value="final"/>
                 <element inactive_on_update="false" label="Draft" sequence="0" value="draft"/>
-            </choice>
-        </element>
-        <element label="Version" max_length="20" name="version" type="string"/>
-        <element choice="1" label="Confidentiality" max_length="40" name="confidentiality" type="string">
-            <choice>
-                <element inactive_on_update="false" label="Public" sequence="0" value="public_access"/>
-                <element inactive_on_update="false" label="Restricted" sequence="3" value="restricted"/>
-                <element inactive_on_update="false" label="Internal" sequence="1" value="internal"/>
-                <element inactive_on_update="false" label="Confidential" sequence="2" value="confidential"/>
             </choice>
         </element>
         <element choice="1" label="Document type" mandatory="true" max_length="40" name="document_type" type="string">
             <choice>
-                <element inactive_on_update="false" label="OFAC Report" sequence="10" value="ofac_report"/>
-                <element inactive_on_update="false" label="ACORD" sequence="2" value="acord"/>
-                <element inactive_on_update="false" label="Slip" sequence="0" value="slip"/>
-                <element inactive_on_update="false" label="Quote Letter" sequence="8" value="quote_letter"/>
+                <element inactive_on_update="false" label="Loss Run" sequence="3" value="loss_run"/>
+                <element inactive_on_update="false" label="Binder" sequence="9" value="binder"/>
                 <element inactive_on_update="false" label="Broker Email" sequence="5" value="broker_email"/>
+                <element inactive_on_update="false" label="Quote Letter" sequence="8" value="quote_letter"/>
+                <element inactive_on_update="false" label="ACORD" sequence="2" value="acord"/>
+                <element inactive_on_update="false" label="SOV" sequence="1" value="sov"/>
                 <element inactive_on_update="false" label="Other" sequence="11" value="other"/>
                 <element inactive_on_update="false" label="Inspection Report" sequence="7" value="inspection_report"/>
                 <element inactive_on_update="false" label="Financial Statement" sequence="6" value="financial_statement"/>
-                <element inactive_on_update="false" label="Loss Run" sequence="3" value="loss_run"/>
-                <element inactive_on_update="false" label="SOV" sequence="1" value="sov"/>
                 <element inactive_on_update="false" label="Survey Report" sequence="4" value="survey_report"/>
-                <element inactive_on_update="false" label="Binder" sequence="9" value="binder"/>
+                <element inactive_on_update="false" label="Slip" sequence="0" value="slip"/>
+                <element inactive_on_update="false" label="OFAC Report" sequence="10" value="ofac_report"/>
             </choice>
         </element>
-        <element label="Page count" max_length="40" name="page_count" type="integer"/>
         <element label="File size (KB)" max_length="40" name="file_size_kb" type="integer"/>
+        <element label="Version" max_length="20" name="version" type="string"/>
+        <element choice="1" label="Scope" mandatory="true" max_length="40" name="scope" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Risk" sequence="3" value="risk"/>
+                <element inactive_on_update="false" label="Exposure" sequence="2" value="exposure"/>
+                <element inactive_on_update="false" label="Clearance" sequence="1" value="clearance"/>
+                <element inactive_on_update="false" label="Quote &amp; Bind" sequence="4" value="quote_and_bind"/>
+                <element inactive_on_update="false" label="Common" sequence="0" value="common"/>
+            </choice>
+        </element>
+        <element choice="1" label="File type" max_length="40" name="file_type" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Email" sequence="4" value="email"/>
+                <element inactive_on_update="false" label="Image" sequence="3" value="image"/>
+                <element inactive_on_update="false" label="Other" sequence="6" value="other"/>
+                <element inactive_on_update="false" label="PDF" sequence="0" value="pdf"/>
+                <element inactive_on_update="false" label="Word" sequence="2" value="word"/>
+                <element inactive_on_update="false" label="Excel" sequence="1" value="excel"/>
+                <element inactive_on_update="false" label="CSV" sequence="5" value="csv"/>
+            </choice>
+        </element>
+        <element label="Uploaded date" max_length="40" name="uploaded_date" type="glide_date_time"/>
+        <element choice="1" label="Confidentiality" max_length="40" name="confidentiality" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Internal" sequence="1" value="internal"/>
+                <element inactive_on_update="false" label="Restricted" sequence="3" value="restricted"/>
+                <element inactive_on_update="false" label="Public" sequence="0" value="public_access"/>
+                <element inactive_on_update="false" label="Confidential" sequence="2" value="confidential"/>
+            </choice>
+        </element>
+        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element label="Received date" max_length="40" name="received_date" type="glide_date_time"/>
+        <element label="Uploaded by" max_length="32" name="uploaded_by" reference="sys_user" type="reference"/>
         <index name="index">
             <element name="submission"/>
         </index>

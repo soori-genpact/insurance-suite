@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="8290303453a543107d5fd301a0490e23" label="Existing Policy" max_length="40" name="x_gegis_ins_policy_existing_policy" type="collection">
-        <element label="External" mandatory="true" max_length="40" name="external" type="boolean"/>
-        <element label="Policy number" max_length="40" name="policy_number" type="string"/>
-        <element label="Provider / carrier" max_length="200" name="provider" type="string"/>
-        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
-        <element label="Expiry date" max_length="40" name="expiry_date" type="glide_date"/>
+    <element db_object_id="c3583ba2fbed4b58b70efc647befdcba" label="Existing Policy" max_length="40" name="x_gegis_ins_policy_existing_policy" type="collection">
         <element label="Policy reference" max_length="32" name="policy_reference" reference="x_gegis_ins_policy_policy" type="reference"/>
         <element choice="1" label="Line of business" max_length="40" name="line_of_business" type="string">
             <choice>
-                <element inactive_on_update="false" label="Property" sequence="0" value="property"/>
                 <element inactive_on_update="false" label="Auto" sequence="2" value="auto"/>
                 <element inactive_on_update="false" label="Workers Comp" sequence="1" value="workers_comp"/>
+                <element inactive_on_update="false" label="Property" sequence="0" value="property"/>
             </choice>
         </element>
+        <element label="Provider / carrier" max_length="200" name="provider" type="string"/>
+        <element label="Expiry date" max_length="40" name="expiry_date" type="glide_date"/>
+        <element label="External" mandatory="true" max_length="40" name="external" type="boolean"/>
         <element label="Effective date" max_length="40" name="effective_date" type="glide_date"/>
+        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element label="Policy number" max_length="40" name="policy_number" type="string"/>
         <index name="index">
             <element name="policy_reference"/>
         </index>

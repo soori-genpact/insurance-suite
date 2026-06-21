@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="c9c0787453a543107d5fd301a0490e92" label="Risk Factor" max_length="40" name="x_gegis_ins_policy_risk_factor" type="collection">
-        <element label="Comment" max_length="2000" name="comment" type="string"/>
+    <element db_object_id="f198b726fbed4b58b70efc647befdce1" label="Risk Factor" max_length="40" name="x_gegis_ins_policy_risk_factor" type="collection">
+        <element label="Weight" max_length="20" name="weight" type="decimal"/>
         <element label="Factor name" mandatory="true" max_length="200" name="factor_name" type="string"/>
         <element label="Risk case" mandatory="true" max_length="32" name="risk_case" reference="x_gegis_ins_policy_risk_case" type="reference"/>
+        <element label="Comment" max_length="2000" name="comment" type="string"/>
         <element label="Score" max_length="20" name="score" type="decimal"/>
-        <element label="Weight" max_length="20" name="weight" type="decimal"/>
         <index name="index">
             <element name="risk_case"/>
         </index>
