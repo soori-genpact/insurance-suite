@@ -256,3 +256,90 @@ Record({
         variable: '7af0046d53a5c7107d5fd301a0490e9d',
     },
 })
+Record({
+    $id: Now.ID['02d2c076fbe18b58b70efc647befdc6a'],
+    table: 'sys_variable_value',
+    data: {
+        document: 'sys_pd_activity',
+        document_key: '155c5b22aba05cab4c6bd7b3f5b09c04',
+        order: 100,
+        value: '0',
+        variable: '9ff0846d53a5c7107d5fd301a0490e19',
+    },
+})
+Record({
+    $id: Now.ID['06d2c076fbe18b58b70efc647befdc6b'],
+    table: 'sys_variable_value',
+    data: {
+        document: 'sys_pd_activity',
+        document_key: '155c5b22aba05cab4c6bd7b3f5b09c04',
+        order: 100,
+        value: `<p><strong>HHHHHHHHHHHHHHHH     <span style="text-decoration: underline;">  iiiiiiiii</span></strong></p>
+<p> </p>`,
+        variable: 'def0c06d53a5c7107d5fd301a0490e97',
+    },
+})
+Record({
+    $id: Now.ID['46d2c076fbe18b58b70efc647befdc6a'],
+    table: 'sys_variable_value',
+    data: {
+        document: 'sys_pd_activity',
+        document_key: '155c5b22aba05cab4c6bd7b3f5b09c04',
+        order: 100,
+        variable: 'c3f0446d53a5c7107d5fd301a0490edf',
+    },
+})
+Record({
+    $id: Now.ID['82d2c076fbe18b58b70efc647befdc65'],
+    table: 'sys_variable_value',
+    data: {
+        document: 'sys_pd_activity',
+        document_key: '155c5b22aba05cab4c6bd7b3f5b09c04',
+        order: 1,
+        value: 'yes',
+        variable: 'eb1084e553a5c7107d5fd301a0490e6c',
+    },
+})
+Record({
+    $id: Now.ID['86d2c076fbe18b58b70efc647befdc69'],
+    table: 'sys_variable_value',
+    data: {
+        document: 'sys_pd_activity',
+        document_key: '155c5b22aba05cab4c6bd7b3f5b09c04',
+        order: 100,
+        value: 'sys_flow_data',
+        variable: 'b6f0046d53a5c7107d5fd301a0490efd',
+    },
+})
+Record({
+    $id: Now.ID['8ad2c076fbe18b58b70efc647befdc6a'],
+    table: 'sys_variable_value',
+    data: {
+        document: 'sys_pd_activity',
+        document_key: '155c5b22aba05cab4c6bd7b3f5b09c04',
+        order: 100,
+        value: 'sys_flow_data',
+        variable: 'cbf0446d53a5c7107d5fd301a0490eb0',
+    },
+})
+Record({
+    $id: Now.ID['cad2c076fbe18b58b70efc647befdc69'],
+    table: 'sys_variable_value',
+    data: {
+        document: 'sys_pd_activity',
+        document_key: '155c5b22aba05cab4c6bd7b3f5b09c04',
+        order: 100,
+        variable: 'e2f0046d53a5c7107d5fd301a0490e4a',
+    },
+})
+Record({
+    $id: Now.ID['ced2c076fbe18b58b70efc647befdc6a'],
+    table: 'sys_variable_value',
+    data: {
+        document: 'sys_pd_activity',
+        document_key: '155c5b22aba05cab4c6bd7b3f5b09c04',
+        order: 100,
+        value: 'info_circle_outline',
+        variable: 'd6f0c06d53a5c7107d5fd301a0490e10',
+    },
+})

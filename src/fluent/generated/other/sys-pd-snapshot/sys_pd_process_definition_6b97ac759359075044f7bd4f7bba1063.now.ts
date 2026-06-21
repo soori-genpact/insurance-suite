@@ -34,3 +34,20 @@ Record({
         source: '6b97ac759359075044f7bd4f7bba1063',
     },
 })
+Record({
+    $id: Now.ID['13f28c76fbe18b58b70efc647befdc2c'],
+    table: 'sys_pd_snapshot',
+    data: {
+        access: 'public',
+        derivatives:
+            '{"table":"sys_pd_snapshot","id":"13f28c76fbe18b58b70efc647befdc2c","name":"derivatives","type":"com.snc.pd.model.serialization.DerivativeFetcher"}',
+        name: 'clearance_case_playbook',
+        process_definition:
+            '{"table":"sys_pd_snapshot","id":"13f28c76fbe18b58b70efc647befdc2c","name":"process_definition","type":"com.snc.pd.model.ProcessDefinition"}',
+        process_dependencies:
+            '{"table":"sys_pd_snapshot","id":"13f28c76fbe18b58b70efc647befdc2c","name":"process_dependencies","type":"com.snc.pd.model.dependency.InstructionBasedProcessDependenciesCollection"}',
+        process_plan:
+            '{"table":"sys_pd_snapshot","id":"13f28c76fbe18b58b70efc647befdc2c","name":"process_plan","type":"com.snc.process_flow.engine.ProcessPlan"}',
+        source: '6b97ac759359075044f7bd4f7bba1063',
+    },
+})

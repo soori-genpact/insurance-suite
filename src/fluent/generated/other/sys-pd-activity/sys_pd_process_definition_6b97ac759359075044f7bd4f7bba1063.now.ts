@@ -37,3 +37,22 @@ Record({
         start_rule_name: 'immediate',
     },
 })
+Record({
+    $id: Now.ID['155c5b22aba05cab4c6bd7b3f5b09c04'],
+    table: 'sys_pd_activity',
+    data: {
+        active: 'true',
+        activity_definition: '4a6ff31553a5c7107d5fd301a0490e61',
+        ai_agent_execution_mode: 'undefined',
+        ai_agent_run_as: 'playbook_user',
+        description: 'TTTT',
+        enable_ai_agent: 'false',
+        label: 'Base Activity',
+        lane: 'aad6ced21bc6674bb6dec23a02352360',
+        name: 'base_activity',
+        order: '1',
+        process_definition: '6b97ac759359075044f7bd4f7bba1063',
+        restart_rule: 'RUN_ONLY_ONCE',
+        start_rule_name: 'immediate',
+    },
+})

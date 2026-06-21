@@ -298,3 +298,88 @@ Record({
         table: 'x_gegis_ins_policy_clearance_case',
     },
 })
+Record({
+    $id: Now.ID['02d2c076fbe18b58b70efc647befdc68'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'associated_record',
+        id: '155c5b22aba05cab4c6bd7b3f5b09c04',
+        table: 'var__m_sys_pd_activity_type_prop_def008e553a5c7107d5fd301a0490eac',
+    },
+})
+Record({
+    $id: Now.ID['4ed2c076fbe18b58b70efc647befdc66'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'associated_table',
+        id: '155c5b22aba05cab4c6bd7b3f5b09c04',
+        table: 'var__m_sys_pd_activity_type_prop_def008e553a5c7107d5fd301a0490eac',
+    },
+})
+Record({
+    $id: Now.ID['c2d2c076fbe18b58b70efc647befdc69'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'description',
+        id: '155c5b22aba05cab4c6bd7b3f5b09c04',
+        table: 'var__m_sys_pd_activity_type_prop_def008e553a5c7107d5fd301a0490eac',
+    },
+})
+Record({
+    $id: Now.ID['86d2c076fbe18b58b70efc647befdc67'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'experience_status_record',
+        id: '155c5b22aba05cab4c6bd7b3f5b09c04',
+        table: 'var__m_sys_pd_activity_type_prop_def008e553a5c7107d5fd301a0490eac',
+        value: '{{vl.Base Playbook Activity Flow.e17e6678-8e97-4584-a903-cfa6e47fd378./end.record}}',
+    },
+})
+Record({
+    $id: Now.ID['46d2c076fbe18b58b70efc647befdc68'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'experience_status_table',
+        id: '155c5b22aba05cab4c6bd7b3f5b09c04',
+        table: 'var__m_sys_pd_activity_type_prop_def008e553a5c7107d5fd301a0490eac',
+    },
+})
+Record({
+    $id: Now.ID['0ed2c076fbe18b58b70efc647befdc68'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'icon',
+        id: '155c5b22aba05cab4c6bd7b3f5b09c04',
+        table: 'var__m_sys_pd_activity_type_prop_def008e553a5c7107d5fd301a0490eac',
+    },
+})
+Record({
+    $id: Now.ID['cad2c076fbe18b58b70efc647befdc67'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'is_automated',
+        id: '155c5b22aba05cab4c6bd7b3f5b09c04',
+        table: 'var__m_sys_pd_activity_type_prop_def008e553a5c7107d5fd301a0490eac',
+    },
+})
+Record({
+    $id: Now.ID['c6d2c076fbe18b58b70efc647befdc64'],
+    table: 'sys_element_mapping',
+    data: {
+        field: 'wait',
+        id: '155c5b22aba05cab4c6bd7b3f5b09c04',
+        table: 'var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31',
+    },
+})
+Record({
+    $id: Now.ID['5ff28c76fbe18b58b70efc647befdc29'],
+    table: 'sys_trigger_runner_mapping',
+    data: {
+        active: 'true',
+        data: '{"trigger_on_unique_change":"org.mozilla.javascript.UniqueTag@577373b2: NOT_FOUND","parent_record":{"elementMapping":"{{triggerRecord}}","variableValue":null,"elementMappingOrVariableValue":"{{triggerRecord}}"},"run_trigger":"org.mozilla.javascript.UniqueTag@577373b2: NOT_FOUND"}',
+        identifier: '5be3ec638c9fea70c9dd578cf838f63b',
+        identifier_type: 'playbook',
+        runner: 'PDTriggerRunner',
+        trigger: 'eeca67ea832d0310f70ac6a6feaad3a6',
+    },
+})
