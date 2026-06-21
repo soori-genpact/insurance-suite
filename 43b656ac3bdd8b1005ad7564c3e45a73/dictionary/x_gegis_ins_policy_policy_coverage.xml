@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="cbb0347453a543107d5fd301a0490e16" label="Policy Coverage" max_length="40" name="x_gegis_ins_policy_policy_coverage" type="collection">
-        <element label="Mandatory" max_length="40" name="mandatory" type="boolean"/>
-        <element label="Policy risk" mandatory="true" max_length="32" name="policy_risk" reference="x_gegis_ins_policy_policy_risk" type="reference"/>
+    <element db_object_id="43887326fbed4b58b70efc647befdc90" label="Policy Coverage" max_length="40" name="x_gegis_ins_policy_policy_coverage" type="collection">
         <element label="Coverage premium" max_length="20" name="coverage_premium" type="decimal"/>
+        <element label="Mandatory" max_length="40" name="mandatory" type="boolean"/>
+        <element label="Coverage" mandatory="true" max_length="32" name="coverage" reference="x_gegis_ins_policy_coverage" type="reference"/>
+        <element label="Policy risk" mandatory="true" max_length="32" name="policy_risk" reference="x_gegis_ins_policy_policy_risk" type="reference"/>
+        <element label="Policy" mandatory="true" max_length="32" name="policy" reference="x_gegis_ins_policy_policy" type="reference"/>
         <element choice="1" label="Status" mandatory="true" max_length="40" name="status" type="string">
             <choice>
-                <element inactive_on_update="false" label="Expired" sequence="2" value="expired"/>
                 <element inactive_on_update="false" label="Cancelled" sequence="1" value="cancelled"/>
                 <element inactive_on_update="false" label="Active" sequence="0" value="active"/>
+                <element inactive_on_update="false" label="Expired" sequence="2" value="expired"/>
             </choice>
         </element>
-        <element label="Policy" mandatory="true" max_length="32" name="policy" reference="x_gegis_ins_policy_policy" type="reference"/>
-        <element label="Coverage" mandatory="true" max_length="32" name="coverage" reference="x_gegis_ins_policy_coverage" type="reference"/>
         <index name="index">
             <element name="coverage"/>
         </index>

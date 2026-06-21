@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="98903cf053a543107d5fd301a0490ec4" label="Location" max_length="40" name="x_gegis_ins_policy_location" type="collection">
+    <element db_object_id="6c58f3a2fbed4b58b70efc647befdc6e" label="Location" max_length="40" name="x_gegis_ins_policy_location" type="collection">
         <element label="City" max_length="100" name="city" type="string"/>
-        <element label="Location number" max_length="40" name="location_number" type="integer"/>
+        <element label="No. of floors" max_length="40" name="no_of_floors" type="integer"/>
         <element choice="1" label="Construction type" max_length="40" name="construction_type" type="string">
             <choice>
-                <element inactive_on_update="false" label="Modified Fire Resistive" sequence="4" value="modified_fire_resistive"/>
-                <element inactive_on_update="false" label="Non-Combustible" sequence="2" value="non_combustible"/>
                 <element inactive_on_update="false" label="Masonry Non-Comb" sequence="3" value="masonry_non_comb"/>
-                <element inactive_on_update="false" label="Frame" sequence="0" value="frame"/>
-                <element inactive_on_update="false" label="Joisted Masonry" sequence="1" value="joisted_masonry"/>
+                <element inactive_on_update="false" label="Non-Combustible" sequence="2" value="non_combustible"/>
                 <element inactive_on_update="false" label="Fire Resistive" sequence="5" value="fire_resistive"/>
+                <element inactive_on_update="false" label="Joisted Masonry" sequence="1" value="joisted_masonry"/>
+                <element inactive_on_update="false" label="Frame" sequence="0" value="frame"/>
+                <element inactive_on_update="false" label="Modified Fire Resistive" sequence="4" value="modified_fire_resistive"/>
             </choice>
         </element>
-        <element label="Zip code" max_length="20" name="zipcode" type="string"/>
+        <element label="Occupancy" max_length="200" name="occupancy" type="string"/>
+        <element label="Alarm" max_length="40" name="alarm" type="boolean"/>
+        <element label="Sprinkler grade" max_length="50" name="sprinkler_grade" type="string"/>
         <element label="Sprinkler" max_length="40" name="sprinkler" type="boolean"/>
         <element label="Coinsurance %" max_length="20" name="coinsurance" type="decimal"/>
-        <element label="Country" max_length="50" name="country" type="string"/>
-        <element label="Address line 3" max_length="200" name="address3" type="string"/>
         <element label="Square footage" max_length="20" name="sq_footage" type="decimal"/>
-        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
-        <element label="Occupancy" max_length="200" name="occupancy" type="string"/>
         <element label="Class code" max_length="20" name="class_code" type="string"/>
-        <element label="Longitude" max_length="20" name="longitude" type="decimal"/>
-        <element label="County" max_length="100" name="county" type="string"/>
         <element label="Address line 2" max_length="200" name="address2" type="string"/>
-        <element label="Alarm" max_length="40" name="alarm" type="boolean"/>
-        <element label="No. of floors" max_length="40" name="no_of_floors" type="integer"/>
-        <element label="Latitude" max_length="20" name="latitude" type="decimal"/>
-        <element label="State" max_length="50" name="state" type="string"/>
+        <element label="Country" max_length="50" name="country" type="string"/>
         <element label="Address line 1" max_length="200" name="address1" type="string"/>
-        <element label="Sprinkler grade" max_length="50" name="sprinkler_grade" type="string"/>
+        <element label="County" max_length="100" name="county" type="string"/>
+        <element label="Longitude" max_length="20" name="longitude" type="decimal"/>
+        <element label="Location number" max_length="40" name="location_number" type="integer"/>
+        <element label="State" max_length="50" name="state" type="string"/>
+        <element label="Latitude" max_length="20" name="latitude" type="decimal"/>
+        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element label="Address line 3" max_length="200" name="address3" type="string"/>
+        <element label="Zip code" max_length="20" name="zipcode" type="string"/>
         <index name="index">
             <element name="submission"/>
         </index>

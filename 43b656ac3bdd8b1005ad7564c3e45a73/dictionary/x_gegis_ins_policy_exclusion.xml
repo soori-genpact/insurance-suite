@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="91a0743453a543107d5fd301a0490ef5" label="Exclusion" max_length="40" name="x_gegis_ins_policy_exclusion" type="collection">
+    <element db_object_id="af6873e2fbed4b58b70efc647befdc11" label="Exclusion" max_length="40" name="x_gegis_ins_policy_exclusion" type="collection">
+        <element label="Code" mandatory="true" max_length="20" name="code" type="string" unique="true"/>
         <element label="Name" mandatory="true" max_length="200" name="name" type="string"/>
         <element label="Description" max_length="2000" name="description" type="multi_two_lines"/>
-        <element label="Code" mandatory="true" max_length="20" name="code" type="string" unique="true"/>
         <index name="index" unique="true">
             <element name="code"/>
         </index>

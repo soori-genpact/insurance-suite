@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="0f90703453a543107d5fd301a0490e96" label="Policy Transaction" max_length="40" name="x_gegis_ins_policy_policy_transaction" type="collection">
-        <element label="Description" max_length="2000" name="description" type="multi_two_lines"/>
-        <element label="Effective date" mandatory="true" max_length="40" name="effective_date" type="glide_date"/>
+    <element db_object_id="2468bba2fbed4b58b70efc647befdcc8" label="Policy Transaction" max_length="40" name="x_gegis_ins_policy_policy_transaction" type="collection">
         <element choice="1" label="Status" mandatory="true" max_length="40" name="status" type="string">
             <choice>
-                <element inactive_on_update="false" label="Pending Approval" sequence="1" value="pending_approval"/>
-                <element inactive_on_update="false" label="Completed" sequence="3" value="completed"/>
-                <element inactive_on_update="false" label="Rejected" sequence="4" value="rejected"/>
                 <element inactive_on_update="false" label="Draft" sequence="0" value="draft"/>
-                <element inactive_on_update="false" label="Approved" sequence="2" value="approved"/>
                 <element inactive_on_update="false" label="Voided" sequence="5" value="voided"/>
+                <element inactive_on_update="false" label="Rejected" sequence="4" value="rejected"/>
+                <element inactive_on_update="false" label="Completed" sequence="3" value="completed"/>
+                <element inactive_on_update="false" label="Approved" sequence="2" value="approved"/>
+                <element inactive_on_update="false" label="Pending Approval" sequence="1" value="pending_approval"/>
             </choice>
         </element>
+        <element label="Description" max_length="2000" name="description" type="multi_two_lines"/>
+        <element label="Effective date" mandatory="true" max_length="40" name="effective_date" type="glide_date"/>
         <element choice="1" label="Type" mandatory="true" max_length="40" name="type" type="string">
             <choice>
-                <element inactive_on_update="false" label="Reinstatement" sequence="4" value="reinstatement"/>
-                <element inactive_on_update="false" label="Cancellation" sequence="3" value="cancellation"/>
-                <element inactive_on_update="false" label="New Business" sequence="0" value="new_business"/>
-                <element inactive_on_update="false" label="Renewal" sequence="1" value="renewal"/>
                 <element inactive_on_update="false" label="Endorsement" sequence="2" value="endorsement"/>
+                <element inactive_on_update="false" label="Renewal" sequence="1" value="renewal"/>
+                <element inactive_on_update="false" label="Reinstatement" sequence="4" value="reinstatement"/>
+                <element inactive_on_update="false" label="New Business" sequence="0" value="new_business"/>
+                <element inactive_on_update="false" label="Cancellation" sequence="3" value="cancellation"/>
             </choice>
         </element>
-        <element label="Premium delta" max_length="20" name="premium_delta" type="decimal"/>
         <element label="Policy" mandatory="true" max_length="32" name="policy" reference="x_gegis_ins_policy_policy" type="reference"/>
+        <element label="Premium delta" max_length="20" name="premium_delta" type="decimal"/>
         <index name="index">
             <element name="policy"/>
         </index>

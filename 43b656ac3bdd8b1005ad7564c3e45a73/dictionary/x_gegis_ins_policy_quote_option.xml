@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="16a0f43453a543107d5fd301a0490eb6" label="Quote Option" max_length="40" name="x_gegis_ins_policy_quote_option" type="collection">
-        <element label="Commission rate" max_length="20" name="commission_rate" type="decimal"/>
+    <element db_object_id="4178f3e2fbed4b58b70efc647befdcb7" label="Quote Option" max_length="40" name="x_gegis_ins_policy_quote_option" type="collection">
+        <element label="Quote" mandatory="true" max_length="32" name="quote" reference="x_gegis_ins_policy_quote" type="reference"/>
+        <element label="Deductible" max_length="20" name="deductible" type="decimal"/>
         <element label="Limit" max_length="20" name="limit" type="decimal"/>
         <element choice="1" label="Line of business" mandatory="true" max_length="40" name="line_of_business" type="string">
             <choice>
-                <element inactive_on_update="false" label="Auto" sequence="2" value="auto"/>
                 <element inactive_on_update="false" label="Workers Comp" sequence="1" value="workers_comp"/>
                 <element inactive_on_update="false" label="Property" sequence="0" value="property"/>
+                <element inactive_on_update="false" label="Auto" sequence="2" value="auto"/>
             </choice>
         </element>
-        <element label="Premium" max_length="20" name="premium" type="decimal"/>
-        <element label="Quote" mandatory="true" max_length="32" name="quote" reference="x_gegis_ins_policy_quote" type="reference"/>
         <element label="Version" max_length="20" name="version" type="string"/>
-        <element label="Deductible" max_length="20" name="deductible" type="decimal"/>
         <element label="Terms" max_length="2000" name="terms" type="string"/>
+        <element label="Commission rate" max_length="20" name="commission_rate" type="decimal"/>
+        <element label="Premium" max_length="20" name="premium" type="decimal"/>
         <index name="index">
             <element name="quote"/>
         </index>

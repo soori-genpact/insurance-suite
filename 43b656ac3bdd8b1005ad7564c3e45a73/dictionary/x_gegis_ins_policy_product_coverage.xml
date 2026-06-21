@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="f5a0b43453a543107d5fd301a0490ede" label="Product Coverage" max_length="40" name="x_gegis_ins_policy_product_coverage" type="collection">
+    <element db_object_id="9878b3e2fbed4b58b70efc647befdc61" label="Product Coverage" max_length="40" name="x_gegis_ins_policy_product_coverage" type="collection">
+        <element label="Product" mandatory="true" max_length="32" name="product" reference="x_gegis_ins_policy_product" type="reference"/>
         <element label="Mandatory" max_length="40" name="mandatory" type="boolean"/>
         <element label="Coverage" mandatory="true" max_length="32" name="coverage" reference="x_gegis_ins_policy_coverage" type="reference"/>
-        <element label="Product" mandatory="true" max_length="32" name="product" reference="x_gegis_ins_policy_product" type="reference"/>
         <element label="Base premium" max_length="20" name="base_premium" type="decimal"/>
         <index name="index">
             <element name="coverage"/>

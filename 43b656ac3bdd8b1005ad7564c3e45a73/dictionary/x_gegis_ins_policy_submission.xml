@@ -1,75 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="f8b07c3453a543107d5fd301a0490eb0" label="Submission" max_length="40" name="x_gegis_ins_policy_submission" type="collection">
-        <element label="Primary insured" mandatory="true" max_length="32" name="primary_insured" reference="x_gegis_ins_policy_party" type="reference"/>
-        <element label="Number of locations" max_length="40" name="number_of_locations" type="integer"/>
-        <element label="Predominant state" max_length="50" name="predominant_state" type="string"/>
-        <element label="Policy expiry date" mandatory="true" max_length="40" name="policy_expiry_date" type="glide_date"/>
-        <element choice="1" label="Transaction type" mandatory="true" max_length="40" name="transaction_type" type="string">
-            <choice>
-                <element inactive_on_update="false" label="New" sequence="0" value="new"/>
-                <element inactive_on_update="false" label="Endorsement" sequence="2" value="endorsement"/>
-                <element inactive_on_update="false" label="Renewal" sequence="1" value="renewal"/>
-            </choice>
-        </element>
+    <element db_object_id="7f787be2fbed4b58b70efc647befdc67" label="Submission" max_length="40" name="x_gegis_ins_policy_submission" type="collection">
+        <element label="No. of installments" max_length="40" name="no_of_installments" type="integer"/>
         <element choice="1" label="Overall status" max_length="40" name="overall_status" type="string">
             <choice>
-                <element inactive_on_update="false" label="Cleared" sequence="2" value="cleared"/>
-                <element inactive_on_update="false" label="Open" sequence="0" value="open"/>
-                <element inactive_on_update="false" label="Bound" sequence="4" value="bound"/>
-                <element inactive_on_update="false" label="In Progress" sequence="1" value="in_progress"/>
-                <element inactive_on_update="false" label="Lapsed" sequence="6" value="lapsed"/>
                 <element inactive_on_update="false" label="Quoted" sequence="3" value="quoted"/>
+                <element inactive_on_update="false" label="Lapsed" sequence="6" value="lapsed"/>
+                <element inactive_on_update="false" label="Cleared" sequence="2" value="cleared"/>
                 <element inactive_on_update="false" label="Declined" sequence="5" value="declined"/>
-            </choice>
-        </element>
-        <element choice="1" label="Policy currency" mandatory="true" max_length="40" name="policy_currency" type="string">
-            <choice>
-                <element inactive_on_update="false" label="USD" sequence="0" value="usd"/>
-                <element inactive_on_update="false" label="JPY" sequence="5" value="jpy"/>
-                <element inactive_on_update="false" label="GBP" sequence="1" value="gbp"/>
-                <element inactive_on_update="false" label="EUR" sequence="2" value="eur"/>
-                <element inactive_on_update="false" label="CAD" sequence="3" value="cad"/>
-                <element inactive_on_update="false" label="AUD" sequence="4" value="aud"/>
-                <element inactive_on_update="false" label="CHF" sequence="6" value="chf"/>
-            </choice>
-        </element>
-        <element label="Policy effective date" mandatory="true" max_length="40" name="policy_effective_date" type="glide_date"/>
-        <element label="Existing policy" max_length="32" name="existing_policy" reference="x_gegis_ins_policy_policy" type="reference"/>
-        <element choice="1" label="Source channel" max_length="40" name="source_channel" type="string">
-            <choice>
-                <element inactive_on_update="false" label="Broker Upload" sequence="3" value="broker_upload"/>
-                <element inactive_on_update="false" label="API" sequence="2" value="api"/>
-                <element inactive_on_update="false" label="Portal" sequence="1" value="portal"/>
-                <element inactive_on_update="false" label="Email" sequence="0" value="email"/>
-            </choice>
-        </element>
-        <element label="No. of installments" max_length="40" name="no_of_installments" type="integer"/>
-        <element label="Received date" mandatory="true" max_length="40" name="received_date" type="glide_date_time"/>
-        <element label="Nature of business" max_length="500" name="nature_of_business" type="string"/>
-        <element label="Primary broker" max_length="32" name="primary_broker" reference="x_gegis_ins_policy_party" type="reference"/>
-        <element choice="1" label="Policy territory" max_length="40" name="policy_territory" type="string">
-            <choice>
-                <element inactive_on_update="false" label="Global" sequence="4" value="global"/>
-                <element inactive_on_update="false" label="APAC" sequence="3" value="apac"/>
-                <element inactive_on_update="false" label="US" sequence="0" value="us"/>
-                <element inactive_on_update="false" label="EU" sequence="2" value="eu"/>
-                <element inactive_on_update="false" label="UK" sequence="1" value="uk"/>
-            </choice>
-        </element>
-        <element choice="1" label="Lines in scope" mandatory="true" max_length="40" name="line_of_business" type="string">
-            <choice>
-                <element inactive_on_update="false" label="Motor" sequence="3" value="motor"/>
-                <element inactive_on_update="false" label="Workers Comp" sequence="1" value="workers_comp"/>
-                <element inactive_on_update="false" label="Property" sequence="0" value="property"/>
-                <element inactive_on_update="false" label="Auto" sequence="2" value="auto"/>
+                <element inactive_on_update="false" label="In Progress" sequence="1" value="in_progress"/>
+                <element inactive_on_update="false" label="Bound" sequence="4" value="bound"/>
+                <element inactive_on_update="false" label="Open" sequence="0" value="open"/>
             </choice>
         </element>
         <element choice="1" label="Billing type" max_length="40" name="billing_type" type="string">
             <choice>
-                <element inactive_on_update="false" label="Direct Bill" sequence="1" value="direct_bill"/>
                 <element inactive_on_update="false" label="Agency Bill" sequence="0" value="agency_bill"/>
+                <element inactive_on_update="false" label="Direct Bill" sequence="1" value="direct_bill"/>
             </choice>
         </element>
+        <element label="Existing policy" max_length="32" name="existing_policy" reference="x_gegis_ins_policy_policy" type="reference"/>
+        <element label="Predominant state" max_length="50" name="predominant_state" type="string"/>
+        <element label="Nature of business" max_length="500" name="nature_of_business" type="string"/>
+        <element label="Policy effective date" mandatory="true" max_length="40" name="policy_effective_date" type="glide_date"/>
+        <element label="Number of locations" max_length="40" name="number_of_locations" type="integer"/>
+        <element choice="1" label="Policy currency" mandatory="true" max_length="40" name="policy_currency" type="string">
+            <choice>
+                <element inactive_on_update="false" label="AUD" sequence="4" value="aud"/>
+                <element inactive_on_update="false" label="USD" sequence="0" value="usd"/>
+                <element inactive_on_update="false" label="CAD" sequence="3" value="cad"/>
+                <element inactive_on_update="false" label="CHF" sequence="6" value="chf"/>
+                <element inactive_on_update="false" label="EUR" sequence="2" value="eur"/>
+                <element inactive_on_update="false" label="JPY" sequence="5" value="jpy"/>
+                <element inactive_on_update="false" label="GBP" sequence="1" value="gbp"/>
+            </choice>
+        </element>
+        <element choice="1" label="Policy territory" max_length="40" name="policy_territory" type="string">
+            <choice>
+                <element inactive_on_update="false" label="APAC" sequence="3" value="apac"/>
+                <element inactive_on_update="false" label="EU" sequence="2" value="eu"/>
+                <element inactive_on_update="false" label="UK" sequence="1" value="uk"/>
+                <element inactive_on_update="false" label="Global" sequence="4" value="global"/>
+                <element inactive_on_update="false" label="US" sequence="0" value="us"/>
+            </choice>
+        </element>
+        <element label="Policy expiry date" mandatory="true" max_length="40" name="policy_expiry_date" type="glide_date"/>
+        <element choice="1" label="Source channel" max_length="40" name="source_channel" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Portal" sequence="1" value="portal"/>
+                <element inactive_on_update="false" label="Email" sequence="0" value="email"/>
+                <element inactive_on_update="false" label="Broker Upload" sequence="3" value="broker_upload"/>
+                <element inactive_on_update="false" label="API" sequence="2" value="api"/>
+            </choice>
+        </element>
+        <element label="Primary broker" max_length="32" name="primary_broker" reference="x_gegis_ins_policy_party" type="reference"/>
+        <element choice="1" label="Lines in scope" mandatory="true" max_length="40" name="line_of_business" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Workers Comp" sequence="1" value="workers_comp"/>
+                <element inactive_on_update="false" label="Property" sequence="0" value="property"/>
+                <element inactive_on_update="false" label="Motor" sequence="3" value="motor"/>
+                <element inactive_on_update="false" label="Auto" sequence="2" value="auto"/>
+            </choice>
+        </element>
+        <element label="Primary insured" mandatory="true" max_length="32" name="primary_insured" reference="x_gegis_ins_policy_party" type="reference"/>
+        <element choice="1" label="Transaction type" mandatory="true" max_length="40" name="transaction_type" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Endorsement" sequence="2" value="endorsement"/>
+                <element inactive_on_update="false" label="Renewal" sequence="1" value="renewal"/>
+                <element inactive_on_update="false" label="New" sequence="0" value="new"/>
+            </choice>
+        </element>
+        <element label="Received date" mandatory="true" max_length="40" name="received_date" type="glide_date_time"/>
         <index name="index">
             <element name="existing_policy"/>
         </index>

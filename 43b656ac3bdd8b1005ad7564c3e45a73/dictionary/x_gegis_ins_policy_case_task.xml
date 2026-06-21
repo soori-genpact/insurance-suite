@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="47b0f07453a543107d5fd301a0490ec0" extends="task" label="Case Task" max_length="40" name="x_gegis_ins_policy_case_task" type="collection">
+    <element db_object_id="3a887326fbed4b58b70efc647befdc06" extends="task" label="Case Task" max_length="40" name="x_gegis_ins_policy_case_task" type="collection">
+        <element label="Parent case" max_length="32" name="parent_case" type="document_id"/>
         <element choice="1" label="Category" mandatory="true" max_length="40" name="category" type="string">
             <choice>
-                <element inactive_on_update="false" label="Risk" sequence="2" value="risk"/>
-                <element inactive_on_update="false" label="Quote &amp; Bind" sequence="3" value="qnb"/>
-                <element inactive_on_update="false" label="Clearance" sequence="0" value="clearance"/>
-                <element inactive_on_update="false" label="Document" sequence="5" value="document"/>
                 <element inactive_on_update="false" label="Extraction" sequence="4" value="extraction"/>
                 <element inactive_on_update="false" label="Exposure" sequence="1" value="exposure"/>
+                <element inactive_on_update="false" label="Quote &amp; Bind" sequence="3" value="qnb"/>
                 <element inactive_on_update="false" label="General" sequence="6" value="general"/>
+                <element inactive_on_update="false" label="Document" sequence="5" value="document"/>
+                <element inactive_on_update="false" label="Clearance" sequence="0" value="clearance"/>
+                <element inactive_on_update="false" label="Risk" sequence="2" value="risk"/>
             </choice>
         </element>
-        <element label="Parent case" max_length="32" name="parent_case" type="document_id"/>
     </element>
 </database>

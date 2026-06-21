@@ -1,56 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="28907cf053a543107d5fd301a0490e5c" label="Quote Risk" max_length="40" name="x_gegis_ins_policy_quote_risk" type="collection">
-        <element label="Location" max_length="32" name="location" reference="x_gegis_ins_policy_location" type="reference"/>
-        <element choice="1" label="Exposure" max_length="40" name="exposure" type="string">
-            <choice>
-                <element inactive_on_update="false" label="Urban/Low" sequence="0" value="urban_low"/>
-                <element inactive_on_update="false" label="Coastal" sequence="4" value="coastal"/>
-                <element inactive_on_update="false" label="Rural/Low" sequence="3" value="rural_low"/>
-                <element inactive_on_update="false" label="Suburban/Medium" sequence="1" value="suburban_medium"/>
-                <element inactive_on_update="false" label="Flood Zone" sequence="5" value="flood_zone"/>
-                <element inactive_on_update="false" label="Industrial/High" sequence="2" value="industrial_high"/>
-            </choice>
-        </element>
+    <element db_object_id="055837a2fbed4b58b70efc647befdc41" label="Quote Risk" max_length="40" name="x_gegis_ins_policy_quote_risk" type="collection">
         <element choice="1" label="Risk type" mandatory="true" max_length="40" name="risk_type" type="string">
             <choice>
-                <element inactive_on_update="false" label="Equipment" sequence="4" value="equipment"/>
                 <element inactive_on_update="false" label="Business Interruption" sequence="2" value="business_interruption"/>
                 <element inactive_on_update="false" label="Contents" sequence="1" value="contents"/>
-                <element inactive_on_update="false" label="Vehicle" sequence="3" value="vehicle"/>
+                <element inactive_on_update="false" label="Equipment" sequence="4" value="equipment"/>
                 <element inactive_on_update="false" label="Building" sequence="0" value="building"/>
+                <element inactive_on_update="false" label="Vehicle" sequence="3" value="vehicle"/>
             </choice>
         </element>
         <element choice="1" label="Protection" max_length="40" name="protection" type="string">
             <choice>
-                <element inactive_on_update="false" label="Full Suppression System" sequence="4" value="full_suppression"/>
-                <element inactive_on_update="false" label="Sprinklered" sequence="0" value="sprinklered"/>
-                <element inactive_on_update="false" label="No Sprinkler" sequence="1" value="no_sprinkler"/>
                 <element inactive_on_update="false" label="Fire Alarm Only" sequence="3" value="fire_alarm_only"/>
                 <element inactive_on_update="false" label="Partial Sprinkler" sequence="2" value="partial_sprinkler"/>
+                <element inactive_on_update="false" label="No Sprinkler" sequence="1" value="no_sprinkler"/>
+                <element inactive_on_update="false" label="Sprinklered" sequence="0" value="sprinklered"/>
+                <element inactive_on_update="false" label="Full Suppression System" sequence="4" value="full_suppression"/>
             </choice>
         </element>
         <element label="Quote" mandatory="true" max_length="32" name="quote" reference="x_gegis_ins_policy_quote" type="reference"/>
         <element choice="1" label="Occupancy" max_length="40" name="occupancy" type="string">
             <choice>
-                <element inactive_on_update="false" label="Education" sequence="7" value="education"/>
-                <element inactive_on_update="false" label="Warehouse" sequence="1" value="warehouse"/>
                 <element inactive_on_update="false" label="Restaurant" sequence="5" value="restaurant"/>
-                <element inactive_on_update="false" label="Manufacturing" sequence="4" value="manufacturing"/>
-                <element inactive_on_update="false" label="Office" sequence="2" value="office"/>
-                <element inactive_on_update="false" label="Retail/Mall" sequence="0" value="retail_mall"/>
-                <element inactive_on_update="false" label="Healthcare" sequence="6" value="healthcare"/>
+                <element inactive_on_update="false" label="Warehouse" sequence="1" value="warehouse"/>
                 <element inactive_on_update="false" label="Hospitality" sequence="8" value="hospitality"/>
+                <element inactive_on_update="false" label="Manufacturing" sequence="4" value="manufacturing"/>
+                <element inactive_on_update="false" label="Retail/Mall" sequence="0" value="retail_mall"/>
                 <element inactive_on_update="false" label="IT/Office" sequence="3" value="it_office"/>
+                <element inactive_on_update="false" label="Education" sequence="7" value="education"/>
+                <element inactive_on_update="false" label="Healthcare" sequence="6" value="healthcare"/>
+                <element inactive_on_update="false" label="Office" sequence="2" value="office"/>
             </choice>
         </element>
         <element choice="1" label="Construction" max_length="40" name="construction" type="string">
             <choice>
                 <element inactive_on_update="false" label="Joisted Masonry" sequence="3" value="joisted_masonry"/>
-                <element inactive_on_update="false" label="Modified Fire Resistive" sequence="1" value="modified_fire_resistive"/>
-                <element inactive_on_update="false" label="Fire Resistive" sequence="0" value="fire_resistive"/>
-                <element inactive_on_update="false" label="Frame" sequence="5" value="frame"/>
-                <element inactive_on_update="false" label="Non-Combustible" sequence="4" value="non_combustible"/>
                 <element inactive_on_update="false" label="Masonry" sequence="2" value="masonry"/>
+                <element inactive_on_update="false" label="Frame" sequence="5" value="frame"/>
+                <element inactive_on_update="false" label="Modified Fire Resistive" sequence="1" value="modified_fire_resistive"/>
+                <element inactive_on_update="false" label="Non-Combustible" sequence="4" value="non_combustible"/>
+                <element inactive_on_update="false" label="Fire Resistive" sequence="0" value="fire_resistive"/>
+            </choice>
+        </element>
+        <element label="Location" max_length="32" name="location" reference="x_gegis_ins_policy_location" type="reference"/>
+        <element choice="1" label="Exposure" max_length="40" name="exposure" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Industrial/High" sequence="2" value="industrial_high"/>
+                <element inactive_on_update="false" label="Flood Zone" sequence="5" value="flood_zone"/>
+                <element inactive_on_update="false" label="Suburban/Medium" sequence="1" value="suburban_medium"/>
+                <element inactive_on_update="false" label="Coastal" sequence="4" value="coastal"/>
+                <element inactive_on_update="false" label="Urban/Low" sequence="0" value="urban_low"/>
+                <element inactive_on_update="false" label="Rural/Low" sequence="3" value="rural_low"/>
             </choice>
         </element>
         <index name="index">

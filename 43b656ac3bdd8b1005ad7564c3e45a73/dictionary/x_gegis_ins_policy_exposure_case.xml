@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="fab0b07453a543107d5fd301a0490efd" extends="task" label="Exposure Case" max_length="40" name="x_gegis_ins_policy_exposure_case" type="collection">
-        <element label="Notes" max_length="4000" name="notes" type="string"/>
+    <element db_object_id="5e88ffe2fbed4b58b70efc647befdcf3" extends="task" label="Exposure Case" max_length="40" name="x_gegis_ins_policy_exposure_case" type="collection">
         <element label="Total TIV" max_length="20" name="total_tiv" type="decimal"/>
         <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
         <element choice="1" label="Exposure status" mandatory="true" max_length="40" name="exposure_status" type="string">
             <choice>
-                <element inactive_on_update="false" label="Pending" sequence="0" value="pending"/>
                 <element inactive_on_update="false" label="Data Entry" sequence="1" value="data_entry"/>
-                <element inactive_on_update="false" label="Complete" sequence="3" value="complete"/>
                 <element inactive_on_update="false" label="In Review" sequence="2" value="in_review"/>
+                <element inactive_on_update="false" label="Pending" sequence="0" value="pending"/>
+                <element inactive_on_update="false" label="Complete" sequence="3" value="complete"/>
             </choice>
         </element>
+        <element label="Notes" max_length="4000" name="notes" type="string"/>
     </element>
 </database>

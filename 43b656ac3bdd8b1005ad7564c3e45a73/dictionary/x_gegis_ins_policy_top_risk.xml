@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="1f90703453a543107d5fd301a0490ef6" label="Top Risk" max_length="40" name="x_gegis_ins_policy_top_risk" type="collection">
+    <element db_object_id="f468fba2fbed4b58b70efc647befdca9" label="Top Risk" max_length="40" name="x_gegis_ins_policy_top_risk" type="collection">
+        <element label="Risk case" mandatory="true" max_length="32" name="risk_case" reference="x_gegis_ins_policy_risk_case" type="reference"/>
         <element choice="1" label="Impact" max_length="40" name="impact" type="string">
             <choice>
                 <element inactive_on_update="false" label="High" sequence="2" value="high"/>
-                <element inactive_on_update="false" label="Critical" sequence="3" value="critical"/>
-                <element inactive_on_update="false" label="Low" sequence="0" value="low"/>
                 <element inactive_on_update="false" label="Medium" sequence="1" value="medium"/>
+                <element inactive_on_update="false" label="Low" sequence="0" value="low"/>
+                <element inactive_on_update="false" label="Critical" sequence="3" value="critical"/>
             </choice>
         </element>
         <element choice="1" label="Currency" max_length="40" name="new_renewal_currency" type="string">
             <choice>
-                <element inactive_on_update="false" label="JPY" sequence="5" value="jpy"/>
                 <element inactive_on_update="false" label="CHF" sequence="6" value="chf"/>
-                <element inactive_on_update="false" label="USD" sequence="0" value="usd"/>
-                <element inactive_on_update="false" label="AUD" sequence="4" value="aud"/>
-                <element inactive_on_update="false" label="GBP" sequence="1" value="gbp"/>
+                <element inactive_on_update="false" label="JPY" sequence="5" value="jpy"/>
                 <element inactive_on_update="false" label="EUR" sequence="2" value="eur"/>
+                <element inactive_on_update="false" label="GBP" sequence="1" value="gbp"/>
+                <element inactive_on_update="false" label="AUD" sequence="4" value="aud"/>
                 <element inactive_on_update="false" label="CAD" sequence="3" value="cad"/>
+                <element inactive_on_update="false" label="USD" sequence="0" value="usd"/>
             </choice>
         </element>
         <element label="Risk description" max_length="500" name="risk_description" type="string"/>
-        <element label="Risk case" mandatory="true" max_length="32" name="risk_case" reference="x_gegis_ins_policy_risk_case" type="reference"/>
         <index name="index">
             <element name="risk_case"/>
         </index>

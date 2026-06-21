@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="6690303453a543107d5fd301a0490ef8" label="Quote Option Coverage Term" max_length="40" name="x_gegis_ins_policy_quote_option_coverage_term" type="collection">
+    <element db_object_id="b3587ba2fbed4b58b70efc647befdcfb" label="Quote Option Coverage Term" max_length="40" name="x_gegis_ins_policy_quote_option_coverage_term" type="collection">
+        <element label="Coverage term option" mandatory="true" max_length="32" name="coverage_term_option" reference="x_gegis_ins_policy_coverage_term_option" type="reference"/>
         <element label="Quote option coverage" mandatory="true" max_length="32" name="quote_option_coverage" reference="x_gegis_ins_policy_quote_option_coverage" type="reference"/>
         <element label="Selected value" max_length="20" name="selected_value" type="decimal"/>
-        <element label="Coverage term option" mandatory="true" max_length="32" name="coverage_term_option" reference="x_gegis_ins_policy_coverage_term_option" type="reference"/>
         <index name="index">
             <element name="coverage_term_option"/>
         </index>

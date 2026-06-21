@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="f380f8f053a543107d5fd301a0490e50" extends="task" label="Intake Case" max_length="40" name="x_gegis_ins_policy_intake_case" type="collection">
-        <element label="Linked submission" max_length="32" name="linked_submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+    <element db_object_id="eb4873a2fbed4b58b70efc647befdc95" extends="task" label="Intake Case" max_length="40" name="x_gegis_ins_policy_intake_case" type="collection">
         <element label="Recipient" max_length="200" name="recipient" type="string"/>
-        <element label="Body" max_length="4000" name="body" type="string"/>
-        <element label="Subject" max_length="500" name="subject" type="string"/>
-        <element label="Sender" max_length="200" name="sender" type="string"/>
         <element label="Sender email" max_length="200" name="sender_email" type="string"/>
+        <element label="Sender" max_length="200" name="sender" type="string"/>
         <element choice="1" label="Channel" max_length="40" name="channel" type="string">
             <choice>
-                <element inactive_on_update="false" label="Fax" sequence="3" value="fax"/>
-                <element inactive_on_update="false" label="Portal" sequence="1" value="portal"/>
-                <element inactive_on_update="false" label="Email" sequence="0" value="email"/>
-                <element inactive_on_update="false" label="API" sequence="2" value="api"/>
                 <element inactive_on_update="false" label="Manual" sequence="4" value="manual"/>
+                <element inactive_on_update="false" label="API" sequence="2" value="api"/>
+                <element inactive_on_update="false" label="Portal" sequence="1" value="portal"/>
+                <element inactive_on_update="false" label="Fax" sequence="3" value="fax"/>
+                <element inactive_on_update="false" label="Email" sequence="0" value="email"/>
             </choice>
         </element>
+        <element label="Linked submission" max_length="32" name="linked_submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element label="Subject" max_length="500" name="subject" type="string"/>
         <element choice="1" label="Intake status" max_length="40" name="intake_status" type="string">
             <choice>
-                <element inactive_on_update="false" label="Processed" sequence="2" value="processed"/>
-                <element inactive_on_update="false" label="New" sequence="0" value="new"/>
                 <element inactive_on_update="false" label="Failed" sequence="3" value="failed"/>
-                <element inactive_on_update="false" label="Processing" sequence="1" value="processing"/>
                 <element inactive_on_update="false" label="Needs Review" sequence="4" value="needs_review"/>
+                <element inactive_on_update="false" label="Processing" sequence="1" value="processing"/>
+                <element inactive_on_update="false" label="New" sequence="0" value="new"/>
+                <element inactive_on_update="false" label="Processed" sequence="2" value="processed"/>
             </choice>
         </element>
+        <element label="Body" max_length="4000" name="body" type="string"/>
     </element>
 </database>

@@ -1,61 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="44c0f47453a543107d5fd301a0490e15" label="Rate Table Entry" max_length="40" name="x_gegis_ins_policy_rate_table_entry" type="collection">
-        <element choice="1" label="Occupancy" max_length="40" name="occupancy" type="string">
-            <choice>
-                <element inactive_on_update="false" label="Warehouse" sequence="1" value="warehouse"/>
-                <element inactive_on_update="false" label="Healthcare" sequence="6" value="healthcare"/>
-                <element inactive_on_update="false" label="Retail/Mall" sequence="0" value="retail_mall"/>
-                <element inactive_on_update="false" label="Office" sequence="2" value="office"/>
-                <element inactive_on_update="false" label="Manufacturing" sequence="4" value="manufacturing"/>
-                <element inactive_on_update="false" label="Hospitality" sequence="8" value="hospitality"/>
-                <element inactive_on_update="false" label="Restaurant" sequence="5" value="restaurant"/>
-                <element inactive_on_update="false" label="IT/Office" sequence="3" value="it_office"/>
-                <element inactive_on_update="false" label="Education" sequence="7" value="education"/>
-            </choice>
-        </element>
-        <element choice="1" label="Zone" max_length="40" name="zone" type="string">
-            <choice>
-                <element inactive_on_update="false" label="Any" sequence="3" value="any"/>
-                <element inactive_on_update="false" label="Rural" sequence="2" value="rural"/>
-                <element inactive_on_update="false" label="Metro" sequence="0" value="metro"/>
-                <element inactive_on_update="false" label="Urban" sequence="1" value="urban"/>
-            </choice>
-        </element>
-        <element choice="1" label="Construction" max_length="40" name="construction" type="string">
-            <choice>
-                <element inactive_on_update="false" label="Joisted Masonry" sequence="3" value="joisted_masonry"/>
-                <element inactive_on_update="false" label="Non-Combustible" sequence="4" value="non_combustible"/>
-                <element inactive_on_update="false" label="Modified Fire Resistive" sequence="1" value="modified_fire_resistive"/>
-                <element inactive_on_update="false" label="Fire Resistive" sequence="0" value="fire_resistive"/>
-                <element inactive_on_update="false" label="Masonry" sequence="2" value="masonry"/>
-                <element inactive_on_update="false" label="Frame" sequence="5" value="frame"/>
-            </choice>
-        </element>
+    <element db_object_id="a898f326fbed4b58b70efc647befdcfb" label="Rate Table Entry" max_length="40" name="x_gegis_ins_policy_rate_table_entry" type="collection">
+        <element label="Rate table" mandatory="true" max_length="32" name="rate_table" reference="x_gegis_ins_policy_rate_table" type="reference"/>
         <element choice="1" label="Vehicle type" max_length="40" name="vehicle_type" type="string">
             <choice>
-                <element inactive_on_update="false" label="Private Car" sequence="0" value="private_car"/>
-                <element inactive_on_update="false" label="Two Wheeler" sequence="1" value="two_wheeler"/>
-                <element inactive_on_update="false" label="Taxi" sequence="3" value="taxi"/>
                 <element inactive_on_update="false" label="Commercial" sequence="2" value="commercial"/>
+                <element inactive_on_update="false" label="Two Wheeler" sequence="1" value="two_wheeler"/>
+                <element inactive_on_update="false" label="Private Car" sequence="0" value="private_car"/>
+                <element inactive_on_update="false" label="Taxi" sequence="3" value="taxi"/>
             </choice>
         </element>
-        <element label="Rate table" mandatory="true" max_length="32" name="rate_table" reference="x_gegis_ins_policy_rate_table" type="reference"/>
-        <element label="Rate value" mandatory="true" max_length="20" name="rate_value" type="decimal"/>
         <element choice="1" label="Protection" max_length="40" name="protection" type="string">
             <choice>
-                <element inactive_on_update="false" label="Partial Sprinkler" sequence="2" value="partial_sprinkler"/>
-                <element inactive_on_update="false" label="Fire Alarm Only" sequence="3" value="fire_alarm_only"/>
                 <element inactive_on_update="false" label="No Sprinkler" sequence="1" value="no_sprinkler"/>
                 <element inactive_on_update="false" label="Full Suppression System" sequence="4" value="full_suppression"/>
                 <element inactive_on_update="false" label="Sprinklered" sequence="0" value="sprinklered"/>
+                <element inactive_on_update="false" label="Fire Alarm Only" sequence="3" value="fire_alarm_only"/>
+                <element inactive_on_update="false" label="Partial Sprinkler" sequence="2" value="partial_sprinkler"/>
+            </choice>
+        </element>
+        <element label="Rate value" mandatory="true" max_length="20" name="rate_value" type="decimal"/>
+        <element choice="1" label="Occupancy" max_length="40" name="occupancy" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Education" sequence="7" value="education"/>
+                <element inactive_on_update="false" label="IT/Office" sequence="3" value="it_office"/>
+                <element inactive_on_update="false" label="Retail/Mall" sequence="0" value="retail_mall"/>
+                <element inactive_on_update="false" label="Office" sequence="2" value="office"/>
+                <element inactive_on_update="false" label="Healthcare" sequence="6" value="healthcare"/>
+                <element inactive_on_update="false" label="Restaurant" sequence="5" value="restaurant"/>
+                <element inactive_on_update="false" label="Warehouse" sequence="1" value="warehouse"/>
+                <element inactive_on_update="false" label="Hospitality" sequence="8" value="hospitality"/>
+                <element inactive_on_update="false" label="Manufacturing" sequence="4" value="manufacturing"/>
             </choice>
         </element>
         <element choice="1" label="Engine CC" max_length="40" name="engine_cc" type="string">
             <choice>
-                <element inactive_on_update="false" label="Above 1500cc" sequence="2" value="above_1500cc"/>
-                <element inactive_on_update="false" label="Any" sequence="3" value="any"/>
-                <element inactive_on_update="false" label="Up to 1500cc" sequence="1" value="upto_1500cc"/>
                 <element inactive_on_update="false" label="Up to 350cc" sequence="0" value="upto_350cc"/>
+                <element inactive_on_update="false" label="Any" sequence="3" value="any"/>
+                <element inactive_on_update="false" label="Above 1500cc" sequence="2" value="above_1500cc"/>
+                <element inactive_on_update="false" label="Up to 1500cc" sequence="1" value="upto_1500cc"/>
+            </choice>
+        </element>
+        <element choice="1" label="Construction" max_length="40" name="construction" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Masonry" sequence="2" value="masonry"/>
+                <element inactive_on_update="false" label="Modified Fire Resistive" sequence="1" value="modified_fire_resistive"/>
+                <element inactive_on_update="false" label="Frame" sequence="5" value="frame"/>
+                <element inactive_on_update="false" label="Non-Combustible" sequence="4" value="non_combustible"/>
+                <element inactive_on_update="false" label="Fire Resistive" sequence="0" value="fire_resistive"/>
+                <element inactive_on_update="false" label="Joisted Masonry" sequence="3" value="joisted_masonry"/>
+            </choice>
+        </element>
+        <element choice="1" label="Zone" max_length="40" name="zone" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Urban" sequence="1" value="urban"/>
+                <element inactive_on_update="false" label="Any" sequence="3" value="any"/>
+                <element inactive_on_update="false" label="Metro" sequence="0" value="metro"/>
+                <element inactive_on_update="false" label="Rural" sequence="2" value="rural"/>
             </choice>
         </element>
         <index name="index">

@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="11c0b87453a543107d5fd301a0490e20" label="Auto Exposure" max_length="40" name="x_gegis_ins_policy_auto_exposure" type="collection">
-        <element label="Rental amount/day" max_length="20" name="rental_amount_per_day" type="decimal"/>
-        <element label="Cost of hire" max_length="20" name="cost_of_hire" type="decimal"/>
-        <element label="BI occurrence limit" max_length="20" name="bodily_injury_occurrence_limit" type="decimal"/>
+    <element db_object_id="ca98f726fbed4b58b70efc647befdcbb" label="Auto Exposure" max_length="40" name="x_gegis_ins_policy_auto_exposure" type="collection">
         <element label="Uninsured payment" max_length="20" name="uninsured_payment" type="decimal"/>
-        <element choice="1" label="Peril" max_length="40" name="peril" type="string">
+        <element label="Cost of hire" max_length="20" name="cost_of_hire" type="decimal"/>
+        <element choice="1" label="Deductible applies to" max_length="40" name="perils_deductible_applies_to" type="string">
             <choice>
-                <element inactive_on_update="false" label="Specified Perils" sequence="2" value="specified_perils"/>
-                <element inactive_on_update="false" label="Collision" sequence="1" value="collision"/>
-                <element inactive_on_update="false" label="Comprehensive" sequence="0" value="comprehensive"/>
-            </choice>
-        </element>
-        <element label="Rental days" max_length="40" name="rental_number_of_days" type="integer"/>
-        <element label="UM/BI statutory" max_length="40" name="um_bi_statutory" type="boolean"/>
-        <element label="Towing coverage" max_length="40" name="towing_coverage" type="boolean"/>
-        <element label="Comprehensive deductible" max_length="20" name="comprehensive_deductible" type="decimal"/>
-        <element label="Full glass coverage" max_length="40" name="full_glass_coverage" type="boolean"/>
-        <element label="AV equip coverage limit" max_length="20" name="audio_visual_equip_limit" type="decimal"/>
-        <element label="Medical payments" max_length="20" name="medical_payments" type="decimal"/>
-        <element choice="1" label="Coverage type" max_length="40" name="policy_coverage_type" type="string">
-            <choice>
-                <element inactive_on_update="false" label="Physical Damage Only" sequence="1" value="physical_damage_only"/>
-                <element inactive_on_update="false" label="Liability Only" sequence="0" value="liability_only"/>
-                <element inactive_on_update="false" label="Combined" sequence="2" value="combined"/>
+                <element inactive_on_update="false" label="Per Vehicle" sequence="0" value="per_vehicle"/>
+                <element inactive_on_update="false" label="Per Occurrence" sequence="1" value="per_occurrence"/>
             </choice>
         </element>
         <element label="Override premium" max_length="20" name="override_premium" type="decimal"/>
-        <element label="State" max_length="50" name="state" type="string"/>
-        <element label="PIP coverage" max_length="40" name="pip_coverage" type="boolean"/>
-        <element label="Roadside assistance" max_length="40" name="roadside_assistance" type="boolean"/>
-        <element label="No. of employees" max_length="40" name="number_of_employees" type="integer"/>
-        <element label="Per occurrence deductible" max_length="20" name="per_occurrence_deductible" type="decimal"/>
-        <element label="Garage keepers" max_length="40" name="garage_keepers" type="boolean"/>
-        <element label="Collision deductible" max_length="20" name="collision_deductible" type="decimal"/>
-        <element label="Operated by employees" max_length="40" name="vehicle_operated_by_employees" type="boolean"/>
-        <element label="Supplemental spousal liability" max_length="40" name="supplemental_spousal_liability" type="boolean"/>
-        <element label="Exposure case" mandatory="true" max_length="32" name="exposure_case" reference="x_gegis_ins_policy_exposure_case" type="reference"/>
-        <element label="Total drivers" max_length="40" name="total_number_of_drivers" type="integer"/>
-        <element choice="1" label="Deductible applies to" max_length="40" name="perils_deductible_applies_to" type="string">
+        <element label="Full glass coverage" max_length="40" name="full_glass_coverage" type="boolean"/>
+        <element choice="1" label="Peril" max_length="40" name="peril" type="string">
             <choice>
-                <element inactive_on_update="false" label="Per Occurrence" sequence="1" value="per_occurrence"/>
-                <element inactive_on_update="false" label="Per Vehicle" sequence="0" value="per_vehicle"/>
+                <element inactive_on_update="false" label="Collision" sequence="1" value="collision"/>
+                <element inactive_on_update="false" label="Comprehensive" sequence="0" value="comprehensive"/>
+                <element inactive_on_update="false" label="Specified Perils" sequence="2" value="specified_perils"/>
             </choice>
         </element>
-        <element label="Vehicle damage total" max_length="20" name="vehicle_damage_total" type="decimal"/>
-        <element label="Per vehicle deductible" max_length="20" name="per_vehicle_deductible" type="decimal"/>
+        <element label="Supplemental spousal liability" max_length="40" name="supplemental_spousal_liability" type="boolean"/>
+        <element label="Garage keepers" max_length="40" name="garage_keepers" type="boolean"/>
+        <element choice="1" label="Coverage type" max_length="40" name="policy_coverage_type" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Combined" sequence="2" value="combined"/>
+                <element inactive_on_update="false" label="Physical Damage Only" sequence="1" value="physical_damage_only"/>
+                <element inactive_on_update="false" label="Liability Only" sequence="0" value="liability_only"/>
+            </choice>
+        </element>
+        <element label="UM/BI statutory" max_length="40" name="um_bi_statutory" type="boolean"/>
+        <element label="Rental amount/day" max_length="20" name="rental_amount_per_day" type="decimal"/>
         <element label="No-fault" max_length="40" name="no_faults" type="boolean"/>
+        <element label="No. of employees" max_length="40" name="number_of_employees" type="integer"/>
+        <element label="Operated by employees" max_length="40" name="vehicle_operated_by_employees" type="boolean"/>
+        <element label="Rental days" max_length="40" name="rental_number_of_days" type="integer"/>
+        <element label="State" max_length="50" name="state" type="string"/>
+        <element label="Medical payments" max_length="20" name="medical_payments" type="decimal"/>
+        <element label="Towing coverage" max_length="40" name="towing_coverage" type="boolean"/>
+        <element label="Vehicle damage total" max_length="20" name="vehicle_damage_total" type="decimal"/>
+        <element label="Collision deductible" max_length="20" name="collision_deductible" type="decimal"/>
+        <element label="PIP coverage" max_length="40" name="pip_coverage" type="boolean"/>
+        <element label="BI occurrence limit" max_length="20" name="bodily_injury_occurrence_limit" type="decimal"/>
+        <element label="Comprehensive deductible" max_length="20" name="comprehensive_deductible" type="decimal"/>
+        <element label="Total drivers" max_length="40" name="total_number_of_drivers" type="integer"/>
+        <element label="AV equip coverage limit" max_length="20" name="audio_visual_equip_limit" type="decimal"/>
+        <element label="Per occurrence deductible" max_length="20" name="per_occurrence_deductible" type="decimal"/>
+        <element label="Exposure case" mandatory="true" max_length="32" name="exposure_case" reference="x_gegis_ins_policy_exposure_case" type="reference"/>
+        <element label="Roadside assistance" max_length="40" name="roadside_assistance" type="boolean"/>
+        <element label="Per vehicle deductible" max_length="20" name="per_vehicle_deductible" type="decimal"/>
         <index name="index">
             <element name="exposure_case"/>
         </index>
