@@ -8338,7 +8338,7 @@ declare global {
                     {
                         table: 'sn_glider_source_artifact_m2m'
                         id: '3c513e94fafb495a84c9e0171b085546'
-                        deleted: false
+                        deleted: true
                         key: {
                             application_file: 'f034cd3b609e4662b31688c7071cf835'
                             source_artifact: '84a31431a5bf481ea1898fc0e1550bf1'
@@ -14408,6 +14408,7 @@ declare global {
                     {
                         table: 'sys_element_mapping'
                         id: '6f1d94b2fbe98b58b70efc647befdc44'
+                        deleted: true
                         key: {
                             field: 'associated_record'
                             id: '45c5037568a5483aa51faf7ed0171f45'
@@ -16883,7 +16884,7 @@ declare global {
                     {
                         table: 'sys_ux_lib_asset'
                         id: '8665190bab0d479f91b44239a454b788'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy/vendor-react-dom--003b9c7e'
                         }
@@ -25855,6 +25856,102 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_element_mapping'
+                        id: 'e5ea000253a5c7107d5fd301a0490eb4'
+                        key: {
+                            field: 'is_automated'
+                            id: '49b609632d0941caa050e175207d0fc4'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'e5ea000253a5c7107d5fd301a0490eb5'
+                        key: {
+                            field: 'experience_status_record'
+                            id: '49b609632d0941caa050e175207d0fc4'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'e5ea000353a5c7107d5fd301a0490eb4'
+                        key: {
+                            field: 'is_automated'
+                            id: 'fc55cee1a7e043c98226101ab33c41a0'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'e5ea000353a5c7107d5fd301a0490eb5'
+                        key: {
+                            field: 'experience_status_record'
+                            id: 'fc55cee1a7e043c98226101ab33c41a0'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'e5ea000453a5c7107d5fd301a0490eb4'
+                        key: {
+                            field: 'is_automated'
+                            id: '90a2fbe84a8d41da9c994ec3f2b7a4db'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'e5ea000453a5c7107d5fd301a0490eb5'
+                        key: {
+                            field: 'experience_status_record'
+                            id: '90a2fbe84a8d41da9c994ec3f2b7a4db'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'e5ea000553a5c7107d5fd301a0490eb4'
+                        key: {
+                            field: 'is_automated'
+                            id: '587c7c3a37614b558d5aa24f852de842'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'e5ea000553a5c7107d5fd301a0490eb5'
+                        key: {
+                            field: 'experience_status_record'
+                            id: '587c7c3a37614b558d5aa24f852de842'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'e5ea000653a5c7107d5fd301a0490eb4'
+                        key: {
+                            field: 'is_automated'
+                            id: '6711a168afc840558053b9cecf5e1a43'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'e5ea000653a5c7107d5fd301a0490eb5'
+                        key: {
+                            field: 'experience_status_record'
+                            id: '6711a168afc840558053b9cecf5e1a43'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'e5ea000753a5c7107d5fd301a0490eb4'
+                        key: {
+                            field: 'is_automated'
+                            id: 'b3357c1f449949a88717737fde64fa14'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'e5ea000753a5c7107d5fd301a0490eb5'
+                        key: {
+                            field: 'experience_status_record'
+                            id: 'b3357c1f449949a88717737fde64fa14'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: 'e5f1c04f95f64d85ba1633d98c88086c'
                         key: {
@@ -26749,7 +26846,7 @@ declare global {
                     {
                         table: 'sys_ux_lib_asset'
                         id: 'f034cd3b609e4662b31688c7071cf835'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_gegis_ins_policy/vendor-react-dom--003b9c7e.js.map'
                         }
@@ -26842,6 +26939,182 @@ declare global {
                             name: 'x_gegis_ins_policy_mfl_pml'
                             element: 'mfl_or_pml'
                             value: 'pml'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'f15b000153a5c7107d5fd301a0490eb4'
+                        key: {
+                            field: 'is_automated'
+                            id: '4e288b35fc0b4a8387c4caebe3324fa9'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'f15b000153a5c7107d5fd301a0490eb5'
+                        key: {
+                            field: 'experience_status_record'
+                            id: '4e288b35fc0b4a8387c4caebe3324fa9'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'f15b000253a5c7107d5fd301a0490eb4'
+                        key: {
+                            field: 'is_automated'
+                            id: '787692266d934e4a95cf7422debf72d9'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'f15b000253a5c7107d5fd301a0490eb5'
+                        key: {
+                            field: 'experience_status_record'
+                            id: '787692266d934e4a95cf7422debf72d9'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'f15b000353a5c7107d5fd301a0490eb4'
+                        key: {
+                            field: 'is_automated'
+                            id: '026a07e3ec494eaf9d06f6a7cd65f3c3'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'f15b000353a5c7107d5fd301a0490eb5'
+                        key: {
+                            field: 'experience_status_record'
+                            id: '026a07e3ec494eaf9d06f6a7cd65f3c3'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'f15b000453a5c7107d5fd301a0490eb4'
+                        key: {
+                            field: 'is_automated'
+                            id: '332070526e61498ab63ef6e5ee586af2'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'f15b000453a5c7107d5fd301a0490eb5'
+                        key: {
+                            field: 'experience_status_record'
+                            id: '332070526e61498ab63ef6e5ee586af2'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'f15b000553a5c7107d5fd301a0490eb4'
+                        key: {
+                            field: 'is_automated'
+                            id: '63c6104f29f04d9d9be15b4ce04c27a7'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'f15b000553a5c7107d5fd301a0490eb5'
+                        key: {
+                            field: 'experience_status_record'
+                            id: '63c6104f29f04d9d9be15b4ce04c27a7'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'f15b000653a5c7107d5fd301a0490eb4'
+                        key: {
+                            field: 'is_automated'
+                            id: '2facb0e547c342528b446121eca5b7bb'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'f15b000653a5c7107d5fd301a0490eb5'
+                        key: {
+                            field: 'experience_status_record'
+                            id: '2facb0e547c342528b446121eca5b7bb'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'f15b000753a5c7107d5fd301a0490eb4'
+                        key: {
+                            field: 'is_automated'
+                            id: 'c8b89019361143509fbaf478bd57f645'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'f15b000753a5c7107d5fd301a0490eb5'
+                        key: {
+                            field: 'experience_status_record'
+                            id: 'c8b89019361143509fbaf478bd57f645'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'f15b000853a5c7107d5fd301a0490eb4'
+                        key: {
+                            field: 'is_automated'
+                            id: '2c8ed1730e7b473081b8c0dae4f8d5d5'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'f15b000853a5c7107d5fd301a0490eb5'
+                        key: {
+                            field: 'experience_status_record'
+                            id: '2c8ed1730e7b473081b8c0dae4f8d5d5'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'f15b000953a5c7107d5fd301a0490eb4'
+                        key: {
+                            field: 'is_automated'
+                            id: '6cab9ff6d4464193bc3cf64044da2242'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'f15b000953a5c7107d5fd301a0490eb5'
+                        key: {
+                            field: 'experience_status_record'
+                            id: '6cab9ff6d4464193bc3cf64044da2242'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'f15b000a53a5c7107d5fd301a0490eb4'
+                        key: {
+                            field: 'is_automated'
+                            id: 'fc9411be0fff4177ae66f98d66916e54'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'f15b000a53a5c7107d5fd301a0490eb5'
+                        key: {
+                            field: 'experience_status_record'
+                            id: 'fc9411be0fff4177ae66f98d66916e54'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'f15b000b53a5c7107d5fd301a0490eb4'
+                        key: {
+                            field: 'is_automated'
+                            id: '8b564ef90b304b9e955f8840bdbfd423'
+                        }
+                    },
+                    {
+                        table: 'sys_element_mapping'
+                        id: 'f15b000b53a5c7107d5fd301a0490eb5'
+                        key: {
+                            field: 'experience_status_record'
+                            id: '8b564ef90b304b9e955f8840bdbfd423'
                         }
                     },
                     {
@@ -27912,7 +28185,7 @@ declare global {
                     {
                         table: 'sn_glider_source_artifact_m2m'
                         id: 'fd84f5be5c4c4119a658b171ed29fe1d'
-                        deleted: false
+                        deleted: true
                         key: {
                             application_file: '8665190bab0d479f91b44239a454b788'
                             source_artifact: '84a31431a5bf481ea1898fc0e1550bf1'
