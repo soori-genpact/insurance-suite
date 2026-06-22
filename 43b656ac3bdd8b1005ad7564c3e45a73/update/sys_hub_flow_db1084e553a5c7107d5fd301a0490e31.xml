@@ -5,7 +5,7 @@
         <active>true</active>
         <allow_high_security_roles>false</allow_high_security_roles>
         <annotation/>
-        <attributes>browserActivatedIn=chrome,integrationActivatedIn=standalone,timeFromCreateToActivate=145638000,viewActivatedIn=naturalLanguage</attributes>
+        <attributes>browserActivatedIn=chrome,integrationActivatedIn=standalone,timeFromCreateToActivate=413261000,viewActivatedIn=naturalLanguage</attributes>
         <authored_on_release_version>29000</authored_on_release_version>
         <callable_by_client_api>false</callable_by_client_api>
         <category display_value="Activity Flows">f427c6ef1b230010affd0e55cc4bcb14</category>
@@ -55,7 +55,7 @@
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_hub_flow_db1084e553a5c7107d5fd301a0490e31</sys_update_name>
         <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-06-21 17:36:34</sys_updated_on>
+        <sys_updated_on>2026-06-22 15:02:04</sys_updated_on>
         <type>subflow</type>
         <updation_source/>
         <version>2</version>
@@ -78,97 +78,12 @@
         <sys_updated_on>2026-06-17 18:37:51</sys_updated_on>
     </sys_flow_cat_variable_model>
     <sys_flow_cat_variable action="delete_multiple" query="flow_catalog_model=1b1084e553a5c7107d5fd301a0490e33"/>
-    <sys_hub_flow_input action="delete_multiple" query="model=db1084e553a5c7107d5fd301a0490e31^sys_idNOT IN571084e553a5c7107d5fd301a0490e4c,eb1084e553a5c7107d5fd301a0490e6c"/>
+    <sys_hub_flow_input action="delete_multiple" query="model=db1084e553a5c7107d5fd301a0490e31^sys_idNOT INeb1084e553a5c7107d5fd301a0490e6c"/>
     <sys_hub_flow_input action="INSERT_OR_UPDATE">
         <active>true</active>
         <array>false</array>
         <array_denormalized>false</array_denormalized>
-        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string</attributes>
-        <audit>false</audit>
-        <calculation><![CDATA[(function calculatedFieldValue(current) {
-
-	// Add your code here
-	return '';  // return the calculated value
-
-})(current);]]></calculation>
-        <choice/>
-        <choice_field/>
-        <choice_table/>
-        <column_label/>
-        <comments/>
-        <create_roles/>
-        <default_value/>
-        <defaultsort/>
-        <delete_roles/>
-        <dependent/>
-        <dependent_on_field/>
-        <display>false</display>
-        <dynamic_creation>false</dynamic_creation>
-        <dynamic_creation_script/>
-        <dynamic_default_value/>
-        <dynamic_ref_qual/>
-        <element>message</element>
-        <element_reference>false</element_reference>
-        <foreign_database/>
-        <formula/>
-        <function_definition/>
-        <function_field>false</function_field>
-        <help/>
-        <hint/>
-        <internal_type display_value="String">string</internal_type>
-        <label>Message</label>
-        <mandatory>false</mandatory>
-        <max_length>8000</max_length>
-        <model display_value="Base Playbook Activity Flow">db1084e553a5c7107d5fd301a0490e31</model>
-        <model_id>db1084e553a5c7107d5fd301a0490e31</model_id>
-        <model_table>sys_hub_flow</model_table>
-        <name>var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31</name>
-        <next_element/>
-        <order>1</order>
-        <primary>false</primary>
-        <read_only>false</read_only>
-        <read_only_option/>
-        <read_roles/>
-        <reference/>
-        <reference_cascade_rule/>
-        <reference_floats>false</reference_floats>
-        <reference_key/>
-        <reference_qual/>
-        <reference_qual_condition/>
-        <reference_type/>
-        <sizeclass/>
-        <spell_check>false</spell_check>
-        <staged>false</staged>
-        <sys_class_name>sys_hub_flow_input</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-06-17 18:37:52</sys_created_on>
-        <sys_id>571084e553a5c7107d5fd301a0490e4c</sys_id>
-        <sys_mod_count>3</sys_mod_count>
-        <sys_name/>
-        <sys_package/>
-        <sys_policy/>
-        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
-        <sys_update_name/>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-06-19 11:05:08</sys_updated_on>
-        <table_reference>false</table_reference>
-        <text_index>false</text_index>
-        <unique>false</unique>
-        <use_dependent_field>false</use_dependent_field>
-        <use_dynamic_default>false</use_dynamic_default>
-        <use_reference_qualifier>simple</use_reference_qualifier>
-        <virtual>false</virtual>
-        <virtual_type>script</virtual_type>
-        <widget/>
-        <write_roles/>
-        <xml_view>false</xml_view>
-    </sys_hub_flow_input>
-    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=571084e553a5c7107d5fd301a0490e4c"/>
-    <sys_hub_flow_input action="INSERT_OR_UPDATE">
-        <active>true</active>
-        <array>false</array>
-        <array_denormalized>false</array_denormalized>
-        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=choice</attributes>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,timeFromCreateToActivate=909000,uiType=choice</attributes>
         <audit>false</audit>
         <calculation><![CDATA[(function calculatedFieldValue(current) {
 
@@ -209,7 +124,7 @@
         <model_table>sys_hub_flow</model_table>
         <name>var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31</name>
         <next_element/>
-        <order>2</order>
+        <order>1</order>
         <primary>false</primary>
         <read_only>false</read_only>
         <read_only_option/>
@@ -228,14 +143,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-06-17 18:37:52</sys_created_on>
         <sys_id>eb1084e553a5c7107d5fd301a0490e6c</sys_id>
-        <sys_mod_count>9</sys_mod_count>
+        <sys_mod_count>11</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name/>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-06-19 11:05:08</sys_updated_on>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-22 13:25:31</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -254,7 +169,7 @@
         <active>true</active>
         <array>false</array>
         <array_denormalized>false</array_denormalized>
-        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=boolean</attributes>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,timeFromCreateToActivate=909000,uiType=boolean</attributes>
         <audit>false</audit>
         <calculation><![CDATA[(function calculatedFieldValue(current) {
 
@@ -315,14 +230,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-06-17 18:37:53</sys_created_on>
         <sys_id>2b10c4e553a5c7107d5fd301a0490e53</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name/>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-06-19 11:05:08</sys_updated_on>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-22 13:25:31</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -340,7 +255,7 @@
         <active>true</active>
         <array>false</array>
         <array_denormalized>false</array_denormalized>
-        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=reference</attributes>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,timeFromCreateToActivate=909000,uiType=reference</attributes>
         <audit>false</audit>
         <calculation><![CDATA[(function calculatedFieldValue(current) {
 
@@ -401,14 +316,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-06-17 18:37:53</sys_created_on>
         <sys_id>e310c4e553a5c7107d5fd301a0490e4a</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name/>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-06-19 11:05:08</sys_updated_on>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-22 13:25:31</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -428,7 +343,7 @@
     <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
         <action_type display_value="Create Flow Data">99008a631b67001094630f28cc4bcb97</action_type>
         <action_type_parent display_value="">99008a631b67001094630f28cc4bcb97</action_type_parent>
-        <attributes/>
+        <attributes>timeFromCreateToActivate=909000</attributes>
         <comment/>
         <compiled_snapshot>99008a631b67001094630f28cc4bcb97</compiled_snapshot>
         <display_text/>
@@ -440,10 +355,10 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-06-17 18:37:53</sys_created_on>
         <sys_id>7f10c4e553a5c7107d5fd301a0490ebc</sys_id>
-        <sys_mod_count>7</sys_mod_count>
+        <sys_mod_count>9</sys_mod_count>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-06-19 11:05:09</sys_updated_on>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-22 13:25:31</sys_updated_on>
         <ui_id>e17e6678-8e97-4584-a903-cfa6e47fd378</ui_id>
         <updation_source/>
         <values>H4sIAAAAAAAA/+2YW2/iRhSA/wryM0aeGV/pQxUBSaMmBEGy1Wq7ssaecRjV2F5fkqWI/94ztgE7QBKyTVRV+4Lw8Zk5189n7C8rJaILrvQVxgMRiVzEkdJVHmhYSKGm25rNWYA8bmka0hzdJFqAbd/XPd8zOagykSUhXX6qV1zTqKBh58zPxYPIl6CQ0BQs5DxV+ivFn4uQpTxS+l++dhXBYIXDNM2mJkGeecCGY8MWIfV4CKrDpo+H/M6XiZSlPOBgxOe16KpeP23I45RJl1BX4d9zHjEOvgQ0zHhXWdCI0TxOl0o/TwsQpJyymyhcbjXmIsphP0Xqfs/E32CU4G7Dbl/JlpkbhPGjC1tRt+XlVs2tkydDA61OK75AimbggJ8XKa+s+fNY+Dyrsgd70iLMB01ZpXCTlHuUS3LqhZvVcVgsonGVN2W7waZ0ICky8IknMh0ywDraYDaPH7e5OxdRmbn6Zhj7NGyocpr683PBQ1nbskZdheZ5Krwil16ulELc7pepEh4qFA/5ArxxFzRJRHTvJmn8IEoPIKBF7z6Ei16VaZ6J+6hHfRl9T+a9dw7yYSn+RFMhU3EN28BiafEuEt8KfikdNTVCDc2hqh5oXNUR0lTHRlj1DAKdqXPPoVhZd2VVByHNsl0SIQj3WyFTUKW0Tp5b5V8u8VOR5CUQvM7TurvFDvYC5zhz87jB3T5XrwAJOc+CFDRAOqutdm7jHUltV05HCT+PUi15K0vQmukRdu6qWz+B+UBgsK0jzKmv+roVqLpNiWp7NlatwAyYhTXEqPUuwDxSkTdIWa2ywpPB9OSN9XqfnAMaL5FEPYIQ5Q7yLG+fJM9rkPQH7NkJ4rQj+7MjoqTId0TVvtYoVa32hKPBRlhDRN4NoiPwvAjOahvruPmIiuKd05qsz0brM6zaqS3Lq82wXR+i8BUG0CsN4PU+0uQkpqvtauGw3UmV4R9G/gjc2/Zok71tkA/BmhHDtxzNUy2HMFW3AHBKGUxEB5kmjMLA0t5zDpYB3qdxkfzoMPSI5SOKDQS47iMMQTwdhtJ0Z2P6uFOnj0X93cfi1rlDfF/U935Oxw+cjogQizuWpgam6cCZEtuqgy1fJSZCxCc+p8R8F4yynOa8zU4bjpe4YcxxHGoEQYARAW5sojsG8ZhJiB0gpje4mdW2npg+ZdoZ/+FpNwG3oEEayZyMxsPL8cWRuTfz55wVIUSyWzEb/DYa3l2NhkdG2RQiWzb0p6Oz4efmOGvoXkadSRrfpzxrjr/LsTuZ3lxMR7NZ4xDRXDeIF0nIW10xuLmeXI1uR42HVCuSvwQ0dSuO3y8nk2YURlN/lKZx2tAeTac3052u2fKGQkHCdpYGZ+PB6KqVJeuFk8IrioPeUBx8QnHIG4ujn1wc48TimCcUx3pDcewXTlmtTx9PB8XmMfFkWuzKd/jstSv4//r8hZFOfcawijXThtcqbKi2BicxauiaZWMLU+PfGRzVh61KJtNQlUX+eUYNjMAzM+oErCxtr36xcsvXnqx8v+r8WWjgcPVbXmALztTVn86vtaSudnXRr4Wbxq+uflHW6/XXfwBM0tlwoBQAAA==</values>
@@ -452,8 +367,8 @@
     <sys_hub_sub_flow_instance_v2 action="delete_multiple" query="flow=db1084e553a5c7107d5fd301a0490e31"/>
     <sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=db1084e553a5c7107d5fd301a0490e31^sys_idNOT INff10c4e553a5c7107d5fd301a0490eb9"/>
     <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
-        <attributes/>
-        <block display_value="">7710c4e553a5c7107d5fd301a0490eac</block>
+        <attributes>timeFromCreateToActivate=909000</attributes>
+        <block display_value="">8998284ffba5cf58b70efc647befdc79</block>
         <comment/>
         <connected_to/>
         <decision_table/>
@@ -469,13 +384,13 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-06-17 18:37:53</sys_created_on>
         <sys_id>ff10c4e553a5c7107d5fd301a0490eb9</sys_id>
-        <sys_mod_count>10</sys_mod_count>
+        <sys_mod_count>12</sys_mod_count>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-06-19 11:05:09</sys_updated_on>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-22 13:25:32</sys_updated_on>
         <ui_id>ff10c4e5-53a5-c710-7d5f-d301a0490eb9</ui_id>
         <updation_source/>
-        <values>H4sIAAAAAAAA/9VUTW/aQBT8K+meTWqwiYGeolRIlaJGalAvbYUeu89llWXX3Y8Qivzf+xYb4yZtDhWXXsCefR8z47H3zARfBe8W5to5+V2z2Zc907BBNmMWubGCJewRVIjAfo/DAq+uislggtNikI8n+QCmaTbgJVxhXpQiKyaXTV9dU6eQrlKw+/zPA/haKmEx8vqWsAosUfNo2WzPpKYLDepW6gea/aJYCkIxG6Y8x/E4gzEvhmkhxrQjHUKaT1PMgboUrFBR6aej3Ofy/a5q7kuk4Rxb6LbrO+HUEMmNEoZPHrVA4lCCcpiwDWgB3thdh1gEcafVCViTpEbJBp6c/Elbs1HSWzxjbueWpTLbJc2K5LuzZWs11czp/OJ9c17G/3tvA/fB4tEmIzm6xiWBJQTlb/pYU3BXeWnIS5ZFwbBSx3ajwkZ/bExi3YTjMyYkOKKDVdQfBbXqyvu12XZmzaU+WNUeKsNB9UoRLF/PJSrRipbxSYD3Vq6Cj0T3dRIPbhQ4dyJDfix/hDiqodaSWB6EsNjCraz8NffyEdt9ddJFHoI3G/DYT336MsfpGZI5Wr2WzHHWS+Z1j9UfiLb5XBmjEPSzdC5swLfzKPMUz+HZ4pmnv8fzL4n8b4N49sCRAXjEYlROz5FuXiulRWScvijF4dW/dGF1+A5IHT/fl1uQ/s3XkKaZiL+jYoeuuXjH6rqOoTsUNr4+gpXRx856Lh1ZvIjYh16d2FHcJO9DW2Mf4uITVv8CmcYjO0UGAAA=</values>
+        <values>H4sIAAAAAAAA/9VVXW/TMBT9K8PP6XCbdGnL01RUCWliEpt4Gahy7RtqzbGDP9aVKv+d6yRNwwZ7QJMQL4lzfD/OPT5JDsQEXwXvbs2lc/KbJou7A9GsBLIgFrixgiTkgakQgcMBxjlcXOSz0Qzm+SibzrIRm9N0xAt2AVleiDSfnbd5dY2ZQrpKsf3nvy7At1IJC5HX14RUzCI1D5YsDkRqXGimrqS+x9rPgqVAFNIx5RlMpymb8nxMczHFHnTMaDankDHMUmwDCkM/Hcd9Or7fV+1zAVicQwdd9XknHBMiuUlC4NGDFoAcCqYcJKRkWjBv7L5HLDBxrdUJ2OJI7SQle3TyB3ZNJ8mg8YK4vVsXyuzWWCuS7/fWndQYs8L9s/ftfhHvN94G7oOFo0xGcnCtSgIKFpRfDrE24Lry0qCWJI0Ds406phsVSv2xFYn0FY5njEhwSAeqOH8cqJuuuNmaXS/WSupGqm5TGc7UIBSY5duVBCW6oWU8Cea9lZvgI9ED8bKElTXlEoX0gA7mXj7gCjPmdE4pJXUSc5eKOXfii5Ktv4fYrWXf8Vw3szYp3MrKN9Wgo1Qn/VvBgjcldhm+GPS51ekrmHeyecm803Rg3ssBq98Q7Sy8MUYB008MfGsDvF3FMU8OHr+agzP6q4P/YNr/1qv/wpOoERyx2PV01PjwUig2Qm31WSGaD8i5C5vmayJ1/Amc75j0b74ESlMRr5N8D65dvCN1XUdfNoGt9A/Myih1fzpcOjyF24h9GMSJPTpS8iG0M/Y+Nj5h9U9Esp28iwYAAA==</values>
         <workflow_reference/>
     </sys_hub_flow_logic_instance_v2>
     <sys_hub_pill_compound action="delete_multiple" query="attached_to=db1084e553a5c7107d5fd301a0490e31"/>
@@ -514,7 +429,7 @@
         <sys_class_name>sys_documentation</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-06-17 18:37:52</sys_created_on>
-        <sys_id>dcd75036fb698b58b70efc647befdc9c</sys_id>
+        <sys_id>64cc784ffbe9cf58b70efc647befdc13</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Message</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
@@ -526,28 +441,8 @@
         <url/>
         <url_target/>
     </sys_documentation>
-    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31^sys_idNOT IN158818fafb698b58b70efc647befdc9a,5d8818fafb698b58b70efc647befdc98"/>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31^sys_idNOT IN014067ae83a90310f70ac6a6feaad358,c54067ae83a90310f70ac6a6feaad359"/>
     <sys_choice field="wait" table="var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31">
-        <sys_choice action="INSERT_OR_UPDATE">
-            <dependent_value/>
-            <element>wait</element>
-            <hint/>
-            <inactive>false</inactive>
-            <label>Yes</label>
-            <language>en</language>
-            <name>var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31</name>
-            <sequence>1</sequence>
-            <synonyms/>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-06-19 11:02:54</sys_created_on>
-            <sys_domain>global</sys_domain>
-            <sys_domain_path>/</sys_domain_path>
-            <sys_id>158818fafb698b58b70efc647befdc9a</sys_id>
-            <sys_mod_count>1</sys_mod_count>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-06-19 11:05:08</sys_updated_on>
-            <value>yes</value>
-        </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
             <dependent_value/>
             <element>wait</element>
@@ -558,15 +453,35 @@
             <name>var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31</name>
             <sequence>0</sequence>
             <synonyms/>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-06-19 11:02:54</sys_created_on>
+            <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+            <sys_created_on>2026-06-22 13:24:05</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>5d8818fafb698b58b70efc647befdc98</sys_id>
+            <sys_id>014067ae83a90310f70ac6a6feaad358</sys_id>
             <sys_mod_count>1</sys_mod_count>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-06-19 11:05:08</sys_updated_on>
+            <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+            <sys_updated_on>2026-06-22 13:25:31</sys_updated_on>
             <value>no</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>wait</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Yes</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+            <sys_created_on>2026-06-22 13:24:05</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>c54067ae83a90310f70ac6a6feaad359</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+            <sys_updated_on>2026-06-22 13:25:31</sys_updated_on>
+            <value>yes</value>
         </sys_choice>
     </sys_choice>
     <sys_documentation action="INSERT_OR_UPDATE">
@@ -658,15 +573,15 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>92200ce553a5c7107d5fd301a0490e8a</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name/>
         <sys_overrides/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name/>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-06-19 11:05:13</sys_updated_on>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-22 13:25:35</sys_updated_on>
         <type>subflow</type>
         <version>2</version>
     </sys_hub_flow_snapshot>
@@ -687,12 +602,12 @@
         <sys_updated_on>2026-06-17 18:38:04</sys_updated_on>
     </sys_flow_cat_variable_model>
     <sys_flow_cat_variable action="delete_multiple" query="flow_catalog_model=da200ce553a5c7107d5fd301a0490e8b"/>
-    <sys_hub_flow_input action="delete_multiple" query="model=92200ce553a5c7107d5fd301a0490e8a^sys_idNOT IN4a2492a553a90b107d5fd301a0490ed2,ca2492a553a90b107d5fd301a0490e9c"/>
+    <sys_hub_flow_input action="delete_multiple" query="model=92200ce553a5c7107d5fd301a0490e8a^sys_idNOT IN9998684ffba5cf58b70efc647befdc4d"/>
     <sys_hub_flow_input action="INSERT_OR_UPDATE">
         <active>true</active>
         <array>false</array>
         <array_denormalized>false</array_denormalized>
-        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=choice</attributes>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,timeFromCreateToActivate=909000,uiType=choice</attributes>
         <audit>false</audit>
         <calculation><![CDATA[(function calculatedFieldValue(current) {
 
@@ -733,91 +648,6 @@
         <model_table>sys_hub_flow_snapshot</model_table>
         <name>var__m_sys_hub_flow_input_92200ce553a5c7107d5fd301a0490e8a</name>
         <next_element/>
-        <order>2</order>
-        <primary>false</primary>
-        <read_only>false</read_only>
-        <read_only_option/>
-        <read_roles/>
-        <reference/>
-        <reference_cascade_rule/>
-        <reference_floats>false</reference_floats>
-        <reference_key/>
-        <reference_qual/>
-        <reference_qual_condition/>
-        <reference_type/>
-        <sizeclass/>
-        <spell_check>false</spell_check>
-        <staged>false</staged>
-        <sys_class_name>sys_hub_flow_input</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-06-18 05:24:40</sys_created_on>
-        <sys_id>4a2492a553a90b107d5fd301a0490ed2</sys_id>
-        <sys_mod_count>11</sys_mod_count>
-        <sys_name/>
-        <sys_package/>
-        <sys_policy/>
-        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
-        <sys_update_name/>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-06-19 11:05:13</sys_updated_on>
-        <table_reference>false</table_reference>
-        <text_index>false</text_index>
-        <unique>false</unique>
-        <use_dependent_field>false</use_dependent_field>
-        <use_dynamic_default>false</use_dynamic_default>
-        <use_reference_qualifier>simple</use_reference_qualifier>
-        <virtual>false</virtual>
-        <virtual_type>script</virtual_type>
-        <widget/>
-        <write_roles/>
-        <xml_view>false</xml_view>
-    </sys_hub_flow_input>
-    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=4a2492a553a90b107d5fd301a0490ed2"/>
-    <sys_hub_flow_input action="INSERT_OR_UPDATE">
-        <active>true</active>
-        <array>false</array>
-        <array_denormalized>false</array_denormalized>
-        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string</attributes>
-        <audit>false</audit>
-        <calculation><![CDATA[(function calculatedFieldValue(current) {
-
-	// Add your code here
-	return '';  // return the calculated value
-
-})(current);]]></calculation>
-        <choice/>
-        <choice_field/>
-        <choice_table/>
-        <column_label/>
-        <comments/>
-        <create_roles/>
-        <default_value/>
-        <defaultsort/>
-        <delete_roles/>
-        <dependent/>
-        <dependent_on_field/>
-        <display>false</display>
-        <dynamic_creation>false</dynamic_creation>
-        <dynamic_creation_script/>
-        <dynamic_default_value/>
-        <dynamic_ref_qual/>
-        <element>message</element>
-        <element_reference>false</element_reference>
-        <foreign_database/>
-        <formula/>
-        <function_definition/>
-        <function_field>false</function_field>
-        <help/>
-        <hint/>
-        <internal_type display_value="String">string</internal_type>
-        <label>Message</label>
-        <mandatory>false</mandatory>
-        <max_length>8000</max_length>
-        <model display_value="Base Playbook Activity Flow">92200ce553a5c7107d5fd301a0490e8a</model>
-        <model_id>92200ce553a5c7107d5fd301a0490e8a</model_id>
-        <model_table>sys_hub_flow_snapshot</model_table>
-        <name>var__m_sys_hub_flow_input_92200ce553a5c7107d5fd301a0490e8a</name>
-        <next_element/>
         <order>1</order>
         <primary>false</primary>
         <read_only>false</read_only>
@@ -834,104 +664,17 @@
         <spell_check>false</spell_check>
         <staged>false</staged>
         <sys_class_name>sys_hub_flow_input</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-06-18 05:24:40</sys_created_on>
-        <sys_id>ca2492a553a90b107d5fd301a0490e9c</sys_id>
-        <sys_mod_count>2</sys_mod_count>
-        <sys_name/>
-        <sys_package/>
-        <sys_policy/>
-        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
-        <sys_update_name/>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-06-19 11:05:11</sys_updated_on>
-        <table_reference>false</table_reference>
-        <text_index>false</text_index>
-        <unique>false</unique>
-        <use_dependent_field>false</use_dependent_field>
-        <use_dynamic_default>false</use_dynamic_default>
-        <use_reference_qualifier>simple</use_reference_qualifier>
-        <virtual>false</virtual>
-        <virtual_type>script</virtual_type>
-        <widget/>
-        <write_roles/>
-        <xml_view>false</xml_view>
-    </sys_hub_flow_input>
-    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=ca2492a553a90b107d5fd301a0490e9c"/>
-    <sys_hub_flow_output action="delete_multiple" query="model=92200ce553a5c7107d5fd301a0490e8a^sys_idNOT IN562492a553a90b107d5fd301a0490ef4,9224d2a553a90b107d5fd301a0490e13"/>
-    <sys_hub_flow_output action="INSERT_OR_UPDATE">
-        <active>true</active>
-        <array>false</array>
-        <array_denormalized>false</array_denormalized>
-        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=boolean</attributes>
-        <audit>false</audit>
-        <calculation><![CDATA[(function calculatedFieldValue(current) {
-
-	// Add your code here
-	return '';  // return the calculated value
-
-})(current);]]></calculation>
-        <choice>3</choice>
-        <choice_field/>
-        <choice_table/>
-        <column_label/>
-        <comments/>
-        <create_roles/>
-        <default_value/>
-        <defaultsort/>
-        <delete_roles/>
-        <dependent/>
-        <dependent_on_field/>
-        <display>false</display>
-        <dynamic_creation>false</dynamic_creation>
-        <dynamic_creation_script/>
-        <dynamic_default_value/>
-        <dynamic_ref_qual/>
-        <element>automated</element>
-        <element_reference>false</element_reference>
-        <foreign_database/>
-        <formula/>
-        <function_definition/>
-        <function_field>false</function_field>
-        <help/>
-        <hint/>
-        <internal_link/>
-        <internal_type display_value="">boolean</internal_type>
-        <label>Automated</label>
-        <mandatory>false</mandatory>
-        <max_length>40</max_length>
-        <model display_value="Base Playbook Activity Flow">92200ce553a5c7107d5fd301a0490e8a</model>
-        <model_id>92200ce553a5c7107d5fd301a0490e8a</model_id>
-        <model_table>sys_hub_flow_snapshot</model_table>
-        <name>var__m_sys_hub_flow_output_92200ce553a5c7107d5fd301a0490e8a</name>
-        <next_element/>
-        <order>1</order>
-        <primary>false</primary>
-        <read_only>false</read_only>
-        <read_only_option/>
-        <read_roles/>
-        <reference/>
-        <reference_cascade_rule/>
-        <reference_floats>false</reference_floats>
-        <reference_key/>
-        <reference_qual/>
-        <reference_qual_condition/>
-        <reference_type/>
-        <sizeclass/>
-        <spell_check>false</spell_check>
-        <staged>false</staged>
-        <sys_class_name>sys_hub_flow_output</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-06-18 05:24:41</sys_created_on>
-        <sys_id>562492a553a90b107d5fd301a0490ef4</sys_id>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-22 13:25:33</sys_created_on>
+        <sys_id>9998684ffba5cf58b70efc647befdc4d</sys_id>
         <sys_mod_count>3</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name/>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-06-19 11:05:12</sys_updated_on>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-22 13:25:34</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -943,13 +686,14 @@
         <widget/>
         <write_roles/>
         <xml_view>false</xml_view>
-    </sys_hub_flow_output>
-    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=562492a553a90b107d5fd301a0490ef4"/>
+    </sys_hub_flow_input>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=9998684ffba5cf58b70efc647befdc4d"/>
+    <sys_hub_flow_output action="delete_multiple" query="model=92200ce553a5c7107d5fd301a0490e8a^sys_idNOT IN6d98684ffba5cf58b70efc647befdcb7,d998684ffba5cf58b70efc647befdc93"/>
     <sys_hub_flow_output action="INSERT_OR_UPDATE">
         <active>true</active>
         <array>false</array>
         <array_denormalized>false</array_denormalized>
-        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=reference</attributes>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,timeFromCreateToActivate=909000,uiType=reference</attributes>
         <audit>false</audit>
         <calculation><![CDATA[(function calculatedFieldValue(current) {
 
@@ -1007,17 +751,17 @@
         <spell_check>false</spell_check>
         <staged>false</staged>
         <sys_class_name>sys_hub_flow_output</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-06-18 05:24:41</sys_created_on>
-        <sys_id>9224d2a553a90b107d5fd301a0490e13</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-22 13:25:34</sys_created_on>
+        <sys_id>6d98684ffba5cf58b70efc647befdcb7</sys_id>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name/>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-06-19 11:05:12</sys_updated_on>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-22 13:25:34</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -1030,14 +774,100 @@
         <write_roles/>
         <xml_view>false</xml_view>
     </sys_hub_flow_output>
-    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=9224d2a553a90b107d5fd301a0490e13"/>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=6d98684ffba5cf58b70efc647befdcb7"/>
+    <sys_hub_flow_output action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,timeFromCreateToActivate=909000,uiType=boolean</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice>3</choice>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>automated</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_link/>
+        <internal_type display_value="">boolean</internal_type>
+        <label>Automated</label>
+        <mandatory>false</mandatory>
+        <max_length>40</max_length>
+        <model display_value="Base Playbook Activity Flow">92200ce553a5c7107d5fd301a0490e8a</model>
+        <model_id>92200ce553a5c7107d5fd301a0490e8a</model_id>
+        <model_table>sys_hub_flow_snapshot</model_table>
+        <name>var__m_sys_hub_flow_output_92200ce553a5c7107d5fd301a0490e8a</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_output</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-22 13:25:33</sys_created_on>
+        <sys_id>d998684ffba5cf58b70efc647befdc93</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-22 13:25:33</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_output>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=d998684ffba5cf58b70efc647befdc93"/>
     <sys_hub_alias_mapping action="delete_multiple" query="source_id=92200ce553a5c7107d5fd301a0490e8a"/>
     <sys_hub_trigger_instance_v2 action="delete_multiple" query="flow=92200ce553a5c7107d5fd301a0490e8a"/>
     <sys_hub_action_instance_v2 action="delete_multiple" query="flow=92200ce553a5c7107d5fd301a0490e8a^sys_idNOT INb2208ce553a5c7107d5fd301a0490e02"/>
     <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
         <action_type display_value="Create Flow Data">99008a631b67001094630f28cc4bcb97</action_type>
         <action_type_parent display_value="Create Flow Data">8d3e35ef1b27001094630f28cc4bcb2a</action_type_parent>
-        <attributes/>
+        <attributes>timeFromCreateToActivate=909000</attributes>
         <comment/>
         <compiled_snapshot>99008a631b67001094630f28cc4bcb97</compiled_snapshot>
         <display_text/>
@@ -1049,10 +879,10 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-06-17 18:38:05</sys_created_on>
         <sys_id>b2208ce553a5c7107d5fd301a0490e02</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-06-19 11:05:13</sys_updated_on>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-22 13:25:35</sys_updated_on>
         <ui_id>e17e6678-8e97-4584-a903-cfa6e47fd378</ui_id>
         <updation_source/>
         <values>H4sIAAAAAAAA/+2YW2/iRhSA/wryM0aeGV/pQxUBSaMmBEGy1Wq7ssaecRjV2F5fkqWI/94ztgE7QBKyTVRV+4Lw8Zk5189n7C8rJaILrvQVxgMRiVzEkdJVHmhYSKGm25rNWYA8bmka0hzdJFqAbd/XPd8zOagykSUhXX6qV1zTqKBh58zPxYPIl6CQ0BQs5DxV+ivFn4uQpTxS+l++dhXBYIXDNM2mJkGeecCGY8MWIfV4CKrDpo+H/M6XiZSlPOBgxOe16KpeP23I45RJl1BX4d9zHjEOvgQ0zHhXWdCI0TxOl0o/TwsQpJyymyhcbjXmIsphP0Xqfs/E32CU4G7Dbl/JlpkbhPGjC1tRt+XlVs2tkydDA61OK75AimbggJ8XKa+s+fNY+Dyrsgd70iLMB01ZpXCTlHuUS3LqhZvVcVgsonGVN2W7waZ0ICky8IknMh0ywDraYDaPH7e5OxdRmbn6Zhj7NGyocpr683PBQ1nbskZdheZ5Krwil16ulELc7pepEh4qFA/5ArxxFzRJRHTvJmn8IEoPIKBF7z6Ei16VaZ6J+6hHfRl9T+a9dw7yYSn+RFMhU3EN28BiafEuEt8KfikdNTVCDc2hqh5oXNUR0lTHRlj1DAKdqXPPoVhZd2VVByHNsl0SIQj3WyFTUKW0Tp5b5V8u8VOR5CUQvM7TurvFDvYC5zhz87jB3T5XrwAJOc+CFDRAOqutdm7jHUltV05HCT+PUi15K0vQmukRdu6qWz+B+UBgsK0jzKmv+roVqLpNiWp7NlatwAyYhTXEqPUuwDxSkTdIWa2ywpPB9OSN9XqfnAMaL5FEPYIQ5Q7yLG+fJM9rkPQH7NkJ4rQj+7MjoqTId0TVvtYoVa32hKPBRlhDRN4NoiPwvAjOahvruPmIiuKd05qsz0brM6zaqS3Lq82wXR+i8BUG0CsN4PU+0uQkpqvtauGw3UmV4R9G/gjc2/Zok71tkA/BmhHDtxzNUy2HMFW3AHBKGUxEB5kmjMLA0t5zDpYB3qdxkfzoMPSI5SOKDQS47iMMQTwdhtJ0Z2P6uFOnj0X93cfi1rlDfF/U935Oxw+cjogQizuWpgam6cCZEtuqgy1fJSZCxCc+p8R8F4yynOa8zU4bjpe4YcxxHGoEQYARAW5sojsG8ZhJiB0gpje4mdW2npg+ZdoZ/+FpNwG3oEEayZyMxsPL8cWRuTfz55wVIUSyWzEb/DYa3l2NhkdG2RQiWzb0p6Oz4efmOGvoXkadSRrfpzxrjr/LsTuZ3lxMR7NZ4xDRXDeIF0nIW10xuLmeXI1uR42HVCuSvwQ0dSuO3y8nk2YURlN/lKZx2tAeTac3052u2fKGQkHCdpYGZ+PB6KqVJeuFk8IrioPeUBx8QnHIG4ujn1wc48TimCcUx3pDcewXTlmtTx9PB8XmMfFkWuzKd/jstSv4//r8hZFOfcawijXThtcqbKi2BicxauiaZWMLU+PfGRzVh61KJtNQlUX+eUYNjMAzM+oErCxtr36xcsvXnqx8v+r8WWjgcPVbXmALztTVn86vtaSudnXRr4Wbxq+uflHW6/XXfwBM0tlwoBQAAA==</values>
@@ -1061,8 +891,8 @@
     <sys_hub_sub_flow_instance_v2 action="delete_multiple" query="flow=92200ce553a5c7107d5fd301a0490e8a"/>
     <sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=92200ce553a5c7107d5fd301a0490e8a^sys_idNOT IN2224d2a553a90b107d5fd301a0490e4f"/>
     <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
-        <attributes/>
-        <block display_value="">7710c4e553a5c7107d5fd301a0490eac</block>
+        <attributes>timeFromCreateToActivate=909000</attributes>
+        <block display_value="">8998284ffba5cf58b70efc647befdc79</block>
         <comment/>
         <connected_to/>
         <decision_table/>
@@ -1078,13 +908,13 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-06-18 05:24:42</sys_created_on>
         <sys_id>2224d2a553a90b107d5fd301a0490e4f</sys_id>
-        <sys_mod_count>7</sys_mod_count>
+        <sys_mod_count>10</sys_mod_count>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-06-19 11:05:13</sys_updated_on>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-22 13:25:35</sys_updated_on>
         <ui_id>ff10c4e5-53a5-c710-7d5f-d301a0490eb9</ui_id>
         <updation_source/>
-        <values>H4sIAAAAAAAA/9VVTW/aQBD9K+mewTXYxISeokRIldJGalEubWUN3nFYZe119wNCkf97Z21j3KTNoYoq9QL22/l47+0MHJhytnLWrNSlMeK+ZIsvB1ZCgWzBNGZKczZiW5DOA4cDThI8P0/m4zleJON4No/HcBFG4yyHc4yTnEfJPGjz6poyuTCVhP3dXxfINkJyjZ7XtxGrQBM1i5otDkyU9FCCvBHlA9V+Fiw4oRhNwizG2SyCWZZMwoTPqEc4gTC+CDEGypKwRkmhn45yn8q3+6p9z5GKZ9hBN33eCacET246YvhoseRIHHKQBkesgJKDVXrfIxqB35byBGxIUqukgEcjflDXaDoaNF4wszdpLtUupVqefH+WdlZTzJLOz67b89x/f7baZdZpPNqkRIamdYljDk7aqyHWBtxWVijykkVeMKzlMV1JV5QfW5NYX+F4x4Q4Q3Sw8vq9oE5d/nmjdr1ZS1E2VnWHUmUgB6EIOtssBUreiRb+JsBaLdbOeqIHhhILapAWUFWivE8rrbaiKUoci+Be0kvQmoV+tgPIvKLAWxd4k64b+A608Oo+UBlKJvpi9fTG65EncSXBmJNwOk6/O0+7taETnDamNSmZFpW9pK5b7LTVo369wFlVgMXhhoXPdyZ8hS2Yrl/aglk02ILLAavfEO12Ya2URCifbMJKO3y79DJPqzB5tVWIw19X4Q/T/98O/T8e7uMVvsZok9V4xDz508TQy0uh1IiuqDzLefODFhi3bjSJ0v8pBTsQ9s1XF4YR95/TZI+mfXjH6rr2490Etje47bT2l5wJQ5asPPZ+EMf3NNgiG0I7pR984xNW/wScbgIRGwcAAA==</values>
+        <values>H4sIAAAAAAAA/9VVXW/aMBT9K52fQ2ZIaIA9Va2QJnWrtKG+bFNk4pti1bEz24EylP++6ySErO36MFWV9gLJ8f065/rAgejKlZWzK31hrbhTZPHtQBQrgCyIgUwbTgKyZbLywOEA4wTOz5PZaAbzZBRPZ/GIzWk0ynJ2DnGS8yiZhW1eXWMmF7aUbH/7zwWyjZDcgJ/rR0BKZnA0B4YsDkQofFBMXgt1j7WfBAuOKERjmsUwnUZsmiVjmvAp9qBjRuM5hZhhlmRrkBj65Uj3MX23L9v3HLB4Bh103eedcEzww00CAg8OFAecIWfSQkAKpjhz2ux7xADjN0qegA1SapkU7MGKX9g1mgSDxgti9zbNpd6lWMsP35+lndQYs8Tzs6v2PPffX52pMlcZOMqkRQa2VYlDzirpLodYG3BTOqFRSxJ5wmwtj+laVoX63IpE+grHHSNSWRwHSs/fE+rY5V83eteLtRSqkao7lDpjchAKzGSbpQDJO9LCb4I5Z8S6cn7QAwEJBTZIC1aWQt2lpdFb0RTFGYvwTuJL2IoF/m6HLPOMQi9d6EW6auBbZoRn9wnLYDKOL1bPbFwUsDS6uMStOUC7YK0tPmHYnM4ppaQO/KCXkll7EgdLpD8rT62VqhMlbYRtUjIjStdUg45/HfQWZJXTBXYZupA+9RV9BadM1i85ZRoNnHIxmOqZQTu/rLWWwNQjt6xMBe+XnubJLuNXs0tM/7TLXxzy3xrjjQ0wWOGbXH9cBxwxT/B0q/DlpVBshGtUZzlvfhhDW60b3kL5P7dwx4R7972iNOL+c5LswbYPH0hd194CTWC75W2nR38RMmFRtpXHPg7i+B4vv8iG0E6be9/4hNW/AUatiBZjBwAA</values>
         <workflow_reference/>
     </sys_hub_flow_logic_instance_v2>
     <sys_hub_pill_compound action="delete_multiple" query="attached_to=92200ce553a5c7107d5fd301a0490e8a"/>
@@ -1098,17 +928,17 @@
         <name>var__m_sys_hub_flow_input_92200ce553a5c7107d5fd301a0490e8a</name>
         <plural/>
         <sys_class_name>sys_documentation</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-06-19 11:05:12</sys_created_on>
-        <sys_id>5eef4c3a83a14310f70ac6a6feaad327</sys_id>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-22 13:25:33</sys_created_on>
+        <sys_id>5998684ffba5cf58b70efc647befdc7e</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Wait for user input</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
-        <sys_update_name>sys_documentation_var__m_sys_hub_flow_input_92200ce553a5c7107d5fd301a0490e8a_wait_en</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-06-19 11:05:12</sys_updated_on>
+        <sys_update_name/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-22 13:25:33</sys_updated_on>
         <url/>
         <url_target/>
     </sys_documentation>
@@ -1123,7 +953,7 @@
         <sys_class_name>sys_documentation</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-06-19 11:05:11</sys_created_on>
-        <sys_id>ccd75036fb698b58b70efc647befdc94</sys_id>
+        <sys_id>64cc384ffbe9cf58b70efc647befdc94</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Message</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
@@ -1152,9 +982,9 @@
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>118818fafb698b58b70efc647befdc10</sys_id>
-            <sys_mod_count>5</sys_mod_count>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-06-19 11:05:13</sys_updated_on>
+            <sys_mod_count>7</sys_mod_count>
+            <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+            <sys_updated_on>2026-06-22 13:25:34</sys_updated_on>
             <value>no</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
@@ -1172,35 +1002,12 @@
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>d58818fafb698b58b70efc647befdc11</sys_id>
-            <sys_mod_count>5</sys_mod_count>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-06-19 11:05:13</sys_updated_on>
+            <sys_mod_count>7</sys_mod_count>
+            <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+            <sys_updated_on>2026-06-22 13:25:34</sys_updated_on>
             <value>yes</value>
         </sys_choice>
     </sys_choice>
-    <sys_documentation action="INSERT_OR_UPDATE">
-        <element>automated</element>
-        <help/>
-        <hint/>
-        <label>Automated</label>
-        <language>en</language>
-        <name>var__m_sys_hub_flow_output_92200ce553a5c7107d5fd301a0490e8a</name>
-        <plural/>
-        <sys_class_name>sys_documentation</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-06-19 11:05:12</sys_created_on>
-        <sys_id>12ef4c3a83a14310f70ac6a6feaad34a</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>Automated</sys_name>
-        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
-        <sys_policy/>
-        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
-        <sys_update_name>sys_documentation_var__m_sys_hub_flow_output_92200ce553a5c7107d5fd301a0490e8a_automated_en</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-06-19 11:05:12</sys_updated_on>
-        <url/>
-        <url_target/>
-    </sys_documentation>
     <sys_documentation action="INSERT_OR_UPDATE">
         <element>record</element>
         <help/>
@@ -1210,17 +1017,40 @@
         <name>var__m_sys_hub_flow_output_92200ce553a5c7107d5fd301a0490e8a</name>
         <plural/>
         <sys_class_name>sys_documentation</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-06-19 11:05:12</sys_created_on>
-        <sys_id>52ef4c3a83a14310f70ac6a6feaad35a</sys_id>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-22 13:25:34</sys_created_on>
+        <sys_id>a198684ffba5cf58b70efc647befdcc3</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Record</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
-        <sys_update_name>sys_documentation_var__m_sys_hub_flow_output_92200ce553a5c7107d5fd301a0490e8a_record_en</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-06-19 11:05:12</sys_updated_on>
+        <sys_update_name/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-22 13:25:34</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>automated</element>
+        <help/>
+        <hint/>
+        <label>Automated</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_output_92200ce553a5c7107d5fd301a0490e8a</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-22 13:25:34</sys_created_on>
+        <sys_id>a998684ffba5cf58b70efc647befdcb2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Automated</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-22 13:25:34</sys_updated_on>
         <url/>
         <url_target/>
     </sys_documentation>
@@ -1228,13 +1058,13 @@
     <sys_hub_flow action="UPDATE">
         <sys_id>db1084e553a5c7107d5fd301a0490e31</sys_id>
         <latest_snapshot>92200ce553a5c7107d5fd301a0490e8a</latest_snapshot>
-        <compiler_build>glide-australia-02-11-2026__patch2-04-17-2026_04-29-2026_2044.zip</compiler_build>
+        <compiler_build>glide-australia-02-11-2026__patch2-hotfix1-05-05-2026_05-24-2026_0242.zip</compiler_build>
         <version_record/>
     </sys_hub_flow>
     <sys_flow_trigger_plan action="delete_multiple" query="plan_id=db1084e553a5c7107d5fd301a0490e31"/>
     <sys_flow_subflow_plan action="delete_multiple" query="plan_id=db1084e553a5c7107d5fd301a0490e31^sys_idNOT INfe208ce553a5c7107d5fd301a0490e76"/>
     <sys_flow_subflow_plan action="INSERT_OR_UPDATE">
-        <plan>com.snc.process_flow.engine.ProcessPlan@7b416ed2</plan>
+        <plan>com.snc.process_flow.engine.ProcessPlan@797ea37f</plan>
         <plan_id display_value="Base Playbook Activity Flow">db1084e553a5c7107d5fd301a0490e31</plan_id>
         <snapshot>92200ce553a5c7107d5fd301a0490e8a</snapshot>
         <sys_created_by>admin</sys_created_by>
@@ -1242,10 +1072,10 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>fe208ce553a5c7107d5fd301a0490e76</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_overrides/>
         <sys_scope/>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-06-19 11:05:15</sys_updated_on>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-22 13:25:36</sys_updated_on>
     </sys_flow_subflow_plan>
 </record_update>
