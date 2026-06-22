@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_pd_activity_definition">
+﻿<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_pd_activity_definition">
     <sys_pd_activity_definition action="INSERT_OR_UPDATE">
         <access>public</access>
         <active>true</active>
-        <activity_type display_value="Record">e12af577871333003058d1a936cb0ba4</activity_type>
+        <activity_type display_value="Confirm Data Review UI Layout">c1ea000653a5c7107d5fd301a0490eac</activity_type>
         <additional_functionality/>
         <ai_agent_execution_mode/>
         <ai_agent_field_display_preferences/>
@@ -45,5 +45,30 @@
     <sys_variable_value action="delete_multiple" query="document_key=6711a168afc840558053b9cecf5e1a43"/>
     <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_flow_input_cb18ceef1b230010affd0e55cc4bcbf2^id=6711a168afc840558053b9cecf5e1a43"/>
     <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_flow_output_cb18ceef1b230010affd0e55cc4bcbf2^id=6711a168afc840558053b9cecf5e1a43"/>
-    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_pd_activity_type_prop_e12af577871333003058d1a936cb0ba4^id=6711a168afc840558053b9cecf5e1a43"/>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_pd_activity_type_prop_c1ea000653a5c7107d5fd301a0490eac^id=6711a168afc840558053b9cecf5e1a43"/>
+
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>is_automated</field>
+        <id>6711a168afc840558053b9cecf5e1a43</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-06-22 00:00:00</sys_created_on>
+        <sys_id>e5ea000653a5c7107d5fd301a0490eb4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-06-22 00:00:00</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_c1ea000653a5c7107d5fd301a0490eac</table>
+        <value>{{vl.Base Playbook Activity Flow./start.automated}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>experience_status_record</field>
+        <id>6711a168afc840558053b9cecf5e1a43</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-06-22 00:00:00</sys_created_on>
+        <sys_id>e5ea000653a5c7107d5fd301a0490eb5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-06-22 00:00:00</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_c1ea000653a5c7107d5fd301a0490eac</table>
+        <value>{{vl.Base Playbook Activity Flow.e17e6678-8e97-4584-a903-cfa6e47fd378./end.record}}</value>
+    </sys_element_mapping>
 </record_update>
