@@ -5,5 +5,12 @@
     "licensing": {
         "enforceLicense": "none"
     },
-    "description": "Insurance Policy Suite — Submissions, Underwriting, Risk, Quote and Bind"
+    "description": "Insurance Policy Suite — Submissions, Underwriting, Risk, Quote and Bind",
+    "ignoreTransformTableList": [
+        "sys_pd_snapshot",
+        "sys_pd_snapshot_input",
+        "sys_pd_snapshot_chunk",
+        "sys_flow_compiled_flow",
+        "sys_flow_compiled_flow_chunk"
+    ]
 }
