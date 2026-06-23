@@ -30,13 +30,30 @@ export const x_gegis_ins_policy_policy_coverage = Table({
             mandatory: true,
             dropdown: 'dropdown_with_none',
             choices: {
-                active:    { label: 'Active',    sequence: 0 },
+                active: { label: 'Active', sequence: 0 },
                 cancelled: { label: 'Cancelled', sequence: 1 },
-                expired:   { label: 'Expired',   sequence: 2 },
+                expired: { label: 'Expired', sequence: 2 },
             },
         }),
     },
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
     actions: ['read', 'update', 'delete', 'create'],
+    index: [
+        {
+            name: 'index',
+            unique: false,
+            element: 'coverage',
+        },
+        {
+            name: 'index2',
+            unique: false,
+            element: 'policy',
+        },
+        {
+            name: 'index3',
+            unique: false,
+            element: 'policy_risk',
+        },
+    ],
 })

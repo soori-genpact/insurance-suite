@@ -21,4 +21,11 @@ export const x_gegis_ins_policy_loss_summary = Table({
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
     actions: ['read', 'update', 'delete', 'create'],
+    index: [
+        {
+            name: 'index',
+            unique: false,
+            element: 'risk_case',
+        },
+    ],
 })

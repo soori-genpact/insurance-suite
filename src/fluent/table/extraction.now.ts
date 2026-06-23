@@ -43,4 +43,16 @@ export const x_gegis_ins_policy_extraction = Table({
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
     actions: ['read', 'update', 'delete', 'create'],
+    index: [
+        {
+            name: 'index',
+            unique: false,
+            element: 'document',
+        },
+        {
+            name: 'index2',
+            unique: false,
+            element: 'submission',
+        },
+    ],
 })

@@ -78,4 +78,16 @@ export const x_gegis_ins_policy_exposure_item = Table({
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
     actions: ['read', 'update', 'delete', 'create'],
+    index: [
+        {
+            name: 'index',
+            unique: false,
+            element: 'exposure_case',
+        },
+        {
+            name: 'index2',
+            unique: false,
+            element: 'location',
+        },
+    ],
 })

@@ -52,4 +52,26 @@ export const x_gegis_ins_policy_quote = Table({
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
     actions: ['read', 'update', 'delete', 'create'],
+    index: [
+        {
+            name: 'index',
+            unique: false,
+            element: 'insured',
+        },
+        {
+            name: 'index2',
+            unique: false,
+            element: 'product',
+        },
+        {
+            name: 'index3',
+            unique: false,
+            element: 'qnb_case',
+        },
+        {
+            name: 'index4',
+            unique: true,
+            element: 'quote_number',
+        },
+    ],
 })

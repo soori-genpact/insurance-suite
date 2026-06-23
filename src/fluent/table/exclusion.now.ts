@@ -23,4 +23,11 @@ export const x_gegis_ins_policy_exclusion = Table({
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
     actions: ['read', 'update', 'delete', 'create'],
+    index: [
+        {
+            name: 'index',
+            unique: true,
+            element: 'code',
+        },
+    ],
 })

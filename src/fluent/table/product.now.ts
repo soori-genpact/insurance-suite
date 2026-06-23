@@ -1,5 +1,4 @@
 import { Table, StringColumn, DateTimeColumn, ListColumn, MultiLineTextColumn } from '@servicenow/sdk/core'
-import { LOB_CHOICES } from './choices'
 
 export const x_gegis_ins_policy_product = Table({
     name: 'x_gegis_ins_policy_product',
@@ -19,7 +18,24 @@ export const x_gegis_ins_policy_product = Table({
             label: 'Line of business',
             mandatory: true,
             dropdown: 'dropdown_with_none',
-            choices: LOB_CHOICES,
+            choices: {
+                property: {
+                    label: 'Property',
+                    sequence: 0,
+                },
+                workers_comp: {
+                    label: 'Workers Comp',
+                    sequence: 1,
+                },
+                auto: {
+                    label: 'Auto',
+                    sequence: 2,
+                },
+                motor: {
+                    label: 'Motor',
+                    sequence: 3,
+                },
+            },
         }),
         effective_date: DateTimeColumn({
             label: 'Effective date',
@@ -37,9 +53,9 @@ export const x_gegis_ins_policy_product = Table({
             mandatory: true,
             dropdown: 'dropdown_with_none',
             choices: {
-                draft:     { label: 'Draft',     sequence: 0 },
+                draft: { label: 'Draft', sequence: 0 },
                 published: { label: 'Published', sequence: 1 },
-                archived:  { label: 'Archived',  sequence: 2 },
+                archived: { label: 'Archived', sequence: 2 },
             },
         }),
         description: MultiLineTextColumn({

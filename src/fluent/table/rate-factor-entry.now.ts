@@ -26,4 +26,11 @@ export const x_gegis_ins_policy_rate_factor_entry = Table({
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
     actions: ['read', 'update', 'delete', 'create'],
+    index: [
+        {
+            name: 'index',
+            unique: false,
+            element: 'rate_factor',
+        },
+    ],
 })

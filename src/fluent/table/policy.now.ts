@@ -1,5 +1,4 @@
 import { Table, StringColumn, ReferenceColumn, DateColumn, DecimalColumn } from '@servicenow/sdk/core'
-import { LOB_CHOICES } from './choices'
 
 export const x_gegis_ins_policy_policy = Table({
     name: 'x_gegis_ins_policy_policy',
@@ -31,18 +30,35 @@ export const x_gegis_ins_policy_policy = Table({
             mandatory: true,
             dropdown: 'dropdown_with_none',
             choices: {
-                active:      { label: 'Active',      sequence: 0 },
-                bound:       { label: 'Bound',       sequence: 1 },
-                in_force:    { label: 'In-Force',    sequence: 2 },
-                cancelled:   { label: 'Cancelled',   sequence: 3 },
-                expired:     { label: 'Expired',     sequence: 4 },
+                active: { label: 'Active', sequence: 0 },
+                bound: { label: 'Bound', sequence: 1 },
+                in_force: { label: 'In-Force', sequence: 2 },
+                cancelled: { label: 'Cancelled', sequence: 3 },
+                expired: { label: 'Expired', sequence: 4 },
                 non_renewed: { label: 'Non-Renewed', sequence: 5 },
             },
         }),
         line_of_business: StringColumn({
             label: 'Line of business',
             dropdown: 'dropdown_with_none',
-            choices: LOB_CHOICES,
+            choices: {
+                property: {
+                    label: 'Property',
+                    sequence: 0,
+                },
+                workers_comp: {
+                    label: 'Workers Comp',
+                    sequence: 1,
+                },
+                auto: {
+                    label: 'Auto',
+                    sequence: 2,
+                },
+                motor: {
+                    label: 'Motor',
+                    sequence: 3,
+                },
+            },
         }),
         total_premium: DecimalColumn({ label: 'Total premium' }),
         currency: StringColumn({
@@ -89,4 +105,51 @@ export const x_gegis_ins_policy_policy = Table({
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
     actions: ['read', 'update', 'delete', 'create'],
+    index: [
+        {
+            name: 'index',
+            unique: false,
+            element: 'broker',
+        },
+        {
+            name: 'index2',
+            unique: false,
+            element: 'insured',
+        },
+        {
+            name: 'index3',
+            unique: false,
+            element: 'originating_qnb_case',
+        },
+        {
+            name: 'index4',
+            unique: false,
+            element: 'originating_submission',
+        },
+        {
+            name: 'index5',
+            unique: true,
+            element: 'policy_number',
+        },
+        {
+            name: 'index6',
+            unique: false,
+            element: 'product',
+        },
+        {
+            name: 'index7',
+            unique: false,
+            element: 'quote',
+        },
+        {
+            name: 'index8',
+            unique: false,
+            element: 'quote_option',
+        },
+        {
+            name: 'index9',
+            unique: false,
+            element: 'renewed_from',
+        },
+    ],
 })

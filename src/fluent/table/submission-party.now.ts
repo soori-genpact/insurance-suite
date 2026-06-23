@@ -56,4 +56,21 @@ export const x_gegis_ins_policy_submission_party = Table({
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
     actions: ['read', 'update', 'delete', 'create'],
+    index: [
+        {
+            name: 'index',
+            unique: false,
+            element: 'organization',
+        },
+        {
+            name: 'index2',
+            unique: false,
+            element: 'parent_organization',
+        },
+        {
+            name: 'index3',
+            unique: false,
+            element: 'submission',
+        },
+    ],
 })

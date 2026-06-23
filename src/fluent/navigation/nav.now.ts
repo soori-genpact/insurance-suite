@@ -11,6 +11,7 @@ export const insuranceSuiteMenu = ApplicationMenu({
     roles: [userRole],
     active: true,
     order: 100,
+    category: '',
 })
 
 // ─── Intake Cases ─────────────────────────────────────────────────────────────
@@ -24,9 +25,14 @@ export const moduleIntakeCases = Record({
         link_type: 'LIST',
         name: 'x_gegis_ins_policy_intake_case',
         hint: 'All inbound submissions from email, portal or API',
-        roles: [userRole],
+        roles: ['[object Object]'],
         active: true,
         order: 100,
+        override_menu_roles: false,
+        require_confirmation: false,
+        sys_domain: 'global',
+        sys_domain_path: '/',
+        uncancelable: false,
     },
 })
 
@@ -41,9 +47,14 @@ export const moduleClearanceCases = Record({
         link_type: 'LIST',
         name: 'x_gegis_ins_policy_clearance_case',
         hint: 'Sanction, duplication and insured verification checks',
-        roles: [userRole],
+        roles: ['[object Object]'],
         active: true,
         order: 200,
+        override_menu_roles: false,
+        require_confirmation: false,
+        sys_domain: 'global',
+        sys_domain_path: '/',
+        uncancelable: false,
     },
 })
 
@@ -58,9 +69,14 @@ export const moduleRisk = Record({
         link_type: 'LIST',
         name: 'x_gegis_ins_policy_risk_case',
         hint: 'Risk scoring, appetite decisions and loss history',
-        roles: [userRole],
+        roles: ['[object Object]'],
         active: true,
         order: 300,
+        override_menu_roles: false,
+        require_confirmation: false,
+        sys_domain: 'global',
+        sys_domain_path: '/',
+        uncancelable: false,
     },
 })
 
@@ -75,9 +91,14 @@ export const moduleQnb = Record({
         link_type: 'LIST',
         name: 'x_gegis_ins_policy_qnb_case',
         hint: 'Quotes, negotiation and policy binding',
-        roles: [userRole],
+        roles: ['[object Object]'],
         active: true,
         order: 400,
+        override_menu_roles: false,
+        require_confirmation: false,
+        sys_domain: 'global',
+        sys_domain_path: '/',
+        uncancelable: false,
     },
 })
 
@@ -90,9 +111,14 @@ export const separatorMyTasks = Record({
         title: 'My Tasks',
         application: insuranceSuiteMenu,
         link_type: 'SEPARATOR',
-        roles: [userRole],
+        roles: ['[object Object]'],
         active: true,
         order: 500,
+        override_menu_roles: false,
+        require_confirmation: false,
+        sys_domain: 'global',
+        sys_domain_path: '/',
+        uncancelable: false,
     },
 })
 

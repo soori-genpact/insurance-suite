@@ -1,5 +1,4 @@
 import { Table, StringColumn, ReferenceColumn, DateColumn, DateTimeColumn, IntegerColumn } from '@servicenow/sdk/core'
-import { LOB_CHOICES } from './choices'
 
 export const x_gegis_ins_policy_submission = Table({
     name: 'x_gegis_ins_policy_submission',
@@ -12,7 +11,7 @@ export const x_gegis_ins_policy_submission = Table({
             mandatory: true,
             dropdown: 'dropdown_with_none',
             choices: {
-                'new': { label: 'New', sequence: 0 },
+                new: { label: 'New', sequence: 0 },
                 renewal: { label: 'Renewal', sequence: 1 },
                 endorsement: { label: 'Endorsement', sequence: 2 },
             },
@@ -21,7 +20,24 @@ export const x_gegis_ins_policy_submission = Table({
             label: 'Lines in scope',
             mandatory: true,
             dropdown: 'dropdown_with_none',
-            choices: LOB_CHOICES,
+            choices: {
+                property: {
+                    label: 'Property',
+                    sequence: 0,
+                },
+                workers_comp: {
+                    label: 'Workers Comp',
+                    sequence: 1,
+                },
+                auto: {
+                    label: 'Auto',
+                    sequence: 2,
+                },
+                motor: {
+                    label: 'Motor',
+                    sequence: 3,
+                },
+            },
         }),
         source_channel: StringColumn({
             label: 'Source channel',
@@ -102,4 +118,21 @@ export const x_gegis_ins_policy_submission = Table({
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
     actions: ['read', 'update', 'delete', 'create'],
+    index: [
+        {
+            name: 'index',
+            unique: false,
+            element: 'existing_policy',
+        },
+        {
+            name: 'index2',
+            unique: false,
+            element: 'primary_broker',
+        },
+        {
+            name: 'index3',
+            unique: false,
+            element: 'primary_insured',
+        },
+    ],
 })

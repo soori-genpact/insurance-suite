@@ -1,4 +1,11 @@
-import { Table, StringColumn, ReferenceColumn, DateColumn, DecimalColumn, MultiLineTextColumn } from '@servicenow/sdk/core'
+import {
+    Table,
+    StringColumn,
+    ReferenceColumn,
+    DateColumn,
+    DecimalColumn,
+    MultiLineTextColumn,
+} from '@servicenow/sdk/core'
 
 export const x_gegis_ins_policy_policy_transaction = Table({
     name: 'x_gegis_ins_policy_policy_transaction',
@@ -14,10 +21,10 @@ export const x_gegis_ins_policy_policy_transaction = Table({
             mandatory: true,
             dropdown: 'dropdown_with_none',
             choices: {
-                new_business:  { label: 'New Business',  sequence: 0 },
-                renewal:       { label: 'Renewal',       sequence: 1 },
-                endorsement:   { label: 'Endorsement',   sequence: 2 },
-                cancellation:  { label: 'Cancellation',  sequence: 3 },
+                new_business: { label: 'New Business', sequence: 0 },
+                renewal: { label: 'Renewal', sequence: 1 },
+                endorsement: { label: 'Endorsement', sequence: 2 },
+                cancellation: { label: 'Cancellation', sequence: 3 },
                 reinstatement: { label: 'Reinstatement', sequence: 4 },
             },
         }),
@@ -37,16 +44,23 @@ export const x_gegis_ins_policy_policy_transaction = Table({
             mandatory: true,
             dropdown: 'dropdown_with_none',
             choices: {
-                draft:            { label: 'Draft',            sequence: 0 },
+                draft: { label: 'Draft', sequence: 0 },
                 pending_approval: { label: 'Pending Approval', sequence: 1 },
-                approved:         { label: 'Approved',         sequence: 2 },
-                completed:        { label: 'Completed',        sequence: 3 },
-                rejected:         { label: 'Rejected',         sequence: 4 },
-                voided:           { label: 'Voided',           sequence: 5 },
+                approved: { label: 'Approved', sequence: 2 },
+                completed: { label: 'Completed', sequence: 3 },
+                rejected: { label: 'Rejected', sequence: 4 },
+                voided: { label: 'Voided', sequence: 5 },
             },
         }),
     },
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
     actions: ['read', 'update', 'delete', 'create'],
+    index: [
+        {
+            name: 'index',
+            unique: false,
+            element: 'policy',
+        },
+    ],
 })

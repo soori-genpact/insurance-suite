@@ -52,4 +52,11 @@ export const x_gegis_ins_policy_exposure_peril = Table({
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
     actions: ['read', 'update', 'delete', 'create'],
+    index: [
+        {
+            name: 'index',
+            unique: false,
+            element: 'exposure_item',
+        },
+    ],
 })

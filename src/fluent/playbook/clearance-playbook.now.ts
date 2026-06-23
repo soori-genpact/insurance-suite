@@ -24,6 +24,7 @@ export const clearanceInitiateSubmissionRequest = Record({
         enable_ai_agent: 'off',
         public_access: 'true',
         system_level: 'true',
+        description: 'Initiate Submission Request',
     },
 })
 Record({
@@ -70,6 +71,7 @@ export const clearanceExtract = Record({
         enable_ai_agent: 'off',
         public_access: 'true',
         system_level: 'true',
+        description: 'Extract Activity Definition',
     },
 })
 Record({
@@ -116,6 +118,7 @@ export const clearanceInsuredVerification = Record({
         enable_ai_agent: 'off',
         public_access: 'true',
         system_level: 'true',
+        description: 'Insured Verification Activity Definition',
     },
 })
 Record({
@@ -162,6 +165,7 @@ export const clearanceCheckForDuplicates = Record({
         enable_ai_agent: 'off',
         public_access: 'true',
         system_level: 'true',
+        description: 'Check for Duplicates Activity Definition',
     },
 })
 Record({
@@ -208,6 +212,7 @@ export const clearanceCheckForSanctions = Record({
         enable_ai_agent: 'off',
         public_access: 'true',
         system_level: 'true',
+        description: 'Check for Sanctions Activity Definition',
     },
 })
 Record({
@@ -254,6 +259,7 @@ export const clearanceConfirmDataReview = Record({
         enable_ai_agent: 'off',
         public_access: 'true',
         system_level: 'true',
+        description: 'Confirm Data Review Activity Definition',
     },
 })
 Record({
@@ -300,6 +306,7 @@ export const clearanceQualityAssurance = Record({
         enable_ai_agent: 'off',
         public_access: 'true',
         system_level: 'true',
+        description: 'Quality Assurance Activity Definition',
     },
 })
 Record({
@@ -308,8 +315,8 @@ Record({
     data: {
         field: 'is_automated',
         id: 'b3357c1f449949a88717737fde64fa14',
-        table: 'var__m_sys_pd_activity_type_prop_c1ea000753a5c7107d5fd301a0490eac',
-        value: '{{vl.Base Playbook Activity Flow./start.automated}}',
+        table: 'var__m_sys_pd_activity_type_prop_def008e553a5c7107d5fd301a0490eac',
+        value: '{{vl.Base Playbook Activity Flow./end.automated}}',
     },
 })
 Record({
@@ -318,7 +325,7 @@ Record({
     data: {
         field: 'experience_status_record',
         id: 'b3357c1f449949a88717737fde64fa14',
-        table: 'var__m_sys_pd_activity_type_prop_c1ea000753a5c7107d5fd301a0490eac',
-        value: '{{vl.Base Playbook Activity Flow.e17e6678-8e97-4584-a903-cfa6e47fd378./end.record}}',
+        table: 'var__m_sys_pd_activity_type_prop_def008e553a5c7107d5fd301a0490eac',
+        value: '{{vl.Base Playbook Activity Flow./end.record}}',
     },
 })

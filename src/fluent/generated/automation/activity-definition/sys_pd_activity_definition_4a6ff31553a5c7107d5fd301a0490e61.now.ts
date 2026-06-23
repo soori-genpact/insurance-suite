@@ -35,5 +35,4 @@ Record({
         table: 'global',
         wait_for_completion: 'true',
     },
-    protectionPolicy: 'read',
 })

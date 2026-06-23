@@ -26,4 +26,21 @@ export const x_gegis_ins_policy_quote_option_coverage = Table({
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
     actions: ['read', 'update', 'delete', 'create'],
+    index: [
+        {
+            name: 'index',
+            unique: false,
+            element: 'product_coverage',
+        },
+        {
+            name: 'index2',
+            unique: false,
+            element: 'quote_option',
+        },
+        {
+            name: 'index3',
+            unique: false,
+            element: 'quote_risk',
+        },
+    ],
 })

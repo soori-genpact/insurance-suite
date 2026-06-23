@@ -21,4 +21,16 @@ export const x_gegis_ins_policy_quote_option_coverage_term = Table({
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
     actions: ['read', 'update', 'delete', 'create'],
+    index: [
+        {
+            name: 'index',
+            unique: false,
+            element: 'coverage_term_option',
+        },
+        {
+            name: 'index2',
+            unique: false,
+            element: 'quote_option_coverage',
+        },
+    ],
 })

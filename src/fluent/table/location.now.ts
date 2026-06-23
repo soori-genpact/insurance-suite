@@ -44,4 +44,11 @@ export const x_gegis_ins_policy_location = Table({
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
     actions: ['read', 'update', 'delete', 'create'],
+    index: [
+        {
+            name: 'index',
+            unique: false,
+            element: 'submission',
+        },
+    ],
 })

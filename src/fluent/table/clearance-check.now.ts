@@ -1,4 +1,11 @@
-import { Table, StringColumn, ReferenceColumn, DateTimeColumn, DecimalColumn, DocumentIdColumn } from '@servicenow/sdk/core'
+import {
+    Table,
+    StringColumn,
+    ReferenceColumn,
+    DateTimeColumn,
+    DecimalColumn,
+    DocumentIdColumn,
+} from '@servicenow/sdk/core'
 
 export const x_gegis_ins_policy_clearance_check = Table({
     name: 'x_gegis_ins_policy_clearance_check',
@@ -63,4 +70,21 @@ export const x_gegis_ins_policy_clearance_check = Table({
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
     actions: ['read', 'update', 'delete', 'create'],
+    index: [
+        {
+            name: 'index',
+            unique: false,
+            element: 'clearance_case',
+        },
+        {
+            name: 'index2',
+            unique: false,
+            element: 'related_record',
+        },
+        {
+            name: 'index3',
+            unique: false,
+            element: 'reviewed_by',
+        },
+    ],
 })

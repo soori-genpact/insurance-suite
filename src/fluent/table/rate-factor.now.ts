@@ -1,5 +1,4 @@
 import { Table, StringColumn, MultiLineTextColumn } from '@servicenow/sdk/core'
-import { LOB_CHOICES } from './choices'
 
 export const x_gegis_ins_policy_rate_factor = Table({
     name: 'x_gegis_ins_policy_rate_factor',
@@ -20,15 +19,32 @@ export const x_gegis_ins_policy_rate_factor = Table({
             label: 'LOB',
             mandatory: true,
             dropdown: 'dropdown_with_none',
-            choices: LOB_CHOICES,
+            choices: {
+                property: {
+                    label: 'Property',
+                    sequence: 0,
+                },
+                workers_comp: {
+                    label: 'Workers Comp',
+                    sequence: 1,
+                },
+                auto: {
+                    label: 'Auto',
+                    sequence: 2,
+                },
+                motor: {
+                    label: 'Motor',
+                    sequence: 3,
+                },
+            },
         }),
         factor_type: StringColumn({
             label: 'Factor type',
             mandatory: true,
             dropdown: 'dropdown_with_none',
             choices: {
-                discount:   { label: 'Discount',   sequence: 0 },
-                loading:    { label: 'Loading',    sequence: 1 },
+                discount: { label: 'Discount', sequence: 0 },
+                loading: { label: 'Loading', sequence: 1 },
                 multiplier: { label: 'Multiplier', sequence: 2 },
             },
         }),
@@ -37,8 +53,8 @@ export const x_gegis_ins_policy_rate_factor = Table({
             mandatory: true,
             dropdown: 'dropdown_with_none',
             choices: {
-                policy:   { label: 'Policy',   sequence: 0 },
-                risk:     { label: 'Risk',     sequence: 1 },
+                policy: { label: 'Policy', sequence: 0 },
+                risk: { label: 'Risk', sequence: 1 },
                 coverage: { label: 'Coverage', sequence: 2 },
             },
         }),
@@ -50,4 +66,11 @@ export const x_gegis_ins_policy_rate_factor = Table({
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
     actions: ['read', 'update', 'delete', 'create'],
+    index: [
+        {
+            name: 'index',
+            unique: true,
+            element: 'code',
+        },
+    ],
 })

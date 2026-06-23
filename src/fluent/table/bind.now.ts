@@ -34,4 +34,21 @@ export const x_gegis_ins_policy_bind = Table({
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
     actions: ['read', 'update', 'delete', 'create'],
+    index: [
+        {
+            name: 'index',
+            unique: false,
+            element: 'accepted_quote',
+        },
+        {
+            name: 'index2',
+            unique: false,
+            element: 'bound_by',
+        },
+        {
+            name: 'index3',
+            unique: false,
+            element: 'qnb_case',
+        },
+    ],
 })

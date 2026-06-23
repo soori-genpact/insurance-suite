@@ -1,10 +1,17 @@
-import { Table, StringColumn, BooleanColumn, IntegerColumn, DecimalColumn, MultiLineTextColumn, ReferenceColumn } from '@servicenow/sdk/core'
+import {
+    Table,
+    StringColumn,
+    BooleanColumn,
+    IntegerColumn,
+    DecimalColumn,
+    MultiLineTextColumn,
+    ReferenceColumn,
+} from '@servicenow/sdk/core'
 
 export const x_gegis_ins_policy_coverage_term = Table({
     name: 'x_gegis_ins_policy_coverage_term',
     label: 'Coverage Term',
     schema: {
-
         // ── Basic Information ─────────────────────────────────────────────────
         coverage: ReferenceColumn({
             label: 'Coverage',
@@ -26,24 +33,24 @@ export const x_gegis_ins_policy_coverage_term = Table({
             mandatory: true,
             dropdown: 'dropdown_with_none',
             choices: {
-                limit:      { label: 'Limit',       sequence: 0 },
-                deductible: { label: 'Deductible',  sequence: 1 },
-                duration:   { label: 'Duration',    sequence: 2 },
-                premium:    { label: 'Premium',     sequence: 3 },
-                percentage: { label: 'Percentage',  sequence: 4 },
-                fee:        { label: 'Fee',         sequence: 5 },
+                limit: { label: 'Limit', sequence: 0 },
+                deductible: { label: 'Deductible', sequence: 1 },
+                duration: { label: 'Duration', sequence: 2 },
+                premium: { label: 'Premium', sequence: 3 },
+                percentage: { label: 'Percentage', sequence: 4 },
+                fee: { label: 'Fee', sequence: 5 },
             },
         }),
         data_type: StringColumn({
             label: 'Data type',
             dropdown: 'dropdown_with_none',
             choices: {
-                currency:   { label: 'Currency',   sequence: 0 },
+                currency: { label: 'Currency', sequence: 0 },
                 percentage: { label: 'Percentage', sequence: 1 },
-                integer:    { label: 'Integer',    sequence: 2 },
-                text:       { label: 'Text',       sequence: 3 },
-                date:       { label: 'Date',       sequence: 4 },
-                duration:   { label: 'Duration',   sequence: 5 },
+                integer: { label: 'Integer', sequence: 2 },
+                text: { label: 'Text', sequence: 3 },
+                date: { label: 'Date', sequence: 4 },
+                duration: { label: 'Duration', sequence: 5 },
             },
         }),
 
@@ -84,4 +91,11 @@ export const x_gegis_ins_policy_coverage_term = Table({
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
     actions: ['read', 'update', 'delete', 'create'],
+    index: [
+        {
+            name: 'index',
+            unique: false,
+            element: 'coverage',
+        },
+    ],
 })

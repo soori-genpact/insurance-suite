@@ -59,4 +59,11 @@ export const x_gegis_ins_policy_vehicle = Table({
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
     actions: ['read', 'update', 'delete', 'create'],
+    index: [
+        {
+            name: 'index',
+            unique: false,
+            element: 'exposure_case',
+        },
+    ],
 })

@@ -19,10 +19,10 @@ export const x_gegis_ins_policy_policy_party = Table({
             mandatory: true,
             dropdown: 'dropdown_with_none',
             choices: {
-                policyholder:       { label: 'Policyholder',       sequence: 0 },
-                loss_payee:         { label: 'Loss Payee',         sequence: 1 },
-                broker:             { label: 'Broker',             sequence: 2 },
-                named_insured:      { label: 'Named Insured',      sequence: 3 },
+                policyholder: { label: 'Policyholder', sequence: 0 },
+                loss_payee: { label: 'Loss Payee', sequence: 1 },
+                broker: { label: 'Broker', sequence: 2 },
+                named_insured: { label: 'Named Insured', sequence: 3 },
                 additional_insured: { label: 'Additional Insured', sequence: 4 },
             },
         }),
@@ -33,4 +33,16 @@ export const x_gegis_ins_policy_policy_party = Table({
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
     actions: ['read', 'update', 'delete', 'create'],
+    index: [
+        {
+            name: 'index',
+            unique: false,
+            element: 'account',
+        },
+        {
+            name: 'index2',
+            unique: false,
+            element: 'policy',
+        },
+    ],
 })

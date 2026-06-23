@@ -238,5 +238,4 @@ Record({
         screen: 'bedfc5befb29cb58b70efc647befdc4f',
         sys_policy: 'read',
     },
-    protectionPolicy: 'read',
 })

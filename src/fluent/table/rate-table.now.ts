@@ -1,5 +1,4 @@
 import { Table, StringColumn, ReferenceColumn, DateColumn } from '@servicenow/sdk/core'
-import { LOB_CHOICES } from './choices'
 
 export const x_gegis_ins_policy_rate_table = Table({
     name: 'x_gegis_ins_policy_rate_table',
@@ -19,16 +18,33 @@ export const x_gegis_ins_policy_rate_table = Table({
             label: 'LOB',
             mandatory: true,
             dropdown: 'dropdown_with_none',
-            choices: LOB_CHOICES,
+            choices: {
+                property: {
+                    label: 'Property',
+                    sequence: 0,
+                },
+                workers_comp: {
+                    label: 'Workers Comp',
+                    sequence: 1,
+                },
+                auto: {
+                    label: 'Auto',
+                    sequence: 2,
+                },
+                motor: {
+                    label: 'Motor',
+                    sequence: 3,
+                },
+            },
         }),
         rate_type: StringColumn({
             label: 'Rate type',
             mandatory: true,
             dropdown: 'dropdown_with_none',
             choices: {
-                per_mille:  { label: 'Per Mille (‰)', sequence: 0 },
-                percentage: { label: 'Percentage',    sequence: 1 },
-                flat:       { label: 'Flat',          sequence: 2 },
+                per_mille: { label: 'Per Mille (‰)', sequence: 0 },
+                percentage: { label: 'Percentage', sequence: 1 },
+                flat: { label: 'Flat', sequence: 2 },
             },
         }),
         effective_date: DateColumn({
@@ -42,4 +58,11 @@ export const x_gegis_ins_policy_rate_table = Table({
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
     actions: ['read', 'update', 'delete', 'create'],
+    index: [
+        {
+            name: 'index',
+            unique: false,
+            element: 'coverage',
+        },
+    ],
 })

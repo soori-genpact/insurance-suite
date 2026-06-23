@@ -19,11 +19,11 @@ export const x_gegis_ins_policy_policy_coverage_term = Table({
             mandatory: true,
             dropdown: 'dropdown_with_none',
             choices: {
-                limit:          { label: 'Limit',          sequence: 0 },
-                deductible:     { label: 'Deductible',     sequence: 1 },
-                sublimit:       { label: 'Sublimit',       sequence: 2 },
+                limit: { label: 'Limit', sequence: 0 },
+                deductible: { label: 'Deductible', sequence: 1 },
+                sublimit: { label: 'Sublimit', sequence: 2 },
                 waiting_period: { label: 'Waiting Period', sequence: 3 },
-                coinsurance:    { label: 'Coinsurance',    sequence: 4 },
+                coinsurance: { label: 'Coinsurance', sequence: 4 },
             },
         }),
         selected_label: StringColumn({
@@ -37,4 +37,11 @@ export const x_gegis_ins_policy_policy_coverage_term = Table({
     allowWebServiceAccess: true,
     accessibleFrom: 'public',
     actions: ['read', 'update', 'delete', 'create'],
+    index: [
+        {
+            name: 'index',
+            unique: false,
+            element: 'policy_coverage',
+        },
+    ],
 })
