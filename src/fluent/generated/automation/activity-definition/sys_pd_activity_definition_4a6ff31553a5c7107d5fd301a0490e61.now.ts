@@ -6,7 +6,7 @@ Record({
     data: {
         access: 'public',
         active: 'true',
-        activity_type: 'def008e553a5c7107d5fd301a0490eac',
+        activity_type: '',
         ai_agent_execution_mode: 'off',
         ai_agent_field_display_preferences:
             'enable_ai_agent=all;ai_agent_objective=all;ai_agent_run_as=all;ai_agent_execution_mode=all;',
