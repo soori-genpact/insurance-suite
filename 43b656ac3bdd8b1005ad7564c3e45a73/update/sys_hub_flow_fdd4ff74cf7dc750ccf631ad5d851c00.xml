@@ -1,0 +1,1401 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_hub_flow">
+    <sys_hub_flow action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <acls/>
+        <active>true</active>
+        <allow_high_security_roles>false</allow_high_security_roles>
+        <annotation/>
+        <attributes>browserActivatedIn=chrome,integrationActivatedIn=standalone,timeFromCreateToActivate=159000,viewActivatedIn=naturalLanguage</attributes>
+        <authored_on_release_version>29000</authored_on_release_version>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category display_value="Activity Flows">f427c6ef1b230010affd0e55cc4bcb14</category>
+        <copied_from>2b8b42e31b630010affd0e55cc4bcbe9</copied_from>
+        <copied_from_name>Simple Instruction</copied_from_name>
+        <description>&lt;p&gt;Simple instruction process activity for Playbook Workspace Experience, that optionally waits for user to complete the flow data record.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Inputs:&lt;/b&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;Message&lt;/b&gt; - Message that will be displayed to the end user using Playbook Workspace Experience&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Wait for user input&lt;/b&gt; - When checked, does not wait for flow data to be in a completed state.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;b&gt;Outputs:&lt;/b&gt;&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;Record&lt;/b&gt; - Flow Data Record.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Automated&lt;/b&gt; - True/False based on whether the flow waited for user input or not.&lt;/li&gt;
+&lt;/ul&gt;</description>
+        <display_name_after_preview/>
+        <flow_priority/>
+        <generation_source/>
+        <internal_name>playbook_manual_activity_flow</internal_name>
+        <label_cache>[{"name":"subflow.wait","label":"Input➛Wait for user input","reference":"","reference_display":"","type":"choice","base_type":"choice","column_name":"","choices":[{"label":"No","value":"no","order":0.0},{"label":"Yes","value":"yes","order":1.0}],"usedInstances":{"acb90bab-4ec3-41c4-b7a9-67e5ce3fe577":["condition"]},"attributes":{"uiType":"choice","uiTypeLabel":"Choice","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"719c7370-be5a-4ded-ae06-cdbd0ad44cb6","sourceUiUniqueId":"","sourceType":"","sourceId":""}},{"name":"subflow.automated","label":"Input➛Don\u0027t wait","reference":"","reference_display":"","type":"choice","base_type":"choice","column_name":"","attributes":{"uiType":"boolean","uiTypeLabel":"True/False","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"1c97bbec-e236-42e4-bceb-41015f4d78c9","sourceUiUniqueId":"","sourceType":"","sourceId":""}},{"name":"e17e6678-8e97-4584-a903-cfa6e47fd378.record.sys_id","label":"1 - Create Flow Data➛Record➛Sys ID","reference":"","reference_display":"Sys ID","type":"GUID","base_type":"GUID","parent_table_name":"sys_flow_data","column_name":"sys_id"},{"name":"f1fda61b-d5db-4454-8d49-64fb01d59656.error_message","label":"5➛Error Message","reference_display":"Error Message","type":"string","base_type":"string","attributes":{"uiType":"string","uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","pwd2droppable":"true","uiUniqueId":"87687532-9e3d-4497-a88e-90f45bfb9adb"}},{"name":"f1fda61b-d5db-4454-8d49-64fb01d59656.status","label":"5➛Status","reference_display":"Status","type":"choice","base_type":"choice","attributes":{"uiType":"choice","uiTypeLabel":"Choice","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"5e478657-3a84-4a60-a92b-d3e80005ad34"}},{"name":"f1fda61b-d5db-4454-8d49-64fb01d59656.Table","label":"5➛Flow Data Table","reference":"sys_flow_data","reference_display":"Flow Data","type":"table_name","base_type":"table_name","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"f1fda61b-d5db-4454-8d49-64fb01d59656.Record","label":"5➛Flow Data Record","reference":"sys_flow_data","reference_display":"Flow Data","type":"reference","base_type":"reference","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"244c9255-c82b-47e3-8c53-ff7314f9f02d.state","label":"5➛State","reference_display":"State","type":"choice","base_type":"choice","attributes":{"uiType":"choice","uiTypeLabel":"Choice","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"2e334039-7a20-4ead-9148-909988f1a7e4"}},{"name":"36200886-e130-46df-8a92-dbe217661e58.table_name","label":"3➛Flow Data Table","reference":"sys_flow_data","reference_display":"Flow Data","type":"table_name","base_type":"table_name","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"36200886-e130-46df-8a92-dbe217661e58.record","label":"3➛Flow Data Record","reference":"sys_flow_data","reference_display":"Flow Data","type":"reference","base_type":"reference","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"subflow.assigned_to","label":"Input➛Assigned To","reference":"sys_user","reference_display":"User","type":"reference","base_type":"reference","attributes":{"sourceUiUniqueId":"","sourceType":"","sourceId":"","uiUniqueId":"9d5b871b-6a0f-42a6-9869-dcdcc4f738a0"}},{"name":"e17e6678-8e97-4584-a903-cfa6e47fd378.data","label":"1➛Data","reference_display":"Data","type":"dynamic_object","base_type":"dynamic_object","attributes":{"uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","pwd2droppable":"true","uiType":"string","dynamic":"true","uiUniqueId":"6dc5aaf8-7456-4a43-9070-07022f880dd3"}},{"name":"e17e6678-8e97-4584-a903-cfa6e47fd378.record","label":"1 - Create Flow Data➛Record","reference":"sys_flow_data","reference_display":"Flow Data","type":"reference","base_type":"reference","usedInstances":{"71104454-2ec7-45bb-b456-13743c7eb5db":["record"],"62c599f2-8c92-46f2-b7d5-11495b62947a":["record"]},"attributes":{"uiType":"reference","uiTypeLabel":"Reference","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"a84140d4-4607-4e97-a968-ee79f23bf1e0"}},{"name":"e17e6678-8e97-4584-a903-cfa6e47fd378.__action_status__","label":"1 - Create Flow Data➛Action Status","reference_display":"Action Status","type":"object","base_type":"object","attributes":{"uiType":"object","uiTypeLabel":"Object","co_type_name":"FDACTIONSTATUS","action_error_output":"true","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"b9ef666d-e49a-40d9-bf3e-8212f956c5d2"}},{"name":"e17e6678-8e97-4584-a903-cfa6e47fd378.__dont_treat_as_error__","label":"1 - Create Flow Data➛Don\u0027t Treat as Error","reference_display":"Don\u0027t Treat as Error","type":"boolean","base_type":"boolean","attributes":{"uiType":"boolean","uiTypeLabel":"True/False","visible_in_ui":"false","action_error_output":"true","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"7bb61ebc-f0b6-4ea6-add7-81d43ed62a93"}},{"name":"36200886-e130-46df-8a92-dbe217661e58.__action_status__","label":"3➛Action Status","reference_display":"Action Status","type":"object","base_type":"object","attributes":{"uiType":"object","co_type_name":"FDACTIONSTATUS","action_error_output":"true","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"36200886-e130-46df-8a92-dbe217661e58.__dont_treat_as_error__","label":"3➛Don\u0027t Treat as Error","reference_display":"Don\u0027t Treat as Error","type":"boolean","base_type":"boolean","attributes":{"uiType":"boolean","visible_in_ui":"false","action_error_output":"true","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"244c9255-c82b-47e3-8c53-ff7314f9f02d.__action_status__","label":"5➛Action Status","reference_display":"Action Status","type":"object","base_type":"object","attributes":{"uiType":"object","co_type_name":"FDACTIONSTATUS","action_error_output":"true","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"244c9255-c82b-47e3-8c53-ff7314f9f02d.__dont_treat_as_error__","label":"5➛Don\u0027t Treat as Error","reference_display":"Don\u0027t Treat as Error","type":"boolean","base_type":"boolean","attributes":{"uiType":"boolean","visible_in_ui":"false","action_error_output":"true","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"f1fda61b-d5db-4454-8d49-64fb01d59656.__action_status__","label":"5➛Action Status","reference_display":"Action Status","type":"object","base_type":"object","attributes":{"uiType":"object","co_type_name":"FDACTIONSTATUS","action_error_output":"true","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"f1fda61b-d5db-4454-8d49-64fb01d59656.__dont_treat_as_error__","label":"5➛Don\u0027t Treat as Error","reference_display":"Don\u0027t Treat as Error","type":"boolean","base_type":"boolean","attributes":{"uiType":"boolean","visible_in_ui":"false","action_error_output":"true","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}}]</label_cache>
+        <master_snapshot>7c757b78cf7dc750ccf631ad5d851c7a</master_snapshot>
+        <master_snapshot_digest/>
+        <name>Playbook Manual Activity Flow</name>
+        <natlang/>
+        <outputs/>
+        <pre_compiled>false</pre_compiled>
+        <remote_trigger_id/>
+        <run_as>user</run_as>
+        <run_with_roles/>
+        <sc_callable>false</sc_callable>
+        <show_draft_actions>false</show_draft_actions>
+        <show_triggered_flows>false</show_triggered_flows>
+        <status>published</status>
+        <substatus/>
+        <sys_class_name>sys_hub_flow</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:47:20</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>fdd4ff74cf7dc750ccf631ad5d851c00</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_name>Playbook Manual Activity Flow</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_hub_flow_fdd4ff74cf7dc750ccf631ad5d851c00</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:50:02</sys_updated_on>
+        <type>subflow</type>
+        <updation_source/>
+        <version>2</version>
+        <version_record>ad757f78cf7dc750ccf631ad5d851c28</version_record>
+    </sys_hub_flow>
+    <sys_translated_text action="delete_multiple" query="documentkey=fdd4ff74cf7dc750ccf631ad5d851c00"/>
+    <sys_variable_value action="delete_multiple" query="document_key=fdd4ff74cf7dc750ccf631ad5d851c00"/>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_flow_output_fdd4ff74cf7dc750ccf631ad5d851c00^id=fdd4ff74cf7dc750ccf631ad5d851c00"/>
+    <sys_hub_flow_stage action="delete_multiple" query="flow=fdd4ff74cf7dc750ccf631ad5d851c00"/>
+    <sys_flow_cat_variable_model action="delete_multiple" query="id=fdd4ff74cf7dc750ccf631ad5d851c00^sys_idNOT IN7dd4ff74cf7dc750ccf631ad5d851c02"/>
+    <sys_flow_cat_variable_model action="INSERT_OR_UPDATE">
+        <id>fdd4ff74cf7dc750ccf631ad5d851c00</id>
+        <name>Playbook Manual Activity Flow</name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:47:20</sys_created_on>
+        <sys_id>7dd4ff74cf7dc750ccf631ad5d851c02</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:47:20</sys_updated_on>
+    </sys_flow_cat_variable_model>
+    <sys_flow_cat_variable action="delete_multiple" query="flow_catalog_model=7dd4ff74cf7dc750ccf631ad5d851c02"/>
+    <sys_hub_flow_input action="delete_multiple" query="model=fdd4ff74cf7dc750ccf631ad5d851c00^sys_idNOT IN7dd4ff74cf7dc750ccf631ad5d851c10,f9d4ff74cf7dc750ccf631ad5d851c3c"/>
+    <sys_hub_flow_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string,uiTypeLabel=String,uiUniqueId=5cb06772-9646-4b3a-a5fd-57ed9487f8b2</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>message</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="String">string</internal_type>
+        <label>Message</label>
+        <mandatory>false</mandatory>
+        <max_length>8000</max_length>
+        <model display_value="Playbook Manual Activity Flow">fdd4ff74cf7dc750ccf631ad5d851c00</model>
+        <model_id>fdd4ff74cf7dc750ccf631ad5d851c00</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_input_fdd4ff74cf7dc750ccf631ad5d851c00</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:47:20</sys_created_on>
+        <sys_id>7dd4ff74cf7dc750ccf631ad5d851c10</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:47:20</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=7dd4ff74cf7dc750ccf631ad5d851c10"/>
+    <sys_hub_flow_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=choice,uiTypeLabel=Choice,uiUniqueId=719c7370-be5a-4ded-ae06-cdbd0ad44cb6</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice>3</choice>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value>yes</default_value>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>wait</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="Choice">choice</internal_type>
+        <label>Wait for user input</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Playbook Manual Activity Flow">fdd4ff74cf7dc750ccf631ad5d851c00</model>
+        <model_id>fdd4ff74cf7dc750ccf631ad5d851c00</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_input_fdd4ff74cf7dc750ccf631ad5d851c00</name>
+        <next_element/>
+        <order>2</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:47:21</sys_created_on>
+        <sys_id>f9d4ff74cf7dc750ccf631ad5d851c3c</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:49:59</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=f9d4ff74cf7dc750ccf631ad5d851c3c"/>
+    <sys_hub_flow_output action="delete_multiple" query="model=fdd4ff74cf7dc750ccf631ad5d851c00^sys_idNOT IN4ed433b4cf7dc750ccf631ad5d851c0f,ced433b4cf7dc750ccf631ad5d851c19"/>
+    <sys_hub_flow_output action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=reference,uiTypeLabel=Reference,uiUniqueId=95324d13-12d3-4031-b200-cd641a2bbc95</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice>3</choice>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>record</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_link/>
+        <internal_type display_value="Reference">reference</internal_type>
+        <label>Record</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Playbook Manual Activity Flow">fdd4ff74cf7dc750ccf631ad5d851c00</model>
+        <model_id>fdd4ff74cf7dc750ccf631ad5d851c00</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_output_fdd4ff74cf7dc750ccf631ad5d851c00</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference display_value="" name="sys_flow_data">sys_flow_data</reference>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_output</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:47:21</sys_created_on>
+        <sys_id>4ed433b4cf7dc750ccf631ad5d851c0f</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:47:21</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_output>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=4ed433b4cf7dc750ccf631ad5d851c0f"/>
+    <sys_hub_flow_output action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=boolean,uiTypeLabel=True/False,uiUniqueId=b880c18d-1fe1-4b18-a1f8-d602112e9500</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice>3</choice>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>automated</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_link/>
+        <internal_type display_value="">boolean</internal_type>
+        <label>Automated</label>
+        <mandatory>false</mandatory>
+        <max_length>40</max_length>
+        <model display_value="Playbook Manual Activity Flow">fdd4ff74cf7dc750ccf631ad5d851c00</model>
+        <model_id>fdd4ff74cf7dc750ccf631ad5d851c00</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_output_fdd4ff74cf7dc750ccf631ad5d851c00</name>
+        <next_element/>
+        <order>2</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_output</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:47:21</sys_created_on>
+        <sys_id>ced433b4cf7dc750ccf631ad5d851c19</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:47:21</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_output>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=ced433b4cf7dc750ccf631ad5d851c19"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=fdd4ff74cf7dc750ccf631ad5d851c00"/>
+    <sys_hub_trigger_instance_v2 action="delete_multiple" query="flow=fdd4ff74cf7dc750ccf631ad5d851c00"/>
+    <sys_hub_action_instance_v2 action="delete_multiple" query="flow=fdd4ff74cf7dc750ccf631ad5d851c00^sys_idNOT IN0e25b3f4cf7dc750ccf631ad5d851c6c,2445b338cf7dc750ccf631ad5d851c15,c6d433b4cf7dc750ccf631ad5d851c2d"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Update Record">f9d01dd2c31332002841b63b12d3aea1</action_type>
+        <action_type_parent display_value="Update Record">baf174c8c3c232002841b63b12d3aee4</action_type_parent>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot/>
+        <display_text/>
+        <flow display_value="Playbook Manual Activity Flow">fdd4ff74cf7dc750ccf631ad5d851c00</flow>
+        <generation_source/>
+        <order>4</order>
+        <parent_ui_id>acb90bab-4ec3-41c4-b7a9-67e5ce3fe577</parent_ui_id>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:48:43</sys_created_on>
+        <sys_id>0e25b3f4cf7dc750ccf631ad5d851c6c</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:49:59</sys_updated_on>
+        <ui_id>71104454-2ec7-45bb-b456-13743c7eb5db</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+1UW2+bMBT+KxHPBEEghORtWhpp0tpMXdWXtkLGPjSWjGHGpM2i/Pcdg0nTy7qoijRNGm/n4PNdjj/5Zutw5sycCJgfTIOYhkEYjnx/lERBFodZMGIhAQgc15GkADypgJaKYb0mojGN7RaCCcTxJBkmMJ0Mo3ESDcnUD4c0JzFEk5yFk8Tr5nY7nGS8rgTZXFsA7NAVF0yBdGY3d65TEYVcGpQz2774pTcVpIJkIHBwXtKmAKkHX+aIcayPfvqyN/LSmOHAmln0lJsm/jJ6At914FGDZIB0ORE1uE5BJCO6VBtnplWDDQWELaXY7E+suNSd04I81vwn4ke+OZcDWqN2C/sytRvql1NyCstK81J2HU0y0W+uFE0hLzoLZreQk0bog902NeJBZSQbEZ3C/PuqfLjs+RZctu6sWlFSIvYV0VrxrNFQm+sAAe1SClJVXN6nlSrXvB1GKYV3L7DwclE+IGfN76VHqNHt4YKIt8D+vG1fE8WNiXOEweFdaz790RjezoYVnLaeW8Npe1F4tKaKV/oTAq/Byty5NsjZ+L0A0OnTfR9gPoW53tRppx71vo6qMTCYd78+ltkrwzq46FiPVfxs+DcObGqf9WxoxycLbfKXQmsV/WOp/VNW/dG7j9XBTbfxrA9zqomG28b3Q/Z5ef7t69nV2eu0vn3og7mFAqE1DDpw92gHPcCCg2D1G5b64FqCdG0J9i/uydIbxH77/X94T/jw3v0CenBwrEMIAAA=</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=0e25b3f4cf7dc750ccf631ad5d851c6c"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Wait For Condition">89ce8a4187120010663ca1bb36cb0be3</action_type>
+        <action_type_parent display_value="Wait For Condition">8bb9a8160b10030085c083eb37673aec</action_type_parent>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot/>
+        <display_text/>
+        <flow display_value="Playbook Manual Activity Flow">fdd4ff74cf7dc750ccf631ad5d851c00</flow>
+        <generation_source/>
+        <order>5</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:49:10</sys_created_on>
+        <sys_id>2445b338cf7dc750ccf631ad5d851c15</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:49:59</sys_updated_on>
+        <ui_id>62c599f2-8c92-46f2-b7d5-11495b62947a</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+2X32+jOBDH/5WK5ziHwYDpW5VQXXTdtkpzew+rFTJm3FgikOVHd3NV//cz4DSQpNmom2hPq31kYMYz35mPjT89GzI2Lg3ic6CMYOphyzSx6bo2ZziKbJdHZgTEGBgpW4D6Mgee5bF6fmJJVRuenwF74LoeRRR8DxGHEsR800ZcMBeIJ2Lbo8PW7+VFecayWCZs9VEHUBY+l0mcQ2pcfvo8MJYsV2uVkBuXz1uvytUSwoRFkCjHccarBaTlxWSsYhxbx9p7ui5ku7B6DfUc6+ihrI3qVZ0PHhjwrYQ0BrWaYEkBA2PB0piVWb4yLsu8UoYcWHyXJqvXL+YyLdtCF+xbIf9V4W2r/k6AqoxrEV4fQy3QWptMcrhbljJLW0vJomQtXJZUi/S2raCWFgSrkrIjbVWoeLCsU66TaDMUD/Ps63S93rVMm+J0tknGWfL6xMoyl1FVQlF3o5Izpc7N3gZAAo1eC7ZcyvQxXObZk2wCqzQXw8dEPQxFkn1V+RTyMR0yXtc0VOKx4bWyjxvzR5bLusAPKoxyHug1dzoiZKJGJGzECIusyhsdp8HobjoO/7majf4MpuE0eJhNJ6NZMG4C/Z3KLxVMmkkRAtvYdRHGalQJjlzkU3CQCQ4jjkVcx7WMl6Yr4ZeqFqTVVysZNs1oF28GSH1a8FwuyytV1RNo/V4Ga8Ccg4PJNnPYibmBrFgVYSudEmsXoVq9i3H76n0szepVL27bVY/NuOf8RgWapp5Nw2QdhklbjqGJmj+HJp3RiXDq9eDsNPU6IouwnV4tRpPtNjIWpj4lkY3siDiI+EIgaqrNngAzuWPFHsH8u8h8F5TDO7jYjBnP0ljWNRddUEpWwuR2dPfh/iaYBYOHvyb398F4EEynd9PB6Op2FNzcNLvBFkLHO74PsFE322Mr3eu8r3xNWc+mKbNPdWQR0/xJmJ300OppeXbKeh3p0QQxdSPHpAgEpYiofyTkY8tCrstijAmPhXnKA8iMD02b6PzhlXIBWVWq84Y9dsgyd5lZ7xLvPHJUV/+41iGOzXHtHKTNZqlzfTN5zUWUZQmwdAMFOdnRQ36No6fbi7NDsWlHjwjOGVUHCUO+zQERN+KICi6QDZEjbCeikWf+8PnCD8+YvztKcZWzpmcbFk55idlEPza/Pa5vp6wJaJrWtWsQnN8g9K80G4XOhcFc+Y3Zqqj7pbDrgrHTpS0+ADPPieqLCkPE8rG6ZxML+S54QAR1beb/MB8UH5w/sTtsBZ9DXCVwHj5eW7oG5IgE174Pm8zezlkDknfW0Wy4J7yfbP868UXaTWIfKZ3s/8/EdBt09pOj26U+G5aF7Rg4wrH6pSKWayFqEw95Po1MouYisuHdbHz+D5oaGTEnEwAA</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=2445b338cf7dc750ccf631ad5d851c15"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Create Flow Data">99008a631b67001094630f28cc4bcb97</action_type>
+        <action_type_parent display_value="Create Flow Data">8d3e35ef1b27001094630f28cc4bcb2a</action_type_parent>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot>99008a631b67001094630f28cc4bcb97</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Playbook Manual Activity Flow">fdd4ff74cf7dc750ccf631ad5d851c00</flow>
+        <generation_source/>
+        <order>1</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:47:21</sys_created_on>
+        <sys_id>c6d433b4cf7dc750ccf631ad5d851c2d</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:49:59</sys_updated_on>
+        <ui_id>e17e6678-8e97-4584-a903-cfa6e47fd378</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+1YW2/iOBT+KyjPBMV2ruzDqgKmi7alCNpZjbpV5MROG21IMrm0w1b89z3OBRIubWGn09VqXlB8/Nnn+vnY3D5L1M38KByHaUZDl8+X6ZhJfYk4pmNiTpCjE0VBCvU8pnBNc13VcR3MpK7kC5zFFMWkusAZAmepgPewWeIsE3AhXXBAMu75oS90geyRBrkQKqqpmJx5yOF7luscoMxP44AuP1crLmmY06BzBlY/+tkSAO6DH7CEh1L/9q4rxTQBfRlPpP7z1lS2jLkdUIcHsM+MexxmXH6EJ/XaYdOVfe4JTSBLGjqihAmbUFfi3zIeMg46PRqkvCstaMhoFiVLqZ8lOQgSTtlVGCzXiAc/zGA/SWC/pf7fsDnB3cb+fSldprYXRE82bEXtljVrmF3FUrgAqE7LD/ch8l1+FRfDQldGnYCXn24U5ItwUroqksI9mgdZnRSQ5Clsz2PhmbC1MtybP0RP61B/8sMiCNVkELk0WI9oliW+k2c8FZnL/evdGJbCiz0Z5AFfgF57QePYD+/tOIke/UIXmL7o3Qcw6JXh4al/H/bKqu+JYPU+gXxYiD/TxBdOX8I2sFhovAn9rzkvOKErhGqKRWXVU7isIqTIlomw7GgEykbljkWxtCribX/NhWtlqKqg2GVcAZC6iR9nRQnzyv9V998yEVkv1q+3KVWaCl85s7OoQcVdqn0/br3BtnrtWWVc5zo6ZPFhduGX2VVJTqUXlHhygE435dRPDr3GIWyqCHPqyq5qeLJqUiKL8pYNT/eYgRXEqPFxHKIOQYhyCzmGs1unjrOpyCfqZw3yPD+nuSNi0xMTq9UumfYgTiPXoKixIyyuF/4BejtelHREHXf8MM6zHX8qarm1jopX5N14dYBPay5BId8+r12YNA+sMNoYqIjc16gvsGoDWxajuv2u7tbEGxyjAL1RARYKto4BctQ5UG5XCYftIioVv9cxsc56+4xYF9wPOSAY0VzDUhzZsAiTVQOOCkoZtFsL6Tr0Wc9QPrDJOsRwEcUaAmrt0g0s22pZRbzukyiPf1CnfYOB7U4rLOzUFh62/XDPVd+9566N2HdSnFdzP1vva8xChBjcMhTZ03UL7rDYlC1suDLRESIucTkl+scxizHLsqjmeR5GBHAmUS2NOEwnxPQQUzfVCftnvEGn6WgyHE/Od1k1BcMhmt+p077BwHrhvLJwy+ADzVX7jzTXTbh2I7uvzc7dB87ygLPGivngt9Hw5mI0PNA5Z+DFsoGfjc6GX5rds4Edh51pEt0nPG122/HEns6uzmej+bxxP2muG0SLOOCtEhlcXU4vRtejxqnV8uQvHwjT8uP38XTa9EJr4kdJEiUN9Gg2u5ptsHrLGkGGoB2lwdlkMLpoRcl45WLyhuSgE5KDj0gOOTE56tHJ0Y5Mjn5EcowTkmO+cqlr/fey3W5q9m/1nMaptfeqt0n4//q6h5FKXcawjBXdhPcg1mRTgYsf1VTFMLGBqXZKUyr/RytlwukyCeLjBRgoyfIk7HisSGSverDZxVMpLd5tnT9zBcwrf4sBNuDCXn50fq0kVW7LQb8S1mVejn6RVqvV3T/P9uQBfxUAAA==</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=c6d433b4cf7dc750ccf631ad5d851c2d"/>
+    <sys_hub_sub_flow_instance_v2 action="delete_multiple" query="flow=fdd4ff74cf7dc750ccf631ad5d851c00"/>
+    <sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=fdd4ff74cf7dc750ccf631ad5d851c00^sys_idNOT IN40e4f3b4cf7dc750ccf631ad5d851c20,86d433b4cf7dc750ccf631ad5d851c2a"/>
+    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
+        <attributes/>
+        <block display_value="">28757b78cf7dc750ccf631ad5d851c04</block>
+        <comment/>
+        <connected_to/>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Playbook Manual Activity Flow">fdd4ff74cf7dc750ccf631ad5d851c00</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="If">af4e1945c3e232002841b63b12d3ae3e</logic_definition>
+        <order>3</order>
+        <outputs_assigned/>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:47:30</sys_created_on>
+        <sys_id>40e4f3b4cf7dc750ccf631ad5d851c20</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:49:59</sys_updated_on>
+        <ui_id>acb90bab-4ec3-41c4-b7a9-67e5ce3fe577</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+1UTWsbMRD9K0bnZdmP2DS+hZZAoY2hCbm0YZmVtLaoVtpKWjuu8X/vzH44pnFSE3LszXoz8+a92Yd3zLahaYO/s1feq6Vh8+8PEVOGMPy9Y0qwOasSqNJLnvI8m+VZkmQfLtJylpdpJnKQkLOIGagldnJrhArKmqIDIrYG3VJhAypMKusmHfdE+cnNAstC+UbD9v71Lr5SWjg5qGvAIXeQjs13f5XCtpGFhlJqJLsNTpkljp/rYRz8OJqYfOmQl93RPsT9uMk6QbLSJGLyMUgjJK6uQHsZsRqMgGDd9oA4CWJh9BOwUiYgHaPmR69+I3c2nVJjJdEjl33x8CyG8/UwX1nF5aIhgT0SoNTDDLe6rc1N74MOLytodRgPj0jrkU82JJpUDJKq25XdfBsXXivTGRyK2nLQhxcEPEPZBunpw0gtayQqamgaPE7ROLtW3TBqqeOlxkdcabvBpZS8GDgJj/FGEF8j/qmD78EpcvEVaXC4l1mCV7zoMoJ0waGFfXeW4ldLgnqDg5WivwY2eO5UE65wz1oOqvfREPFLmFbTNJmejsfF7EQIjtK92/m2JDMxJXi//9EmSS6MfZ7wVzrfI+Vn2HiW8tPWXoh29o9o08c4M9lJkvyP9nG0lS/6iA7euuVvTvYDxbPf4PvcCMmVRyF3hH0e/+OpsMUAKH4Mbaz7SRaesP0fMpqxUy0GAAA=</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
+    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
+        <attributes/>
+        <block display_value="">c2d433b4cf7dc750ccf631ad5d851c29</block>
+        <comment/>
+        <connected_to/>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Playbook Manual Activity Flow">fdd4ff74cf7dc750ccf631ad5d851c00</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="Assign Subflow Outputs">df4e1945c3e232002841b63b12d3ae3e</logic_definition>
+        <order>2</order>
+        <outputs_assigned>record,automated</outputs_assigned>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:47:21</sys_created_on>
+        <sys_id>86d433b4cf7dc750ccf631ad5d851c2a</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:49:59</sys_updated_on>
+        <ui_id>e2c7be88-dbde-4581-8b2a-b61b54b0381f</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/81VyW7bMBD9lZRnSyUl2ZLdU4AgQIC0AZo0l7YQuIxsorSoiJQd19C/l5SUyFkaIEFQ9GJ4Fs7MezPP3iPd2Kqx5kofGyOXJVp836NC6e25Xkp+VhpLSw6XO3Mm0ALNIY6jCOaEMYYxwfNkFuMiyjhPGGciQhMkfV4CIoljlvAiFTydYs6LWUyomIpsSjguXF5J1+Aya+C6Fs7eUNV4x34PJIXZLM2CDOZpkEyzJKBzHAe8oDNI0kLEaRb279rWvRTSVIrurt9cgK+kEjV47D8nqKK1G81CjRb7RyG7qyBXlIFyfb5CAS7C4RWgx7cD6scs+A6dPdZ2AT8LmSC4tVAKcL0KqgxM0JqWglpd7+49NVBxUarRsZKldQWRT7418rerHkeTgwYLZHYm9xvPXS2KDmL5wKzLOXXxo5M+zldacriorNSOFxT7sSlT0LfhWjXr8kuPy28HCtooe7cd52mMqwyVh+JnGwYtLld6e8/pqSw71ENQaU7VvUWtrSVrLBi/okZePSWtd54/sypQsHZ98zWtKlku86rWG9n1cqOvw6VyRtjTAV4QIeUeaOjJCT0NJ537mtbSg/7syrjHvuO3Ut400OtkGkeJIHFAIhEHCY5JwCKMAy5mCaERY3w+RW1HdX7TeGg9VQMpeUesTzC8lpU9diNsYMDfTt5BoPzFWyXz8TRpY/WaWjjUKH6qOvxmHV3VDXw89cheMdzd4+OD6Z4ZeJAT01oBLUcxRe8mpgQ/FNNf9PMfy2Yk56FoHuzln6iGZRnmJBMBKYAECSNZQEmRBWKGI0LcVU8xfoNqrANy5/PIxwNxxkuprpFt6vKoEN1PY2ga1kGUpf/HDLdU2g8/Goxj4T+jdAem//IJtW3r7rxP7G9+M0AfTAFcGsfQlfedHeSJnbtjL+zRtdX1L9949LV/AEgRxCS4BwAA</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
+    <sys_hub_pill_compound action="delete_multiple" query="attached_to=fdd4ff74cf7dc750ccf631ad5d851c00"/>
+    <sys_hub_flow_variable action="delete_multiple" query="model=fdd4ff74cf7dc750ccf631ad5d851c00"/>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>message</element>
+        <help/>
+        <hint/>
+        <label>Message</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_fdd4ff74cf7dc750ccf631ad5d851c00</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:47:21</sys_created_on>
+        <sys_id>39d4ff74cf7dc750ccf631ad5d851c39</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:47:21</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>wait</element>
+        <help/>
+        <hint/>
+        <label>Wait for user input</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_fdd4ff74cf7dc750ccf631ad5d851c00</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:47:21</sys_created_on>
+        <sys_id>79d4ff74cf7dc750ccf631ad5d851c9d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:47:21</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_input_fdd4ff74cf7dc750ccf631ad5d851c00^sys_idNOT INb9d4ff74cf7dc750ccf631ad5d851c40,fdd4ff74cf7dc750ccf631ad5d851c3f"/>
+    <sys_choice field="wait" table="var__m_sys_hub_flow_input_fdd4ff74cf7dc750ccf631ad5d851c00">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>wait</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Yes</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_fdd4ff74cf7dc750ccf631ad5d851c00</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+            <sys_created_on>2026-06-28 14:47:21</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>b9d4ff74cf7dc750ccf631ad5d851c40</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+            <sys_updated_on>2026-06-28 14:47:21</sys_updated_on>
+            <value>yes</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>wait</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>No</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_fdd4ff74cf7dc750ccf631ad5d851c00</name>
+            <sequence>0</sequence>
+            <synonyms/>
+            <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+            <sys_created_on>2026-06-28 14:47:21</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>fdd4ff74cf7dc750ccf631ad5d851c3f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+            <sys_updated_on>2026-06-28 14:47:21</sys_updated_on>
+            <value>no</value>
+        </sys_choice>
+    </sys_choice>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>automated</element>
+        <help/>
+        <hint/>
+        <label>Automated</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_output_fdd4ff74cf7dc750ccf631ad5d851c00</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:47:21</sys_created_on>
+        <sys_id>06d433b4cf7dc750ccf631ad5d851c22</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:47:21</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>record</element>
+        <help/>
+        <hint/>
+        <label>Record</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_output_fdd4ff74cf7dc750ccf631ad5d851c00</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:47:21</sys_created_on>
+        <sys_id>4ed433b4cf7dc750ccf631ad5d851c17</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:47:21</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_output_fdd4ff74cf7dc750ccf631ad5d851c00"/>
+    <sys_hub_flow_snapshot action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <acls/>
+        <active>true</active>
+        <allow_high_security_roles>false</allow_high_security_roles>
+        <annotation/>
+        <attributes>browserActivatedIn=chrome,integrationActivatedIn=standalone,viewActivatedIn=naturalLanguage</attributes>
+        <authored_on_release_version>29000</authored_on_release_version>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category display_value="Activity Flows">f427c6ef1b230010affd0e55cc4bcb14</category>
+        <copied_from>2b8b42e31b630010affd0e55cc4bcbe9</copied_from>
+        <copied_from_name/>
+        <description>&lt;p&gt;Simple instruction process activity for Playbook Workspace Experience, that optionally waits for user to complete the flow data record.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Inputs:&lt;/b&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;Message&lt;/b&gt; - Message that will be displayed to the end user using Playbook Workspace Experience&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Wait for user input&lt;/b&gt; - When checked, does not wait for flow data to be in a completed state.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;b&gt;Outputs:&lt;/b&gt;&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;Record&lt;/b&gt; - Flow Data Record.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Automated&lt;/b&gt; - True/False based on whether the flow waited for user input or not.&lt;/li&gt;
+&lt;/ul&gt;</description>
+        <flow_priority/>
+        <internal_name>playbook_manual_activity_flow</internal_name>
+        <label_cache>[{"name":"subflow.wait","label":"Input➛Wait for user input","reference":"","reference_display":"","type":"choice","base_type":"choice","column_name":"","choices":[{"label":"No","value":"no","order":0.0},{"label":"Yes","value":"yes","order":1.0}],"usedInstances":{"acb90bab-4ec3-41c4-b7a9-67e5ce3fe577":["condition"]},"attributes":{"uiType":"choice","uiTypeLabel":"Choice","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"719c7370-be5a-4ded-ae06-cdbd0ad44cb6","sourceUiUniqueId":"","sourceType":"","sourceId":""}},{"name":"subflow.automated","label":"Input➛Don\u0027t wait","reference":"","reference_display":"","type":"choice","base_type":"choice","column_name":"","attributes":{"uiType":"boolean","uiTypeLabel":"True/False","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"1c97bbec-e236-42e4-bceb-41015f4d78c9","sourceUiUniqueId":"","sourceType":"","sourceId":""}},{"name":"e17e6678-8e97-4584-a903-cfa6e47fd378.record.sys_id","label":"1 - Create Flow Data➛Record➛Sys ID","reference":"","reference_display":"Sys ID","type":"GUID","base_type":"GUID","parent_table_name":"sys_flow_data","column_name":"sys_id"},{"name":"f1fda61b-d5db-4454-8d49-64fb01d59656.error_message","label":"5➛Error Message","reference_display":"Error Message","type":"string","base_type":"string","attributes":{"uiType":"string","uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","pwd2droppable":"true","uiUniqueId":"87687532-9e3d-4497-a88e-90f45bfb9adb"}},{"name":"f1fda61b-d5db-4454-8d49-64fb01d59656.status","label":"5➛Status","reference_display":"Status","type":"choice","base_type":"choice","attributes":{"uiType":"choice","uiTypeLabel":"Choice","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"5e478657-3a84-4a60-a92b-d3e80005ad34"}},{"name":"f1fda61b-d5db-4454-8d49-64fb01d59656.Table","label":"5➛Flow Data Table","reference":"sys_flow_data","reference_display":"Flow Data","type":"table_name","base_type":"table_name","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"f1fda61b-d5db-4454-8d49-64fb01d59656.Record","label":"5➛Flow Data Record","reference":"sys_flow_data","reference_display":"Flow Data","type":"reference","base_type":"reference","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"244c9255-c82b-47e3-8c53-ff7314f9f02d.state","label":"5➛State","reference_display":"State","type":"choice","base_type":"choice","attributes":{"uiType":"choice","uiTypeLabel":"Choice","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"2e334039-7a20-4ead-9148-909988f1a7e4"}},{"name":"36200886-e130-46df-8a92-dbe217661e58.table_name","label":"3➛Flow Data Table","reference":"sys_flow_data","reference_display":"Flow Data","type":"table_name","base_type":"table_name","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"36200886-e130-46df-8a92-dbe217661e58.record","label":"3➛Flow Data Record","reference":"sys_flow_data","reference_display":"Flow Data","type":"reference","base_type":"reference","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"subflow.assigned_to","label":"Input➛Assigned To","reference":"sys_user","reference_display":"User","type":"reference","base_type":"reference","attributes":{"sourceUiUniqueId":"","sourceType":"","sourceId":"","uiUniqueId":"9d5b871b-6a0f-42a6-9869-dcdcc4f738a0"}},{"name":"e17e6678-8e97-4584-a903-cfa6e47fd378.data","label":"1➛Data","reference_display":"Data","type":"dynamic_object","base_type":"dynamic_object","attributes":{"uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","pwd2droppable":"true","uiType":"string","dynamic":"true","uiUniqueId":"6dc5aaf8-7456-4a43-9070-07022f880dd3"}},{"name":"e17e6678-8e97-4584-a903-cfa6e47fd378.record","label":"1 - Create Flow Data➛Record","reference":"sys_flow_data","reference_display":"Flow Data","type":"reference","base_type":"reference","usedInstances":{"71104454-2ec7-45bb-b456-13743c7eb5db":["record"],"62c599f2-8c92-46f2-b7d5-11495b62947a":["record"]},"attributes":{"uiType":"reference","uiTypeLabel":"Reference","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"a84140d4-4607-4e97-a968-ee79f23bf1e0"}},{"name":"e17e6678-8e97-4584-a903-cfa6e47fd378.__action_status__","label":"1 - Create Flow Data➛Action Status","reference_display":"Action Status","type":"object","base_type":"object","attributes":{"uiType":"object","uiTypeLabel":"Object","co_type_name":"FDACTIONSTATUS","action_error_output":"true","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"b9ef666d-e49a-40d9-bf3e-8212f956c5d2"}},{"name":"e17e6678-8e97-4584-a903-cfa6e47fd378.__dont_treat_as_error__","label":"1 - Create Flow Data➛Don\u0027t Treat as Error","reference_display":"Don\u0027t Treat as Error","type":"boolean","base_type":"boolean","attributes":{"uiType":"boolean","uiTypeLabel":"True/False","visible_in_ui":"false","action_error_output":"true","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"7bb61ebc-f0b6-4ea6-add7-81d43ed62a93"}},{"name":"36200886-e130-46df-8a92-dbe217661e58.__action_status__","label":"3➛Action Status","reference_display":"Action Status","type":"object","base_type":"object","attributes":{"uiType":"object","co_type_name":"FDACTIONSTATUS","action_error_output":"true","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"36200886-e130-46df-8a92-dbe217661e58.__dont_treat_as_error__","label":"3➛Don\u0027t Treat as Error","reference_display":"Don\u0027t Treat as Error","type":"boolean","base_type":"boolean","attributes":{"uiType":"boolean","visible_in_ui":"false","action_error_output":"true","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"244c9255-c82b-47e3-8c53-ff7314f9f02d.__action_status__","label":"5➛Action Status","reference_display":"Action Status","type":"object","base_type":"object","attributes":{"uiType":"object","co_type_name":"FDACTIONSTATUS","action_error_output":"true","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"244c9255-c82b-47e3-8c53-ff7314f9f02d.__dont_treat_as_error__","label":"5➛Don\u0027t Treat as Error","reference_display":"Don\u0027t Treat as Error","type":"boolean","base_type":"boolean","attributes":{"uiType":"boolean","visible_in_ui":"false","action_error_output":"true","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"f1fda61b-d5db-4454-8d49-64fb01d59656.__action_status__","label":"5➛Action Status","reference_display":"Action Status","type":"object","base_type":"object","attributes":{"uiType":"object","co_type_name":"FDACTIONSTATUS","action_error_output":"true","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"f1fda61b-d5db-4454-8d49-64fb01d59656.__dont_treat_as_error__","label":"5➛Don\u0027t Treat as Error","reference_display":"Don\u0027t Treat as Error","type":"boolean","base_type":"boolean","attributes":{"uiType":"boolean","visible_in_ui":"false","action_error_output":"true","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}}]</label_cache>
+        <master>true</master>
+        <name>Playbook Manual Activity Flow</name>
+        <natlang/>
+        <outputs/>
+        <parent_flow display_value="Playbook Manual Activity Flow">fdd4ff74cf7dc750ccf631ad5d851c00</parent_flow>
+        <remote_trigger_id/>
+        <run_as>user</run_as>
+        <run_with_roles/>
+        <sc_callable>false</sc_callable>
+        <status>published</status>
+        <sys_class_name>sys_hub_flow_snapshot</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:50:00</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>7c757b78cf7dc750ccf631ad5d851c7a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:50:00</sys_updated_on>
+        <type>subflow</type>
+        <version>2</version>
+    </sys_hub_flow_snapshot>
+    <sys_translated_text action="delete_multiple" query="documentkey=7c757b78cf7dc750ccf631ad5d851c7a"/>
+    <sys_variable_value action="delete_multiple" query="document_key=7c757b78cf7dc750ccf631ad5d851c7a"/>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_flow_output_7c757b78cf7dc750ccf631ad5d851c7a^id=7c757b78cf7dc750ccf631ad5d851c7a"/>
+    <sys_hub_flow_stage action="delete_multiple" query="flow=7c757b78cf7dc750ccf631ad5d851c7a"/>
+    <sys_flow_cat_variable_model action="delete_multiple" query="id=7c757b78cf7dc750ccf631ad5d851c7a^sys_idNOT INb8757b78cf7dc750ccf631ad5d851c7c"/>
+    <sys_flow_cat_variable_model action="INSERT_OR_UPDATE">
+        <id>7c757b78cf7dc750ccf631ad5d851c7a</id>
+        <name>Playbook Manual Activity Flow</name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:50:00</sys_created_on>
+        <sys_id>b8757b78cf7dc750ccf631ad5d851c7c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:50:00</sys_updated_on>
+    </sys_flow_cat_variable_model>
+    <sys_flow_cat_variable action="delete_multiple" query="flow_catalog_model=b8757b78cf7dc750ccf631ad5d851c7c"/>
+    <sys_hub_flow_input action="delete_multiple" query="model=7c757b78cf7dc750ccf631ad5d851c7a^sys_idNOT IN34757b78cf7dc750ccf631ad5d851cee,b4757b78cf7dc750ccf631ad5d851c7e"/>
+    <sys_hub_flow_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=choice,uiTypeLabel=Choice,uiUniqueId=719c7370-be5a-4ded-ae06-cdbd0ad44cb6</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice>3</choice>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value>yes</default_value>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>wait</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="Choice">choice</internal_type>
+        <label>Wait for user input</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Playbook Manual Activity Flow">7c757b78cf7dc750ccf631ad5d851c7a</model>
+        <model_id>7c757b78cf7dc750ccf631ad5d851c7a</model_id>
+        <model_table>sys_hub_flow_snapshot</model_table>
+        <name>var__m_sys_hub_flow_input_7c757b78cf7dc750ccf631ad5d851c7a</name>
+        <next_element/>
+        <order>2</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:50:00</sys_created_on>
+        <sys_id>34757b78cf7dc750ccf631ad5d851cee</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:50:00</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=34757b78cf7dc750ccf631ad5d851cee"/>
+    <sys_hub_flow_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string,uiTypeLabel=String,uiUniqueId=5cb06772-9646-4b3a-a5fd-57ed9487f8b2</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>message</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="String">string</internal_type>
+        <label>Message</label>
+        <mandatory>false</mandatory>
+        <max_length>8000</max_length>
+        <model display_value="Playbook Manual Activity Flow">7c757b78cf7dc750ccf631ad5d851c7a</model>
+        <model_id>7c757b78cf7dc750ccf631ad5d851c7a</model_id>
+        <model_table>sys_hub_flow_snapshot</model_table>
+        <name>var__m_sys_hub_flow_input_7c757b78cf7dc750ccf631ad5d851c7a</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:50:00</sys_created_on>
+        <sys_id>b4757b78cf7dc750ccf631ad5d851c7e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:50:00</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=b4757b78cf7dc750ccf631ad5d851c7e"/>
+    <sys_hub_flow_output action="delete_multiple" query="model=7c757b78cf7dc750ccf631ad5d851c7a^sys_idNOT IN3875bb78cf7dc750ccf631ad5d851c49,c575bb78cf7dc750ccf631ad5d851c91"/>
+    <sys_hub_flow_output action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=reference,uiTypeLabel=Reference,uiUniqueId=95324d13-12d3-4031-b200-cd641a2bbc95</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice>3</choice>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>record</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_link/>
+        <internal_type display_value="Reference">reference</internal_type>
+        <label>Record</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Playbook Manual Activity Flow">7c757b78cf7dc750ccf631ad5d851c7a</model>
+        <model_id>7c757b78cf7dc750ccf631ad5d851c7a</model_id>
+        <model_table>sys_hub_flow_snapshot</model_table>
+        <name>var__m_sys_hub_flow_output_7c757b78cf7dc750ccf631ad5d851c7a</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference display_value="" name="sys_flow_data">sys_flow_data</reference>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_output</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:50:01</sys_created_on>
+        <sys_id>3875bb78cf7dc750ccf631ad5d851c49</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:50:01</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_output>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=3875bb78cf7dc750ccf631ad5d851c49"/>
+    <sys_hub_flow_output action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=boolean,uiTypeLabel=True/False,uiUniqueId=b880c18d-1fe1-4b18-a1f8-d602112e9500</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice>3</choice>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>automated</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_link/>
+        <internal_type display_value="">boolean</internal_type>
+        <label>Automated</label>
+        <mandatory>false</mandatory>
+        <max_length>40</max_length>
+        <model display_value="Playbook Manual Activity Flow">7c757b78cf7dc750ccf631ad5d851c7a</model>
+        <model_id>7c757b78cf7dc750ccf631ad5d851c7a</model_id>
+        <model_table>sys_hub_flow_snapshot</model_table>
+        <name>var__m_sys_hub_flow_output_7c757b78cf7dc750ccf631ad5d851c7a</name>
+        <next_element/>
+        <order>2</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_output</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:50:01</sys_created_on>
+        <sys_id>c575bb78cf7dc750ccf631ad5d851c91</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:50:01</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_output>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=c575bb78cf7dc750ccf631ad5d851c91"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=7c757b78cf7dc750ccf631ad5d851c7a"/>
+    <sys_hub_trigger_instance_v2 action="delete_multiple" query="flow=7c757b78cf7dc750ccf631ad5d851c7a"/>
+    <sys_hub_action_instance_v2 action="delete_multiple" query="flow=7c757b78cf7dc750ccf631ad5d851c7a^sys_idNOT IN0975bb78cf7dc750ccf631ad5d851cfc,0975bb78cf7dc750ccf631ad5d851cff,cd75bb78cf7dc750ccf631ad5d851cfd"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Create Flow Data">99008a631b67001094630f28cc4bcb97</action_type>
+        <action_type_parent display_value="Create Flow Data">8d3e35ef1b27001094630f28cc4bcb2a</action_type_parent>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot>99008a631b67001094630f28cc4bcb97</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Playbook Manual Activity Flow">7c757b78cf7dc750ccf631ad5d851c7a</flow>
+        <generation_source/>
+        <order>1</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:50:01</sys_created_on>
+        <sys_id>0975bb78cf7dc750ccf631ad5d851cfc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:50:01</sys_updated_on>
+        <ui_id>e17e6678-8e97-4584-a903-cfa6e47fd378</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+1YbW/iOBD+KyifCYrjvHIfThXQHrpui6Dd02pvhZzYLtaFJJuXdjnEf79xEiDhpYXublWd9kvVTB57npnxM+PweakQPxNROAzTjIQ+myzSIVW6CvYcz9EZRp6FNQ1phHOqMdP0fcPzPZ0qbUVInEs1zSGWxNkS5xqA57pT4lwHcCGZM0BSxkUopC+wPZIgl0bNcDSHUY48dmC5xQBKRRoHZPGxWvGBhDkJWhfA+lFkCwD4MxHQhIVK9/OXthKTBPxlLFG6y51XpxIOiMcCgPbrjA9FkS1iaUsYZ+DEZ5Xpulo/rtmjhEpKqK2wbxkLKQMunAQpaytzElKSRclC6WZJDoaEEXobBosNYibCDPZTJPZbKv4Fp1hv1/x2lXSRTnkQPU1hKzJtsNzAplUqZWiAajXi49I0AQJ+lies9ObPIuGztMwe7EnyIOvVbSXgNi72KJZkxAvWq6Mgn4c3Zd6UzQbrQoIlT4ETi2U6ZIBVtHwyi542ubsUYZG56mUQ+SSoQRlJ/NmlYIGsbVGjtkKyLBFenkmWSyUXd/tlKo2HCsUCNgc20zmJYxE+TOMkehQFAwho3nkI4KFTZpql4iHslPrpyLx3LsHeL8wfSSJkKj7ANrBYerwPxdecFeqyNExMzSWqwTWmGghpqusgXfVMDCfTYJ5LdGXVllXtBSRNt0mEIKZfc5mCMqVV8qZl/uUSPxFxVsiDVXlatb9X5ch9VjR8qw8gC9EzOs2imsz3ZXy2bk+gsNbtRcWhdRcdI3a+cvXnlVtZXitdUEJyRKr35atf+nxDfeqOgXRGfNU3bK4aDsGqFIpqc4tTW9cQJfZ70ifxMEKEucizvX1xeN5WBk9EZDVhLpdp7slsdeSL1WpfqAcQ5wn3BG5r4f4FHlo8SlpSDi0Rxnm2x7xSbnmyd2TbWxsrzeKfptkjWn1Rp8tNrDf1/hhGW9KaPA5r1CdYtYUtiqf1VWJ1SPQnOEAnOtBX+x0En9VCyu0qY795rkrH391hjvSSzfFoNpLNAXmTLkKx6duu5qm2i6lq2NBPCKEw711kWTDoua29qynvYdtHRDcRqHJfqcB1Z5gWGXxIojz+saP+BB7NUS+JtNZEjlM8f+gbP33ob8gdaidX1btfs/8NZz/C2Gaurancsly4oOuO6uq2r2ILIexjnxFsvSfVUuq6LjE55zrCgHOw4ZrYoxbGDkfU2EoC9s9YTaqjwU1/eHO1r9gREIf8ni3cE6ishTupuOxQO2e6m+94um8zuJ/sQ3N+4s8YzQNGaysmvT8G/fvrQf/I6B5DZIsafjy46H+qj+8adhi2Rkn0kLC0Pu6HN9PR+PZqPJhMapem+rpeNI8D1jg1vdsPo+vB3aDWJRuR/CNAVY04/hyORvUozDp+kCRRUkMPxuPb8RZrNdhIfQTNLPUubnqD60aW7BduRicUB72iOPoZxcGvLI5xdnHMM4tjnVEc+xXFcV64VTZ+yNqdVOs2sTOuao3s4F1zW/D/9X1TRwbxKdVVXbMc+GrVTdXR4OZJTEOzHd3WifljJlf5M2Vpk2koyyL/eQYGTqBnhi1Oi9J2qs/KafGZlxZfl62/cw0Il3+LB92Gb4jyn9bvlaWqdvnQrYzrg18+/aasVqsv/wGhPcas3RYAAA==</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=0975bb78cf7dc750ccf631ad5d851cfc"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Wait For Condition">89ce8a4187120010663ca1bb36cb0be3</action_type>
+        <action_type_parent display_value="Wait For Condition">8bb9a8160b10030085c083eb37673aec</action_type_parent>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot>89ce8a4187120010663ca1bb36cb0be3</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Playbook Manual Activity Flow">7c757b78cf7dc750ccf631ad5d851c7a</flow>
+        <generation_source/>
+        <order>5</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:50:01</sys_created_on>
+        <sys_id>0975bb78cf7dc750ccf631ad5d851cff</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:50:01</sys_updated_on>
+        <ui_id>62c599f2-8c92-46f2-b7d5-11495b62947a</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+2XXW+jOBSG/0rFdZzFYMD0rkpSbbWZtiLZ2YvRCBlz3FgikOGjM9mq/30MOIV8NNPupJUq7SXHHPOe1+fhwJcHQ8bGuUF8DpQRTD1smSY2XdfmDEeR7fLIjIAYAyNlS1B35sCzPFbX9yyp6sDDA2APXNejiILvIeJQgphv2ogL5gLxRGx7dNjmPT6qzFgWq4StP+sNVIQvZBLnkBrnX74OjBXL1bNKyI3zh52ll4pNWASJujXYqN1VX65X9XWc8WoJaRnKTXCqM8d65exqrFZUUi0HDwz4UUIag9IhWFLAwFiyNGZllq+N8zKvVCAHFt+kyfrpjoVMy7bOJftRyH/Vg22rvk+AKoxrD54uQ+1PGxZjVrKZ2pmXVf5kVyY5FK0lMQhWJeWoH2tvuFmVMkvblJJFySY7S6plet0aYjxt0DuOqlAiYFXXWStvyxKzRfY92Ii8lGnjiC4xyThLnq5YWeYyqspazoNRyfkhs9vwYbuFTNTxh43osMiqvDEpmIxugnH4z8V89OckCIPJbB5cjeaTOgMSaLZestVKpnfhKs/uZaNQ1bsc3iXqYiiS7LsqrJB36ZDx2pyhOjo2vFTxcRP+zHJZP/ST2kYl1yr/TuW3Cq6axhMC29h1EcaqvQmOXORTcJAJDiOORVzHtYzHgVGsi1HCiqLzWB1u+K2qLWod196GzfG0ZTYdWifzXK7KCyXvHrSjj4MNps7Rzmddo/f27FBVusLWA1X1Poi1DWfjdumVRP5a14bIedOIh3VqKPdi037u2XW7oJG0jiOpIx2TbTMfQJKaHwhJXdbvM7nl9TaSW27LImwbU4tudn0v7ixMfUoiG9kRcRDxhUDUVFOGADO5Y8Uewfw/cPdL2o7PGdF1Mc/SWNZ1FX3aSlbC1fXo5tPtdDKfDGZ/Xd3eTsaDSRDcBIPRxfVoMp02L68dDl+eeNK5KXqUjvoFHSpSo7oXmx7aQKNqn2p6EtP8SLCean5umb3N6pbd78IkxNSNHJMiEJQioj7xkI8tC7kuizEmPBbm285CMz7WzaL3yVrKJWRVqUYfu+vxae6Tt3mrvY6rFyjZcDVJm5eqVvSsRE1XlGUJsHR3Cqp2+uNSK9VokVdOwWNsfSCyTjYGO6d3ZmDf63fhinNG1VBjyLc5IOJGHFHBBbIhcoTtRDTyzDeYdfx4D/v7rRpXOWtOsSPqBP92L9CxYWncCXhemiapOZvd+HR/I42T8z9Ov4XTnt07P3vdwlsxtVB5Y7Yu6q5QDO9TBph5TlT/vzFELB8j5hML+S54QAR1bea/AWUUH+1usd/KBV9AXCVwWspeoGND2awT8Lw0TVnX6NuABb24Jsw9GWF072OQL9O+uEO89ar6kNyJGbCcLy4lJPV56v+3Z2jsH8s2iP2DeZ/pZlnYjoEjHKtPR2K5FqI28ZDn08gkqvUiG07I3defIM5IceAUAAA=</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=0975bb78cf7dc750ccf631ad5d851cff"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Update Record">f9d01dd2c31332002841b63b12d3aea1</action_type>
+        <action_type_parent display_value="Update Record">baf174c8c3c232002841b63b12d3aee4</action_type_parent>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot>f9d01dd2c31332002841b63b12d3aea1</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Playbook Manual Activity Flow">7c757b78cf7dc750ccf631ad5d851c7a</flow>
+        <generation_source/>
+        <order>4</order>
+        <parent_ui_id>acb90bab-4ec3-41c4-b7a9-67e5ce3fe577</parent_ui_id>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:50:01</sys_created_on>
+        <sys_id>cd75bb78cf7dc750ccf631ad5d851cfd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:50:01</sys_updated_on>
+        <ui_id>71104454-2ec7-45bb-b456-13743c7eb5db</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+VVy27iMBT9FeQ1oITw3o2gSCPRMmorNm0VXeIbsOQ8xnFoGcS/z03sAALUoVI3aLK7T59zcpy8bJngbMjayB134HYDz/W8luO0+m130fUWbot7gOiyOoshQupUGCSKU7wGmReJ7RbdHna7vX6jj4Neo93ptxswcLxGEEIX272Qe71+08ztdjTJRZZK2MztAsoEKyG5wpgNX97qLAVFZ2lUbLg9KV0LVsICJbU+VmhP0etNWsQ8CfIIY+2LKjm1k2Nbqf0cU4WGCjiuU2f4oTHmSEBCkBnWWQQxB52oDRtqlVNCIfBZLDf7jpWItSEawUcm/tDJbafoC5GYBVaEfehbgUw6HIOGJ9oc6Fzt9UpEgJnRhGMIudSj45xpmKVaJLEZ0bCQ1XQi8yh+MIqw/YKj95FnBALTgmeB3NAKn1bJ+2MFciLiUhJLUSYByH0EWiuxyHUBZ8tQYqlxBGkq4qWfqmQtymGCEjWXkoJmKJN3OjMTy7gJQYG7SapCc0L5cZmegxIFiXtaQ8O7Oss22UhClh2okIb+77xAYohZCn6pQimBXzqhGA6USPUPOmqNFviubq/DovOZw4LBwVBHOw9XgnD5hg8xODd8Qak2NqWvOf8KXJXzn8v3fRmnNf9Zbno8W3swBWv9zrdZv39L1rc0bt77/3K80/r0m3rkpNLk2bHbNWh8zR3H46PZ/a/p3fPduecvN33N/VdgrNw/ESh5dgF0ZX2MCJ1G35A4sb8t1ua2uP/6f9sdcLtO+dzQTfhvfgJvfwG0DXaOFQkAAA==</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=cd75bb78cf7dc750ccf631ad5d851cfd"/>
+    <sys_hub_sub_flow_instance_v2 action="delete_multiple" query="flow=7c757b78cf7dc750ccf631ad5d851c7a"/>
+    <sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=7c757b78cf7dc750ccf631ad5d851c7a^sys_idNOT IN0175bb78cf7dc750ccf631ad5d851cec,4175bb78cf7dc750ccf631ad5d851cfa"/>
+    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
+        <attributes/>
+        <block display_value="">c2d433b4cf7dc750ccf631ad5d851c29</block>
+        <comment/>
+        <connected_to/>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Playbook Manual Activity Flow">7c757b78cf7dc750ccf631ad5d851c7a</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="Assign Subflow Outputs">df4e1945c3e232002841b63b12d3ae3e</logic_definition>
+        <order>2</order>
+        <outputs_assigned>record,automated</outputs_assigned>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:50:01</sys_created_on>
+        <sys_id>0175bb78cf7dc750ccf631ad5d851cec</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:50:01</sys_updated_on>
+        <ui_id>e2c7be88-dbde-4581-8b2a-b61b54b0381f</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/9VVXW/aMBT9K52fCbOTAIE9Va2QKnWrtLK+bBNy7Buwapw0dmAM8d93TQKhn6omNGkvgI/vvb7nXB+zIXnlisrZSX5urZoZMvq+IZnOV9f5TIkrYx03Am7X9kqSERlCFIUhDFmappQyOoz7Ec3CRIg4FakMSYcoHxeDjKMojUU2kGLQo0Jk/Yhx2ZNJjwmaYZzhC8DIEkReSlwvua48sNkAG0C/P0iCBIaDIO4lccCHNApExvsQDzIZDZJunbfdYqZUttB8fffXBcRcaVmC5/6zQwpeYmsOSjLaEGXwh+H6Wpl7rP0s+L1sNU9BY+jXPd2n9N26qNcZYHEBDXR9yGtxTPDNsQ6BXw6MBOwh49pChyy4kdzl5fqAlMDljdEtMEdKNZMF/2XVbzw1CjtHB4+IXdupvwJTrMXJ0d60kRpjxrh/dlnvZ/771pWVcFUJe5lyJcDWKknIeKXdxTFWB9wUTuWoJYk8YZ7qfXquq4X5UotEDhX2M0akstgOFJ6/J9Swy27n+eog1liZnVTNps4F10ehwEsxHyvQsiGt/CS4c6VKK+cb3ZBKTZ5PpgZfmg1oWGA/0wUvCmVm06LMl2rXA1JadGcaF91aW/B263LhBeh6pbte08sdfMdL5cX4jGUw2Z/4zaiHCmoX9qIwliwKWCijIKYRC9KQ0kDIfsx4mKZi2CPbjqd0obm1rYxIYvpQeRFqURv5prsR7FJEqQp3jk0toVFq2znBgyDetAgbto7glcsX3MHxm0Cfu5yewLfvaGrv2/Ojrl5otHFvmucauHni3UlZwcexl7I1b3gy88b0sXlf8et/a9NX7NhK/diMj8T+J25Mk4QKlsiAZcCCOGVJwFmWBLJPQ8bQGz1KT+JGnBzsMa9FewFx8VYoHoQTN2eZ3L3oXVulO9LK+H/+7oor9+FHRWkk/Wc4WIOtf3wi2+3Wu2UXWF+IZSPG4c4IZVGziceujuLkGn3iH4wWWuXlvT+4xbZ/AC8kpbCACAAA</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
+    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
+        <attributes/>
+        <block display_value="">28757b78cf7dc750ccf631ad5d851c04</block>
+        <comment/>
+        <connected_to/>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Playbook Manual Activity Flow">7c757b78cf7dc750ccf631ad5d851c7a</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="If">af4e1945c3e232002841b63b12d3ae3e</logic_definition>
+        <order>3</order>
+        <outputs_assigned/>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:50:01</sys_created_on>
+        <sys_id>4175bb78cf7dc750ccf631ad5d851cfa</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:50:01</sys_updated_on>
+        <ui_id>acb90bab-4ec3-41c4-b7a9-67e5ce3fe577</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+1Vy27bMBD8FYNnQdAjNhrfAgcBCqQx0AS5tIGwIqmYKEWqfNhxBf97l3rYRuOmDtpjb+bscjkz2oFbor1rvLMP+spa8azI/MtTRIQKGP5uiWBkTqoEqvSSpjTPZnmWJNmHi7Sc5WWasRw45CQiCmqOnVQrJpzQquiAiKxB+lDYgHCTSptJN3si7ORuiWUmbCNh+/h2F10JyQwf2DVgcLbjhszbX0rnspVQcomti5Hu5LZDfq/DbZuAW2eEeh7Ot8OU+xHUhgVWaRIR/uK4Yhz5VCAtj0gNioHTZrtHDAe2VPIArIRyOI6E5hcrfuCD2XQaGiuOEinvi/tjMbjXw9U1OEAqnjpvhla60oJy25vDeAVeusUx1jcsmyC1v+KglONtLX2t7npHyH7A+LEQ8RZJ8CYoDdQHHdX9Sm8+jyxvhOpcGYpSU5D7Ezj0rvQu8GkJl7zGQUUNTYOOFo3Ra9FdRi51/CzxEFdSb/DRsK0x0EA8RmMhvkH8uoMfwYig4hOOwcs9zRKsoEW3VzgObeJkFxG7tQsJ1h5EorvFdx8o9pIHcUXvT7hCjWjcFb685oOOXTQE5RKm1TRNpqdX72J2YsGOMtK21pdBXhxysNt99UmSM6Vf5+SNzvdl5QzCr7JyWsR7ApL9ISDh65yZjyRJ/gfkrwMibNGv9aCte/wf5uMpLHn/5t5rKixSewjYx/H/JhS2uFyCHkMbbb4FUQds9xOEYLZ7uQYAAA==</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
+    <sys_hub_pill_compound action="delete_multiple" query="attached_to=7c757b78cf7dc750ccf631ad5d851c7a"/>
+    <sys_hub_flow_variable action="delete_multiple" query="model=7c757b78cf7dc750ccf631ad5d851c7a"/>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>message</element>
+        <help/>
+        <hint/>
+        <label>Message</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_7c757b78cf7dc750ccf631ad5d851c7a</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:50:00</sys_created_on>
+        <sys_id>bc757b78cf7dc750ccf631ad5d851ce8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:50:00</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>wait</element>
+        <help/>
+        <hint/>
+        <label>Wait for user input</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_7c757b78cf7dc750ccf631ad5d851c7a</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:50:00</sys_created_on>
+        <sys_id>f875bb78cf7dc750ccf631ad5d851c3f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:50:00</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_input_7c757b78cf7dc750ccf631ad5d851c7a^sys_idNOT IN7075bb78cf7dc750ccf631ad5d851c10,74757b78cf7dc750ccf631ad5d851cf4"/>
+    <sys_choice field="wait" table="var__m_sys_hub_flow_input_7c757b78cf7dc750ccf631ad5d851c7a">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>wait</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Yes</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_7c757b78cf7dc750ccf631ad5d851c7a</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+            <sys_created_on>2026-06-28 14:50:00</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>7075bb78cf7dc750ccf631ad5d851c10</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+            <sys_updated_on>2026-06-28 14:50:00</sys_updated_on>
+            <value>yes</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>wait</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>No</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_7c757b78cf7dc750ccf631ad5d851c7a</name>
+            <sequence>0</sequence>
+            <synonyms/>
+            <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+            <sys_created_on>2026-06-28 14:50:00</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>74757b78cf7dc750ccf631ad5d851cf4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+            <sys_updated_on>2026-06-28 14:50:00</sys_updated_on>
+            <value>no</value>
+        </sys_choice>
+    </sys_choice>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>record</element>
+        <help/>
+        <hint/>
+        <label>Record</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_output_7c757b78cf7dc750ccf631ad5d851c7a</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:50:01</sys_created_on>
+        <sys_id>8175bb78cf7dc750ccf631ad5d851c8b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:50:01</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>automated</element>
+        <help/>
+        <hint/>
+        <label>Automated</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_output_7c757b78cf7dc750ccf631ad5d851c7a</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:50:01</sys_created_on>
+        <sys_id>c975bb78cf7dc750ccf631ad5d851cae</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:50:01</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_output_7c757b78cf7dc750ccf631ad5d851c7a"/>
+    <sys_hub_flow action="UPDATE">
+        <sys_id>fdd4ff74cf7dc750ccf631ad5d851c00</sys_id>
+        <latest_snapshot>7c757b78cf7dc750ccf631ad5d851c7a</latest_snapshot>
+        <compiler_build>glide-australia-02-11-2026__patch2-hotfix2-06-18-2026_06-18-2026_2231.zip</compiler_build>
+        <version_record/>
+    </sys_hub_flow>
+    <sys_flow_trigger_plan action="delete_multiple" query="plan_id=fdd4ff74cf7dc750ccf631ad5d851c00"/>
+    <sys_flow_subflow_plan action="delete_multiple" query="plan_id=fdd4ff74cf7dc750ccf631ad5d851c00^sys_idNOT INd575fb78cf7dc750ccf631ad5d851c84"/>
+    <sys_flow_subflow_plan action="INSERT_OR_UPDATE">
+        <plan>com.snc.process_flow.engine.ProcessPlan@6d17208</plan>
+        <plan_id display_value="Playbook Manual Activity Flow">fdd4ff74cf7dc750ccf631ad5d851c00</plan_id>
+        <snapshot>7c757b78cf7dc750ccf631ad5d851c7a</snapshot>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 14:50:02</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>d575fb78cf7dc750ccf631ad5d851c84</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_overrides/>
+        <sys_scope/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 14:50:02</sys_updated_on>
+    </sys_flow_subflow_plan>
+</record_update>
