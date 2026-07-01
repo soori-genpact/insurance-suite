@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ux_screen">
+    <sys_ux_screen action="DELETE">
+        <active>true</active>
+        <app_config display_value="Playbook Builder Config">2ba981dcc31a201098c960bc0eba8f00</app_config>
+        <description/>
+        <disable_auto_reflow>false</disable_auto_reflow>
+        <disable_interoperable>false</disable_interoperable>
+        <event_mappings>[]</event_mappings>
+        <macroponent display_value="Extraction Playbook Activity UI">9ca47cc1cfb14b50ccf631ad5d851c92</macroponent>
+        <macroponent_config>{
+    "activityDefinitionId": {
+        "type": "JSON_LITERAL",
+        "value": "63b018cc1bbf0010affd0e55cc4bcb31"
+    },
+    "activityLabel": {
+        "type": "JSON_LITERAL",
+        "value": "Sample Activity"
+    },
+    "activityState": {
+        "type": "JSON_LITERAL",
+        "value": "IN_PROGRESS"
+    },
+    "advanced": {
+        "type": "JSON_LITERAL",
+        "value": {
+            "activityType": {
+                "displayValue": "List",
+                "value": "fdbeceb95b61001070e4492c11f91a28"
+            },
+            "associatedRecordModCount": 0,
+            "authorizedActions": [
+                "complete",
+                "skip",
+                "restart"
+            ],
+            "contextId": "",
+            "expandOnMountOrChange": false,
+            "filterData": [],
+            "formApi": {
+                "dispatchDeclarativeAction": null,
+                "formFieldsRequired": false,
+                "modalDeclarativeAction": null,
+                "requestReload": "",
+                "requestSubmitAction": "",
+                "requestValidation": "",
+                "visible": true
+            },
+            "inUIBuilder": true,
+            "loading": false,
+            "processedOn": 0,
+            "userSession": {},
+            "workspaceConfigId": ""
+        }
+    },
+    "assignedTo": {
+        "type": "JSON_LITERAL",
+        "value": {
+            "avatar": "58e13b44c3222010ae17dd981840ddd3.iix?t=small",
+            "displayValue": "Adela Cervantsz",
+            "value": "0a826bf03710200044e0bfc8bcbe5d7a"
+        }
+    },
+    "associatedRecord": {
+        "type": "JSON_LITERAL",
+        "value": "-1"
+    },
+    "associatedTable": {
+        "type": "JSON_LITERAL",
+        "value": "interaction"
+    },
+    "configProperties": {
+        "type": "JSON_LITERAL",
+        "value": {
+            "expandFirstPrioritizedCard": true,
+            "filterFields": "assigned_to",
+            "maxFormFieldsOnCard": 15,
+            "pendingActivityDisplay": "SHOW_ALL",
+            "showActivityState": true,
+            "showAutomatedManualIndicator": true,
+            "slaConfiguration": ""
+        }
+    },
+    "experienceProperties": {
+        "type": "JSON_LITERAL",
+        "value": {
+            "associated_record": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "document_id"
+                },
+                "value": ""
+            },
+            "associated_table": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "table_name"
+                },
+                "value": ""
+            },
+            "columns": {
+                "displayValue": "number,short_description,opened,opened_for,state",
+                "elementData": {
+                    "type": "field_list"
+                },
+                "value": "number,short_description,opened,type,opened_for,state"
+            },
+            "description": {
+                "displayValue": "List of Interaction Records",
+                "elementData": {
+                    "type": "html"
+                },
+                "value": "&lt;p&gt;List of Interaction Records&lt;/p&gt;"
+            },
+            "experience_status_record": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "document_id"
+                },
+                "value": ""
+            },
+            "experience_status_table": {
+                "displayValue": "sys_flow_data",
+                "elementData": {
+                    "type": "table_name"
+                },
+                "value": "sys_flow_data"
+            },
+            "form_view": {
+                "elementData": {
+                    "type": "string"
+                },
+                "label": "Form view (DEPRECATED)",
+                "value": ""
+            },
+            "icon": {
+                "displayValue": "",
+                "elementData": {
+                    "reference": "st_sys_design_system_icon",
+                    "type": "reference"
+                },
+                "value": ""
+            },
+            "is_automated": {
+                "displayValue": "false",
+                "elementData": {
+                    "type": "boolean"
+                },
+                "value": "false"
+            },
+            "list_query": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "conditions"
+                },
+                "value": ""
+            },
+            "list_title": {
+                "elementData": {
+                    "type": "string"
+                },
+                "value": "Sample Title"
+            },
+            "max_columns": {
+                "elementData": {
+                    "type": "string"
+                },
+                "value": "4"
+            },
+            "record_fields": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "field_list"
+                },
+                "relatedProperties": [
+                    {
+                        "displayValue": "Adela Cervantsz",
+                        "elementData": {
+                            "reference": "sys_user",
+                            "type": "reference"
+                        },
+                        "label": "Assigned to",
+                        "name": "assigned_to",
+                        "value": "0a826bf03710200044e0bfc8bcbe5d7a"
+                    },
+                    {
+                        "displayValue": "Work in Progress",
+                        "elementData": {
+                            "reference": null,
+                            "type": "string"
+                        },
+                        "label": "State",
+                        "name": "state",
+                        "value": "work_in_progress"
+                    },
+                    {
+                        "displayValue": "Chat",
+                        "elementData": {
+                            "reference": null,
+                            "type": "string"
+                        },
+                        "label": "Type",
+                        "name": "type",
+                        "value": "chat"
+                    }
+                ],
+                "value": "state,assigned_to"
+            },
+            "row_count": {
+                "elementData": {
+                    "type": "string"
+                },
+                "value": "5"
+            },
+            "table": {
+                "displayValue": "Interaction",
+                "elementData": {
+                    "type": "table_name"
+                },
+                "value": "interaction"
+            },
+            "tagline": {
+                "elementData": {
+                    "type": "string"
+                },
+                "value": "Sample Activity Tagline"
+            },
+            "title": {
+                "elementData": {
+                    "type": "string"
+                },
+                "value": ""
+            },
+            "u_group_by": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "string"
+                },
+                "value": ""
+            },
+            "u_new_form_view": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "string"
+                },
+                "value": ""
+            },
+            "u_sort_by": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "string"
+                },
+                "value": ""
+            },
+            "u_sort_order": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "string"
+                },
+                "value": ""
+            },
+            "ui_view": {
+                "elementData": {
+                    "type": "string"
+                },
+                "value": ""
+            }
+        }
+    },
+    "fillContainer": {
+        "type": "JSON_LITERAL",
+        "value": false
+    },
+    "laneContext": {
+        "type": "JSON_LITERAL",
+        "value": {
+            "contextId": "",
+            "name": "",
+            "order": 0,
+            "state": {
+                "displayValue": "In Progress",
+                "value": "IN_PROGRESS"
+            },
+            "title": ""
+        }
+    },
+    "parentRecord": {
+        "type": "JSON_LITERAL",
+        "value": "-1"
+    },
+    "parentTable": {
+        "type": "JSON_LITERAL",
+        "value": "interaction"
+    },
+    "playbookContext": {
+        "type": "JSON_LITERAL",
+        "value": {
+            "contextId": "b0f9599e5a613010021c69334198ef8a",
+            "state": {
+                "displayValue": "In Progress",
+                "value": "IN_PROGRESS"
+            }
+        }
+    },
+    "playbookExperienceId": {
+        "type": "JSON_LITERAL",
+        "value": ""
+    },
+    "prioritized": {
+        "type": "JSON_LITERAL",
+        "value": false
+    }
+}</macroponent_config>
+        <name>Extraction Playbook Activity UI</name>
+        <order>0</order>
+        <parent_macroponent display_value="Playbook App Shell">64f1d8fbc3ca201098c960bc0eba8fe3</parent_macroponent>
+        <required_translations>[ {
+  "message" : "Assigned to",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Form view (DEPRECATED)",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "State",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Type",
+  "code" : "",
+  "comment" : ""
+} ]</required_translations>
+        <rollback_screen/>
+        <screen_condition/>
+        <screen_type display_value="Global Activity UIs">89ddbb5ac3113010948404186e40dd1d</screen_type>
+        <sys_class_name>sys_ux_screen</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 19:26:02</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>54a47cc1cfb14b50ccf631ad5d851c9b</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>Extraction Playbook Activity UI</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_ux_screen_54a47cc1cfb14b50ccf631ad5d851c9b</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-29 05:20:31</sys_updated_on>
+    </sys_ux_screen>
+    <sys_translated_text action="DELETE" query="documentkey=54a47cc1cfb14b50ccf631ad5d851c9b"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</application>
+        <file_path/>
+        <instance_id>14b2821c6f4799004c327b2f5d3ee401</instance_id>
+        <instance_name>genpactpoc</instance_name>
+        <name>sys_ux_screen_54a47cc1cfb14b50ccf631ad5d851c9b</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ux_screen"><sys_ux_screen action="INSERT_OR_UPDATE"><active>true</active><app_config display_value="Playbook Builder Config">2ba981dcc31a201098c960bc0eba8f00</app_config><description/><disable_auto_reflow>false</disable_auto_reflow><disable_interoperable>false</disable_interoperable><event_mappings>[]</event_mappings><macroponent display_value="Extraction Playbook Activity UI">9ca47cc1cfb14b50ccf631ad5d851c92</macroponent><macroponent_config>{
+    "activityDefinitionId": {
+        "type": "JSON_LITERAL",
+        "value": "63b018cc1bbf0010affd0e55cc4bcb31"
+    },
+    "activityLabel": {
+        "type": "JSON_LITERAL",
+        "value": "Sample Activity"
+    },
+    "activityState": {
+        "type": "JSON_LITERAL",
+        "value": "IN_PROGRESS"
+    },
+    "advanced": {
+        "type": "JSON_LITERAL",
+        "value": {
+            "activityType": {
+                "displayValue": "List",
+                "value": "fdbeceb95b61001070e4492c11f91a28"
+            },
+            "associatedRecordModCount": 0,
+            "authorizedActions": [
+                "complete",
+                "skip",
+                "restart"
+            ],
+            "contextId": "",
+            "expandOnMountOrChange": false,
+            "filterData": [],
+            "formApi": {
+                "dispatchDeclarativeAction": null,
+                "formFieldsRequired": false,
+                "modalDeclarativeAction": null,
+                "requestReload": "",
+                "requestSubmitAction": "",
+                "requestValidation": "",
+                "visible": true
+            },
+            "inUIBuilder": true,
+            "loading": false,
+            "processedOn": 0,
+            "userSession": {},
+            "workspaceConfigId": ""
+        }
+    },
+    "assignedTo": {
+        "type": "JSON_LITERAL",
+        "value": {
+            "avatar": "58e13b44c3222010ae17dd981840ddd3.iix?t=small",
+            "displayValue": "Adela Cervantsz",
+            "value": "0a826bf03710200044e0bfc8bcbe5d7a"
+        }
+    },
+    "associatedRecord": {
+        "type": "JSON_LITERAL",
+        "value": "-1"
+    },
+    "associatedTable": {
+        "type": "JSON_LITERAL",
+        "value": "interaction"
+    },
+    "configProperties": {
+        "type": "JSON_LITERAL",
+        "value": {
+            "expandFirstPrioritizedCard": true,
+            "filterFields": "assigned_to",
+            "maxFormFieldsOnCard": 15,
+            "pendingActivityDisplay": "SHOW_ALL",
+            "showActivityState": true,
+            "showAutomatedManualIndicator": true,
+            "slaConfiguration": ""
+        }
+    },
+    "experienceProperties": {
+        "type": "JSON_LITERAL",
+        "value": {
+            "associated_record": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "document_id"
+                },
+                "value": ""
+            },
+            "associated_table": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "table_name"
+                },
+                "value": ""
+            },
+            "columns": {
+                "displayValue": "number,short_description,opened,opened_for,state",
+                "elementData": {
+                    "type": "field_list"
+                },
+                "value": "number,short_description,opened,type,opened_for,state"
+            },
+            "description": {
+                "displayValue": "List of Interaction Records",
+                "elementData": {
+                    "type": "html"
+                },
+                "value": "&lt;p&gt;List of Interaction Records&lt;/p&gt;"
+            },
+            "experience_status_record": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "document_id"
+                },
+                "value": ""
+            },
+            "experience_status_table": {
+                "displayValue": "sys_flow_data",
+                "elementData": {
+                    "type": "table_name"
+                },
+                "value": "sys_flow_data"
+            },
+            "form_view": {
+                "elementData": {
+                    "type": "string"
+                },
+                "label": "Form view (DEPRECATED)",
+                "value": ""
+            },
+            "icon": {
+                "displayValue": "",
+                "elementData": {
+                    "reference": "st_sys_design_system_icon",
+                    "type": "reference"
+                },
+                "value": ""
+            },
+            "is_automated": {
+                "displayValue": "false",
+                "elementData": {
+                    "type": "boolean"
+                },
+                "value": "false"
+            },
+            "list_query": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "conditions"
+                },
+                "value": ""
+            },
+            "list_title": {
+                "elementData": {
+                    "type": "string"
+                },
+                "value": "Sample Title"
+            },
+            "max_columns": {
+                "elementData": {
+                    "type": "string"
+                },
+                "value": "4"
+            },
+            "record_fields": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "field_list"
+                },
+                "relatedProperties": [
+                    {
+                        "displayValue": "Adela Cervantsz",
+                        "elementData": {
+                            "reference": "sys_user",
+                            "type": "reference"
+                        },
+                        "label": "Assigned to",
+                        "name": "assigned_to",
+                        "value": "0a826bf03710200044e0bfc8bcbe5d7a"
+                    },
+                    {
+                        "displayValue": "Work in Progress",
+                        "elementData": {
+                            "reference": null,
+                            "type": "string"
+                        },
+                        "label": "State",
+                        "name": "state",
+                        "value": "work_in_progress"
+                    },
+                    {
+                        "displayValue": "Chat",
+                        "elementData": {
+                            "reference": null,
+                            "type": "string"
+                        },
+                        "label": "Type",
+                        "name": "type",
+                        "value": "chat"
+                    }
+                ],
+                "value": "state,assigned_to"
+            },
+            "row_count": {
+                "elementData": {
+                    "type": "string"
+                },
+                "value": "5"
+            },
+            "table": {
+                "displayValue": "Interaction",
+                "elementData": {
+                    "type": "table_name"
+                },
+                "value": "interaction"
+            },
+            "tagline": {
+                "elementData": {
+                    "type": "string"
+                },
+                "value": "Sample Activity Tagline"
+            },
+            "title": {
+                "elementData": {
+                    "type": "string"
+                },
+                "value": ""
+            },
+            "u_group_by": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "string"
+                },
+                "value": ""
+            },
+            "u_new_form_view": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "string"
+                },
+                "value": ""
+            },
+            "u_sort_by": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "string"
+                },
+                "value": ""
+            },
+            "u_sort_order": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "string"
+                },
+                "value": ""
+            },
+            "ui_view": {
+                "elementData": {
+                    "type": "string"
+                },
+                "value": ""
+            }
+        }
+    },
+    "fillContainer": {
+        "type": "JSON_LITERAL",
+        "value": false
+    },
+    "laneContext": {
+        "type": "JSON_LITERAL",
+        "value": {
+            "contextId": "",
+            "name": "",
+            "order": 0,
+            "state": {
+                "displayValue": "In Progress",
+                "value": "IN_PROGRESS"
+            },
+            "title": ""
+        }
+    },
+    "parentRecord": {
+        "type": "JSON_LITERAL",
+        "value": "-1"
+    },
+    "parentTable": {
+        "type": "JSON_LITERAL",
+        "value": "interaction"
+    },
+    "playbookContext": {
+        "type": "JSON_LITERAL",
+        "value": {
+            "contextId": "b0f9599e5a613010021c69334198ef8a",
+            "state": {
+                "displayValue": "In Progress",
+                "value": "IN_PROGRESS"
+            }
+        }
+    },
+    "playbookExperienceId": {
+        "type": "JSON_LITERAL",
+        "value": ""
+    },
+    "prioritized": {
+        "type": "JSON_LITERAL",
+        "value": false
+    }
+}</macroponent_config><name>Extraction Playbook Activity UI</name><order>0</order><parent_macroponent display_value="Playbook App Shell">64f1d8fbc3ca201098c960bc0eba8fe3</parent_macroponent><required_translations>[ {
+  "message" : "Assigned to",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Form view (DEPRECATED)",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "State",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Type",
+  "code" : "",
+  "comment" : ""
+} ]</required_translations><rollback_screen/><screen_condition/><screen_type display_value="Global Activity UIs">89ddbb5ac3113010948404186e40dd1d</screen_type><sys_class_name>sys_ux_screen</sys_class_name><sys_created_by>Palakala.SurenderReddy</sys_created_by><sys_created_on>2026-06-28 19:26:02</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>54a47cc1cfb14b50ccf631ad5d851c9b</sys_id><sys_mod_count>9</sys_mod_count><sys_name>Extraction Playbook Activity UI</sys_name><sys_overrides/><sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package><sys_policy/><sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope><sys_update_name>sys_ux_screen_54a47cc1cfb14b50ccf631ad5d851c9b</sys_update_name><sys_updated_by>Palakala.SurenderReddy</sys_updated_by><sys_updated_on>2026-06-29 05:20:31</sys_updated_on></sys_ux_screen><sys_translated_text action="delete_multiple" query="documentkey=54a47cc1cfb14b50ccf631ad5d851c9b"/></record_update>]]></payload>
+        <payload_hash>1777151161</payload_hash>
+        <record_name>Extraction Playbook Activity UI</record_name>
+        <reverted_from/>
+        <source>6def04c92f7103503e496641bea4e3be</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-29 05:20:31</sys_created_on>
+        <sys_id>2cbc7ac5cf31c750c419b6ce6d851c3f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19f11d26e900000001</sys_recorded_at>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-29 05:20:31</sys_updated_on>
+        <type>UX Screen</type>
+        <update_guid>e4bc7ac51531c750a35974c2ab4fd93e</update_guid>
+        <update_guid_history>e4bc7ac51531c750a35974c2ab4fd93e:1777151161,8486784d26b14b5047a3fdf6b0c08bda:809184290,edd4fc0534b14b5025480f00204ea035:-70286935,d8a47cc141b14b50e94ae4a129073ca0:-134206773</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-07-01 07:13:45</sys_created_on>
+        <sys_db_object display_value="" name="sys_ux_screen">sys_ux_screen</sys_db_object>
+        <sys_id>122815f4c33247d2b763a03de3638c44</sys_id>
+        <sys_metadata>54a47cc1cfb14b50ccf631ad5d851c9b</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Extraction Playbook Activity UI</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_scope_delete display_value="">00c1089b958e45ed83140febec97e3d1</sys_scope_delete>
+        <sys_update_name>sys_ux_screen_54a47cc1cfb14b50ccf631ad5d851c9b</sys_update_name>
+        <sys_update_version display_value="sys_ux_screen_54a47cc1cfb14b50ccf631ad5d851c9b">2cbc7ac5cf31c750c419b6ce6d851c3f</sys_update_version>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-07-01 07:13:45</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
