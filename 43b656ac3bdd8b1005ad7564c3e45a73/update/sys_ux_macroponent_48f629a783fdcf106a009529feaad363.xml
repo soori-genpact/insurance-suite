@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_macroponent">
+    <sys_ux_macroponent action="INSERT_OR_UPDATE">
+        <associated_types/>
+        <bundles>[]</bundles>
+        <category>macroponent</category>
+        <component_dependencies/>
+        <composition>[
+    {
+        "definition": {
+            "id": "9e9a9999bc08c532cf101d791dc31667",
+            "type": "MACROPONENT"
+        },
+        "elementId": "playbook_modals_1",
+        "elementLabel": "Playbook Modals",
+        "eventMappings": [],
+        "extensionPoints": [],
+        "isHero": false,
+        "isHidden": {
+            "type": "JSON_LITERAL",
+            "value": null
+        },
+        "isNonDestructive": false,
+        "items": [],
+        "overrides": null,
+        "preset": {
+            "controllerElementId": "playbook_custom_layout",
+            "disabledEventTargetIds": [],
+            "id": "32d3bef1efa111dd6a91ed7edae7f04d"
+        },
+        "propertyValues": {},
+        "slot": null,
+        "styles": null
+    },
+    {
+        "definition": {
+            "id": "07b0bb09419d26f0af681796bc548f19",
+            "type": "MACROPONENT"
+        },
+        "elementId": "resizable_panes_1",
+        "elementLabel": "Resizable panes",
+        "eventMappings": [],
+        "extensionPoints": [],
+        "isHero": false,
+        "isHidden": {
+            "type": "JSON_LITERAL",
+            "value": null
+        },
+        "isNonDestructive": false,
+        "items": [],
+        "overrides": {
+            "composition": [
+                {
+                    "definition": {
+                        "id": "7e0d76c668b58227fa9a029419826203",
+                        "type": "MACROPONENT"
+                    },
+                    "elementId": "playbook_activity_picker_1",
+                    "elementLabel": "Playbook Activity Picker",
+                    "eventMappings": [],
+                    "extensionPoints": [],
+                    "isHero": false,
+                    "isHidden": {
+                        "type": "JSON_LITERAL",
+                        "value": null
+                    },
+                    "isNonDestructive": false,
+                    "items": [],
+                    "overrides": null,
+                    "preset": {
+                        "controllerElementId": "playbook_custom_layout",
+                        "disabledEventTargetIds": [],
+                        "id": "1143cf52cb075da23298da1cdc43b8d1"
+                    },
+                    "propertyValues": {
+                        "daClientActionContract": {
+                            "type": "JSON_LITERAL",
+                            "value": null
+                        },
+                        "showStages": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        }
+                    },
+                    "slot": "left",
+                    "styles": {
+                        "height": ""
+                    }
+                },
+                {
+                    "definition": {
+                        "id": "9962aa7c77c9e928fe1cda51fcda7f2e",
+                        "type": "MACROPONENT"
+                    },
+                    "elementId": "playbook_activity_viewer_1",
+                    "elementLabel": "Playbook Activity Viewer",
+                    "eventMappings": [],
+                    "extensionPoints": [],
+                    "isHero": false,
+                    "isHidden": {
+                        "type": "JSON_LITERAL",
+                        "value": null
+                    },
+                    "isNonDestructive": false,
+                    "items": [],
+                    "overrides": null,
+                    "preset": {
+                        "controllerElementId": "playbook_custom_layout",
+                        "disabledEventTargetIds": [],
+                        "id": "b65b39aad0ea8e534bea29391805a6cf"
+                    },
+                    "propertyValues": {
+                        "activityView": {
+                            "type": "JSON_LITERAL",
+                            "value": "focused"
+                        },
+                        "daClientActionContract": {
+                            "type": "JSON_LITERAL",
+                            "value": null
+                        },
+                        "enableFullWidthCards": {
+                            "type": "JSON_LITERAL",
+                            "value": false
+                        },
+                        "hideBackToPlaybookLink": {
+                            "type": "JSON_LITERAL",
+                            "value": false
+                        },
+                        "showFilteredCount": {
+                            "type": "JSON_LITERAL",
+                            "value": false
+                        }
+                    },
+                    "slot": "right",
+                    "styles": {
+                        "border-color": "RGB(var(--now-color--neutral-5))",
+                        "border-radius": "4px",
+                        "border-style": "id",
+                        "border-width": "var(--now-static-space--xxs)",
+                        "height": "100vh"
+                    }
+                }
+            ],
+            "layout": null
+        },
+        "preset": {
+            "controllerElementId": "playbook_custom_layout",
+            "disabledEventTargetIds": [],
+            "id": "3f07ec4ecf5146dd4bbf00eedbe3421f"
+        },
+        "propertyValues": {
+            "actionBar": {
+                "type": "JSON_LITERAL",
+                "value": false
+            },
+            "actionBarConfig": {
+                "type": "JSON_LITERAL",
+                "value": {
+                    "leftIcon": "record-activity-details-fill",
+                    "leftTooltip": "Display left pane only",
+                    "middleIcon": "record-activity-stream-outline",
+                    "middleTooltip": "Display both panes",
+                    "rightIcon": "record-activity-outline",
+                    "rightTooltip": "Display right pane only"
+                }
+            },
+            "bottomPaneAriaLabel": {
+                "type": "TRANSLATION_LITERAL",
+                "value": {
+                    "code": null,
+                    "comment": "",
+                    "message": "Bottom pane"
+                }
+            },
+            "disabled": {
+                "type": "JSON_LITERAL",
+                "value": false
+            },
+            "displayDividerButton": {
+                "type": "JSON_LITERAL",
+                "value": false
+            },
+            "dividerAriaLabel": {
+                "type": "TRANSLATION_LITERAL",
+                "value": {
+                    "code": null,
+                    "comment": "",
+                    "message": "Resizable panes divider"
+                }
+            },
+            "dividerButtonConfig": {
+                "type": "JSON_LITERAL",
+                "value": {
+                    "buttonProps": {
+                        "icon": "chevron-left-outline"
+                    },
+                    "position": "top"
+                }
+            },
+            "dividerHandleTooltip": {
+                "type": "TRANSLATION_LITERAL",
+                "value": {
+                    "code": null,
+                    "comment": "",
+                    "message": "Resizable panes divider handle"
+                }
+            },
+            "dividerStyles": {
+                "type": "JSON_LITERAL",
+                "value": {}
+            },
+            "leftPaneAriaLabel": {
+                "type": "TRANSLATION_LITERAL",
+                "value": {
+                    "code": null,
+                    "comment": "",
+                    "message": "Left pane"
+                }
+            },
+            "rightPaneAriaLabel": {
+                "type": "TRANSLATION_LITERAL",
+                "value": {
+                    "code": null,
+                    "comment": "",
+                    "message": "Right pane"
+                }
+            },
+            "singleColumn": {
+                "type": "JSON_LITERAL",
+                "value": false
+            },
+            "topPaneAriaLabel": {
+                "type": "TRANSLATION_LITERAL",
+                "value": {
+                    "code": null,
+                    "comment": "",
+                    "message": "Top pane"
+                }
+            }
+        },
+        "slot": null,
+        "styles": null
+    }
+]</composition>
+        <da_relay_models/>
+        <data>[
+    {
+        "cachePolicy": null,
+        "definition": {
+            "id": "b47c9480075111106670d9630ad300fe",
+            "type": "CONTROLLER"
+        },
+        "dependencies": {
+            "record": "record_1"
+        },
+        "elementId": "playbook_custom_layout",
+        "elementLabel": "Playbook Custom Layout",
+        "eventMappings": [],
+        "inputValues": {
+            "formFields": {
+                "binding": {
+                    "address": [
+                        "record_1",
+                        "form",
+                        "fields"
+                    ]
+                },
+                "type": "DATA_OUTPUT_BINDING"
+            },
+            "formUiDomain": {
+                "binding": {
+                    "address": [
+                        "record_1",
+                        "form",
+                        "uiDomain"
+                    ]
+                },
+                "type": "DATA_OUTPUT_BINDING"
+            },
+            "inputActionLayoutId": {
+                "type": "JSON_LITERAL",
+                "value": ""
+            },
+            "inputActivityView": {
+                "type": "JSON_LITERAL",
+                "value": "focused"
+            },
+            "inputParentSysId": {
+                "binding": {
+                    "address": [
+                        "sysId"
+                    ],
+                    "category": "props"
+                },
+                "type": "CONTEXT_BINDING"
+            },
+            "inputParentTable": {
+                "binding": {
+                    "address": [
+                        "table"
+                    ],
+                    "category": "props"
+                },
+                "type": "CONTEXT_BINDING"
+            },
+            "inputPlaybookExperience": {
+                "binding": {
+                    "address": [
+                        "experience"
+                    ],
+                    "category": "props"
+                },
+                "type": "CONTEXT_BINDING"
+            },
+            "inputRecordGeneratorQuery": {
+                "type": "JSON_LITERAL",
+                "value": null
+            },
+            "inputSelectedActivityContextId": {
+                "type": "JSON_LITERAL",
+                "value": null
+            },
+            "inputSelectedPlaybookContextId": {
+                "type": "JSON_LITERAL",
+                "value": null
+            },
+            "inputSelectedStageContextId": {
+                "type": "JSON_LITERAL",
+                "value": null
+            },
+            "nowDsDomainId": {
+                "binding": {
+                    "address": [
+                        "record_1",
+                        "nowDsDomainId"
+                    ]
+                },
+                "type": "DATA_OUTPUT_BINDING"
+            },
+            "nowDsDomainScope": {
+                "binding": {
+                    "address": [
+                        "record_1",
+                        "nowDsDomainScope"
+                    ]
+                },
+                "type": "DATA_OUTPUT_BINDING"
+            },
+            "nowDsRecordId": {
+                "binding": {
+                    "address": [
+                        "record_1",
+                        "nowDsRecordId"
+                    ]
+                },
+                "type": "DATA_OUTPUT_BINDING"
+            },
+            "nowDsRecordTable": {
+                "binding": {
+                    "address": [
+                        "record_1",
+                        "nowDsRecordTable"
+                    ]
+                },
+                "type": "DATA_OUTPUT_BINDING"
+            }
+        },
+        "readEvaluationMode": "EAGER"
+    },
+    {
+        "cachePolicy": null,
+        "definition": {
+            "id": "029f04e053610110ac9bddeeff7b1294",
+            "type": "CONTROLLER"
+        },
+        "dependencies": {},
+        "elementId": "record_1",
+        "elementLabel": "Record 1",
+        "eventMappings": [],
+        "inputValues": {
+            "activityLogs": {
+                "type": "JSON_LITERAL",
+                "value": null
+            },
+            "detailsContext": {
+                "type": "JSON_LITERAL",
+                "value": {}
+            },
+            "fields": {
+                "type": "JSON_LITERAL",
+                "value": null
+            },
+            "forcedViewName": {
+                "type": "JSON_LITERAL",
+                "value": ""
+            },
+            "inputActionLayoutId": {
+                "binding": {
+                    "address": [
+                        "playbook_custom_layout",
+                        "extraParams",
+                        "actionLayoutId"
+                    ]
+                },
+                "type": "DATA_OUTPUT_BINDING"
+            },
+            "inputExtraParams": {
+                "type": "JSON_LITERAL",
+                "value": ""
+            },
+            "inputQuery": {
+                "type": "JSON_LITERAL",
+                "value": ""
+            },
+            "inputSysId": {
+                "binding": {
+                    "address": [
+                        "sysId"
+                    ],
+                    "category": "props"
+                },
+                "type": "CONTEXT_BINDING"
+            },
+            "inputTable": {
+                "type": "JSON_LITERAL",
+                "value": "interaction"
+            },
+            "screen": {
+                "type": "JSON_LITERAL",
+                "value": null
+            },
+            "selectedTabIndex": {
+                "type": "JSON_LITERAL",
+                "value": 0
+            },
+            "userPrefs": {
+                "type": "JSON_LITERAL",
+                "value": null
+            },
+            "view": {
+                "type": "JSON_LITERAL",
+                "value": "default view"
+            }
+        },
+        "readEvaluationMode": "EAGER"
+    }
+]</data>
+        <description/>
+        <disable_auto_reflow>false</disable_auto_reflow>
+        <dispatched_events/>
+        <ext_controller_dep/>
+        <extends display_value="Page Template">19be392623033300f4b4c50947bf65ba</extends>
+        <extension_point/>
+        <form_factors>{}</form_factors>
+        <handled_events/>
+        <interactions/>
+        <interfaces/>
+        <internal_event_mappings>{}</internal_event_mappings>
+        <keyboard_shortcuts>{}</keyboard_shortcuts>
+        <layout>{
+    "default": {
+        "children": null,
+        "isInline": null,
+        "items": [
+            {
+                "element_id": "playbook_modals_1",
+                "styles": {}
+            },
+            {
+                "element_id": "resizable_panes_1",
+                "styles": {
+                    "flex": "1 1 auto",
+                    "max-height": "100%",
+                    "width": "100%"
+                }
+            }
+        ],
+        "root": null,
+        "rules": null,
+        "styles": {
+            "display": "flex",
+            "flex-direction": "column",
+            "height": "100vh",
+            "max-height": "100%"
+        },
+        "templateId": "5832fd4d53c31010e6bcddeeff7b12db",
+        "type": "flex"
+    },
+    "version": "3.0.0"
+}</layout>
+        <macroponent_dependencies/>
+        <name>playbookv</name>
+        <output_prop_mapping/>
+        <props>[
+    {
+        "defaultValue": "",
+        "description": "",
+        "disabled": false,
+        "fieldType": "string",
+        "label": "Table",
+        "mandatory": false,
+        "name": "table",
+        "readOnly": true,
+        "selectable": false,
+        "typeMetadata": null,
+        "valueType": "string"
+    },
+    {
+        "defaultValue": "",
+        "description": "",
+        "disabled": false,
+        "fieldType": "string",
+        "label": "sysId",
+        "mandatory": false,
+        "name": "sysId",
+        "readOnly": true,
+        "selectable": false,
+        "typeMetadata": null,
+        "valueType": "string"
+    },
+    {
+        "defaultValue": "",
+        "description": null,
+        "disabled": false,
+        "fieldType": "string",
+        "label": "playbookExperienceId",
+        "mandatory": false,
+        "name": "playbookExperienceId",
+        "readOnly": true,
+        "selectable": false,
+        "typeMetadata": null,
+        "valueType": "string"
+    },
+    {
+        "defaultValue": "",
+        "description": null,
+        "disabled": false,
+        "fieldType": "string",
+        "label": "selectedPlaybook",
+        "mandatory": false,
+        "name": "selectedPlaybook",
+        "readOnly": true,
+        "selectable": false,
+        "typeMetadata": null,
+        "valueType": "string"
+    },
+    {
+        "defaultValue": "",
+        "description": null,
+        "disabled": false,
+        "fieldType": "string",
+        "label": "selectedStage",
+        "mandatory": false,
+        "name": "selectedStage",
+        "readOnly": true,
+        "selectable": false,
+        "typeMetadata": null,
+        "valueType": "string"
+    },
+    {
+        "defaultValue": "",
+        "description": null,
+        "disabled": false,
+        "fieldType": "string",
+        "label": "selectedActivity",
+        "mandatory": false,
+        "name": "selectedActivity",
+        "readOnly": true,
+        "selectable": false,
+        "typeMetadata": null,
+        "valueType": "string"
+    },
+    {
+        "defaultValue": "",
+        "description": "",
+        "disabled": false,
+        "fieldType": "string",
+        "label": "experience",
+        "mandatory": false,
+        "name": "experience",
+        "readOnly": true,
+        "selectable": false,
+        "typeMetadata": null,
+        "valueType": "string"
+    }
+]</props>
+        <required_sys_props/>
+        <required_translations>[ {
+  "message" : "Bottom pane",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Left pane",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Resizable panes divider",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Resizable panes divider handle",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Right pane",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Top pane",
+  "code" : "",
+  "comment" : ""
+} ]</required_translations>
+        <root_component/>
+        <root_component_config>{}</root_component_config>
+        <root_component_definition/>
+        <schema_version>1.0.0</schema_version>
+        <state_persistence_config/>
+        <state_properties>[]</state_properties>
+        <style_config>{}</style_config>
+        <sys_class_name>sys_ux_macroponent</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:30:39</sys_created_on>
+        <sys_id>48f629a783fdcf106a009529feaad363</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>playbookv</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_ux_macroponent_48f629a783fdcf106a009529feaad363</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-06 17:30:45</sys_updated_on>
+    </sys_ux_macroponent>
+    <sys_translated_text action="delete_multiple" query="documentkey=48f629a783fdcf106a009529feaad363"/>
+</record_update>
