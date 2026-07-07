@@ -29,21 +29,36 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-06-28 16:10:58</sys_created_on>
         <sys_id>fef78805cff10b50ccf631ad5d851cd7</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>Benchmarking</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_pd_activity_definition_fef78805cff10b50ccf631ad5d851cd7</sys_update_name>
-        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-07-01 07:11:28</sys_updated_on>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 05:33:03</sys_updated_on>
         <system_level>true</system_level>
         <table>global</table>
+        <type_vals/>
         <type_vals/>
         <wait_for_completion>true</wait_for_completion>
     </sys_pd_activity_definition>
     <sys_translated_text action="delete_multiple" query="documentkey=fef78805cff10b50ccf631ad5d851cd7"/>
     <sys_variable_value action="delete_multiple" query="document_key=fef78805cff10b50ccf631ad5d851cd7"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity_definition</document>
+        <document_key>fef78805cff10b50ccf631ad5d851cd7</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-07 05:33:03</sys_created_on>
+        <sys_id>164c84730f79871017613fd300d1b2f6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 05:33:03</sys_updated_on>
+        <value>0</value>
+        <variable display_value="Is Automated">ed3d1135333107147ef8f499ed5c7b59</variable>
+    </sys_variable_value>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>sys_pd_activity_definition</document>
         <document_key>fef78805cff10b50ccf631ad5d851cd7</document_key>
@@ -71,6 +86,20 @@
         <sys_updated_on>2026-06-28 16:10:58</sys_updated_on>
         <value>{&lt;!-- --&gt;{act.act_instance.description}}</value>
         <variable display_value="Description">841b7f34cffdc750ccf631ad5d851c9d</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity_definition</document>
+        <document_key>fef78805cff10b50ccf631ad5d851cd7</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-07 05:33:03</sys_created_on>
+        <sys_id>5a4c84730f79871017613fd300d1b2f6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 05:33:03</sys_updated_on>
+        <value>&lt;p&gt;Benchmarking&lt;/p&gt;</value>
+        <variable display_value="Description">3c3d9df1333107147ef8f499ed5c7b0f</variable>
     </sys_variable_value>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>sys_pd_activity_definition</document>
@@ -127,6 +156,20 @@
         <sys_updated_on>2026-06-28 16:10:58</sys_updated_on>
         <value>Tagline</value>
         <variable display_value="Tagline">d81bbf34cffdc750ccf631ad5d851c22</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity_definition</document>
+        <document_key>fef78805cff10b50ccf631ad5d851cd7</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-07 05:33:03</sys_created_on>
+        <sys_id>9e4c84730f79871017613fd300d1b2f5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 05:33:03</sys_updated_on>
+        <value>sys_flow_data</value>
+        <variable display_value="Associated table">053d9df1333107147ef8f499ed5c7bc2</variable>
     </sys_variable_value>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>sys_pd_activity_definition</document>
@@ -216,6 +259,18 @@
     <sys_element_mapping action="INSERT_OR_UPDATE">
         <field>associated_record</field>
         <id>fef78805cff10b50ccf631ad5d851cd7</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-07 05:33:03</sys_created_on>
+        <sys_id>964c84730f79871017613fd300d1b2f5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 05:33:03</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_ac3d5df1333107147ef8f499ed5c7bc0</table>
+        <value>{{vl.Playbook Manual Activity Flow./end.record}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>associated_record</field>
+        <id>fef78805cff10b50ccf631ad5d851cd7</id>
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-06-28 16:10:58</sys_created_on>
         <sys_id>f2f78805cff10b50ccf631ad5d851ce1</sys_id>
@@ -224,6 +279,18 @@
         <sys_updated_on>2026-06-28 16:10:58</sys_updated_on>
         <table>var__m_sys_pd_activity_type_prop_7b0b3f34cffdc750ccf631ad5d851caf</table>
         <value>{{vl.Playbook Manual Activity Flow./end.record}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>associated_table</field>
+        <id>fef78805cff10b50ccf631ad5d851cd7</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-07 05:33:03</sys_created_on>
+        <sys_id>d64c84730f79871017613fd300d1b2f4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 05:33:03</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_ac3d5df1333107147ef8f499ed5c7bc0</table>
+        <value/>
     </sys_element_mapping>
     <sys_element_mapping action="INSERT_OR_UPDATE">
         <field>associated_table</field>
@@ -250,6 +317,18 @@
         <value>{{act.act_instance.description}}</value>
     </sys_element_mapping>
     <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>description</field>
+        <id>fef78805cff10b50ccf631ad5d851cd7</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-07 05:33:03</sys_created_on>
+        <sys_id>da4c84730f79871017613fd300d1b2f5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 05:33:03</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_ac3d5df1333107147ef8f499ed5c7bc0</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
         <field>experience_status_record</field>
         <id>fef78805cff10b50ccf631ad5d851cd7</id>
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
@@ -259,6 +338,18 @@
         <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
         <sys_updated_on>2026-06-28 16:10:58</sys_updated_on>
         <table>var__m_sys_pd_activity_type_prop_7b0b3f34cffdc750ccf631ad5d851caf</table>
+        <value>{{vl.Playbook Manual Activity Flow./end.record}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>experience_status_record</field>
+        <id>fef78805cff10b50ccf631ad5d851cd7</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-07 05:33:03</sys_created_on>
+        <sys_id>1e4c84730f79871017613fd300d1b2f4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 05:33:03</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_ac3d5df1333107147ef8f499ed5c7bc0</table>
         <value>{{vl.Playbook Manual Activity Flow./end.record}}</value>
     </sys_element_mapping>
     <sys_element_mapping action="INSERT_OR_UPDATE">
@@ -310,6 +401,18 @@
         <value>{{vl.Playbook Manual Activity Flow./end.automated}}</value>
     </sys_element_mapping>
     <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>is_automated</field>
+        <id>fef78805cff10b50ccf631ad5d851cd7</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-07 05:33:03</sys_created_on>
+        <sys_id>524c84730f79871017613fd300d1b2f5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 05:33:03</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_ac3d5df1333107147ef8f499ed5c7bc0</table>
+        <value>{{vl.Playbook Manual Activity Flow./end.automated}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
         <field>message</field>
         <id>fef78805cff10b50ccf631ad5d851cd7</id>
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
@@ -358,5 +461,209 @@
         <value/>
     </sys_element_mapping>
     <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_flow_output_fdd4ff74cf7dc750ccf631ad5d851c00^id=fef78805cff10b50ccf631ad5d851cd7"/>
-    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_pd_activity_type_prop_ac3d5df1333107147ef8f499ed5c7bc0^id=fef78805cff10b50ccf631ad5d851cd7"/>
+    <sys_element_mapping action="delete_multiple" query="id=fef78805cff10b50ccf631ad5d851cd7"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>associated_record</field>
+        <id>fef78805cff10b50ccf631ad5d851cd7</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-07 05:33:03</sys_created_on>
+        <sys_id>964c84730f79871017613fd300d1b2f5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 05:33:03</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_ac3d5df1333107147ef8f499ed5c7bc0</table>
+        <value>{{vl.Playbook Manual Activity Flow./end.record}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>associated_record</field>
+        <id>fef78805cff10b50ccf631ad5d851cd7</id>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 16:10:58</sys_created_on>
+        <sys_id>f2f78805cff10b50ccf631ad5d851ce1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 16:10:58</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_7b0b3f34cffdc750ccf631ad5d851caf</table>
+        <value>{{vl.Playbook Manual Activity Flow./end.record}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>associated_table</field>
+        <id>fef78805cff10b50ccf631ad5d851cd7</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-07 05:33:03</sys_created_on>
+        <sys_id>d64c84730f79871017613fd300d1b2f4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 05:33:03</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_ac3d5df1333107147ef8f499ed5c7bc0</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>associated_table</field>
+        <id>fef78805cff10b50ccf631ad5d851cd7</id>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 16:11:26</sys_created_on>
+        <sys_id>f1180445cff10b50ccf631ad5d851c10</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 16:11:26</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_7b0b3f34cffdc750ccf631ad5d851caf</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>description</field>
+        <id>fef78805cff10b50ccf631ad5d851cd7</id>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 16:10:58</sys_created_on>
+        <sys_id>3af78805cff10b50ccf631ad5d851ce1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 16:10:58</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_7b0b3f34cffdc750ccf631ad5d851caf</table>
+        <value>{{act.act_instance.description}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>description</field>
+        <id>fef78805cff10b50ccf631ad5d851cd7</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-07 05:33:03</sys_created_on>
+        <sys_id>da4c84730f79871017613fd300d1b2f5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 05:33:03</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_ac3d5df1333107147ef8f499ed5c7bc0</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>experience_status_record</field>
+        <id>fef78805cff10b50ccf631ad5d851cd7</id>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 16:10:58</sys_created_on>
+        <sys_id>7af78805cff10b50ccf631ad5d851ce0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 16:10:58</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_7b0b3f34cffdc750ccf631ad5d851caf</table>
+        <value>{{vl.Playbook Manual Activity Flow./end.record}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>experience_status_record</field>
+        <id>fef78805cff10b50ccf631ad5d851cd7</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-07 05:33:03</sys_created_on>
+        <sys_id>1e4c84730f79871017613fd300d1b2f4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 05:33:03</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_ac3d5df1333107147ef8f499ed5c7bc0</table>
+        <value>{{vl.Playbook Manual Activity Flow./end.record}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>experience_status_table</field>
+        <id>fef78805cff10b50ccf631ad5d851cd7</id>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 16:11:26</sys_created_on>
+        <sys_id>75180445cff10b50ccf631ad5d851c11</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 16:11:26</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_7b0b3f34cffdc750ccf631ad5d851caf</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>footer</field>
+        <id>fef78805cff10b50ccf631ad5d851cd7</id>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 16:11:26</sys_created_on>
+        <sys_id>39180445cff10b50ccf631ad5d851c10</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 16:11:26</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_7b0b3f34cffdc750ccf631ad5d851caf</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>icon</field>
+        <id>fef78805cff10b50ccf631ad5d851cd7</id>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 16:11:26</sys_created_on>
+        <sys_id>31180445cff10b50ccf631ad5d851c11</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 16:11:26</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_7b0b3f34cffdc750ccf631ad5d851caf</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>is_automated</field>
+        <id>fef78805cff10b50ccf631ad5d851cd7</id>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 16:10:58</sys_created_on>
+        <sys_id>bef78805cff10b50ccf631ad5d851ce0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 16:10:58</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_7b0b3f34cffdc750ccf631ad5d851caf</table>
+        <value>{{vl.Playbook Manual Activity Flow./end.automated}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>is_automated</field>
+        <id>fef78805cff10b50ccf631ad5d851cd7</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-07 05:33:03</sys_created_on>
+        <sys_id>524c84730f79871017613fd300d1b2f5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 05:33:03</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_ac3d5df1333107147ef8f499ed5c7bc0</table>
+        <value>{{vl.Playbook Manual Activity Flow./end.automated}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>message</field>
+        <id>fef78805cff10b50ccf631ad5d851cd7</id>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 16:10:58</sys_created_on>
+        <sys_id>baf78805cff10b50ccf631ad5d851cda</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 16:10:58</sys_updated_on>
+        <table>var__m_sys_hub_flow_input_fdd4ff74cf7dc750ccf631ad5d851c00</table>
+        <value>{{act.act_instance.description}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>tagline</field>
+        <id>fef78805cff10b50ccf631ad5d851cd7</id>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 16:11:26</sys_created_on>
+        <sys_id>31180445cff10b50ccf631ad5d851c12</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 16:11:26</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_7b0b3f34cffdc750ccf631ad5d851caf</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>title</field>
+        <id>fef78805cff10b50ccf631ad5d851cd7</id>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 16:10:58</sys_created_on>
+        <sys_id>7ef78805cff10b50ccf631ad5d851ce1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 16:10:58</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_7b0b3f34cffdc750ccf631ad5d851caf</table>
+        <value>{{act.act_instance.label}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>wait</field>
+        <id>fef78805cff10b50ccf631ad5d851cd7</id>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 16:11:26</sys_created_on>
+        <sys_id>b9180445cff10b50ccf631ad5d851c0e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 16:11:26</sys_updated_on>
+        <table>var__m_sys_hub_flow_input_fdd4ff74cf7dc750ccf631ad5d851c00</table>
+        <value/>
+    </sys_element_mapping>
 </record_update>
