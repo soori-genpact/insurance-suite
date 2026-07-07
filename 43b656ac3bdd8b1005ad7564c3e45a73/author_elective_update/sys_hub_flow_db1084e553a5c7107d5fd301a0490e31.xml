@@ -1,0 +1,1278 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_hub_flow">
+    <sys_hub_flow action="DELETE">
+        <access>public</access>
+        <acls/>
+        <active>true</active>
+        <allow_high_security_roles>false</allow_high_security_roles>
+        <annotation/>
+        <attributes>browserActivatedIn=chrome,integrationActivatedIn=standalone,timeFromCreateToActivate=62546000,viewActivatedIn=naturalLanguage</attributes>
+        <authored_on_release_version/>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category display_value="Activity Flows">f427c6ef1b230010affd0e55cc4bcb14</category>
+        <copied_from/>
+        <copied_from_name/>
+        <description>&lt;p&gt;Simple instruction process activity for Playbook Workspace Experience, that optionally waits for user to complete the flow data record.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Inputs:&lt;/b&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;Message&lt;/b&gt; - Message that will be displayed to the end user using Playbook Workspace Experience&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Wait for user input&lt;/b&gt; - When checked, does not wait for flow data to be in a completed state.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;b&gt;Outputs:&lt;/b&gt;&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;Record&lt;/b&gt; - Flow Data Record.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Automated&lt;/b&gt; - True/False based on whether the flow waited for user input or not.&lt;/li&gt;
+&lt;/ul&gt;</description>
+        <display_name_after_preview/>
+        <flow_priority>MEDIUM</flow_priority>
+        <generation_source>fluent</generation_source>
+        <internal_name>playbook_manual_activity_flow</internal_name>
+        <label_cache>[{"name":"e17e6678-8e97-4584-a903-cfa6e47fd378.record","label":"1 - Create Flow Data➛Record","reference":"sys_flow_data","reference_display":"Flow Data","type":"reference","base_type":"reference","usedInstances":{"ff10c4e5-53a5-c710-7d5f-d301a0490eb9":["record"],"f8c2a0f7-3a15-417b-8701-f6828985e67d":["record"],"24b5a74d-b71d-419d-bbc4-4a155eae197c":["record"]},"attributes":{"uiType":"reference","uiTypeLabel":"Reference","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"a84140d4-4607-4e97-a968-ee79f23bf1e0"}},{"name":"subflow.wait","label":"Input➛Wait for user input","type":"choice","base_type":"choice","choices":[{"label":"-- None --","value":"","order":0.0},{"label":"No","value":"no","order":1.0},{"label":"Yes","value":"yes","order":2.0}],"usedInstances":{"e17e6678-8e97-4584-a903-cfa6e47fd378":["wait"],"c5b60f6b-83e9-8310-6a00-9529feaad357":["condition"]},"attributes":{}}]</label_cache>
+        <master_snapshot>9fd3696f83bdcf106a009529feaad3c3</master_snapshot>
+        <master_snapshot_digest/>
+        <name>Playbook Manual Activity Flow ZZ</name>
+        <natlang/>
+        <outputs/>
+        <pre_compiled>false</pre_compiled>
+        <remote_trigger_id/>
+        <run_as>user</run_as>
+        <run_with_roles/>
+        <sc_callable>false</sc_callable>
+        <show_draft_actions>false</show_draft_actions>
+        <show_triggered_flows>false</show_triggered_flows>
+        <status>published</status>
+        <substatus/>
+        <sys_class_name>sys_hub_flow</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:15:06</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>db1084e553a5c7107d5fd301a0490e31</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Playbook Manual Activity Flow ZZ</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_hub_flow_db1084e553a5c7107d5fd301a0490e31</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 10:37:36</sys_updated_on>
+        <type>subflow</type>
+        <updation_source/>
+        <version>2</version>
+        <version_record>d5f15dbf933d4310f306fbf08bba10fd</version_record>
+    </sys_hub_flow>
+    <sys_translated_text action="DELETE" query="documentkey=db1084e553a5c7107d5fd301a0490e31"/>
+    <sys_variable_value action="DELETE" query="document_key=db1084e553a5c7107d5fd301a0490e31"/>
+    <sys_element_mapping action="DELETE" query="table=var__m_sys_hub_flow_output_db1084e553a5c7107d5fd301a0490e31^id=db1084e553a5c7107d5fd301a0490e31"/>
+    <sys_hub_flow_stage action="DELETE" query="flow=db1084e553a5c7107d5fd301a0490e31"/>
+    <sys_flow_cat_variable_model action="DELETE" query="id=db1084e553a5c7107d5fd301a0490e31"/>
+    <sys_hub_flow_input action="DELETE" query="model=db1084e553a5c7107d5fd301a0490e31^sys_idNOT INeb1084e553a5c7107d5fd301a0490e6c"/>
+    <sys_hub_flow_input action="DELETE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=choice,uiTypeLabel=Choice,uiUniqueId=cd4a6822-f1ff-4cc7-8c8a-c65334e2e8d7</attributes>
+        <audit>false</audit>
+        <calculation/>
+        <choice>1</choice>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value>yes</default_value>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>wait</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="Choice">choice</internal_type>
+        <label>Wait for user input</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Playbook Manual Activity Flow ZZ">db1084e553a5c7107d5fd301a0490e31</model>
+        <model_id>db1084e553a5c7107d5fd301a0490e31</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:15:07</sys_created_on>
+        <sys_id>eb1084e553a5c7107d5fd301a0490e6c</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 10:37:32</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier/>
+        <virtual>false</virtual>
+        <virtual_type/>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_action_input_action_instance action="DELETE" query="action_input=eb1084e553a5c7107d5fd301a0490e6c"/>
+    <sys_hub_flow_output action="DELETE" query="model=db1084e553a5c7107d5fd301a0490e31^sys_idNOT IN2b10c4e553a5c7107d5fd301a0490e53,e310c4e553a5c7107d5fd301a0490e4a"/>
+    <sys_hub_flow_output action="DELETE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=boolean,uiTypeLabel=True/False,uiUniqueId=d2dd53f9-4bd9-45e9-9289-395efa740b7a</attributes>
+        <audit>false</audit>
+        <calculation/>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>automated</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_link/>
+        <internal_type display_value="">boolean</internal_type>
+        <label>Automated</label>
+        <mandatory>false</mandatory>
+        <max_length>40</max_length>
+        <model display_value="Playbook Manual Activity Flow ZZ">db1084e553a5c7107d5fd301a0490e31</model>
+        <model_id>db1084e553a5c7107d5fd301a0490e31</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_output_db1084e553a5c7107d5fd301a0490e31</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_output</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:15:07</sys_created_on>
+        <sys_id>2b10c4e553a5c7107d5fd301a0490e53</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 10:37:32</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier/>
+        <virtual>false</virtual>
+        <virtual_type/>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_output>
+    <sys_hub_action_input_action_instance action="DELETE" query="action_input=2b10c4e553a5c7107d5fd301a0490e53"/>
+    <sys_hub_flow_output action="DELETE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=reference,uiTypeLabel=Reference,uiUniqueId=5f4fbe3f-0ba1-4251-8b66-a62a5f653a1a</attributes>
+        <audit>false</audit>
+        <calculation/>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>record</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_link/>
+        <internal_type display_value="Reference">reference</internal_type>
+        <label>Record</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Playbook Manual Activity Flow ZZ">db1084e553a5c7107d5fd301a0490e31</model>
+        <model_id>db1084e553a5c7107d5fd301a0490e31</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_output_db1084e553a5c7107d5fd301a0490e31</name>
+        <next_element/>
+        <order>2</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference display_value="" name="sys_flow_data">sys_flow_data</reference>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_output</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:15:07</sys_created_on>
+        <sys_id>e310c4e553a5c7107d5fd301a0490e4a</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 10:37:32</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier/>
+        <virtual>false</virtual>
+        <virtual_type/>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_output>
+    <sys_hub_action_input_action_instance action="DELETE" query="action_input=e310c4e553a5c7107d5fd301a0490e4a"/>
+    <sys_hub_alias_mapping action="DELETE" query="source_id=db1084e553a5c7107d5fd301a0490e31"/>
+    <sys_hub_trigger_instance_v2 action="DELETE" query="flow=db1084e553a5c7107d5fd301a0490e31"/>
+    <sys_hub_action_instance_v2 action="DELETE" query="flow=db1084e553a5c7107d5fd301a0490e31^sys_idNOT IN13178fab83e983106a009529feaad302,7f10c4e553a5c7107d5fd301a0490ebc,bfd647ab83e983106a009529feaad3d6"/>
+    <sys_hub_action_instance_v2 action="DELETE">
+        <action_type display_value="Wait For Condition">89ce8a4187120010663ca1bb36cb0be3</action_type>
+        <action_type_parent display_value="">89ce8a4187120010663ca1bb36cb0be3</action_type_parent>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot>89ce8a4187120010663ca1bb36cb0be3</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Playbook Manual Activity Flow ZZ">db1084e553a5c7107d5fd301a0490e31</flow>
+        <generation_source/>
+        <order>5</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:15:07</sys_created_on>
+        <sys_id>13178fab83e983106a009529feaad302</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 10:37:32</sys_updated_on>
+        <ui_id>24b5a74d-b71d-419d-bbc4-4a155eae197c</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+2XXW/bNhSG/0qha9MTJUqichfYDmYsjQPH6y6KQqDIw4SALLn6SOsF+e+lPmxL/qoRe9kK7E4idcj3vOQjHn5+MZQwrgwuOFBGMPWwZZrYdF2bMxyGtstDM5S+0TNiNgf9Za7mkBR5IIqU5SqJdc8zi4qySz8KlS0itvy0aeFPKhIpxMbV5y89Y8FSPUwOqXH1stWVLxcQRCyESAcON6Ofqm9P6GHJ5WS65zFSAtrtSSpKbU7PgO85xAL05JJFGfSMOYsFy5N0uW5JgYlJHG0anlSc11nP2fdM/a2nIGb5nQSdJm8cWb8GjVsroxLFYbKolFQtOQujlYtJVMzjuzqf0meQrIjyls9FpseDRam5FNEokg9PybfpasIbFVfpNZ1Rwlm0fmN5nqqwyCEr16ZQswMW1T23u25DBHM9dzBni4WKH4NFmjyraj4tf96vBurLKPmmdWbqMe4zXkb2tausf6Pbh1XzJ5aqMvGPehgdXLoqYMiWWbmSqU63lPBnrL4WMK62BgfMPCdEPgWGiOVjxHxiId8FD4ikrs1847WyPfhalAnXBjZWBbXb+oOMp2qRX2tRz9C48tpr+CDOsf0HrLXZSu1B9bIhI1tmQZ25znUXk+3utzEzK2f+cFfPfKrqTvCBLBpYOm0NKNbFQKG/Oigde7qQdFcmC+qd1oiuRv0H8enAYmHqUxLayA6Jg4gvJaImJYgAM7ljCY9gfjYsFB/9WcvdP3PGn0AUURuZCx4m62VdcXGCwFXsw0bZYc0NIGlrnoYP94J8mFuE8HncFrGPlpb6/yg1bc+60LRX7V3Y4JaFbQEcYWFSfZC4FqI28ZDn09Akel+ENpzNhnm8kCG7+0xG7LHFhbkLxuoP8sZjQ5+pv900Q5yqcRU8iqtfW6P1oPgGkDBJImCtOov8X2etQNh4s3V2tJfnfTjgjOrDgCHf5oCIG3JEJZfIhtCRthPS0DPPL6j8o6VJi4MUuN4tLQJeXgB74LoeRRR8DxFHH2DMN23EJXOBeFLYHu3Xca+vl7yVJLwo/f8wHq5LrJ/nsTmGmkS2E2voEM3ogRIbQvBxQsqC+DRAbOvfAaRWeD4fXXe2LiGddZEq0ksZ1PVYlhRple90NJhMh8Ff17PB76NpMB09zKbjwWw0fC+siJTYxq6LMNZbleDQLW8sDjLBYcSxiOu41k+xahWZ5wHWKsJ4EgtV5pO1byw5y2F8N5h8vL8dzUa9hz/G9/ejYW9wfTcY3d7qp9F0OpnuucucHPg2Bgdttadmujd4X/oNip22hkT7UiSSnUruV2OxY08XxY7D78IVCOqGjq7YQFJdtulfP/KxZSHXZQJjwoU0L8HVlx8DiTQkKxMAAA==</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="DELETE" query="source_id=13178fab83e983106a009529feaad302"/>
+    <sys_hub_action_instance_v2 action="DELETE">
+        <action_type display_value="Create Flow Data">99008a631b67001094630f28cc4bcb97</action_type>
+        <action_type_parent display_value="">99008a631b67001094630f28cc4bcb97</action_type_parent>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot>99008a631b67001094630f28cc4bcb97</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Playbook Manual Activity Flow ZZ">db1084e553a5c7107d5fd301a0490e31</flow>
+        <generation_source/>
+        <order>1</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:15:07</sys_created_on>
+        <sys_id>7f10c4e553a5c7107d5fd301a0490ebc</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 10:37:32</sys_updated_on>
+        <ui_id>e17e6678-8e97-4584-a903-cfa6e47fd378</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+1YWW/iSBD+K8jPGLndPtmHVQRMNtqEIEhmNcpGVtvdTlprbI+PZJiI/77VPsDmSIBMRqvVvCB3dVXXV8fnanP3InEq9SWbKopFDIxcw1QUpNiagRVftTxPcz3XtqSuFJI5A03KfB7yjEchyJ5IkAuholmKxaiPXLbD3GCgSnkaB2TxubK4ImFOgs6Zl/Enni1AwXvkAU1YKPXv7rtSTBLwl7FE6r9sbGWLmDkBcVkA50yZz2DHEy4OjaS2HTZD2RWe8ASypOEjSqjAhLoS+5axkDLw6ZMgZV1pTkJKsihZSP0syUGQMEKvw2Cx0njkYQbnSUL3W8q/w+FY7TbO70vpInX8IHp24CjitNCs1JwqlyIE0Oq04vAeI+6x67hYFr4y4gasfPSiIJ+H4zJUURTmkzzI6qKAJE/heBaLyATWCrg/e4yeV6n+xMMiCdVmEHkkWK1IliXczTOWisrl/GY7h6XwckcFWcDm4NeZkzjm4YMTJ9ETL3wB9HnvIYBFr0wPS/lD2COeiLMnktX7BPJhIf5MEi6CvoJjwFh4vA3515xdiA4xFEx0xSay5itM1hBSZNtCquzqGNpGY65NVGlZ5Nv5movQylRVSXHKvIJC6iU8zooWZlX8y25FKGS/2ob+uuNIKiAz6mRRg1HbjPlxFDkAW217VoHr3ET7EO8nifo6SSrJqSyBTk32sOK23PpFhbeooFoaUhnxZE8zfVmzCJYt11Jl0zd8aqoKosR8NxWIixEizEau6W63m+uuG+uZ8KzBgZeXNHdFiD2xsVxuc2KHxmkcGRStUhPkAMS14V/gt+NHSUe0Y4eHcZ5txVMxxKt9VPTAH0aPPbRYUQL68e5lFcK4+d4JozVARZSw1voCVmu1RbGqh+HyfsWfwTEO0IEOVOFgg834KDqXx1XCYbuJSscfxfZV1dtUXzXcT+E5xbpn2oormzamsmYC4wmhMPxsZBgw9XxTef/Ic7HpIaLqCBiyzRpwsDFAirAfkiiPf9LcOwBge+4JhJ0a4X7s+yeg9uETcAViF+HPq71fg/AtgiCMTWabiuwbhg0XQ9WSbdX0ZGwghD3sMYKNdxOEUtu2ie77voow9J+FNVvHLjUwtnxEtXWTpRnJWJsVP2KuHQCgNpxVCDYA7Rll+n9klE0AAvRII3OT0Xh4MT7fM9Rm3iOjeQCo1xazwR+j4e3laLhnTk0hikVDfzo6G35pzqqG7kXYmSTRQ8LS5my7GDuT6fX5dDSbNW4DTbtBNI8D1mqBwfXV5HJ0M2q8XFqR/MOhr1tx/HkxmTSj0Jv6oySJkob2aDq9nq51jRYaAskP2lkanI0Ho8tWlsw3rgEHFAedUBz1iOLgE4ujHV0c/cjiGEcUxzyhONYbV6jW/w6bU6Fm/8ZoWJdv98VqXfD/9eVKRRrxKFVlVTEs+IhSddlS4JpFdE0xLdVUiX7K7Cj/QyplIuiyCOLhFTVwkuVJ2PFpUche9XnkFB8mafGV1Pk7VwBe+VssVBOux+VD5/dKUtW2XPQrYd3m5eo3ablc3v8L7cNAQ0IUAAA=</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="DELETE" query="source_id=7f10c4e553a5c7107d5fd301a0490ebc"/>
+    <sys_hub_action_instance_v2 action="DELETE">
+        <action_type display_value="Update Record">f9d01dd2c31332002841b63b12d3aea1</action_type>
+        <action_type_parent display_value="">f9d01dd2c31332002841b63b12d3aea1</action_type_parent>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot>f9d01dd2c31332002841b63b12d3aea1</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Playbook Manual Activity Flow ZZ">db1084e553a5c7107d5fd301a0490e31</flow>
+        <generation_source/>
+        <order>4</order>
+        <parent_ui_id>c5b60f6b-83e9-8310-6a00-9529feaad357</parent_ui_id>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:15:07</sys_created_on>
+        <sys_id>bfd647ab83e983106a009529feaad3d6</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 10:37:32</sys_updated_on>
+        <ui_id>f8c2a0f7-3a15-417b-8701-f6828985e67d</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+1UXW/aMBT9K8jPIUpICIG3aYA0aS1bV/Wl6yzHvgFLzscch5Yh/vvsxKGMlQ5VSNOk+c33Xp97ju/Rvd8iztAEJUPm+WM/ooEfBAPPG8Shn0RB4g9YQICOkYNykoGuVCQRgJuLg9ZE1CZYbSqciuIRM6KIjjNelYJs7k6k6YoLJiFHk/sHB5VEajQFEk22Rym1KQELkoDQKLemc++67Xwu618en1BhuhzHCskMoaHnIHhSkDPQDVMiKnBQRnItpJAbNFGy1gEJhC1ysdlXrHiuNCIytU8V/6HhY8/UpaC1UWhz+yu2/9WG6argFBal4kXeRhpmNlmIOsuvWxXmpyEltVDdT+tIXWk8KA1lQ8IySr+sisebruGc5408mxQFJWJ/I0pJntQKKjMQEJBpIJyRsuT5EpeyWPPmseaSuUuhL247XKj4MncJNcRdM2p3ruPTJnxHJDcqrjSMfrxr1OPvtenb6rCMcStaF1RU8lK903BrsOR2jvVrCK9NHvznSUugepYHXt1uwR9BFI3ifgzjUT8cxmGfjL2gT1MSQThKWTCK3fbdbve7m99s4GlBa/OXvQ/TzsFn6Ohe33RCjoVZ+zKLjjl79q9/Mf+Gf8m/LcN/zL4Hq+QPRvYGrxrgYGU1/q0Ol64iCr7Wnhew94urTx9nt7Nvs88vbN9TdW9cw5BpdAW9Ft85W0cHMOcgWPWCsG4P2wZ4bRvsvXwxM/uR15z/lr6gpR9+AsZHgmRNCAAA</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="DELETE" query="source_id=bfd647ab83e983106a009529feaad3d6"/>
+    <sys_hub_sub_flow_instance_v2 action="DELETE" query="flow=db1084e553a5c7107d5fd301a0490e31"/>
+    <sys_hub_flow_logic_instance_v2 action="DELETE" query="flow=db1084e553a5c7107d5fd301a0490e31^sys_idNOT INc5b60f6b83e983106a009529feaad357,ff10c4e553a5c7107d5fd301a0490eb9"/>
+    <sys_hub_flow_logic_instance_v2 action="DELETE">
+        <attributes/>
+        <block display_value="">56f1ddbf933d4310f306fbf08bba10b2</block>
+        <comment/>
+        <connected_to/>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Playbook Manual Activity Flow ZZ">db1084e553a5c7107d5fd301a0490e31</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="If">af4e1945c3e232002841b63b12d3ae3e</logic_definition>
+        <order>3</order>
+        <outputs_assigned/>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:15:07</sys_created_on>
+        <sys_id>c5b60f6b83e983106a009529feaad357</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 10:37:32</sys_updated_on>
+        <ui_id>c5b60f6b-83e9-8310-6a00-9529feaad357</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+2UW2vbQBCF/4rRsxC6RKbxW2gJFJoYmpCXNojR7soeutpV92LHNf7vndXFMY3TlNLHvnnPzs6cM/rwPtLedd7Ze31lLa5UtPjyGEeogka/95GCVkSLiGnF0aFWVS/E0QakDxc3oDzI2RVzuEG3m6GdzW6XVMDRdhJ2D2/VsTVKbsQ4uQND/Z0w0WL/y5XbdaKSUAtJ7e6cQbWi58jp1KTQZJcsY0U+L/I0zd9dZPW8qLOcFyCgoLrp4fspyOxTr8SvJgzzSLfTJG14sJWlcSSenFBc0OgGpBVx1ILi4LTZHRUjgC+VfBbWqBy1i0Lxk8Uf1Dsvy1DYCMrIxHB5PFbjAgeZrTUyseyCwUFxUMvxDdPSt+p2yBFWLxrw0k2rJ8Vb6ie6YDq4GC01d2u9/TwNvEbVBxwvpWYgjydwtIbaO2HDhxFStNSoaqHraDlVZ/QG+8fkpU1Wkg5JI/WWhgaqEmDBeEI7guSa9A+9/AAGQ4obakOPB5s1WGRVTyC1c4YiHPq1VN99MDQEHKNUwzaowDKDnevxEqPrQ/wS3xNy93vr62Ay2QK6w+GrT9OCK/2S3d9U/gt6L6Fsyiwtz9N7MT9H7xluX0c2fwPZsOQ/JDZN0//IniKLthrQG7P1w/+a2MeA5zDBDtxwwdCSkfugfZz+l8PFjgBAdipttfkWIjxrh59ahOHM4QUAAA==</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
+    <sys_hub_flow_logic_instance_v2 action="DELETE">
+        <attributes/>
+        <block display_value="">52f1ddbf933d4310f306fbf08bba10ad</block>
+        <comment/>
+        <connected_to/>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Playbook Manual Activity Flow ZZ">db1084e553a5c7107d5fd301a0490e31</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="Assign Subflow Outputs">df4e1945c3e232002841b63b12d3ae3e</logic_definition>
+        <order>2</order>
+        <outputs_assigned>record,automated</outputs_assigned>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:15:07</sys_created_on>
+        <sys_id>ff10c4e553a5c7107d5fd301a0490eb9</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 10:37:32</sys_updated_on>
+        <ui_id>ff10c4e5-53a5-c710-7d5f-d301a0490eb9</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+VVTY/aMBD9K1ufIQ0kbICekFZIPbQrtWgvbRUZewJWHTv1ByxF+e8dJ4FQ2q62q956QfF8vHlv/BKORHtXeWdXemGt2Cgy/3QkgpM5gWQUsxQmk4ROWDaKMz4peBKPaJzOYkgpGRBFS8BKA0wbjucdlT4EjkcYZXB7m02HU5hlw3QyTYd0FidDVtBbSDMEyqZR21fX2MmFrSQ9PLwYgG2F5AYC/y8DUlGD1BwYMj9epdyhglzSNUic8wEKwAwDRHiu6L63U329hTChOffYmAhcxgMCjw4UB5xVUGlhQEqqOHXaHM4RA5TfK9kHtkI5BCSh+NGK74iejAcXA+bEHmxeSL3PESuQPOfybrNYs8T8zV2bZ1stGNxXTmjVQju6ltA+Mi19qd63ssLlQEG9dKfLwYi3CAxVUBKodTyLj1u9P690KVQjuktKzag8n6hzRqy9AxtuCCSUCJSXtKqE2uSV0TvRNCOXMtpIPEStPAgmjSgLxKMgNgqy7prwAzUiqHiHMNiMNMXq+i7qZjf5Nx/ItOI6GXm7CSywzIjKLXDGDjrG9aB7K8brpwwySXo/UO90SR1cvhjxr1Zv4F9s4JXx8HrZQTyX4Kl5ccHwN6Q7H6+1lkBV7+LRP3NxGv/s4j8Y9//z62nnf+9Wh4Y4xQLV/kLx8FQpDnLeqJuCN9+QyPp1o0Co8PcQ7alwrz77OE54+B1nB7DtwxtS1zX6si1sPbrrlHVHDkxYXMAqxN5e1PED+k6wy9Bem69hcB+rfwBZ7i7vpQYAAA==</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
+    <sys_hub_pill_compound action="DELETE" query="attached_to=db1084e553a5c7107d5fd301a0490e31"/>
+    <sys_hub_flow_variable action="DELETE" query="model=db1084e553a5c7107d5fd301a0490e31"/>
+    <sys_documentation action="DELETE">
+        <element>wait</element>
+        <help/>
+        <hint/>
+        <label>Wait for user input</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31</name>
+        <plural>Wait for user inputs</plural>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:15:07</sys_created_on>
+        <sys_id>2b1084e553a5c7107d5fd301a0490e76</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-06 17:15:07</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="DELETE" query="name=var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31^sys_idNOT IN014067ae83a90310f70ac6a6feaad358,47d3696f83bdcf106a009529feaad320,c54067ae83a90310f70ac6a6feaad359"/>
+    <sys_choice action="DELETE" field="wait" table="var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>wait</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>No</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-07-06 17:15:07</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>014067ae83a90310f70ac6a6feaad358</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-06 17:15:07</sys_updated_on>
+            <value>no</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>wait</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>-- None --</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31</name>
+            <sequence>0</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-07-06 17:17:12</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>47d3696f83bdcf106a009529feaad320</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-06 17:17:12</sys_updated_on>
+            <value/>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>wait</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Yes</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31</name>
+            <sequence>2</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-07-06 17:15:07</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>c54067ae83a90310f70ac6a6feaad359</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-06 17:15:07</sys_updated_on>
+            <value>yes</value>
+        </sys_choice>
+    </sys_choice>
+    <sys_documentation action="DELETE">
+        <element>record</element>
+        <help/>
+        <hint/>
+        <label>Record</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_output_db1084e553a5c7107d5fd301a0490e31</name>
+        <plural>Records</plural>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:15:07</sys_created_on>
+        <sys_id>a710c4e553a5c7107d5fd301a0490e51</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-06 17:15:07</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="DELETE">
+        <element>automated</element>
+        <help/>
+        <hint/>
+        <label>Automated</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_output_db1084e553a5c7107d5fd301a0490e31</name>
+        <plural>Automated</plural>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:15:07</sys_created_on>
+        <sys_id>b710c4e553a5c7107d5fd301a0490ea5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-06 17:15:07</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="DELETE" query="name=var__m_sys_hub_flow_output_db1084e553a5c7107d5fd301a0490e31"/>
+    <sys_hub_flow_snapshot action="DELETE">
+        <access>public</access>
+        <acls/>
+        <active>true</active>
+        <allow_high_security_roles>false</allow_high_security_roles>
+        <annotation/>
+        <attributes/>
+        <authored_on_release_version>-1</authored_on_release_version>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category display_value="Activity Flows">f427c6ef1b230010affd0e55cc4bcb14</category>
+        <copied_from/>
+        <copied_from_name/>
+        <description>&lt;p&gt;Simple instruction process activity for Playbook Workspace Experience, that optionally waits for user to complete the flow data record.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Inputs:&lt;/b&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;Message&lt;/b&gt; - Message that will be displayed to the end user using Playbook Workspace Experience&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Wait for user input&lt;/b&gt; - When checked, does not wait for flow data to be in a completed state.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;b&gt;Outputs:&lt;/b&gt;&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;Record&lt;/b&gt; - Flow Data Record.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Automated&lt;/b&gt; - True/False based on whether the flow waited for user input or not.&lt;/li&gt;
+&lt;/ul&gt;</description>
+        <flow_priority>MEDIUM</flow_priority>
+        <internal_name>playbook_manual_activity_flow</internal_name>
+        <label_cache>[{"name":"e17e6678-8e97-4584-a903-cfa6e47fd378.record","label":"1 - Create Flow Data➛Record","reference":"sys_flow_data","reference_display":"Flow Data","type":"reference","base_type":"reference","usedInstances":{"ff10c4e5-53a5-c710-7d5f-d301a0490eb9":["record"],"f8c2a0f7-3a15-417b-8701-f6828985e67d":["record"],"24b5a74d-b71d-419d-bbc4-4a155eae197c":["record"]},"attributes":{"uiType":"reference","uiTypeLabel":"Reference","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"a84140d4-4607-4e97-a968-ee79f23bf1e0"}},{"name":"subflow.wait","label":"Input➛Wait for user input","type":"choice","base_type":"choice","choices":[{"label":"-- None --","value":"","order":0.0},{"label":"No","value":"no","order":1.0},{"label":"Yes","value":"yes","order":2.0}],"usedInstances":{"e17e6678-8e97-4584-a903-cfa6e47fd378":["wait"],"c5b60f6b-83e9-8310-6a00-9529feaad357":["condition"]},"attributes":{}}]</label_cache>
+        <master>true</master>
+        <name>Playbook Manual Activity Flow ZZ</name>
+        <natlang/>
+        <outputs/>
+        <parent_flow display_value="Playbook Manual Activity Flow ZZ">db1084e553a5c7107d5fd301a0490e31</parent_flow>
+        <remote_trigger_id/>
+        <run_as>user</run_as>
+        <run_with_roles/>
+        <sc_callable>false</sc_callable>
+        <status>published</status>
+        <sys_class_name>sys_hub_flow_snapshot</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:17:13</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>9fd3696f83bdcf106a009529feaad3c3</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 10:37:35</sys_updated_on>
+        <type>subflow</type>
+        <version>2</version>
+    </sys_hub_flow_snapshot>
+    <sys_translated_text action="DELETE" query="documentkey=9fd3696f83bdcf106a009529feaad3c3"/>
+    <sys_variable_value action="DELETE" query="document_key=9fd3696f83bdcf106a009529feaad3c3"/>
+    <sys_element_mapping action="DELETE" query="table=var__m_sys_hub_flow_output_9fd3696f83bdcf106a009529feaad3c3^id=9fd3696f83bdcf106a009529feaad3c3"/>
+    <sys_hub_flow_stage action="DELETE" query="flow=9fd3696f83bdcf106a009529feaad3c3"/>
+    <sys_flow_cat_variable_model action="DELETE" query="id=9fd3696f83bdcf106a009529feaad3c3^sys_idNOT IN53d3696f83bdcf106a009529feaad3c6"/>
+    <sys_flow_cat_variable_model action="DELETE">
+        <id>9fd3696f83bdcf106a009529feaad3c3</id>
+        <name>Playbook Manual Activity Flow</name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:17:13</sys_created_on>
+        <sys_id>53d3696f83bdcf106a009529feaad3c6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-06 17:17:13</sys_updated_on>
+    </sys_flow_cat_variable_model>
+    <sys_flow_cat_variable action="DELETE" query="flow_catalog_model=53d3696f83bdcf106a009529feaad3c6"/>
+    <sys_hub_flow_input action="DELETE" query="model=9fd3696f83bdcf106a009529feaad3c3^sys_idNOT INdbd3696f83bdcf106a009529feaad3c8"/>
+    <sys_hub_flow_input action="DELETE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=choice,uiTypeLabel=Choice,uiUniqueId=cd4a6822-f1ff-4cc7-8c8a-c65334e2e8d7</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice>1</choice>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value>yes</default_value>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>wait</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="Choice">choice</internal_type>
+        <label>Wait for user input</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Playbook Manual Activity Flow ZZ">9fd3696f83bdcf106a009529feaad3c3</model>
+        <model_id>9fd3696f83bdcf106a009529feaad3c3</model_id>
+        <model_table>sys_hub_flow_snapshot</model_table>
+        <name>var__m_sys_hub_flow_input_9fd3696f83bdcf106a009529feaad3c3</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:17:13</sys_created_on>
+        <sys_id>dbd3696f83bdcf106a009529feaad3c8</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 10:37:35</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_action_input_action_instance action="DELETE" query="action_input=dbd3696f83bdcf106a009529feaad3c8"/>
+    <sys_hub_flow_output action="DELETE" query="model=9fd3696f83bdcf106a009529feaad3c3^sys_idNOT IN6fd3696f83bdcf106a009529feaad3e8,e3d3696f83bdcf106a009529feaad3f5"/>
+    <sys_hub_flow_output action="DELETE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=boolean,uiTypeLabel=True/False,uiUniqueId=d2dd53f9-4bd9-45e9-9289-395efa740b7a</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>automated</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_link/>
+        <internal_type display_value="">boolean</internal_type>
+        <label>Automated</label>
+        <mandatory>false</mandatory>
+        <max_length>40</max_length>
+        <model display_value="Playbook Manual Activity Flow ZZ">9fd3696f83bdcf106a009529feaad3c3</model>
+        <model_id>9fd3696f83bdcf106a009529feaad3c3</model_id>
+        <model_table>sys_hub_flow_snapshot</model_table>
+        <name>var__m_sys_hub_flow_output_9fd3696f83bdcf106a009529feaad3c3</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_output</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:17:14</sys_created_on>
+        <sys_id>6fd3696f83bdcf106a009529feaad3e8</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 10:37:34</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_output>
+    <sys_hub_action_input_action_instance action="DELETE" query="action_input=6fd3696f83bdcf106a009529feaad3e8"/>
+    <sys_hub_flow_output action="DELETE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=reference,uiTypeLabel=Reference,uiUniqueId=5f4fbe3f-0ba1-4251-8b66-a62a5f653a1a</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>record</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_link/>
+        <internal_type display_value="Reference">reference</internal_type>
+        <label>Record</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Playbook Manual Activity Flow ZZ">9fd3696f83bdcf106a009529feaad3c3</model>
+        <model_id>9fd3696f83bdcf106a009529feaad3c3</model_id>
+        <model_table>sys_hub_flow_snapshot</model_table>
+        <name>var__m_sys_hub_flow_output_9fd3696f83bdcf106a009529feaad3c3</name>
+        <next_element/>
+        <order>2</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference display_value="" name="sys_flow_data">sys_flow_data</reference>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_output</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:17:14</sys_created_on>
+        <sys_id>e3d3696f83bdcf106a009529feaad3f5</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 10:37:34</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_output>
+    <sys_hub_action_input_action_instance action="DELETE" query="action_input=e3d3696f83bdcf106a009529feaad3f5"/>
+    <sys_hub_alias_mapping action="DELETE" query="source_id=9fd3696f83bdcf106a009529feaad3c3"/>
+    <sys_hub_trigger_instance_v2 action="DELETE" query="flow=9fd3696f83bdcf106a009529feaad3c3"/>
+    <sys_hub_action_instance_v2 action="DELETE" query="flow=9fd3696f83bdcf106a009529feaad3c3^sys_idNOT IN27d3a96f83bdcf106a009529feaad30a,a3d3a96f83bdcf106a009529feaad30c,abd3a96f83bdcf106a009529feaad30d"/>
+    <sys_hub_action_instance_v2 action="DELETE">
+        <action_type display_value="Create Flow Data">99008a631b67001094630f28cc4bcb97</action_type>
+        <action_type_parent display_value="Create Flow Data">8d3e35ef1b27001094630f28cc4bcb2a</action_type_parent>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot>99008a631b67001094630f28cc4bcb97</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Playbook Manual Activity Flow ZZ">9fd3696f83bdcf106a009529feaad3c3</flow>
+        <generation_source/>
+        <order>1</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:17:14</sys_created_on>
+        <sys_id>27d3a96f83bdcf106a009529feaad30a</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 10:37:35</sys_updated_on>
+        <ui_id>e17e6678-8e97-4584-a903-cfa6e47fd378</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+1YWW/jNhD+K4KeLUMUdboPRWA7adDEMexki8V2YVAiFROVJa2OZF3D/71DHbbkI7HTTVAU+2JYwyHnm+ObofRlJXMq92SHqqpNTIxc01JVpDq6iVVfsz1Pdz3XseWOHJIFA03KfB7yjEchyJ5IkAuhqtuqzaiPXHZgu8lAlfI0DsjyU7XjloQ5CaQLL+NPPFuCgjfnAU1YKPe+fO3IMUnAXsYSubfaWToVcEBcFoDqoIn4kBfZMhayhPkMjHisEt1U+ycNeZRQAQl1ZPY9YyFlgMUnQco68oKElGRRspR7WZKDIGGE3oXBcqMx52EG58lC93vK/wajWOs07PbkdJnO/CB6nsFRZNZCuVGbVaEUroGW1PLPF6IpAPCyPGGlNW8ecY+lZfTgTJIHWb8pKxXu4uKMYktG3KDeHQX5IhyVcZM3B9SJBEmeAiYWi3AIBytv/ek8et7E7pKHReSqxSDySNBQZSTx5pecBSK3RY46MsmyhLt5JlCu5Jzf76epFB5KFAvYAtDMFiSOefg4i5PoiRcIwKFF9zGAh24ZaZbyx7BLPOF9V8S9ewnyQSH+RBIuQnELx8BmYfEh5N9ydi2AmiomhuoQRfdVpugIqYpjI01xDQyVqTPXIZq87ois9gOSptsgghOzb7kIQRnSKnizMv5ii5fwOCvowao4rTsVWZHzYu372zIHm+AEo7MsarB1n41n0+8ECDX9LioM0n10DNj5BNReJmAleSsDoaCTI4x7KJd+0uwDaabZOtIY8RRPt3xFtwlWbNfWFMs3fWppKqLEegeaERcjRJiDXMvdr3HX3VbzM+FZg1+rVZq7wumuWFiv9/l2QOM8/p2ArebfH2BB8qNEElUt8TDOsz3kFQHLAt1hX78WVtTD70a9I5R7lW6rja+jZpsLoy1oVWS11voMu7Zqy+KpHuzrQ9w9wQA60YC23m8E+KxOUB5XCQftuioN/+tGcaQlbMqj3Q82BfIhzYBiw7Mc1VUsB1NFt6AtEEJh+jrINGHs+pb6HjPXxZaHiGYgINc+4cDkzmgrAvGYRHn8YwfvCTjag1cAkWogxyGeP4L1dx/BG3CHusJVtfZzEn/gJEYYW8yxVMU3TQduvZqtOJrlKdhECHvYYwSb70A+Sh3HIYbv+xrCUPQ21h0Du9TE2PYR1beVnWYkY23GncevE0zV/JpWtnZMnzNLjf/wLB0DLCikRjDHw9HgenR1ZKpOvTmjeQCebHdM+78NBw83w8GRQTkBz5YN/cnwYvC5OSwbutehNE6ix4SlzeF6PZqNJ3dXk+F02riiNPf1o0UcsFZV9O9uxzfD+2GjmbU8+YtD8bf8+P16PG56YTT1h0kSJQ3t4WRyN9nqmi00BBIStKPUvxj1hzetKFmv3ENOSA56Q3K0M5KD35gc/ezkGGcmxzwjOdYbkmO/codrfcTZHSh1m9iZKtv0Hb7ZbRP+v77daUgnHqWaoqmmDa96mqHYKtzziKGrlq1ZGjF+zIApP9GVMhGGMi3izwtqYAR6Zij5tEhtt3qJmxUvVWnxLif9masAuPwtHjQLbuzlH+nXSlJlu3zoVcK68MunX+T1ev31H4zz9/6gFQAA</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="DELETE" query="source_id=27d3a96f83bdcf106a009529feaad30a"/>
+    <sys_hub_action_instance_v2 action="DELETE">
+        <action_type display_value="Update Record">f9d01dd2c31332002841b63b12d3aea1</action_type>
+        <action_type_parent display_value="Update Record">baf174c8c3c232002841b63b12d3aee4</action_type_parent>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot>f9d01dd2c31332002841b63b12d3aea1</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Playbook Manual Activity Flow ZZ">9fd3696f83bdcf106a009529feaad3c3</flow>
+        <generation_source/>
+        <order>4</order>
+        <parent_ui_id>c5b60f6b-83e9-8310-6a00-9529feaad357</parent_ui_id>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:17:14</sys_created_on>
+        <sys_id>a3d3a96f83bdcf106a009529feaad30c</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 10:37:35</sys_updated_on>
+        <ui_id>f8c2a0f7-3a15-417b-8701-f6828985e67d</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+1VXW/aMBT9K5WfQ5QQCIG3iQ9pUlu2tuKl6yLHvgFLzscch5Yh/nvtOIGIQUelPqzS8uZzP3LOzT3x4xYxikYo6lPHHbo+8VzP6zpON+i5ke9Fbpd6GMgQWSjFCahMiSMOYXWw0BrzUoPFpghjnj2HFEuscMqKnOPN4kyYrBinAlI0enyyUI6F6iZBoNH2KHQpN44j4Cr1QZM7w1Vu8pPYdbv26tYEMkE1n75jIXiRkFJQTGLMC7BQglOlIxMbNJKiVIAATOcp3+wzViyVqiPSuS8F+63eGzg6LwYljYCJ7Y9hPS4DxxM1pHvVmchS1KlklTEChRkKhRiXXI7bmEmY55JlqSmpdNbVGS+T9NbMBO0bNF9HIWWhSECudWrmtYz4fpU93zUsZyytZlIHeUYw35+wlIJFpdR8tgg4JKpRmOA8Z+kyzEW2ZlWx4pLYS64OtlkIKNgytTHRxG29HvZM4ZMKXmDBtIob1UYV7yy9SGOOi+KgRQ0x/FVqJkZZrSE0Y9AlRLBcflEvWENNd2fVW9+DtzYL3MMmCSBqJVobv92COwDfHwSdAIaDTq8f9Dp46HgdEmMfeoOYeoPANnW73Z+eeLcNLiDb2OCuYXvMvvYAzUhZfSBGj0wwqSNXXycHF7gf5oLeZ3KBkfXpTdD64f3FDk73zQ1r/VgrFxTtC0BiCT9Kx/HoeH7z7Xr6MP05/X7iJjiX9z4vXMC08cKMAafFCerNfQCJIighNFKO7oQ6eLWog3tHfJglXN+pnv/G+PeM8fQKVyKvZB8JAAA=</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="DELETE" query="source_id=a3d3a96f83bdcf106a009529feaad30c"/>
+    <sys_hub_action_instance_v2 action="DELETE">
+        <action_type display_value="Wait For Condition">89ce8a4187120010663ca1bb36cb0be3</action_type>
+        <action_type_parent display_value="Wait For Condition">8bb9a8160b10030085c083eb37673aec</action_type_parent>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot>89ce8a4187120010663ca1bb36cb0be3</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Playbook Manual Activity Flow ZZ">9fd3696f83bdcf106a009529feaad3c3</flow>
+        <generation_source/>
+        <order>5</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:17:14</sys_created_on>
+        <sys_id>abd3a96f83bdcf106a009529feaad30d</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 10:37:35</sys_updated_on>
+        <ui_id>24b5a74d-b71d-419d-bbc4-4a155eae197c</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+2X227bOBCGX6XQtenVgZKo3AW2gw3WTQLb270oCoEihwkBWnJ1SJsN8u6lJNqWbCdwmgNQtHcSKVL//JxPM/p8b0lunViMMyAUOyR0XNt27CDwGHWSxAtYYicisgZWSpegnyzlErKqjHmV01JmqZ65paqqp/Qll8VK0btP2xF2IxXPIbVOPn8ZWCua621KyK2T+52pY3UomoDSj463Ah6XVt6t6plrJTnsjk/3N8pyXkvzBxZ8LyHloDUJqgoYWEuaclpm+d1mJAfKL1O1HbiRadkGvaTfC/m/fjO26+cE6CiZMWRzGxuz2mExpiWdl3nFyirfeJdJBkXrDwdBK1WOumPtA5erRn6zpKSJWq/OVLVML1pvrM0GnbOpCi0CVnWgtXIThpjfZN9ma5VnMm08MZMqY1Rt7mhZ5jKpylrPvVXJxSN2tzMHDAcFS/3ueElXK5lex6s8u5XN+7T85bDZaChU9k3rLOR1OqSsXjnUR0GHZ3p83Ax/ormsA/+ot9GL66PgMKZ3RZ0VuQ63lvBvKr9WcN6kGQOHhn6CIgIUYTdyEI2wi6IAQsCCBB6NrIeBVdwVI0WLYmuiPr34a1Vb0FpqzItb/+slLJer8lTLvAXj08PAUIb9p7IbaCeV62ji5mbLl1YTt17o6Pdh251+HnlHaFuTt2hy7LBWA9ze2LS79sNFO2Fwc5+JW32iB2kjvyVtPa/7pPXclkXcJqcR3ez6hgz2iHMdEhGceMhLsI9wJAQiNsEIA7WZ7/IQO+wNiCPOk/VE7BePgt0Ar1SXu1eoa0foWNM13wp4XJrBbJvsfcpmnXEDWfBqNY3Y9g5nbJl2xR1irhPVL8memAPN2c2ZBFWfp6HtESK7x9IHsnsw78Idc13H48CQw22iK13gIuLhEIURSWysUy/x4A24s5/u4/B+cgtFrzvM2fvQrb9XzyPvCCVr8iZp87k0ih6VaNhLskwB3W0mF7o2/XVmlBr08J928kUFbuv0TnXrev0+NDFKdLmiKPIYIBwkDBHBBPIg8YXnJyQJ7bfoG6Mne7MOTTkwnXQdju7vwQkhCEKCCEQhwr4uujSyPcQEDQCHgnshGbbrHh5eodQdIVZtvoZG7a56gxjPWNUcquQ7mI3NzIfz8ZYz52nO2rbxGMw89xfCrA3r5ZT1zd75Y+vZLaTSxx+3fWeRVXlj0mwyupyN4/9OF6O/J7N4NpkvZuejxWT8XnBiIRzPCQLkODq9sZME9e+dj2zwKfZdHPiB+xNwdtrrl2HaaTZZlnJZR1h0f+9KWsL5xejy49V0spgM5v+cX11NxoPR6cVoMp3qq8lsdjk78ON39MJXJbnbtI66AR0K0hC9NzY9tIHh2XstnvFex/pbEN0zuw90z+53oRM4CRJf96AgiG5EddFBkeO6KAgodxzMuLDfhs4vPwAgHyZI5BQAAA==</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="DELETE" query="source_id=abd3a96f83bdcf106a009529feaad30d"/>
+    <sys_hub_sub_flow_instance_v2 action="DELETE" query="flow=9fd3696f83bdcf106a009529feaad3c3"/>
+    <sys_hub_flow_logic_instance_v2 action="DELETE" query="flow=9fd3696f83bdcf106a009529feaad3c3^sys_idNOT IN27d3a96f83bdcf106a009529feaad306,afd3a96f83bdcf106a009529feaad307"/>
+    <sys_hub_flow_logic_instance_v2 action="DELETE">
+        <attributes/>
+        <block display_value="">52f1ddbf933d4310f306fbf08bba10ad</block>
+        <comment/>
+        <connected_to/>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Playbook Manual Activity Flow ZZ">9fd3696f83bdcf106a009529feaad3c3</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="Assign Subflow Outputs">df4e1945c3e232002841b63b12d3ae3e</logic_definition>
+        <order>2</order>
+        <outputs_assigned>record,automated</outputs_assigned>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:17:14</sys_created_on>
+        <sys_id>27d3a96f83bdcf106a009529feaad306</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 10:37:35</sys_updated_on>
+        <ui_id>ff10c4e5-53a5-c710-7d5f-d301a0490eb9</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/9VVy27bMBD8lZRnS5X1sCz3FCQwECBtgNbNpS2MlbiKiVCUQlF2XEP/3qUlP/JEUAQFepHF5e5yZpYjb1jZmKox9aw8rWtxo9jkx4YJziYMg6GXhRhFAURZPPRiHuU88IbghYmHIbABU1AgZWrMSs1pvQTZ2MBmg8MYR6N47IwxiZ0wGocOJF7gZDmMMIypUTx2u7q2pUou6krC+vqvG2QLIblGi//XgFWgCZpBzSbERtGLAnkp1C31fpL8VrYSUpSU+nVH9zF9s666dY7UPMM+dLmvO8SpwILzBwzvDSqOhCEHWeOAFaA4mFKv9xGNwK+UPAQWRKljUsB9LX7TqYE/ODp4wup1Pc9luZpTLwt+vzfvpaacKe2fnHf7uf39ZnSTmUbjTqZSZFh3KnHMoZHm7DjWJVxVRpSqKzGQyl11KZtCfek0YvsGuxFTpKkJDVaWvuXTk8u/LcrVXqupUFul+k1ZZiCPUhF0tpgKlLznLOwgwBgt0sZYnBvWiNnTwXTB50aDEgvCMy+gqoS6mVe6XIotBqJUuDeSFm4nLVrHuJBZ/q4V2rWSnm/D16CFFeMztaFie+J3Je4avLBQozzMUwxyx0th6IR+NHTG6WjkwMiHKB/RLRwCaweW0pmEuj7ISCTmd40VoRO1l2/eTcCWZFpU5pRALbFXqh30nvbT1255FBwuNTSmLMDgsa29p0bdtn8H+70B2M5+p0fIngHbmzAtS4mgHllwphv8OO0x9x4cvpsHQ++hB1+w3f/qthdcdVD6oaceaP1PTMV9zqMgT5ww5fSIMHESf5w4QRKRGnHopfH7mIoGh7uY1eJw/2jxWiodRANXJznffpfdukm3pIWy/8HuCoT58LPxvIDbpx+vse5ePrG2ba1ZtondfVj2YuyvTCZq0mxmYxdHeXxNNhHZcWhV6lt78CHW/gFFSb14CggAAA==</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
+    <sys_hub_flow_logic_instance_v2 action="DELETE">
+        <attributes/>
+        <block display_value="">56f1ddbf933d4310f306fbf08bba10b2</block>
+        <comment/>
+        <connected_to/>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Playbook Manual Activity Flow ZZ">9fd3696f83bdcf106a009529feaad3c3</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="If">af4e1945c3e232002841b63b12d3ae3e</logic_definition>
+        <order>3</order>
+        <outputs_assigned/>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:17:14</sys_created_on>
+        <sys_id>afd3a96f83bdcf106a009529feaad307</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 10:37:35</sys_updated_on>
+        <ui_id>c5b60f6b-83e9-8310-6a00-9529feaad357</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+1Vy27bMBD8FYNnQdAjNhrfAgcBCiQx0AS5tIGwoiibKEWqfNhRBf97l3rZaNymQXvszRzuLmdGs3BLlLO1s+ZRXRnDN5IsPz8HhEuP4e+WSKgYWRKqZMEtVzLrgIDsQDh/cQfSgZhdUct33DYzbmaz+zUWFNzUApqnt+rolotCs+HlGjTOt0yTZfvTFS9wTBlBGV/SmKbJIk2iKPlwEeeLNI+TIgUGKQ4UkDOBpauR8uy2Q4JfarFN7XFjNZeb4Xw7THkYQaULzyqOAsJeLJMFQz4lCMMCUoEswCrdTIhmUKylOAJbLi2OI774xfDv+GAyn/vCkqFEyvrL6ZgN/vVweQ0WkIqj1umhlG4Vp8z05hSsBCfs6hTrC9a1l9q3WMjF2K2Eq+R97wiZBoyfCxFnkASrvVJPfdBRPmzV/tPI8obLzpXhUigKYjqBRe9yZz2fljDBKhyUVVDX6GhWa7XjXTNyqcKNwENYCrXHR30SQ6CeeIjGQniD+HUHP4HmXsUdjsHmnmYOhtOsSy2OQ5sYOQTENGYlwJijSHQ3++Y8xV7yIC7r/fEtVPPadiFlg45D8HoJTvLftsblnna4B24Phy8uitJCqtcb8JvK9+3AJczLeRzNz+/AxeLcDpxJ/zuDn7wRfO/6H+Y+iqL/wf/r4HOT9XEdtHWP/8PcP/uQ929OXlNukNqjxz6O/xH+osFwcXoK7ZX+6kUdscMPdwMoT20GAAA=</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
+    <sys_hub_pill_compound action="DELETE" query="attached_to=9fd3696f83bdcf106a009529feaad3c3"/>
+    <sys_hub_flow_variable action="DELETE" query="model=9fd3696f83bdcf106a009529feaad3c3"/>
+    <sys_documentation action="DELETE">
+        <element>wait</element>
+        <help/>
+        <hint/>
+        <label>Wait for user input</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_9fd3696f83bdcf106a009529feaad3c3</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:17:14</sys_created_on>
+        <sys_id>63d3696f83bdcf106a009529feaad3e1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-06 17:17:14</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="DELETE" query="name=var__m_sys_hub_flow_input_9fd3696f83bdcf106a009529feaad3c3^sys_idNOT IN13d3696f83bdcf106a009529feaad3d4,27d3696f83bdcf106a009529feaad3d8,efd3696f83bdcf106a009529feaad3d6"/>
+    <sys_choice action="DELETE" field="wait" table="var__m_sys_hub_flow_input_9fd3696f83bdcf106a009529feaad3c3">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>wait</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>-- None --</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_9fd3696f83bdcf106a009529feaad3c3</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-07-06 17:17:13</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>13d3696f83bdcf106a009529feaad3d4</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-07 10:37:35</sys_updated_on>
+            <value/>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>wait</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Yes</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_9fd3696f83bdcf106a009529feaad3c3</name>
+            <sequence>3</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-07-06 17:17:14</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>27d3696f83bdcf106a009529feaad3d8</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-07 10:37:35</sys_updated_on>
+            <value>yes</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>wait</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>No</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_9fd3696f83bdcf106a009529feaad3c3</name>
+            <sequence>2</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-07-06 17:17:14</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>efd3696f83bdcf106a009529feaad3d6</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-07 10:37:35</sys_updated_on>
+            <value>no</value>
+        </sys_choice>
+    </sys_choice>
+    <sys_documentation action="DELETE">
+        <element>record</element>
+        <help/>
+        <hint/>
+        <label>Record</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_output_9fd3696f83bdcf106a009529feaad3c3</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:17:14</sys_created_on>
+        <sys_id>23d3696f83bdcf106a009529feaad3fc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-06 17:17:14</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="DELETE">
+        <element>automated</element>
+        <help/>
+        <hint/>
+        <label>Automated</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_output_9fd3696f83bdcf106a009529feaad3c3</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:17:14</sys_created_on>
+        <sys_id>6fd3696f83bdcf106a009529feaad3f0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-06 17:17:14</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="DELETE" query="name=var__m_sys_hub_flow_output_9fd3696f83bdcf106a009529feaad3c3"/>
+    <sys_hub_flow action="DELETE">
+        <sys_id>db1084e553a5c7107d5fd301a0490e31</sys_id>
+        <latest_snapshot>9fd3696f83bdcf106a009529feaad3c3</latest_snapshot>
+        <compiler_build>glide-australia-02-11-2026__patch3-05-25-2026_06-12-2026_1106.zip</compiler_build>
+        <version_record/>
+    </sys_hub_flow>
+    <sys_flow_trigger_plan action="DELETE" query="plan_id=db1084e553a5c7107d5fd301a0490e31"/>
+    <sys_flow_subflow_plan action="DELETE" query="plan_id=db1084e553a5c7107d5fd301a0490e31^sys_idNOT INffd3a96f83bdcf106a009529feaad35d"/>
+    <sys_flow_subflow_plan action="DELETE">
+        <plan>com.snc.process_flow.engine.ProcessPlan@77e9eaa4</plan>
+        <plan_id display_value="Playbook Manual Activity Flow ZZ">db1084e553a5c7107d5fd301a0490e31</plan_id>
+        <snapshot>9fd3696f83bdcf106a009529feaad3c3</snapshot>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:17:15</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>ffd3a96f83bdcf106a009529feaad35d</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_overrides/>
+        <sys_scope/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 10:37:36</sys_updated_on>
+    </sys_flow_subflow_plan>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</application>
+        <file_path/>
+        <instance_id>07c521403b284fd016e44a8aa4e45a15</instance_id>
+        <instance_name>dev390157</instance_name>
+        <name>sys_hub_flow_db1084e553a5c7107d5fd301a0490e31</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sys_hub_flow"&gt;&lt;sys_hub_flow action="INSERT_OR_UPDATE"&gt;&lt;access&gt;public&lt;/access&gt;&lt;acls/&gt;&lt;active&gt;true&lt;/active&gt;&lt;allow_high_security_roles&gt;false&lt;/allow_high_security_roles&gt;&lt;annotation/&gt;&lt;attributes&gt;browserActivatedIn=chrome,integrationActivatedIn=standalone,timeFromCreateToActivate=62546000,viewActivatedIn=naturalLanguage&lt;/attributes&gt;&lt;authored_on_release_version/&gt;&lt;callable_by_client_api&gt;false&lt;/callable_by_client_api&gt;&lt;category display_value="Activity Flows"&gt;f427c6ef1b230010affd0e55cc4bcb14&lt;/category&gt;&lt;copied_from/&gt;&lt;copied_from_name/&gt;&lt;description&gt;&amp;lt;p&amp;gt;Simple instruction process activity for Playbook Workspace Experience, that optionally waits for user to complete the flow data record.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;b&amp;gt;Inputs:&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;b&amp;gt;Message&amp;lt;/b&amp;gt; - Message that will be displayed to the end user using Playbook Workspace Experience&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;b&amp;gt;Wait for user input&amp;lt;/b&amp;gt; - When checked, does not wait for flow data to be in a completed state.&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;b&amp;gt;Outputs:&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;ul&amp;gt;&amp;lt;li&amp;gt;&amp;lt;b&amp;gt;Record&amp;lt;/b&amp;gt; - Flow Data Record.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;b&amp;gt;Automated&amp;lt;/b&amp;gt; - True/False based on whether the flow waited for user input or not.&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;&lt;/description&gt;&lt;display_name_after_preview/&gt;&lt;flow_priority&gt;MEDIUM&lt;/flow_priority&gt;&lt;generation_source&gt;fluent&lt;/generation_source&gt;&lt;internal_name&gt;playbook_manual_activity_flow&lt;/internal_name&gt;&lt;label_cache&gt;[{"name":"e17e6678-8e97-4584-a903-cfa6e47fd378.record","label":"1 - Create Flow Data➛Record","reference":"sys_flow_data","reference_display":"Flow Data","type":"reference","base_type":"reference","usedInstances":{"ff10c4e5-53a5-c710-7d5f-d301a0490eb9":["record"],"f8c2a0f7-3a15-417b-8701-f6828985e67d":["record"],"24b5a74d-b71d-419d-bbc4-4a155eae197c":["record"]},"attributes":{"uiType":"reference","uiTypeLabel":"Reference","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"a84140d4-4607-4e97-a968-ee79f23bf1e0"}},{"name":"subflow.wait","label":"Input➛Wait for user input","type":"choice","base_type":"choice","choices":[{"label":"-- None --","value":"","order":0.0},{"label":"No","value":"no","order":1.0},{"label":"Yes","value":"yes","order":2.0}],"usedInstances":{"e17e6678-8e97-4584-a903-cfa6e47fd378":["wait"],"c5b60f6b-83e9-8310-6a00-9529feaad357":["condition"]},"attributes":{}}]&lt;/label_cache&gt;&lt;master_snapshot&gt;9fd3696f83bdcf106a009529feaad3c3&lt;/master_snapshot&gt;&lt;master_snapshot_digest/&gt;&lt;name&gt;Playbook Manual Activity Flow ZZ&lt;/name&gt;&lt;natlang/&gt;&lt;outputs/&gt;&lt;pre_compiled&gt;false&lt;/pre_compiled&gt;&lt;remote_trigger_id/&gt;&lt;run_as&gt;user&lt;/run_as&gt;&lt;run_with_roles/&gt;&lt;sc_callable&gt;false&lt;/sc_callable&gt;&lt;show_draft_actions&gt;false&lt;/show_draft_actions&gt;&lt;show_triggered_flows&gt;false&lt;/show_triggered_flows&gt;&lt;status&gt;published&lt;/status&gt;&lt;substatus/&gt;&lt;sys_class_name&gt;sys_hub_flow&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:15:06&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;db1084e553a5c7107d5fd301a0490e31&lt;/sys_id&gt;&lt;sys_mod_count&gt;3&lt;/sys_mod_count&gt;&lt;sys_name&gt;Playbook Manual Activity Flow ZZ&lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="Policy Suite" source="x_gegis_ins_policy"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_hub_flow_db1084e553a5c7107d5fd301a0490e31&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-07 10:37:36&lt;/sys_updated_on&gt;&lt;type&gt;subflow&lt;/type&gt;&lt;updation_source/&gt;&lt;version&gt;2&lt;/version&gt;&lt;version_record&gt;d5f15dbf933d4310f306fbf08bba10fd&lt;/version_record&gt;&lt;/sys_hub_flow&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=db1084e553a5c7107d5fd301a0490e31"/&gt;&lt;sys_variable_value action="delete_multiple" query="document_key=db1084e553a5c7107d5fd301a0490e31"/&gt;&lt;sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_flow_output_db1084e553a5c7107d5fd301a0490e31^id=db1084e553a5c7107d5fd301a0490e31"/&gt;&lt;sys_hub_flow_stage action="delete_multiple" query="flow=db1084e553a5c7107d5fd301a0490e31"/&gt;&lt;sys_flow_cat_variable_model action="delete_multiple" query="id=db1084e553a5c7107d5fd301a0490e31"/&gt;&lt;sys_hub_flow_input action="delete_multiple" query="model=db1084e553a5c7107d5fd301a0490e31^sys_idNOT INeb1084e553a5c7107d5fd301a0490e6c"/&gt;&lt;sys_hub_flow_input action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;array_denormalized&gt;false&lt;/array_denormalized&gt;&lt;attributes&gt;element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=choice,uiTypeLabel=Choice,uiUniqueId=cd4a6822-f1ff-4cc7-8c8a-c65334e2e8d7&lt;/attributes&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation/&gt;&lt;choice&gt;1&lt;/choice&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;column_label/&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value&gt;yes&lt;/default_value&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;wait&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;help/&gt;&lt;hint/&gt;&lt;internal_type display_value="Choice"&gt;choice&lt;/internal_type&gt;&lt;label&gt;Wait for user input&lt;/label&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;32&lt;/max_length&gt;&lt;model display_value="Playbook Manual Activity Flow ZZ"&gt;db1084e553a5c7107d5fd301a0490e31&lt;/model&gt;&lt;model_id&gt;db1084e553a5c7107d5fd301a0490e31&lt;/model_id&gt;&lt;model_table&gt;sys_hub_flow&lt;/model_table&gt;&lt;name&gt;var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31&lt;/name&gt;&lt;next_element/&gt;&lt;order&gt;1&lt;/order&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference/&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;sizeclass/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_hub_flow_input&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:15:07&lt;/sys_created_on&gt;&lt;sys_id&gt;eb1084e553a5c7107d5fd301a0490e6c&lt;/sys_id&gt;&lt;sys_mod_count&gt;4&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package/&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-07 10:37:32&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier/&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type/&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_hub_flow_input&gt;&lt;sys_hub_action_input_action_instance action="delete_multiple" query="action_input=eb1084e553a5c7107d5fd301a0490e6c"/&gt;&lt;sys_hub_flow_output action="delete_multiple" query="model=db1084e553a5c7107d5fd301a0490e31^sys_idNOT IN2b10c4e553a5c7107d5fd301a0490e53,e310c4e553a5c7107d5fd301a0490e4a"/&gt;&lt;sys_hub_flow_output action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;array_denormalized&gt;false&lt;/array_denormalized&gt;&lt;attributes&gt;element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=boolean,uiTypeLabel=True/False,uiUniqueId=d2dd53f9-4bd9-45e9-9289-395efa740b7a&lt;/attributes&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation/&gt;&lt;choice/&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;column_label/&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value/&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;automated&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;help/&gt;&lt;hint/&gt;&lt;internal_link/&gt;&lt;internal_type display_value=""&gt;boolean&lt;/internal_type&gt;&lt;label&gt;Automated&lt;/label&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;40&lt;/max_length&gt;&lt;model display_value="Playbook Manual Activity Flow ZZ"&gt;db1084e553a5c7107d5fd301a0490e31&lt;/model&gt;&lt;model_id&gt;db1084e553a5c7107d5fd301a0490e31&lt;/model_id&gt;&lt;model_table&gt;sys_hub_flow&lt;/model_table&gt;&lt;name&gt;var__m_sys_hub_flow_output_db1084e553a5c7107d5fd301a0490e31&lt;/name&gt;&lt;next_element/&gt;&lt;order&gt;1&lt;/order&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference/&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;sizeclass/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_hub_flow_output&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:15:07&lt;/sys_created_on&gt;&lt;sys_id&gt;2b10c4e553a5c7107d5fd301a0490e53&lt;/sys_id&gt;&lt;sys_mod_count&gt;2&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package/&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-07 10:37:32&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier/&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type/&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_hub_flow_output&gt;&lt;sys_hub_action_input_action_instance action="delete_multiple" query="action_input=2b10c4e553a5c7107d5fd301a0490e53"/&gt;&lt;sys_hub_flow_output action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;array_denormalized&gt;false&lt;/array_denormalized&gt;&lt;attributes&gt;element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=reference,uiTypeLabel=Reference,uiUniqueId=5f4fbe3f-0ba1-4251-8b66-a62a5f653a1a&lt;/attributes&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation/&gt;&lt;choice/&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;column_label/&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value/&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;record&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;help/&gt;&lt;hint/&gt;&lt;internal_link/&gt;&lt;internal_type display_value="Reference"&gt;reference&lt;/internal_type&gt;&lt;label&gt;Record&lt;/label&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;32&lt;/max_length&gt;&lt;model display_value="Playbook Manual Activity Flow ZZ"&gt;db1084e553a5c7107d5fd301a0490e31&lt;/model&gt;&lt;model_id&gt;db1084e553a5c7107d5fd301a0490e31&lt;/model_id&gt;&lt;model_table&gt;sys_hub_flow&lt;/model_table&gt;&lt;name&gt;var__m_sys_hub_flow_output_db1084e553a5c7107d5fd301a0490e31&lt;/name&gt;&lt;next_element/&gt;&lt;order&gt;2&lt;/order&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference display_value="" name="sys_flow_data"&gt;sys_flow_data&lt;/reference&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;sizeclass/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_hub_flow_output&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:15:07&lt;/sys_created_on&gt;&lt;sys_id&gt;e310c4e553a5c7107d5fd301a0490e4a&lt;/sys_id&gt;&lt;sys_mod_count&gt;2&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package/&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-07 10:37:32&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier/&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type/&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_hub_flow_output&gt;&lt;sys_hub_action_input_action_instance action="delete_multiple" query="action_input=e310c4e553a5c7107d5fd301a0490e4a"/&gt;&lt;sys_hub_alias_mapping action="delete_multiple" query="source_id=db1084e553a5c7107d5fd301a0490e31"/&gt;&lt;sys_hub_trigger_instance_v2 action="delete_multiple" query="flow=db1084e553a5c7107d5fd301a0490e31"/&gt;&lt;sys_hub_action_instance_v2 action="delete_multiple" query="flow=db1084e553a5c7107d5fd301a0490e31^sys_idNOT IN13178fab83e983106a009529feaad302,7f10c4e553a5c7107d5fd301a0490ebc,bfd647ab83e983106a009529feaad3d6"/&gt;&lt;sys_hub_action_instance_v2 action="INSERT_OR_UPDATE"&gt;&lt;action_type display_value="Wait For Condition"&gt;89ce8a4187120010663ca1bb36cb0be3&lt;/action_type&gt;&lt;action_type_parent display_value=""&gt;89ce8a4187120010663ca1bb36cb0be3&lt;/action_type_parent&gt;&lt;attributes/&gt;&lt;comment/&gt;&lt;compiled_snapshot&gt;89ce8a4187120010663ca1bb36cb0be3&lt;/compiled_snapshot&gt;&lt;display_text/&gt;&lt;flow display_value="Playbook Manual Activity Flow ZZ"&gt;db1084e553a5c7107d5fd301a0490e31&lt;/flow&gt;&lt;generation_source/&gt;&lt;order&gt;5&lt;/order&gt;&lt;parent_ui_id/&gt;&lt;sys_class_name&gt;sys_hub_action_instance_v2&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:15:07&lt;/sys_created_on&gt;&lt;sys_id&gt;13178fab83e983106a009529feaad302&lt;/sys_id&gt;&lt;sys_mod_count&gt;3&lt;/sys_mod_count&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-07 10:37:32&lt;/sys_updated_on&gt;&lt;ui_id&gt;24b5a74d-b71d-419d-bbc4-4a155eae197c&lt;/ui_id&gt;&lt;updation_source/&gt;&lt;values&gt;H4sIAAAAAAAA/+2XXW/bNhSG/0qha9MTJUqichfYDmYsjQPH6y6KQqDIw4SALLn6SOsF+e+lPmxL/qoRe9kK7E4idcj3vOQjHn5+MZQwrgwuOFBGMPWwZZrYdF2bMxyGtstDM5S+0TNiNgf9Za7mkBR5IIqU5SqJdc8zi4qySz8KlS0itvy0aeFPKhIpxMbV5y89Y8FSPUwOqXH1stWVLxcQRCyESAcON6Ofqm9P6GHJ5WS65zFSAtrtSSpKbU7PgO85xAL05JJFGfSMOYsFy5N0uW5JgYlJHG0anlSc11nP2fdM/a2nIGb5nQSdJm8cWb8GjVsroxLFYbKolFQtOQujlYtJVMzjuzqf0meQrIjyls9FpseDRam5FNEokg9PybfpasIbFVfpNZ1Rwlm0fmN5nqqwyCEr16ZQswMW1T23u25DBHM9dzBni4WKH4NFmjyraj4tf96vBurLKPmmdWbqMe4zXkb2tausf6Pbh1XzJ5aqMvGPehgdXLoqYMiWWbmSqU63lPBnrL4WMK62BgfMPCdEPgWGiOVjxHxiId8FD4ikrs1847WyPfhalAnXBjZWBbXb+oOMp2qRX2tRz9C48tpr+CDOsf0HrLXZSu1B9bIhI1tmQZ25znUXk+3utzEzK2f+cFfPfKrqTvCBLBpYOm0NKNbFQKG/Oigde7qQdFcmC+qd1oiuRv0H8enAYmHqUxLayA6Jg4gvJaImJYgAM7ljCY9gfjYsFB/9WcvdP3PGn0AUURuZCx4m62VdcXGCwFXsw0bZYc0NIGlrnoYP94J8mFuE8HncFrGPlpb6/yg1bc+60LRX7V3Y4JaFbQEcYWFSfZC4FqI28ZDn09Akel+ENpzNhnm8kCG7+0xG7LHFhbkLxuoP8sZjQ5+pv900Q5yqcRU8iqtfW6P1oPgGkDBJImCtOov8X2etQNh4s3V2tJfnfTjgjOrDgCHf5oCIG3JEJZfIhtCRthPS0DPPL6j8o6VJi4MUuN4tLQJeXgB74LoeRRR8DxFHH2DMN23EJXOBeFLYHu3Xca+vl7yVJLwo/f8wHq5LrJ/nsTmGmkS2E2voEM3ogRIbQvBxQsqC+DRAbOvfAaRWeD4fXXe2LiGddZEq0ksZ1PVYlhRple90NJhMh8Ff17PB76NpMB09zKbjwWw0fC+siJTYxq6LMNZbleDQLW8sDjLBYcSxiOu41k+xahWZ5wHWKsJ4EgtV5pO1byw5y2F8N5h8vL8dzUa9hz/G9/ejYW9wfTcY3d7qp9F0OpnuucucHPg2Bgdttadmujd4X/oNip22hkT7UiSSnUruV2OxY08XxY7D78IVCOqGjq7YQFJdtulfP/KxZSHXZQJjwoU0L8HVlx8DiTQkKxMAAA==&lt;/values&gt;&lt;/sys_hub_action_instance_v2&gt;&lt;sys_hub_alias_mapping action="delete_multiple" query="source_id=13178fab83e983106a009529feaad302"/&gt;&lt;sys_hub_action_instance_v2 action="INSERT_OR_UPDATE"&gt;&lt;action_type display_value="Create Flow Data"&gt;99008a631b67001094630f28cc4bcb97&lt;/action_type&gt;&lt;action_type_parent display_value=""&gt;99008a631b67001094630f28cc4bcb97&lt;/action_type_parent&gt;&lt;attributes/&gt;&lt;comment/&gt;&lt;compiled_snapshot&gt;99008a631b67001094630f28cc4bcb97&lt;/compiled_snapshot&gt;&lt;display_text/&gt;&lt;flow display_value="Playbook Manual Activity Flow ZZ"&gt;db1084e553a5c7107d5fd301a0490e31&lt;/flow&gt;&lt;generation_source/&gt;&lt;order&gt;1&lt;/order&gt;&lt;parent_ui_id/&gt;&lt;sys_class_name&gt;sys_hub_action_instance_v2&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:15:07&lt;/sys_created_on&gt;&lt;sys_id&gt;7f10c4e553a5c7107d5fd301a0490ebc&lt;/sys_id&gt;&lt;sys_mod_count&gt;3&lt;/sys_mod_count&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-07 10:37:32&lt;/sys_updated_on&gt;&lt;ui_id&gt;e17e6678-8e97-4584-a903-cfa6e47fd378&lt;/ui_id&gt;&lt;updation_source/&gt;&lt;values&gt;H4sIAAAAAAAA/+1YWW/iSBD+K8jPGLndPtmHVQRMNtqEIEhmNcpGVtvdTlprbI+PZJiI/77VPsDmSIBMRqvVvCB3dVXXV8fnanP3InEq9SWbKopFDIxcw1QUpNiagRVftTxPcz3XtqSuFJI5A03KfB7yjEchyJ5IkAuholmKxaiPXLbD3GCgSnkaB2TxubK4ImFOgs6Zl/Enni1AwXvkAU1YKPXv7rtSTBLwl7FE6r9sbGWLmDkBcVkA50yZz2DHEy4OjaS2HTZD2RWe8ASypOEjSqjAhLoS+5axkDLw6ZMgZV1pTkJKsihZSP0syUGQMEKvw2Cx0njkYQbnSUL3W8q/w+FY7TbO70vpInX8IHp24CjitNCs1JwqlyIE0Oq04vAeI+6x67hYFr4y4gasfPSiIJ+H4zJUURTmkzzI6qKAJE/heBaLyATWCrg/e4yeV6n+xMMiCdVmEHkkWK1IliXczTOWisrl/GY7h6XwckcFWcDm4NeZkzjm4YMTJ9ETL3wB9HnvIYBFr0wPS/lD2COeiLMnktX7BPJhIf5MEi6CvoJjwFh4vA3515xdiA4xFEx0xSay5itM1hBSZNtCquzqGNpGY65NVGlZ5Nv5movQylRVSXHKvIJC6iU8zooWZlX8y25FKGS/2ob+uuNIKiAz6mRRg1HbjPlxFDkAW217VoHr3ET7EO8nifo6SSrJqSyBTk32sOK23PpFhbeooFoaUhnxZE8zfVmzCJYt11Jl0zd8aqoKosR8NxWIixEizEau6W63m+uuG+uZ8KzBgZeXNHdFiD2xsVxuc2KHxmkcGRStUhPkAMS14V/gt+NHSUe0Y4eHcZ5txVMxxKt9VPTAH0aPPbRYUQL68e5lFcK4+d4JozVARZSw1voCVmu1RbGqh+HyfsWfwTEO0IEOVOFgg834KDqXx1XCYbuJSscfxfZV1dtUXzXcT+E5xbpn2oormzamsmYC4wmhMPxsZBgw9XxTef/Ic7HpIaLqCBiyzRpwsDFAirAfkiiPf9LcOwBge+4JhJ0a4X7s+yeg9uETcAViF+HPq71fg/AtgiCMTWabiuwbhg0XQ9WSbdX0ZGwghD3sMYKNdxOEUtu2ie77voow9J+FNVvHLjUwtnxEtXWTpRnJWJsVP2KuHQCgNpxVCDYA7Rll+n9klE0AAvRII3OT0Xh4MT7fM9Rm3iOjeQCo1xazwR+j4e3laLhnTk0hikVDfzo6G35pzqqG7kXYmSTRQ8LS5my7GDuT6fX5dDSbNW4DTbtBNI8D1mqBwfXV5HJ0M2q8XFqR/MOhr1tx/HkxmTSj0Jv6oySJkob2aDq9nq51jRYaAskP2lkanI0Ho8tWlsw3rgEHFAedUBz1iOLgE4ujHV0c/cjiGEcUxzyhONYbV6jW/w6bU6Fm/8ZoWJdv98VqXfD/9eVKRRrxKFVlVTEs+IhSddlS4JpFdE0xLdVUiX7K7Cj/QyplIuiyCOLhFTVwkuVJ2PFpUche9XnkFB8mafGV1Pk7VwBe+VssVBOux+VD5/dKUtW2XPQrYd3m5eo3ablc3v8L7cNAQ0IUAAA=&lt;/values&gt;&lt;/sys_hub_action_instance_v2&gt;&lt;sys_hub_alias_mapping action="delete_multiple" query="source_id=7f10c4e553a5c7107d5fd301a0490ebc"/&gt;&lt;sys_hub_action_instance_v2 action="INSERT_OR_UPDATE"&gt;&lt;action_type display_value="Update Record"&gt;f9d01dd2c31332002841b63b12d3aea1&lt;/action_type&gt;&lt;action_type_parent display_value=""&gt;f9d01dd2c31332002841b63b12d3aea1&lt;/action_type_parent&gt;&lt;attributes/&gt;&lt;comment/&gt;&lt;compiled_snapshot&gt;f9d01dd2c31332002841b63b12d3aea1&lt;/compiled_snapshot&gt;&lt;display_text/&gt;&lt;flow display_value="Playbook Manual Activity Flow ZZ"&gt;db1084e553a5c7107d5fd301a0490e31&lt;/flow&gt;&lt;generation_source/&gt;&lt;order&gt;4&lt;/order&gt;&lt;parent_ui_id&gt;c5b60f6b-83e9-8310-6a00-9529feaad357&lt;/parent_ui_id&gt;&lt;sys_class_name&gt;sys_hub_action_instance_v2&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:15:07&lt;/sys_created_on&gt;&lt;sys_id&gt;bfd647ab83e983106a009529feaad3d6&lt;/sys_id&gt;&lt;sys_mod_count&gt;3&lt;/sys_mod_count&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-07 10:37:32&lt;/sys_updated_on&gt;&lt;ui_id&gt;f8c2a0f7-3a15-417b-8701-f6828985e67d&lt;/ui_id&gt;&lt;updation_source/&gt;&lt;values&gt;H4sIAAAAAAAA/+1UXW/aMBT9K8jPIUpICIG3aYA0aS1bV/Wl6yzHvgFLzscch5Yh/vvsxKGMlQ5VSNOk+c33Xp97ju/Rvd8iztAEJUPm+WM/ooEfBAPPG8Shn0RB4g9YQICOkYNykoGuVCQRgJuLg9ZE1CZYbSqciuIRM6KIjjNelYJs7k6k6YoLJiFHk/sHB5VEajQFEk22Rym1KQELkoDQKLemc++67Xwu618en1BhuhzHCskMoaHnIHhSkDPQDVMiKnBQRnItpJAbNFGy1gEJhC1ysdlXrHiuNCIytU8V/6HhY8/UpaC1UWhz+yu2/9WG6argFBal4kXeRhpmNlmIOsuvWxXmpyEltVDdT+tIXWk8KA1lQ8IySr+sisebruGc5408mxQFJWJ/I0pJntQKKjMQEJBpIJyRsuT5EpeyWPPmseaSuUuhL247XKj4MncJNcRdM2p3ruPTJnxHJDcqrjSMfrxr1OPvtenb6rCMcStaF1RU8lK903BrsOR2jvVrCK9NHvznSUugepYHXt1uwR9BFI3ifgzjUT8cxmGfjL2gT1MSQThKWTCK3fbdbve7m99s4GlBa/OXvQ/TzsFn6Ohe33RCjoVZ+zKLjjl79q9/Mf+Gf8m/LcN/zL4Hq+QPRvYGrxrgYGU1/q0Ol64iCr7Wnhew94urTx9nt7Nvs88vbN9TdW9cw5BpdAW9Ft85W0cHMOcgWPWCsG4P2wZ4bRvsvXwxM/uR15z/lr6gpR9+AsZHgmRNCAAA&lt;/values&gt;&lt;/sys_hub_action_instance_v2&gt;&lt;sys_hub_alias_mapping action="delete_multiple" query="source_id=bfd647ab83e983106a009529feaad3d6"/&gt;&lt;sys_hub_sub_flow_instance_v2 action="delete_multiple" query="flow=db1084e553a5c7107d5fd301a0490e31"/&gt;&lt;sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=db1084e553a5c7107d5fd301a0490e31^sys_idNOT INc5b60f6b83e983106a009529feaad357,ff10c4e553a5c7107d5fd301a0490eb9"/&gt;&lt;sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE"&gt;&lt;attributes/&gt;&lt;block display_value=""&gt;56f1ddbf933d4310f306fbf08bba10b2&lt;/block&gt;&lt;comment/&gt;&lt;connected_to/&gt;&lt;decision_table/&gt;&lt;display_text/&gt;&lt;flow display_value="Playbook Manual Activity Flow ZZ"&gt;db1084e553a5c7107d5fd301a0490e31&lt;/flow&gt;&lt;flow_variables_assigned/&gt;&lt;generation_source/&gt;&lt;logic_definition display_value="If"&gt;af4e1945c3e232002841b63b12d3ae3e&lt;/logic_definition&gt;&lt;order&gt;3&lt;/order&gt;&lt;outputs_assigned/&gt;&lt;parent_ui_id/&gt;&lt;sys_class_name&gt;sys_hub_flow_logic_instance_v2&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:15:07&lt;/sys_created_on&gt;&lt;sys_id&gt;c5b60f6b83e983106a009529feaad357&lt;/sys_id&gt;&lt;sys_mod_count&gt;4&lt;/sys_mod_count&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-07 10:37:32&lt;/sys_updated_on&gt;&lt;ui_id&gt;c5b60f6b-83e9-8310-6a00-9529feaad357&lt;/ui_id&gt;&lt;updation_source/&gt;&lt;values&gt;H4sIAAAAAAAA/+2UW2vbQBCF/4rRsxC6RKbxW2gJFJoYmpCXNojR7soeutpV92LHNf7vndXFMY3TlNLHvnnPzs6cM/rwPtLedd7Ze31lLa5UtPjyGEeogka/95GCVkSLiGnF0aFWVS/E0QakDxc3oDzI2RVzuEG3m6GdzW6XVMDRdhJ2D2/VsTVKbsQ4uQND/Z0w0WL/y5XbdaKSUAtJ7e6cQbWi58jp1KTQZJcsY0U+L/I0zd9dZPW8qLOcFyCgoLrp4fspyOxTr8SvJgzzSLfTJG14sJWlcSSenFBc0OgGpBVx1ILi4LTZHRUjgC+VfBbWqBy1i0Lxk8Uf1Dsvy1DYCMrIxHB5PFbjAgeZrTUyseyCwUFxUMvxDdPSt+p2yBFWLxrw0k2rJ8Vb6ie6YDq4GC01d2u9/TwNvEbVBxwvpWYgjydwtIbaO2HDhxFStNSoaqHraDlVZ/QG+8fkpU1Wkg5JI/WWhgaqEmDBeEI7guSa9A+9/AAGQ4obakOPB5s1WGRVTyC1c4YiHPq1VN99MDQEHKNUwzaowDKDnevxEqPrQ/wS3xNy93vr62Ay2QK6w+GrT9OCK/2S3d9U/gt6L6Fsyiwtz9N7MT9H7xluX0c2fwPZsOQ/JDZN0//IniKLthrQG7P1w/+a2MeA5zDBDtxwwdCSkfugfZz+l8PFjgBAdipttfkWIjxrh59ahOHM4QUAAA==&lt;/values&gt;&lt;workflow_reference/&gt;&lt;/sys_hub_flow_logic_instance_v2&gt;&lt;sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE"&gt;&lt;attributes/&gt;&lt;block display_value=""&gt;52f1ddbf933d4310f306fbf08bba10ad&lt;/block&gt;&lt;comment/&gt;&lt;connected_to/&gt;&lt;decision_table/&gt;&lt;display_text/&gt;&lt;flow display_value="Playbook Manual Activity Flow ZZ"&gt;db1084e553a5c7107d5fd301a0490e31&lt;/flow&gt;&lt;flow_variables_assigned/&gt;&lt;generation_source/&gt;&lt;logic_definition display_value="Assign Subflow Outputs"&gt;df4e1945c3e232002841b63b12d3ae3e&lt;/logic_definition&gt;&lt;order&gt;2&lt;/order&gt;&lt;outputs_assigned&gt;record,automated&lt;/outputs_assigned&gt;&lt;parent_ui_id/&gt;&lt;sys_class_name&gt;sys_hub_flow_logic_instance_v2&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:15:07&lt;/sys_created_on&gt;&lt;sys_id&gt;ff10c4e553a5c7107d5fd301a0490eb9&lt;/sys_id&gt;&lt;sys_mod_count&gt;4&lt;/sys_mod_count&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-07 10:37:32&lt;/sys_updated_on&gt;&lt;ui_id&gt;ff10c4e5-53a5-c710-7d5f-d301a0490eb9&lt;/ui_id&gt;&lt;updation_source/&gt;&lt;values&gt;H4sIAAAAAAAA/+VVTY/aMBD9K1ufIQ0kbICekFZIPbQrtWgvbRUZewJWHTv1ByxF+e8dJ4FQ2q62q956QfF8vHlv/BKORHtXeWdXemGt2Cgy/3QkgpM5gWQUsxQmk4ROWDaKMz4peBKPaJzOYkgpGRBFS8BKA0wbjucdlT4EjkcYZXB7m02HU5hlw3QyTYd0FidDVtBbSDMEyqZR21fX2MmFrSQ9PLwYgG2F5AYC/y8DUlGD1BwYMj9epdyhglzSNUic8wEKwAwDRHiu6L63U329hTChOffYmAhcxgMCjw4UB5xVUGlhQEqqOHXaHM4RA5TfK9kHtkI5BCSh+NGK74iejAcXA+bEHmxeSL3PESuQPOfybrNYs8T8zV2bZ1stGNxXTmjVQju6ltA+Mi19qd63ssLlQEG9dKfLwYi3CAxVUBKodTyLj1u9P690KVQjuktKzag8n6hzRqy9AxtuCCSUCJSXtKqE2uSV0TvRNCOXMtpIPEStPAgmjSgLxKMgNgqy7prwAzUiqHiHMNiMNMXq+i7qZjf5Nx/ItOI6GXm7CSywzIjKLXDGDjrG9aB7K8brpwwySXo/UO90SR1cvhjxr1Zv4F9s4JXx8HrZQTyX4Kl5ccHwN6Q7H6+1lkBV7+LRP3NxGv/s4j8Y9//z62nnf+9Wh4Y4xQLV/kLx8FQpDnLeqJuCN9+QyPp1o0Co8PcQ7alwrz77OE54+B1nB7DtwxtS1zX6si1sPbrrlHVHDkxYXMAqxN5e1PED+k6wy9Bem69hcB+rfwBZ7i7vpQYAAA==&lt;/values&gt;&lt;workflow_reference/&gt;&lt;/sys_hub_flow_logic_instance_v2&gt;&lt;sys_hub_pill_compound action="delete_multiple" query="attached_to=db1084e553a5c7107d5fd301a0490e31"/&gt;&lt;sys_hub_flow_variable action="delete_multiple" query="model=db1084e553a5c7107d5fd301a0490e31"/&gt;&lt;sys_documentation action="INSERT_OR_UPDATE"&gt;&lt;element&gt;wait&lt;/element&gt;&lt;help/&gt;&lt;hint/&gt;&lt;label&gt;Wait for user input&lt;/label&gt;&lt;language&gt;en&lt;/language&gt;&lt;name&gt;var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31&lt;/name&gt;&lt;plural&gt;Wait for user inputs&lt;/plural&gt;&lt;sys_class_name&gt;sys_documentation&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:15:07&lt;/sys_created_on&gt;&lt;sys_id&gt;2b1084e553a5c7107d5fd301a0490e76&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package display_value="Policy Suite" source="x_gegis_ins_policy"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-06 17:15:07&lt;/sys_updated_on&gt;&lt;url/&gt;&lt;url_target/&gt;&lt;/sys_documentation&gt;&lt;sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31^sys_idNOT IN014067ae83a90310f70ac6a6feaad358,47d3696f83bdcf106a009529feaad320,c54067ae83a90310f70ac6a6feaad359"/&gt;&lt;sys_choice field="wait" table="var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31"&gt;&lt;sys_choice action="INSERT_OR_UPDATE"&gt;&lt;dependent_value/&gt;&lt;element&gt;wait&lt;/element&gt;&lt;hint/&gt;&lt;inactive&gt;false&lt;/inactive&gt;&lt;label&gt;No&lt;/label&gt;&lt;language&gt;en&lt;/language&gt;&lt;name&gt;var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31&lt;/name&gt;&lt;sequence&gt;1&lt;/sequence&gt;&lt;synonyms/&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:15:07&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;014067ae83a90310f70ac6a6feaad358&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-06 17:15:07&lt;/sys_updated_on&gt;&lt;value&gt;no&lt;/value&gt;&lt;/sys_choice&gt;&lt;sys_choice action="INSERT_OR_UPDATE"&gt;&lt;dependent_value/&gt;&lt;element&gt;wait&lt;/element&gt;&lt;hint/&gt;&lt;inactive&gt;false&lt;/inactive&gt;&lt;label&gt;-- None --&lt;/label&gt;&lt;language&gt;en&lt;/language&gt;&lt;name&gt;var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31&lt;/name&gt;&lt;sequence&gt;0&lt;/sequence&gt;&lt;synonyms/&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:17:12&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;47d3696f83bdcf106a009529feaad320&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-06 17:17:12&lt;/sys_updated_on&gt;&lt;value/&gt;&lt;/sys_choice&gt;&lt;sys_choice action="INSERT_OR_UPDATE"&gt;&lt;dependent_value/&gt;&lt;element&gt;wait&lt;/element&gt;&lt;hint/&gt;&lt;inactive&gt;false&lt;/inactive&gt;&lt;label&gt;Yes&lt;/label&gt;&lt;language&gt;en&lt;/language&gt;&lt;name&gt;var__m_sys_hub_flow_input_db1084e553a5c7107d5fd301a0490e31&lt;/name&gt;&lt;sequence&gt;2&lt;/sequence&gt;&lt;synonyms/&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:15:07&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;c54067ae83a90310f70ac6a6feaad359&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-06 17:15:07&lt;/sys_updated_on&gt;&lt;value&gt;yes&lt;/value&gt;&lt;/sys_choice&gt;&lt;/sys_choice&gt;&lt;sys_documentation action="INSERT_OR_UPDATE"&gt;&lt;element&gt;record&lt;/element&gt;&lt;help/&gt;&lt;hint/&gt;&lt;label&gt;Record&lt;/label&gt;&lt;language&gt;en&lt;/language&gt;&lt;name&gt;var__m_sys_hub_flow_output_db1084e553a5c7107d5fd301a0490e31&lt;/name&gt;&lt;plural&gt;Records&lt;/plural&gt;&lt;sys_class_name&gt;sys_documentation&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:15:07&lt;/sys_created_on&gt;&lt;sys_id&gt;a710c4e553a5c7107d5fd301a0490e51&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package display_value="Policy Suite" source="x_gegis_ins_policy"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-06 17:15:07&lt;/sys_updated_on&gt;&lt;url/&gt;&lt;url_target/&gt;&lt;/sys_documentation&gt;&lt;sys_documentation action="INSERT_OR_UPDATE"&gt;&lt;element&gt;automated&lt;/element&gt;&lt;help/&gt;&lt;hint/&gt;&lt;label&gt;Automated&lt;/label&gt;&lt;language&gt;en&lt;/language&gt;&lt;name&gt;var__m_sys_hub_flow_output_db1084e553a5c7107d5fd301a0490e31&lt;/name&gt;&lt;plural&gt;Automated&lt;/plural&gt;&lt;sys_class_name&gt;sys_documentation&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:15:07&lt;/sys_created_on&gt;&lt;sys_id&gt;b710c4e553a5c7107d5fd301a0490ea5&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package display_value="Policy Suite" source="x_gegis_ins_policy"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-06 17:15:07&lt;/sys_updated_on&gt;&lt;url/&gt;&lt;url_target/&gt;&lt;/sys_documentation&gt;&lt;sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_output_db1084e553a5c7107d5fd301a0490e31"/&gt;&lt;sys_hub_flow_snapshot action="INSERT_OR_UPDATE"&gt;&lt;access&gt;public&lt;/access&gt;&lt;acls/&gt;&lt;active&gt;true&lt;/active&gt;&lt;allow_high_security_roles&gt;false&lt;/allow_high_security_roles&gt;&lt;annotation/&gt;&lt;attributes/&gt;&lt;authored_on_release_version&gt;-1&lt;/authored_on_release_version&gt;&lt;callable_by_client_api&gt;false&lt;/callable_by_client_api&gt;&lt;category display_value="Activity Flows"&gt;f427c6ef1b230010affd0e55cc4bcb14&lt;/category&gt;&lt;copied_from/&gt;&lt;copied_from_name/&gt;&lt;description&gt;&amp;lt;p&amp;gt;Simple instruction process activity for Playbook Workspace Experience, that optionally waits for user to complete the flow data record.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;b&amp;gt;Inputs:&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;b&amp;gt;Message&amp;lt;/b&amp;gt; - Message that will be displayed to the end user using Playbook Workspace Experience&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;b&amp;gt;Wait for user input&amp;lt;/b&amp;gt; - When checked, does not wait for flow data to be in a completed state.&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+
+&amp;lt;p&amp;gt;&amp;lt;b&amp;gt;Outputs:&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;ul&amp;gt;&amp;lt;li&amp;gt;&amp;lt;b&amp;gt;Record&amp;lt;/b&amp;gt; - Flow Data Record.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;b&amp;gt;Automated&amp;lt;/b&amp;gt; - True/False based on whether the flow waited for user input or not.&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;&lt;/description&gt;&lt;flow_priority&gt;MEDIUM&lt;/flow_priority&gt;&lt;internal_name&gt;playbook_manual_activity_flow&lt;/internal_name&gt;&lt;label_cache&gt;[{"name":"e17e6678-8e97-4584-a903-cfa6e47fd378.record","label":"1 - Create Flow Data➛Record","reference":"sys_flow_data","reference_display":"Flow Data","type":"reference","base_type":"reference","usedInstances":{"ff10c4e5-53a5-c710-7d5f-d301a0490eb9":["record"],"f8c2a0f7-3a15-417b-8701-f6828985e67d":["record"],"24b5a74d-b71d-419d-bbc4-4a155eae197c":["record"]},"attributes":{"uiType":"reference","uiTypeLabel":"Reference","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"a84140d4-4607-4e97-a968-ee79f23bf1e0"}},{"name":"subflow.wait","label":"Input➛Wait for user input","type":"choice","base_type":"choice","choices":[{"label":"-- None --","value":"","order":0.0},{"label":"No","value":"no","order":1.0},{"label":"Yes","value":"yes","order":2.0}],"usedInstances":{"e17e6678-8e97-4584-a903-cfa6e47fd378":["wait"],"c5b60f6b-83e9-8310-6a00-9529feaad357":["condition"]},"attributes":{}}]&lt;/label_cache&gt;&lt;master&gt;true&lt;/master&gt;&lt;name&gt;Playbook Manual Activity Flow ZZ&lt;/name&gt;&lt;natlang/&gt;&lt;outputs/&gt;&lt;parent_flow display_value="Playbook Manual Activity Flow ZZ"&gt;db1084e553a5c7107d5fd301a0490e31&lt;/parent_flow&gt;&lt;remote_trigger_id/&gt;&lt;run_as&gt;user&lt;/run_as&gt;&lt;run_with_roles/&gt;&lt;sc_callable&gt;false&lt;/sc_callable&gt;&lt;status&gt;published&lt;/status&gt;&lt;sys_class_name&gt;sys_hub_flow_snapshot&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:17:13&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;9fd3696f83bdcf106a009529feaad3c3&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_overrides/&gt;&lt;sys_package/&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-07 10:37:35&lt;/sys_updated_on&gt;&lt;type&gt;subflow&lt;/type&gt;&lt;version&gt;2&lt;/version&gt;&lt;/sys_hub_flow_snapshot&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=9fd3696f83bdcf106a009529feaad3c3"/&gt;&lt;sys_variable_value action="delete_multiple" query="document_key=9fd3696f83bdcf106a009529feaad3c3"/&gt;&lt;sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_flow_output_9fd3696f83bdcf106a009529feaad3c3^id=9fd3696f83bdcf106a009529feaad3c3"/&gt;&lt;sys_hub_flow_stage action="delete_multiple" query="flow=9fd3696f83bdcf106a009529feaad3c3"/&gt;&lt;sys_flow_cat_variable_model action="delete_multiple" query="id=9fd3696f83bdcf106a009529feaad3c3^sys_idNOT IN53d3696f83bdcf106a009529feaad3c6"/&gt;&lt;sys_flow_cat_variable_model action="INSERT_OR_UPDATE"&gt;&lt;id&gt;9fd3696f83bdcf106a009529feaad3c3&lt;/id&gt;&lt;name&gt;Playbook Manual Activity Flow&lt;/name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:17:13&lt;/sys_created_on&gt;&lt;sys_id&gt;53d3696f83bdcf106a009529feaad3c6&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_scope/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-06 17:17:13&lt;/sys_updated_on&gt;&lt;/sys_flow_cat_variable_model&gt;&lt;sys_flow_cat_variable action="delete_multiple" query="flow_catalog_model=53d3696f83bdcf106a009529feaad3c6"/&gt;&lt;sys_hub_flow_input action="delete_multiple" query="model=9fd3696f83bdcf106a009529feaad3c3^sys_idNOT INdbd3696f83bdcf106a009529feaad3c8"/&gt;&lt;sys_hub_flow_input action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;array_denormalized&gt;false&lt;/array_denormalized&gt;&lt;attributes&gt;element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=choice,uiTypeLabel=Choice,uiUniqueId=cd4a6822-f1ff-4cc7-8c8a-c65334e2e8d7&lt;/attributes&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation&gt;&lt;![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]&gt;&lt;/calculation&gt;&lt;choice&gt;1&lt;/choice&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;column_label/&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value&gt;yes&lt;/default_value&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;wait&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;help/&gt;&lt;hint/&gt;&lt;internal_type display_value="Choice"&gt;choice&lt;/internal_type&gt;&lt;label&gt;Wait for user input&lt;/label&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;32&lt;/max_length&gt;&lt;model display_value="Playbook Manual Activity Flow ZZ"&gt;9fd3696f83bdcf106a009529feaad3c3&lt;/model&gt;&lt;model_id&gt;9fd3696f83bdcf106a009529feaad3c3&lt;/model_id&gt;&lt;model_table&gt;sys_hub_flow_snapshot&lt;/model_table&gt;&lt;name&gt;var__m_sys_hub_flow_input_9fd3696f83bdcf106a009529feaad3c3&lt;/name&gt;&lt;next_element/&gt;&lt;order&gt;1&lt;/order&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference/&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;sizeclass/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_hub_flow_input&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:17:13&lt;/sys_created_on&gt;&lt;sys_id&gt;dbd3696f83bdcf106a009529feaad3c8&lt;/sys_id&gt;&lt;sys_mod_count&gt;5&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package/&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-07 10:37:35&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type&gt;script&lt;/virtual_type&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_hub_flow_input&gt;&lt;sys_hub_action_input_action_instance action="delete_multiple" query="action_input=dbd3696f83bdcf106a009529feaad3c8"/&gt;&lt;sys_hub_flow_output action="delete_multiple" query="model=9fd3696f83bdcf106a009529feaad3c3^sys_idNOT IN6fd3696f83bdcf106a009529feaad3e8,e3d3696f83bdcf106a009529feaad3f5"/&gt;&lt;sys_hub_flow_output action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;array_denormalized&gt;false&lt;/array_denormalized&gt;&lt;attributes&gt;element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=boolean,uiTypeLabel=True/False,uiUniqueId=d2dd53f9-4bd9-45e9-9289-395efa740b7a&lt;/attributes&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation&gt;&lt;![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]&gt;&lt;/calculation&gt;&lt;choice/&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;column_label/&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value/&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;automated&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;help/&gt;&lt;hint/&gt;&lt;internal_link/&gt;&lt;internal_type display_value=""&gt;boolean&lt;/internal_type&gt;&lt;label&gt;Automated&lt;/label&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;40&lt;/max_length&gt;&lt;model display_value="Playbook Manual Activity Flow ZZ"&gt;9fd3696f83bdcf106a009529feaad3c3&lt;/model&gt;&lt;model_id&gt;9fd3696f83bdcf106a009529feaad3c3&lt;/model_id&gt;&lt;model_table&gt;sys_hub_flow_snapshot&lt;/model_table&gt;&lt;name&gt;var__m_sys_hub_flow_output_9fd3696f83bdcf106a009529feaad3c3&lt;/name&gt;&lt;next_element/&gt;&lt;order&gt;1&lt;/order&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference/&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;sizeclass/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_hub_flow_output&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:17:14&lt;/sys_created_on&gt;&lt;sys_id&gt;6fd3696f83bdcf106a009529feaad3e8&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package/&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-07 10:37:34&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type&gt;script&lt;/virtual_type&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_hub_flow_output&gt;&lt;sys_hub_action_input_action_instance action="delete_multiple" query="action_input=6fd3696f83bdcf106a009529feaad3e8"/&gt;&lt;sys_hub_flow_output action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;array_denormalized&gt;false&lt;/array_denormalized&gt;&lt;attributes&gt;element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=reference,uiTypeLabel=Reference,uiUniqueId=5f4fbe3f-0ba1-4251-8b66-a62a5f653a1a&lt;/attributes&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation&gt;&lt;![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]&gt;&lt;/calculation&gt;&lt;choice/&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;column_label/&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value/&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;record&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;help/&gt;&lt;hint/&gt;&lt;internal_link/&gt;&lt;internal_type display_value="Reference"&gt;reference&lt;/internal_type&gt;&lt;label&gt;Record&lt;/label&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;32&lt;/max_length&gt;&lt;model display_value="Playbook Manual Activity Flow ZZ"&gt;9fd3696f83bdcf106a009529feaad3c3&lt;/model&gt;&lt;model_id&gt;9fd3696f83bdcf106a009529feaad3c3&lt;/model_id&gt;&lt;model_table&gt;sys_hub_flow_snapshot&lt;/model_table&gt;&lt;name&gt;var__m_sys_hub_flow_output_9fd3696f83bdcf106a009529feaad3c3&lt;/name&gt;&lt;next_element/&gt;&lt;order&gt;2&lt;/order&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference display_value="" name="sys_flow_data"&gt;sys_flow_data&lt;/reference&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;sizeclass/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_hub_flow_output&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:17:14&lt;/sys_created_on&gt;&lt;sys_id&gt;e3d3696f83bdcf106a009529feaad3f5&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package/&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-07 10:37:34&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type&gt;script&lt;/virtual_type&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_hub_flow_output&gt;&lt;sys_hub_action_input_action_instance action="delete_multiple" query="action_input=e3d3696f83bdcf106a009529feaad3f5"/&gt;&lt;sys_hub_alias_mapping action="delete_multiple" query="source_id=9fd3696f83bdcf106a009529feaad3c3"/&gt;&lt;sys_hub_trigger_instance_v2 action="delete_multiple" query="flow=9fd3696f83bdcf106a009529feaad3c3"/&gt;&lt;sys_hub_action_instance_v2 action="delete_multiple" query="flow=9fd3696f83bdcf106a009529feaad3c3^sys_idNOT IN27d3a96f83bdcf106a009529feaad30a,a3d3a96f83bdcf106a009529feaad30c,abd3a96f83bdcf106a009529feaad30d"/&gt;&lt;sys_hub_action_instance_v2 action="INSERT_OR_UPDATE"&gt;&lt;action_type display_value="Create Flow Data"&gt;99008a631b67001094630f28cc4bcb97&lt;/action_type&gt;&lt;action_type_parent display_value="Create Flow Data"&gt;8d3e35ef1b27001094630f28cc4bcb2a&lt;/action_type_parent&gt;&lt;attributes/&gt;&lt;comment/&gt;&lt;compiled_snapshot&gt;99008a631b67001094630f28cc4bcb97&lt;/compiled_snapshot&gt;&lt;display_text/&gt;&lt;flow display_value="Playbook Manual Activity Flow ZZ"&gt;9fd3696f83bdcf106a009529feaad3c3&lt;/flow&gt;&lt;generation_source/&gt;&lt;order&gt;1&lt;/order&gt;&lt;parent_ui_id/&gt;&lt;sys_class_name&gt;sys_hub_action_instance_v2&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:17:14&lt;/sys_created_on&gt;&lt;sys_id&gt;27d3a96f83bdcf106a009529feaad30a&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-07 10:37:35&lt;/sys_updated_on&gt;&lt;ui_id&gt;e17e6678-8e97-4584-a903-cfa6e47fd378&lt;/ui_id&gt;&lt;updation_source/&gt;&lt;values&gt;H4sIAAAAAAAA/+1YWW/jNhD+K4KeLUMUdboPRWA7adDEMexki8V2YVAiFROVJa2OZF3D/71DHbbkI7HTTVAU+2JYwyHnm+ObofRlJXMq92SHqqpNTIxc01JVpDq6iVVfsz1Pdz3XseWOHJIFA03KfB7yjEchyJ5IkAuhqtuqzaiPXHZgu8lAlfI0DsjyU7XjloQ5CaQLL+NPPFuCgjfnAU1YKPe+fO3IMUnAXsYSubfaWToVcEBcFoDqoIn4kBfZMhayhPkMjHisEt1U+ycNeZRQAQl1ZPY9YyFlgMUnQco68oKElGRRspR7WZKDIGGE3oXBcqMx52EG58lC93vK/wajWOs07PbkdJnO/CB6nsFRZNZCuVGbVaEUroGW1PLPF6IpAPCyPGGlNW8ecY+lZfTgTJIHWb8pKxXu4uKMYktG3KDeHQX5IhyVcZM3B9SJBEmeAiYWi3AIBytv/ek8et7E7pKHReSqxSDySNBQZSTx5pecBSK3RY46MsmyhLt5JlCu5Jzf76epFB5KFAvYAtDMFiSOefg4i5PoiRcIwKFF9zGAh24ZaZbyx7BLPOF9V8S9ewnyQSH+RBIuQnELx8BmYfEh5N9ydi2AmiomhuoQRfdVpugIqYpjI01xDQyVqTPXIZq87ois9gOSptsgghOzb7kIQRnSKnizMv5ii5fwOCvowao4rTsVWZHzYu372zIHm+AEo7MsarB1n41n0+8ECDX9LioM0n10DNj5BNReJmAleSsDoaCTI4x7KJd+0uwDaabZOtIY8RRPt3xFtwlWbNfWFMs3fWppKqLEegeaERcjRJiDXMvdr3HX3VbzM+FZg1+rVZq7wumuWFiv9/l2QOM8/p2ArebfH2BB8qNEElUt8TDOsz3kFQHLAt1hX78WVtTD70a9I5R7lW6rja+jZpsLoy1oVWS11voMu7Zqy+KpHuzrQ9w9wQA60YC23m8E+KxOUB5XCQftuioN/+tGcaQlbMqj3Q82BfIhzYBiw7Mc1VUsB1NFt6AtEEJh+jrINGHs+pb6HjPXxZaHiGYgINc+4cDkzmgrAvGYRHn8YwfvCTjag1cAkWogxyGeP4L1dx/BG3CHusJVtfZzEn/gJEYYW8yxVMU3TQduvZqtOJrlKdhECHvYYwSb70A+Sh3HIYbv+xrCUPQ21h0Du9TE2PYR1beVnWYkY23GncevE0zV/JpWtnZMnzNLjf/wLB0DLCikRjDHw9HgenR1ZKpOvTmjeQCebHdM+78NBw83w8GRQTkBz5YN/cnwYvC5OSwbutehNE6ix4SlzeF6PZqNJ3dXk+F02riiNPf1o0UcsFZV9O9uxzfD+2GjmbU8+YtD8bf8+P16PG56YTT1h0kSJQ3t4WRyN9nqmi00BBIStKPUvxj1hzetKFmv3ENOSA56Q3K0M5KD35gc/ezkGGcmxzwjOdYbkmO/codrfcTZHSh1m9iZKtv0Hb7ZbRP+v77daUgnHqWaoqmmDa96mqHYKtzziKGrlq1ZGjF+zIApP9GVMhGGMi3izwtqYAR6Zij5tEhtt3qJmxUvVWnxLif9masAuPwtHjQLbuzlH+nXSlJlu3zoVcK68MunX+T1ev31H4zz9/6gFQAA&lt;/values&gt;&lt;/sys_hub_action_instance_v2&gt;&lt;sys_hub_alias_mapping action="delete_multiple" query="source_id=27d3a96f83bdcf106a009529feaad30a"/&gt;&lt;sys_hub_action_instance_v2 action="INSERT_OR_UPDATE"&gt;&lt;action_type display_value="Update Record"&gt;f9d01dd2c31332002841b63b12d3aea1&lt;/action_type&gt;&lt;action_type_parent display_value="Update Record"&gt;baf174c8c3c232002841b63b12d3aee4&lt;/action_type_parent&gt;&lt;attributes/&gt;&lt;comment/&gt;&lt;compiled_snapshot&gt;f9d01dd2c31332002841b63b12d3aea1&lt;/compiled_snapshot&gt;&lt;display_text/&gt;&lt;flow display_value="Playbook Manual Activity Flow ZZ"&gt;9fd3696f83bdcf106a009529feaad3c3&lt;/flow&gt;&lt;generation_source/&gt;&lt;order&gt;4&lt;/order&gt;&lt;parent_ui_id&gt;c5b60f6b-83e9-8310-6a00-9529feaad357&lt;/parent_ui_id&gt;&lt;sys_class_name&gt;sys_hub_action_instance_v2&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:17:14&lt;/sys_created_on&gt;&lt;sys_id&gt;a3d3a96f83bdcf106a009529feaad30c&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-07 10:37:35&lt;/sys_updated_on&gt;&lt;ui_id&gt;f8c2a0f7-3a15-417b-8701-f6828985e67d&lt;/ui_id&gt;&lt;updation_source/&gt;&lt;values&gt;H4sIAAAAAAAA/+1VXW/aMBT9K5WfQ5QQCIG3iQ9pUlu2tuKl6yLHvgFLzscch5Yh/nvtOIGIQUelPqzS8uZzP3LOzT3x4xYxikYo6lPHHbo+8VzP6zpON+i5ke9Fbpd6GMgQWSjFCahMiSMOYXWw0BrzUoPFpghjnj2HFEuscMqKnOPN4kyYrBinAlI0enyyUI6F6iZBoNH2KHQpN44j4Cr1QZM7w1Vu8pPYdbv26tYEMkE1n75jIXiRkFJQTGLMC7BQglOlIxMbNJKiVIAATOcp3+wzViyVqiPSuS8F+63eGzg6LwYljYCJ7Y9hPS4DxxM1pHvVmchS1KlklTEChRkKhRiXXI7bmEmY55JlqSmpdNbVGS+T9NbMBO0bNF9HIWWhSECudWrmtYz4fpU93zUsZyytZlIHeUYw35+wlIJFpdR8tgg4JKpRmOA8Z+kyzEW2ZlWx4pLYS64OtlkIKNgytTHRxG29HvZM4ZMKXmDBtIob1UYV7yy9SGOOi+KgRQ0x/FVqJkZZrSE0Y9AlRLBcflEvWENNd2fVW9+DtzYL3MMmCSBqJVobv92COwDfHwSdAIaDTq8f9Dp46HgdEmMfeoOYeoPANnW73Z+eeLcNLiDb2OCuYXvMvvYAzUhZfSBGj0wwqSNXXycHF7gf5oLeZ3KBkfXpTdD64f3FDk73zQ1r/VgrFxTtC0BiCT9Kx/HoeH7z7Xr6MP05/X7iJjiX9z4vXMC08cKMAafFCerNfQCJIighNFKO7oQ6eLWog3tHfJglXN+pnv/G+PeM8fQKVyKvZB8JAAA=&lt;/values&gt;&lt;/sys_hub_action_instance_v2&gt;&lt;sys_hub_alias_mapping action="delete_multiple" query="source_id=a3d3a96f83bdcf106a009529feaad30c"/&gt;&lt;sys_hub_action_instance_v2 action="INSERT_OR_UPDATE"&gt;&lt;action_type display_value="Wait For Condition"&gt;89ce8a4187120010663ca1bb36cb0be3&lt;/action_type&gt;&lt;action_type_parent display_value="Wait For Condition"&gt;8bb9a8160b10030085c083eb37673aec&lt;/action_type_parent&gt;&lt;attributes/&gt;&lt;comment/&gt;&lt;compiled_snapshot&gt;89ce8a4187120010663ca1bb36cb0be3&lt;/compiled_snapshot&gt;&lt;display_text/&gt;&lt;flow display_value="Playbook Manual Activity Flow ZZ"&gt;9fd3696f83bdcf106a009529feaad3c3&lt;/flow&gt;&lt;generation_source/&gt;&lt;order&gt;5&lt;/order&gt;&lt;parent_ui_id/&gt;&lt;sys_class_name&gt;sys_hub_action_instance_v2&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:17:14&lt;/sys_created_on&gt;&lt;sys_id&gt;abd3a96f83bdcf106a009529feaad30d&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-07 10:37:35&lt;/sys_updated_on&gt;&lt;ui_id&gt;24b5a74d-b71d-419d-bbc4-4a155eae197c&lt;/ui_id&gt;&lt;updation_source/&gt;&lt;values&gt;H4sIAAAAAAAA/+2X227bOBCGX6XQtenVgZKo3AW2gw3WTQLb270oCoEihwkBWnJ1SJsN8u6lJNqWbCdwmgNQtHcSKVL//JxPM/p8b0lunViMMyAUOyR0XNt27CDwGHWSxAtYYicisgZWSpegnyzlErKqjHmV01JmqZ65paqqp/Qll8VK0btP2xF2IxXPIbVOPn8ZWCua621KyK2T+52pY3UomoDSj463Ah6XVt6t6plrJTnsjk/3N8pyXkvzBxZ8LyHloDUJqgoYWEuaclpm+d1mJAfKL1O1HbiRadkGvaTfC/m/fjO26+cE6CiZMWRzGxuz2mExpiWdl3nFyirfeJdJBkXrDwdBK1WOumPtA5erRn6zpKSJWq/OVLVML1pvrM0GnbOpCi0CVnWgtXIThpjfZN9ma5VnMm08MZMqY1Rt7mhZ5jKpylrPvVXJxSN2tzMHDAcFS/3ueElXK5lex6s8u5XN+7T85bDZaChU9k3rLOR1OqSsXjnUR0GHZ3p83Ax/ormsA/+ot9GL66PgMKZ3RZ0VuQ63lvBvKr9WcN6kGQOHhn6CIgIUYTdyEI2wi6IAQsCCBB6NrIeBVdwVI0WLYmuiPr34a1Vb0FpqzItb/+slLJer8lTLvAXj08PAUIb9p7IbaCeV62ji5mbLl1YTt17o6Pdh251+HnlHaFuTt2hy7LBWA9ze2LS79sNFO2Fwc5+JW32iB2kjvyVtPa/7pPXclkXcJqcR3ez6hgz2iHMdEhGceMhLsI9wJAQiNsEIA7WZ7/IQO+wNiCPOk/VE7BePgt0Ar1SXu1eoa0foWNM13wp4XJrBbJvsfcpmnXEDWfBqNY3Y9g5nbJl2xR1irhPVL8memAPN2c2ZBFWfp6HtESK7x9IHsnsw78Idc13H48CQw22iK13gIuLhEIURSWysUy/x4A24s5/u4/B+cgtFrzvM2fvQrb9XzyPvCCVr8iZp87k0ih6VaNhLskwB3W0mF7o2/XVmlBr08J928kUFbuv0TnXrev0+NDFKdLmiKPIYIBwkDBHBBPIg8YXnJyQJ7bfoG6Mne7MOTTkwnXQdju7vwQkhCEKCCEQhwr4uujSyPcQEDQCHgnshGbbrHh5eodQdIVZtvoZG7a56gxjPWNUcquQ7mI3NzIfz8ZYz52nO2rbxGMw89xfCrA3r5ZT1zd75Y+vZLaTSxx+3fWeRVXlj0mwyupyN4/9OF6O/J7N4NpkvZuejxWT8XnBiIRzPCQLkODq9sZME9e+dj2zwKfZdHPiB+xNwdtrrl2HaaTZZlnJZR1h0f+9KWsL5xejy49V0spgM5v+cX11NxoPR6cVoMp3qq8lsdjk78ON39MJXJbnbtI66AR0K0hC9NzY9tIHh2XstnvFex/pbEN0zuw90z+53oRM4CRJf96AgiG5EddFBkeO6KAgodxzMuLDfhs4vPwAgHyZI5BQAAA==&lt;/values&gt;&lt;/sys_hub_action_instance_v2&gt;&lt;sys_hub_alias_mapping action="delete_multiple" query="source_id=abd3a96f83bdcf106a009529feaad30d"/&gt;&lt;sys_hub_sub_flow_instance_v2 action="delete_multiple" query="flow=9fd3696f83bdcf106a009529feaad3c3"/&gt;&lt;sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=9fd3696f83bdcf106a009529feaad3c3^sys_idNOT IN27d3a96f83bdcf106a009529feaad306,afd3a96f83bdcf106a009529feaad307"/&gt;&lt;sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE"&gt;&lt;attributes/&gt;&lt;block display_value=""&gt;52f1ddbf933d4310f306fbf08bba10ad&lt;/block&gt;&lt;comment/&gt;&lt;connected_to/&gt;&lt;decision_table/&gt;&lt;display_text/&gt;&lt;flow display_value="Playbook Manual Activity Flow ZZ"&gt;9fd3696f83bdcf106a009529feaad3c3&lt;/flow&gt;&lt;flow_variables_assigned/&gt;&lt;generation_source/&gt;&lt;logic_definition display_value="Assign Subflow Outputs"&gt;df4e1945c3e232002841b63b12d3ae3e&lt;/logic_definition&gt;&lt;order&gt;2&lt;/order&gt;&lt;outputs_assigned&gt;record,automated&lt;/outputs_assigned&gt;&lt;parent_ui_id/&gt;&lt;sys_class_name&gt;sys_hub_flow_logic_instance_v2&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:17:14&lt;/sys_created_on&gt;&lt;sys_id&gt;27d3a96f83bdcf106a009529feaad306&lt;/sys_id&gt;&lt;sys_mod_count&gt;5&lt;/sys_mod_count&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-07 10:37:35&lt;/sys_updated_on&gt;&lt;ui_id&gt;ff10c4e5-53a5-c710-7d5f-d301a0490eb9&lt;/ui_id&gt;&lt;updation_source/&gt;&lt;values&gt;H4sIAAAAAAAA/9VVy27bMBD8lZRnS5X1sCz3FCQwECBtgNbNpS2MlbiKiVCUQlF2XEP/3qUlP/JEUAQFepHF5e5yZpYjb1jZmKox9aw8rWtxo9jkx4YJziYMg6GXhRhFAURZPPRiHuU88IbghYmHIbABU1AgZWrMSs1pvQTZ2MBmg8MYR6N47IwxiZ0wGocOJF7gZDmMMIypUTx2u7q2pUou6krC+vqvG2QLIblGi//XgFWgCZpBzSbERtGLAnkp1C31fpL8VrYSUpSU+nVH9zF9s666dY7UPMM+dLmvO8SpwILzBwzvDSqOhCEHWeOAFaA4mFKv9xGNwK+UPAQWRKljUsB9LX7TqYE/ODp4wup1Pc9luZpTLwt+vzfvpaacKe2fnHf7uf39ZnSTmUbjTqZSZFh3KnHMoZHm7DjWJVxVRpSqKzGQyl11KZtCfek0YvsGuxFTpKkJDVaWvuXTk8u/LcrVXqupUFul+k1ZZiCPUhF0tpgKlLznLOwgwBgt0sZYnBvWiNnTwXTB50aDEgvCMy+gqoS6mVe6XIotBqJUuDeSFm4nLVrHuJBZ/q4V2rWSnm/D16CFFeMztaFie+J3Je4avLBQozzMUwxyx0th6IR+NHTG6WjkwMiHKB/RLRwCaweW0pmEuj7ISCTmd40VoRO1l2/eTcCWZFpU5pRALbFXqh30nvbT1255FBwuNTSmLMDgsa29p0bdtn8H+70B2M5+p0fIngHbmzAtS4mgHllwphv8OO0x9x4cvpsHQ++hB1+w3f/qthdcdVD6oaceaP1PTMV9zqMgT5ww5fSIMHESf5w4QRKRGnHopfH7mIoGh7uY1eJw/2jxWiodRANXJznffpfdukm3pIWy/8HuCoT58LPxvIDbpx+vse5ePrG2ba1ZtondfVj2YuyvTCZq0mxmYxdHeXxNNhHZcWhV6lt78CHW/gFFSb14CggAAA==&lt;/values&gt;&lt;workflow_reference/&gt;&lt;/sys_hub_flow_logic_instance_v2&gt;&lt;sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE"&gt;&lt;attributes/&gt;&lt;block display_value=""&gt;56f1ddbf933d4310f306fbf08bba10b2&lt;/block&gt;&lt;comment/&gt;&lt;connected_to/&gt;&lt;decision_table/&gt;&lt;display_text/&gt;&lt;flow display_value="Playbook Manual Activity Flow ZZ"&gt;9fd3696f83bdcf106a009529feaad3c3&lt;/flow&gt;&lt;flow_variables_assigned/&gt;&lt;generation_source/&gt;&lt;logic_definition display_value="If"&gt;af4e1945c3e232002841b63b12d3ae3e&lt;/logic_definition&gt;&lt;order&gt;3&lt;/order&gt;&lt;outputs_assigned/&gt;&lt;parent_ui_id/&gt;&lt;sys_class_name&gt;sys_hub_flow_logic_instance_v2&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:17:14&lt;/sys_created_on&gt;&lt;sys_id&gt;afd3a96f83bdcf106a009529feaad307&lt;/sys_id&gt;&lt;sys_mod_count&gt;5&lt;/sys_mod_count&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-07 10:37:35&lt;/sys_updated_on&gt;&lt;ui_id&gt;c5b60f6b-83e9-8310-6a00-9529feaad357&lt;/ui_id&gt;&lt;updation_source/&gt;&lt;values&gt;H4sIAAAAAAAA/+1Vy27bMBD8FYNnQdAjNhrfAgcBCiQx0AS5tIGwoiibKEWqfNhRBf97l3rZaNymQXvszRzuLmdGs3BLlLO1s+ZRXRnDN5IsPz8HhEuP4e+WSKgYWRKqZMEtVzLrgIDsQDh/cQfSgZhdUct33DYzbmaz+zUWFNzUApqnt+rolotCs+HlGjTOt0yTZfvTFS9wTBlBGV/SmKbJIk2iKPlwEeeLNI+TIgUGKQ4UkDOBpauR8uy2Q4JfarFN7XFjNZeb4Xw7THkYQaULzyqOAsJeLJMFQz4lCMMCUoEswCrdTIhmUKylOAJbLi2OI774xfDv+GAyn/vCkqFEyvrL6ZgN/vVweQ0WkIqj1umhlG4Vp8z05hSsBCfs6hTrC9a1l9q3WMjF2K2Eq+R97wiZBoyfCxFnkASrvVJPfdBRPmzV/tPI8obLzpXhUigKYjqBRe9yZz2fljDBKhyUVVDX6GhWa7XjXTNyqcKNwENYCrXHR30SQ6CeeIjGQniD+HUHP4HmXsUdjsHmnmYOhtOsSy2OQ5sYOQTENGYlwJijSHQ3++Y8xV7yIC7r/fEtVPPadiFlg45D8HoJTvLftsblnna4B24Phy8uitJCqtcb8JvK9+3AJczLeRzNz+/AxeLcDpxJ/zuDn7wRfO/6H+Y+iqL/wf/r4HOT9XEdtHWP/8PcP/uQ929OXlNukNqjxz6O/xH+osFwcXoK7ZX+6kUdscMPdwMoT20GAAA=&lt;/values&gt;&lt;workflow_reference/&gt;&lt;/sys_hub_flow_logic_instance_v2&gt;&lt;sys_hub_pill_compound action="delete_multiple" query="attached_to=9fd3696f83bdcf106a009529feaad3c3"/&gt;&lt;sys_hub_flow_variable action="delete_multiple" query="model=9fd3696f83bdcf106a009529feaad3c3"/&gt;&lt;sys_documentation action="INSERT_OR_UPDATE"&gt;&lt;element&gt;wait&lt;/element&gt;&lt;help/&gt;&lt;hint/&gt;&lt;label&gt;Wait for user input&lt;/label&gt;&lt;language&gt;en&lt;/language&gt;&lt;name&gt;var__m_sys_hub_flow_input_9fd3696f83bdcf106a009529feaad3c3&lt;/name&gt;&lt;plural/&gt;&lt;sys_class_name&gt;sys_documentation&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:17:14&lt;/sys_created_on&gt;&lt;sys_id&gt;63d3696f83bdcf106a009529feaad3e1&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package display_value="Policy Suite" source="x_gegis_ins_policy"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-06 17:17:14&lt;/sys_updated_on&gt;&lt;url/&gt;&lt;url_target/&gt;&lt;/sys_documentation&gt;&lt;sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_input_9fd3696f83bdcf106a009529feaad3c3^sys_idNOT IN13d3696f83bdcf106a009529feaad3d4,27d3696f83bdcf106a009529feaad3d8,efd3696f83bdcf106a009529feaad3d6"/&gt;&lt;sys_choice field="wait" table="var__m_sys_hub_flow_input_9fd3696f83bdcf106a009529feaad3c3"&gt;&lt;sys_choice action="INSERT_OR_UPDATE"&gt;&lt;dependent_value/&gt;&lt;element&gt;wait&lt;/element&gt;&lt;hint/&gt;&lt;inactive&gt;false&lt;/inactive&gt;&lt;label&gt;-- None --&lt;/label&gt;&lt;language&gt;en&lt;/language&gt;&lt;name&gt;var__m_sys_hub_flow_input_9fd3696f83bdcf106a009529feaad3c3&lt;/name&gt;&lt;sequence&gt;1&lt;/sequence&gt;&lt;synonyms/&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:17:13&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;13d3696f83bdcf106a009529feaad3d4&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-07 10:37:35&lt;/sys_updated_on&gt;&lt;value/&gt;&lt;/sys_choice&gt;&lt;sys_choice action="INSERT_OR_UPDATE"&gt;&lt;dependent_value/&gt;&lt;element&gt;wait&lt;/element&gt;&lt;hint/&gt;&lt;inactive&gt;false&lt;/inactive&gt;&lt;label&gt;Yes&lt;/label&gt;&lt;language&gt;en&lt;/language&gt;&lt;name&gt;var__m_sys_hub_flow_input_9fd3696f83bdcf106a009529feaad3c3&lt;/name&gt;&lt;sequence&gt;3&lt;/sequence&gt;&lt;synonyms/&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:17:14&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;27d3696f83bdcf106a009529feaad3d8&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-07 10:37:35&lt;/sys_updated_on&gt;&lt;value&gt;yes&lt;/value&gt;&lt;/sys_choice&gt;&lt;sys_choice action="INSERT_OR_UPDATE"&gt;&lt;dependent_value/&gt;&lt;element&gt;wait&lt;/element&gt;&lt;hint/&gt;&lt;inactive&gt;false&lt;/inactive&gt;&lt;label&gt;No&lt;/label&gt;&lt;language&gt;en&lt;/language&gt;&lt;name&gt;var__m_sys_hub_flow_input_9fd3696f83bdcf106a009529feaad3c3&lt;/name&gt;&lt;sequence&gt;2&lt;/sequence&gt;&lt;synonyms/&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:17:14&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;efd3696f83bdcf106a009529feaad3d6&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-07 10:37:35&lt;/sys_updated_on&gt;&lt;value&gt;no&lt;/value&gt;&lt;/sys_choice&gt;&lt;/sys_choice&gt;&lt;sys_documentation action="INSERT_OR_UPDATE"&gt;&lt;element&gt;record&lt;/element&gt;&lt;help/&gt;&lt;hint/&gt;&lt;label&gt;Record&lt;/label&gt;&lt;language&gt;en&lt;/language&gt;&lt;name&gt;var__m_sys_hub_flow_output_9fd3696f83bdcf106a009529feaad3c3&lt;/name&gt;&lt;plural/&gt;&lt;sys_class_name&gt;sys_documentation&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:17:14&lt;/sys_created_on&gt;&lt;sys_id&gt;23d3696f83bdcf106a009529feaad3fc&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package display_value="Policy Suite" source="x_gegis_ins_policy"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-06 17:17:14&lt;/sys_updated_on&gt;&lt;url/&gt;&lt;url_target/&gt;&lt;/sys_documentation&gt;&lt;sys_documentation action="INSERT_OR_UPDATE"&gt;&lt;element&gt;automated&lt;/element&gt;&lt;help/&gt;&lt;hint/&gt;&lt;label&gt;Automated&lt;/label&gt;&lt;language&gt;en&lt;/language&gt;&lt;name&gt;var__m_sys_hub_flow_output_9fd3696f83bdcf106a009529feaad3c3&lt;/name&gt;&lt;plural/&gt;&lt;sys_class_name&gt;sys_documentation&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:17:14&lt;/sys_created_on&gt;&lt;sys_id&gt;6fd3696f83bdcf106a009529feaad3f0&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package display_value="Policy Suite" source="x_gegis_ins_policy"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-06 17:17:14&lt;/sys_updated_on&gt;&lt;url/&gt;&lt;url_target/&gt;&lt;/sys_documentation&gt;&lt;sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_output_9fd3696f83bdcf106a009529feaad3c3"/&gt;&lt;sys_hub_flow action="UPDATE"&gt;&lt;sys_id&gt;db1084e553a5c7107d5fd301a0490e31&lt;/sys_id&gt;&lt;latest_snapshot&gt;9fd3696f83bdcf106a009529feaad3c3&lt;/latest_snapshot&gt;&lt;compiler_build&gt;glide-australia-02-11-2026__patch3-05-25-2026_06-12-2026_1106.zip&lt;/compiler_build&gt;&lt;version_record/&gt;&lt;/sys_hub_flow&gt;&lt;sys_flow_trigger_plan action="delete_multiple" query="plan_id=db1084e553a5c7107d5fd301a0490e31"/&gt;&lt;sys_flow_subflow_plan action="delete_multiple" query="plan_id=db1084e553a5c7107d5fd301a0490e31^sys_idNOT INffd3a96f83bdcf106a009529feaad35d"/&gt;&lt;sys_flow_subflow_plan action="INSERT_OR_UPDATE"&gt;&lt;plan&gt;com.snc.process_flow.engine.ProcessPlan@77e9eaa4&lt;/plan&gt;&lt;plan_id display_value="Playbook Manual Activity Flow ZZ"&gt;db1084e553a5c7107d5fd301a0490e31&lt;/plan_id&gt;&lt;snapshot&gt;9fd3696f83bdcf106a009529feaad3c3&lt;/snapshot&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-06 17:17:15&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;ffd3a96f83bdcf106a009529feaad35d&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_overrides/&gt;&lt;sys_scope/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-07 10:37:36&lt;/sys_updated_on&gt;&lt;/sys_flow_subflow_plan&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-757370480</payload_hash>
+        <record_name>Playbook Manual Activity Flow ZZ</record_name>
+        <reverted_from/>
+        <source>4c6f45b793f94310f306fbf08bba1076</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-07 10:37:36</sys_created_on>
+        <sys_id>5bf151ff933d4310f306fbf08bba1071</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19f3c279bc00000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 10:37:36</sys_updated_on>
+        <type>Flow</type>
+        <update_guid>d3f151fffe3d431030a6f3772bab0f70</update_guid>
+        <update_guid_history>d3f151fffe3d431030a6f3772bab0f70:-757370480,2af1ddbffb3d43102dcda32501b64dfb:-2128438449,45fe0933b03d4310f980c2350ebb1c42:0,05fe09330c3d43103f609750d4390f31:-1103898475</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-07 10:39:37</sys_created_on>
+        <sys_db_object display_value="" name="sys_hub_flow">sys_hub_flow</sys_db_object>
+        <sys_id>027e16446a834b7989ca119c47f9ad39</sys_id>
+        <sys_metadata>db1084e553a5c7107d5fd301a0490e31</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Playbook Manual Activity Flow ZZ</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_scope_delete display_value="">00c1089b958e45ed83140febec97e3d1</sys_scope_delete>
+        <sys_update_name>sys_hub_flow_db1084e553a5c7107d5fd301a0490e31</sys_update_name>
+        <sys_update_version display_value="sys_hub_flow_db1084e553a5c7107d5fd301a0490e31">5bf151ff933d4310f306fbf08bba1071</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 10:39:37</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
