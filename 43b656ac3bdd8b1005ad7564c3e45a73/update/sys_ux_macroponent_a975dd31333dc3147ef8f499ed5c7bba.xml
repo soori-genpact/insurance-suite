@@ -76,29 +76,603 @@
             "composition": [
                 {
                     "definition": {
-                        "id": "2d56f06d55f46bbd4e79b5e624beb940",
-                        "type": "MACROPONENT"
+                        "id": "b324da974cef96f2db1d484cfeda4e3e",
+                        "type": "MACROPONENT_VIEWPORT"
                     },
-                    "elementId": "rich_text_1",
-                    "elementLabel": "Description",
+                    "elementId": "tabs_1",
+                    "elementLabel": "Tabs 1",
                     "eventMappings": [],
-                    "isHero": false,
+                    "extensionPoints": [],
                     "isHidden": {
                         "type": "JSON_LITERAL",
-                        "value": ""
+                        "value": null
                     },
-                    "isNonDestructive": false,
-                    "overrides": null,
-                    "preset": {
-                        "controllerElementId": "playbook_activity_ui_controller",
-                        "disabledEventTargetIds": [],
-                        "id": "86a2dd4299dfe03b5fc42804d508b498"
+                    "items": [
+                        {
+                            "icon": {
+                                "type": "JSON_LITERAL",
+                                "value": "serverbox-email-outline"
+                            },
+                            "id": "initiate_submission_email",
+                            "label": {
+                                "type": "TRANSLATION_LITERAL",
+                                "value": {
+                                    "code": null,
+                                    "comment": "",
+                                    "message": "Emails"
+                                }
+                            },
+                            "order": 100,
+                            "type": "local"
+                        },
+                        {
+                            "icon": "document-checklist-search-outline",
+                            "id": "init_submission_documents",
+                            "label": {
+                                "type": "TRANSLATION_LITERAL",
+                                "value": {
+                                    "code": null,
+                                    "comment": "",
+                                    "message": "Documents"
+                                }
+                            },
+                            "order": 200,
+                            "type": "local"
+                        }
+                    ],
+                    "overrides": {
+                        "composition": [
+                            {
+                                "definition": {
+                                    "id": "d356d14b6e293a3020a244b63d278d8f",
+                                    "type": "MACROPONENT"
+                                },
+                                "elementId": "initiate_submission_email",
+                                "elementLabel": "Emails",
+                                "eventMappings": [],
+                                "isHidden": {
+                                    "type": "JSON_LITERAL",
+                                    "value": null
+                                },
+                                "name": "Untitled Tab",
+                                "overrides": {
+                                    "composition": [
+                                        {
+                                            "definition": {
+                                                "id": "eba597db00a6623723eb882b358388d6",
+                                                "type": "MACROPONENT"
+                                            },
+                                            "elementId": "email_grid_1",
+                                            "elementLabel": "Email Grid 1",
+                                            "eventMappings": [],
+                                            "isHidden": {
+                                                "type": "JSON_LITERAL",
+                                                "value": null
+                                            },
+                                            "preset": null,
+                                            "propertyValues": {
+                                                "detailFields": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": [
+                                                        {
+                                                            "key": "intent_classification",
+                                                            "label": "Intent Classification"
+                                                        }
+                                                    ]
+                                                },
+                                                "emails": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": [
+                                                        {
+                                                            "Attachments": 2,
+                                                            "attachhments": [
+                                                                {
+                                                                    "link": "https://instance.service-now.com/sys_attachment.do?sys_id=1a2b3c",
+                                                                    "name": "acme_sov_updated.xlsx",
+                                                                    "status": "NEW"
+                                                                },
+                                                                {
+                                                                    "link": "https://instance.service-now.com/sys_attachment.do?sys_id=4d5e6f",
+                                                                    "name": "claims_detail_report.pdf",
+                                                                    "status": "STALE"
+                                                                }
+                                                            ],
+                                                            "date": "2026-07-10 08:14:02",
+                                                            "intent": "Update-Data",
+                                                            "intent_classification": "Submission",
+                                                            "isNew": true,
+                                                            "preview": "Per our call yesterday, please find attached the updated statement of values for Acme Manufacturing.",
+                                                            "sender": "jsmith@globalbrokers.com",
+                                                            "status": "Processed",
+                                                            "subject": "RE: SOV Property – Acme Manufacturing"
+                                                        },
+                                                        {
+                                                            "Attachments": 1,
+                                                            "attachhments": [
+                                                                {
+                                                                    "link": "https://instance.service-now.com/sys_attachment.do?sys_id=7g8h9i",
+                                                                    "name": "acord_140.pdf",
+                                                                    "status": "STALE"
+                                                                }
+                                                            ],
+                                                            "date": "2026-07-09 15:47:21",
+                                                            "intent": "New-Submission",
+                                                            "intent_classification": "Renewal",
+                                                            "isNew": false,
+                                                            "preview": "Attached is the completed application for the upcoming renewal, effective 2026-08-01.",
+                                                            "sender": "amiller@northwind.com",
+                                                            "status": "Pending",
+                                                            "subject": "Renewal documents – Northwind Logistics"
+                                                        },
+                                                        {
+                                                            "Attachments": 3,
+                                                            "attachhments": [
+                                                                {
+                                                                    "link": "https://instance.service-now.com/sys_attachment.do?sys_id=9k1l2m",
+                                                                    "name": "loss_run_2021_2026.pdf",
+                                                                    "status": "NEW"
+                                                                },
+                                                                {
+                                                                    "link": "https://instance.service-now.com/sys_attachment.do?sys_id=3n4o5p",
+                                                                    "name": "fleet_schedule.xlsx",
+                                                                    "status": "NEW"
+                                                                },
+                                                                {
+                                                                    "link": "https://instance.service-now.com/sys_attachment.do?sys_id=6q7r8s",
+                                                                    "name": "prior_carrier_letter.pdf",
+                                                                    "status": "STALE"
+                                                                }
+                                                            ],
+                                                            "date": "2026-07-09 11:03:55",
+                                                            "intent": "Claims-Inquiry",
+                                                            "intent_classification": "Loss Run Request",
+                                                            "isNew": true,
+                                                            "preview": "Requesting the 5-year loss run history ahead of the underwriting review scheduled next week.",
+                                                            "sender": "k.chen@meridianfreight.com",
+                                                            "status": "Processing",
+                                                            "subject": "Loss run request – Meridian Freight Co."
+                                                        },
+                                                        {
+                                                            "Attachments": 1,
+                                                            "attachhments": [
+                                                                {
+                                                                    "link": "https://instance.service-now.com/sys_attachment.do?sys_id=2t3u4v",
+                                                                    "name": "lease_addendum.pdf",
+                                                                    "status": "NEW"
+                                                                }
+                                                            ],
+                                                            "date": "2026-07-08 09:22:40",
+                                                            "intent": "Endorsement",
+                                                            "intent_classification": "Endorsement Request",
+                                                            "isNew": false,
+                                                            "preview": "Our landlord requires certificate holder status added prior to lease signing tomorrow. Please expedite.",
+                                                            "sender": "legal@blueharborretail.com",
+                                                            "status": "Failed",
+                                                            "subject": "URGENT: Endorsement request – Additional Insured – Blue Harbor Retail"
+                                                        },
+                                                        {
+                                                            "Attachments": 0,
+                                                            "attachhments": [],
+                                                            "date": "2026-07-07 14:05:12",
+                                                            "intent": "Certificate-Request",
+                                                            "intent_classification": "Certificate Request",
+                                                            "isNew": true,
+                                                            "preview": "Can you reissue the COI with the updated project address? Job starts Monday.",
+                                                            "sender": "ops@coastalbuilders.com",
+                                                            "status": "New",
+                                                            "subject": "Fwd: Certificate of Insurance – Coastal Builders"
+                                                        },
+                                                        {
+                                                            "Attachments": 1,
+                                                            "attachhments": [
+                                                                {
+                                                                    "link": "https://instance.service-now.com/sys_attachment.do?sys_id=5w6x7y",
+                                                                    "name": "signed_application.pdf",
+                                                                    "status": "STALE"
+                                                                }
+                                                            ],
+                                                            "date": "2026-07-06 17:38:29",
+                                                            "intent": "Signature-Followup",
+                                                            "intent_classification": "Submission",
+                                                            "isNew": false,
+                                                            "preview": "Signed application attached — apologies for the delay, this got stuck in our approval chain.",
+                                                            "sender": "dpatel@vantagerealty.com",
+                                                            "status": "Processed",
+                                                            "subject": "Follow-up: missing signature – Vantage Realty Group"
+                                                        }
+                                                    ]
+                                                },
+                                                "heading": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "Mails"
+                                                },
+                                                "showFilter": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                },
+                                                "showMore": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                },
+                                                "showRefresh": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                },
+                                                "showSearch": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                }
+                                            },
+                                            "slot": null,
+                                            "styles": null
+                                        }
+                                    ],
+                                    "layout": {
+                                        "default": {
+                                            "children": null,
+                                            "items": [
+                                                {
+                                                    "element_id": "email_grid_1",
+                                                    "styles": {
+                                                        "padding-top": "var(--now-scalable-space--lg)"
+                                                    }
+                                                }
+                                            ],
+                                            "root": null,
+                                            "rules": null,
+                                            "styles": {
+                                                "flex-direction": "column",
+                                                "min-height": "300px",
+                                                "width": "100%"
+                                            },
+                                            "templateId": "5832fd4d53c31010e6bcddeeff7b12db",
+                                            "type": "flex"
+                                        },
+                                        "version": "3.0.0"
+                                    }
+                                },
+                                "preset": null,
+                                "propertyValues": {
+                                    "ariaRegionHeadingLevel": {
+                                        "type": "JSON_LITERAL",
+                                        "value": 1
+                                    },
+                                    "ariaRegionName": {
+                                        "type": "TRANSLATION_LITERAL",
+                                        "value": {
+                                            "code": null,
+                                            "comment": "",
+                                            "message": ""
+                                        }
+                                    },
+                                    "ariaRole": {
+                                        "type": "JSON_LITERAL",
+                                        "value": ""
+                                    },
+                                    "hideEmptyStateUi": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "includeAriaHeading": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "slotWrapperBehavior": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "fullheight"
+                                    },
+                                    "type": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "section"
+                                    }
+                                },
+                                "slot": "initiate_submission_email",
+                                "styles": null
+                            },
+                            {
+                                "definition": {
+                                    "id": "d356d14b6e293a3020a244b63d278d8f",
+                                    "type": "MACROPONENT"
+                                },
+                                "elementId": "init_submission_documents",
+                                "elementLabel": "Documents",
+                                "eventMappings": [],
+                                "isHidden": {
+                                    "type": "JSON_LITERAL",
+                                    "value": null
+                                },
+                                "name": "Documents",
+                                "overrides": {
+                                    "composition": [
+                                        {
+                                            "definition": {
+                                                "id": "0c2649e42f7ea801d95c7995a7a18e4b",
+                                                "type": "MACROPONENT"
+                                            },
+                                            "elementId": "document_grid_1",
+                                            "elementLabel": "Document Grid 1",
+                                            "eventMappings": [],
+                                            "isHidden": {
+                                                "type": "JSON_LITERAL",
+                                                "value": null
+                                            },
+                                            "preset": null,
+                                            "propertyValues": {
+                                                "documents": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": [
+                                                        {
+                                                            "confidence": "96%",
+                                                            "date": "2026-07-10",
+                                                            "fields": 23,
+                                                            "fileName": "acme_sov_updated.xlsx",
+                                                            "link": "https://instance.service-now.com/sys_attachment.do?sys_id=3a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d",
+                                                            "sourceEmail": "EM0010012 - RE: SOV Property - Acme Manufacturing",
+                                                            "status": "Extracted",
+                                                            "sys_id": "3a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d",
+                                                            "time": "08:16:44",
+                                                            "version": "V3"
+                                                        },
+                                                        {
+                                                            "confidence": "",
+                                                            "date": "2026-07-09",
+                                                            "fields": null,
+                                                            "fileName": "acord_140.pdf",
+                                                            "link": "https://instance.service-now.com/sys_attachment.do?sys_id=5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e",
+                                                            "sourceEmail": "EM0010011 - Renewal Documents - Northwind Logistics",
+                                                            "status": "Pending",
+                                                            "sys_id": "5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e",
+                                                            "time": "15:49:02",
+                                                            "version": "V1"
+                                                        },
+                                                        {
+                                                            "confidence": "78%",
+                                                            "date": "2026-07-09",
+                                                            "fields": 14,
+                                                            "fileName": "loss_run_2021_2026.pdf",
+                                                            "link": "https://instance.service-now.com/sys_attachment.do?sys_id=9k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z",
+                                                            "sourceEmail": "EM0010010 - Loss Run Request - Meridian Freight Co.",
+                                                            "status": "Processing",
+                                                            "sys_id": "9k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z",
+                                                            "time": "11:05:17",
+                                                            "version": "V1"
+                                                        },
+                                                        {
+                                                            "confidence": "64%",
+                                                            "date": "2026-07-08",
+                                                            "fields": 8,
+                                                            "fileName": "lease_addendum.pdf",
+                                                            "link": "https://instance.service-now.com/sys_attachment.do?sys_id=2t3u4v5w6x7y8z9a0b1c2d3e4f5a6b7c",
+                                                            "sourceEmail": "EM0010009 - Endorsement Request - Blue Harbor Retail",
+                                                            "status": "Duplicate",
+                                                            "sys_id": "2t3u4v5w6x7y8z9a0b1c2d3e4f5a6b7c",
+                                                            "time": "09:24:33",
+                                                            "version": "V2"
+                                                        },
+                                                        {
+                                                            "confidence": "",
+                                                            "date": "2026-07-07",
+                                                            "fields": null,
+                                                            "fileName": "coastal_builders_coi_request.eml",
+                                                            "link": "https://instance.service-now.com/sys_attachment.do?sys_id=4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c",
+                                                            "sourceEmail": "EM0010008 - Fwd: Certificate of Insurance - Coastal Builders",
+                                                            "status": "New",
+                                                            "sys_id": "4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c",
+                                                            "time": "14:07:50",
+                                                            "version": "V1"
+                                                        },
+                                                        {
+                                                            "confidence": "89%",
+                                                            "date": "2026-07-06",
+                                                            "fields": 17,
+                                                            "fileName": "signed_application.pdf",
+                                                            "link": "https://instance.service-now.com/sys_attachment.do?sys_id=6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a",
+                                                            "sourceEmail": "EM0010007 - Follow-up: Missing Signature - Vantage Realty Group",
+                                                            "status": "Extracted",
+                                                            "sys_id": "6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a",
+                                                            "time": "17:40:11",
+                                                            "version": "V2"
+                                                        }
+                                                    ]
+                                                },
+                                                "heading": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "Documents List"
+                                                },
+                                                "referLabel": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "Refer"
+                                                },
+                                                "showFilter": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                },
+                                                "showMore": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                },
+                                                "showRefresh": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                },
+                                                "showSearch": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                }
+                                            },
+                                            "slot": null,
+                                            "styles": null
+                                        }
+                                    ],
+                                    "layout": {
+                                        "default": {
+                                            "children": null,
+                                            "items": [
+                                                {
+                                                    "element_id": "document_grid_1",
+                                                    "styles": {
+                                                        "padding-top": "var(--now-scalable-space--lg)"
+                                                    }
+                                                }
+                                            ],
+                                            "root": null,
+                                            "rules": null,
+                                            "styles": {
+                                                "flex-direction": "column",
+                                                "min-height": "300px",
+                                                "width": "100%"
+                                            },
+                                            "templateId": "5832fd4d53c31010e6bcddeeff7b12db",
+                                            "type": "flex"
+                                        },
+                                        "version": "3.0.0"
+                                    }
+                                },
+                                "preset": null,
+                                "propertyValues": {
+                                    "ariaRegionHeadingLevel": {
+                                        "type": "JSON_LITERAL",
+                                        "value": 1
+                                    },
+                                    "ariaRegionName": {
+                                        "type": "TRANSLATION_LITERAL",
+                                        "value": {
+                                            "code": null,
+                                            "comment": "",
+                                            "message": ""
+                                        }
+                                    },
+                                    "ariaRole": {
+                                        "type": "JSON_LITERAL",
+                                        "value": ""
+                                    },
+                                    "hideEmptyStateUi": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "includeAriaHeading": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "slotWrapperBehavior": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "fullheight"
+                                    },
+                                    "type": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "section"
+                                    }
+                                },
+                                "slot": "init_submission_documents",
+                                "styles": null
+                            }
+                        ],
+                        "layout": null
                     },
-                    "propertyValues": {},
+                    "preset": null,
+                    "propertyValues": {
+                        "activeRoute": {
+                            "icon": "document-checklist-search-outline",
+                            "id": "init_submission_documents",
+                            "label": {
+                                "type": "TRANSLATION_LITERAL",
+                                "value": {
+                                    "code": null,
+                                    "comment": "",
+                                    "message": "Documents"
+                                }
+                            },
+                            "order": 200,
+                            "type": "local"
+                        },
+                        "ariaLabel": {
+                            "type": "JSON_LITERAL",
+                            "value": "Tab List"
+                        },
+                        "defaultRoute": {
+                            "type": "JSON_LITERAL",
+                            "value": null
+                        },
+                        "dynamicTabData": {
+                            "type": "JSON_LITERAL",
+                            "value": null
+                        },
+                        "enableCollapsing": {
+                            "type": "JSON_LITERAL",
+                            "value": false
+                        },
+                        "fixedWidth": {
+                            "type": "JSON_LITERAL",
+                            "value": false
+                        },
+                        "hideLabel": {
+                            "type": "JSON_LITERAL",
+                            "value": false
+                        },
+                        "hidePadding": {
+                            "type": "JSON_LITERAL",
+                            "value": false
+                        },
+                        "initiallyCollapsed": {
+                            "type": "JSON_LITERAL",
+                            "value": false
+                        },
+                        "items": {
+                            "container": [],
+                            "type": "LIST_CONTAINER"
+                        },
+                        "maxWidth": {
+                            "type": "JSON_LITERAL",
+                            "value": 240
+                        },
+                        "position": {
+                            "type": "JSON_LITERAL",
+                            "value": "top"
+                        },
+                        "selectedTab": {
+                            "type": "JSON_LITERAL",
+                            "value": null
+                        },
+                        "selectedTabIndex": {
+                            "type": "JSON_LITERAL",
+                            "value": null
+                        },
+                        "showInlinePadding": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "size": {
+                            "type": "JSON_LITERAL",
+                            "value": "md"
+                        },
+                        "spaceBetweenItems": {
+                            "type": "JSON_LITERAL",
+                            "value": "none"
+                        },
+                        "tabStyles": {
+                            "type": "JSON_LITERAL",
+                            "value": ".tabset-tabs{\n\n}\n.tabset-container{\n\n}"
+                        },
+                        "viewportConfiguration": {
+                            "type": "JSON_LITERAL",
+                            "value": {
+                                "enableDataDrivenTabs": true,
+                                "validation": {
+                                    "icon": {
+                                        "required": false
+                                    },
+                                    "name": {
+                                        "required": true
+                                    },
+                                    "order": {
+                                        "required": false
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "slot": "content",
-                    "styles": {
-                        "padding-bottom": "var(--now-static-space--lg)"
-                    }
+                    "styles": null
                 }
             ],
             "layout": {}
@@ -1023,7 +1597,19 @@
     }
 ]</props>
         <required_sys_props/>
-        <required_translations>[ ]</required_translations>
+        <required_translations>[ {
+  "message" : "Documents",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Emails",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Intent Classification",
+  "code" : "",
+  "comment" : ""
+} ]</required_translations>
         <root_component/>
         <root_component_config>{}</root_component_config>
         <root_component_definition/>
@@ -1072,14 +1658,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-01 05:44:55</sys_created_on>
         <sys_id>a975dd31333dc3147ef8f499ed5c7bba</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>PS Initiate Submission AUI</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_a975dd31333dc3147ef8f499ed5c7bba</sys_update_name>
         <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-07-01 05:45:58</sys_updated_on>
+        <sys_updated_on>2026-07-10 12:56:20</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=a975dd31333dc3147ef8f499ed5c7bba"/>
 </record_update>
