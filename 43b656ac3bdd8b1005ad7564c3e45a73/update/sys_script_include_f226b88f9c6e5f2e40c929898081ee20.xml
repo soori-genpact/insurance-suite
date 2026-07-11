@@ -148,7 +148,8 @@ IntakeService.prototype = {
         task.initialize();
         task.parent_case = intake.getUniqueValue();
         task.intake_case = intake.getUniqueValue();
-        task.category = 'extraction';
+        task.category = 'hitl';
+        task.task_type = this._toTaskType(body.status);
         task.short_description = 'HITL: ' + (body.status || 'HUMAN_IN_THE_LOOP');
         task.description = body.description || '';
         task.insert();
@@ -213,6 +214,15 @@ IntakeService.prototype = {
                     doc: 'word', docx: 'word', eml: 'email', msg: 'email',
                     jpg: 'image', jpeg: 'image', png: 'image' };
         return map[ext] || 'other';
+    },
+
+    /** Only the four pipeline HITL types map to task_type; anything else stays empty. */
+    _toTaskType: function(token) {
+        var map = { 'CONTEXT_ENRICHMENT': 'context_enrichment',
+                    'DUPLICATE_CHECK': 'duplicate_check',
+                    'CLASSIFICATION_FAILED': 'classification_failed',
+                    'SUBMISSION_LOCKED': 'submission_locked' };
+        return map[String(token || '').toUpperCase()] || '';
     },
 
     _toStatusValue: function(token) {
