@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>false</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_gegis_ins_policy_case_task</collection>
+        <condition/>
+        <description>Numbers case tasks as &lt;intakeCaseNumber&gt;-T## (e.g. INCASE0001-T01). Resolves the intake case from intake_case, then parent_case, then the parent task; stamps intake_case so the count stays reliable.</description>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Case task numbering</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script>(function executeRule(current, previous /*null when async*/) {
+
+    var base = '';          // number prefix
+    var ga = new GlideAggregate('x_gegis_ins_policy_case_task');
+
+    if (!current.intake_case.nil()) {
+        // Task directly on the intake case: number under the case number,
+        // counting only case-level tasks (no parent).
+        var caseRec = new GlideRecord('x_gegis_ins_policy_intake_case');
+        if (!caseRec.get(current.intake_case + ''))
+            return;
+        base = caseRec.number + '';
+        ga.addQuery('intake_case', current.intake_case + '');
+        ga.addNullQuery('parent');
+
+    } else if (!current.parent.nil()) {
+        // Subtask under a parent task: number under the parent task's number,
+        // counting that parent's existing children.
+        var parentTask = current.parent.getRefRecord();
+        if (!parentTask.isValidRecord())
+            return;
+        base = parentTask.number + '';
+        ga.addQuery('parent', parentTask.getUniqueValue());
+
+    } else {
+        return;
+    }
+
+    ga.addAggregate('COUNT');
+    ga.query();
+    var count = 0;
+    if (ga.next())
+        count = parseInt(ga.getAggregate('COUNT'), 10) || 0;
+
+    var seq = count + 1;
+    var padded = seq &lt; 10 ? '0' + seq : '' + seq;
+    current.number = base + '-T' + padded;
+
+})(current, previous);</script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-07-11 14:20:00</sys_created_on>
+        <sys_id>d5e9b3a17c264f08a1c73e6094b2f8d3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Case task numbering</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_d5e9b3a17c264f08a1c73e6094b2f8d3</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-07-11 14:20:00</sys_updated_on>
+        <template/>
+        <when>before</when>
+    </sys_script>
+</record_update>
