@@ -13,22 +13,15 @@
 OrchestrationService.prototype = {
     initialize: function() {
         this.PROPERTY = 'x_gegis_ins_policy.module_execution_config';
-        // Per-module case-table config. exposure_case extends Task, so its
-        // state values are the platform task states; the other case tables
-        // use this app's string state choice.
+        // All module case tables extend Task: standard task states
+        // (-5 Pending = dormant, 2 Work in Progress = active,
+        //  3 Closed Complete, 7 Closed Skipped = cancelled).
+        this.STATE = { inactive: '-5', active: '2', complete: '3', cancelled: '7' };
         this.MODULE_MAP = {
-            'SUBMISSION_CLEARANCE': { table: 'x_gegis_ins_policy_clearance_case',
-                stateField: 'state', inactive: 'inactive', active: 'active',
-                complete: 'closed_complete', cancelled: 'cancelled' },
-            'EXPOSURE_MANAGEMENT': { table: 'x_gegis_ins_policy_exposure_case',
-                stateField: 'state', inactive: '-5', active: '2',
-                complete: '3', cancelled: '7' },
-            'RISK_ASSESSMENT': { table: 'x_gegis_ins_policy_risk_case',
-                stateField: 'state', inactive: 'inactive', active: 'active',
-                complete: 'closed_complete', cancelled: 'cancelled' },
-            'QUOTE_AND_BIND': { table: 'x_gegis_ins_policy_quote_and_bind_case',
-                stateField: 'state', inactive: 'inactive', active: 'active',
-                complete: 'closed_complete', cancelled: 'cancelled' }
+            'SUBMISSION_CLEARANCE': { table: 'x_gegis_ins_policy_clearance_case' },
+            'EXPOSURE_MANAGEMENT': { table: 'x_gegis_ins_policy_exposure_case' },
+            'RISK_ASSESSMENT': { table: 'x_gegis_ins_policy_risk_case' },
+            'QUOTE_AND_BIND': { table: 'x_gegis_ins_policy_quote_and_bind_case' }
         };
     },
 
@@ -113,10 +106,10 @@ OrchestrationService.prototype = {
             var m = this.MODULE_MAP[code];
             var gr = new GlideRecord(m.table);
             gr.addQuery('submission', submissionId);
-            gr.addQuery(m.stateField, 'NOT IN', m.complete + ',' + m.cancelled);
+            gr.addQuery('state', 'NOT IN', this.STATE.complete + ',' + this.STATE.cancelled);
             gr.query();
             while (gr.next()) {
-                gr.setValue(m.stateField, m.cancelled);
+                gr.setValue('state', this.STATE.cancelled);
                 gr.update();
             }
         }
@@ -140,8 +133,8 @@ OrchestrationService.prototype = {
                 gr.setLimit(1);
                 gr.query();
                 if (gr.next()) {
-                    if (String(gr.getValue(m.stateField)) === String(m.inactive)) {
-                        gr.setValue(m.stateField, m.active);
+                    if (String(gr.getValue('state')) === this.STATE.inactive) {
+                        gr.setValue('state', this.STATE.active);
                         gr.update();
                     }
                 } else {
@@ -161,7 +154,7 @@ OrchestrationService.prototype = {
         gr.initialize();
         gr.submission = submissionId;
         gr.stage = stage;
-        gr.setValue(m.stateField, active ? m.active : m.inactive);
+        gr.setValue('state', active ? this.STATE.active : this.STATE.inactive);
         if (gr.isValidField('short_description'))
             gr.short_description = moduleCode + ' for submission';
         return gr.insert();
@@ -173,7 +166,7 @@ OrchestrationService.prototype = {
             return true; // unmapped module never blocks the chain
         var gr = new GlideRecord(m.table);
         gr.addQuery('submission', submissionId);
-        gr.addQuery(m.stateField, m.complete);
+        gr.addQuery('state', this.STATE.complete);
         gr.setLimit(1);
         gr.query();
         return gr.hasNext();
