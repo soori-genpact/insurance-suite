@@ -9,7 +9,7 @@
         <mobile_callable>false</mobile_callable>
         <name>SubmissionApiService</name>
         <sandbox_callable>false</sandbox_callable>
-        <script>var SubmissionApiService = Class.create();
+        <script><![CDATA[var SubmissionApiService = Class.create();
 SubmissionApiService.prototype = {
     initialize: function() {
         this.SUBMISSION = 'x_gegis_ins_policy_submission';
@@ -18,7 +18,7 @@ SubmissionApiService.prototype = {
         this.DOCUMENT = 'x_gegis_ins_policy_document';
         this.EXTRACTION = 'x_gegis_ins_policy_extraction';
         this.INTAKE = 'x_gegis_ins_policy_intake_case';
-        this.CASE_TASK = 'x_gegis_ins_policy_case_task';
+        this.TASK = 'x_gegis_ins_policy_case_task';
         this.ENTITY = 'x_gegis_ins_policy_extraction_entity';
         this.FIELD = 'x_gegis_ins_policy_extraction_field';
     },
@@ -58,7 +58,7 @@ SubmissionApiService.prototype = {
             sub.source_reference = String(intake.number);
             sub.update();
             var copied = this._copyDocuments(intake, subId, body.attachments);
-            var task = this._createExtractionReviewTask(intake, sub, isAuto);
+            var task = this._createExtractionReviewTask(intake, sub, isAuto , extraction.getUniqueValue());
             intake.submission = subId;
             intake.intent = 'new_submission';
             intake.intent_summary = body.intent_summary || '';
@@ -117,26 +117,26 @@ SubmissionApiService.prototype = {
         var merge = new x_gegis_ins_policy.MergeEngine();
         var rows = merge.compare(extraction);
         var conflicts = 0;
-        for (var i = 0; i &lt; rows.length; i++)
-            if (rows[i].classification === 'conflict' &amp;&amp; !rows[i].is_protected)
+        for (var i = 0; i < rows.length; i++)
+            if (rows[i].classification === 'conflict' && !rows[i].is_protected)
                 conflicts++;
 
         // Automatic vs manual for the update intent. Auto only actually merges
         // when there are no conflicts; conflicts always fall back to review.
         var isAuto = x_gegis_ins_policy.Constants.isAutoApprove('update');
-        var willProcess = isAuto &amp;&amp; conflicts === 0;
+        var willProcess = isAuto && conflicts === 0;
 
         var intake = this._findIntake(body);
         if (intake) {
             var copied = this._copyDocuments(intake, sub.getUniqueValue(), body.attachments);
-            var task = this._createExtractionReviewTask(intake, sub, willProcess);
+            var task = this._createExtractionReviewTask(intake, sub, willProcess,extraction.getUniqueValue());
             intake.submission = sub.getUniqueValue();
             intake.intent = 'update_data';
             intake.status = willProcess ? 'completed' : 'awaiting_action';
             intake.work_notes = 'In-flight update for submission ' + sub.number +
                 ' (extraction version ' + version + ').' +
                 '\nProcessing mode: ' + (isAuto ? 'AUTOMATIC' : 'MANUAL') +
-                (isAuto &amp;&amp; conflicts &gt; 0 ? ' (held: ' + conflicts + ' conflict(s))' : '') +
+                (isAuto && conflicts > 0 ? ' (held: ' + conflicts + ' conflict(s))' : '') +
                 '\nHITL task: ' + task.number + ' (' + (willProcess ? 'closed complete' : 'open') + ')' +
                 '\nField conflicts requiring review: ' + conflicts +
                 '\nDocuments copied: ' + copied +
@@ -212,7 +212,7 @@ SubmissionApiService.prototype = {
     _copyDocuments: function(intake, subId, attachments) {
         var copied = 0;
         var statusByName = {};
-        for (var i = 0; attachments &amp;&amp; i &lt; attachments.length; i++)
+        for (var i = 0; attachments && i < attachments.length; i++)
             statusByName[attachments[i].file_name] = String(attachments[i].status || '').toLowerCase();
 
         var src = new GlideRecord(this.DOCUMENT);
@@ -284,14 +284,15 @@ SubmissionApiService.prototype = {
     /**
      * Create the HITL extraction-review case task on the intake case.
      * Always created when an intake case is identified.
-     *   auto   -&gt; state Closed Complete, automated-process work note
-     *   manual -&gt; state Open, awaiting human Accept/Reject
+     *   auto   -> state Closed Complete, automated-process work note
+     *   manual -> state Open, awaiting human Accept/Reject
      */
-    _createExtractionReviewTask: function(intake, sub, isAuto) {
-        var task = new GlideRecord(this.CASE_TASK);
+    _createExtractionReviewTask: function(intake, sub, isAuto, extraction) {
+        var task = new GlideRecord(this.TASK);
         task.initialize();
         task.setValue('parent_case', intake.getUniqueValue());
         task.setValue('intake_case', intake.getUniqueValue());
+		task.setValue('extraction', extraction);
         task.setValue('category', 'hitl');
         task.setValue('u_type', 'extraction_review');
         task.setValue('short_description', 'Extraction review for submission ' + sub.number);
@@ -376,7 +377,7 @@ SubmissionApiService.prototype = {
             if (resp.getStatusCode() !== 200)
                 return null;
             var parsed = JSON.parse(resp.getBody());
-            return (parsed &amp;&amp; typeof parsed === 'object') ? parsed : null;
+            return (parsed && typeof parsed === 'object') ? parsed : null;
         } catch (e) {
             return null;
         }
@@ -387,18 +388,18 @@ SubmissionApiService.prototype = {
     },
 
     type: 'SubmissionApiService'
-};</script>
+};]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-11 12:00:00</sys_created_on>
         <sys_id>d2c5f004acc2ace025a5af2ddd7003c4</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>SubmissionApiService</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_script_include_d2c5f004acc2ace025a5af2ddd7003c4</sys_update_name>
         <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-07-11 12:00:00</sys_updated_on>
+        <sys_updated_on>2026-07-11 21:16:23</sys_updated_on>
     </sys_script_include>
 </record_update>
