@@ -31,11 +31,11 @@
 
     var url = String(current.url || '');
     if (!url) {
-        current.link = '';
+        current.doc_link = '';
         return;
     }
     var name = String(current.document_name || '') || 'Document';
-    current.link = '&lt;a href="' + url.replace(/"/g, '&amp;quot;') + '" target="_blank" rel="noopener"&gt;' +
+    current.doc_link = '&lt;a href="' + url.replace(/"/g, '&amp;quot;') + '" target="_blank" rel="noopener"&gt;' +
         GlideStringUtil.escapeHTML(name) + '&lt;/a&gt;';
 
 })(current, previous);</script>
