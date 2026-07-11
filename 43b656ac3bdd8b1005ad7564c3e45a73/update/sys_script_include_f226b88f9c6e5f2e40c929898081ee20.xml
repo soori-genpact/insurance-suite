@@ -153,12 +153,9 @@ IntakeService.prototype = {
         task.description = body.description || '';
         task.insert();
 
-        var newStatus = this._toStatusValue(body.status);
-        if (newStatus)
-            intake.status = newStatus;
+        intake.status = 'awaiting_action';
         intake.work_notes = 'HITL task ' + task.number + ' created via API.' +
-            '\nReported status: ' + (body.status || '(none)') +
-            (newStatus ? ' -&gt; case status set to ' + newStatus : ' (unrecognized token, case status unchanged)') +
+            '\nType: ' + (body.status || '(none)') +
             '\nReason: ' + (body.description || '(no description)') +
             '\nCorrelation ID: ' + (body.correlation_id || '(none)');
         intake.update();
@@ -222,20 +219,6 @@ IntakeService.prototype = {
                     'CLASSIFICATION_FAILED': 'classification_failed',
                     'SUBMISSION_LOCKED': 'submission_locked' };
         return map[String(token || '').toUpperCase()] || '';
-    },
-
-    /**
-     * Map pipeline tokens to inbound intake_case status choices. Any HITL token
-     * (case needs human intervention) collapses to 'awaiting_action'; the finer
-     * pipeline stage is preserved separately on case_task.u_type via _toTaskType.
-     */
-    _toStatusValue: function(token) {
-        var t = String(token || '').toUpperCase();
-        var map = { 'RECEIVED': 'received', 'COMPLETED': 'completed', 'REJECTED': 'rejected',
-                    'HUMAN_IN_THE_LOOP': 'awaiting_action', 'CONTEXT_ENRICHMENT': 'awaiting_action',
-                    'DUPLICATE_CHECK': 'awaiting_action', 'CLASSIFICATION_FAILED': 'awaiting_action',
-                    'SUBMISSION_LOCKED': 'awaiting_action' };
-        return map[t] || '';
     },
 
     _error: function(status, code, message) {
