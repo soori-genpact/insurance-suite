@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="06d5cff0333d4f907ef8f499ed5c7b23" label="Submission" max_length="40" name="x_gegis_ins_policy_submission" type="collection"/>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="06d5cff0333d4f907ef8f499ed5c7b23" label="Submission" max_length="40" name="x_gegis_ins_policy_submission" type="collection">
+        <element label="Insured Address" max_length="400" name="insured_address" type="string"/>
+        <element label="Line of Business" max_length="40" name="line_of_business" type="string"/>
+        <element label="Insured Name" max_length="120" name="insured_name" type="string"/>
+        <element label="Broker Name" max_length="120" name="broker_name" type="string"/>
+    </element>
 </database>
