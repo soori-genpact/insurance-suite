@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.MergeEngine</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Compares a new extraction version against the current system of record; protects human-entered values; applies merge decisions or rejects the version.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>MergeEngine</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var MergeEngine = Class.create();
+MergeEngine.prototype = {
+    initialize: function() {
+        this.FIELD = 'x_gegis_ins_policy_extraction_field';
+        this.applier = new x_gegis_ins_policy.ExtractionApplier();
+    },
+
+    /**
+     * Three-way comparison of a new extraction version against the current
+     * system of record. Pre-classifies every field so reviewers only see
+     * conflicts. A field whose current value came from a human (a corrected
+     * staging row) is never defaulted to the new AI value.
+     *
+     * Classifications: unchanged | new | conflict
+     * Defaults:        accept    | accept | keep_existing when protected,
+     *                                       take_new otherwise
+     *
+     * @param newExtractionGr GlideRecord of the incoming extraction version
+     * @return Array of row objects for the merge-review UI
+     */
+    compare: function(newExtractionGr) {
+        var rows = [];
+        var protectedKeys = this._humanTouchedKeys(String(newExtractionGr.submission));
+
+        var f = new GlideRecord(this.FIELD);
+        f.addQuery('extraction', newExtractionGr.getUniqueValue());
+        f.query();
+        while (f.next()) {
+            var newValue = this.applier.getFinalValue(f);
+            var current = this._currentValue(f, String(newExtractionGr.submission));
+            var key = this._key(f);
+            var row = {
+                field_sys_id: f.getUniqueValue(),
+                field_path: String(f.field_path),
+                target_table: String(f.target_table),
+                target_column: String(f.target_column),
+                current_value: current,
+                new_value: newValue,
+                is_protected: !!protectedKeys[key]
+            };
+            if (current === newValue)
+                row.classification = 'unchanged';
+            else if (!current)
+                row.classification = 'new';
+            else
+                row.classification = 'conflict';
+            row.suggested = row.classification === 'conflict' &amp;&amp; row.is_protected ?
+                'keep_existing' : (row.classification === 'unchanged' ? 'accept' : 'take_new');
+            this._presetDecision(f, row);
+            rows.push(row);
+        }
+        return rows;
+    },
+
+    /**
+     * Finalize a reviewed merge: apply decided fields, then mark the
+     * previous version superseded.
+     */
+    applyMerge: function(newExtractionGr) {
+        var applied = this.applier.apply(newExtractionGr);
+        var prev = new GlideRecord('x_gegis_ins_policy_extraction');
+        if (newExtractionGr.supersedes &amp;&amp; prev.get(String(newExtractionGr.supersedes))) {
+            prev.disposition = 'superseded';
+            prev.merged_into = newExtractionGr.getUniqueValue();
+            prev.update();
+        }
+        newExtractionGr.disposition = 'merged';
+        newExtractionGr.update();
+        return applied;
+    },
+
+    /** Reject an entire incoming version; nothing is applied. */
+    reject: function(extractionGr, reason) {
+        var f = new GlideRecord(this.FIELD);
+        f.addQuery('extraction', extractionGr.getUniqueValue());
+        f.query();
+        while (f.next()) {
+            f.review_status = 'rejected';
+            f.update();
+        }
+        extractionGr.disposition = 'rejected';
+        extractionGr.rejection_reason = reason || '';
+        extractionGr.update();
+    },
+
+    /** Keys of target fields whose applied value was human-corrected. */
+    _humanTouchedKeys: function(submissionId) {
+        var keys = {};
+        if (!submissionId)
+            return keys;
+        var f = new GlideRecord(this.FIELD);
+        f.addQuery('extraction.submission', submissionId);
+        f.addQuery('review_status', 'applied');
+        f.addNotNullQuery('override_value');
+        f.query();
+        while (f.next())
+            keys[this._key(f)] = true;
+        return keys;
+    },
+
+    _currentValue: function(fieldGr, submissionId) {
+        var targetId = String(fieldGr.target_sys_id);
+        if (!targetId &amp;&amp; String(fieldGr.target_table) === 'x_gegis_ins_policy_submission')
+            targetId = submissionId;
+        if (!targetId)
+            return '';
+        var gr = new GlideRecord(String(fieldGr.target_table));
+        if (!gr.isValid() || !gr.get(targetId))
+            return '';
+        var column = String(fieldGr.target_column);
+        return gr.isValidField(column) ? String(gr.getValue(column) || '') : '';
+    },
+
+    /** Write non-conflict defaults onto the staging row up front. */
+    _presetDecision: function(fieldGr, row) {
+        if (row.classification === 'unchanged' || row.classification === 'new') {
+            fieldGr.review_status = 'auto_accepted';
+            fieldGr.update();
+        } else if (row.is_protected) {
+            fieldGr.review_status = 'rejected';
+            fieldGr.override_reason = 'Protected: human-entered value retained on merge';
+            fieldGr.update();
+        }
+    },
+
+    _key: function(fieldGr) {
+        return String(fieldGr.target_table) + ':' +
+               String(fieldGr.target_sys_id) + ':' +
+               String(fieldGr.target_column);
+    },
+
+    type: 'MergeEngine'
+};</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-07-11 12:00:00</sys_created_on>
+        <sys_id>37e163501789c29221e4a2d1d966dabf</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>MergeEngine</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_37e163501789c29221e4a2d1d966dabf</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-07-11 12:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>

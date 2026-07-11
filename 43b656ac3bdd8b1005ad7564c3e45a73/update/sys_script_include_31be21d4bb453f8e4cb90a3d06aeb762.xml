@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.ExtractionMapper</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Shreds a raw AI extraction payload into extraction_entity and extraction_field staging rows using the extraction_mapping registry.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>ExtractionMapper</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var ExtractionMapper = Class.create();
+ExtractionMapper.prototype = {
+    initialize: function() {
+        this.MAPPING = 'x_gegis_ins_policy_extraction_mapping';
+        this.ENTITY = 'x_gegis_ins_policy_extraction_entity';
+        this.FIELD = 'x_gegis_ins_policy_extraction_field';
+    },
+
+    /**
+     * Shred a parsed AI payload into staging rows for one extraction version.
+     * Leaf values may be scalars or objects of the form
+     * { value: ..., confidence: 0.93, page: 2, bbox: 'x,y,w,h' }.
+     *
+     * @param extractionGr GlideRecord x_gegis_ins_policy_extraction (inserted)
+     * @param payload Object parsed raw JSON from the AI service
+     * @return Number of extraction_field rows created
+     */
+    mapPayload: function(extractionGr, payload) {
+        var created = 0;
+        var entityCache = {};
+        var lob = payload &amp;&amp; payload.line_of_business ? String(payload.line_of_business) : 'all';
+
+        var m = new GlideRecord(this.MAPPING);
+        m.addActiveQuery();
+        m.addQuery('line_of_business', 'IN', 'all,' + lob);
+        m.orderBy('order');
+        m.query();
+        while (m.next()) {
+            var hits = this._resolvePath(payload, String(m.field_path));
+            for (var i = 0; i &lt; hits.length; i++) {
+                var hit = hits[i];
+                if (hit.value === undefined || hit.value === null || hit.value === '')
+                    continue;
+                var entityId = this._ensureEntity(extractionGr, m, hit, entityCache);
+                this._createField(extractionGr, m, hit, entityId);
+                created++;
+            }
+        }
+        return created;
+    },
+
+    /**
+     * Resolve a mapping path against the payload. Supports dot paths and one
+     * repeating segment, e.g. 'insured.name' or 'locations[*].street'.
+     * Returns [{ value, index, path }] where index is the repeating-group
+     * ordinal (-1 for non-repeating paths).
+     */
+    _resolvePath: function(payload, path) {
+        var star = path.indexOf('[*]');
+        if (star === -1) {
+            var v = this._walk(payload, path);
+            return v === undefined ? [] : [{ value: v, index: -1, path: path }];
+        }
+        var head = path.substring(0, star);
+        var tail = path.substring(star + 4); // skip '[*].'
+        var arr = this._walk(payload, head);
+        if (!arr || !arr.length)
+            return [];
+        var out = [];
+        for (var i = 0; i &lt; arr.length; i++) {
+            var v2 = tail ? this._walk(arr[i], tail) : arr[i];
+            if (v2 !== undefined)
+                out.push({ value: v2, index: i, path: head + '[' + i + '].' + tail });
+        }
+        return out;
+    },
+
+    _walk: function(obj, path) {
+        if (!path)
+            return obj;
+        var parts = path.split('.');
+        var cur = obj;
+        for (var i = 0; i &lt; parts.length; i++) {
+            if (cur === null || cur === undefined)
+                return undefined;
+            cur = cur[parts[i]];
+        }
+        return cur;
+    },
+
+    /** Create (or reuse) the extraction_entity row for a repeating group. */
+    _ensureEntity: function(extractionGr, mapping, hit, cache) {
+        var entityType = String(mapping.entity_type);
+        if (!entityType || entityType === 'submission')
+            return '';
+        var key = entityType + ':' + hit.index;
+        if (cache[key])
+            return cache[key];
+        var e = new GlideRecord(this.ENTITY);
+        e.initialize();
+        e.extraction = extractionGr.getUniqueValue();
+        e.entity_type = entityType;
+        e.entity_index = hit.index &lt; 0 ? 0 : hit.index;
+        e.label = entityType + (hit.index &gt;= 0 ? ' ' + (hit.index + 1) : '');
+        e.match_status = 'new';
+        e.disposition = 'pending';
+        cache[key] = e.insert();
+        return cache[key];
+    },
+
+    _createField: function(extractionGr, mapping, hit, entityId) {
+        var raw = hit.value;
+        var value = raw, confidence = '', page = '', bbox = '';
+        if (raw !== null &amp;&amp; typeof raw === 'object') {
+            value = raw.value;
+            confidence = raw.confidence !== undefined ? raw.confidence : '';
+            page = raw.page !== undefined ? raw.page : '';
+            bbox = raw.bbox || '';
+        }
+        var f = new GlideRecord(this.FIELD);
+        f.initialize();
+        f.extraction = extractionGr.getUniqueValue();
+        f.entity = entityId;
+        f.field_path = hit.path;
+        f.extracted_value = String(value);
+        f.mapped_value = String(value);
+        f.confidence = confidence;
+        f.page_number = page;
+        f.bounding_box = bbox;
+        f.target_table = String(mapping.target_table);
+        f.target_column = String(mapping.target_column);
+        f.data_type = String(mapping.data_type);
+        f.review_status = 'needs_review';
+        f.insert();
+    },
+
+    type: 'ExtractionMapper'
+};</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-07-11 12:00:00</sys_created_on>
+        <sys_id>31be21d4bb453f8e4cb90a3d06aeb762</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ExtractionMapper</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_31be21d4bb453f8e4cb90a3d06aeb762</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-07-11 12:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.ExtractionApplier</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Applies accepted/corrected extraction fields to their target records and stamps provenance.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>ExtractionApplier</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var ExtractionApplier = Class.create();
+ExtractionApplier.prototype = {
+    initialize: function() {
+        this.ENTITY = 'x_gegis_ins_policy_extraction_entity';
+        this.FIELD = 'x_gegis_ins_policy_extraction_field';
+        this.APPLIABLE = 'accepted,auto_accepted,corrected';
+    },
+
+    /**
+     * Apply one reviewed extraction to the system of record.
+     * Accepted entities become (or update) target records; accepted and
+     * corrected fields write their final value onto the target column.
+     * Runs as the session user so sys_audit attributes changes correctly.
+     *
+     * @param extractionGr GlideRecord x_gegis_ins_policy_extraction
+     * @return Number of field values applied
+     */
+    apply: function(extractionGr) {
+        var extractionId = extractionGr.getUniqueValue();
+        var submissionId = String(extractionGr.submission);
+        var entityTarget = this._materializeEntities(extractionId, submissionId);
+
+        var applied = 0;
+        var f = new GlideRecord(this.FIELD);
+        f.addQuery('extraction', extractionId);
+        f.addQuery('review_status', 'IN', this.APPLIABLE);
+        f.query();
+        while (f.next()) {
+            var targetId = f.entity ? entityTarget[String(f.entity)] : '';
+            if (!targetId &amp;&amp; String(f.target_table) === 'x_gegis_ins_policy_submission')
+                targetId = submissionId;
+            if (!targetId)
+                continue;
+            if (this._writeValue(f, targetId)) {
+                f.target_sys_id = targetId;
+                f.applied_by = gs.getUserID();
+                f.applied_on = new GlideDateTime();
+                f.review_status = 'applied';
+                f.update();
+                applied++;
+            }
+        }
+
+        extractionGr.disposition = 'applied';
+        extractionGr.extraction_status = 'reviewed';
+        extractionGr.update();
+        this._touchSubmission(submissionId, extractionId);
+        return applied;
+    },
+
+    /** The agreed truth for a field: override wins, then mapped, then raw. */
+    getFinalValue: function(fieldGr) {
+        var override = String(fieldGr.override_value);
+        if (override)
+            return override;
+        var mapped = String(fieldGr.mapped_value);
+        return mapped ? mapped : String(fieldGr.extracted_value);
+    },
+
+    /** Create target records for accepted entities; reuse matched ones. */
+    _materializeEntities: function(extractionId, submissionId) {
+        var map = {};
+        var e = new GlideRecord(this.ENTITY);
+        e.addQuery('extraction', extractionId);
+        e.addQuery('disposition', 'IN', 'accepted,merged');
+        e.query();
+        while (e.next()) {
+            var targetId = String(e.matched_record);
+            var table = String(e.matched_table);
+            if (!targetId) {
+                table = 'x_gegis_ins_policy_' + String(e.entity_type);
+                var t = new GlideRecord(table);
+                if (!t.isValid())
+                    continue;
+                t.initialize();
+                if (t.isValidField('submission'))
+                    t.submission = submissionId;
+                targetId = t.insert();
+                e.matched_table = table;
+                e.matched_record = targetId;
+                e.match_status = 'matched';
+                e.update();
+            }
+            map[e.getUniqueValue()] = targetId;
+        }
+        return map;
+    },
+
+    _writeValue: function(fieldGr, targetId) {
+        var gr = new GlideRecord(String(fieldGr.target_table));
+        if (!gr.isValid() || !gr.get(targetId))
+            return false;
+        var column = String(fieldGr.target_column);
+        if (!gr.isValidField(column))
+            return false;
+        gr.setValue(column, this.getFinalValue(fieldGr));
+        gr.update();
+        return true;
+    },
+
+    _touchSubmission: function(submissionId, extractionId) {
+        if (!submissionId)
+            return;
+        var sub = new GlideRecord('x_gegis_ins_policy_submission');
+        if (sub.get(submissionId)) {
+            sub.current_extraction = extractionId;
+            sub.extraction_status = 'applied';
+            sub.update();
+        }
+    },
+
+    type: 'ExtractionApplier'
+};</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-07-11 12:00:00</sys_created_on>
+        <sys_id>dc1cc4c59a30a82546972a019d6b9787</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ExtractionApplier</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_dc1cc4c59a30a82546972a019d6b9787</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-07-11 12:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>

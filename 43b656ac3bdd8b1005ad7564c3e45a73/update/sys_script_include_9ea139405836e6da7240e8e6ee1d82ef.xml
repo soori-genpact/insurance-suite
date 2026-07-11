@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.SubmissionBuilder</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Creates a submission (header and lines) from a reviewed extraction when no submission exists yet.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>SubmissionBuilder</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var SubmissionBuilder = Class.create();
+SubmissionBuilder.prototype = {
+    initialize: function() {
+        this.SUBMISSION = 'x_gegis_ins_policy_submission';
+        this.LINE = 'x_gegis_ins_policy_submission_line';
+        this.ENTITY = 'x_gegis_ins_policy_extraction_entity';
+    },
+
+    /**
+     * Create the submission header + one line per LOB entity, link the
+     * extraction to it, then delegate field population to ExtractionApplier.
+     *
+     * @param extractionGr GlideRecord x_gegis_ins_policy_extraction
+     * @return String sys_id of the created submission
+     */
+    buildFromExtraction: function(extractionGr) {
+        var sub = new GlideRecord(this.SUBMISSION);
+        sub.initialize();
+        sub.state = 'received';
+        sub.extraction_status = 'pending_review';
+        sub.received_date = new GlideDateTime();
+        sub.source_channel = String(extractionGr.source) || 'api';
+        sub.current_extraction = extractionGr.getUniqueValue();
+        sub.overall_confidence = extractionGr.confidence_overall;
+        sub.requires_review = true;
+        var subId = sub.insert();
+
+        extractionGr.submission = subId;
+        extractionGr.update();
+
+        this._buildLines(extractionGr, subId);
+        new x_gegis_ins_policy.ExtractionApplier().apply(extractionGr);
+        return subId;
+    },
+
+    /** One submission_line per accepted submission_line entity. */
+    _buildLines: function(extractionGr, subId) {
+        var e = new GlideRecord(this.ENTITY);
+        e.addQuery('extraction', extractionGr.getUniqueValue());
+        e.addQuery('entity_type', 'submission_line');
+        e.addQuery('disposition', '!=', 'rejected');
+        e.orderBy('entity_index');
+        e.query();
+        while (e.next()) {
+            var line = new GlideRecord(this.LINE);
+            line.initialize();
+            line.submission = subId;
+            line.state = 'pending';
+            var lineId = line.insert();
+            e.matched_table = this.LINE;
+            e.matched_record = lineId;
+            e.match_status = 'matched';
+            e.update();
+        }
+    },
+
+    type: 'SubmissionBuilder'
+};</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-07-11 12:00:00</sys_created_on>
+        <sys_id>9ea139405836e6da7240e8e6ee1d82ef</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>SubmissionBuilder</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_9ea139405836e6da7240e8e6ee1d82ef</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-07-11 12:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>
