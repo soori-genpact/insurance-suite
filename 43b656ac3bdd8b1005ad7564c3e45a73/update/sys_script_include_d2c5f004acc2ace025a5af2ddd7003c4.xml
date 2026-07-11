@@ -49,11 +49,16 @@ SubmissionApiService.prototype = {
             sub.source_channel = 'email';
             sub.source_reference = String(intake.number);
             sub.update();
-            this._copyDocuments(intake, subId, body.attachments);
+            var copied = this._copyDocuments(intake, subId, body.attachments);
             intake.submission = subId;
             intake.intent = 'new_submission';
             intake.intent_summary = body.intent_summary || '';
             intake.status = 'completed';
+            intake.work_notes = 'Submission ' + sub.number + ' created from AI extraction.' +
+                '\nExtraction confidence: ' + (body.metadata ? body.metadata.confidence_score : '(n/a)') +
+                '\nDocuments copied to submission: ' + copied +
+                '\nIntent summary: ' + (body.intent_summary || '(none)') +
+                '\nCorrelation ID: ' + body.correlation_id;
             intake.update();
         }
 
@@ -106,10 +111,15 @@ SubmissionApiService.prototype = {
 
         var intake = this._findIntake(body);
         if (intake) {
-            this._copyDocuments(intake, sub.getUniqueValue(), body.attachments);
+            var copied = this._copyDocuments(intake, sub.getUniqueValue(), body.attachments);
             intake.submission = sub.getUniqueValue();
             intake.intent = 'update_data';
             intake.status = 'completed';
+            intake.work_notes = 'Update merged into submission ' + sub.number +
+                ' (extraction version ' + version + ').' +
+                '\nField conflicts requiring review: ' + conflicts +
+                '\nDocuments copied: ' + copied +
+                '\nCorrelation ID: ' + body.correlation_id;
             intake.update();
         }
 
@@ -179,6 +189,7 @@ SubmissionApiService.prototype = {
 
     /** Clone intake documents onto the submission (copy, not re-link). */
     _copyDocuments: function(intake, subId, attachments) {
+        var copied = 0;
         var statusByName = {};
         for (var i = 0; attachments &amp;&amp; i &lt; attachments.length; i++)
             statusByName[attachments[i].file_name] = String(attachments[i].status || '').toLowerCase();
@@ -217,7 +228,9 @@ SubmissionApiService.prototype = {
             copy.submission = subId;
             copy.intake_case = intake.getUniqueValue();
             copy.insert();
+            copied++;
         }
+        return copied;
     },
 
     _toIntakeStatus: function(token) {

@@ -54,11 +54,26 @@ IntakeService.prototype = {
         intake.insert();
 
         var attachments = body.attachments || [];
-        for (var i = 0; i &lt; attachments.length; i++)
-            this._createDocument(intake, attachments[i]);
+        var warnings = [];
+        var noteLines = ['Intake email received via API',
+                         'From: ' + (body.from || '(unknown)'),
+                         'Subject: ' + (body.subject || '(none)'),
+                         'Correlation ID: ' + body.correlation_id,
+                         'Blob folder: ' + (body.container_name || '') + '/' + (body.folder_path || ''),
+                         'Attachments (' + attachments.length + '):'];
+        for (var i = 0; i &lt; attachments.length; i++) {
+            var warning = this._createDocument(intake, attachments[i]);
+            var att = attachments[i] || {};
+            noteLines.push('  - ' + (att.file_name || '(unnamed)') + ' [' + (att.type || 'ATTACHMENT') + ']' +
+                           (warning ? ' -- WARNING: ' + warning : ''));
+            if (warning)
+                warnings.push((att.file_name || '(unnamed)') + ': ' + warning);
+        }
+        intake.work_notes = noteLines.join('\n');
+        intake.update();
 
         return { _status: 201, success: true, caseId: String(intake.number),
-                 correlation_id: String(body.correlation_id) };
+                 correlation_id: String(body.correlation_id), warnings: warnings };
     },
 
     /**
@@ -92,10 +107,14 @@ IntakeService.prototype = {
         task.insert();
 
         var newStatus = this._toStatusValue(body.status);
-        if (newStatus) {
+        if (newStatus)
             intake.status = newStatus;
-            intake.update();
-        }
+        intake.work_notes = 'HITL task ' + task.number + ' created via API.' +
+            '\nReported status: ' + (body.status || '(none)') +
+            (newStatus ? ' -&gt; case status set to ' + newStatus : ' (unrecognized token, case status unchanged)') +
+            '\nReason: ' + (body.description || '(no description)') +
+            '\nCorrelation ID: ' + body.correlation_id;
+        intake.update();
 
         return { _status: 201, success: true,
                  correlation_id: String(body.correlation_id),
@@ -103,9 +122,15 @@ IntakeService.prototype = {
                  message: 'HITL Task ' + task.number + ' has been created successfully' };
     },
 
+    /** Create the document row; returns a warning string if something is off. */
     _createDocument: function(intake, att) {
         if (!att || !att.file_name)
-            return;
+            return 'attachment entry missing file_name - skipped';
+        var warning = '';
+        if (!att.url)
+            warning = 'no blob URL supplied';
+        else if (String(att.url).indexOf('https://') !== 0)
+            warning = 'blob URL is not https - likely invalid';
         var d = new GlideRecord(this.DOCUMENT);
         d.initialize();
         d.document_name = att.file_name;
@@ -117,7 +142,10 @@ IntakeService.prototype = {
         d.received_date = new GlideDateTime();
         d.status = 'draft';
         d.version = 1;
+        if (warning)
+            d.intake_status = 'failed';
         d.insert();
+        return warning;
     },
 
     /** Map pipeline tokens (incl. the EMAIL_MEATADATA typo) to choice values. */
