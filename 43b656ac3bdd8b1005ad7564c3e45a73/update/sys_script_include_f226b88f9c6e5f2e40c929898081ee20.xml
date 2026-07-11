@@ -85,6 +85,7 @@ IntakeService.prototype = {
         var task = new GlideRecord(this.CASE_TASK);
         task.initialize();
         task.parent_case = intake.getUniqueValue();
+        task.intake_case = intake.getUniqueValue();
         task.category = 'extraction';
         task.short_description = 'HITL: ' + (body.status || 'HUMAN_IN_THE_LOOP');
         task.description = body.description || '';
