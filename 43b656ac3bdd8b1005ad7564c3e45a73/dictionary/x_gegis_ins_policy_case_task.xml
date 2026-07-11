@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="42dee7e74147197405b4651d4c65d397" extends="task" label="Task" max_length="40" name="x_gegis_ins_policy_case_task" type="collection">
+        <element label="Parent case" max_length="32" name="parent_case" type="document_id"/>
+        <element label="Intake case" max_length="32" name="intake_case" reference="x_gegis_ins_policy_intake_case" type="reference"/>
+        <element choice="1" label="Category" mandatory="true" max_length="40" name="category" type="string">
+            <choice>
+                <element inactive_on_update="false" label="HITL" sequence="10" value="hitl"/>
+                <element inactive_on_update="false" label="Other" sequence="30" value="other"/>
+                <element inactive_on_update="false" label="Case" sequence="20" value="case"/>
+            </choice>
+        </element>
+    </element>
+</database>
