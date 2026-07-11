@@ -46,7 +46,7 @@ IntakeService.prototype = {
         d.query();
         while (d.next())
             out.documents.push({ name: String(d.document_name), type: String(d.attachment_type),
-                                 status: String(d.intake_status), fileType: String(d.file_type),
+                                 status: String(d.state), fileType: String(d.file_type),
                                  url: String(d.url) });
         var t = new GlideRecord(this.CASE_TASK);
         t.addQuery('intake_case', intake.getUniqueValue());
@@ -186,13 +186,13 @@ IntakeService.prototype = {
         d.url = att.url || '';
         d.attachment_type = this._toAttachmentType(att.type);
         d.intake_case = intake.getUniqueValue();
-        d.intake_status = 'new';
+        d.state = 'new';
         d.file_type = this._toFileType(att.file_name);
         d.received_date = new GlideDateTime();
         d.status = 'draft';
         d.version = 1;
         if (warning)
-            d.intake_status = 'failed';
+            d.state = 'failed';
         d.insert();
         return warning;
     },

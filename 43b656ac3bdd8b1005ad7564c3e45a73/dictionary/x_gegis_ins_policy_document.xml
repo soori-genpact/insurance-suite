@@ -10,7 +10,7 @@
         <element label="Status" max_length="40" name="status" type="string"/>
         <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
         <element label="Scope" mandatory="true" max_length="40" name="scope" type="string"/>
-        <element default="new" label="Intake status" max_length="40" name="intake_status" type="string"/>
+        <element default="new" label="State" max_length="40" name="state" type="string"/>
         <element label="Confidence" max_length="40" name="confidence" type="decimal"/>
         <element label="Intake case" max_length="32" name="intake_case" reference="x_gegis_ins_policy_intake_case" type="reference"/>
         <element label="Page count" max_length="40" name="page_count" type="integer"/>

@@ -183,7 +183,7 @@ SubmissionApiService.prototype = {
         d.query();
         while (d.next())
             out.documents.push({ name: String(d.document_name), scope: String(d.scope),
-                                 type: String(d.document_type), status: String(d.intake_status),
+                                 type: String(d.document_type), status: String(d.state),
                                  version: String(d.version) });
         return out;
     },
@@ -201,10 +201,10 @@ SubmissionApiService.prototype = {
         while (src.next()) {
             var pipelineStatus = statusByName[String(src.document_name)] || '';
             if (pipelineStatus) {
-                src.intake_status = this._toIntakeStatus(pipelineStatus);
+                src.state = this._toDocState(pipelineStatus);
                 src.update();
             }
-            if (src.intake_status == 'duplicate' || src.intake_status == 'old' || src.intake_status == 'stale')
+            if (src.state == 'duplicate' || src.state == 'old' || src.state == 'stale')
                 continue;
             var already = new GlideRecord(this.DOCUMENT);
             already.addQuery('submission', subId);
@@ -220,7 +220,7 @@ SubmissionApiService.prototype = {
             copy.attachment_type = String(src.attachment_type);
             copy.file_type = String(src.file_type);
             copy.document_type = String(src.document_type);
-            copy.intake_status = String(src.intake_status);
+            copy.state = String(src.state);
             copy.confidence = src.confidence;
             copy.received_date = src.received_date;
             copy.version = src.version;
@@ -234,7 +234,7 @@ SubmissionApiService.prototype = {
         return copied;
     },
 
-    _toIntakeStatus: function(token) {
+    _toDocState: function(token) {
         var map = { 'new': 'new', 'processed': 'processed', 'duplicate': 'duplicate',
                     'old': 'old', 'stale': 'stale' };
         return map[token] || 'new';
