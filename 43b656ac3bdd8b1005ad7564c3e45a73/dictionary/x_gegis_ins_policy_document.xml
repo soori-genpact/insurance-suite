@@ -7,14 +7,32 @@
         <element label="Uploaded date" max_length="40" name="uploaded_date" type="glide_date_time"/>
         <element label="Document type" max_length="40" name="document_type" type="string"/>
         <element label="Attachment type" max_length="40" name="attachment_type" type="string"/>
-        <element label="Status" max_length="40" name="status" type="string"/>
+        <element choice="1" label="Status" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Draft" sequence="10" value="draft"/>
+                <element inactive_on_update="false" label="Superseded" sequence="30" value="superseded"/>
+                <element inactive_on_update="false" label="Final" sequence="20" value="final"/>
+            </choice>
+        </element>
         <element label="Submission" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
         <element label="Scope" max_length="40" name="scope" type="string"/>
         <element label="Confidence" max_length="40" name="confidence" type="decimal"/>
         <element label="Intake case" max_length="32" name="intake_case" reference="x_gegis_ins_policy_intake_case" type="reference"/>
         <element label="Page count" max_length="40" name="page_count" type="integer"/>
         <element label="Document name" max_length="200" name="document_name" type="string"/>
-        <element default="new" label="State" max_length="40" name="state" type="string"/>
+        <element choice="1" default="new" label="State" max_length="40" name="state" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Failed" sequence="90" value="failed"/>
+                <element inactive_on_update="false" label="Processed" sequence="50" value="processed"/>
+                <element inactive_on_update="false" label="Pending" sequence="20" value="pending"/>
+                <element inactive_on_update="false" label="Duplicate" sequence="60" value="duplicate"/>
+                <element inactive_on_update="false" label="Processing" sequence="30" value="processing"/>
+                <element inactive_on_update="false" label="Old" sequence="70" value="old"/>
+                <element inactive_on_update="false" label="Stale" sequence="80" value="stale"/>
+                <element inactive_on_update="false" label="New" sequence="10" value="new"/>
+                <element inactive_on_update="false" label="Extracted" sequence="40" value="extracted"/>
+            </choice>
+        </element>
         <element label="Link" max_length="8000" name="link" type="html"/>
         <element label="Uploaded by" max_length="32" name="uploaded_by" reference="sys_user" type="reference"/>
         <element label="Received date" max_length="40" name="received_date" type="glide_date_time"/>
