@@ -214,7 +214,7 @@ IntakeService.prototype = {
         return map[ext] || 'other';
     },
 
-    /** Only the four pipeline HITL types map to u_type; anything else stays empty. */
+    /** Only the four pipeline HITL types map to task_type; anything else stays empty. */
     _toTaskType: function(token) {
         var map = { 'CONTEXT_ENRICHMENT': 'context_enrichment',
                     'DUPLICATE_CHECK': 'duplicate_check',
