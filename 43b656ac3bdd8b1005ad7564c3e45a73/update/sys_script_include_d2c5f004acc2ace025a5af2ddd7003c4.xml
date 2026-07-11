@@ -277,8 +277,13 @@ SubmissionApiService.prototype = {
             f.update();
         }
         var ex = new GlideRecord(this.EXTRACTION);
-        if (ex.get(extractionId))
+        if (ex.get(extractionId)) {
             new x_gegis_ins_policy.ExtractionApplier().apply(ex);
+            // Terminal accepted status on the extraction and its submission.
+            ex.setValue('extraction_status', 'accepted');
+            ex.update();
+            this._setSubmissionExtractionStatus(ex.getValue('submission'), 'accepted');
+        }
     },
 
     /**
@@ -298,7 +303,7 @@ SubmissionApiService.prototype = {
         task.setValue('short_description', 'Extraction review for submission ' + sub.number);
         if (isAuto) {
             task.setValue('description', 'Extraction auto-approved and applied by the automated process.');
-            task.setValue('state', 3);          // Closed Complete
+            task.setValue('state', 17);         // Accepted (auto-approved)
             task.setValue('active', false);
             task.work_notes = 'Automated process: extraction data auto-approved and merged into submission ' +
                 sub.number + '. Task closed complete.';
@@ -310,6 +315,103 @@ SubmissionApiService.prototype = {
         }
         task.insert();
         return task;
+    },
+
+    /**
+     * UI action "Accept": approve the extraction linked to a HITL task.
+     * Pulls the extraction off the task, applies it to the submission,
+     * closes the task as Accepted (17) and completes the intake case.
+     *
+     * @param taskGr GlideRecord x_gegis_ins_policy_case_task (the form's current)
+     */
+    acceptTask: function(taskGr) {
+        var extractionId = taskGr.getValue('extraction');
+        if (!extractionId)
+            return this._error(400, 'ERRORU-007', 'Task has no linked extraction to accept');
+
+        this._autoApprove(extractionId);            // accept staged rows + apply to SOR
+
+        taskGr.setValue('state', 17);               // Accepted
+        taskGr.setValue('active', false);
+        taskGr.work_notes = 'Extraction accepted by ' + gs.getUserName() +
+            '. Extracted data applied to the submission.';
+        taskGr.update();
+
+        this._setIntakeStatus(taskGr.getValue('intake_case'), 'completed',
+            'Extraction review task ' + taskGr.getValue('number') + ' accepted; data applied.');
+
+        return { success: true, decision: 'accepted', taskState: 17 };
+    },
+
+    /**
+     * UI action "Reject": discard the extraction linked to a HITL task.
+     * Marks the extraction and its staged rows rejected (nothing is applied),
+     * closes the task as Rejected (117) and rejects the intake case.
+     */
+    rejectTask: function(taskGr) {
+        var extractionId = taskGr.getValue('extraction');
+        if (!extractionId)
+            return this._error(400, 'ERRORU-007', 'Task has no linked extraction to reject');
+
+        this._rejectExtraction(extractionId);
+
+        taskGr.setValue('state', 117);              // Rejected
+        taskGr.setValue('active', false);
+        taskGr.work_notes = 'Extraction rejected by ' + gs.getUserName() +
+            '. Staged data discarded; nothing applied to the submission.';
+        taskGr.update();
+
+        this._setIntakeStatus(taskGr.getValue('intake_case'), 'rejected',
+            'Extraction review task ' + taskGr.getValue('number') + ' rejected; data discarded.');
+
+        return { success: true, decision: 'rejected', taskState: 117 };
+    },
+
+    /** Mark an extraction and all its staged rows rejected. Applies nothing. */
+    _rejectExtraction: function(extractionId) {
+        var e = new GlideRecord(this.ENTITY);
+        e.addQuery('extraction', extractionId);
+        e.query();
+        while (e.next()) {
+            e.setValue('disposition', 'rejected');
+            e.update();
+        }
+        var f = new GlideRecord(this.FIELD);
+        f.addQuery('extraction', extractionId);
+        f.addQuery('review_status', 'IN', 'needs_review,accepted,auto_accepted,corrected');
+        f.query();
+        while (f.next()) {
+            f.setValue('review_status', 'rejected');
+            f.update();
+        }
+        var ex = new GlideRecord(this.EXTRACTION);
+        if (ex.get(extractionId)) {
+            ex.setValue('disposition', 'rejected');
+            ex.setValue('extraction_status', 'rejected');
+            ex.update();
+            this._setSubmissionExtractionStatus(ex.getValue('submission'), 'rejected');
+        }
+    },
+
+    _setIntakeStatus: function(intakeId, status, note) {
+        if (!intakeId)
+            return;
+        var intake = new GlideRecord(this.INTAKE);
+        if (intake.get(intakeId)) {
+            intake.setValue('status', status);
+            intake.work_notes = note;
+            intake.update();
+        }
+    },
+
+    _setSubmissionExtractionStatus: function(subId, status) {
+        if (!subId)
+            return;
+        var sub = new GlideRecord(this.SUBMISSION);
+        if (sub.get(subId)) {
+            sub.setValue('extraction_status', status);
+            sub.update();
+        }
     },
 
     _toDocState: function(token) {
