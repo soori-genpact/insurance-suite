@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.IntakeService</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Creates intake cases from broker emails and HITL case tasks for the AI pipeline. Backs POST /intake and POST /intake/{caseId}/task.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>IntakeService</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var IntakeService = Class.create();
+IntakeService.prototype = {
+    initialize: function() {
+        this.INTAKE = 'x_gegis_ins_policy_intake_case';
+        this.DOCUMENT = 'x_gegis_ins_policy_document';
+        this.CASE_TASK = 'x_gegis_ins_policy_case_task';
+        this.FINAL_STATUSES = 'completed,rejected';
+    },
+
+    /**
+     * Create an intake case from an inbound broker email plus one document
+     * row per attachment. Idempotent on correlation_id: replaying the same
+     * message returns the existing case.
+     *
+     * @param body {from, subject, body_preview, container_name, folder_path,
+     *              correlation_id, attachments:[{file_name,url,type}]}
+     * @return {_status, success, caseId, correlation_id, ...}
+     */
+    createFromMail: function(body) {
+        body = body || {};
+        if (!body.correlation_id)
+            return this._error(400, 'ERRORU-002', 'correlation_id is mandatory');
+
+        var existing = new GlideRecord(this.INTAKE);
+        existing.addQuery('correlation_id', String(body.correlation_id));
+        existing.setLimit(1);
+        existing.query();
+        if (existing.next())
+            return { _status: 200, success: true, caseId: String(existing.number),
+                     correlation_id: String(body.correlation_id),
+                     message: 'Intake case already exists for this correlation_id' };
+
+        var intake = new GlideRecord(this.INTAKE);
+        intake.initialize();
+        intake.correlation_id = body.correlation_id;
+        intake.from_email = body.from || '';
+        intake.subject = body.subject || '';
+        intake.body_preview = body.body_preview || '';
+        intake.container_name = body.container_name || '';
+        intake.folder_path = body.folder_path || '';
+        intake.received_on = new GlideDateTime();
+        intake.status = 'received';
+        intake.insert();
+
+        var attachments = body.attachments || [];
+        for (var i = 0; i &lt; attachments.length; i++)
+            this._createDocument(intake, attachments[i]);
+
+        return { _status: 201, success: true, caseId: String(intake.number),
+                 correlation_id: String(body.correlation_id) };
+    },
+
+    /**
+     * Create a HITL (human-in-the-loop) case task on an intake case and move
+     * the case to the reported status.
+     *
+     * @param caseNumber Intake case number from the request path
+     * @param body {status, description, correlation_id}
+     */
+    createHitlTask: function(caseNumber, body) {
+        body = body || {};
+        if (!body.correlation_id)
+            return this._error(400, 'ERRORU-002', 'correlation_id is mandatory');
+
+        var intake = new GlideRecord(this.INTAKE);
+        intake.addQuery('number', String(caseNumber));
+        intake.setLimit(1);
+        intake.query();
+        if (!intake.next())
+            return this._error(404, 'ERRORU-004', 'Intake case ' + caseNumber + ' not found');
+        if (this.FINAL_STATUSES.indexOf(String(intake.status)) &gt;= 0)
+            return this._error(409, 'ERRORU-006', 'Case is already in final status');
+
+        var task = new GlideRecord(this.CASE_TASK);
+        task.initialize();
+        task.parent_case = intake.getUniqueValue();
+        task.category = 'extraction';
+        task.short_description = 'HITL: ' + (body.status || 'HUMAN_IN_THE_LOOP');
+        task.description = body.description || '';
+        task.insert();
+
+        var newStatus = this._toStatusValue(body.status);
+        if (newStatus) {
+            intake.status = newStatus;
+            intake.update();
+        }
+
+        return { _status: 201, success: true,
+                 correlation_id: String(body.correlation_id),
+                 caseId: String(intake.number),
+                 message: 'HITL Task ' + task.number + ' has been created successfully' };
+    },
+
+    _createDocument: function(intake, att) {
+        if (!att || !att.file_name)
+            return;
+        var d = new GlideRecord(this.DOCUMENT);
+        d.initialize();
+        d.document_name = att.file_name;
+        d.url = att.url || '';
+        d.attachment_type = this._toAttachmentType(att.type);
+        d.intake_case = intake.getUniqueValue();
+        d.intake_status = 'new';
+        d.file_type = this._toFileType(att.file_name);
+        d.received_date = new GlideDateTime();
+        d.status = 'draft';
+        d.version = 1;
+        d.insert();
+    },
+
+    /** Map pipeline tokens (incl. the EMAIL_MEATADATA typo) to choice values. */
+    _toAttachmentType: function(token) {
+        var t = String(token || '').toUpperCase();
+        if (t === 'EMAIL_CONTENT')
+            return 'email_content';
+        if (t === 'EMAIL_METADATA' || t === 'EMAIL_MEATADATA')
+            return 'email_metadata';
+        return 'attachment';
+    },
+
+    _toFileType: function(fileName) {
+        var ext = String(fileName).toLowerCase().split('.').pop();
+        var map = { pdf: 'pdf', xls: 'excel', xlsx: 'excel', csv: 'csv',
+                    doc: 'word', docx: 'word', eml: 'email', msg: 'email',
+                    jpg: 'image', jpeg: 'image', png: 'image' };
+        return map[ext] || 'other';
+    },
+
+    _toStatusValue: function(token) {
+        var t = String(token || '').toUpperCase();
+        var map = { 'RECEIVED': 'received', 'HUMAN_IN_THE_LOOP': 'human_in_the_loop',
+                    'COMPLETED': 'completed', 'REJECTED': 'rejected',
+                    'CONTEXT_ENRICHMENT': 'context_enrichment', 'DUPLICATE_CHECK': 'duplicate_check',
+                    'CLASSIFICATION_FAILED': 'classification_failed', 'SUBMISSION_LOCKED': 'submission_locked' };
+        return map[t] || '';
+    },
+
+    _error: function(status, code, message) {
+        return { _status: status, success: false, errorCode: code, errorMessage: message };
+    },
+
+    type: 'IntakeService'
+};</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-07-11 12:00:00</sys_created_on>
+        <sys_id>f226b88f9c6e5f2e40c929898081ee20</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>IntakeService</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_f226b88f9c6e5f2e40c929898081ee20</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-07-11 12:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>

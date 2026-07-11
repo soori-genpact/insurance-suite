@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.SubmissionApiService</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Creates, updates (new extraction version + merge) and reads submissions for the AI pipeline. Backs POST/PUT/GET /submission.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>SubmissionApiService</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var SubmissionApiService = Class.create();
+SubmissionApiService.prototype = {
+    initialize: function() {
+        this.SUBMISSION = 'x_gegis_ins_policy_submission';
+        this.LINE = 'x_gegis_ins_policy_submission_line';
+        this.PARTY_M2M = 'x_gegis_ins_policy_submission_party';
+        this.DOCUMENT = 'x_gegis_ins_policy_document';
+        this.EXTRACTION = 'x_gegis_ins_policy_extraction';
+        this.INTAKE = 'x_gegis_ins_policy_intake_case';
+    },
+
+    /**
+     * POST /submission - create a submission from a completed AI extraction.
+     * Downloads the extraction-result blob, stages it, builds the submission
+     * and copies (clones) the intake case's documents onto it.
+     *
+     * @param body {correlation_id, intent_summary, intent_classification_result (blob URL),
+     *              metadata:{confidence_score, external_case_id}, attachments:[...]}
+     */
+    create: function(body) {
+        body = body || {};
+        if (!body.correlation_id)
+            return this._error(400, 'ERRORU-002', 'correlation_id is mandatory');
+
+        var payload = this._downloadPayload(body.intent_classification_result);
+        if (!payload)
+            return this._error(400, 'ERRORU-003',
+                'Invalid extracted data structure / unable to download Blob');
+
+        var intake = this._findIntake(body);
+        var extraction = this._createExtraction(body, payload, '', 1);
+        new x_gegis_ins_policy.ExtractionMapper().mapPayload(extraction, payload);
+        var subId = new x_gegis_ins_policy.SubmissionBuilder().buildFromExtraction(extraction);
+
+        var sub = new GlideRecord(this.SUBMISSION);
+        sub.get(subId);
+        if (intake) {
+            sub.source_channel = 'email';
+            sub.source_reference = String(intake.number);
+            sub.update();
+            this._copyDocuments(intake, subId, body.attachments);
+            intake.submission = subId;
+            intake.intent = 'new_submission';
+            intake.intent_summary = body.intent_summary || '';
+            intake.status = 'completed';
+            intake.update();
+        }
+
+        return { _status: 201, success: true,
+                 correlation_id: String(body.correlation_id),
+                 inserted: [{ submissionNumber: String(sub.number),
+                              lineOfBusiness: this._firstLineLabel(subId) }],
+                 failed: [], warnings: [], error: '' };
+    },
+
+    /**
+     * PUT /submission/{number} - a further extraction arrived for an existing
+     * submission. Stages it as a new version superseding the current one and
+     * runs the merge (conflicts stay pending for human review).
+     */
+    update: function(submissionNumber, body) {
+        body = body || {};
+        if (!body.correlation_id)
+            return this._error(400, 'ERRORU-002', 'correlation_id is mandatory');
+        if (!submissionNumber)
+            return this._error(400, 'ERRORU-005', 'Submission ID is required for update');
+
+        var sub = new GlideRecord(this.SUBMISSION);
+        sub.addQuery('number', String(submissionNumber));
+        sub.setLimit(1);
+        sub.query();
+        if (!sub.next())
+            return this._error(404, 'ERRORU-004', 'Submission ' + submissionNumber + ' not found');
+
+        var payload = this._downloadPayload(body.intent_classification_result);
+        if (!payload)
+            return this._error(400, 'ERRORU-003',
+                'Invalid extracted data structure / unable to download Blob');
+
+        var currentId = String(sub.current_extraction);
+        var version = this._nextVersion(sub.getUniqueValue());
+        var extraction = this._createExtraction(body, payload, sub.getUniqueValue(), version);
+        if (currentId) {
+            extraction.supersedes = currentId;
+            extraction.update();
+        }
+        new x_gegis_ins_policy.ExtractionMapper().mapPayload(extraction, payload);
+
+        var merge = new x_gegis_ins_policy.MergeEngine();
+        var rows = merge.compare(extraction);
+        var conflicts = 0;
+        for (var i = 0; i &lt; rows.length; i++)
+            if (rows[i].classification === 'conflict' &amp;&amp; !rows[i].is_protected)
+                conflicts++;
+
+        var intake = this._findIntake(body);
+        if (intake) {
+            this._copyDocuments(intake, sub.getUniqueValue(), body.attachments);
+            intake.submission = sub.getUniqueValue();
+            intake.intent = 'update_data';
+            intake.status = 'completed';
+            intake.update();
+        }
+
+        if (conflicts === 0) {
+            merge.applyMerge(extraction);
+            return { _status: 200, success: true,
+                     correlation_id: String(body.correlation_id),
+                     message: 'In-flight update merged successfully' };
+        }
+        sub.extraction_status = 'pending_review';
+        sub.requires_review = true;
+        sub.update();
+        return { _status: 200, success: true,
+                 correlation_id: String(body.correlation_id),
+                 message: conflicts + ' field conflict(s) pending human review',
+                 conflicts: conflicts };
+    },
+
+    /** GET /submission/{number} - header, lines, parties and documents. */
+    read: function(submissionNumber) {
+        var sub = new GlideRecord(this.SUBMISSION);
+        sub.addQuery('number', String(submissionNumber));
+        sub.setLimit(1);
+        sub.query();
+        if (!sub.next())
+            return this._error(404, 'ERRORU-004', 'Submission ' + submissionNumber + ' not found');
+
+        var out = {
+            _status: 200, success: true,
+            submission: {
+                number: String(sub.number), state: String(sub.state),
+                submissionType: String(sub.submission_type),
+                insuredName: String(sub.insured_name), brokerName: String(sub.broker_name),
+                targetEffectiveDate: String(sub.target_effective_date),
+                targetExpirationDate: String(sub.target_expiration_date),
+                clearanceStatus: String(sub.clearance_status),
+                extractionStatus: String(sub.extraction_status),
+                overallConfidence: String(sub.overall_confidence),
+                totalEstimatedPremium: String(sub.total_estimated_premium)
+            },
+            lines: [], parties: [], documents: []
+        };
+        var line = new GlideRecord(this.LINE);
+        line.addQuery('submission', sub.getUniqueValue());
+        line.query();
+        while (line.next())
+            out.lines.push({ lineOfBusiness: line.getDisplayValue('line_of_business'),
+                             state: String(line.state),
+                             effectiveDate: String(line.effective_date),
+                             estimatedPremium: String(line.estimated_premium) });
+        var party = new GlideRecord(this.PARTY_M2M);
+        party.addQuery('submission', sub.getUniqueValue());
+        party.query();
+        while (party.next())
+            out.parties.push({ role: String(party.role),
+                               organization: party.getDisplayValue('organization'),
+                               isPrimary: String(party.is_primary) === 'true' });
+        var d = new GlideRecord(this.DOCUMENT);
+        d.addQuery('submission', sub.getUniqueValue());
+        d.query();
+        while (d.next())
+            out.documents.push({ name: String(d.document_name), scope: String(d.scope),
+                                 type: String(d.document_type), status: String(d.intake_status),
+                                 version: String(d.version) });
+        return out;
+    },
+
+    /** Clone intake documents onto the submission (copy, not re-link). */
+    _copyDocuments: function(intake, subId, attachments) {
+        var statusByName = {};
+        for (var i = 0; attachments &amp;&amp; i &lt; attachments.length; i++)
+            statusByName[attachments[i].file_name] = String(attachments[i].status || '').toLowerCase();
+
+        var src = new GlideRecord(this.DOCUMENT);
+        src.addQuery('intake_case', intake.getUniqueValue());
+        src.query();
+        while (src.next()) {
+            var pipelineStatus = statusByName[String(src.document_name)] || '';
+            if (pipelineStatus) {
+                src.intake_status = this._toIntakeStatus(pipelineStatus);
+                src.update();
+            }
+            if (src.intake_status == 'duplicate' || src.intake_status == 'old' || src.intake_status == 'stale')
+                continue;
+            var already = new GlideRecord(this.DOCUMENT);
+            already.addQuery('submission', subId);
+            already.addQuery('document_name', String(src.document_name));
+            already.setLimit(1);
+            already.query();
+            if (already.next())
+                continue;
+            var copy = new GlideRecord(this.DOCUMENT);
+            copy.initialize();
+            copy.document_name = String(src.document_name);
+            copy.url = String(src.url);
+            copy.attachment_type = String(src.attachment_type);
+            copy.file_type = String(src.file_type);
+            copy.document_type = String(src.document_type);
+            copy.intake_status = String(src.intake_status);
+            copy.confidence = src.confidence;
+            copy.received_date = src.received_date;
+            copy.version = src.version;
+            copy.status = 'draft';
+            copy.scope = 'common';
+            copy.submission = subId;
+            copy.intake_case = intake.getUniqueValue();
+            copy.insert();
+        }
+    },
+
+    _toIntakeStatus: function(token) {
+        var map = { 'new': 'new', 'processed': 'processed', 'duplicate': 'duplicate',
+                    'old': 'old', 'stale': 'stale' };
+        return map[token] || 'new';
+    },
+
+    _findIntake: function(body) {
+        var intake = new GlideRecord(this.INTAKE);
+        var externalId = body.metadata ? String(body.metadata.external_case_id || '') : '';
+        if (externalId)
+            intake.addQuery('number', externalId)
+                  .addOrCondition('correlation_id', String(body.correlation_id));
+        else
+            intake.addQuery('correlation_id', String(body.correlation_id));
+        intake.setLimit(1);
+        intake.query();
+        return intake.next() ? intake : null;
+    },
+
+    _createExtraction: function(body, payload, subId, version) {
+        var e = new GlideRecord(this.EXTRACTION);
+        e.initialize();
+        e.submission = subId;
+        e.version = version;
+        e.extraction_status = 'extracted';
+        e.disposition = 'pending_review';
+        e.extraction_method = 'ai';
+        e.source = 'api';
+        e.correlation_id = String(body.correlation_id);
+        e.extracted_date = new GlideDateTime();
+        e.confidence_overall = body.metadata ? body.metadata.confidence_score : '';
+        e.insert();
+        return e;
+    },
+
+    _nextVersion: function(subId) {
+        var agg = new GlideAggregate(this.EXTRACTION);
+        agg.addQuery('submission', subId);
+        agg.addAggregate('MAX', 'version');
+        agg.query();
+        var max = agg.next() ? parseInt(agg.getAggregate('MAX', 'version'), 10) : 0;
+        return (isNaN(max) ? 0 : max) + 1;
+    },
+
+    _firstLineLabel: function(subId) {
+        var line = new GlideRecord(this.LINE);
+        line.addQuery('submission', subId);
+        line.orderBy('sys_created_on');
+        line.setLimit(1);
+        line.query();
+        return line.next() ? line.getDisplayValue('line_of_business') : '';
+    },
+
+    /** Fetch and parse the extraction-result JSON blob. Null on any failure. */
+    _downloadPayload: function(url) {
+        if (!url)
+            return null;
+        try {
+            var rm = new sn_ws.RESTMessageV2();
+            rm.setEndpoint(String(url));
+            rm.setHttpMethod('GET');
+            var resp = rm.execute();
+            if (resp.getStatusCode() !== 200)
+                return null;
+            var parsed = JSON.parse(resp.getBody());
+            return (parsed &amp;&amp; typeof parsed === 'object') ? parsed : null;
+        } catch (e) {
+            return null;
+        }
+    },
+
+    _error: function(status, code, message) {
+        return { _status: status, success: false, errorCode: code, errorMessage: message };
+    },
+
+    type: 'SubmissionApiService'
+};</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-07-11 12:00:00</sys_created_on>
+        <sys_id>d2c5f004acc2ace025a5af2ddd7003c4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>SubmissionApiService</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_d2c5f004acc2ace025a5af2ddd7003c4</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-07-11 12:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>
