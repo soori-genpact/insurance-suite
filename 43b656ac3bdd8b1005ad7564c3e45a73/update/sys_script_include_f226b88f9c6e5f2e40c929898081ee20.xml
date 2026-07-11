@@ -91,6 +91,7 @@ IntakeService.prototype = {
         intake.container_name = body.container_name || '';
         intake.folder_path = body.folder_path || '';
         intake.received_on = new GlideDateTime();
+        // Inbound broker emails start at 'received'; direction defaults to inbound.
         intake.status = 'received';
         var intakeId = intake.insert();
         // number is assigned by column default at insert; re-read to get it
@@ -223,12 +224,17 @@ IntakeService.prototype = {
         return map[String(token || '').toUpperCase()] || '';
     },
 
+    /**
+     * Map pipeline tokens to inbound intake_case status choices. Any HITL token
+     * (case needs human intervention) collapses to 'awaiting_action'; the finer
+     * pipeline stage is preserved separately on case_task.u_type via _toTaskType.
+     */
     _toStatusValue: function(token) {
         var t = String(token || '').toUpperCase();
-        var map = { 'RECEIVED': 'received', 'HUMAN_IN_THE_LOOP': 'human_in_the_loop',
-                    'COMPLETED': 'completed', 'REJECTED': 'rejected',
-                    'CONTEXT_ENRICHMENT': 'context_enrichment', 'DUPLICATE_CHECK': 'duplicate_check',
-                    'CLASSIFICATION_FAILED': 'classification_failed', 'SUBMISSION_LOCKED': 'submission_locked' };
+        var map = { 'RECEIVED': 'received', 'COMPLETED': 'completed', 'REJECTED': 'rejected',
+                    'HUMAN_IN_THE_LOOP': 'awaiting_action', 'CONTEXT_ENRICHMENT': 'awaiting_action',
+                    'DUPLICATE_CHECK': 'awaiting_action', 'CLASSIFICATION_FAILED': 'awaiting_action',
+                    'SUBMISSION_LOCKED': 'awaiting_action' };
         return map[t] || '';
     },
 
