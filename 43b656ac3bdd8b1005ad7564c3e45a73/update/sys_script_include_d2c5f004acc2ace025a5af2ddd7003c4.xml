@@ -18,6 +18,9 @@ SubmissionApiService.prototype = {
         this.DOCUMENT = 'x_gegis_ins_policy_document';
         this.EXTRACTION = 'x_gegis_ins_policy_extraction';
         this.INTAKE = 'x_gegis_ins_policy_intake_case';
+        this.CASE_TASK = 'x_gegis_ins_policy_case_task';
+        this.ENTITY = 'x_gegis_ins_policy_extraction_entity';
+        this.FIELD = 'x_gegis_ins_policy_extraction_field';
     },
 
     /**
@@ -43,6 +46,11 @@ SubmissionApiService.prototype = {
         new x_gegis_ins_policy.ExtractionMapper().mapPayload(extraction, payload);
         var subId = new x_gegis_ins_policy.SubmissionBuilder().buildFromExtraction(extraction);
 
+        // Automatic vs manual approval is driven by a system property per intent.
+        var isAuto = x_gegis_ins_policy.Constants.isAutoApprove('new');
+        if (isAuto)
+            this._autoApprove(extraction.getUniqueValue());
+
         var sub = new GlideRecord(this.SUBMISSION);
         sub.get(subId);
         if (intake) {
@@ -50,11 +58,14 @@ SubmissionApiService.prototype = {
             sub.source_reference = String(intake.number);
             sub.update();
             var copied = this._copyDocuments(intake, subId, body.attachments);
+            var task = this._createExtractionReviewTask(intake, sub, isAuto);
             intake.submission = subId;
             intake.intent = 'new_submission';
             intake.intent_summary = body.intent_summary || '';
-            intake.status = 'completed';
+            intake.status = isAuto ? 'completed' : 'awaiting_action';
             intake.work_notes = 'Submission ' + sub.number + ' created from AI extraction.' +
+                '\nProcessing mode: ' + (isAuto ? 'AUTOMATIC (auto-approved and applied)' : 'MANUAL (awaiting review)') +
+                '\nHITL task: ' + task.number + ' (' + (isAuto ? 'closed complete' : 'open') + ')' +
                 '\nExtraction confidence: ' + (body.metadata ? body.metadata.confidence_score : '(n/a)') +
                 '\nDocuments copied to submission: ' + copied +
                 '\nIntent summary: ' + (body.intent_summary || '(none)') +
@@ -110,32 +121,41 @@ SubmissionApiService.prototype = {
             if (rows[i].classification === 'conflict' &amp;&amp; !rows[i].is_protected)
                 conflicts++;
 
+        // Automatic vs manual for the update intent. Auto only actually merges
+        // when there are no conflicts; conflicts always fall back to review.
+        var isAuto = x_gegis_ins_policy.Constants.isAutoApprove('update');
+        var willProcess = isAuto &amp;&amp; conflicts === 0;
+
         var intake = this._findIntake(body);
         if (intake) {
             var copied = this._copyDocuments(intake, sub.getUniqueValue(), body.attachments);
+            var task = this._createExtractionReviewTask(intake, sub, willProcess);
             intake.submission = sub.getUniqueValue();
             intake.intent = 'update_data';
-            intake.status = 'completed';
-            intake.work_notes = 'Update merged into submission ' + sub.number +
+            intake.status = willProcess ? 'completed' : 'awaiting_action';
+            intake.work_notes = 'In-flight update for submission ' + sub.number +
                 ' (extraction version ' + version + ').' +
+                '\nProcessing mode: ' + (isAuto ? 'AUTOMATIC' : 'MANUAL') +
+                (isAuto &amp;&amp; conflicts &gt; 0 ? ' (held: ' + conflicts + ' conflict(s))' : '') +
+                '\nHITL task: ' + task.number + ' (' + (willProcess ? 'closed complete' : 'open') + ')' +
                 '\nField conflicts requiring review: ' + conflicts +
                 '\nDocuments copied: ' + copied +
                 '\nCorrelation ID: ' + body.correlation_id;
             intake.update();
         }
 
-        if (conflicts === 0) {
+        if (willProcess) {
             merge.applyMerge(extraction);
             return { _status: 200, success: true,
                      correlation_id: String(body.correlation_id),
-                     message: 'In-flight update merged successfully' };
+                     message: 'In-flight update merged successfully (automated process)' };
         }
         sub.extraction_status = 'pending_review';
         sub.requires_review = true;
         sub.update();
         return { _status: 200, success: true,
                  correlation_id: String(body.correlation_id),
-                 message: conflicts + ' field conflict(s) pending human review',
+                 message: (isAuto ? conflicts + ' field conflict(s) pending human review' : 'Manual review required') + '; HITL task open',
                  conflicts: conflicts };
     },
 
@@ -232,6 +252,63 @@ SubmissionApiService.prototype = {
             copied++;
         }
         return copied;
+    },
+
+    /**
+     * Auto-approve a freshly mapped extraction: accept its staged entities
+     * and fields, then apply them so the values land on the submission and
+     * its lines. Used when the auto_approve property is on for the intent.
+     */
+    _autoApprove: function(extractionId) {
+        var e = new GlideRecord(this.ENTITY);
+        e.addQuery('extraction', extractionId);
+        e.addQuery('disposition', '!=', 'rejected');
+        e.query();
+        while (e.next()) {
+            e.setValue('disposition', 'accepted');
+            e.update();
+        }
+        var f = new GlideRecord(this.FIELD);
+        f.addQuery('extraction', extractionId);
+        f.addQuery('review_status', 'needs_review');
+        f.query();
+        while (f.next()) {
+            f.setValue('review_status', 'auto_accepted');
+            f.update();
+        }
+        var ex = new GlideRecord(this.EXTRACTION);
+        if (ex.get(extractionId))
+            new x_gegis_ins_policy.ExtractionApplier().apply(ex);
+    },
+
+    /**
+     * Create the HITL extraction-review case task on the intake case.
+     * Always created when an intake case is identified.
+     *   auto   -&gt; state Closed Complete, automated-process work note
+     *   manual -&gt; state Open, awaiting human Accept/Reject
+     */
+    _createExtractionReviewTask: function(intake, sub, isAuto) {
+        var task = new GlideRecord(this.CASE_TASK);
+        task.initialize();
+        task.setValue('parent_case', intake.getUniqueValue());
+        task.setValue('intake_case', intake.getUniqueValue());
+        task.setValue('category', 'hitl');
+        task.setValue('u_type', 'extraction_review');
+        task.setValue('short_description', 'Extraction review for submission ' + sub.number);
+        if (isAuto) {
+            task.setValue('description', 'Extraction auto-approved and applied by the automated process.');
+            task.setValue('state', 3);          // Closed Complete
+            task.setValue('active', false);
+            task.work_notes = 'Automated process: extraction data auto-approved and merged into submission ' +
+                sub.number + '. Task closed complete.';
+        } else {
+            task.setValue('description', 'Extraction requires human review. Accept to apply the extracted data, or Reject to discard.');
+            task.setValue('state', 1);          // Open
+            task.work_notes = 'Awaiting human review of submission ' + sub.number +
+                '. Accept to apply the extracted data, or Reject to discard.';
+        }
+        task.insert();
+        return task;
     },
 
     _toDocState: function(token) {
