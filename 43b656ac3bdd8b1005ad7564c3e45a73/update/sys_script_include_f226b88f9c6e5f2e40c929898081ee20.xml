@@ -16,6 +16,45 @@ IntakeService.prototype = {
         this.DOCUMENT = 'x_gegis_ins_policy_document';
         this.CASE_TASK = 'x_gegis_ins_policy_case_task';
         this.FINAL_STATUSES = 'completed,rejected';
+        this.BASE = '/api/x_gegis_ins_policy/v1';
+    },
+
+    /** GET /intake/{caseId} - the intake case with its documents and HITL tasks. */
+    read: function(caseNumber) {
+        var intake = new GlideRecord(this.INTAKE);
+        intake.addQuery('number', String(caseNumber));
+        intake.setLimit(1);
+        intake.query();
+        if (!intake.next())
+            return this._error(404, 'ERRORU-004', 'Intake case ' + caseNumber + ' not found');
+        var out = {
+            _status: 200, success: true,
+            intake: {
+                caseId: String(intake.number), status: String(intake.status),
+                from: String(intake.from_email), subject: String(intake.subject),
+                bodyPreview: String(intake.body_preview),
+                intent: String(intake.intent), intentSummary: String(intake.intent_summary),
+                confidenceScore: String(intake.confidence_score),
+                receivedOn: String(intake.received_on),
+                correlationId: String(intake.correlation_id),
+                submission: intake.submission ? intake.getDisplayValue('submission') : ''
+            },
+            documents: [], tasks: []
+        };
+        var d = new GlideRecord(this.DOCUMENT);
+        d.addQuery('intake_case', intake.getUniqueValue());
+        d.query();
+        while (d.next())
+            out.documents.push({ name: String(d.document_name), type: String(d.attachment_type),
+                                 status: String(d.intake_status), fileType: String(d.file_type),
+                                 url: String(d.url) });
+        var t = new GlideRecord(this.CASE_TASK);
+        t.addQuery('intake_case', intake.getUniqueValue());
+        t.query();
+        while (t.next())
+            out.tasks.push({ number: String(t.number), state: t.getDisplayValue('state'),
+                             shortDescription: String(t.short_description) });
+        return out;
     },
 
     /**
@@ -38,7 +77,9 @@ IntakeService.prototype = {
         existing.query();
         if (existing.next())
             return { _status: 200, success: true, caseId: String(existing.number),
+                     sys_id: existing.getUniqueValue(),
                      correlation_id: String(body.correlation_id),
+                     _location: this.BASE + '/intake/' + existing.number,
                      message: 'Intake case already exists for this correlation_id' };
 
         var intake = new GlideRecord(this.INTAKE);
@@ -76,7 +117,10 @@ IntakeService.prototype = {
         intake.update();
 
         return { _status: 201, success: true, caseId: String(intake.number),
-                 correlation_id: String(body.correlation_id), warnings: warnings };
+                 sys_id: intake.getUniqueValue(),
+                 correlation_id: String(body.correlation_id),
+                 _location: this.BASE + '/intake/' + intake.number,
+                 warnings: warnings };
     },
 
     /**
@@ -122,6 +166,8 @@ IntakeService.prototype = {
         return { _status: 201, success: true,
                  correlation_id: String(body.correlation_id),
                  caseId: String(intake.number),
+                 taskNumber: String(task.number),
+                 _location: this.BASE + '/intake/' + intake.number,
                  message: 'HITL Task ' + task.number + ' has been created successfully' };
     },
 

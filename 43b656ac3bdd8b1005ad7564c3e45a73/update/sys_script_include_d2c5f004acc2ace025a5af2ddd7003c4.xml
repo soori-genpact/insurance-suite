@@ -64,6 +64,7 @@ SubmissionApiService.prototype = {
 
         return { _status: 201, success: true,
                  correlation_id: String(body.correlation_id),
+                 _location: '/api/x_gegis_ins_policy/v1/submission/' + sub.number,
                  inserted: [{ submissionNumber: String(sub.number),
                               lineOfBusiness: this._firstLineLabel(subId) }],
                  failed: [], warnings: [], error: '' };

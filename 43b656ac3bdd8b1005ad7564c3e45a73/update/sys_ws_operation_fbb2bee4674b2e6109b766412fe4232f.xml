@@ -13,6 +13,10 @@
     var result = new x_gegis_ins_policy.SubmissionApiService().update(request.pathParams.number, body);
     var status = result._status || 200;
     delete result._status;
+    if (result._location) {
+        response.setHeader('Location', result._location);
+        delete result._location;
+    }
     response.setStatus(status);
     response.setBody(result);
 })(request, response);</operation_script>
