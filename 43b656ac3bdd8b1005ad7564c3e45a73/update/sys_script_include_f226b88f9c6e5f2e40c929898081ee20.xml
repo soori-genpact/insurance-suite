@@ -51,7 +51,10 @@ IntakeService.prototype = {
         intake.folder_path = body.folder_path || '';
         intake.received_on = new GlideDateTime();
         intake.status = 'received';
-        intake.insert();
+        var intakeId = intake.insert();
+        // number is assigned by column default at insert; re-read to get it
+        intake = new GlideRecord(this.INTAKE);
+        intake.get(intakeId);
 
         var attachments = body.attachments || [];
         var warnings = [];
