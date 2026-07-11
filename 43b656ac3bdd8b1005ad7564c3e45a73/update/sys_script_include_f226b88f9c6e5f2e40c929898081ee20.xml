@@ -132,8 +132,6 @@ IntakeService.prototype = {
      */
     createHitlTask: function(caseNumber, body) {
         body = body || {};
-        if (!body.correlation_id)
-            return this._error(400, 'ERRORU-002', 'correlation_id is mandatory');
 
         var intake = new GlideRecord(this.INTAKE);
         intake.addQuery('number', String(caseNumber));
@@ -161,11 +159,11 @@ IntakeService.prototype = {
             '\nReported status: ' + (body.status || '(none)') +
             (newStatus ? ' -&gt; case status set to ' + newStatus : ' (unrecognized token, case status unchanged)') +
             '\nReason: ' + (body.description || '(no description)') +
-            '\nCorrelation ID: ' + body.correlation_id;
+            '\nCorrelation ID: ' + (body.correlation_id || '(none)');
         intake.update();
 
         return { _status: 201, success: true,
-                 correlation_id: String(body.correlation_id),
+                 correlation_id: String(body.correlation_id || ''),
                  caseId: String(intake.number),
                  taskNumber: String(task.number),
                  _location: this.BASE + '/intake/' + intake.number,
