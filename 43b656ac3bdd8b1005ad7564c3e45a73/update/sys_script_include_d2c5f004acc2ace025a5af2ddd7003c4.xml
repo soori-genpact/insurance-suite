@@ -332,7 +332,7 @@ SubmissionApiService.prototype = {
     /**
      * UI action "Accept": approve the extraction linked to a HITL task.
      * Pulls the extraction off the task, applies it to the submission,
-     * closes the task as Accepted (17) and completes the intake case.
+     * closes the task as Accepted (9) and completes the intake case.
      *
      * @param taskGr GlideRecord x_gegis_ins_policy_case_task (the form's current)
      */
@@ -343,7 +343,7 @@ SubmissionApiService.prototype = {
 
         this._autoApprove(extractionId);            // accept staged rows + apply to SOR
 
-        taskGr.setValue('state', 17);               // Accepted
+        taskGr.setValue('state', 9);               // Accepted
         taskGr.setValue('active', false);
         taskGr.work_notes = 'Extraction accepted by ' + gs.getUserName() +
             '. Extracted data applied to the submission.';
@@ -357,13 +357,13 @@ SubmissionApiService.prototype = {
             'Closed Skipped: superseded by extraction review task ' + taskGr.getValue('number') +
             ' (accepted); no longer required.');
 
-        return { success: true, decision: 'accepted', taskState: 17, skippedTasks: skipped };
+        return { success: true, decision: 'accepted', taskState: 9, skippedTasks: skipped };
     },
 
     /**
      * UI action "Reject": discard the extraction linked to a HITL task.
      * Marks the extraction and its staged rows rejected (nothing is applied),
-     * closes the task as Rejected (117) and rejects the intake case.
+     * closes the task as Rejected (10) and rejects the intake case.
      */
     rejectTask: function(taskGr) {
         var extractionId = taskGr.getValue('extraction');
@@ -372,7 +372,7 @@ SubmissionApiService.prototype = {
 
         this._rejectExtraction(extractionId);
 
-        taskGr.setValue('state', 117);              // Rejected
+        taskGr.setValue('state', 10);              // Rejected
         taskGr.setValue('active', false);
         taskGr.work_notes = 'Extraction rejected by ' + gs.getUserName() +
             '. Staged data discarded; nothing applied to the submission.';
@@ -386,7 +386,7 @@ SubmissionApiService.prototype = {
             'Closed Skipped: superseded by extraction review task ' + taskGr.getValue('number') +
             ' (rejected); no longer required.');
 
-        return { success: true, decision: 'rejected', taskState: 117, skippedTasks: skipped };
+        return { success: true, decision: 'rejected', taskState: 10, skippedTasks: skipped };
     },
 
     /**
@@ -549,13 +549,13 @@ SubmissionApiService.prototype = {
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-11 12:00:00</sys_created_on>
         <sys_id>d2c5f004acc2ace025a5af2ddd7003c4</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name>SubmissionApiService</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_script_include_d2c5f004acc2ace025a5af2ddd7003c4</sys_update_name>
         <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-07-11 21:16:23</sys_updated_on>
+        <sys_updated_on>2026-07-12 10:40:03</sys_updated_on>
     </sys_script_include>
 </record_update>
