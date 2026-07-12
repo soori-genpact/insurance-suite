@@ -48,8 +48,13 @@ SubmissionApiService.prototype = {
 
         // Automatic vs manual approval is driven by a system property per intent.
         var isAuto = x_gegis_ins_policy.Constants.isAutoApprove('new');
-        if (isAuto)
+        if (isAuto) {
             this._autoApprove(extraction.getUniqueValue());
+        } else {
+            extraction.extraction_status = 'extracted';
+            extraction.disposition = 'pending_review';
+            extraction.update();
+        }
 
         var sub = new GlideRecord(this.SUBMISSION);
         sub.get(subId);
@@ -58,7 +63,7 @@ SubmissionApiService.prototype = {
             sub.source_reference = String(intake.number);
             sub.update();
             var copied = this._copyDocuments(intake, subId, body.attachments);
-            var task = this._createExtractionReviewTask(intake, sub, isAuto , extraction.getUniqueValue());
+            var task = this._createExtractionReviewTask(intake, sub, isAuto, extraction);
             intake.submission = subId;
             intake.intent = 'new_submission';
             intake.intent_summary = body.intent_summary || '';
@@ -79,12 +84,19 @@ SubmissionApiService.prototype = {
                     '; task no longer required.');
         }
 
-        return { _status: 201, success: true,
-                 correlation_id: String(body.correlation_id),
-                 _location: '/api/x_gegis_ins_policy/v1/submission/' + sub.number,
-                 inserted: [{ submissionNumber: String(sub.number),
-                              lineOfBusiness: this._firstLineLabel(subId) }],
-                 failed: [], warnings: [], error: '' };
+        return {
+            _status: 201,
+            success: true,
+            correlation_id: String(body.correlation_id),
+            _location: '/api/x_gegis_ins_policy/v1/submission/' + sub.number,
+            inserted: [{
+                submissionNumber: String(sub.number),
+                lineOfBusiness: this._firstLineLabel(subId)
+            }],
+            failed: [],
+            warnings: [],
+            error: ''
+        };
     },
 
     /**
@@ -135,7 +147,7 @@ SubmissionApiService.prototype = {
         var intake = this._findIntake(body);
         if (intake) {
             var copied = this._copyDocuments(intake, sub.getUniqueValue(), body.attachments);
-            var task = this._createExtractionReviewTask(intake, sub, willProcess,extraction.getUniqueValue());
+            var task = this._createExtractionReviewTask(intake, sub, willProcess, extraction);
             intake.submission = sub.getUniqueValue();
             intake.intent = 'update_data';
             intake.status = willProcess ? 'completed' : 'awaiting_action';
@@ -158,17 +170,23 @@ SubmissionApiService.prototype = {
 
         if (willProcess) {
             merge.applyMerge(extraction);
-            return { _status: 200, success: true,
-                     correlation_id: String(body.correlation_id),
-                     message: 'In-flight update merged successfully (automated process)' };
+            return {
+                _status: 200,
+                success: true,
+                correlation_id: String(body.correlation_id),
+                message: 'In-flight update merged successfully (automated process)'
+            };
         }
         sub.extraction_status = 'pending_review';
         sub.requires_review = true;
         sub.update();
-        return { _status: 200, success: true,
-                 correlation_id: String(body.correlation_id),
-                 message: (isAuto ? conflicts + ' field conflict(s) pending human review' : 'Manual review required') + '; HITL task open',
-                 conflicts: conflicts };
+        return {
+            _status: 200,
+            success: true,
+            correlation_id: String(body.correlation_id),
+            message: (isAuto ? conflicts + ' field conflict(s) pending human review' : 'Manual review required') + '; HITL task open',
+            conflicts: conflicts
+        };
     },
 
     /** GET /submission/{number} - header, lines, parties and documents. */
@@ -181,11 +199,14 @@ SubmissionApiService.prototype = {
             return this._error(404, 'ERRORU-004', 'Submission ' + submissionNumber + ' not found');
 
         var out = {
-            _status: 200, success: true,
+            _status: 200,
+            success: true,
             submission: {
-                number: String(sub.number), state: String(sub.state),
+                number: String(sub.number),
+                state: String(sub.state),
                 submissionType: String(sub.submission_type),
-                insuredName: String(sub.insured_name), brokerName: String(sub.broker_name),
+                insuredName: String(sub.insured_name),
+                brokerName: String(sub.broker_name),
                 targetEffectiveDate: String(sub.target_effective_date),
                 targetExpirationDate: String(sub.target_expiration_date),
                 clearanceStatus: String(sub.clearance_status),
@@ -193,30 +214,40 @@ SubmissionApiService.prototype = {
                 overallConfidence: String(sub.overall_confidence),
                 totalEstimatedPremium: String(sub.total_estimated_premium)
             },
-            lines: [], parties: [], documents: []
+            lines: [],
+            parties: [],
+            documents: []
         };
         var line = new GlideRecord(this.LINE);
         line.addQuery('submission', sub.getUniqueValue());
         line.query();
         while (line.next())
-            out.lines.push({ lineOfBusiness: line.getDisplayValue('line_of_business'),
-                             state: String(line.state),
-                             effectiveDate: String(line.effective_date),
-                             estimatedPremium: String(line.estimated_premium) });
+            out.lines.push({
+                lineOfBusiness: line.getDisplayValue('line_of_business'),
+                state: String(line.state),
+                effectiveDate: String(line.effective_date),
+                estimatedPremium: String(line.estimated_premium)
+            });
         var party = new GlideRecord(this.PARTY_M2M);
         party.addQuery('submission', sub.getUniqueValue());
         party.query();
         while (party.next())
-            out.parties.push({ role: String(party.role),
-                               organization: party.getDisplayValue('organization'),
-                               isPrimary: String(party.is_primary) === 'true' });
+            out.parties.push({
+                role: String(party.role),
+                organization: party.getDisplayValue('organization'),
+                isPrimary: String(party.is_primary) === 'true'
+            });
         var d = new GlideRecord(this.DOCUMENT);
         d.addQuery('submission', sub.getUniqueValue());
         d.query();
         while (d.next())
-            out.documents.push({ name: String(d.document_name), scope: String(d.scope),
-                                 type: String(d.document_type), status: String(d.state),
-                                 version: String(d.version) });
+            out.documents.push({
+                name: String(d.document_name),
+                scope: String(d.scope),
+                type: String(d.document_type),
+                status: String(d.state),
+                version: String(d.version)
+            });
         return out;
     },
 
@@ -305,23 +336,24 @@ SubmissionApiService.prototype = {
      *   manual -> state Open, awaiting human Accept/Reject
      */
     _createExtractionReviewTask: function(intake, sub, isAuto, extraction) {
+        gs.info("extraction.getUniqueValue()" + extraction.getUniqueValue());
         var task = new GlideRecord(this.TASK);
         task.initialize();
-        task.setValue('parent_case', intake.getUniqueValue());
         task.setValue('intake_case', intake.getUniqueValue());
-		task.setValue('extraction', extraction);
         task.setValue('category', 'hitl');
         task.setValue('u_type', 'extraction_review');
         task.setValue('short_description', 'Extraction review for submission ' + sub.number);
         if (isAuto) {
             task.setValue('description', 'Extraction auto-approved and applied by the automated process.');
-            task.setValue('state', 8);          // Auto Accepted (automated process)
+            task.setValue('state', 8); // Auto Accepted (automated process)
             task.setValue('active', false);
             task.work_notes = 'Automated process: extraction data auto-approved and merged into submission ' +
                 sub.number + '. Task closed complete.';
         } else {
             task.setValue('description', 'Extraction requires human review. Accept to apply the extracted data, or Reject to discard.');
-            task.setValue('state', 1);          // Open
+            task.setValue('state', 1); // Open
+            gs.info("extraction  SETTING" + extraction.getUniqueValue());
+            task.setValue('extraction', extraction.getUniqueValue());
             task.work_notes = 'Awaiting human review of submission ' + sub.number +
                 '. Accept to apply the extracted data, or Reject to discard.';
         }
@@ -341,9 +373,9 @@ SubmissionApiService.prototype = {
         if (!extractionId)
             return this._error(400, 'ERRORU-007', 'Task has no linked extraction to accept');
 
-        this._autoApprove(extractionId);            // accept staged rows + apply to SOR
+        this._autoApprove(extractionId); // accept staged rows + apply to SOR
 
-        taskGr.setValue('state', 9);               // Accepted
+        taskGr.setValue('state', 9); // Accepted
         taskGr.setValue('active', false);
         taskGr.work_notes = 'Extraction accepted by ' + gs.getUserName() +
             '. Extracted data applied to the submission.';
@@ -357,7 +389,12 @@ SubmissionApiService.prototype = {
             'Closed Skipped: superseded by extraction review task ' + taskGr.getValue('number') +
             ' (accepted); no longer required.');
 
-        return { success: true, decision: 'accepted', taskState: 9, skippedTasks: skipped };
+        return {
+            success: true,
+            decision: 'accepted',
+            taskState: 9,
+            skippedTasks: skipped
+        };
     },
 
     /**
@@ -372,7 +409,7 @@ SubmissionApiService.prototype = {
 
         this._rejectExtraction(extractionId);
 
-        taskGr.setValue('state', 10);              // Rejected
+        taskGr.setValue('state', 10); // Rejected
         taskGr.setValue('active', false);
         taskGr.work_notes = 'Extraction rejected by ' + gs.getUserName() +
             '. Staged data discarded; nothing applied to the submission.';
@@ -386,7 +423,12 @@ SubmissionApiService.prototype = {
             'Closed Skipped: superseded by extraction review task ' + taskGr.getValue('number') +
             ' (rejected); no longer required.');
 
-        return { success: true, decision: 'rejected', taskState: 10, skippedTasks: skipped };
+        return {
+            success: true,
+            decision: 'rejected',
+            taskState: 10,
+            skippedTasks: skipped
+        };
     },
 
     /**
@@ -412,7 +454,7 @@ SubmissionApiService.prototype = {
             t.addQuery('sys_id', '!=', exceptTaskId);
         t.query();
         while (t.next()) {
-            t.setValue('state', 7);          // Closed Skipped
+            t.setValue('state', 7); // Closed Skipped
             t.setValue('active', false);
             t.work_notes = note;
             t.update();
@@ -469,8 +511,13 @@ SubmissionApiService.prototype = {
     },
 
     _toDocState: function(token) {
-        var map = { 'new': 'new', 'processed': 'processed', 'duplicate': 'duplicate',
-                    'old': 'old', 'stale': 'stale' };
+        var map = {
+            'new': 'new',
+            'processed': 'processed',
+            'duplicate': 'duplicate',
+            'old': 'old',
+            'stale': 'stale'
+        };
         return map[token] || 'new';
     },
 
@@ -479,7 +526,7 @@ SubmissionApiService.prototype = {
         var externalId = body.metadata ? String(body.metadata.external_case_id || '') : '';
         if (externalId)
             intake.addQuery('number', externalId)
-                  .addOrCondition('correlation_id', String(body.correlation_id));
+            .addOrCondition('correlation_id', String(body.correlation_id));
         else
             intake.addQuery('correlation_id', String(body.correlation_id));
         intake.setLimit(1);
@@ -540,7 +587,12 @@ SubmissionApiService.prototype = {
     },
 
     _error: function(status, code, message) {
-        return { _status: status, success: false, errorCode: code, errorMessage: message };
+        return {
+            _status: status,
+            success: false,
+            errorCode: code,
+            errorMessage: message
+        };
     },
 
     type: 'SubmissionApiService'
@@ -549,13 +601,13 @@ SubmissionApiService.prototype = {
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-11 12:00:00</sys_created_on>
         <sys_id>d2c5f004acc2ace025a5af2ddd7003c4</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>SubmissionApiService</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_script_include_d2c5f004acc2ace025a5af2ddd7003c4</sys_update_name>
         <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-07-12 10:40:03</sys_updated_on>
+        <sys_updated_on>2026-07-12 11:37:19</sys_updated_on>
     </sys_script_include>
 </record_update>
