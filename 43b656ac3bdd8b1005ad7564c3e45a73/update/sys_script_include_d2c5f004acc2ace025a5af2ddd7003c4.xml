@@ -315,7 +315,7 @@ SubmissionApiService.prototype = {
         task.setValue('short_description', 'Extraction review for submission ' + sub.number);
         if (isAuto) {
             task.setValue('description', 'Extraction auto-approved and applied by the automated process.');
-            task.setValue('state', 8);         // Accepted (auto-approved)
+            task.setValue('state', 8);          // Auto Accepted (automated process)
             task.setValue('active', false);
             task.work_notes = 'Automated process: extraction data auto-approved and merged into submission ' +
                 sub.number + '. Task closed complete.';

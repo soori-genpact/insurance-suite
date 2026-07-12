@@ -3,7 +3,7 @@
         <action_name>reject_extraction_review</action_name>
         <active>true</active>
         <client>false</client>
-        <comments>Reject the extraction on a HITL extraction-review task: discards the staged data, closes the task as Rejected (117) and rejects the intake case.</comments>
+        <comments>Reject the extraction on a HITL extraction-review task: discards the staged data, closes the task as Rejected (10) and rejects the intake case.</comments>
         <condition>current.getValue('u_type') == 'extraction_review' &amp;&amp; current.getValue('active') == '1'</condition>
         <form_action>true</form_action>
         <form_button>true</form_button>

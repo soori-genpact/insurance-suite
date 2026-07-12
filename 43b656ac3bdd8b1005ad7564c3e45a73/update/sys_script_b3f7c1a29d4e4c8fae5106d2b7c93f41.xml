@@ -13,7 +13,7 @@
         <client_callable>false</client_callable>
         <collection>x_gegis_ins_policy_case_task</collection>
         <condition>!current.intake_case.nil() &amp;&amp; (current.state.changesTo(3) || current.state.changesTo(4))</condition>
-        <description>When a task on an intake case is closed Complete (3) or Incomplete (4) and no other tasks on that case are still pending (state -5/1/2), move the intake case to In Progress. Resolution states Accepted (17), Rejected (117) and Closed Skipped (7) intentionally do NOT trigger this - they accompany a terminal intake decision. Complements IntakeService.createHitlTask, which sets Awaiting Action when a HITL task is created.</description>
+        <description>When a task on an intake case is closed Complete (3) or Incomplete (4) and no other tasks on that case are still pending (state -5/1/2), move the intake case to In Progress. Resolution states Auto Accepted (8), Accepted (9), Rejected (10) and Closed Skipped (7) intentionally do NOT trigger this - they accompany a terminal intake decision. Complements IntakeService.createHitlTask, which sets Awaiting Action when a HITL task is created.</description>
         <execute_function>false</execute_function>
         <filter_condition/>
         <is_rest>false</is_rest>
