@@ -376,7 +376,7 @@ SubmissionApiService.prototype = {
         this._autoApprove(extractionId); // accept staged rows + apply to SOR
 
         taskGr.setValue('state', 9); // Accepted
-        taskGr.setValue('active', false);
+        // taskGr.setValue('active', false); // TEMP off: active=false made base Task engine coerce state to Closed Complete(3)
         taskGr.work_notes = 'Extraction accepted by ' + gs.getUserName() +
             '. Extracted data applied to the submission.';
         taskGr.update();
@@ -410,7 +410,7 @@ SubmissionApiService.prototype = {
         this._rejectExtraction(extractionId);
 
         taskGr.setValue('state', 10); // Rejected
-        taskGr.setValue('active', false);
+        // taskGr.setValue('active', false); // TEMP off: active=false made base Task engine coerce state to Closed Complete(3)
         taskGr.work_notes = 'Extraction rejected by ' + gs.getUserName() +
             '. Staged data discarded; nothing applied to the submission.';
         taskGr.update();
