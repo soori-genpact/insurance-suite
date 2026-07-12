@@ -340,7 +340,12 @@ SubmissionApiService.prototype = {
         this._setIntakeStatus(taskGr.getValue('intake_case'), 'completed',
             'Extraction review task ' + taskGr.getValue('number') + ' accepted; data applied.');
 
-        return { success: true, decision: 'accepted', taskState: 17 };
+        // Intake resolved - any other still-pending task is moot: Closed Skipped.
+        var skipped = this._skipPendingTasks(taskGr.getValue('intake_case'), taskGr.getUniqueValue(),
+            'Closed Skipped: superseded by extraction review task ' + taskGr.getValue('number') +
+            ' (accepted); no longer required.');
+
+        return { success: true, decision: 'accepted', taskState: 17, skippedTasks: skipped };
     },
 
     /**
@@ -364,7 +369,44 @@ SubmissionApiService.prototype = {
         this._setIntakeStatus(taskGr.getValue('intake_case'), 'rejected',
             'Extraction review task ' + taskGr.getValue('number') + ' rejected; data discarded.');
 
-        return { success: true, decision: 'rejected', taskState: 117 };
+        // Intake resolved - any other still-pending task is moot: Closed Skipped.
+        var skipped = this._skipPendingTasks(taskGr.getValue('intake_case'), taskGr.getUniqueValue(),
+            'Closed Skipped: superseded by extraction review task ' + taskGr.getValue('number') +
+            ' (rejected); no longer required.');
+
+        return { success: true, decision: 'rejected', taskState: 117, skippedTasks: skipped };
+    },
+
+    /**
+     * Close any still-pending sibling tasks on the intake as Closed Skipped (7).
+     * Called once the intake reaches a terminal decision (accept/reject) so no
+     * open task is left dangling. Pending = state -5 (Pending), 1 (Open),
+     * 2 (Work in Progress). Runs after the intake is set to its final status so
+     * the "back to In Progress" business rule short-circuits on the FINAL guard.
+     *
+     * @param intakeId     sys_id of the intake case
+     * @param exceptTaskId sys_id of the task just resolved (skip it)
+     * @param note         work note stamped on each skipped task
+     * @return count of tasks skipped
+     */
+    _skipPendingTasks: function(intakeId, exceptTaskId, note) {
+        if (!intakeId)
+            return 0;
+        var skipped = 0;
+        var t = new GlideRecord(this.TASK);
+        t.addQuery('intake_case', intakeId);
+        t.addQuery('state', 'IN', '-5,1,2');
+        if (exceptTaskId)
+            t.addQuery('sys_id', '!=', exceptTaskId);
+        t.query();
+        while (t.next()) {
+            t.setValue('state', 7);          // Closed Skipped
+            t.setValue('active', false);
+            t.work_notes = note;
+            t.update();
+            skipped++;
+        }
+        return skipped;
     },
 
     /** Mark an extraction and all its staged rows rejected. Applies nothing. */

@@ -33,10 +33,12 @@
     if (!intakeId)
         return;
 
-    // Any other task on this intake case still open? Then leave the case as-is.
+    // Any other task on this intake case still pending? Then leave the case as-is.
+    // Pending states: -5 Pending, 1 Open, 2 Work in Progress. Keyed on state
+    // (not the active flag) so it stays correct regardless of how active is set.
     var pending = new GlideRecord('x_gegis_ins_policy_case_task');
     pending.addQuery('intake_case', intakeId);
-    pending.addQuery('active', true);
+    pending.addQuery('state', 'IN', '-5,1,2');
     pending.addQuery('sys_id', '!=', current.getUniqueValue());
     pending.setLimit(1);
     pending.query();
