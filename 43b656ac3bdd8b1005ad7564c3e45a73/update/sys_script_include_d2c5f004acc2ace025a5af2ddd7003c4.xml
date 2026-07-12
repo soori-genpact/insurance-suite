@@ -71,6 +71,12 @@ SubmissionApiService.prototype = {
                 '\nIntent summary: ' + (body.intent_summary || '(none)') +
                 '\nCorrelation ID: ' + body.correlation_id;
             intake.update();
+
+            // Intake auto-completed - any other still-pending task is moot: Closed Skipped.
+            if (isAuto)
+                this._skipPendingTasks(intake.getUniqueValue(), task.getUniqueValue(),
+                    'Closed Skipped: intake auto-completed for submission ' + sub.number +
+                    '; task no longer required.');
         }
 
         return { _status: 201, success: true,
@@ -142,6 +148,12 @@ SubmissionApiService.prototype = {
                 '\nDocuments copied: ' + copied +
                 '\nCorrelation ID: ' + body.correlation_id;
             intake.update();
+
+            // Intake auto-completed - any other still-pending task is moot: Closed Skipped.
+            if (willProcess)
+                this._skipPendingTasks(intake.getUniqueValue(), task.getUniqueValue(),
+                    'Closed Skipped: intake auto-completed for submission ' + sub.number +
+                    ' (in-flight update); task no longer required.');
         }
 
         if (willProcess) {
@@ -303,7 +315,7 @@ SubmissionApiService.prototype = {
         task.setValue('short_description', 'Extraction review for submission ' + sub.number);
         if (isAuto) {
             task.setValue('description', 'Extraction auto-approved and applied by the automated process.');
-            task.setValue('state', 17);         // Accepted (auto-approved)
+            task.setValue('state', 8);         // Accepted (auto-approved)
             task.setValue('active', false);
             task.work_notes = 'Automated process: extraction data auto-approved and merged into submission ' +
                 sub.number + '. Task closed complete.';
