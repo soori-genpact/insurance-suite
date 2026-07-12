@@ -20,9 +20,9 @@
                 <element inactive_on_update="false" label="None" sequence="10" value="none"/>
             </choice>
         </element>
-        <element display="true" label="Model version" max_length="50" name="model_version" type="string"/>
+        <element label="Model version" max_length="50" name="model_version" type="string"/>
         <element label="Extracted date" max_length="40" name="extracted_date" type="glide_date_time"/>
-        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" display="true" label="Number" max_length="40" name="number" type="string"/>
         <element choice="1" label="Source" max_length="40" name="source" type="string">
             <choice/>
         </element>
