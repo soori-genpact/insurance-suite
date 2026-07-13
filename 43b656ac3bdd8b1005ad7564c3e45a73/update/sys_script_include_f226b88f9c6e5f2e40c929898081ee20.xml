@@ -126,13 +126,20 @@ IntakeService.prototype = {
 
     /**
      * Create a HITL (human-in-the-loop) case task on an intake case and move
-     * the case to the reported status.
+     * the case to awaiting_action.
      *
      * @param caseNumber Intake case number from the request path
-     * @param body {status, description, correlation_id}
+     * @param body {type, description, context, correlation_id}
+     *             type    - HITL task type (SUBMISSION_LOCKED, DUPLICATE_CHECK,
+     *                       CLASSIFICATION_FAILED, CONTEXT_ENRICHMENT)
+     *             context - type-specific payload; stored as JSON on the task.
+     *                       SUBMISSION_LOCKED requires context.submissionNumber,
+     *                       which is resolved to the submission reference.
      */
     createHitlTask: function(caseNumber, body) {
         body = body || {};
+        var type = String(body.type || '');
+        var context = body.context || {};
 
         var intake = new GlideRecord(this.INTAKE);
         intake.addQuery('number', String(caseNumber));
@@ -143,20 +150,39 @@ IntakeService.prototype = {
         if (this.FINAL_STATUSES.indexOf(String(intake.status)) &gt;= 0)
             return this._error(409, 'ERRORU-006', 'Case is already in final status');
 
+        // SUBMISSION_LOCKED must carry a resolvable submission number.
+        var submissionId = '';
+        if (type.toUpperCase() === 'SUBMISSION_LOCKED') {
+            if (!context.submissionNumber)
+                return this._error(400, 'ERRORU-002', 'context.submissionNumber is mandatory for SUBMISSION_LOCKED tasks');
+            var sub = new GlideRecord('x_gegis_ins_policy_submission');
+            sub.addQuery('number', String(context.submissionNumber));
+            sub.setLimit(1);
+            sub.query();
+            if (!sub.next())
+                return this._error(404, 'ERRORU-004', 'Submission ' + context.submissionNumber + ' not found');
+            submissionId = sub.getUniqueValue();
+        }
+
         var task = new GlideRecord(this.CASE_TASK);
         task.initialize();
         task.parent_case = intake.getUniqueValue();
         task.intake_case = intake.getUniqueValue();
         task.category = 'hitl';
-        task.u_type = this._toTaskType(body.status);
-        task.short_description = 'HITL: ' + (body.status || 'HUMAN_IN_THE_LOOP');
+        task.u_type = this._toTaskType(type);
+        task.short_description = 'HITL: ' + (type || 'HUMAN_IN_THE_LOOP');
         task.description = body.description || '';
+        if (body.context)
+            task.context = JSON.stringify(body.context);
+        if (submissionId)
+            task.submission = submissionId;
         task.insert();
 
         intake.status = 'awaiting_action';
         intake.work_notes = 'HITL task ' + task.number + ' created via API.' +
-            '\nType: ' + (body.status || '(none)') +
+            '\nType: ' + (type || '(none)') +
             '\nReason: ' + (body.description || '(no description)') +
+            (submissionId ? '\nSubmission: ' + context.submissionNumber : '') +
             '\nCorrelation ID: ' + (body.correlation_id || '(none)');
         intake.update();
 
