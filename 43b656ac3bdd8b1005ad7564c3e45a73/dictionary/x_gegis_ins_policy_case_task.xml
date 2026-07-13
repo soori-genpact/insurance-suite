@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="42dee7e74147197405b4651d4c65d397" extends="task" label="Task" max_length="40" name="x_gegis_ins_policy_case_task" type="collection">
+        <element label="Submission" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
         <element label="Parent case" max_length="32" name="parent_case" type="document_id"/>
         <element choice="1" label="Type" max_length="40" name="u_type" type="choice">
             <choice>
@@ -19,5 +20,10 @@
             </choice>
         </element>
         <element label="Extraction" max_length="32" name="extraction" reference="x_gegis_ins_policy_extraction" type="reference"/>
+        <element label="Context" max_length="500" name="context" type="string"/>
+        <index name="index">
+            <element name="submission"/>
+            <element name="active"/>
+        </index>
     </element>
 </database>
