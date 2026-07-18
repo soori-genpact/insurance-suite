@@ -9,19 +9,19 @@
   "code" : "",
   "comment" : ""
 }, {
+  "message" : "Extraction Pipeline",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "Home",
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "Intake",
+  "message" : "Inflight Submissions",
   "code" : "",
   "comment" : ""
 }, {
   "message" : "List",
-  "code" : "",
-  "comment" : ""
-}, {
-  "message" : "Pipeline",
   "code" : "",
   "comment" : ""
 }, {
@@ -57,14 +57,14 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>global</sys_domain_path>
         <sys_id>386acb78337d4f907ef8f499ed5c7bd7</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>chrome_toolbar</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_page_property_386acb78337d4f907ef8f499ed5c7bd7</sys_update_name>
         <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-07-18 05:34:54</sys_updated_on>
+        <sys_updated_on>2026-07-18 12:03:30</sys_updated_on>
         <type>json</type>
         <unique_name>x_gegis_ins_policy.4058c37c333d4f907ef8f499ed5c7b4a.root.global.chrome_toolbar</unique_name>
         <value>[
@@ -90,6 +90,111 @@
         "viewportInfo": {}
     },
     {
+        "id": "dashboard",
+        "label": {
+            "translatable": true,
+            "message": "Task Dashboard"
+        },
+        "icon": "chart-speedometer-outline",
+        "routeInfo": {
+            "route": "dashboard"
+        },
+        "group": "top",
+        "order": 150,
+        "badge": {},
+        "presence": {},
+        "availability": {
+            "roles": [
+                "x_gegis_ins_policy.ws_leftmenu_dashboard"
+            ]
+        },
+        "viewportInfo": {}
+    },
+    {
+        "id": "intake",
+        "label": {
+            "translatable": true,
+            "message": "Inflight Submissions"
+        },
+        "icon": "action-ai-sparkle-outline",
+        "routeInfo": {
+            "route": "intake"
+        },
+        "group": "top",
+        "order": 200,
+        "badge": {},
+        "presence": {},
+        "availability": {
+            "roles": [
+                "x_gegis_ins_policy.ws_leftmenu_intake"
+            ]
+        },
+        "viewportInfo": {}
+    },
+    {
+        "id": "pipeline",
+        "label": {
+            "translatable": true,
+            "message": "Extraction Pipeline"
+        },
+        "icon": "magnifying-glass-filter-outline",
+        "routeInfo": {
+            "route": "pipeline"
+        },
+        "group": "top",
+        "order": 300,
+        "badge": {},
+        "presence": {},
+        "availability": {
+            "roles": [
+                "x_gegis_ins_policy.ws_leftmenu_pipeline"
+            ]
+        },
+        "viewportInfo": {}
+    },
+    {
+        "id": "renewal",
+        "label": {
+            "translatable": true,
+            "message": "Renewal"
+        },
+        "icon": "circle-semi-check-outline",
+        "routeInfo": {
+            "route": "renewal"
+        },
+        "group": "top",
+        "order": 350,
+        "badge": {},
+        "presence": {},
+        "availability": {
+            "roles": [
+                "x_gegis_ins_policy.ws_leftmenu_renewal"
+            ]
+        },
+        "viewportInfo": {}
+    },
+    {
+        "id": "referral",
+        "label": {
+            "translatable": true,
+            "message": "Referrals"
+        },
+        "icon": "branch-compare-outline",
+        "routeInfo": {
+            "route": "referral"
+        },
+        "group": "top",
+        "order": 400,
+        "badge": {},
+        "presence": {},
+        "availability": {
+            "roles": [
+                "x_gegis_ins_policy.ws_leftmenu_referral"
+            ]
+        },
+        "viewportInfo": {}
+    },
+    {
         "id": "clearance",
         "label": {
             "translatable": true,
@@ -100,7 +205,7 @@
             "route": "clearance"
         },
         "group": "top",
-        "order": 100,
+        "order": 450,
         "badge": {},
         "presence": {},
         "availability": {
@@ -121,7 +226,7 @@
             "route": "risk"
         },
         "group": "top",
-        "order": 200,
+        "order": 500,
         "badge": {},
         "presence": {},
         "availability": {
@@ -142,7 +247,7 @@
             "route": "exposure"
         },
         "group": "top",
-        "order": 300,
+        "order": 550,
         "badge": {},
         "presence": {},
         "availability": {
@@ -163,54 +268,12 @@
             "route": "quote-bind"
         },
         "group": "top",
-        "order": 400,
-        "badge": {},
-        "presence": {},
-        "availability": {
-            "roles": [
-                "x_gegis_ins_policy.ws_leftmenu_quote_bind"
-            ]
-        },
-        "viewportInfo": {}
-    },
-    {
-        "id": "pipeline",
-        "label": {
-            "translatable": true,
-            "message": "Pipeline"
-        },
-        "icon": "magnifying-glass-filter-outline",
-        "routeInfo": {
-            "route": "pipeline"
-        },
-        "group": "top",
-        "order": 500,
-        "badge": {},
-        "presence": {},
-        "availability": {
-            "roles": [
-                "x_gegis_ins_policy.ws_leftmenu_pipeline"
-            ]
-        },
-        "viewportInfo": {}
-    },
-    {
-        "id": "dashboard",
-        "label": {
-            "translatable": true,
-            "message": "Task Dashboard"
-        },
-        "icon": "chart-speedometer-outline",
-        "routeInfo": {
-            "route": "dashboard"
-        },
-        "group": "top",
         "order": 600,
         "badge": {},
         "presence": {},
         "availability": {
             "roles": [
-                "x_gegis_ins_policy.ws_leftmenu_dashboard"
+                "x_gegis_ins_policy.ws_leftmenu_quote_bind"
             ]
         },
         "viewportInfo": {}
@@ -226,75 +289,12 @@
             "route": "list"
         },
         "group": "top",
-        "order": 800,
+        "order": 700,
         "badge": {},
         "presence": {},
         "availability": {
             "roles": [
                 "x_gegis_ins_policy.ws_leftmenu_list"
-            ]
-        },
-        "viewportInfo": {}
-    },
-    {
-        "id": "referral",
-        "label": {
-            "translatable": true,
-            "message": "Referrals"
-        },
-        "icon": "branch-compare-outline",
-        "routeInfo": {
-            "route": "referral"
-        },
-        "group": "top",
-        "order": 800,
-        "badge": {},
-        "presence": {},
-        "availability": {
-            "roles": [
-                "x_gegis_ins_policy.ws_leftmenu_referral"
-            ]
-        },
-        "viewportInfo": {}
-    },
-    {
-        "id": "renewal",
-        "label": {
-            "translatable": true,
-            "message": "Renewal"
-        },
-        "icon": "circle-semi-check-outline",
-        "routeInfo": {
-            "route": "renewal"
-        },
-        "group": "top",
-        "order": 900,
-        "badge": {},
-        "presence": {},
-        "availability": {
-            "roles": [
-                "x_gegis_ins_policy.ws_leftmenu_renewal"
-            ]
-        },
-        "viewportInfo": {}
-    },
-    {
-        "id": "intake",
-        "label": {
-            "translatable": true,
-            "message": "Intake"
-        },
-        "icon": "action-ai-sparkle-outline",
-        "routeInfo": {
-            "route": "intake"
-        },
-        "group": "top",
-        "order": 1000,
-        "badge": {},
-        "presence": {},
-        "availability": {
-            "roles": [
-                "x_gegis_ins_policy.ws_leftmenu_intake"
             ]
         },
         "viewportInfo": {}
