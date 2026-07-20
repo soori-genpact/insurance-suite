@@ -39,7 +39,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>d4a4e7372f0a8f50fb1f2bba6fa4e361</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>9</sys_mod_count>
         <sys_name>Get Case Record By number in Submission Playbook</sys_name>
         <sys_overrides/>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
@@ -47,11 +47,11 @@
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_hub_flow_d4a4e7372f0a8f50fb1f2bba6fa4e361</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-20 14:26:20</sys_updated_on>
+        <sys_updated_on>2026-07-20 14:29:50</sys_updated_on>
         <type>subflow</type>
         <updation_source/>
         <version>2</version>
-        <version_record>06f241c0c3d28310b4c2fe3d05013149</version_record>
+        <version_record>adc30544c3d28310b4c2fe3d0501311a</version_record>
     </sys_hub_flow>
     <sys_translated_text action="delete_multiple" query="documentkey=d4a4e7372f0a8f50fb1f2bba6fa4e361"/>
     <sys_variable_value action="delete_multiple" query="document_key=d4a4e7372f0a8f50fb1f2bba6fa4e361"/>
@@ -614,34 +614,7 @@
     </sys_hub_action_instance_v2>
     <sys_hub_alias_mapping action="delete_multiple" query="source_id=68b523f72f0a8f50fb1f2bba6fa4e3f3"/>
     <sys_hub_sub_flow_instance_v2 action="delete_multiple" query="flow=d4a4e7372f0a8f50fb1f2bba6fa4e361"/>
-    <sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=d4a4e7372f0a8f50fb1f2bba6fa4e361^sys_idNOT IN8b03c1c0c3d28310b4c2fe3d050131fc,9a85abb72f0a8f50fb1f2bba6fa4e3ec"/>
-    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
-        <attributes/>
-        <block display_value="">8303c1c0c3d28310b4c2fe3d050131fc</block>
-        <comment/>
-        <connected_to/>
-        <decision_table/>
-        <display_text/>
-        <flow display_value="Get Case Record By number in Submission Playbook">d4a4e7372f0a8f50fb1f2bba6fa4e361</flow>
-        <flow_variables_assigned/>
-        <generation_source/>
-        <logic_definition display_value="Set Flow Variables">4f787d1e0f9b0010ecf0cc52ff767ea0</logic_definition>
-        <order>3</order>
-        <outputs_assigned/>
-        <parent_ui_id>ef6d6246-e5d7-4dee-ad96-cacaccca93fb</parent_ui_id>
-        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-20 14:26:31</sys_created_on>
-        <sys_id>8b03c1c0c3d28310b4c2fe3d050131fc</sys_id>
-        <sys_mod_count>1</sys_mod_count>
-        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-20 14:26:31</sys_updated_on>
-        <ui_id>06035f46-0d85-4e3a-bddf-4e56ffc8bf10</ui_id>
-        <updation_source/>
-        <values>H4sIAAAAAAAA/6WOsQ6DMAxE/8UzX8DG2J2tYgjGFKsmRnECqhD/TiKB2r3b6d3p6XbQFJcUrdXGjF8e6mdXAfvCct7Bu5mgBqhgdZKuiBPLEOhaGwZeYoOR19yPToyOruwDu17oX89AyMbq2yJ73M9K8clSxl+0aXiPotuXHSfMbbfh4wAAAA==</values>
-        <workflow_reference/>
-    </sys_hub_flow_logic_instance_v2>
+    <sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=d4a4e7372f0a8f50fb1f2bba6fa4e361^sys_idNOT IN9a85abb72f0a8f50fb1f2bba6fa4e3ec,bed3c544c3d28310b4c2fe3d0501316e"/>
     <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
         <attributes/>
         <block display_value="">8b03c1c0c3d28310b4c2fe3d050131f7</block>
@@ -660,13 +633,40 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-07-20 07:37:56</sys_created_on>
         <sys_id>9a85abb72f0a8f50fb1f2bba6fa4e3ec</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-20 14:26:31</sys_updated_on>
+        <sys_updated_on>2026-07-20 14:30:02</sys_updated_on>
         <ui_id>ef6d6246-e5d7-4dee-ad96-cacaccca93fb</ui_id>
         <updation_source/>
         <values>H4sIAAAAAAAA/+1U22obMRD9FaNns+x6Y9P4LbgEAm0DjclLG5ZZadYW1UpbXey4xv/e0V4c0zhtCHnsm3Q0l3NmDtozE3wTvFuaK+fkSrP5t4cxkzpidN4zDTWyOeNGC+ml0WzMNqBCxPZ7F8pKmW3CweHh8D2kaS4WCsGC5kiRQrpGwe7+1Ql8LZWw2NNoCK/Ro2Xz/R9PftdgoaBERXXvvJV6RelS0O0SptU0S6c8n8zySZpOPlxk5Swvs4nIAS9mFDckLk5UnREamxDkhvLGishlko4ZPnrUAqlfBcrhmNWgBXhjd2zubSDAIohbrXbHiLXUnqqxGPvo5C+MldI0RlZIwjh2r8dr0Y+vg/naSI63TcutRTyUqs/hRoVaf+kkxMFjBUH5YfCEBEf1sImkI42eU3W3NtuvQ8NrqVuB/aMyHNTxBp7GUAaPLm4DFdZUqKihaWg4RWPNRrbJxKVOVoouSVw1NY2+SoBH4gnNCJJrwj+28D1YGVV8pjKUTBt0heNWNoO2tjk7tFMpfobIp9PXKym6YVBAl3ZFbTbYkz6Mn/u3aIEnE99UowWZcbSkXY/+4t0X497DslUKVXbJs/OWhfycZUefWuS5cQeFL7g3+4d7e+RV9p1O/7v31L2RZglO8qL9Qalc/AvebN+HaNOuhes8JJBLR0yWEbsZfun4sKOtS34KbY39ETU8YYffN8CC7+8FAAA=</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
+    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
+        <attributes/>
+        <block display_value="">f2d3c544c3d28310b4c2fe3d0501316e</block>
+        <comment/>
+        <connected_to/>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Get Case Record By number in Submission Playbook">d4a4e7372f0a8f50fb1f2bba6fa4e361</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="Assign Subflow Outputs">df4e1945c3e232002841b63b12d3ae3e</logic_definition>
+        <order>3</order>
+        <outputs_assigned/>
+        <parent_ui_id>ef6d6246-e5d7-4dee-ad96-cacaccca93fb</parent_ui_id>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 14:30:02</sys_created_on>
+        <sys_id>bed3c544c3d28310b4c2fe3d0501316e</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 14:30:02</sys_updated_on>
+        <ui_id>c34b6b84-95b5-4e1d-af70-244e9ffbf878</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/02MMQ6AIBAE/3K1L6CztLczFghoLiJHOMAYw9+FxES73cns3kAp+hR5pJ4ZNwdiusHJw4AA6IBVQB97FTFXskrLpswdoGub6tacZUC5WPNWbRQykhsbG36evuotqj86KeyrpfNj5QElMTuykQAAAA==</values>
         <workflow_reference/>
     </sys_hub_flow_logic_instance_v2>
     <sys_hub_pill_compound action="delete_multiple" query="attached_to=d4a4e7372f0a8f50fb1f2bba6fa4e361"/>
