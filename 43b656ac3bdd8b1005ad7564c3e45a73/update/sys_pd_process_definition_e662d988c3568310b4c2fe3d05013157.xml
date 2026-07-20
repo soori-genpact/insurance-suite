@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_pd_process_definition">
+    <sys_pd_process_definition action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <allow_as_nested>true</allow_as_nested>
+        <copied_from/>
+        <copied_from_label/>
+        <data_retention_period_override>6_week</data_retention_period_override>
+        <description>Submission Exposure Case Standard</description>
+        <designer_state>{"diagram":{"hiddenElements":{"edges":{}}}}</designer_state>
+        <engine_major_version/>
+        <evaluate_variant_children_after/>
+        <execution_type>record_driven</execution_type>
+        <label>Submission Exposure</label>
+        <launcher_description/>
+        <launcher_inputs/>
+        <launcher_record_form_view/>
+        <launcher_show_record_form>false</launcher_show_record_form>
+        <launcher_template_fields/>
+        <launcher_title/>
+        <name>submission_exposure_case_standard</name>
+        <now_assist_kb/>
+        <now_assist_prompt/>
+        <permission>{}</permission>
+        <process_type display_value="Standard playbook">52c6d3eeff1be2102c2fffffffffff44</process_type>
+        <public_access>false</public_access>
+        <restartable>RESTARTABLE_TRUE</restartable>
+        <run_on_pad_engine>false</run_on_pad_engine>
+        <run_strategy>run_once</run_strategy>
+        <run_strategy_on_process_definition>true</run_strategy_on_process_definition>
+        <schema_version>3</schema_version>
+        <snapshot display_value="submission_exposure_case_standard">9f08118cc3968310b4c2fe3d05013115</snapshot>
+        <start_non_blocking>true</start_non_blocking>
+        <status>published</status>
+        <sync_state>COMPLETE</sync_state>
+        <synced_on/>
+        <sys_class_name>sys_pd_process_definition</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:33:38</sys_created_on>
+        <sys_id>e662d988c3568310b4c2fe3d05013157</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Submission Exposure</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_pd_process_definition_e662d988c3568310b4c2fe3d05013157</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 15:58:16</sys_updated_on>
+        <view_type>DIAGRAM</view_type>
+    </sys_pd_process_definition>
+    <sys_translated_text action="delete_multiple" query="documentkey=e662d988c3568310b4c2fe3d05013157"/>
+    <sys_variable_value action="delete_multiple" query="document_key=e662d988c3568310b4c2fe3d05013157"/>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_pd_process_input_e662d988c3568310b4c2fe3d05013157^id=e662d988c3568310b4c2fe3d05013157"/>
+    <sys_pd_process_input action="delete_multiple" query="model=e662d988c3568310b4c2fe3d05013157^sys_idNOT INa662d988c3568310b4c2fe3d05013160"/>
+    <sys_pd_process_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.snc.pd.designer.elementmapping.PlaybookInputElementMapper</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label>Parent record</column_label>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>parent_record</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="Reference">reference</internal_type>
+        <label>Parent record</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Submission Exposure">e662d988c3568310b4c2fe3d05013157</model>
+        <model_id>e662d988c3568310b4c2fe3d05013157</model_id>
+        <model_table/>
+        <name>var__m_sys_pd_process_input_e662d988c3568310b4c2fe3d05013157</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference display_value="" name="x_gegis_ins_policy_submission">x_gegis_ins_policy_submission</reference>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_pd_process_input</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:33:39</sys_created_on>
+        <sys_id>a662d988c3568310b4c2fe3d05013160</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Parent record</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_pd_process_input_a662d988c3568310b4c2fe3d05013160</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 15:33:39</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_pd_process_input>
+    <sys_pd_process_output action="delete_multiple" query="model=e662d988c3568310b4c2fe3d05013157"/>
+    <sys_pd_lane action="delete_multiple" query="process_definition=e662d988c3568310b4c2fe3d05013157^sys_idNOT IN8dd538e9836b145352cb10a5f66c1d7c"/>
+    <sys_pd_lane action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition_to_run/>
+        <description>Exposure Management</description>
+        <label>Exposure Management</label>
+        <lane_condition/>
+        <name>new_stage</name>
+        <order>1</order>
+        <permission>{}</permission>
+        <process_definition display_value="Submission Exposure">e662d988c3568310b4c2fe3d05013157</process_definition>
+        <restart_rule>RUN_ONLY_ONCE</restart_rule>
+        <start_rule/>
+        <start_rule_name>immediate</start_rule_name>
+        <start_rule_vars/>
+        <starts_after_activities/>
+        <starts_after_branches/>
+        <starts_after_lanes/>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:33:45</sys_created_on>
+        <sys_id>8dd538e9836b145352cb10a5f66c1d7c</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 15:34:14</sys_updated_on>
+        <visible_rule/>
+    </sys_pd_lane>
+    <sys_variable_value action="delete_multiple" query="document_key=8dd538e9836b145352cb10a5f66c1d7c"/>
+    <sys_pd_timer_attributes action="delete_multiple" query="process_definition=e662d988c3568310b4c2fe3d05013157"/>
+    <sys_pd_activity action="delete_multiple" query="process_definition=e662d988c3568310b4c2fe3d05013157^sys_idNOT IN43fb1de919a9ddc1bdd44dcb6236130b,a9972a8c3e63c696bd00a48bce97e088"/>
+    <sys_pd_activity action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <activity_definition display_value="GetCaseRecords">0f0a4944c3168310b4c2fe3d05013189</activity_definition>
+        <ai_agent_execution_mode>off</ai_agent_execution_mode>
+        <ai_agent_obj_additional_detail/>
+        <ai_agent_objective/>
+        <ai_agent_run_as>playbook_user</ai_agent_run_as>
+        <ai_agent_run_with_roles/>
+        <ai_agent_user/>
+        <condition_to_run/>
+        <conversational_agents/>
+        <derivative_order/>
+        <derivative_parent/>
+        <description>GetCaseRecords</description>
+        <enable_ai_agent>false</enable_ai_agent>
+        <inputs/>
+        <inputs/>
+        <label>GetCaseRecords</label>
+        <lane display_value="Exposure Management">8dd538e9836b145352cb10a5f66c1d7c</lane>
+        <name>getcaserecords</name>
+        <order>1</order>
+        <outputs/>
+        <process_definition display_value="Submission Exposure">e662d988c3568310b4c2fe3d05013157</process_definition>
+        <restart_rule>RUN_ONLY_ONCE</restart_rule>
+        <start_rule/>
+        <start_rule_name>immediate</start_rule_name>
+        <start_rule_vars/>
+        <starts_after_activities/>
+        <starts_after_branches/>
+        <starts_after_lanes/>
+        <swim_lane/>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:34:28</sys_created_on>
+        <sys_id>43fb1de919a9ddc1bdd44dcb6236130b</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 15:45:14</sys_updated_on>
+        <type_vals/>
+        <variant/>
+    </sys_pd_activity>
+    <sys_variable_value action="delete_multiple" query="document_key=43fb1de919a9ddc1bdd44dcb6236130b"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>43fb1de919a9ddc1bdd44dcb6236130b</document_key>
+        <order>1</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:34:28</sys_created_on>
+        <sys_id>2e92d1c8c3568310b4c2fe3d0501315f</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 15:34:54</sys_updated_on>
+        <value>EXPOSURE</value>
+        <variable display_value="casetype">a156890cc3d28310b4c2fe3d050131f6</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>43fb1de919a9ddc1bdd44dcb6236130b</document_key>
+        <order>2</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:34:28</sys_created_on>
+        <sys_id>a692d1c8c3568310b4c2fe3d0501315f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 15:34:28</sys_updated_on>
+        <value/>
+        <variable display_value="casenumber">4eb6094cc3d28310b4c2fe3d05013140</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=43fb1de919a9ddc1bdd44dcb6236130b"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>casenumber</field>
+        <id>43fb1de919a9ddc1bdd44dcb6236130b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:34:28</sys_created_on>
+        <sys_id>e292d1c8c3568310b4c2fe3d0501315f</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 15:34:54</sys_updated_on>
+        <table>var__m_sys_hub_flow_input_cb16c588c3d28310b4c2fe3d050131ff</table>
+        <value>{{pd.inputRecord.playbook_exposure}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>casetype</field>
+        <id>43fb1de919a9ddc1bdd44dcb6236130b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:34:28</sys_created_on>
+        <sys_id>ae92d1c8c3568310b4c2fe3d0501315e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 15:34:28</sys_updated_on>
+        <table>var__m_sys_hub_flow_input_cb16c588c3d28310b4c2fe3d050131ff</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_flow_output_cb16c588c3d28310b4c2fe3d050131ff^id=43fb1de919a9ddc1bdd44dcb6236130b"/>
+    <sys_pd_activity_action_override action="delete_multiple" query="activity=43fb1de919a9ddc1bdd44dcb6236130b"/>
+    <sys_pd_activity action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <activity_definition display_value="Launch Nested Playbook">cddfddbaa3d4f610ea7f10c4141e618e</activity_definition>
+        <ai_agent_execution_mode>off</ai_agent_execution_mode>
+        <ai_agent_obj_additional_detail/>
+        <ai_agent_objective/>
+        <ai_agent_run_as>playbook_user</ai_agent_run_as>
+        <ai_agent_run_with_roles/>
+        <ai_agent_user/>
+        <condition_to_run/>
+        <conversational_agents/>
+        <derivative_order/>
+        <derivative_parent/>
+        <description/>
+        <enable_ai_agent>false</enable_ai_agent>
+        <inputs/>
+        <label>Exposure Standalone</label>
+        <lane display_value="Exposure Management">8dd538e9836b145352cb10a5f66c1d7c</lane>
+        <name>exposure_standalone</name>
+        <order>2</order>
+        <outputs/>
+        <process_definition display_value="Submission Exposure">e662d988c3568310b4c2fe3d05013157</process_definition>
+        <restart_rule>RUN_ONLY_ONCE</restart_rule>
+        <start_rule/>
+        <start_rule_name>after_items</start_rule_name>
+        <start_rule_vars/>
+        <starts_after_activities>43fb1de919a9ddc1bdd44dcb6236130b</starts_after_activities>
+        <starts_after_branches/>
+        <starts_after_lanes/>
+        <swim_lane/>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:46:31</sys_created_on>
+        <sys_id>a9972a8c3e63c696bd00a48bce97e088</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 15:46:42</sys_updated_on>
+        <type_vals/>
+        <variant/>
+    </sys_pd_activity>
+    <sys_variable_value action="delete_multiple" query="document_key=a9972a8c3e63c696bd00a48bce97e088"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>a9972a8c3e63c696bd00a48bce97e088</document_key>
+        <order>1</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:46:31</sys_created_on>
+        <sys_id>47555d04c3968310b4c2fe3d050131de</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 15:46:31</sys_updated_on>
+        <value>a8dadc8dcf790b50ccf631ad5d851cce</value>
+        <variable display_value="Playbook Definition">123f5536a3d4f610ea7f10c4141e6115</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>a9972a8c3e63c696bd00a48bce97e088</document_key>
+        <order>2</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:46:31</sys_created_on>
+        <sys_id>8b555d04c3968310b4c2fe3d050131de</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 15:46:31</sys_updated_on>
+        <value/>
+        <variable display_value="Playbook Inputs">ae3fd5b6a3d4f610ea7f10c4141e611b</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_flow_input_02fe5532a3d4f610ea7f10c4141e61e0^id=a9972a8c3e63c696bd00a48bce97e088"/>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_flow_output_02fe5532a3d4f610ea7f10c4141e61e0^id=a9972a8c3e63c696bd00a48bce97e088"/>
+    <sys_pd_activity_action_override action="delete_multiple" query="activity=a9972a8c3e63c696bd00a48bce97e088"/>
+    <sys_pd_process_variant action="delete_multiple" query="process_definition=e662d988c3568310b4c2fe3d05013157"/>
+    <sys_pd_derivative action="delete_multiple" query="derivative_parent=43fb1de919a9ddc1bdd44dcb6236130b"/>
+    <sys_pd_derivative action="delete_multiple" query="derivative_parent=a9972a8c3e63c696bd00a48bce97e088"/>
+    <sys_pd_activity_override action="delete_multiple" query="override_parent=43fb1de919a9ddc1bdd44dcb6236130b"/>
+    <sys_pd_activity_override action="delete_multiple" query="override_parent=a9972a8c3e63c696bd00a48bce97e088"/>
+    <sys_pd_snapshot action="delete_multiple" query="sys_id=9f08118cc3968310b4c2fe3d05013115^sys_idNOT IN9f08118cc3968310b4c2fe3d05013115"/>
+    <sys_pd_snapshot action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <derivatives>{"table":"sys_pd_snapshot","id":"9f08118cc3968310b4c2fe3d05013115","name":"derivatives","type":"com.snc.pd.model.serialization.DerivativeFetcher"}</derivatives>
+        <name>submission_exposure_case_standard</name>
+        <process_definition>{"table":"sys_pd_snapshot","id":"9f08118cc3968310b4c2fe3d05013115","name":"process_definition","type":"com.snc.pd.model.ProcessDefinition"}</process_definition>
+        <process_dependencies>{"table":"sys_pd_snapshot","id":"9f08118cc3968310b4c2fe3d05013115","name":"process_dependencies","type":"com.snc.pd.model.dependency.InstructionBasedProcessDependenciesCollection"}</process_dependencies>
+        <process_plan>{"table":"sys_pd_snapshot","id":"9f08118cc3968310b4c2fe3d05013115","name":"process_plan","type":"com.snc.process_flow.engine.ProcessPlan"}</process_plan>
+        <source display_value="Submission Exposure">e662d988c3568310b4c2fe3d05013157</source>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:58:16</sys_created_on>
+        <sys_id>9f08118cc3968310b4c2fe3d05013115</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 15:58:16</sys_updated_on>
+    </sys_pd_snapshot>
+    <sys_json_chunk action="delete_multiple" query="document_id=9f08118cc3968310b4c2fe3d05013115"/>
+    <sys_pd_snapshot_chunk action="delete_multiple" query="document_id=9f08118cc3968310b4c2fe3d05013115^sys_idNOT IN5708118cc3968310b4c2fe3d05013126,5b08118cc3968310b4c2fe3d05013125,9308118cc3968310b4c2fe3d05013125,db08118cc3968310b4c2fe3d05013124"/>
+    <sys_pd_snapshot_chunk action="INSERT_OR_UPDATE">
+        <data>H4sIAAAAAAAA/41STW8aMRT8Lz5z2M0CAW4UQosUiASoHKIKvbUfrFuvbfkjBUX5733eD1L11NvuvLHfzHjemRRspqNSA6ahRjZjPpa19F4afcKrNT46PHHwePIBtAAn2IAZ69ns9ceAlcrwX/T9/jFgNA/pguN8fVhvv7IGuWDHRH2RGhdgoZRKhtt3dGkHmz1MsywbMOkP6MMuEnIG5XHAHHLjxBECr9Bto2iuaqUGWf8LvYHrdLio5z4ZufmANWuAowzVzqheDChlfn+Tl2qPPDpS0826zRaiR7FD8EkgY+3Cg9mhj01GhFTglxBgHxxCfT+Jzhm3Qe/JeK+MmE8JvpM4rZf6sjfR8TuLGytRrJype6RJ71mSCY2uB88kfIkBpCKzLBj7Jb3A4WaTrNXzyzG9jpOU9VrMtUiDLpZ0ck9bEnFYlOPRGHhRCjEp8ywbgXgcjYe8wOEIHgu6ROqAToPa/m8raIV5I/9S4KkGa8lhL5rqsjJuh9a48Dfc6Ozk9aG0CltCTDGearIrKOp7UsRsXC9M1GEDth8o8KFJegHxUoXPvCupxMKQoWtYi3tj2kZu4Kdxn2Wk2DVYXxliku3pOZvk+YTzYjqeFHlWDvnDGQuRjbK8yPNRqoYJoF4sOgh0hX+6UqUC0uEsFcmhDutlv1KYGtLLtP8ffwBfS4j9fgMAAA==</data>
+        <document_id display_value="submission_exposure_case_standard">9f08118cc3968310b4c2fe3d05013115</document_id>
+        <field>process_plan</field>
+        <length>696</length>
+        <position>0</position>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:58:16</sys_created_on>
+        <sys_id>5708118cc3968310b4c2fe3d05013126</sys_id>
+    </sys_pd_snapshot_chunk>
+    <sys_pd_snapshot_chunk action="INSERT_OR_UPDATE">
+        <data>H4sIAAAAAAAA/62SsW7DIBCG3wV19AAcYPBWKUuHTh2rDHB3jiy5OIqdLFHevbjNDpXKxHC677v/7i7OlwV5XQ985kycceJVDHfxkuLK++cWL1PM2xuJIV/nuRNzzPyK23SbtlL7Hs97lSey4Dl4cEkZC1ZjUjLa0TlU1KMYPkUModfRI7ADdMElkjIan5BDz9J70QkDY1LEQYUYiFAlImMIk9PgFMgkjo9OxFyEt+XywVs7/djV+cWxLtAgWWhFc8q4fE359HRk5zQFX/DWeVAyGdQjA0krFSjb73RM0gdlkE34qUENSLa3irSF3jvxj1P4JyvqX5aVCZhHawwbj4VV+lSd29Kos0qf6uwtF7Tnvly30/K33Fv8WnJv2V9LXvU52/bXcgctudfv4FHeN4hRcjlMBAAA</data>
+        <document_id display_value="submission_exposure_case_standard">9f08118cc3968310b4c2fe3d05013115</document_id>
+        <field>process_dependencies</field>
+        <length>416</length>
+        <position>0</position>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:58:16</sys_created_on>
+        <sys_id>5b08118cc3968310b4c2fe3d05013125</sys_id>
+    </sys_pd_snapshot_chunk>
+    <sys_pd_snapshot_chunk action="INSERT_OR_UPDATE">
+        <data>H4sIAAAAAAAA/+1XWW/cNhD+KwX9ai1EiaIoP6WHEwRoYseO0wJGIAzJoc1GFheS1kcX/u8dHbve2F47fSjaoH7Zg3Nw5puZj+SSKR2rggsDSSFVyuMs1imiy4RAoYySO2xvyZyvOmzYHmO77BIaD3X31rK9elFVu8zbUVDDBdKvd8F8oX8VaKxWKmA6f0lCB1WLu8xiaxo/73yoVxom1Nb3C2WzWC96+rW83WXd5fiNc7Z3+rm3d7TR+4ODQ9oIr9H0MSJ8vJlvBhAM7dYb9pY16ApL8CWcYd2tI1ktlEH/gVOQU8grSe9/MUR2EexD8aLtgbm3SDmUV747L5tQYftATJuVYMd8oSotduCrR51AuwHQJTYtTDaDyiSk/KAo8gSUSVGmRhZS2zgGobTBIsdYqZ3nFL6tys96WXcBXs9Du2iwbDuoLVShxrumYPuT9IfjTemqS7pmcb9J+pDutUi/NDQIm1dwo0P4QkA6X/vRYslemQpagoi9rT9BRdqvhhx0knAX2ywSFnUkMnARWAVRLGWKCeZJKosBgGqBX7kx4WLW1mY2b4LBti1dFa5mWJ/5GmfUBB4q/+dQntmbo8MmXN+Ql65vO7Jtb9pybsuV6Uagu4Osj+yUgbJgjbLG5UWss9gYJ1MONrMq48Ygo95vwhXbi8kqNN2qNj1UU0tTL1jf9oh8GhPYgnWHF6TU4YjjObST+oi9r+eL7qRFux6U1pM+ThN2cPjjh5P9EaSPa0djLNg0oXlHSVKHrtYadNhgbfpROP1MIa4rNmzUPlEtUbgkE0kWcXRFJHiGUaHzNEIJKXCZJVwkd9Wa4PgagH852638Zax11mqA1AoneYyQOx4bwQVHyRU+xm2vf9lkNubssQlztO/HoTurgoZqVsGiNudljW2H1HMT1mR4Bb4rXWhKamXKbxqtHgQSOjvtcXzy0+tfD35j/wfeFKnT3GLBCyisNVxbK4Q1WhIL8DTWO88pfBtvPutlzZtn2BkgaNCExrYblPkGu59JcLQWPMWWD5S3cme/Wb240H38W4cwNYi5zJPI0fUgEonkkaLrQSQd8VVK2eRYPD2E49q2MZya6p+cw8d43M7mvqpmh/RBJNnccY5JkzylcyFLMxUJUCqiS5KItJRgCyG5ENkwnPO+6MslORpCH+GercltdQbe3rLbnvV6rLshl61IJ1ZwJbiMYi5pa8tFBDoXEYcMdOIctZC7Q5rt/354cHxy1INyn/XvJP9J8osdXRwKQVDz4dqphUkcppYajKdcFX+f/K7LMzzzdJTWdNSGypub2VfDRIm+MOF2JqSCDO8AmY/vAOVQItcpvQGUUy/vgO+jimZ6zaEYq2iS1Ngsz7hNsjR/qeL3UMXbvwB8vKzalQ8AAA==</data>
+        <document_id display_value="submission_exposure_case_standard">9f08118cc3968310b4c2fe3d05013115</document_id>
+        <field>derivatives</field>
+        <length>1392</length>
+        <position>0</position>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:58:16</sys_created_on>
+        <sys_id>9308118cc3968310b4c2fe3d05013125</sys_id>
+    </sys_pd_snapshot_chunk>
+    <sys_pd_snapshot_chunk action="INSERT_OR_UPDATE">
+        <data>H4sIAAAAAAAA/+2YbU/bSBDHv0pl3Usi+XFt86ophBMSBY6ESKcKWfswhlWdtbVrQxHiu9/4MQkJJJzuWl70TWl3Z8Yz//nt7JYnSwrr0AJCXBFHEfcCEnmOzXzupuAJO7AdzwlC68BSdAFoaSq2kMbIXCXwo8hNpSHh1EBiSqoE1QJNM8ogQ9vpYPtp0tk2uwqMdfjtqf10JETgRRBHHmGOH3iBy5lj0yAlhDsi5MtPK3iov3JbB8GfurQO+xjMjmLH59SNm/QDm3kAaeD74Ec8Ilti/NFGOLAoL+W9LB8TAalUssRsrUNVZdmyjk0nAYZrWawbK9ivnNryVPR+uRag+3808RNdZbC5kpSPxbble6pRzqfnA0vDpj/PlWiKSsocN4Z0BRSgBCgum2bc1Cta3lMUo+tOKrOyzszClPEbkqpymXUj+4p6+zTh+abL+xgy+njRqNdlvlpafg9aSwHdVkYrxe8SVF+VycMdqGToWAdBSjMDWOmdzERrZ/pYvemY1x+7WEb+doOhUYABId5lD36bPXc9LoIwcIQbeOF2hGr/dwLUuvzGZxOfnQ34cPh0eg0I2WlbAQnbCqIUCDjMQ/ijNNqOUB/jnRgt3X6jtInSzkZ8OJT6DvfX5KevVKH/AiNY672w5GIBQtISljXL1fvU91LmCIidmMZCcIcJ4fuCM+J6xPFstqTwFsr65tbAsfPmNQRrNakf+z73nC1vgyheufD/hPIII14NEdfo3Nx+P6n72HYcO28I9+9Ztq6uz5OL87O/8Y+jibUNa8v6b6Deo5Mr0O+03gl9nclPQ76jlcZx6FJ8dwLxOIkJEzbSFjEOcQh2FC1pHV6b7UMzyxW8iiwXIhWCUeoJPyWODTRM8UbxHd8B4kRgbTlx09Ww69z+36S6L0ilKZKRyBIW5j2sro2DJ+szz6jBv1mnak4zDPS5UZy4DqSE0xFJI2fkE88eUZaKEScRj13ioGhpg2RWwX4QCmkKJGq+vwdWhh5lx9wdNZ1vqStkSaqiKq8NiIEuI9EeZi2lF5fjv64nbYqzIVArCiKW669gTP2/hG5NQ4ozTvGVYaveVIjFSE0sYETA9UY4+vgodm1vFMfEZm4geOj6KwptKvDLK2Sa4rF9s0gnFXgWaDzyo0DURbJRFIR0hC8uyvHujBwRfOQif+Vg3mNorQzmnda7B/MlrrM8/25+4oS+2abVK2luzKIXL75ZftXrv6NpBejuVwa4+fTcaNO5UNZ6TKaz8dVs/OVsksyuOoKaLnU5vgyBONUUI17z1u6oVgJRGqdDn4uKZZKPOdJlBsUW8lajl5jlk7l7ovPFVNHC3OUrOMAP4FXLWNup9jGVCEQKlNW3B/RMlhn0V0m7dLx5x7Qb07v8oX0jneR6MaTTby+35hIe1l37g3QiIRNmfe+0Po/NSCiormlpc62NsIWFzuviz+AesvHqs7LuOs+LdrIzEhDKPRzpEd5ldkBFGBB8GYIf0NCr21upscFDr5eHHr+9oHPQbUe8jpbzXH3Jcv5dqtt+YKDvtKwVv328UJfHW5ZrgSuV5DgFrOd/AIgOZh+7EgAA</data>
+        <document_id display_value="submission_exposure_case_standard">9f08118cc3968310b4c2fe3d05013115</document_id>
+        <field>process_definition</field>
+        <length>1580</length>
+        <position>0</position>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:58:16</sys_created_on>
+        <sys_id>db08118cc3968310b4c2fe3d05013124</sys_id>
+    </sys_pd_snapshot_chunk>
+    <sys_pd_snapshot_input action="delete_multiple" query="model=9f08118cc3968310b4c2fe3d05013115^sys_idNOT IN5b08118cc3968310b4c2fe3d0501312a"/>
+    <sys_pd_snapshot_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.snc.pd.designer.elementmapping.PlaybookInputElementMapper</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label>Parent record</column_label>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>parent_record</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="Reference">reference</internal_type>
+        <label>Parent record</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="submission_exposure_case_standard">9f08118cc3968310b4c2fe3d05013115</model>
+        <model_id>9f08118cc3968310b4c2fe3d05013115</model_id>
+        <model_table/>
+        <name>var__m_sys_pd_snapshot_input_9f08118cc3968310b4c2fe3d05013115</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference display_value="" name="x_gegis_ins_policy_submission">x_gegis_ins_policy_submission</reference>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_pd_snapshot_input</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:58:16</sys_created_on>
+        <sys_id>5b08118cc3968310b4c2fe3d0501312a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Parent record</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_pd_snapshot_input_5b08118cc3968310b4c2fe3d0501312a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 15:58:16</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_pd_snapshot_input>
+    <sys_pd_snapshot_output action="delete_multiple" query="model=9f08118cc3968310b4c2fe3d05013115"/>
+    <sys_flow_compiled_flow action="delete_multiple" query="sys_id=df08118cc59683106847a9567324f826^sys_idNOT INdf08118cc59683106847a9567324f826"/>
+    <sys_flow_compiled_flow action="INSERT_OR_UPDATE">
+        <parent_snapshot_id/>
+        <signature/>
+        <snapshot_id>9f08118cc3968310b4c2fe3d05013115</snapshot_id>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2026-07-20 15:58:16</sys_created_on>
+        <sys_id>df08118cc59683106847a9567324f826</sys_id>
+    </sys_flow_compiled_flow>
+    <sys_flow_compiled_flow_chunk action="delete_multiple" query="document_id=df08118cc59683106847a9567324f826^sys_idNOT INdb08118cc3968310b4c2fe3d05013129,5b08118cc3968310b4c2fe3d05013128,1308118cc3968310b4c2fe3d05013128,9308118cc3968310b4c2fe3d05013129"/>
+    <sys_flow_compiled_flow_chunk action="INSERT_OR_UPDATE">
+        <data>H4sIAAAAAAAA/zWPS2vDMBCE/8uefXDwI8W3lhAItAk0hR7NWrtOlshaIcl9EPLfqyTNdfabnZkzjFa/V5xQLHRnSOpfrJrTx69n6GD9uvuEAjTIQdyGnh1dDzGTl+Lm3Bu9gXU1tE2LphqInoZFWTZIy6atTcV1g8sqPxGXODi0W5yujjgPk8Qo6nr+8RrnwL3ByH1M6AgDQY7QLw5BiN/Qe3EH6NxsbQE5VJjWQaeHcsS4woT7FBizOKKNnDm0Ntv+S97J+95RnKScvaGHjnM6amDauXe2nItAV17+AM9c+iAfAQAA</data>
+        <document_id display_value="Created 2026-07-20 08:58:16">df08118cc59683106847a9567324f826</document_id>
+        <field>flow_config_param</field>
+        <length>308</length>
+        <position>0</position>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:58:16</sys_created_on>
+        <sys_id>db08118cc3968310b4c2fe3d05013129</sys_id>
+    </sys_flow_compiled_flow_chunk>
+    <sys_flow_compiled_flow_chunk action="INSERT_OR_UPDATE">
+        <data>H4sIAAAAAAAA/+2YX2/iRhDAv4vVR0Rsr21snkpIqiLdJSiklaqqsta7A7Fqdi2vfRcU8d07axsCtrkALUqk9AXB7PzbnR87Y78Y80R+v01gCSJXxvDPF0PJImMw4cbQUEW0jJWKpQjhOZWqyCBkVEGocio4zbjRq9Xv6BJOMvgtLiOA59k88H1GXM8nlhk5zJ4D4aZrWsRyB1v9URJTzM/IpMxRmNIME57tLokiSXpGvkp1ItPRTTh9uB/fzmbaBZOl1CGR53qUkYhzP7JM06V84HoOI+C4dEBQdRmLiVB5VrAcd6FzNFFInxtC1+4ZkGUye6TZAvJNdFS81dIO7QxSmeWxWEykMXwxftaJ1qf2AJTfi2R1A3NaJPl9kadFrlCvZ8QCv6L+umfIUlx957uaWrR+jT1OgIoiPZRwe1mX/S8MpSa/znJIjeGcJgowYMYhw/TurkY6kyf1urju7XEi4Luu8AKaPLQX6rr7nLvEh8AnXmQ5LnFthvWg7tzzmMUHrFX3rafwCNMOOjbg7PDxZXR3+2/hsLvgcLxT4NDa7wzHNuGLwvETfmb5QUQayxtQItMPLIdROygvCNeMCMDcdRxwfOZ7h0Gp/IVHOOjC5STedqAajR8nv08e/7gIWNZJt471/reOdclbB09A95YMGNqoJlcHVmusHDKPLA6BFdCAc2ZhaRyHs8iziWcRM2phte8uPML+I1JlkS6sbHIKVlr7nbHaJnwJrLaDSzWzJFK02tqPVGrAaBAMbIpzDXiEeYEXcdOkjh8xCAZg+n4LsA6f4RFOPiJlttNFGXFOoUxrvzNl24Qv2xVBtMbo7sWaLFY3NHCqhsZswrg7cC1uu2Tww46I3sIjzD8iU8T7f9JqM4X6aoWC5ah0URYLakf6wW5Wzt71qWC2sYirTK5Xe+XVm4lfU7lefQWlStMX40qmWkYTHeNbnK/Kc2MJVZoLJpd9JVg/5f2l5JD0d9z0J8tlkdMogenNiPP7hp+dveuN6YcUfNaim1XNuoaRj6XI4TnXgv2C/YI7fIA5NmXB9AX8jSaFlscC0wlZZRaiY9zd/Cw386YbJWiqnuSJyWSS4XmGrwUIN35qt6Ly0T5q5KmqxJSuEklPilpb6NKqzdkbQzxyvIuMqzqpMUXD5KySVqbtKjrBJ6/i/tHqO4cqPJ3jQ9UGjcrVbcS4Yk9xwqd1ELlME8iPmBXOKnHt/fBflriNYh8zs3wmGM4rFvZQWbCnTVt7s2f233zz1t928P5b0cMytnGAvnrrD1A9r5+DVW3b0QCsBk1vvR8MM9i8NvhUVDWK8B+1CYEFxNHoK023s85C7gpKfnCoyAtVWoeYxwJLoDphQQNWEv+M5RzLQuTl29SFvKbs70dZwV1OINer6scXGpXNaN3UKhdaQ8v6H+8tfcy/FgAA</data>
+        <document_id display_value="Created 2026-07-20 08:58:16">df08118cc59683106847a9567324f826</document_id>
+        <field>flow_structure</field>
+        <length>1424</length>
+        <position>0</position>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:58:16</sys_created_on>
+        <sys_id>5b08118cc3968310b4c2fe3d05013128</sys_id>
+    </sys_flow_compiled_flow_chunk>
+    <sys_flow_compiled_flow_chunk action="INSERT_OR_UPDATE">
+        <data>H4sIAAAAAAAA/+2cXU/jOBSG/0uuqyj+yBdXOzsfK7QrZlWY3YvVqHJsB6JJk6hJYBDiv69dAsO0BbtTTnzR3NE2dk/Oe84bP7LpnVdUbbfqeVfUVeud/Hfn/cZL1qo/PV4v/bbifiP8ZS1k6T+71D9dLvuOZaX8+8N5x1bd6Y/PvJlXCO8kmHlMvb4uuttT9dKTUYRFmiSchFFCUJBRjnNJRBAGiKAwXrR6HjW4Ee/rqpPfOz1MxdPdNvKMLaWa41NZ38xlLley4lJdes3KXr9fVCrKBX8YtlDffj/z8l+aJt+cpq1Y017Vewazqrls24WQeVEVOimLx3mGaauHOdo+WxZtqy+Q35u67VdywVkrdTIqwVbiKStF+7nRE7HSO8lZ2cr72S9o9UHyQsgznZUtwdCegh2LVG+T+fOrui/FuyHB877aFgDPvJJlUn2NR0kWhRHjJBMiyVAQhEzEYUQ5kTRkMfGNheNX8ka/uJR+kgVJiihnOF0LGQYZkTIPKZU04Un0VGM/yW8adSzyr/rqUbW/nKijArDv/+F2cnXH/jUeSlJ09e6y/JcV3UX9Te4oRjLz6kbNPP/4x+n5xce5evvm8eo/5a1FgSz09YtOD/DeItgLtrqUO3yLumqbrljK1ZvcmtZh+8ZCgJQbXGr+o9i344lcJfqhAyZ3enEdUfVleVCxzHSFNKXshi4bXWJRV/reu7rnV45CWH+3jkG3tasY1payfuj8Xtb8W1FdeieqDSXQA+AlT41dtbquSUBLTca31AtdVi+bajoZ205jc/RIHzxAi/7ukhWVIx9Yt8HIPY8CV1lfmz/wehahYUH75QxySXsIf+PJCtwCOCJAHUBJniEhU5SyVAiO1JyUCp5FmESIBNluAjeNOhb9oQncqI4bAkfUiODGyEdCcBS6ahxoBkcRQNIPgXAEtTS37ILJofaj8H2qBZrCjbHAU7i5oeEp3NJUNih8bfljL8kTV80OzOEoHd9WDSCONzcsJ3MDJHFrHwAmcbtGGLntMXKV9TFIHGMLEgd3g9dIHJPJChxvhUNt6rE0jTFL1NiI8CiNMhEEjCYZl2ksgyTZTeKmUceiPzSJG9VxQ+I4NJK4MfKRSBxDbdIabxCaxHEMkPRDSBxDLc4tu2ByqP1IfJ9qgSZxYyzwJG5uaHgStzQV9/vhOHXV68AgToLxXdUA4mTzIOrkbYAgbm0DwCBu1wgjtz2BOpJr5//QRzyJBYiDu8FrIE7oZAVuQZxA8QQfDjdI+nC4gWPCRRiHSOCQxC8dSjeNOhb9oUHcqI6jQ+mxEcSNkY8E4gSKDo03CA3iZHvv5vCkHwLiFOrgmmUXTA61H4jvUy3QIG6MBR7EzQ0ND+KWpuIexCnU1phVUQK6KsXju6oBxOnmNtjkbYAgbm0DwCBu1whjtz3UfqCd/wMva2loAeLgbvAaiNNosgK3IE6fnfs0/pTCsGiZ/p3fDp2N+Xxcg9rbnkHw98OEO3RONnQ7Fl2si/uZGNa/ovGqgF9nngqL9aUyvqbv/tFRKzHv7p/e/9x3P31w/z8knBCWOEUAAA==</data>
+        <document_id display_value="Created 2026-07-20 08:58:16">df08118cc59683106847a9567324f826</document_id>
+        <field>instructions</field>
+        <length>1568</length>
+        <position>0</position>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:58:16</sys_created_on>
+        <sys_id>1308118cc3968310b4c2fe3d05013128</sys_id>
+    </sys_flow_compiled_flow_chunk>
+    <sys_flow_compiled_flow_chunk action="INSERT_OR_UPDATE">
+        <data>H4sIAAAAAAAA/6tWyswrLikqTS7JzM/zTAnJD0rNzS9L9U6tdEosSc5QsqqurQUAOtk80SQAAAA=</data>
+        <document_id display_value="Created 2026-07-20 08:58:16">df08118cc59683106847a9567324f826</document_id>
+        <field>runtime_value_metadata</field>
+        <length>76</length>
+        <position>0</position>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:58:16</sys_created_on>
+        <sys_id>9308118cc3968310b4c2fe3d05013129</sys_id>
+    </sys_flow_compiled_flow_chunk>
+    <sys_pd_trigger_instance action="delete_multiple" query="sys_id=5e803155e62e5cca3d232105e9ac60d8^sys_idNOT IN5e803155e62e5cca3d232105e9ac60d8"/>
+    <sys_pd_trigger_instance action="INSERT_OR_UPDATE">
+        <label>When Exposure Case Info is Updated</label>
+        <name/>
+        <playbook_inputs/>
+        <playbook_inputs/>
+        <process_definition display_value="Submission Exposure">e662d988c3568310b4c2fe3d05013157</process_definition>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:46:09</sys_created_on>
+        <sys_id>5e803155e62e5cca3d232105e9ac60d8</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 15:58:11</sys_updated_on>
+        <trigger_definition/>
+        <trigger_inputs/>
+        <trigger_type display_value="Record Update">b08951170f1200108c87f4f0ff767e54</trigger_type>
+    </sys_pd_trigger_instance>
+    <sys_translated_text action="delete_multiple" query="documentkey=5e803155e62e5cca3d232105e9ac60d8"/>
+    <sys_variable_value action="delete_multiple" query="document_key=5e803155e62e5cca3d232105e9ac60d8"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_trigger_instance</document>
+        <document_key>5e803155e62e5cca3d232105e9ac60d8</document_key>
+        <order>1</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:58:11</sys_created_on>
+        <sys_id>0a089d4cc3968310b4c2fe3d05013192</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 15:58:11</sys_updated_on>
+        <value>{{triggerRecord}}</value>
+        <variable display_value="Parent record">a662d988c3568310b4c2fe3d05013160</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_trigger_instance</document>
+        <document_key>5e803155e62e5cca3d232105e9ac60d8</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:46:10</sys_created_on>
+        <sys_id>0e455904c3968310b4c2fe3d050131c2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 15:46:10</sys_updated_on>
+        <value>playbook_exposureISNOTEMPTY</value>
+        <variable display_value="Condition">52ce78d1ff2200108c8733af793bf1b3</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_trigger_instance</document>
+        <document_key>5e803155e62e5cca3d232105e9ac60d8</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:46:10</sys_created_on>
+        <sys_id>42455904c3968310b4c2fe3d050131c3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 15:46:10</sys_updated_on>
+        <value>x_gegis_ins_policy_submission</value>
+        <variable display_value="Table">82be38d1ff2200108c8733af793bf1a7</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=5e803155e62e5cca3d232105e9ac60d8"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>parent_record</field>
+        <id>5e803155e62e5cca3d232105e9ac60d8</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:46:10</sys_created_on>
+        <sys_id>4e455904c3968310b4c2fe3d050131c1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 15:46:10</sys_updated_on>
+        <table>var__m_sys_pd_process_input_e662d988c3568310b4c2fe3d05013157</table>
+        <value>{{triggerRecord}}</value>
+    </sys_element_mapping>
+    <sys_trigger_runner_mapping action="delete_multiple" query="identifier=5e803155e62e5cca3d232105e9ac60d8^sys_idNOT IN1b08118cc3968310b4c2fe3d05013115"/>
+    <sys_trigger_runner_mapping action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <data>{"trigger_on_unique_change":"false","parent_record":{"elementMapping":"{{triggerRecord}}","variableValue":"{{triggerRecord}}","elementMappingOrVariableValue":"{{triggerRecord}}"},"run_trigger":"run_once"}</data>
+        <identifier>5e803155e62e5cca3d232105e9ac60d8</identifier>
+        <identifier_type>playbook</identifier_type>
+        <runner>PDTriggerRunner</runner>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:58:16</sys_created_on>
+        <sys_id>1b08118cc3968310b4c2fe3d05013115</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 15:58:16</sys_updated_on>
+        <trigger display_value="">1f08118cc3968310b4c2fe3d05013114</trigger>
+    </sys_trigger_runner_mapping>
+    <sys_json_chunk action="delete_multiple" query="document_id=1b08118cc3968310b4c2fe3d05013115"/>
+    <sys_flow_record_trigger action="delete_multiple" query="sys_id=1f08118cc3968310b4c2fe3d05013114^sys_idNOT IN1f08118cc3968310b4c2fe3d05013114"/>
+    <sys_flow_record_trigger action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition table="x_gegis_ins_policy_submission">playbook_exposureISNOTEMPTY<item endquery="false" field="playbook_exposure" goto="false" newquery="false" operator="ISNOTEMPTY" or="false" value=""/>
+        </condition>
+        <name/>
+        <on_delete>false</on_delete>
+        <on_insert>false</on_insert>
+        <on_update>true</on_update>
+        <published_version/>
+        <run_flow_in>background</run_flow_in>
+        <run_on_extended>false</run_on_extended>
+        <run_when_setting>both</run_when_setting>
+        <run_when_user_list/>
+        <run_when_user_setting>any</run_when_user_setting>
+        <sys_class_name>sys_flow_record_trigger</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:58:16</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>1f08118cc3968310b4c2fe3d05013114</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_overrides/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 15:58:16</sys_updated_on>
+        <table>x_gegis_ins_policy_submission</table>
+        <trigger_definition/>
+    </sys_flow_record_trigger>
+    <sys_pd_process_definition action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <allow_as_nested>true</allow_as_nested>
+        <copied_from/>
+        <copied_from_label/>
+        <data_retention_period_override>6_week</data_retention_period_override>
+        <description>Submission Exposure Case Standard</description>
+        <designer_state>{"diagram":{"hiddenElements":{"edges":{}}}}</designer_state>
+        <engine_major_version/>
+        <evaluate_variant_children_after/>
+        <execution_type>record_driven</execution_type>
+        <label>Submission Exposure</label>
+        <launcher_description/>
+        <launcher_inputs/>
+        <launcher_record_form_view/>
+        <launcher_show_record_form>false</launcher_show_record_form>
+        <launcher_template_fields/>
+        <launcher_title/>
+        <name>submission_exposure_case_standard</name>
+        <now_assist_kb/>
+        <now_assist_prompt/>
+        <permission>{}</permission>
+        <process_type display_value="Standard playbook">52c6d3eeff1be2102c2fffffffffff44</process_type>
+        <public_access>false</public_access>
+        <restartable>RESTARTABLE_TRUE</restartable>
+        <run_on_pad_engine>false</run_on_pad_engine>
+        <run_strategy>run_once</run_strategy>
+        <run_strategy_on_process_definition>true</run_strategy_on_process_definition>
+        <schema_version>3</schema_version>
+        <snapshot display_value="submission_exposure_case_standard">9f08118cc3968310b4c2fe3d05013115</snapshot>
+        <start_non_blocking>true</start_non_blocking>
+        <status>published</status>
+        <sync_state>COMPLETE</sync_state>
+        <synced_on/>
+        <sys_class_name>sys_pd_process_definition</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:33:38</sys_created_on>
+        <sys_id>e662d988c3568310b4c2fe3d05013157</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Submission Exposure</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_pd_process_definition_e662d988c3568310b4c2fe3d05013157</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 15:58:16</sys_updated_on>
+        <view_type>DIAGRAM</view_type>
+    </sys_pd_process_definition>
+    <sys_translated_text action="delete_multiple" query="documentkey=e662d988c3568310b4c2fe3d05013157"/>
+    <sys_variable_value action="delete_multiple" query="document_key=e662d988c3568310b4c2fe3d05013157"/>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_pd_process_input_e662d988c3568310b4c2fe3d05013157^id=e662d988c3568310b4c2fe3d05013157"/>
+</record_update>

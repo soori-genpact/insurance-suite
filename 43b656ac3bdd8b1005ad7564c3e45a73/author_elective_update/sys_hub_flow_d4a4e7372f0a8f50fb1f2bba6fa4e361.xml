@@ -1,0 +1,993 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_hub_flow">
+    <sys_hub_flow action="DELETE">
+        <access>public</access>
+        <acls/>
+        <active>false</active>
+        <allow_high_security_roles>false</allow_high_security_roles>
+        <annotation/>
+        <attributes>labelCacheCleanUpExecuted=true</attributes>
+        <authored_on_release_version>29000</authored_on_release_version>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category/>
+        <compiler_build/>
+        <copied_from/>
+        <copied_from_name/>
+        <description>Get Case Record By number in Submission Playbook</description>
+        <display_name_after_preview/>
+        <flow_priority>MEDIUM</flow_priority>
+        <generation_source/>
+        <internal_name>get_case_record_by_number_in_submission_playbook</internal_name>
+        <label_cache>[{"name":"subflow.case_number","label":"Input➛case number","reference":"","reference_display":"","type":"string","base_type":"string","parent_table_name":null,"column_name":"","choices":[{"label":null,"value":null,"order":0.0}],"usedInstances":{"9f6223b0-4a3a-49c7-8ca7-fb4d65ef07b9":[null,"conditions"]},"attributes":{"sourceId":"","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","sourceUiUniqueId":"","sourceType":"","uiType":"string","uiUniqueId":"9ea0a88c-96ea-4d52-a99e-85b33aaa7b84"}},{"name":"9f6223b0-4a3a-49c7-8ca7-fb4d65ef07b9.Record","label":"2➛Clearance Case Record","reference":"x_gegis_ins_policy_clearance_case","reference_display":"Clearance Case Record","type":"reference","base_type":"reference","parent_table_name":null,"column_name":null,"choices":null,"usedInstances":{},"attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"subflow.case","label":"Input➛Case","reference":"","reference_display":"","type":"choice","base_type":"choice","parent_table_name":null,"column_name":"","choices":[{"label":null,"value":null,"order":0.0}],"usedInstances":{"ef6d6246-e5d7-4dee-ad96-cacaccca93fb":["condition"]},"attributes":{"sourceId":"","sourceUiUniqueId":"","sourceType":"","uiUniqueId":"d8f57f6f-4d00-4f9d-8b27-7dc974847406"}},{"name":"undefined","label":null,"reference":null,"reference_display":null,"type":null,"base_type":null,"parent_table_name":null,"column_name":null,"choices":null,"usedInstances":{},"attributes":{"":""}}]</label_cache>
+        <latest_snapshot/>
+        <master_snapshot/>
+        <master_snapshot_digest/>
+        <name>Get Case Record By number in Submission Playbook</name>
+        <natlang/>
+        <outputs/>
+        <pre_compiled>false</pre_compiled>
+        <remote_trigger_id/>
+        <run_as>user</run_as>
+        <run_with_roles/>
+        <sc_callable>false</sc_callable>
+        <show_draft_actions>false</show_draft_actions>
+        <show_triggered_flows>false</show_triggered_flows>
+        <status>draft</status>
+        <substatus/>
+        <sys_class_name>sys_hub_flow</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 07:33:58</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>d4a4e7372f0a8f50fb1f2bba6fa4e361</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_name>Get Case Record By number in Submission Playbook</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_hub_flow_d4a4e7372f0a8f50fb1f2bba6fa4e361</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 14:38:57</sys_updated_on>
+        <type>subflow</type>
+        <updation_source/>
+        <version>2</version>
+        <version_record>93d509c8c3d28310b4c2fe3d050131d8</version_record>
+    </sys_hub_flow>
+    <sys_translated_text action="DELETE" query="documentkey=d4a4e7372f0a8f50fb1f2bba6fa4e361"/>
+    <sys_variable_value action="DELETE" query="document_key=d4a4e7372f0a8f50fb1f2bba6fa4e361"/>
+    <sys_element_mapping action="DELETE" query="table=var__m_sys_hub_flow_output_d4a4e7372f0a8f50fb1f2bba6fa4e361^id=d4a4e7372f0a8f50fb1f2bba6fa4e361"/>
+    <sys_hub_flow_stage action="DELETE" query="flow=d4a4e7372f0a8f50fb1f2bba6fa4e361"/>
+    <sys_flow_cat_variable_model action="DELETE" query="id=d4a4e7372f0a8f50fb1f2bba6fa4e361^sys_idNOT INd8a4e7372f0a8f50fb1f2bba6fa4e363"/>
+    <sys_flow_cat_variable_model action="DELETE">
+        <id>d4a4e7372f0a8f50fb1f2bba6fa4e361</id>
+        <name>Get Case Record By number in Submission Playbook</name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 07:33:58</sys_created_on>
+        <sys_id>d8a4e7372f0a8f50fb1f2bba6fa4e363</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 07:33:58</sys_updated_on>
+    </sys_flow_cat_variable_model>
+    <sys_flow_cat_variable action="DELETE" query="flow_catalog_model=d8a4e7372f0a8f50fb1f2bba6fa4e363"/>
+    <sys_hub_flow_input action="DELETE" query="model=d4a4e7372f0a8f50fb1f2bba6fa4e361^sys_idNOT IN5615ef372f0a8f50fb1f2bba6fa4e3c1,e6152f772f0a8f50fb1f2bba6fa4e3e7"/>
+    <sys_hub_flow_input action="DELETE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string,uiTypeLabel=String,uiUniqueId=9ea0a88c-96ea-4d52-a99e-85b33aaa7b84</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>case_number</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="String">string</internal_type>
+        <label>case number</label>
+        <mandatory>false</mandatory>
+        <max_length>65000</max_length>
+        <model display_value="Get Case Record By number in Submission Playbook">d4a4e7372f0a8f50fb1f2bba6fa4e361</model>
+        <model_id>d4a4e7372f0a8f50fb1f2bba6fa4e361</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_input_d4a4e7372f0a8f50fb1f2bba6fa4e361</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 07:36:02</sys_created_on>
+        <sys_id>5615ef372f0a8f50fb1f2bba6fa4e3c1</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 14:26:30</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_action_input_action_instance action="DELETE" query="action_input=5615ef372f0a8f50fb1f2bba6fa4e3c1"/>
+    <sys_hub_flow_input action="DELETE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=choice,uiTypeLabel=Choice,uiUniqueId=d8f57f6f-4d00-4f9d-8b27-7dc974847406</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice>3</choice>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>case</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="Choice">choice</internal_type>
+        <label>Case</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Get Case Record By number in Submission Playbook">d4a4e7372f0a8f50fb1f2bba6fa4e361</model>
+        <model_id>d4a4e7372f0a8f50fb1f2bba6fa4e361</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_input_d4a4e7372f0a8f50fb1f2bba6fa4e361</name>
+        <next_element/>
+        <order>2</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 07:36:02</sys_created_on>
+        <sys_id>e6152f772f0a8f50fb1f2bba6fa4e3e7</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 14:26:30</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_action_input_action_instance action="DELETE" query="action_input=e6152f772f0a8f50fb1f2bba6fa4e3e7"/>
+    <sys_hub_flow_output action="DELETE" query="model=d4a4e7372f0a8f50fb1f2bba6fa4e361^sys_idNOT IN4575e7b72f0a8f50fb1f2bba6fa4e3fc,4d7563f32f0a8f50fb1f2bba6fa4e3ad,51752bb72f0a8f50fb1f2bba6fa4e325,91752bb72f0a8f50fb1f2bba6fa4e31d"/>
+    <sys_hub_flow_output action="DELETE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=reference,uiTypeLabel=Reference,uiUniqueId=c240badf-9ccb-47b3-b360-9f3aafc15ad1</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table>x_gegis_ins_policy_exposure_case</choice_table>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>exposure_case</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_link/>
+        <internal_type display_value="Reference">reference</internal_type>
+        <label>Exposure Case</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Get Case Record By number in Submission Playbook">d4a4e7372f0a8f50fb1f2bba6fa4e361</model>
+        <model_id>d4a4e7372f0a8f50fb1f2bba6fa4e361</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_output_d4a4e7372f0a8f50fb1f2bba6fa4e361</name>
+        <next_element/>
+        <order>2</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference display_value="" name="x_gegis_ins_policy_exposure_case">x_gegis_ins_policy_exposure_case</reference>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_output</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 07:37:35</sys_created_on>
+        <sys_id>4575e7b72f0a8f50fb1f2bba6fa4e3fc</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 07:37:35</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_output>
+    <sys_hub_action_input_action_instance action="DELETE" query="action_input=4575e7b72f0a8f50fb1f2bba6fa4e3fc"/>
+    <sys_hub_flow_output action="DELETE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=reference,uiTypeLabel=Reference,uiUniqueId=b651c520-859e-4c3f-b325-8847c69a1a17</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table>x_gegis_ins_policy_risk_case</choice_table>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>risk_case</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_link/>
+        <internal_type display_value="Reference">reference</internal_type>
+        <label>Risk Case</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Get Case Record By number in Submission Playbook">d4a4e7372f0a8f50fb1f2bba6fa4e361</model>
+        <model_id>d4a4e7372f0a8f50fb1f2bba6fa4e361</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_output_d4a4e7372f0a8f50fb1f2bba6fa4e361</name>
+        <next_element/>
+        <order>3</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference display_value="" name="x_gegis_ins_policy_risk_case">x_gegis_ins_policy_risk_case</reference>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_output</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 07:37:35</sys_created_on>
+        <sys_id>4d7563f32f0a8f50fb1f2bba6fa4e3ad</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 07:37:35</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_output>
+    <sys_hub_action_input_action_instance action="DELETE" query="action_input=4d7563f32f0a8f50fb1f2bba6fa4e3ad"/>
+    <sys_hub_flow_output action="DELETE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=reference,uiTypeLabel=Reference,uiUniqueId=298d5d17-1f44-4a00-8e00-a900b559982c</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table>x_gegis_ins_policy_quote_and_bind_case</choice_table>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>quote_and_bind_case</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_link/>
+        <internal_type display_value="Reference">reference</internal_type>
+        <label>Quote and Bind Case</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Get Case Record By number in Submission Playbook">d4a4e7372f0a8f50fb1f2bba6fa4e361</model>
+        <model_id>d4a4e7372f0a8f50fb1f2bba6fa4e361</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_output_d4a4e7372f0a8f50fb1f2bba6fa4e361</name>
+        <next_element/>
+        <order>4</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference display_value="" name="x_gegis_ins_policy_quote_and_bind_case">x_gegis_ins_policy_quote_and_bind_case</reference>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_output</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 07:37:36</sys_created_on>
+        <sys_id>51752bb72f0a8f50fb1f2bba6fa4e325</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 07:37:36</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_output>
+    <sys_hub_action_input_action_instance action="DELETE" query="action_input=51752bb72f0a8f50fb1f2bba6fa4e325"/>
+    <sys_hub_flow_output action="DELETE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=reference,uiTypeLabel=Reference,uiUniqueId=e52a0508-db6f-4361-8df9-90ee802df9f6</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table>x_gegis_ins_policy_clearance_case</choice_table>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>clearance_case</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_link/>
+        <internal_type display_value="Reference">reference</internal_type>
+        <label>Clearance Case</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Get Case Record By number in Submission Playbook">d4a4e7372f0a8f50fb1f2bba6fa4e361</model>
+        <model_id>d4a4e7372f0a8f50fb1f2bba6fa4e361</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_output_d4a4e7372f0a8f50fb1f2bba6fa4e361</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference display_value="" name="x_gegis_ins_policy_clearance_case">x_gegis_ins_policy_clearance_case</reference>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_output</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 07:37:35</sys_created_on>
+        <sys_id>91752bb72f0a8f50fb1f2bba6fa4e31d</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 07:37:36</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_output>
+    <sys_hub_action_input_action_instance action="DELETE" query="action_input=91752bb72f0a8f50fb1f2bba6fa4e31d"/>
+    <sys_hub_alias_mapping action="DELETE" query="source_id=d4a4e7372f0a8f50fb1f2bba6fa4e361"/>
+    <sys_hub_trigger_instance_v2 action="DELETE" query="flow=d4a4e7372f0a8f50fb1f2bba6fa4e361"/>
+    <sys_hub_action_instance_v2 action="DELETE" query="flow=d4a4e7372f0a8f50fb1f2bba6fa4e361^sys_idNOT IN68b523f72f0a8f50fb1f2bba6fa4e3f3"/>
+    <sys_hub_action_instance_v2 action="DELETE">
+        <action_type display_value="Look Up Record">9d09f99587003300663ca1bb36cb0ba3</action_type>
+        <action_type_parent/>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot/>
+        <display_text/>
+        <flow display_value="Get Case Record By number in Submission Playbook">d4a4e7372f0a8f50fb1f2bba6fa4e361</flow>
+        <generation_source/>
+        <order>2</order>
+        <parent_ui_id>ef6d6246-e5d7-4dee-ad96-cacaccca93fb</parent_ui_id>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 07:38:38</sys_created_on>
+        <sys_id>68b523f72f0a8f50fb1f2bba6fa4e3f3</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 14:26:31</sys_updated_on>
+        <ui_id>9f6223b0-4a3a-49c7-8ca7-fb4d65ef07b9</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+1XW2/iOhD+K1GeKSchQKBvq1ZIK51zKu12+7K7spzYAesYO2s7bSniv+84NyikEC7V7krnCcWeyzcz38yYr0uXEffaHRBvnIzHg1HoeUHgecNhEGM/ioJhHHlR5LsdV+A5BUktlUFmkVI4esQ8q8+wjuGIMJ1yvHgob7BjpPMC5/GMcaKocK+/fu+4KVZgzVDlXi+3rqxpxHFEOajfzCSLrae2ICvFz4DIuS9QNgDPf67Bc2leKmKxBB2XPhsqCAV3Ceaadtw5FgQbqRb1iaKY3Am+PpgxYcCaa4WfNXsB00HPyiUUwoppcVd/ojJHxXGBQUPwyxp9nbWGBJdQvVVnLf9i5fG2PKGbCv4KkktogjNubk7z6R/rs2d9FgHepYZJKLEb2PTjiJdZiSXP5uLfokRujfChgVnFze0bBMs0JJamtni2GmVpks8z+fSpyvyEiRxXeclljHn9hY1RLMqMzcvSTQhKGOUEMcGZsJ6MyixVKKdz8IDmOE2ZmKJUyUeWW4VY5t0ph49uwuWTzQWbii6ObeRdIBHuTuD8Nj9+wIrZLPwDZkC5Yx3OQLX0h3SsWGrQEyNTatbeKykizRPm/zXdl+yqeygPz13lBEQ/MhtxkegyVygvixUofH4AvI+0TIuteN57/t7ew2Srz4qybrBjdzScPBQmti5OTplOa3CV8p1lphMt3sJbToai9qLwUbH5YtNh5B03HermOap3dpvCkuSMnnhH6jf12iHKFpk4xNvx3p0xXvOAJWgO2WMpp0jRGIquEVYUJTITBBWhbBDapjZhSptSeJfgn6jJlHAkkMExM+rk0k4tfYmN2CK6SvFj4lThlRi0A+E5eXhOHd5xyXhjj/Yv1in9Izvl9U6bYMbz1GtD043aUaWkemOXHqjanvK3XLQtQfkXBXX+Jm7ie+NGPoD1wnv6fWbSudsypjjq9/AwDHzf83yPhN4oDP3RMEqGOOwn60ZDSIsY1jlYToAYYB5VRKiq6u2OlmKnnzpD7mG6/jUpTbTFWynfSvEt87xeaBwLGOrsVIAPh1TOi0hKTrFY03PwywbGpVbruTzO2P12boqjv5uK9l6bOGNfBPuR0Y+WFCPq9UY+ia9GoR9e9RMyvBoTPLjC42gQBoTG/eT8dyUZ7H26beznWArCbBR6ozdENo+osoQMyHKps8gG3Y0xFKe4Wq12u6ed0on7eRNl2wgblZvCrvbt5lm1Ly7YQt7/79P2u6DVM5Tsfajh/rrehbk1w5/RlE6ZhrexRqnkLF6gGAaEwrYWlrO7/L6p7p0bfM6asEhe/c9qEcUr5d2oSgLnn1t/r7w//u/V7/mWAUCMQ7VRkXQtM5Vn5RF4lOn8Asiiyzf9qfP8+0/f50zuShQAAA==</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="DELETE" query="source_id=68b523f72f0a8f50fb1f2bba6fa4e3f3"/>
+    <sys_hub_sub_flow_instance_v2 action="DELETE" query="flow=d4a4e7372f0a8f50fb1f2bba6fa4e361"/>
+    <sys_hub_flow_logic_instance_v2 action="DELETE" query="flow=d4a4e7372f0a8f50fb1f2bba6fa4e361^sys_idNOT IN9a85abb72f0a8f50fb1f2bba6fa4e3ec,bed3c544c3d28310b4c2fe3d0501316e"/>
+    <sys_hub_flow_logic_instance_v2 action="DELETE">
+        <attributes/>
+        <block display_value="">8b03c1c0c3d28310b4c2fe3d050131f7</block>
+        <comment/>
+        <connected_to/>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Get Case Record By number in Submission Playbook">d4a4e7372f0a8f50fb1f2bba6fa4e361</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="If">af4e1945c3e232002841b63b12d3ae3e</logic_definition>
+        <order>1</order>
+        <outputs_assigned/>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 07:37:56</sys_created_on>
+        <sys_id>9a85abb72f0a8f50fb1f2bba6fa4e3ec</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 14:34:18</sys_updated_on>
+        <ui_id>ef6d6246-e5d7-4dee-ad96-cacaccca93fb</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+1U22obMRD9FaNns+x6Y9P4LbgEAm0DjclLG5ZZadYW1UpbXey4xv/e0V4c0zhtCHnsm3Q0l3NmDtozE3wTvFuaK+fkSrP5t4cxkzpidN4zDTWyOeNGC+ml0WzMNqBCxPZ7F8pKmW3CweHh8D2kaS4WCsGC5kiRQrpGwe7+1Ql8LZWw2NNoCK/Ro2Xz/R9PftdgoaBERXXvvJV6RelS0O0SptU0S6c8n8zySZpOPlxk5Swvs4nIAS9mFDckLk5UnREamxDkhvLGishlko4ZPnrUAqlfBcrhmNWgBXhjd2zubSDAIohbrXbHiLXUnqqxGPvo5C+MldI0RlZIwjh2r8dr0Y+vg/naSI63TcutRTyUqs/hRoVaf+kkxMFjBUH5YfCEBEf1sImkI42eU3W3NtuvQ8NrqVuB/aMyHNTxBp7GUAaPLm4DFdZUqKihaWg4RWPNRrbJxKVOVoouSVw1NY2+SoBH4gnNCJJrwj+28D1YGVV8pjKUTBt0heNWNoO2tjk7tFMpfobIp9PXKym6YVBAl3ZFbTbYkz6Mn/u3aIEnE99UowWZcbSkXY/+4t0X497DslUKVXbJs/OWhfycZUefWuS5cQeFL7g3+4d7e+RV9p1O/7v31L2RZglO8qL9Qalc/AvebN+HaNOuhes8JJBLR0yWEbsZfun4sKOtS34KbY39ETU8YYffN8CC7+8FAAA=</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
+    <sys_hub_flow_logic_instance_v2 action="DELETE">
+        <attributes/>
+        <block display_value="">f2d3c544c3d28310b4c2fe3d0501316e</block>
+        <comment/>
+        <connected_to/>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Get Case Record By number in Submission Playbook">d4a4e7372f0a8f50fb1f2bba6fa4e361</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="Assign Subflow Outputs">df4e1945c3e232002841b63b12d3ae3e</logic_definition>
+        <order>3</order>
+        <outputs_assigned>clearance_case</outputs_assigned>
+        <parent_ui_id>ef6d6246-e5d7-4dee-ad96-cacaccca93fb</parent_ui_id>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 14:30:02</sys_created_on>
+        <sys_id>bed3c544c3d28310b4c2fe3d0501316e</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 14:38:47</sys_updated_on>
+        <ui_id>c34b6b84-95b5-4e1d-af70-244e9ffbf878</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/02PzWrDMBCE30XnuPhfcW459lpCL6WU1Wq3XapKRrIdgvG7V6aB5jjfzC4zqwrzNM5TuoRzSvLp1eltVWLVSQ2V7mpjdM0lHLkr2VScNfQMLTWVVQfl4YdyEh1BBI/0gZAo8wXcvBvrOnBf140pixYaKNoBdXFE0AWb1vYdcanN8PRCGKLdtnxpJY0Obq/3B5nglzgbaS/2flAJo4zTGSdZss/gEm0Zi983/EUWiALG0V1aQkkS/GVnzw85e8v1BR/RNcRvduH6z7ZfqTmuBSEBAAA=</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
+    <sys_hub_pill_compound action="DELETE" query="attached_to=d4a4e7372f0a8f50fb1f2bba6fa4e361"/>
+    <sys_hub_flow_variable action="DELETE" query="model=d4a4e7372f0a8f50fb1f2bba6fa4e361"/>
+    <sys_documentation action="DELETE">
+        <element>case_number</element>
+        <help/>
+        <hint/>
+        <label>case number</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_d4a4e7372f0a8f50fb1f2bba6fa4e361</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 07:36:02</sys_created_on>
+        <sys_id>66152f772f0a8f50fb1f2bba6fa4e3e5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 07:36:02</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="DELETE">
+        <element>case</element>
+        <help/>
+        <hint/>
+        <label>Case</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_d4a4e7372f0a8f50fb1f2bba6fa4e361</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 07:36:02</sys_created_on>
+        <sys_id>a6156f772f0a8f50fb1f2bba6fa4e30b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 07:36:02</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="DELETE" query="name=var__m_sys_hub_flow_input_d4a4e7372f0a8f50fb1f2bba6fa4e361^sys_idNOT IN26152f772f0a8f50fb1f2bba6fa4e3ec,6a152f772f0a8f50fb1f2bba6fa4e3eb,6e156f772f0a8f50fb1f2bba6fa4e305,ae152f772f0a8f50fb1f2bba6fa4e3ea,e2152f772f0a8f50fb1f2bba6fa4e3ea"/>
+    <sys_choice action="DELETE" field="case" table="var__m_sys_hub_flow_input_d4a4e7372f0a8f50fb1f2bba6fa4e361">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>case</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Quote</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_d4a4e7372f0a8f50fb1f2bba6fa4e361</name>
+            <sequence>3</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-07-20 07:36:02</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>26152f772f0a8f50fb1f2bba6fa4e3ec</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-20 14:26:30</sys_updated_on>
+            <value>Quote</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>case</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Exposure</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_d4a4e7372f0a8f50fb1f2bba6fa4e361</name>
+            <sequence>2</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-07-20 07:36:02</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>6a152f772f0a8f50fb1f2bba6fa4e3eb</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-20 14:26:30</sys_updated_on>
+            <value>Exposure</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>case</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Renewal</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_d4a4e7372f0a8f50fb1f2bba6fa4e361</name>
+            <sequence>4</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-07-20 07:36:02</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>6e156f772f0a8f50fb1f2bba6fa4e305</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-20 14:26:30</sys_updated_on>
+            <value>Renewal</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>case</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Risk</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_d4a4e7372f0a8f50fb1f2bba6fa4e361</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-07-20 07:36:02</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>ae152f772f0a8f50fb1f2bba6fa4e3ea</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-20 14:26:30</sys_updated_on>
+            <value>Risk</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>case</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Clearance</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_d4a4e7372f0a8f50fb1f2bba6fa4e361</name>
+            <sequence>0</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-07-20 07:36:02</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>e2152f772f0a8f50fb1f2bba6fa4e3ea</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-07-20 14:26:30</sys_updated_on>
+            <value>Clearance</value>
+        </sys_choice>
+    </sys_choice>
+    <sys_documentation action="DELETE">
+        <element>clearance_case</element>
+        <help/>
+        <hint/>
+        <label>Clearance Case</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_output_d4a4e7372f0a8f50fb1f2bba6fa4e361</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 07:37:36</sys_created_on>
+        <sys_id>9d752bb72f0a8f50fb1f2bba6fa4e322</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 07:37:36</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="DELETE">
+        <element>risk_case</element>
+        <help/>
+        <hint/>
+        <label>Risk Case</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_output_d4a4e7372f0a8f50fb1f2bba6fa4e361</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 07:37:35</sys_created_on>
+        <sys_id>c175e7b72f0a8f50fb1f2bba6fa4e3fa</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 07:37:35</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="DELETE">
+        <element>quote_and_bind_case</element>
+        <help/>
+        <hint/>
+        <label>Quote and Bind Case</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_output_d4a4e7372f0a8f50fb1f2bba6fa4e361</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 07:37:36</sys_created_on>
+        <sys_id>d9752bb72f0a8f50fb1f2bba6fa4e343</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 07:37:36</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="DELETE">
+        <element>exposure_case</element>
+        <help/>
+        <hint/>
+        <label>Exposure Case</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_output_d4a4e7372f0a8f50fb1f2bba6fa4e361</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 07:37:35</sys_created_on>
+        <sys_id>dd752bb72f0a8f50fb1f2bba6fa4e31a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 07:37:35</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="DELETE" query="name=var__m_sys_hub_flow_output_d4a4e7372f0a8f50fb1f2bba6fa4e361"/>
+    <sys_flow_trigger_plan action="DELETE" query="plan_id=d4a4e7372f0a8f50fb1f2bba6fa4e361"/>
+    <sys_flow_subflow_plan action="DELETE" query="plan_id=d4a4e7372f0a8f50fb1f2bba6fa4e361"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</application>
+        <file_path/>
+        <instance_id>c495ad8e3b9047d0c55a348aa4e45a32</instance_id>
+        <instance_name>dev384730</instance_name>
+        <name>sys_hub_flow_d4a4e7372f0a8f50fb1f2bba6fa4e361</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sys_hub_flow"&gt;&lt;sys_hub_flow action="INSERT_OR_UPDATE"&gt;&lt;access&gt;public&lt;/access&gt;&lt;acls/&gt;&lt;active&gt;false&lt;/active&gt;&lt;allow_high_security_roles&gt;false&lt;/allow_high_security_roles&gt;&lt;annotation/&gt;&lt;attributes&gt;labelCacheCleanUpExecuted=true&lt;/attributes&gt;&lt;authored_on_release_version&gt;29000&lt;/authored_on_release_version&gt;&lt;callable_by_client_api&gt;false&lt;/callable_by_client_api&gt;&lt;category/&gt;&lt;compiler_build/&gt;&lt;copied_from/&gt;&lt;copied_from_name/&gt;&lt;description&gt;Get Case Record By number in Submission Playbook&lt;/description&gt;&lt;display_name_after_preview/&gt;&lt;flow_priority&gt;MEDIUM&lt;/flow_priority&gt;&lt;generation_source/&gt;&lt;internal_name&gt;get_case_record_by_number_in_submission_playbook&lt;/internal_name&gt;&lt;label_cache&gt;[{"name":"subflow.case_number","label":"Input➛case number","reference":"","reference_display":"","type":"string","base_type":"string","parent_table_name":null,"column_name":"","choices":[{"label":null,"value":null,"order":0.0}],"usedInstances":{"9f6223b0-4a3a-49c7-8ca7-fb4d65ef07b9":[null,"conditions"]},"attributes":{"sourceId":"","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","sourceUiUniqueId":"","sourceType":"","uiType":"string","uiUniqueId":"9ea0a88c-96ea-4d52-a99e-85b33aaa7b84"}},{"name":"9f6223b0-4a3a-49c7-8ca7-fb4d65ef07b9.Record","label":"2➛Clearance Case Record","reference":"x_gegis_ins_policy_clearance_case","reference_display":"Clearance Case Record","type":"reference","base_type":"reference","parent_table_name":null,"column_name":null,"choices":null,"usedInstances":{},"attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"subflow.case","label":"Input➛Case","reference":"","reference_display":"","type":"choice","base_type":"choice","parent_table_name":null,"column_name":"","choices":[{"label":null,"value":null,"order":0.0}],"usedInstances":{"ef6d6246-e5d7-4dee-ad96-cacaccca93fb":["condition"]},"attributes":{"sourceId":"","sourceUiUniqueId":"","sourceType":"","uiUniqueId":"d8f57f6f-4d00-4f9d-8b27-7dc974847406"}},{"name":"undefined","label":null,"reference":null,"reference_display":null,"type":null,"base_type":null,"parent_table_name":null,"column_name":null,"choices":null,"usedInstances":{},"attributes":{"":""}}]&lt;/label_cache&gt;&lt;latest_snapshot/&gt;&lt;master_snapshot/&gt;&lt;master_snapshot_digest/&gt;&lt;name&gt;Get Case Record By number in Submission Playbook&lt;/name&gt;&lt;natlang/&gt;&lt;outputs/&gt;&lt;pre_compiled&gt;false&lt;/pre_compiled&gt;&lt;remote_trigger_id/&gt;&lt;run_as&gt;user&lt;/run_as&gt;&lt;run_with_roles/&gt;&lt;sc_callable&gt;false&lt;/sc_callable&gt;&lt;show_draft_actions&gt;false&lt;/show_draft_actions&gt;&lt;show_triggered_flows&gt;false&lt;/show_triggered_flows&gt;&lt;status&gt;draft&lt;/status&gt;&lt;substatus/&gt;&lt;sys_class_name&gt;sys_hub_flow&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-20 07:33:58&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/sys_id&gt;&lt;sys_mod_count&gt;12&lt;/sys_mod_count&gt;&lt;sys_name&gt;Get Case Record By number in Submission Playbook&lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="Policy Suite" source="x_gegis_ins_policy"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_hub_flow_d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-20 14:38:57&lt;/sys_updated_on&gt;&lt;type&gt;subflow&lt;/type&gt;&lt;updation_source/&gt;&lt;version&gt;2&lt;/version&gt;&lt;version_record&gt;93d509c8c3d28310b4c2fe3d050131d8&lt;/version_record&gt;&lt;/sys_hub_flow&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=d4a4e7372f0a8f50fb1f2bba6fa4e361"/&gt;&lt;sys_variable_value action="delete_multiple" query="document_key=d4a4e7372f0a8f50fb1f2bba6fa4e361"/&gt;&lt;sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_flow_output_d4a4e7372f0a8f50fb1f2bba6fa4e361^id=d4a4e7372f0a8f50fb1f2bba6fa4e361"/&gt;&lt;sys_hub_flow_stage action="delete_multiple" query="flow=d4a4e7372f0a8f50fb1f2bba6fa4e361"/&gt;&lt;sys_flow_cat_variable_model action="delete_multiple" query="id=d4a4e7372f0a8f50fb1f2bba6fa4e361^sys_idNOT INd8a4e7372f0a8f50fb1f2bba6fa4e363"/&gt;&lt;sys_flow_cat_variable_model action="INSERT_OR_UPDATE"&gt;&lt;id&gt;d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/id&gt;&lt;name&gt;Get Case Record By number in Submission Playbook&lt;/name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-20 07:33:58&lt;/sys_created_on&gt;&lt;sys_id&gt;d8a4e7372f0a8f50fb1f2bba6fa4e363&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_scope/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-20 07:33:58&lt;/sys_updated_on&gt;&lt;/sys_flow_cat_variable_model&gt;&lt;sys_flow_cat_variable action="delete_multiple" query="flow_catalog_model=d8a4e7372f0a8f50fb1f2bba6fa4e363"/&gt;&lt;sys_hub_flow_input action="delete_multiple" query="model=d4a4e7372f0a8f50fb1f2bba6fa4e361^sys_idNOT IN5615ef372f0a8f50fb1f2bba6fa4e3c1,e6152f772f0a8f50fb1f2bba6fa4e3e7"/&gt;&lt;sys_hub_flow_input action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;array_denormalized&gt;false&lt;/array_denormalized&gt;&lt;attributes&gt;element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string,uiTypeLabel=String,uiUniqueId=9ea0a88c-96ea-4d52-a99e-85b33aaa7b84&lt;/attributes&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation&gt;&lt;![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]&gt;&lt;/calculation&gt;&lt;choice/&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;column_label/&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value/&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;case_number&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;help/&gt;&lt;hint/&gt;&lt;internal_type display_value="String"&gt;string&lt;/internal_type&gt;&lt;label&gt;case number&lt;/label&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;65000&lt;/max_length&gt;&lt;model display_value="Get Case Record By number in Submission Playbook"&gt;d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/model&gt;&lt;model_id&gt;d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/model_id&gt;&lt;model_table&gt;sys_hub_flow&lt;/model_table&gt;&lt;name&gt;var__m_sys_hub_flow_input_d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/name&gt;&lt;next_element/&gt;&lt;order&gt;1&lt;/order&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference/&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;sizeclass/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_hub_flow_input&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-20 07:36:02&lt;/sys_created_on&gt;&lt;sys_id&gt;5615ef372f0a8f50fb1f2bba6fa4e3c1&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package/&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-20 14:26:30&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type&gt;script&lt;/virtual_type&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_hub_flow_input&gt;&lt;sys_hub_action_input_action_instance action="delete_multiple" query="action_input=5615ef372f0a8f50fb1f2bba6fa4e3c1"/&gt;&lt;sys_hub_flow_input action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;array_denormalized&gt;false&lt;/array_denormalized&gt;&lt;attributes&gt;element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=choice,uiTypeLabel=Choice,uiUniqueId=d8f57f6f-4d00-4f9d-8b27-7dc974847406&lt;/attributes&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation&gt;&lt;![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]&gt;&lt;/calculation&gt;&lt;choice&gt;3&lt;/choice&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;column_label/&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value/&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;case&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;help/&gt;&lt;hint/&gt;&lt;internal_type display_value="Choice"&gt;choice&lt;/internal_type&gt;&lt;label&gt;Case&lt;/label&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;32&lt;/max_length&gt;&lt;model display_value="Get Case Record By number in Submission Playbook"&gt;d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/model&gt;&lt;model_id&gt;d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/model_id&gt;&lt;model_table&gt;sys_hub_flow&lt;/model_table&gt;&lt;name&gt;var__m_sys_hub_flow_input_d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/name&gt;&lt;next_element/&gt;&lt;order&gt;2&lt;/order&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference/&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;sizeclass/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_hub_flow_input&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-20 07:36:02&lt;/sys_created_on&gt;&lt;sys_id&gt;e6152f772f0a8f50fb1f2bba6fa4e3e7&lt;/sys_id&gt;&lt;sys_mod_count&gt;2&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package/&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-20 14:26:30&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type&gt;script&lt;/virtual_type&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_hub_flow_input&gt;&lt;sys_hub_action_input_action_instance action="delete_multiple" query="action_input=e6152f772f0a8f50fb1f2bba6fa4e3e7"/&gt;&lt;sys_hub_flow_output action="delete_multiple" query="model=d4a4e7372f0a8f50fb1f2bba6fa4e361^sys_idNOT IN4575e7b72f0a8f50fb1f2bba6fa4e3fc,4d7563f32f0a8f50fb1f2bba6fa4e3ad,51752bb72f0a8f50fb1f2bba6fa4e325,91752bb72f0a8f50fb1f2bba6fa4e31d"/&gt;&lt;sys_hub_flow_output action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;array_denormalized&gt;false&lt;/array_denormalized&gt;&lt;attributes&gt;element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=reference,uiTypeLabel=Reference,uiUniqueId=c240badf-9ccb-47b3-b360-9f3aafc15ad1&lt;/attributes&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation&gt;&lt;![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]&gt;&lt;/calculation&gt;&lt;choice/&gt;&lt;choice_field/&gt;&lt;choice_table&gt;x_gegis_ins_policy_exposure_case&lt;/choice_table&gt;&lt;column_label/&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value/&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;exposure_case&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;help/&gt;&lt;hint/&gt;&lt;internal_link/&gt;&lt;internal_type display_value="Reference"&gt;reference&lt;/internal_type&gt;&lt;label&gt;Exposure Case&lt;/label&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;32&lt;/max_length&gt;&lt;model display_value="Get Case Record By number in Submission Playbook"&gt;d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/model&gt;&lt;model_id&gt;d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/model_id&gt;&lt;model_table&gt;sys_hub_flow&lt;/model_table&gt;&lt;name&gt;var__m_sys_hub_flow_output_d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/name&gt;&lt;next_element/&gt;&lt;order&gt;2&lt;/order&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference display_value="" name="x_gegis_ins_policy_exposure_case"&gt;x_gegis_ins_policy_exposure_case&lt;/reference&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;sizeclass/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_hub_flow_output&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-20 07:37:35&lt;/sys_created_on&gt;&lt;sys_id&gt;4575e7b72f0a8f50fb1f2bba6fa4e3fc&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package/&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-20 07:37:35&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type&gt;script&lt;/virtual_type&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_hub_flow_output&gt;&lt;sys_hub_action_input_action_instance action="delete_multiple" query="action_input=4575e7b72f0a8f50fb1f2bba6fa4e3fc"/&gt;&lt;sys_hub_flow_output action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;array_denormalized&gt;false&lt;/array_denormalized&gt;&lt;attributes&gt;element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=reference,uiTypeLabel=Reference,uiUniqueId=b651c520-859e-4c3f-b325-8847c69a1a17&lt;/attributes&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation&gt;&lt;![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]&gt;&lt;/calculation&gt;&lt;choice/&gt;&lt;choice_field/&gt;&lt;choice_table&gt;x_gegis_ins_policy_risk_case&lt;/choice_table&gt;&lt;column_label/&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value/&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;risk_case&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;help/&gt;&lt;hint/&gt;&lt;internal_link/&gt;&lt;internal_type display_value="Reference"&gt;reference&lt;/internal_type&gt;&lt;label&gt;Risk Case&lt;/label&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;32&lt;/max_length&gt;&lt;model display_value="Get Case Record By number in Submission Playbook"&gt;d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/model&gt;&lt;model_id&gt;d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/model_id&gt;&lt;model_table&gt;sys_hub_flow&lt;/model_table&gt;&lt;name&gt;var__m_sys_hub_flow_output_d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/name&gt;&lt;next_element/&gt;&lt;order&gt;3&lt;/order&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference display_value="" name="x_gegis_ins_policy_risk_case"&gt;x_gegis_ins_policy_risk_case&lt;/reference&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;sizeclass/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_hub_flow_output&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-20 07:37:35&lt;/sys_created_on&gt;&lt;sys_id&gt;4d7563f32f0a8f50fb1f2bba6fa4e3ad&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package/&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-20 07:37:35&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type&gt;script&lt;/virtual_type&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_hub_flow_output&gt;&lt;sys_hub_action_input_action_instance action="delete_multiple" query="action_input=4d7563f32f0a8f50fb1f2bba6fa4e3ad"/&gt;&lt;sys_hub_flow_output action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;array_denormalized&gt;false&lt;/array_denormalized&gt;&lt;attributes&gt;element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=reference,uiTypeLabel=Reference,uiUniqueId=298d5d17-1f44-4a00-8e00-a900b559982c&lt;/attributes&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation&gt;&lt;![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]&gt;&lt;/calculation&gt;&lt;choice/&gt;&lt;choice_field/&gt;&lt;choice_table&gt;x_gegis_ins_policy_quote_and_bind_case&lt;/choice_table&gt;&lt;column_label/&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value/&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;quote_and_bind_case&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;help/&gt;&lt;hint/&gt;&lt;internal_link/&gt;&lt;internal_type display_value="Reference"&gt;reference&lt;/internal_type&gt;&lt;label&gt;Quote and Bind Case&lt;/label&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;32&lt;/max_length&gt;&lt;model display_value="Get Case Record By number in Submission Playbook"&gt;d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/model&gt;&lt;model_id&gt;d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/model_id&gt;&lt;model_table&gt;sys_hub_flow&lt;/model_table&gt;&lt;name&gt;var__m_sys_hub_flow_output_d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/name&gt;&lt;next_element/&gt;&lt;order&gt;4&lt;/order&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference display_value="" name="x_gegis_ins_policy_quote_and_bind_case"&gt;x_gegis_ins_policy_quote_and_bind_case&lt;/reference&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;sizeclass/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_hub_flow_output&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-20 07:37:36&lt;/sys_created_on&gt;&lt;sys_id&gt;51752bb72f0a8f50fb1f2bba6fa4e325&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package/&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-20 07:37:36&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type&gt;script&lt;/virtual_type&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_hub_flow_output&gt;&lt;sys_hub_action_input_action_instance action="delete_multiple" query="action_input=51752bb72f0a8f50fb1f2bba6fa4e325"/&gt;&lt;sys_hub_flow_output action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;array_denormalized&gt;false&lt;/array_denormalized&gt;&lt;attributes&gt;element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=reference,uiTypeLabel=Reference,uiUniqueId=e52a0508-db6f-4361-8df9-90ee802df9f6&lt;/attributes&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation&gt;&lt;![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]&gt;&lt;/calculation&gt;&lt;choice/&gt;&lt;choice_field/&gt;&lt;choice_table&gt;x_gegis_ins_policy_clearance_case&lt;/choice_table&gt;&lt;column_label/&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value/&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;clearance_case&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;help/&gt;&lt;hint/&gt;&lt;internal_link/&gt;&lt;internal_type display_value="Reference"&gt;reference&lt;/internal_type&gt;&lt;label&gt;Clearance Case&lt;/label&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;32&lt;/max_length&gt;&lt;model display_value="Get Case Record By number in Submission Playbook"&gt;d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/model&gt;&lt;model_id&gt;d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/model_id&gt;&lt;model_table&gt;sys_hub_flow&lt;/model_table&gt;&lt;name&gt;var__m_sys_hub_flow_output_d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/name&gt;&lt;next_element/&gt;&lt;order&gt;1&lt;/order&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference display_value="" name="x_gegis_ins_policy_clearance_case"&gt;x_gegis_ins_policy_clearance_case&lt;/reference&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;sizeclass/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_hub_flow_output&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-20 07:37:35&lt;/sys_created_on&gt;&lt;sys_id&gt;91752bb72f0a8f50fb1f2bba6fa4e31d&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package/&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-20 07:37:36&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type&gt;script&lt;/virtual_type&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_hub_flow_output&gt;&lt;sys_hub_action_input_action_instance action="delete_multiple" query="action_input=91752bb72f0a8f50fb1f2bba6fa4e31d"/&gt;&lt;sys_hub_alias_mapping action="delete_multiple" query="source_id=d4a4e7372f0a8f50fb1f2bba6fa4e361"/&gt;&lt;sys_hub_trigger_instance_v2 action="delete_multiple" query="flow=d4a4e7372f0a8f50fb1f2bba6fa4e361"/&gt;&lt;sys_hub_action_instance_v2 action="delete_multiple" query="flow=d4a4e7372f0a8f50fb1f2bba6fa4e361^sys_idNOT IN68b523f72f0a8f50fb1f2bba6fa4e3f3"/&gt;&lt;sys_hub_action_instance_v2 action="INSERT_OR_UPDATE"&gt;&lt;action_type display_value="Look Up Record"&gt;9d09f99587003300663ca1bb36cb0ba3&lt;/action_type&gt;&lt;action_type_parent/&gt;&lt;attributes/&gt;&lt;comment/&gt;&lt;compiled_snapshot/&gt;&lt;display_text/&gt;&lt;flow display_value="Get Case Record By number in Submission Playbook"&gt;d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/flow&gt;&lt;generation_source/&gt;&lt;order&gt;2&lt;/order&gt;&lt;parent_ui_id&gt;ef6d6246-e5d7-4dee-ad96-cacaccca93fb&lt;/parent_ui_id&gt;&lt;sys_class_name&gt;sys_hub_action_instance_v2&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-20 07:38:38&lt;/sys_created_on&gt;&lt;sys_id&gt;68b523f72f0a8f50fb1f2bba6fa4e3f3&lt;/sys_id&gt;&lt;sys_mod_count&gt;2&lt;/sys_mod_count&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-20 14:26:31&lt;/sys_updated_on&gt;&lt;ui_id&gt;9f6223b0-4a3a-49c7-8ca7-fb4d65ef07b9&lt;/ui_id&gt;&lt;updation_source/&gt;&lt;values&gt;H4sIAAAAAAAA/+1XW2/iOhD+K1GeKSchQKBvq1ZIK51zKu12+7K7spzYAesYO2s7bSniv+84NyikEC7V7krnCcWeyzcz38yYr0uXEffaHRBvnIzHg1HoeUHgecNhEGM/ioJhHHlR5LsdV+A5BUktlUFmkVI4esQ8q8+wjuGIMJ1yvHgob7BjpPMC5/GMcaKocK+/fu+4KVZgzVDlXi+3rqxpxHFEOajfzCSLrae2ICvFz4DIuS9QNgDPf67Bc2leKmKxBB2XPhsqCAV3Ceaadtw5FgQbqRb1iaKY3Am+PpgxYcCaa4WfNXsB00HPyiUUwoppcVd/ojJHxXGBQUPwyxp9nbWGBJdQvVVnLf9i5fG2PKGbCv4KkktogjNubk7z6R/rs2d9FgHepYZJKLEb2PTjiJdZiSXP5uLfokRujfChgVnFze0bBMs0JJamtni2GmVpks8z+fSpyvyEiRxXeclljHn9hY1RLMqMzcvSTQhKGOUEMcGZsJ6MyixVKKdz8IDmOE2ZmKJUyUeWW4VY5t0ph49uwuWTzQWbii6ObeRdIBHuTuD8Nj9+wIrZLPwDZkC5Yx3OQLX0h3SsWGrQEyNTatbeKykizRPm/zXdl+yqeygPz13lBEQ/MhtxkegyVygvixUofH4AvI+0TIuteN57/t7ew2Srz4qybrBjdzScPBQmti5OTplOa3CV8p1lphMt3sJbToai9qLwUbH5YtNh5B03HermOap3dpvCkuSMnnhH6jf12iHKFpk4xNvx3p0xXvOAJWgO2WMpp0jRGIquEVYUJTITBBWhbBDapjZhSptSeJfgn6jJlHAkkMExM+rk0k4tfYmN2CK6SvFj4lThlRi0A+E5eXhOHd5xyXhjj/Yv1in9Izvl9U6bYMbz1GtD043aUaWkemOXHqjanvK3XLQtQfkXBXX+Jm7ie+NGPoD1wnv6fWbSudsypjjq9/AwDHzf83yPhN4oDP3RMEqGOOwn60ZDSIsY1jlYToAYYB5VRKiq6u2OlmKnnzpD7mG6/jUpTbTFWynfSvEt87xeaBwLGOrsVIAPh1TOi0hKTrFY03PwywbGpVbruTzO2P12boqjv5uK9l6bOGNfBPuR0Y+WFCPq9UY+ia9GoR9e9RMyvBoTPLjC42gQBoTG/eT8dyUZ7H26beznWArCbBR6ozdENo+osoQMyHKps8gG3Y0xFKe4Wq12u6ed0on7eRNl2wgblZvCrvbt5lm1Ly7YQt7/79P2u6DVM5Tsfajh/rrehbk1w5/RlE6ZhrexRqnkLF6gGAaEwrYWlrO7/L6p7p0bfM6asEhe/c9qEcUr5d2oSgLnn1t/r7w//u/V7/mWAUCMQ7VRkXQtM5Vn5RF4lOn8Asiiyzf9qfP8+0/f50zuShQAAA==&lt;/values&gt;&lt;/sys_hub_action_instance_v2&gt;&lt;sys_hub_alias_mapping action="delete_multiple" query="source_id=68b523f72f0a8f50fb1f2bba6fa4e3f3"/&gt;&lt;sys_hub_sub_flow_instance_v2 action="delete_multiple" query="flow=d4a4e7372f0a8f50fb1f2bba6fa4e361"/&gt;&lt;sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=d4a4e7372f0a8f50fb1f2bba6fa4e361^sys_idNOT IN9a85abb72f0a8f50fb1f2bba6fa4e3ec,bed3c544c3d28310b4c2fe3d0501316e"/&gt;&lt;sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE"&gt;&lt;attributes/&gt;&lt;block display_value=""&gt;8b03c1c0c3d28310b4c2fe3d050131f7&lt;/block&gt;&lt;comment/&gt;&lt;connected_to/&gt;&lt;decision_table/&gt;&lt;display_text/&gt;&lt;flow display_value="Get Case Record By number in Submission Playbook"&gt;d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/flow&gt;&lt;flow_variables_assigned/&gt;&lt;generation_source/&gt;&lt;logic_definition display_value="If"&gt;af4e1945c3e232002841b63b12d3ae3e&lt;/logic_definition&gt;&lt;order&gt;1&lt;/order&gt;&lt;outputs_assigned/&gt;&lt;parent_ui_id/&gt;&lt;sys_class_name&gt;sys_hub_flow_logic_instance_v2&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-20 07:37:56&lt;/sys_created_on&gt;&lt;sys_id&gt;9a85abb72f0a8f50fb1f2bba6fa4e3ec&lt;/sys_id&gt;&lt;sys_mod_count&gt;8&lt;/sys_mod_count&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-20 14:34:18&lt;/sys_updated_on&gt;&lt;ui_id&gt;ef6d6246-e5d7-4dee-ad96-cacaccca93fb&lt;/ui_id&gt;&lt;updation_source/&gt;&lt;values&gt;H4sIAAAAAAAA/+1U22obMRD9FaNns+x6Y9P4LbgEAm0DjclLG5ZZadYW1UpbXey4xv/e0V4c0zhtCHnsm3Q0l3NmDtozE3wTvFuaK+fkSrP5t4cxkzpidN4zDTWyOeNGC+ml0WzMNqBCxPZ7F8pKmW3CweHh8D2kaS4WCsGC5kiRQrpGwe7+1Ql8LZWw2NNoCK/Ro2Xz/R9PftdgoaBERXXvvJV6RelS0O0SptU0S6c8n8zySZpOPlxk5Swvs4nIAS9mFDckLk5UnREamxDkhvLGishlko4ZPnrUAqlfBcrhmNWgBXhjd2zubSDAIohbrXbHiLXUnqqxGPvo5C+MldI0RlZIwjh2r8dr0Y+vg/naSI63TcutRTyUqs/hRoVaf+kkxMFjBUH5YfCEBEf1sImkI42eU3W3NtuvQ8NrqVuB/aMyHNTxBp7GUAaPLm4DFdZUqKihaWg4RWPNRrbJxKVOVoouSVw1NY2+SoBH4gnNCJJrwj+28D1YGVV8pjKUTBt0heNWNoO2tjk7tFMpfobIp9PXKym6YVBAl3ZFbTbYkz6Mn/u3aIEnE99UowWZcbSkXY/+4t0X497DslUKVXbJs/OWhfycZUefWuS5cQeFL7g3+4d7e+RV9p1O/7v31L2RZglO8qL9Qalc/AvebN+HaNOuhes8JJBLR0yWEbsZfun4sKOtS34KbY39ETU8YYffN8CC7+8FAAA=&lt;/values&gt;&lt;workflow_reference/&gt;&lt;/sys_hub_flow_logic_instance_v2&gt;&lt;sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE"&gt;&lt;attributes/&gt;&lt;block display_value=""&gt;f2d3c544c3d28310b4c2fe3d0501316e&lt;/block&gt;&lt;comment/&gt;&lt;connected_to/&gt;&lt;decision_table/&gt;&lt;display_text/&gt;&lt;flow display_value="Get Case Record By number in Submission Playbook"&gt;d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/flow&gt;&lt;flow_variables_assigned/&gt;&lt;generation_source/&gt;&lt;logic_definition display_value="Assign Subflow Outputs"&gt;df4e1945c3e232002841b63b12d3ae3e&lt;/logic_definition&gt;&lt;order&gt;3&lt;/order&gt;&lt;outputs_assigned&gt;clearance_case&lt;/outputs_assigned&gt;&lt;parent_ui_id&gt;ef6d6246-e5d7-4dee-ad96-cacaccca93fb&lt;/parent_ui_id&gt;&lt;sys_class_name&gt;sys_hub_flow_logic_instance_v2&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-20 14:30:02&lt;/sys_created_on&gt;&lt;sys_id&gt;bed3c544c3d28310b4c2fe3d0501316e&lt;/sys_id&gt;&lt;sys_mod_count&gt;7&lt;/sys_mod_count&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-20 14:38:47&lt;/sys_updated_on&gt;&lt;ui_id&gt;c34b6b84-95b5-4e1d-af70-244e9ffbf878&lt;/ui_id&gt;&lt;updation_source/&gt;&lt;values&gt;H4sIAAAAAAAA/02PzWrDMBCE30XnuPhfcW459lpCL6WU1Wq3XapKRrIdgvG7V6aB5jjfzC4zqwrzNM5TuoRzSvLp1eltVWLVSQ2V7mpjdM0lHLkr2VScNfQMLTWVVQfl4YdyEh1BBI/0gZAo8wXcvBvrOnBf140pixYaKNoBdXFE0AWb1vYdcanN8PRCGKLdtnxpJY0Obq/3B5nglzgbaS/2flAJo4zTGSdZss/gEm0Zi983/EUWiALG0V1aQkkS/GVnzw85e8v1BR/RNcRvduH6z7ZfqTmuBSEBAAA=&lt;/values&gt;&lt;workflow_reference/&gt;&lt;/sys_hub_flow_logic_instance_v2&gt;&lt;sys_hub_pill_compound action="delete_multiple" query="attached_to=d4a4e7372f0a8f50fb1f2bba6fa4e361"/&gt;&lt;sys_hub_flow_variable action="delete_multiple" query="model=d4a4e7372f0a8f50fb1f2bba6fa4e361"/&gt;&lt;sys_documentation action="INSERT_OR_UPDATE"&gt;&lt;element&gt;case_number&lt;/element&gt;&lt;help/&gt;&lt;hint/&gt;&lt;label&gt;case number&lt;/label&gt;&lt;language&gt;en&lt;/language&gt;&lt;name&gt;var__m_sys_hub_flow_input_d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/name&gt;&lt;plural/&gt;&lt;sys_class_name&gt;sys_documentation&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-20 07:36:02&lt;/sys_created_on&gt;&lt;sys_id&gt;66152f772f0a8f50fb1f2bba6fa4e3e5&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package display_value="Policy Suite" source="x_gegis_ins_policy"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-20 07:36:02&lt;/sys_updated_on&gt;&lt;url/&gt;&lt;url_target/&gt;&lt;/sys_documentation&gt;&lt;sys_documentation action="INSERT_OR_UPDATE"&gt;&lt;element&gt;case&lt;/element&gt;&lt;help/&gt;&lt;hint/&gt;&lt;label&gt;Case&lt;/label&gt;&lt;language&gt;en&lt;/language&gt;&lt;name&gt;var__m_sys_hub_flow_input_d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/name&gt;&lt;plural/&gt;&lt;sys_class_name&gt;sys_documentation&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-20 07:36:02&lt;/sys_created_on&gt;&lt;sys_id&gt;a6156f772f0a8f50fb1f2bba6fa4e30b&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package display_value="Policy Suite" source="x_gegis_ins_policy"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-20 07:36:02&lt;/sys_updated_on&gt;&lt;url/&gt;&lt;url_target/&gt;&lt;/sys_documentation&gt;&lt;sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_input_d4a4e7372f0a8f50fb1f2bba6fa4e361^sys_idNOT IN26152f772f0a8f50fb1f2bba6fa4e3ec,6a152f772f0a8f50fb1f2bba6fa4e3eb,6e156f772f0a8f50fb1f2bba6fa4e305,ae152f772f0a8f50fb1f2bba6fa4e3ea,e2152f772f0a8f50fb1f2bba6fa4e3ea"/&gt;&lt;sys_choice field="case" table="var__m_sys_hub_flow_input_d4a4e7372f0a8f50fb1f2bba6fa4e361"&gt;&lt;sys_choice action="INSERT_OR_UPDATE"&gt;&lt;dependent_value/&gt;&lt;element&gt;case&lt;/element&gt;&lt;hint/&gt;&lt;inactive&gt;false&lt;/inactive&gt;&lt;label&gt;Quote&lt;/label&gt;&lt;language&gt;en&lt;/language&gt;&lt;name&gt;var__m_sys_hub_flow_input_d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/name&gt;&lt;sequence&gt;3&lt;/sequence&gt;&lt;synonyms/&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-20 07:36:02&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;26152f772f0a8f50fb1f2bba6fa4e3ec&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-20 14:26:30&lt;/sys_updated_on&gt;&lt;value&gt;Quote&lt;/value&gt;&lt;/sys_choice&gt;&lt;sys_choice action="INSERT_OR_UPDATE"&gt;&lt;dependent_value/&gt;&lt;element&gt;case&lt;/element&gt;&lt;hint/&gt;&lt;inactive&gt;false&lt;/inactive&gt;&lt;label&gt;Exposure&lt;/label&gt;&lt;language&gt;en&lt;/language&gt;&lt;name&gt;var__m_sys_hub_flow_input_d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/name&gt;&lt;sequence&gt;2&lt;/sequence&gt;&lt;synonyms/&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-20 07:36:02&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;6a152f772f0a8f50fb1f2bba6fa4e3eb&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-20 14:26:30&lt;/sys_updated_on&gt;&lt;value&gt;Exposure&lt;/value&gt;&lt;/sys_choice&gt;&lt;sys_choice action="INSERT_OR_UPDATE"&gt;&lt;dependent_value/&gt;&lt;element&gt;case&lt;/element&gt;&lt;hint/&gt;&lt;inactive&gt;false&lt;/inactive&gt;&lt;label&gt;Renewal&lt;/label&gt;&lt;language&gt;en&lt;/language&gt;&lt;name&gt;var__m_sys_hub_flow_input_d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/name&gt;&lt;sequence&gt;4&lt;/sequence&gt;&lt;synonyms/&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-20 07:36:02&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;6e156f772f0a8f50fb1f2bba6fa4e305&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-20 14:26:30&lt;/sys_updated_on&gt;&lt;value&gt;Renewal&lt;/value&gt;&lt;/sys_choice&gt;&lt;sys_choice action="INSERT_OR_UPDATE"&gt;&lt;dependent_value/&gt;&lt;element&gt;case&lt;/element&gt;&lt;hint/&gt;&lt;inactive&gt;false&lt;/inactive&gt;&lt;label&gt;Risk&lt;/label&gt;&lt;language&gt;en&lt;/language&gt;&lt;name&gt;var__m_sys_hub_flow_input_d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/name&gt;&lt;sequence&gt;1&lt;/sequence&gt;&lt;synonyms/&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-20 07:36:02&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;ae152f772f0a8f50fb1f2bba6fa4e3ea&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-20 14:26:30&lt;/sys_updated_on&gt;&lt;value&gt;Risk&lt;/value&gt;&lt;/sys_choice&gt;&lt;sys_choice action="INSERT_OR_UPDATE"&gt;&lt;dependent_value/&gt;&lt;element&gt;case&lt;/element&gt;&lt;hint/&gt;&lt;inactive&gt;false&lt;/inactive&gt;&lt;label&gt;Clearance&lt;/label&gt;&lt;language&gt;en&lt;/language&gt;&lt;name&gt;var__m_sys_hub_flow_input_d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/name&gt;&lt;sequence&gt;0&lt;/sequence&gt;&lt;synonyms/&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-20 07:36:02&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;e2152f772f0a8f50fb1f2bba6fa4e3ea&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-20 14:26:30&lt;/sys_updated_on&gt;&lt;value&gt;Clearance&lt;/value&gt;&lt;/sys_choice&gt;&lt;/sys_choice&gt;&lt;sys_documentation action="INSERT_OR_UPDATE"&gt;&lt;element&gt;clearance_case&lt;/element&gt;&lt;help/&gt;&lt;hint/&gt;&lt;label&gt;Clearance Case&lt;/label&gt;&lt;language&gt;en&lt;/language&gt;&lt;name&gt;var__m_sys_hub_flow_output_d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/name&gt;&lt;plural/&gt;&lt;sys_class_name&gt;sys_documentation&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-20 07:37:36&lt;/sys_created_on&gt;&lt;sys_id&gt;9d752bb72f0a8f50fb1f2bba6fa4e322&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package display_value="Policy Suite" source="x_gegis_ins_policy"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-20 07:37:36&lt;/sys_updated_on&gt;&lt;url/&gt;&lt;url_target/&gt;&lt;/sys_documentation&gt;&lt;sys_documentation action="INSERT_OR_UPDATE"&gt;&lt;element&gt;risk_case&lt;/element&gt;&lt;help/&gt;&lt;hint/&gt;&lt;label&gt;Risk Case&lt;/label&gt;&lt;language&gt;en&lt;/language&gt;&lt;name&gt;var__m_sys_hub_flow_output_d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/name&gt;&lt;plural/&gt;&lt;sys_class_name&gt;sys_documentation&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-20 07:37:35&lt;/sys_created_on&gt;&lt;sys_id&gt;c175e7b72f0a8f50fb1f2bba6fa4e3fa&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package display_value="Policy Suite" source="x_gegis_ins_policy"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-20 07:37:35&lt;/sys_updated_on&gt;&lt;url/&gt;&lt;url_target/&gt;&lt;/sys_documentation&gt;&lt;sys_documentation action="INSERT_OR_UPDATE"&gt;&lt;element&gt;quote_and_bind_case&lt;/element&gt;&lt;help/&gt;&lt;hint/&gt;&lt;label&gt;Quote and Bind Case&lt;/label&gt;&lt;language&gt;en&lt;/language&gt;&lt;name&gt;var__m_sys_hub_flow_output_d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/name&gt;&lt;plural/&gt;&lt;sys_class_name&gt;sys_documentation&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-20 07:37:36&lt;/sys_created_on&gt;&lt;sys_id&gt;d9752bb72f0a8f50fb1f2bba6fa4e343&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package display_value="Policy Suite" source="x_gegis_ins_policy"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-20 07:37:36&lt;/sys_updated_on&gt;&lt;url/&gt;&lt;url_target/&gt;&lt;/sys_documentation&gt;&lt;sys_documentation action="INSERT_OR_UPDATE"&gt;&lt;element&gt;exposure_case&lt;/element&gt;&lt;help/&gt;&lt;hint/&gt;&lt;label&gt;Exposure Case&lt;/label&gt;&lt;language&gt;en&lt;/language&gt;&lt;name&gt;var__m_sys_hub_flow_output_d4a4e7372f0a8f50fb1f2bba6fa4e361&lt;/name&gt;&lt;plural/&gt;&lt;sys_class_name&gt;sys_documentation&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-20 07:37:35&lt;/sys_created_on&gt;&lt;sys_id&gt;dd752bb72f0a8f50fb1f2bba6fa4e31a&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package display_value="Policy Suite" source="x_gegis_ins_policy"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name/&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-20 07:37:35&lt;/sys_updated_on&gt;&lt;url/&gt;&lt;url_target/&gt;&lt;/sys_documentation&gt;&lt;sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_output_d4a4e7372f0a8f50fb1f2bba6fa4e361"/&gt;&lt;sys_flow_trigger_plan action="delete_multiple" query="plan_id=d4a4e7372f0a8f50fb1f2bba6fa4e361"/&gt;&lt;sys_flow_subflow_plan action="delete_multiple" query="plan_id=d4a4e7372f0a8f50fb1f2bba6fa4e361"/&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1686326250</payload_hash>
+        <record_name>Get Case Record By number in Submission Playbook</record_name>
+        <reverted_from/>
+        <source>ebb10500c3d28310b4c2fe3d050131bf</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 14:38:58</sys_created_on>
+        <sys_id>21e589c8c3d28310b4c2fe3d0501312c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19f7ff73fd10000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 14:38:58</sys_updated_on>
+        <type>Flow</type>
+        <update_guid>21e589c84ed28310994e669c7ede102b</update_guid>
+        <update_guid_history>21e589c84ed28310994e669c7ede102b:-1686326250,29b48dc407d2831031d4e81e79e546f7:1429498592,37c345442bd28310992a92d1300749b3:-175076485,640381c07cd28310666ea8ac938d8963:-809330105,ecee240c59de4310f5e5820fda436b5f:-1459645739</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 14:39:16</sys_created_on>
+        <sys_db_object display_value="" name="sys_hub_flow">sys_hub_flow</sys_db_object>
+        <sys_id>05f94cd56f7b4adc8215e512280f3ac4</sys_id>
+        <sys_metadata>d4a4e7372f0a8f50fb1f2bba6fa4e361</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Get Case Record By number in Submission Playbook</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_scope_delete display_value="">00c1089b958e45ed83140febec97e3d1</sys_scope_delete>
+        <sys_update_name>sys_hub_flow_d4a4e7372f0a8f50fb1f2bba6fa4e361</sys_update_name>
+        <sys_update_version display_value="sys_hub_flow_d4a4e7372f0a8f50fb1f2bba6fa4e361">21e589c8c3d28310b4c2fe3d0501312c</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 14:39:16</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
