@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>false</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_gegis_ins_policy_case_task</collection>
+        <condition>!current.intake_case.nil() &amp;&amp; (current.state.changesTo(3) || current.state.changesTo(4))</condition>
+        <description>When a task on an intake case is closed Complete (3) or Incomplete (4) and no other tasks on that case are still pending (state -5/1/2), move the intake case to In Progress. Resolution states Auto Accepted (8), Accepted (9), Rejected (10) and Closed Skipped (7) intentionally do NOT trigger this - they accompany a terminal intake decision. Complements IntakeService.createHitlTask, which sets Awaiting Action when a HITL task is created.</description>
+        <execute_function>false</execute_function>
+        <filter_condition table="x_gegis_ins_policy_case_task">intake_caseISNOTEMPTY^stateCHANGESTO3^ORstateCHANGESTO4^EQ<item endquery="false" field="intake_case" goto="false" newquery="false" operator="ISNOTEMPTY" or="false" value=""/>
+            <item display_value="Closed Complete" endquery="false" field="state" goto="false" newquery="false" operator="CHANGESTO" or="false" value="3"/>
+            <item display_value="Closed Incomplete" endquery="false" field="state" goto="false" newquery="false" operator="CHANGESTO" or="true" value="4"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter_condition>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Intake case back to In Progress when tas</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+    var intakeId = current.intake_case + '';
+    if (!intakeId)
+        return;
+
+    // Any other task on this intake case still pending? Then leave the case as-is.
+    // Pending states: -5 Pending, 1 Open, 2 Work in Progress. Keyed on state
+    // (not the active flag) so it stays correct regardless of how active is set.
+    var pending = new GlideRecord('x_gegis_ins_policy_case_task');
+    pending.addQuery('intake_case', intakeId);
+    pending.addQuery('state', 'IN', '-5,1,2');
+    pending.addQuery('sys_id', '!=', current.getUniqueValue());
+    pending.setLimit(1);
+    pending.query();
+    if (pending.hasNext())
+        return;
+
+    var intake = new GlideRecord('x_gegis_ins_policy_intake_case');
+    if (!intake.get(intakeId))
+        return;
+
+    // Never disturb a case that has already reached a final state.
+    var FINAL = 'completed,rejected,cancelled,duplicate,failed';
+    if (FINAL.indexOf(intake.status + '') >= 0)
+        return;
+
+    if (intake.status + '' !== 'in_progress') {
+        intake.status = 'in_progress';
+        intake.work_notes = 'All associated tasks closed (last: ' + current.number +
+            ') -> intake case moved to In Progress.';
+        intake.update();
+    }
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-07-11 14:00:00</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>b3f7c1a29d4e4c8fae5106d2b7c93f41</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Intake case back to In Progress when tas</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_b3f7c1a29d4e4c8fae5106d2b7c93f41</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-07-12 16:54:30</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=b3f7c1a29d4e4c8fae5106d2b7c93f41"/>
+</record_update>

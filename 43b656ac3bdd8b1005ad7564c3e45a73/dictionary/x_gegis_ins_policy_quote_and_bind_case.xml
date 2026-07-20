@@ -1,3 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="ce76c7b4333d4f907ef8f499ed5c7b06" label="Quote and Bind Case" max_length="40" name="x_gegis_ins_policy_quote_and_bind_case" type="collection"/>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="ce76c7b4333d4f907ef8f499ed5c7b06" extends="task" label="Quote and Bind Case" max_length="40" name="x_gegis_ins_policy_quote_and_bind_case" type="collection">
+        <element label="Stage" max_length="40" name="stage" type="integer"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Submission" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element label="Active" max_length="40" name="is_active" type="boolean"/>
+        <index name="index">
+            <element name="submission"/>
+            <element name="active"/>
+        </index>
+    </element>
 </database>

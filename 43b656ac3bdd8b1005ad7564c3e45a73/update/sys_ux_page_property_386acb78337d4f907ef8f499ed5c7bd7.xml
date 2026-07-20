@@ -5,7 +5,11 @@
         <name>chrome_toolbar</name>
         <page display_value="Insurance Policy Suite">4058c37c333d4f907ef8f499ed5c7b4a</page>
         <required_translations>[ {
-  "message" : "Exposure",
+  "message" : "Exposure Management",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Extraction Pipeline",
   "code" : "",
   "comment" : ""
 }, {
@@ -13,23 +17,39 @@
   "code" : "",
   "comment" : ""
 }, {
+  "message" : "Inflight Submissions",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "LOA configuration",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "List",
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "Pipeline",
+  "message" : "Product Builder",
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "Quote  Bind",
+  "message" : "Quote &amp; Bind",
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "Risk",
+  "message" : "Referrals",
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "Submissions",
+  "message" : "Renewal",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Risk Assessment",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Submission Clearance",
   "code" : "",
   "comment" : ""
 }, {
@@ -45,153 +65,290 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>global</sys_domain_path>
         <sys_id>386acb78337d4f907ef8f499ed5c7bd7</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>10</sys_mod_count>
         <sys_name>chrome_toolbar</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_page_property_386acb78337d4f907ef8f499ed5c7bd7</sys_update_name>
         <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-06-28 18:36:48</sys_updated_on>
+        <sys_updated_on>2026-07-18 12:40:34</sys_updated_on>
         <type>json</type>
         <unique_name>x_gegis_ins_policy.4058c37c333d4f907ef8f499ed5c7b4a.root.global.chrome_toolbar</unique_name>
-        <value>[
-    {
-        "id": "home",
-        "label": {
-            "translatable": true,
-            "message": "Home"
-        },
-        "icon": "accessibility-outline",
-        "routeInfo": {
-            "route": "home"
-        },
-        "group": "top",
-        "order": 100,
-        "badge": {},
-        "presence": {},
-        "availability": {},
-        "viewportInfo": {}
-    },
-    {
-        "id": "clearance",
-        "label": {
-            "translatable": true,
-            "message": "Submissions"
-        },
-        "icon": "abc-outline",
-        "routeInfo": {
-            "route": "clearance"
-        },
-        "group": "top",
-        "order": 100,
-        "badge": {},
-        "presence": {},
-        "availability": {},
-        "viewportInfo": {}
-    },
-    {
-        "id": "risk",
-        "label": {
-            "translatable": true,
-            "message": "Risk"
-        },
-        "icon": "accessibility-outline",
-        "routeInfo": {
-            "route": "risk"
-        },
-        "group": "top",
-        "order": 200,
-        "badge": {},
-        "presence": {},
-        "availability": {},
-        "viewportInfo": {}
-    },
-    {
-        "id": "exposure",
-        "label": {
-            "translatable": true,
-            "message": "Exposure"
-        },
-        "icon": "action-ai-sparkle-fill",
-        "routeInfo": {
-            "route": "exposure"
-        },
-        "group": "top",
-        "order": 300,
-        "badge": {},
-        "presence": {},
-        "availability": {},
-        "viewportInfo": {}
-    },
-    {
-        "id": "quote-bind",
-        "label": {
-            "translatable": true,
-            "message": "Quote  Bind"
-        },
-        "icon": "abc-outline",
-        "routeInfo": {
-            "route": "quote-bind"
-        },
-        "group": "top",
-        "order": 400,
-        "badge": {},
-        "presence": {},
-        "availability": {},
-        "viewportInfo": {}
-    },
-    {
-        "id": "pipeline",
-        "label": {
-            "translatable": true,
-            "message": "Pipeline"
-        },
-        "icon": "accessibility-outline",
-        "routeInfo": {
-            "route": "pipeline"
-        },
-        "group": "top",
-        "order": 500,
-        "badge": {},
-        "presence": {},
-        "availability": {},
-        "viewportInfo": {}
-    },
-    {
-        "id": "dashboard",
-        "label": {
-            "translatable": true,
-            "message": "Task Dashboard"
-        },
-        "icon": "action-ai-sparkle-outline",
-        "routeInfo": {
-            "route": "dashboard"
-        },
-        "group": "top",
-        "order": 600,
-        "badge": {},
-        "presence": {},
-        "availability": {},
-        "viewportInfo": {}
-    },
-    {
-        "id": "list",
-        "label": {
-            "translatable": true,
-            "message": "List"
-        },
-        "icon": "action-fill",
-        "routeInfo": {
-            "route": "list"
-        },
-        "group": "top",
-        "order": 800,
-        "badge": {},
-        "presence": {},
-        "availability": {},
-        "viewportInfo": {}
-    }
+        <value>[&#13;
+    {&#13;
+        "id": "home",&#13;
+        "label": {&#13;
+            "translatable": true,&#13;
+            "message": "Home"&#13;
+        },&#13;
+        "icon": "home-outline",&#13;
+        "routeInfo": {&#13;
+            "route": "home"&#13;
+        },&#13;
+        "group": "top",&#13;
+        "order": 100,&#13;
+        "badge": {},&#13;
+        "presence": {},&#13;
+        "availability": {&#13;
+            "roles": [&#13;
+                "x_gegis_ins_policy.ws_leftmenu_home"&#13;
+            ]&#13;
+        },&#13;
+        "viewportInfo": {}&#13;
+    },&#13;
+    {&#13;
+        "id": "dashboard",&#13;
+        "label": {&#13;
+            "translatable": true,&#13;
+            "message": "Task Dashboard"&#13;
+        },&#13;
+        "icon": "chart-speedometer-outline",&#13;
+        "routeInfo": {&#13;
+            "route": "dashboard"&#13;
+        },&#13;
+        "group": "top",&#13;
+        "order": 150,&#13;
+        "badge": {},&#13;
+        "presence": {},&#13;
+        "availability": {&#13;
+            "roles": [&#13;
+                "x_gegis_ins_policy.ws_leftmenu_dashboard"&#13;
+            ]&#13;
+        },&#13;
+        "viewportInfo": {}&#13;
+    },&#13;
+    {&#13;
+        "id": "intake",&#13;
+        "label": {&#13;
+            "translatable": true,&#13;
+            "message": "Inflight Submissions"&#13;
+        },&#13;
+        "icon": "action-ai-sparkle-outline",&#13;
+        "routeInfo": {&#13;
+            "route": "intake"&#13;
+        },&#13;
+        "group": "top",&#13;
+        "order": 200,&#13;
+        "badge": {},&#13;
+        "presence": {},&#13;
+        "availability": {&#13;
+            "roles": [&#13;
+                "x_gegis_ins_policy.ws_leftmenu_intake"&#13;
+            ]&#13;
+        },&#13;
+        "viewportInfo": {}&#13;
+    },&#13;
+    {&#13;
+        "id": "pipeline",&#13;
+        "label": {&#13;
+            "translatable": true,&#13;
+            "message": "Extraction Pipeline"&#13;
+        },&#13;
+        "icon": "magnifying-glass-filter-outline",&#13;
+        "routeInfo": {&#13;
+            "route": "pipeline"&#13;
+        },&#13;
+        "group": "top",&#13;
+        "order": 300,&#13;
+        "badge": {},&#13;
+        "presence": {},&#13;
+        "availability": {&#13;
+            "roles": [&#13;
+                "x_gegis_ins_policy.ws_leftmenu_pipeline"&#13;
+            ]&#13;
+        },&#13;
+        "viewportInfo": {}&#13;
+    },&#13;
+    {&#13;
+        "id": "renewal",&#13;
+        "label": {&#13;
+            "translatable": true,&#13;
+            "message": "Renewal"&#13;
+        },&#13;
+        "icon": "circle-semi-check-outline",&#13;
+        "routeInfo": {&#13;
+            "route": "renewal"&#13;
+        },&#13;
+        "group": "top",&#13;
+        "order": 350,&#13;
+        "badge": {},&#13;
+        "presence": {},&#13;
+        "availability": {&#13;
+            "roles": [&#13;
+                "x_gegis_ins_policy.ws_leftmenu_renewal"&#13;
+            ]&#13;
+        },&#13;
+        "viewportInfo": {}&#13;
+    },&#13;
+    {&#13;
+        "id": "referral",&#13;
+        "label": {&#13;
+            "translatable": true,&#13;
+            "message": "Referrals"&#13;
+        },&#13;
+        "icon": "branch-compare-outline",&#13;
+        "routeInfo": {&#13;
+            "route": "referral"&#13;
+        },&#13;
+        "group": "top",&#13;
+        "order": 400,&#13;
+        "badge": {},&#13;
+        "presence": {},&#13;
+        "availability": {&#13;
+            "roles": [&#13;
+                "x_gegis_ins_policy.ws_leftmenu_referral"&#13;
+            ]&#13;
+        },&#13;
+        "viewportInfo": {}&#13;
+    },&#13;
+    {&#13;
+        "id": "clearance",&#13;
+        "label": {&#13;
+            "translatable": true,&#13;
+            "message": "Submission Clearance"&#13;
+        },&#13;
+        "icon": "official-verification-outline",&#13;
+        "routeInfo": {&#13;
+            "route": "clearance"&#13;
+        },&#13;
+        "group": "top",&#13;
+        "order": 450,&#13;
+        "badge": {},&#13;
+        "presence": {},&#13;
+        "availability": {&#13;
+            "roles": [&#13;
+                "x_gegis_ins_policy.ws_leftmenu_clearance"&#13;
+            ]&#13;
+        },&#13;
+        "viewportInfo": {}&#13;
+    },&#13;
+    {&#13;
+        "id": "risk",&#13;
+        "label": {&#13;
+            "translatable": true,&#13;
+            "message": "Risk Assessment"&#13;
+        },&#13;
+        "icon": "shield-circle-checkmark-outline",&#13;
+        "routeInfo": {&#13;
+            "route": "risk"&#13;
+        },&#13;
+        "group": "top",&#13;
+        "order": 500,&#13;
+        "badge": {},&#13;
+        "presence": {},&#13;
+        "availability": {&#13;
+            "roles": [&#13;
+                "x_gegis_ins_policy.ws_leftmenu_risk"&#13;
+            ]&#13;
+        },&#13;
+        "viewportInfo": {}&#13;
+    },&#13;
+    {&#13;
+        "id": "exposure",&#13;
+        "label": {&#13;
+            "translatable": true,&#13;
+            "message": "Exposure Management"&#13;
+        },&#13;
+        "icon": "globe-pin-outline",&#13;
+        "routeInfo": {&#13;
+            "route": "exposure"&#13;
+        },&#13;
+        "group": "top",&#13;
+        "order": 550,&#13;
+        "badge": {},&#13;
+        "presence": {},&#13;
+        "availability": {&#13;
+            "roles": [&#13;
+                "x_gegis_ins_policy.ws_leftmenu_exposure"&#13;
+            ]&#13;
+        },&#13;
+        "viewportInfo": {}&#13;
+    },&#13;
+    {&#13;
+        "id": "quote-bind",&#13;
+        "label": {&#13;
+            "translatable": true,&#13;
+            "message": "Quote &amp; Bind"&#13;
+        },&#13;
+        "icon": "bundle-outline",&#13;
+        "routeInfo": {&#13;
+            "route": "quote-bind"&#13;
+        },&#13;
+        "group": "top",&#13;
+        "order": 600,&#13;
+        "badge": {},&#13;
+        "presence": {},&#13;
+        "availability": {&#13;
+            "roles": [&#13;
+                "x_gegis_ins_policy.ws_leftmenu_quote_bind"&#13;
+            ]&#13;
+        },&#13;
+        "viewportInfo": {}&#13;
+    },&#13;
+    {&#13;
+        "id": "loa",&#13;
+        "label": {&#13;
+            "translatable": true,&#13;
+            "message": "LOA configuration"&#13;
+        },&#13;
+        "icon": "hand-gear-outline",&#13;
+        "routeInfo": {&#13;
+            "route": "loa"&#13;
+        },&#13;
+        "group": "top",&#13;
+        "order": 650,&#13;
+        "badge": {},&#13;
+        "presence": {},&#13;
+        "availability": {&#13;
+			"roles": [&#13;
+                "x_gegis_ins_policy.ws_leftmenu_loa_config"&#13;
+            ]&#13;
+		},&#13;
+        "viewportInfo": {}&#13;
+    },&#13;
+    {&#13;
+        "id": "products",&#13;
+        "label": {&#13;
+            "translatable": true,&#13;
+            "message": "Product Builder"&#13;
+        },&#13;
+        "icon": "component-bundle-outline",&#13;
+        "routeInfo": {&#13;
+            "route": "products"&#13;
+        },&#13;
+        "group": "top",&#13;
+        "order": 700,&#13;
+        "badge": {},&#13;
+        "presence": {},&#13;
+        "availability": {&#13;
+			"roles": [&#13;
+                "x_gegis_ins_policy.ws_leftmenu_product_builder"&#13;
+            ]&#13;
+		},&#13;
+        "viewportInfo": {}&#13;
+    },&#13;
+    {&#13;
+        "id": "list",&#13;
+        "label": {&#13;
+            "translatable": true,&#13;
+            "message": "List"&#13;
+        },&#13;
+        "icon": "legend-outline",&#13;
+        "routeInfo": {&#13;
+            "route": "list"&#13;
+        },&#13;
+        "group": "top",&#13;
+        "order": 900,&#13;
+        "badge": {},&#13;
+        "presence": {},&#13;
+        "availability": {&#13;
+            "roles": [&#13;
+                "x_gegis_ins_policy.ws_leftmenu_list"&#13;
+            ]&#13;
+        },&#13;
+        "viewportInfo": {}&#13;
+    }&#13;
 ]</value>
     </sys_ux_page_property>
     <sys_translated_text action="delete_multiple" query="documentkey=386acb78337d4f907ef8f499ed5c7bd7"/>

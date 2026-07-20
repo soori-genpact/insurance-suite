@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="6879d573a211d01df5225e94c7ee013b" label="Extraction" max_length="40" name="x_gegis_ins_policy_extraction" type="collection">
+        <element label="Payload hash" max_length="100" name="payload_hash" type="string"/>
+        <element label="Rejection reason" max_length="1000" name="rejection_reason" type="string"/>
+        <element choice="1" label="Extraction method" max_length="40" name="extraction_method" type="string">
+            <choice/>
+        </element>
+        <element label="Document" mandatory="true" max_length="32" name="document" reference="x_gegis_ins_policy_document" type="reference"/>
+        <element label="Overall confidence" max_length="40" name="confidence_overall" type="decimal"/>
+        <element label="Supersedes" max_length="32" name="supersedes" reference="x_gegis_ins_policy_extraction" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Extraction status" mandatory="true" max_length="40" name="extraction_status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Accepted" sequence="70" value="accepted"/>
+                <element inactive_on_update="false" label="Pending" sequence="20" value="pending"/>
+                <element inactive_on_update="false" label="Rejected" sequence="80" value="rejected"/>
+                <element inactive_on_update="false" label="Extracted" sequence="30" value="extracted"/>
+                <element inactive_on_update="false" label="Pending Review" sequence="40" value="pending_review"/>
+                <element inactive_on_update="false" label="Applied" sequence="60" value="applied"/>
+                <element inactive_on_update="false" label="Reviewed" sequence="50" value="reviewed"/>
+                <element inactive_on_update="false" label="None" sequence="10" value="none"/>
+            </choice>
+        </element>
+        <element label="Model version" max_length="50" name="model_version" type="string"/>
+        <element label="Extracted date" max_length="40" name="extracted_date" type="glide_date_time"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" display="true" label="Number" max_length="40" name="number" type="string"/>
+        <element choice="1" label="Source" max_length="40" name="source" type="string">
+            <choice/>
+        </element>
+        <element label="Version" max_length="20" name="version" type="string"/>
+        <element label="Merged into" max_length="32" name="merged_into" reference="x_gegis_ins_policy_extraction" type="reference"/>
+        <element choice="3" default="pending_review" label="Disposition" max_length="40" name="disposition" type="string">
+            <choice/>
+        </element>
+        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element label="Correlation ID" max_length="100" name="correlation_id" type="string"/>
+        <index name="index">
+            <element name="document"/>
+        </index>
+        <index name="index2">
+            <element name="merged_into"/>
+        </index>
+        <index name="index3">
+            <element name="submission"/>
+        </index>
+        <index name="index4">
+            <element name="supersedes"/>
+        </index>
+    </element>
+</database>

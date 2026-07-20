@@ -1,3 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="06d5cff0333d4f907ef8f499ed5c7b23" label="Submission" max_length="40" name="x_gegis_ins_policy_submission" type="collection"/>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="06d5cff0333d4f907ef8f499ed5c7b23" label="Submission" max_length="40" name="x_gegis_ins_policy_submission" type="collection">
+        <element label="Current extraction" max_length="32" name="current_extraction" reference="x_gegis_ins_policy_extraction" type="reference"/>
+        <element label="Currency" max_length="3" name="currency" type="string"/>
+        <element label="Locked" max_length="40" name="is_locked" type="boolean"/>
+        <element label="Need by date" max_length="40" name="need_by_date" type="glide_date"/>
+        <element choice="3" default="medium" label="Priority" max_length="40" name="priority" type="string">
+            <choice/>
+        </element>
+        <element label="Requires review" max_length="40" name="requires_review" type="boolean"/>
+        <element choice="1" label="Source channel" max_length="40" name="source_channel" type="string">
+            <choice/>
+        </element>
+        <element label="Playbook Quote and Bind" max_length="40" name="playbook_quote_and_bind" type="string"/>
+        <element label="Insured Name" max_length="120" name="insured_name" type="string"/>
+        <element label="Line of Business" max_length="40" name="line_of_business" type="string"/>
+        <element label="Received date" max_length="40" name="received_date" type="glide_date_time"/>
+        <element choice="1" label="Sanctions status" max_length="40" name="sanctions_status" type="string">
+            <choice/>
+        </element>
+        <element label="Target expiration date" max_length="40" name="target_expiration_date" type="glide_date"/>
+        <element label="Underwriter" max_length="32" name="underwriter" reference="sys_user" type="reference"/>
+        <element label="Target effective date" max_length="40" name="target_effective_date" type="glide_date"/>
+        <element label="Total estimated premium" max_length="40" name="total_estimated_premium" type="decimal"/>
+        <element label="Duplicate of" max_length="32" name="duplicate_of" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element label="Appetite score" max_length="40" name="appetite_score" type="decimal"/>
+        <element label="Broker" max_length="32" name="broker" reference="x_gegis_ins_policy_party" type="reference"/>
+        <element choice="3" default="received" label="State" max_length="40" name="state" type="string">
+            <choice/>
+        </element>
+        <element label="Status reason" max_length="400" name="status_reason" type="string"/>
+        <element label="Playbook Risk" max_length="40" name="playbook_risk" type="string"/>
+        <element label="Insured Address" max_length="400" name="insured_address" type="string"/>
+        <element label="Source reference" max_length="200" name="source_reference" type="string"/>
+        <element choice="3" default="received" label="Status" max_length="40" name="status" type="string">
+            <choice/>
+        </element>
+        <element choice="3" default="new_business" label="Submission type" max_length="40" name="submission_type" type="string">
+            <choice/>
+        </element>
+        <element label="Underwriting assistant" max_length="32" name="underwriting_assistant" reference="sys_user" type="reference"/>
+        <element label="External ID" max_length="100" name="external_id" type="string"/>
+        <element label="Broker contact" max_length="32" name="broker_contact" reference="x_gegis_ins_policy_contact" type="reference"/>
+        <element label="Playbook Exposure" max_length="40" name="playbook_exposure" type="string"/>
+        <element label="Playbook Clearance" max_length="40" name="playbook_clearance" type="string"/>
+        <element choice="3" default="none" label="Extraction status" max_length="40" name="extraction_status" type="string">
+            <choice/>
+        </element>
+        <element label="Winnability" max_length="40" name="winnability" type="decimal"/>
+        <element choice="3" default="pending" label="Clearance status" max_length="40" name="clearance_status" type="string">
+            <choice/>
+        </element>
+        <element label="Broker Name" max_length="120" name="broker_name" type="string"/>
+        <element label="Playbook Renewal" max_length="40" name="playbook_renewal" type="string"/>
+        <element label="Overall confidence" max_length="40" name="overall_confidence" type="decimal"/>
+        <element default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element label="Primary insured" max_length="32" name="primary_insured" reference="x_gegis_ins_policy_party" type="reference"/>
+        <index name="index">
+            <element name="current_extraction"/>
+        </index>
+        <index name="index2">
+            <element name="underwriter"/>
+        </index>
+        <index name="index3">
+            <element name="broker"/>
+        </index>
+        <index name="index4">
+            <element name="broker_contact"/>
+        </index>
+        <index name="index5">
+            <element name="primary_insured"/>
+        </index>
+        <index name="index6">
+            <element name="duplicate_of"/>
+        </index>
+        <index name="index7">
+            <element name="underwriting_assistant"/>
+        </index>
+    </element>
 </database>

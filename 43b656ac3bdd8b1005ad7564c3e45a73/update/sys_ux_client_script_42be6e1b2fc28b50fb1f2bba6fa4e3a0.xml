@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_client_script">
+    <sys_ux_client_script action="INSERT_OR_UPDATE">
+        <controller_preset/>
+        <includes/>
+        <macroponent display_value="Dashboard default">d1d903f4337d4f907ef8f499ed5c7be6</macroponent>
+        <name>Greeting</name>
+        <preset/>
+        <required_translations>[]</required_translations>
+        <script><![CDATA[/**
+* @param {params} params
+* @param {api} params.api
+* @param {any} params.event
+* @param {any} params.imports
+* @param {ApiHelpers} params.helpers
+*/
+function handler({api, event, helpers, imports}) {
+ var now = new Date();
+    var hour = now.getHours();
+    var greeting;
+
+    if (hour >= 5 && hour < 12) greeting = 'Good Morning';
+    else if (hour >= 12 && hour < 17) greeting = 'Good Afternoon';
+    else if (hour >= 17 && hour < 22) greeting = 'Good Evening';
+    else greeting = 'Good Night';
+    api.setState('greeting', greeting);
+}]]></script>
+        <script_api_version>2.0.0</script_api_version>
+        <sys_class_name>sys_ux_client_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-18 15:55:39</sys_created_on>
+        <sys_id>42be6e1b2fc28b50fb1f2bba6fa4e3a0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Greeting</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_ux_client_script_42be6e1b2fc28b50fb1f2bba6fa4e3a0</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-18 15:55:39</sys_updated_on>
+        <target>macroponent</target>
+        <type>default</type>
+    </sys_ux_client_script>
+</record_update>

@@ -1,3 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="ba064b34333d4f907ef8f499ed5c7b59" label="Clearance Case" max_length="40" name="x_gegis_ins_policy_clearance_case" type="collection"/>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="ba064b34333d4f907ef8f499ed5c7b59" extends="task" label="Clearance Case" max_length="40" name="x_gegis_ins_policy_clearance_case" type="collection">
+        <element label="Active" max_length="40" name="is_active" type="boolean"/>
+        <element label="Submission" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element label="Stage" max_length="40" name="stage" type="integer"/>
+        <index name="index">
+            <element name="submission"/>
+            <element name="active"/>
+        </index>
+    </element>
 </database>

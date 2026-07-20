@@ -1,3 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="04a583f0333d4f907ef8f499ed5c7b1e" label="Intake Case" max_length="40" name="x_gegis_ins_policy_intake_case" type="collection"/>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" audit="true" db_object_id="04a583f0333d4f907ef8f499ed5c7b1e" label="Intake Case" max_length="40" name="x_gegis_ins_policy_intake_case" type="collection">
+        <element choice="3" default="inbound" label="Direction" max_length="40" name="direction" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Outbound" sequence="20" value="outbound"/>
+                <element inactive_on_update="false" label="Inbound" sequence="10" value="inbound"/>
+            </choice>
+        </element>
+        <element label="From" max_length="200" name="from_email" type="string"/>
+        <element label="Received on" max_length="40" name="received_on" type="glide_date_time"/>
+        <element label="Submission" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element choice="1" default="received" label="Status" max_length="40" name="status" type="choice">
+            <choice>
+                <element dependent_value="inbound" inactive_on_update="false" label="Awaiting Action" sequence="30" value="awaiting_action"/>
+                <element dependent_value="inbound" inactive_on_update="false" label="Duplicate" sequence="50" value="duplicate"/>
+                <element dependent_value="inbound" inactive_on_update="false" label="Cancelled" sequence="70" value="cancelled"/>
+                <element dependent_value="inbound" inactive_on_update="false" label="New" sequence="10" value="new"/>
+                <element dependent_value="outbound" inactive_on_update="false" label="New" sequence="90" value="new"/>
+                <element dependent_value="outbound" inactive_on_update="false" label="Acknowledged" sequence="130" value="acknowledged"/>
+                <element dependent_value="outbound" inactive_on_update="false" label="Ready to Send" sequence="110" value="ready_to_send"/>
+                <element dependent_value="inbound" inactive_on_update="false" label="Completed" sequence="40" value="completed"/>
+                <element dependent_value="inbound" inactive_on_update="false" label="In Progress" sequence="20" value="in_progress"/>
+                <element dependent_value="outbound" inactive_on_update="false" label="In Progress" sequence="100" value="in_progress"/>
+                <element dependent_value="inbound" inactive_on_update="false" label="Rejected" sequence="60" value="rejected"/>
+                <element dependent_value="inbound" inactive_on_update="false" label="Failed" sequence="80" value="failed"/>
+                <element dependent_value="outbound" inactive_on_update="false" label="Sent" sequence="120" value="sent"/>
+                <element dependent_value="outbound" inactive_on_update="false" label="Failed" sequence="140" value="failed"/>
+            </choice>
+        </element>
+        <element label="Intent summary" max_length="1000" name="intent_summary" type="string"/>
+        <element label="Subject" max_length="400" name="subject" type="string"/>
+        <element label="Email preview" max_length="4000" name="body_preview" type="string"/>
+        <element default="javascript:global.getNextObjNumberPadded();" display="true" label="Number" max_length="40" name="number" type="string"/>
+        <element label="Work notes" max_length="4000" name="work_notes" type="journal_input"/>
+        <element label="Intent" max_length="40" name="intent" type="string"/>
+        <element label="Folder path" max_length="400" name="folder_path" type="string"/>
+        <element label="Confidence score" max_length="40" name="confidence_score" type="decimal"/>
+        <element label="Correlation ID" max_length="100" name="correlation_id" type="string"/>
+        <element label="Container name" max_length="200" name="container_name" type="string"/>
+        <index name="index">
+            <element name="submission"/>
+        </index>
+    </element>
 </database>

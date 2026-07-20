@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="8119eea1abea0b7532f8f45d5b73700c" label="Submission Party" max_length="40" name="x_gegis_ins_policy_submission_party" type="collection">
+        <element label="Contact Address" max_length="400" name="contact_address" type="string"/>
+        <element label="Is primary" max_length="40" name="is_primary" type="boolean"/>
+        <element label="Organization" mandatory="true" max_length="32" name="organization" reference="f6e981c0e186c16931d2c9bb6c8baeca" type="reference"/>
+        <element label="Parent organization" max_length="32" name="parent_organization" reference="f6e981c0e186c16931d2c9bb6c8baeca" type="reference"/>
+        <element label="Ownership %" max_length="40" name="ownership_percent" type="decimal"/>
+        <element label="Sequence" max_length="40" name="sequence" type="integer"/>
+        <element label="Contact name" max_length="200" name="contact_name" type="string"/>
+        <element label="Contact email" max_length="200" name="contact_email" type="string"/>
+        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="06d5cff0333d4f907ef8f499ed5c7b23" type="reference"/>
+        <element label="Relationship to primary" max_length="40" name="relationship_to_primary" type="string"/>
+        <element label="Role" mandatory="true" max_length="40" name="role" type="string"/>
+        <element label="Contact phone" max_length="50" name="contact_phone" type="string"/>
+        <index name="index">
+            <element name="organization"/>
+        </index>
+        <index name="index2">
+            <element name="parent_organization"/>
+        </index>
+        <index name="index3">
+            <element name="submission"/>
+        </index>
+    </element>
+</database>

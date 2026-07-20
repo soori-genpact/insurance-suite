@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.SubmissionApiService</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Creates, updates (new extraction version + merge) and reads submissions for the AI pipeline. Backs POST/PUT/GET /submission.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>SubmissionApiService</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var SubmissionApiService = Class.create();
+SubmissionApiService.prototype = {
+    initialize: function() {
+        this.SUBMISSION = 'x_gegis_ins_policy_submission';
+        this.LINE = 'x_gegis_ins_policy_submission_line';
+        this.PARTY_M2M = 'x_gegis_ins_policy_submission_party';
+        this.DOCUMENT = 'x_gegis_ins_policy_document';
+        this.EXTRACTION = 'x_gegis_ins_policy_extraction';
+        this.INTAKE = 'x_gegis_ins_policy_intake_case';
+        this.TASK = 'x_gegis_ins_policy_case_task';
+        this.ENTITY = 'x_gegis_ins_policy_extraction_entity';
+        this.FIELD = 'x_gegis_ins_policy_extraction_field';
+    },
+
+    /**
+     * POST /submission - create a submission from a completed AI extraction.
+     * Downloads the extraction-result blob, stages it, builds the submission
+     * and copies (clones) the intake case's documents onto it.
+     *
+     * @param body {correlation_id, intent_summary, intent_classification_result (blob URL),
+     *              metadata:{confidence_score, external_case_id}, attachments:[...]}
+     */
+    create: function(body) {
+        body = body || {};
+        if (!body.correlation_id)
+            return this._error(400, 'ERRORU-002', 'correlation_id is mandatory');
+
+        var payload = this._downloadPayload(body.intent_classification_result);
+        if (!payload)
+            return this._error(400, 'ERRORU-003',
+                'Invalid extracted data structure / unable to download Blob');
+
+        var intake = this._findIntake(body);
+        var extraction = this._createExtraction(body, payload, '', 1);
+        new x_gegis_ins_policy.ExtractionMapper().mapPayload(extraction, payload);
+        var subId = new x_gegis_ins_policy.SubmissionBuilder().buildFromExtraction(extraction);
+
+        // Automatic vs manual approval is driven by a system property per intent.
+        var isAuto = x_gegis_ins_policy.Constants.isAutoApprove('new');
+        if (isAuto) {
+            this._autoApprove(extraction.getUniqueValue());
+        } else {
+            extraction.extraction_status = 'extracted';
+            extraction.disposition = 'pending_review';
+            extraction.update();
+        }
+
+        var sub = new GlideRecord(this.SUBMISSION);
+        sub.get(subId);
+        if (intake) {
+            sub.source_channel = 'email';
+            sub.source_reference = String(intake.number);
+            sub.update();
+            var copied = this._copyDocuments(intake, subId, body.attachments);
+            var task = this._createExtractionReviewTask(intake, sub, isAuto, extraction);
+            intake.submission = subId;
+            intake.intent = 'new_submission';
+            intake.intent_summary = body.intent_summary || '';
+            intake.status = isAuto ? 'completed' : 'awaiting_action';
+            intake.work_notes = 'Submission ' + sub.number + ' created from AI extraction.' +
+                '\nProcessing mode: ' + (isAuto ? 'AUTOMATIC (auto-approved and applied)' : 'MANUAL (awaiting review)') +
+                '\nHITL task: ' + task.number + ' (' + (isAuto ? 'closed complete' : 'open') + ')' +
+                '\nExtraction confidence: ' + (body.metadata ? body.metadata.confidence_score : '(n/a)') +
+                '\nDocuments copied to submission: ' + copied +
+                '\nIntent summary: ' + (body.intent_summary || '(none)') +
+                '\nCorrelation ID: ' + body.correlation_id;
+            intake.update();
+
+            // Intake auto-completed - any other still-pending task is moot: Closed Skipped.
+            if (isAuto)
+                this._skipPendingTasks(intake.getUniqueValue(), task.getUniqueValue(),
+                    'Closed Skipped: intake auto-completed for submission ' + sub.number +
+                    '; task no longer required.');
+        }
+
+        return {
+            _status: 201,
+            success: true,
+            correlation_id: String(body.correlation_id),
+            _location: '/api/x_gegis_ins_policy/v1/submission/' + sub.number,
+            inserted: [{
+                submissionNumber: String(sub.number),
+                lineOfBusiness: this._firstLineLabel(subId)
+            }],
+            failed: [],
+            warnings: [],
+            error: ''
+        };
+    },
+
+    /**
+     * PUT /submission/{number} - a further extraction arrived for an existing
+     * submission. Stages it as a new version superseding the current one and
+     * runs the merge (conflicts stay pending for human review).
+     */
+    update: function(submissionNumber, body) {
+        body = body || {};
+        if (!body.correlation_id)
+            return this._error(400, 'ERRORU-002', 'correlation_id is mandatory');
+        if (!submissionNumber)
+            return this._error(400, 'ERRORU-005', 'Submission ID is required for update');
+
+        var sub = new GlideRecord(this.SUBMISSION);
+        sub.addQuery('number', String(submissionNumber));
+        sub.setLimit(1);
+        sub.query();
+        if (!sub.next())
+            return this._error(404, 'ERRORU-004', 'Submission ' + submissionNumber + ' not found');
+
+        var payload = this._downloadPayload(body.intent_classification_result);
+        if (!payload)
+            return this._error(400, 'ERRORU-003',
+                'Invalid extracted data structure / unable to download Blob');
+
+        var currentId = String(sub.current_extraction);
+        var version = this._nextVersion(sub.getUniqueValue());
+        var extraction = this._createExtraction(body, payload, sub.getUniqueValue(), version);
+        if (currentId) {
+            extraction.supersedes = currentId;
+            extraction.update();
+        }
+        new x_gegis_ins_policy.ExtractionMapper().mapPayload(extraction, payload);
+
+        var merge = new x_gegis_ins_policy.MergeEngine();
+        var rows = merge.compare(extraction);
+        var conflicts = 0;
+        for (var i = 0; i < rows.length; i++)
+            if (rows[i].classification === 'conflict' && !rows[i].is_protected)
+                conflicts++;
+
+        // Automatic vs manual for the update intent. Auto only actually merges
+        // when there are no conflicts; conflicts always fall back to review.
+        var isAuto = x_gegis_ins_policy.Constants.isAutoApprove('update');
+        var willProcess = isAuto && conflicts === 0;
+
+        var intake = this._findIntake(body);
+        if (intake) {
+            var copied = this._copyDocuments(intake, sub.getUniqueValue(), body.attachments);
+            var task = this._createExtractionReviewTask(intake, sub, willProcess, extraction);
+            intake.submission = sub.getUniqueValue();
+            intake.intent = 'update_data';
+            intake.status = willProcess ? 'completed' : 'awaiting_action';
+            intake.work_notes = 'In-flight update for submission ' + sub.number +
+                ' (extraction version ' + version + ').' +
+                '\nProcessing mode: ' + (isAuto ? 'AUTOMATIC' : 'MANUAL') +
+                (isAuto && conflicts > 0 ? ' (held: ' + conflicts + ' conflict(s))' : '') +
+                '\nHITL task: ' + task.number + ' (' + (willProcess ? 'closed complete' : 'open') + ')' +
+                '\nField conflicts requiring review: ' + conflicts +
+                '\nDocuments copied: ' + copied +
+                '\nCorrelation ID: ' + body.correlation_id;
+            intake.update();
+
+            // Intake auto-completed - any other still-pending task is moot: Closed Skipped.
+            if (willProcess)
+                this._skipPendingTasks(intake.getUniqueValue(), task.getUniqueValue(),
+                    'Closed Skipped: intake auto-completed for submission ' + sub.number +
+                    ' (in-flight update); task no longer required.');
+        }
+
+        if (willProcess) {
+            merge.applyMerge(extraction);
+            return {
+                _status: 200,
+                success: true,
+                correlation_id: String(body.correlation_id),
+                message: 'In-flight update merged successfully (automated process)'
+            };
+        }
+        sub.extraction_status = 'pending_review';
+        sub.requires_review = true;
+        sub.update();
+        return {
+            _status: 200,
+            success: true,
+            correlation_id: String(body.correlation_id),
+            message: (isAuto ? conflicts + ' field conflict(s) pending human review' : 'Manual review required') + '; HITL task open',
+            conflicts: conflicts
+        };
+    },
+
+    /** GET /submission/{number} - header, lines, parties and documents. */
+    read: function(submissionNumber) {
+        var sub = new GlideRecord(this.SUBMISSION);
+        sub.addQuery('number', String(submissionNumber));
+        sub.setLimit(1);
+        sub.query();
+        if (!sub.next())
+            return this._error(404, 'ERRORU-004', 'Submission ' + submissionNumber + ' not found');
+
+        var out = {
+            _status: 200,
+            success: true,
+            submission: {
+                number: String(sub.number),
+                state: String(sub.state),
+                submissionType: String(sub.submission_type),
+                insuredName: String(sub.insured_name),
+                brokerName: String(sub.broker_name),
+                targetEffectiveDate: String(sub.target_effective_date),
+                targetExpirationDate: String(sub.target_expiration_date),
+                clearanceStatus: String(sub.clearance_status),
+                extractionStatus: String(sub.extraction_status),
+                overallConfidence: String(sub.overall_confidence),
+                totalEstimatedPremium: String(sub.total_estimated_premium)
+            },
+            lines: [],
+            parties: [],
+            documents: []
+        };
+        var line = new GlideRecord(this.LINE);
+        line.addQuery('submission', sub.getUniqueValue());
+        line.query();
+        while (line.next())
+            out.lines.push({
+                lineOfBusiness: line.getDisplayValue('line_of_business'),
+                state: String(line.state),
+                effectiveDate: String(line.effective_date),
+                estimatedPremium: String(line.estimated_premium)
+            });
+        var party = new GlideRecord(this.PARTY_M2M);
+        party.addQuery('submission', sub.getUniqueValue());
+        party.query();
+        while (party.next())
+            out.parties.push({
+                role: String(party.role),
+                organization: party.getDisplayValue('organization'),
+                isPrimary: String(party.is_primary) === 'true'
+            });
+        var d = new GlideRecord(this.DOCUMENT);
+        d.addQuery('submission', sub.getUniqueValue());
+        d.query();
+        while (d.next())
+            out.documents.push({
+                name: String(d.document_name),
+                scope: String(d.scope),
+                type: String(d.document_type),
+                status: String(d.state),
+                version: String(d.version)
+            });
+        return out;
+    },
+
+    /** Clone intake documents onto the submission (copy, not re-link). */
+    _copyDocuments: function(intake, subId, attachments) {
+        var copied = 0;
+        var statusByName = {};
+        for (var i = 0; attachments && i < attachments.length; i++)
+            statusByName[attachments[i].file_name] = String(attachments[i].status || '').toLowerCase();
+
+        var src = new GlideRecord(this.DOCUMENT);
+        src.addQuery('intake_case', intake.getUniqueValue());
+        src.query();
+        while (src.next()) {
+            var pipelineStatus = statusByName[String(src.document_name)] || '';
+            if (pipelineStatus) {
+                src.state = this._toDocState(pipelineStatus);
+                src.update();
+            }
+            if (src.state == 'duplicate' || src.state == 'old' || src.state == 'stale')
+                continue;
+            var already = new GlideRecord(this.DOCUMENT);
+            already.addQuery('submission', subId);
+            already.addQuery('document_name', String(src.document_name));
+            already.setLimit(1);
+            already.query();
+            if (already.next())
+                continue;
+            var copy = new GlideRecord(this.DOCUMENT);
+            copy.initialize();
+            copy.document_name = String(src.document_name);
+            copy.url = String(src.url);
+            copy.attachment_type = String(src.attachment_type);
+            copy.file_type = String(src.file_type);
+            copy.document_type = String(src.document_type);
+            copy.state = String(src.state);
+            copy.confidence = src.confidence;
+            copy.received_date = src.received_date;
+            copy.version = src.version;
+            copy.status = 'draft';
+            copy.scope = 'common';
+            copy.submission = subId;
+            copy.intake_case = intake.getUniqueValue();
+            copy.insert();
+            copied++;
+        }
+        return copied;
+    },
+
+    /**
+     * Auto-approve a freshly mapped extraction: accept its staged entities
+     * and fields, then apply them so the values land on the submission and
+     * its lines. Used when the auto_approve property is on for the intent.
+     */
+    _autoApprove: function(extractionId) {
+        var e = new GlideRecord(this.ENTITY);
+        e.addQuery('extraction', extractionId);
+        e.addQuery('disposition', '!=', 'rejected');
+        e.query();
+        while (e.next()) {
+            e.setValue('disposition', 'accepted');
+            e.update();
+        }
+        var f = new GlideRecord(this.FIELD);
+        f.addQuery('extraction', extractionId);
+        f.addQuery('review_status', 'needs_review');
+        f.query();
+        while (f.next()) {
+            f.setValue('review_status', 'auto_accepted');
+            f.update();
+        }
+        var ex = new GlideRecord(this.EXTRACTION);
+        if (ex.get(extractionId)) {
+            new x_gegis_ins_policy.ExtractionApplier().apply(ex);
+            // Terminal accepted status on the extraction and its submission.
+            ex.setValue('extraction_status', 'accepted');
+            ex.update();
+            this._setSubmissionExtractionStatus(ex.getValue('submission'), 'accepted');
+        }
+    },
+
+    /**
+     * Create the HITL extraction-review case task on the intake case.
+     * Always created when an intake case is identified.
+     *   auto   -> state Closed Complete, automated-process work note
+     *   manual -> state Open, awaiting human Accept/Reject
+     */
+    _createExtractionReviewTask: function(intake, sub, isAuto, extraction) {
+        gs.info("extraction.getUniqueValue()" + extraction.getUniqueValue());
+        var task = new GlideRecord(this.TASK);
+        task.initialize();
+        task.setValue('intake_case', intake.getUniqueValue());
+        task.setValue('category', 'hitl');
+        task.setValue('u_type', 'extraction_review');
+        task.setValue('short_description', 'Extraction review for submission ' + sub.number);
+        if (isAuto) {
+            task.setValue('description', 'Extraction auto-approved and applied by the automated process.');
+            task.setValue('state', 8); // Auto Accepted (automated process)
+            task.setValue('active', false);
+            task.work_notes = 'Automated process: extraction data auto-approved and merged into submission ' +
+                sub.number + '. Task closed complete.';
+        } else {
+            task.setValue('description', 'Extraction requires human review. Accept to apply the extracted data, or Reject to discard.');
+            task.setValue('state', 1); // Open
+            gs.info("extraction  SETTING" + extraction.getUniqueValue());
+            task.setValue('extraction', extraction.getUniqueValue());
+            task.work_notes = 'Awaiting human review of submission ' + sub.number +
+                '. Accept to apply the extracted data, or Reject to discard.';
+        }
+        task.insert();
+        return task;
+    },
+
+    /**
+     * UI action "Accept": approve the extraction linked to a HITL task.
+     * Pulls the extraction off the task, applies it to the submission,
+     * closes the task as Accepted (9) and completes the intake case.
+     *
+     * @param taskGr GlideRecord x_gegis_ins_policy_case_task (the form's current)
+     */
+    acceptTask: function(taskGr) {
+        var extractionId = taskGr.getValue('extraction');
+        if (!extractionId)
+            return this._error(400, 'ERRORU-007', 'Task has no linked extraction to accept');
+
+        this._autoApprove(extractionId); // accept staged rows + apply to SOR
+
+        taskGr.setValue('state', 9); // Accepted
+        // taskGr.setValue('active', false); // TEMP off: active=false made base Task engine coerce state to Closed Complete(3)
+        taskGr.work_notes = 'Extraction accepted by ' + gs.getUserName() +
+            '. Extracted data applied to the submission.';
+        taskGr.update();
+
+        this._setIntakeStatus(taskGr.getValue('intake_case'), 'completed',
+            'Extraction review task ' + taskGr.getValue('number') + ' accepted; data applied.');
+
+        // Intake resolved - any other still-pending task is moot: Closed Skipped.
+        var skipped = this._skipPendingTasks(taskGr.getValue('intake_case'), taskGr.getUniqueValue(),
+            'Closed Skipped: superseded by extraction review task ' + taskGr.getValue('number') +
+            ' (accepted); no longer required.');
+
+        return {
+            success: true,
+            decision: 'accepted',
+            taskState: 9,
+            skippedTasks: skipped
+        };
+    },
+
+    /**
+     * UI action "Reject": discard the extraction linked to a HITL task.
+     * Marks the extraction and its staged rows rejected (nothing is applied),
+     * closes the task as Rejected (10) and rejects the intake case.
+     */
+    rejectTask: function(taskGr) {
+        var extractionId = taskGr.getValue('extraction');
+        if (!extractionId)
+            return this._error(400, 'ERRORU-007', 'Task has no linked extraction to reject');
+
+        this._rejectExtraction(extractionId);
+
+        taskGr.setValue('state', 10); // Rejected
+        // taskGr.setValue('active', false); // TEMP off: active=false made base Task engine coerce state to Closed Complete(3)
+        taskGr.work_notes = 'Extraction rejected by ' + gs.getUserName() +
+            '. Staged data discarded; nothing applied to the submission.';
+        taskGr.update();
+
+        this._setIntakeStatus(taskGr.getValue('intake_case'), 'rejected',
+            'Extraction review task ' + taskGr.getValue('number') + ' rejected; data discarded.');
+
+        // Intake resolved - any other still-pending task is moot: Closed Skipped.
+        var skipped = this._skipPendingTasks(taskGr.getValue('intake_case'), taskGr.getUniqueValue(),
+            'Closed Skipped: superseded by extraction review task ' + taskGr.getValue('number') +
+            ' (rejected); no longer required.');
+
+        return {
+            success: true,
+            decision: 'rejected',
+            taskState: 10,
+            skippedTasks: skipped
+        };
+    },
+
+    /**
+     * Close any still-pending sibling tasks on the intake as Closed Skipped (7).
+     * Called once the intake reaches a terminal decision (accept/reject) so no
+     * open task is left dangling. Pending = state -5 (Pending), 1 (Open),
+     * 2 (Work in Progress). Runs after the intake is set to its final status so
+     * the "back to In Progress" business rule short-circuits on the FINAL guard.
+     *
+     * @param intakeId     sys_id of the intake case
+     * @param exceptTaskId sys_id of the task just resolved (skip it)
+     * @param note         work note stamped on each skipped task
+     * @return count of tasks skipped
+     */
+    _skipPendingTasks: function(intakeId, exceptTaskId, note) {
+        if (!intakeId)
+            return 0;
+        var skipped = 0;
+        var t = new GlideRecord(this.TASK);
+        t.addQuery('intake_case', intakeId);
+        t.addQuery('state', 'IN', '-5,1,2');
+        if (exceptTaskId)
+            t.addQuery('sys_id', '!=', exceptTaskId);
+        t.query();
+        while (t.next()) {
+            t.setValue('state', 7); // Closed Skipped
+            t.setValue('active', false);
+            t.work_notes = note;
+            t.update();
+            skipped++;
+        }
+        return skipped;
+    },
+
+    /** Mark an extraction and all its staged rows rejected. Applies nothing. */
+    _rejectExtraction: function(extractionId) {
+        var e = new GlideRecord(this.ENTITY);
+        e.addQuery('extraction', extractionId);
+        e.query();
+        while (e.next()) {
+            e.setValue('disposition', 'rejected');
+            e.update();
+        }
+        var f = new GlideRecord(this.FIELD);
+        f.addQuery('extraction', extractionId);
+        f.addQuery('review_status', 'IN', 'needs_review,accepted,auto_accepted,corrected');
+        f.query();
+        while (f.next()) {
+            f.setValue('review_status', 'rejected');
+            f.update();
+        }
+        var ex = new GlideRecord(this.EXTRACTION);
+        if (ex.get(extractionId)) {
+            ex.setValue('disposition', 'rejected');
+            ex.setValue('extraction_status', 'rejected');
+            ex.update();
+            this._setSubmissionExtractionStatus(ex.getValue('submission'), 'rejected');
+        }
+    },
+
+    _setIntakeStatus: function(intakeId, status, note) {
+        if (!intakeId)
+            return;
+        var intake = new GlideRecord(this.INTAKE);
+        if (intake.get(intakeId)) {
+            intake.setValue('status', status);
+            intake.work_notes = note;
+            intake.update();
+        }
+    },
+
+    _setSubmissionExtractionStatus: function(subId, status) {
+        if (!subId)
+            return;
+        var sub = new GlideRecord(this.SUBMISSION);
+        if (sub.get(subId)) {
+            sub.setValue('extraction_status', status);
+            sub.update();
+        }
+    },
+
+    _toDocState: function(token) {
+        var map = {
+            'new': 'new',
+            'processed': 'processed',
+            'duplicate': 'duplicate',
+            'old': 'old',
+            'stale': 'stale'
+        };
+        return map[token] || 'new';
+    },
+
+    _findIntake: function(body) {
+        var intake = new GlideRecord(this.INTAKE);
+        var externalId = body.metadata ? String(body.metadata.external_case_id || '') : '';
+        if (externalId)
+            intake.addQuery('number', externalId)
+            .addOrCondition('correlation_id', String(body.correlation_id));
+        else
+            intake.addQuery('correlation_id', String(body.correlation_id));
+        intake.setLimit(1);
+        intake.query();
+        return intake.next() ? intake : null;
+    },
+
+    _createExtraction: function(body, payload, subId, version) {
+        var e = new GlideRecord(this.EXTRACTION);
+        e.initialize();
+        e.submission = subId;
+        e.version = version;
+        e.extraction_status = 'extracted';
+        e.disposition = 'pending_review';
+        e.extraction_method = 'ai';
+        e.source = 'api';
+        e.correlation_id = String(body.correlation_id);
+        e.extracted_date = new GlideDateTime();
+        e.confidence_overall = body.metadata ? body.metadata.confidence_score : '';
+        e.insert();
+        return e;
+    },
+
+    _nextVersion: function(subId) {
+        var agg = new GlideAggregate(this.EXTRACTION);
+        agg.addQuery('submission', subId);
+        agg.addAggregate('MAX', 'version');
+        agg.query();
+        var max = agg.next() ? parseInt(agg.getAggregate('MAX', 'version'), 10) : 0;
+        return (isNaN(max) ? 0 : max) + 1;
+    },
+
+    _firstLineLabel: function(subId) {
+        var line = new GlideRecord(this.LINE);
+        line.addQuery('submission', subId);
+        line.orderBy('sys_created_on');
+        line.setLimit(1);
+        line.query();
+        return line.next() ? line.getDisplayValue('line_of_business') : '';
+    },
+
+    /** Fetch and parse the extraction-result JSON blob. Null on any failure. */
+    _downloadPayload: function(url) {
+        if (!url)
+            return null;
+        try {
+            var rm = new sn_ws.RESTMessageV2();
+            rm.setEndpoint(String(url));
+            rm.setHttpMethod('GET');
+            var resp = rm.execute();
+            if (resp.getStatusCode() !== 200)
+                return null;
+            var parsed = JSON.parse(resp.getBody());
+            return (parsed && typeof parsed === 'object') ? parsed : null;
+        } catch (e) {
+            return null;
+        }
+    },
+
+    _error: function(status, code, message) {
+        return {
+            _status: status,
+            success: false,
+            errorCode: code,
+            errorMessage: message
+        };
+    },
+
+    type: 'SubmissionApiService'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-07-11 12:00:00</sys_created_on>
+        <sys_id>d2c5f004acc2ace025a5af2ddd7003c4</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>SubmissionApiService</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_d2c5f004acc2ace025a5af2ddd7003c4</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-07-12 11:37:19</sys_updated_on>
+    </sys_script_include>
+</record_update>

@@ -1,12 +1,1114 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_macroponent">
     <sys_ux_macroponent action="INSERT_OR_UPDATE">
         <associated_types/>
-        <bundles/>
+        <bundles>[]</bundles>
         <category>page</category>
         <component_dependencies/>
-        <composition/>
+        <composition>[
+    {
+        "definition": {
+            "id": "d356d14b6e293a3020a244b63d278d8f",
+            "type": "MACROPONENT"
+        },
+        "elementId": "column_layout_1",
+        "elementLabel": "Column layout 1",
+        "eventMappings": [],
+        "isHidden": {
+            "type": "JSON_LITERAL",
+            "value": null
+        },
+        "overrides": {
+            "composition": [
+                {
+                    "definition": {
+                        "id": "d356d14b6e293a3020a244b63d278d8f",
+                        "type": "MACROPONENT"
+                    },
+                    "elementId": "__eddaKIfuvAaafjjjkIDtRzojcrY__column_1",
+                    "elementLabel": "Column 1",
+                    "eventMappings": [],
+                    "isHidden": {
+                        "type": "JSON_LITERAL",
+                        "value": null
+                    },
+                    "overrides": {
+                        "composition": [
+                            {
+                                "definition": {
+                                    "id": "REPEATER",
+                                    "type": "REPEATER"
+                                },
+                                "elementId": "repeater_1",
+                                "elementLabel": "Repeater 1",
+                                "eventMappings": [],
+                                "isHidden": {
+                                    "type": "JSON_LITERAL",
+                                    "value": null
+                                },
+                                "overrides": {
+                                    "composition": [
+                                        {
+                                            "definition": {
+                                                "id": "83db4ef2b2ff8a742957a7d2af6d7975",
+                                                "type": "MACROPONENT"
+                                            },
+                                            "elementId": "home_cards",
+                                            "elementLabel": "Home Cards",
+                                            "eventMappings": [],
+                                            "isHidden": {
+                                                "type": "JSON_LITERAL",
+                                                "value": null
+                                            },
+                                            "preset": null,
+                                            "propertyValues": {
+                                                "clickable": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": false
+                                                },
+                                                "currencySymbol": {
+                                                    "binding": {
+                                                        "address": [
+                                                            "currencySymbol"
+                                                        ],
+                                                        "category": "value"
+                                                    },
+                                                    "type": "REPEATER_ITEM_BINDING"
+                                                },
+                                                "decimals": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": 2
+                                                },
+                                                "format": {
+                                                    "binding": {
+                                                        "address": [
+                                                            "trendDirection"
+                                                        ],
+                                                        "category": "value"
+                                                    },
+                                                    "type": "REPEATER_ITEM_BINDING"
+                                                },
+                                                "heading": {
+                                                    "binding": {
+                                                        "address": [
+                                                            "heading"
+                                                        ],
+                                                        "category": "value"
+                                                    },
+                                                    "type": "REPEATER_ITEM_BINDING"
+                                                },
+                                                "icon": {
+                                                    "type": "JSON_LITERAL"
+                                                },
+                                                "iconBackgroundColor": {
+                                                    "binding": {
+                                                        "address": [
+                                                            "iconBackgroundColor"
+                                                        ],
+                                                        "category": "value"
+                                                    },
+                                                    "type": "REPEATER_ITEM_BINDING"
+                                                },
+                                                "iconColor": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": ""
+                                                },
+                                                "iconGlyph": {
+                                                    "binding": {
+                                                        "address": [
+                                                            "iconGlyph"
+                                                        ],
+                                                        "category": "value"
+                                                    },
+                                                    "type": "REPEATER_ITEM_BINDING"
+                                                },
+                                                "trendDirection": {
+                                                    "binding": {
+                                                        "address": [
+                                                            "trendDirection"
+                                                        ],
+                                                        "category": "value"
+                                                    },
+                                                    "type": "REPEATER_ITEM_BINDING"
+                                                },
+                                                "trendPeriod": {
+                                                    "binding": {
+                                                        "address": [
+                                                            "trendPeriod"
+                                                        ],
+                                                        "category": "value"
+                                                    },
+                                                    "type": "REPEATER_ITEM_BINDING"
+                                                },
+                                                "trendPositiveIsGood": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                },
+                                                "trendValue": {
+                                                    "binding": {
+                                                        "address": [
+                                                            "trendValue"
+                                                        ],
+                                                        "category": "value"
+                                                    },
+                                                    "type": "REPEATER_ITEM_BINDING"
+                                                },
+                                                "value": {
+                                                    "binding": {
+                                                        "address": [
+                                                            "value"
+                                                        ],
+                                                        "category": "value"
+                                                    },
+                                                    "type": "REPEATER_ITEM_BINDING"
+                                                }
+                                            },
+                                            "slot": null,
+                                            "styles": {
+                                                "default": {
+                                                    "background": "rgb(var(--now-color_background--primary))",
+                                                    "background-color": "rgb(var(--now-color_background--primary))",
+                                                    "border-color": "rgb(var(--now-color_chrome--brand-0))",
+                                                    "border-radius": "10px !important"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "layout": {
+                                        "default": {
+                                            "children": null,
+                                            "items": [
+                                                {
+                                                    "element_id": "home_cards",
+                                                    "styles": {}
+                                                }
+                                            ],
+                                            "root": null,
+                                            "rules": null,
+                                            "styles": {
+                                                "display": "grid",
+                                                "gap": "var(--now-scalable-space--sm)",
+                                                "grid-auto-columns": "1fr",
+                                                "grid-auto-rows": "1fr",
+                                                "grid-template-columns": "1fr 1fr 1fr 1fr 1fr",
+                                                "grid-template-rows": "1fr 1fr"
+                                            },
+                                            "templateId": "5832fd4d53c31010e6bcddeeff7b12db",
+                                            "type": "grid"
+                                        },
+                                        "version": "3.1.0"
+                                    }
+                                },
+                                "preset": null,
+                                "propertyValues": {},
+                                "repeatWith": {
+                                    "type": "JSON_LITERAL",
+                                    "value": [
+                                        {
+                                            "format": "none",
+                                            "heading": "Written Premium",
+                                            "iconBackgroundColor": "#e7ecfd",
+                                            "iconGlyph": "$",
+                                            "trendDirection": "up",
+                                            "trendPeriod": "vs Last Year",
+                                            "trendPositiveIsGood": true,
+                                            "trendValue": "9.0",
+                                            "value": "15.2M"
+                                        },
+                                        {
+                                            "format": "none",
+                                            "heading": "Submission to Quote Ratio",
+                                            "iconBackgroundColor": "#fdf0dc",
+                                            "iconGlyph": "%",
+                                            "trendDirection": "down",
+                                            "trendPeriod": "vs Last Year",
+                                            "trendPositiveIsGood": true,
+                                            "trendValue": "35.8",
+                                            "value": "91"
+                                        },
+                                        {
+                                            "format": "none",
+                                            "heading": "Quote to Bind Ratio",
+                                            "iconBackgroundColor": "#d6f5e0",
+                                            "iconGlyph": "%",
+                                            "trendDirection": "up",
+                                            "trendPeriod": "vs Last Year",
+                                            "trendPositiveIsGood": true,
+                                            "trendValue": "36.7",
+                                            "value": "90.9"
+                                        },
+                                        {
+                                            "format": "none",
+                                            "heading": "Loss Ratio",
+                                            "iconBackgroundColor": "#fde8e8",
+                                            "iconGlyph": "$",
+                                            "trendDirection": "down",
+                                            "trendPeriod": "vs Last Year",
+                                            "trendPositiveIsGood": false,
+                                            "trendValue": "28.07",
+                                            "value": "91.81M"
+                                        },
+                                        {
+                                            "format": "none",
+                                            "heading": "Renewal Retention",
+                                            "iconBackgroundColor": "#fdf0dc",
+                                            "iconGlyph": "%",
+                                            "trendDirection": "up",
+                                            "trendPeriod": "vs Last Year",
+                                            "trendPositiveIsGood": true,
+                                            "trendValue": "4.47",
+                                            "value": "79.21"
+                                        },
+                                        {
+                                            "format": "none",
+                                            "heading": "Declination Rate",
+                                            "iconBackgroundColor": "#d6f5e0",
+                                            "iconGlyph": "%",
+                                            "trendDirection": "down",
+                                            "trendPeriod": "vs Last Year",
+                                            "trendPositiveIsGood": false,
+                                            "trendValue": "12.71",
+                                            "value": "23.72"
+                                        },
+                                        {
+                                            "format": "none",
+                                            "heading": "Renewal Rate Change",
+                                            "iconBackgroundColor": "#fde8e8",
+                                            "iconGlyph": "%",
+                                            "trendDirection": "up",
+                                            "trendPeriod": "vs Last Year",
+                                            "trendPositiveIsGood": true,
+                                            "trendValue": "4.64",
+                                            "value": "2.79"
+                                        },
+                                        {
+                                            "format": "none",
+                                            "heading": "CAT Exposure by Region",
+                                            "iconBackgroundColor": "#e7ecfd",
+                                            "iconGlyph": "%",
+                                            "trendDirection": "up",
+                                            "trendPeriod": "vs Last Month",
+                                            "trendPositiveIsGood": true,
+                                            "trendValue": "12.3",
+                                            "value": "90.00"
+                                        },
+                                        {
+                                            "format": "none",
+                                            "heading": "Broker Performance",
+                                            "iconBackgroundColor": "#fdf0dc",
+                                            "iconGlyph": "%",
+                                            "trendDirection": "down",
+                                            "trendPeriod": "vs Last Month",
+                                            "trendPositiveIsGood": true,
+                                            "trendValue": "1.2",
+                                            "value": "72"
+                                        },
+                                        {
+                                            "format": "none",
+                                            "heading": "Aged Debt",
+                                            "iconBackgroundColor": "#fde8e8",
+                                            "iconGlyph": "%",
+                                            "trendDirection": "up",
+                                            "trendPeriod": "vs Last Month",
+                                            "trendPositiveIsGood": true,
+                                            "trendValue": "12.3",
+                                            "value": "76"
+                                        }
+                                    ]
+                                },
+                                "slot": null,
+                                "styles": {
+                                    "default": {}
+                                }
+                            }
+                        ],
+                        "layout": {
+                            "default": {
+                                "children": null,
+                                "items": [
+                                    {
+                                        "element_id": "repeater_1"
+                                    }
+                                ],
+                                "root": null,
+                                "styles": {
+                                    "align-items": "stretch",
+                                    "box-sizing": "border-box",
+                                    "flex-direction": "column",
+                                    "height": "100%",
+                                    "justify-content": "flex-start",
+                                    "overflow": "auto"
+                                },
+                                "type": "flex"
+                            },
+                            "disableAutoReflow": true,
+                            "version": "3.1.0"
+                        }
+                    },
+                    "preset": null,
+                    "propertyValues": {
+                        "hideEmptyStateUi": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "slotWrapperBehavior": {
+                            "type": "JSON_LITERAL",
+                            "value": "contents"
+                        }
+                    },
+                    "scratchPad": {
+                        "uib": {
+                            "layout": {
+                                "column": {
+                                    "columnNumber": 0,
+                                    "id": "default",
+                                    "styleConfig": {
+                                        "external": {},
+                                        "internal": {}
+                                    }
+                                },
+                                "type": "column"
+                            },
+                            "version": "1.0.0"
+                        }
+                    },
+                    "slot": null,
+                    "styles": {
+                        "default": {
+                            "display": "contents"
+                        }
+                    }
+                }
+            ],
+            "layout": {
+                "default": {
+                    "children": null,
+                    "isInline": null,
+                    "items": [
+                        {
+                            "element_id": "__eddaKIfuvAaafjjjkIDtRzojcrY__column_1"
+                        }
+                    ],
+                    "root": null,
+                    "rules": null,
+                    "styles": {
+                        "box-sizing": "border-box",
+                        "display": "grid",
+                        "grid-auto-columns": "1fr",
+                        "grid-auto-rows": "1fr",
+                        "grid-template-columns": "100fr",
+                        "grid-template-rows": "1fr",
+                        "padding": "0",
+                        "padding-bottom": "0",
+                        "padding-left": "0",
+                        "padding-right": "0",
+                        "padding-top": "0",
+                        "width": "auto"
+                    },
+                    "type": "grid"
+                },
+                "disableAutoReflow": true,
+                "queries": [
+                    {
+                        "layout": {
+                            "children": null,
+                            "isInline": null,
+                            "items": [],
+                            "root": null,
+                            "rules": null,
+                            "styles": {
+                                "grid-template-columns": "1fr",
+                                "height": "fit-content",
+                                "max-height": "max-content",
+                                "min-height": "min-content"
+                            },
+                            "type": "grid"
+                        },
+                        "query": {
+                            "max-width": 640
+                        }
+                    }
+                ],
+                "version": "3.1.0"
+            }
+        },
+        "preset": null,
+        "propertyValues": {
+            "hideEmptyStateUi": {
+                "type": "JSON_LITERAL",
+                "value": true
+            },
+            "slotWrapperBehavior": {
+                "type": "JSON_LITERAL",
+                "value": "contents"
+            }
+        },
+        "scratchPad": {
+            "uib": {
+                "layout": {
+                    "columnSection": {
+                        "breakpoints": [
+                            {
+                                "behavior": "stack",
+                                "max-width": 640,
+                                "styles": {
+                                    "grid-template-columns": "1fr",
+                                    "height": "fit-content",
+                                    "max-height": "max-content",
+                                    "min-height": "min-content"
+                                }
+                            }
+                        ],
+                        "children": [
+                            {
+                                "columnNumber": 1,
+                                "unit": "%",
+                                "width": 100
+                            }
+                        ],
+                        "id": "UIB_COLUMN_SECTION_SINGLE_COLUMN_SECTION",
+                        "styleConfig": {
+                            "external": {},
+                            "internal": {}
+                        }
+                    },
+                    "type": "columnSection"
+                },
+                "version": "1.0.0"
+            }
+        },
+        "slot": null,
+        "styles": {
+            "default": {
+                "display": "contents"
+            }
+        }
+    },
+    {
+        "definition": {
+            "id": "d356d14b6e293a3020a244b63d278d8f",
+            "type": "MACROPONENT"
+        },
+        "elementId": "column_layout_2",
+        "elementLabel": "Column layout 2",
+        "eventMappings": [],
+        "isHidden": {
+            "type": "JSON_LITERAL",
+            "value": null
+        },
+        "overrides": {
+            "composition": [
+                {
+                    "definition": {
+                        "id": "d356d14b6e293a3020a244b63d278d8f",
+                        "type": "MACROPONENT"
+                    },
+                    "elementId": "__jjxbkaPdEAEpPjjoiiNtdaacbvvK__column_1",
+                    "elementLabel": "Column 1",
+                    "eventMappings": [],
+                    "isHidden": {
+                        "type": "JSON_LITERAL",
+                        "value": null
+                    },
+                    "overrides": {
+                        "composition": [
+                            {
+                                "definition": {
+                                    "id": "af19259c2c0463205849130c1c6c0e9c",
+                                    "type": "MACROPONENT"
+                                },
+                                "elementId": "pinned_rail_1",
+                                "elementLabel": "Pinned Rail 1",
+                                "eventMappings": [],
+                                "isHidden": {
+                                    "type": "JSON_LITERAL",
+                                    "value": null
+                                },
+                                "preset": null,
+                                "propertyValues": {
+                                    "cardWidth": {
+                                        "type": "JSON_LITERAL",
+                                        "value": 320
+                                    },
+                                    "emptyText": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "No pinned items"
+                                    },
+                                    "heading": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Pinned"
+                                    },
+                                    "ignoredField": {
+                                        "type": "JSON_LITERAL",
+                                        "value": ""
+                                    },
+                                    "items": {
+                                        "type": "JSON_LITERAL",
+                                        "value": [
+                                            {
+                                                "aiRecommended": false,
+                                                "badges": [
+                                                    {
+                                                        "label": "Duplicate check",
+                                                        "tone": "neutral"
+                                                    },
+                                                    {
+                                                        "label": "Critical",
+                                                        "tone": "critical"
+                                                    }
+                                                ],
+                                                "date": "Nov 25, 2024",
+                                                "footer": "Due in 4 Hours",
+                                                "footerTone": "warning",
+                                                "id": "SUB-2024-10847",
+                                                "subtitle": "SUB-2024-10847",
+                                                "sysId": "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+                                                "tableName": "x_gegis_wum_submission",
+                                                "title": "Acme Manufacturing Corp - Commercial Property"
+                                            },
+                                            {
+                                                "aiRecommended": true,
+                                                "badges": [
+                                                    {
+                                                        "label": "Sanctions Check",
+                                                        "tone": "neutral"
+                                                    },
+                                                    {
+                                                        "label": "Due Today",
+                                                        "tone": "critical"
+                                                    }
+                                                ],
+                                                "date": "Nov 25, 2024",
+                                                "footer": "3 missing fields",
+                                                "footerTone": "warning",
+                                                "id": "SUB-2024-10832",
+                                                "subtitle": "SUB-2024-10832",
+                                                "sysId": "2d2cdf05cfb94f50ccf631ad5d851c86",
+                                                "tableName": "x_gegis_wum_submission",
+                                                "title": "Global Logistics Partners LLC"
+                                            },
+                                            {
+                                                "aiRecommended": true,
+                                                "badges": [
+                                                    {
+                                                        "label": "Guidelines",
+                                                        "tone": "neutral"
+                                                    },
+                                                    {
+                                                        "label": "SLA Risk",
+                                                        "tone": "critical"
+                                                    }
+                                                ],
+                                                "date": "Nov 25, 2024",
+                                                "footer": "SLA expires in 2 days",
+                                                "footerTone": "warning",
+                                                "id": "SUB-2024-10791",
+                                                "subtitle": "SUB-2024-10791",
+                                                "sysId": "3e3dfa16dac05g61ddg742be6e962d97",
+                                                "tableName": "x_gegis_wum_submission",
+                                                "title": "TechStart Solutions Inc - Cyber Liability"
+                                            },
+                                            {
+                                                "aiRecommended": false,
+                                                "badges": [
+                                                    {
+                                                        "label": "Duplicate check",
+                                                        "tone": "neutral"
+                                                    },
+                                                    {
+                                                        "label": "High Priority",
+                                                        "tone": "critical"
+                                                    }
+                                                ],
+                                                "date": "Nov 24, 2024",
+                                                "footer": "Due in 1 day",
+                                                "footerTone": "warning",
+                                                "id": "SUB-2024-10755",
+                                                "subtitle": "SUB-2024-10755",
+                                                "sysId": "4f4egb27ebd16h72eeh853cf7fa73e08",
+                                                "tableName": "x_gegis_wum_submission",
+                                                "title": "Riverside Health Systems - Medical Malpractice"
+                                            }
+                                        ]
+                                    },
+                                    "navigateOnClick": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "pinnedField": {
+                                        "type": "JSON_LITERAL",
+                                        "value": ""
+                                    },
+                                    "recordUrlTemplate": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "/record/{table}/{sysId}"
+                                    },
+                                    "showCount": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "showRemove": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "showSuggestedLabel": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "suggestedLabel": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "System Suggested"
+                                    }
+                                },
+                                "slot": null,
+                                "styles": {
+                                    "default": {
+                                        "padding": "0",
+                                        "padding-bottom": "0",
+                                        "padding-left": "0",
+                                        "padding-right": "0",
+                                        "padding-top": "0"
+                                    }
+                                }
+                            }
+                        ],
+                        "layout": {
+                            "default": {
+                                "children": null,
+                                "items": [
+                                    {
+                                        "element_id": "pinned_rail_1"
+                                    }
+                                ],
+                                "root": null,
+                                "styles": {
+                                    "align-items": "stretch",
+                                    "box-sizing": "border-box",
+                                    "flex-direction": "column",
+                                    "height": "100%",
+                                    "justify-content": "flex-start",
+                                    "overflow": "auto"
+                                },
+                                "type": "flex"
+                            },
+                            "disableAutoReflow": true,
+                            "version": "3.1.0"
+                        }
+                    },
+                    "preset": null,
+                    "propertyValues": {
+                        "hideEmptyStateUi": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "slotWrapperBehavior": {
+                            "type": "JSON_LITERAL",
+                            "value": "contents"
+                        }
+                    },
+                    "scratchPad": {
+                        "uib": {
+                            "layout": {
+                                "column": {
+                                    "columnNumber": 0,
+                                    "id": "default",
+                                    "styleConfig": {
+                                        "external": {},
+                                        "internal": {}
+                                    }
+                                },
+                                "type": "column"
+                            },
+                            "version": "1.0.0"
+                        }
+                    },
+                    "slot": null,
+                    "styles": {
+                        "default": {
+                            "display": "contents"
+                        }
+                    }
+                }
+            ],
+            "layout": {
+                "default": {
+                    "children": null,
+                    "isInline": null,
+                    "items": [
+                        {
+                            "element_id": "__jjxbkaPdEAEpPjjoiiNtdaacbvvK__column_1"
+                        }
+                    ],
+                    "root": null,
+                    "rules": null,
+                    "styles": {
+                        "box-sizing": "border-box",
+                        "display": "grid",
+                        "grid-auto-columns": "1fr",
+                        "grid-auto-rows": "1fr",
+                        "grid-template-columns": "100fr",
+                        "grid-template-rows": "1fr",
+                        "padding-top": "var(--now-scalable-space--xs)",
+                        "width": "auto"
+                    },
+                    "type": "grid"
+                },
+                "disableAutoReflow": true,
+                "queries": [
+                    {
+                        "layout": {
+                            "children": null,
+                            "isInline": null,
+                            "items": [],
+                            "root": null,
+                            "rules": null,
+                            "styles": {
+                                "grid-template-columns": "1fr",
+                                "height": "fit-content",
+                                "max-height": "max-content",
+                                "min-height": "min-content"
+                            },
+                            "type": "grid"
+                        },
+                        "query": {
+                            "max-width": 640
+                        }
+                    }
+                ],
+                "version": "3.1.0"
+            }
+        },
+        "preset": null,
+        "propertyValues": {
+            "hideEmptyStateUi": {
+                "type": "JSON_LITERAL",
+                "value": true
+            },
+            "slotWrapperBehavior": {
+                "type": "JSON_LITERAL",
+                "value": "contents"
+            }
+        },
+        "scratchPad": {
+            "uib": {
+                "layout": {
+                    "columnSection": {
+                        "breakpoints": [
+                            {
+                                "behavior": "stack",
+                                "max-width": 640,
+                                "styles": {
+                                    "grid-template-columns": "1fr",
+                                    "height": "fit-content",
+                                    "max-height": "max-content",
+                                    "min-height": "min-content"
+                                }
+                            }
+                        ],
+                        "children": [
+                            {
+                                "columnNumber": 1,
+                                "unit": "%",
+                                "width": 100
+                            }
+                        ],
+                        "id": "UIB_COLUMN_SECTION_SINGLE_COLUMN_SECTION",
+                        "styleConfig": {
+                            "external": {},
+                            "internal": {}
+                        }
+                    },
+                    "type": "columnSection"
+                },
+                "version": "1.0.0"
+            }
+        },
+        "slot": null,
+        "styles": {
+            "default": {
+                "display": "contents"
+            }
+        }
+    },
+    {
+        "definition": {
+            "id": "d356d14b6e293a3020a244b63d278d8f",
+            "type": "MACROPONENT"
+        },
+        "elementId": "column_layout_3",
+        "elementLabel": "Column layout 3",
+        "eventMappings": [],
+        "isHidden": {
+            "type": "JSON_LITERAL",
+            "value": null
+        },
+        "overrides": {
+            "composition": [
+                {
+                    "definition": {
+                        "id": "d356d14b6e293a3020a244b63d278d8f",
+                        "type": "MACROPONENT"
+                    },
+                    "elementId": "__ccvmfOPENAUjaeeddOEExEJulyHdd__column_1",
+                    "elementLabel": "Column 1",
+                    "eventMappings": [],
+                    "isHidden": {
+                        "type": "JSON_LITERAL",
+                        "value": null
+                    },
+                    "overrides": {
+                        "composition": [
+                            {
+                                "definition": {
+                                    "id": "9c6bb02cf61a095d804308b24bf4d7cd",
+                                    "type": "MACROPONENT"
+                                },
+                                "elementId": "stat_action_cards_1",
+                                "elementLabel": "Stat Action Cards 1",
+                                "eventMappings": [],
+                                "isHidden": {
+                                    "type": "JSON_LITERAL",
+                                    "value": null
+                                },
+                                "preset": null,
+                                "propertyValues": {
+                                    "columns": {
+                                        "type": "JSON_LITERAL",
+                                        "value": 3
+                                    },
+                                    "emptyText": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "No transactions"
+                                    },
+                                    "heading": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Active Transactions"
+                                    },
+                                    "items": {
+                                        "type": "JSON_LITERAL",
+                                        "value": [
+                                            {
+                                                "buttonLabel": "View",
+                                                "label": "Upcoming Renewals",
+                                                "query": "active=true^stage=renewal",
+                                                "subtext": "Most in Data Capture",
+                                                "tableName": "x_gegis_wum_submission",
+                                                "trend": {
+                                                    "icon": "trend-up",
+                                                    "text": "3 since last week",
+                                                    "tone": "positive"
+                                                },
+                                                "value": "12 policies due"
+                                            },
+                                            {
+                                                "buttonLabel": "Open",
+                                                "label": "Pending Referrals",
+                                                "query": "active=true^stage=referral",
+                                                "subtext": "Oldest: 10 days ago",
+                                                "tableName": "x_gegis_wum_submission",
+                                                "trend": {
+                                                    "icon": "alert",
+                                                    "text": "2 High Priority",
+                                                    "tone": "critical"
+                                                },
+                                                "value": "8 awaiting review"
+                                            },
+                                            {
+                                                "buttonLabel": "View",
+                                                "label": "Inflight Submissions",
+                                                "query": "active=true^stage=data_capture",
+                                                "subtext": "Most in Data Capture",
+                                                "tableName": "x_gegis_wum_submission",
+                                                "trend": {
+                                                    "icon": "activity",
+                                                    "text": "65% avg. completion",
+                                                    "tone": "neutral"
+                                                },
+                                                "value": "14 active"
+                                            }
+                                        ]
+                                    },
+                                    "listUrlTemplate": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "/now/nav/ui/classic/params/target/{table}_list.do?sysparm_query={query}"
+                                    },
+                                    "openOnClick": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    }
+                                },
+                                "slot": null,
+                                "styles": {
+                                    "default": {
+                                        "padding": "0",
+                                        "padding-bottom": "0",
+                                        "padding-left": "0",
+                                        "padding-right": "0",
+                                        "padding-top": "0"
+                                    }
+                                }
+                            }
+                        ],
+                        "layout": {
+                            "default": {
+                                "children": null,
+                                "items": [
+                                    {
+                                        "element_id": "stat_action_cards_1"
+                                    }
+                                ],
+                                "root": null,
+                                "styles": {
+                                    "align-items": "stretch",
+                                    "box-sizing": "border-box",
+                                    "flex-direction": "column",
+                                    "height": "100%",
+                                    "justify-content": "flex-start",
+                                    "overflow": "auto"
+                                },
+                                "type": "flex"
+                            },
+                            "disableAutoReflow": true,
+                            "version": "3.1.0"
+                        }
+                    },
+                    "preset": null,
+                    "propertyValues": {
+                        "hideEmptyStateUi": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "slotWrapperBehavior": {
+                            "type": "JSON_LITERAL",
+                            "value": "contents"
+                        }
+                    },
+                    "scratchPad": {
+                        "uib": {
+                            "layout": {
+                                "column": {
+                                    "columnNumber": 0,
+                                    "id": "default",
+                                    "styleConfig": {
+                                        "external": {},
+                                        "internal": {}
+                                    }
+                                },
+                                "type": "column"
+                            },
+                            "version": "1.0.0"
+                        }
+                    },
+                    "slot": null,
+                    "styles": {
+                        "default": {
+                            "display": "contents"
+                        }
+                    }
+                }
+            ],
+            "layout": {
+                "default": {
+                    "children": null,
+                    "isInline": null,
+                    "items": [
+                        {
+                            "element_id": "__ccvmfOPENAUjaeeddOEExEJulyHdd__column_1"
+                        }
+                    ],
+                    "root": null,
+                    "rules": null,
+                    "styles": {
+                        "box-sizing": "border-box",
+                        "display": "grid",
+                        "grid-auto-columns": "1fr",
+                        "grid-auto-rows": "1fr",
+                        "grid-template-columns": "100fr",
+                        "grid-template-rows": "1fr",
+                        "padding-top": "var(--now-scalable-space--xs)",
+                        "width": "auto"
+                    },
+                    "type": "grid"
+                },
+                "disableAutoReflow": true,
+                "queries": [
+                    {
+                        "layout": {
+                            "children": null,
+                            "isInline": null,
+                            "items": [],
+                            "root": null,
+                            "rules": null,
+                            "styles": {
+                                "grid-template-columns": "1fr",
+                                "height": "fit-content",
+                                "max-height": "max-content",
+                                "min-height": "min-content"
+                            },
+                            "type": "grid"
+                        },
+                        "query": {
+                            "max-width": 640
+                        }
+                    }
+                ],
+                "version": "3.1.0"
+            }
+        },
+        "preset": null,
+        "propertyValues": {
+            "hideEmptyStateUi": {
+                "type": "JSON_LITERAL",
+                "value": true
+            },
+            "slotWrapperBehavior": {
+                "type": "JSON_LITERAL",
+                "value": "contents"
+            }
+        },
+        "scratchPad": {
+            "uib": {
+                "layout": {
+                    "columnSection": {
+                        "breakpoints": [
+                            {
+                                "behavior": "stack",
+                                "max-width": 640,
+                                "styles": {
+                                    "grid-template-columns": "1fr",
+                                    "height": "fit-content",
+                                    "max-height": "max-content",
+                                    "min-height": "min-content"
+                                }
+                            }
+                        ],
+                        "children": [
+                            {
+                                "columnNumber": 1,
+                                "unit": "%",
+                                "width": 100
+                            }
+                        ],
+                        "id": "UIB_COLUMN_SECTION_SINGLE_COLUMN_SECTION",
+                        "styleConfig": {
+                            "external": {},
+                            "internal": {}
+                        }
+                    },
+                    "type": "columnSection"
+                },
+                "version": "1.0.0"
+            }
+        },
+        "slot": null,
+        "styles": {
+            "default": {
+                "display": "contents"
+            }
+        }
+    }
+]</composition>
         <da_relay_models/>
-        <data/>
+        <data>[]</data>
         <description/>
         <disable_auto_reflow>false</disable_auto_reflow>
         <dispatched_events/>
@@ -22,16 +1124,33 @@
         <handled_events/>
         <interactions/>
         <interfaces/>
-        <internal_event_mappings/>
+        <internal_event_mappings>{}</internal_event_mappings>
         <keyboard_shortcuts>{}</keyboard_shortcuts>
         <layout>{
     "default": {
         "children": null,
-        "items": [],
+        "items": [
+            {
+                "element_id": "column_layout_1"
+            },
+            {
+                "element_id": "column_layout_2"
+            },
+            {
+                "element_id": "column_layout_3"
+            }
+        ],
         "root": null,
         "rules": null,
         "styles": {
-            "flex-direction": "column"
+            "background": "linear-gradient(180deg, rgb(207,232,234) 0%, rgb(232,241,218) 100%)",
+            "display": "flex",
+            "flex-direction": "column",
+            "padding": "var(--now-scalable-space--sm)",
+            "padding-bottom": "var(--now-scalable-space--sm)",
+            "padding-left": "var(--now-scalable-space--sm)",
+            "padding-right": "var(--now-scalable-space--sm)",
+            "padding-top": "var(--now-scalable-space--sm)"
         },
         "templateId": "5832fd4d53c31010e6bcddeeff7b12db",
         "type": "flex"
@@ -57,26 +1176,66 @@
         <output_prop_mapping/>
         <props>[]</props>
         <required_sys_props/>
-        <required_translations>[ ]</required_translations>
+        <required_translations>[ {
+  "message" : "Critical",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Due Today",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Duplicate check",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Guidelines",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "High Priority",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Inflight Submissions",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Pending Referrals",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "SLA Risk",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Sanctions Check",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Upcoming Renewals",
+  "code" : "",
+  "comment" : ""
+} ]</required_translations>
         <root_component/>
         <root_component_config/>
         <root_component_definition/>
         <schema_version>1.0.0</schema_version>
         <state_persistence_config/>
-        <state_properties/>
+        <state_properties>[]</state_properties>
         <style_config>{}</style_config>
         <sys_class_name>sys_ux_macroponent</sys_class_name>
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-06-28 11:33:27</sys_created_on>
         <sys_id>a1784f7c333d4f907ef8f499ed5c7beb</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>22</sys_mod_count>
         <sys_name>Home default</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_a1784f7c333d4f907ef8f499ed5c7beb</sys_update_name>
-        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-06-28 11:33:27</sys_updated_on>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-18 16:21:16</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=a1784f7c333d4f907ef8f499ed5c7beb"/>
 </record_update>

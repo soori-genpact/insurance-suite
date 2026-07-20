@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.OrchestrationService</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Staged module orchestration for submissions: creates module cases per the license execution plan, activates stages, advances on module completion. Called by the Orchestration: flows.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>OrchestrationService</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var OrchestrationService = Class.create();
+OrchestrationService.prototype = {
+    initialize: function() {
+        this.PROPERTY = 'x_gegis_ins_policy.module_execution_config';
+        // All module case tables extend Task: standard task states
+        // (-5 Pending = dormant, 2 Work in Progress = active,
+        //  3 Closed Complete, 7 Closed Skipped = cancelled).
+        this.STATE = { inactive: '-5', active: '2', complete: '3', cancelled: '7' };
+        this.MODULE_MAP = {
+            'SUBMISSION_CLEARANCE': { table: 'x_gegis_ins_policy_clearance_case' },
+            'EXPOSURE_MANAGEMENT': { table: 'x_gegis_ins_policy_exposure_case' },
+            'RISK_ASSESSMENT': { table: 'x_gegis_ins_policy_risk_case' },
+            'QUOTE_AND_BIND': { table: 'x_gegis_ins_policy_quote_and_bind_case' }
+        };
+    },
+
+    /**
+     * Submission created: create the stage-0 (initial) module cases INACTIVE,
+     * then activate stage 1. Licensed modules not in initial_modules are
+     * created lazily (directly active) when their stage starts.
+     *
+     * @param submissionId sys_id of the new submission
+     * @return Array of module codes created
+     */
+    kickoff: function(submissionId) {
+        var config = this._getConfig();
+        if (!config)
+            return [];
+        var created = [];
+        var initial = config.execution &amp;&amp; config.execution.initial_modules;
+        var licensed = config.licensed_modules || [];
+
+        if (initial &amp;&amp; initial.modules) {
+            for (var i = 0; i &lt; initial.modules.length; i++) {
+                var code = initial.modules[i];
+                if (licensed.indexOf(code) === -1)
+                    continue;
+                this._createCase(code, submissionId, this._stageOf(config, code), false);
+                created.push(code);
+            }
+        }
+        this._startStage(config, 1, submissionId);
+        return created;
+    },
+
+    /**
+     * A module case reached Closed Complete: if every sibling in its stage is
+     * complete, activate (or lazily create) the next stage's modules.
+     * Port of the reference "Get Next Stage Modules" + activation loop.
+     *
+     * @param completedModuleCode e.g. 'SUBMISSION_CLEARANCE' (substring ok)
+     * @param submissionId sys_id of the parent submission
+     * @return Array of module codes activated/created for the next stage
+     */
+    advance: function(completedModuleCode, submissionId) {
+        var config = this._getConfig();
+        if (!config)
+            return [];
+        var stages = config.execution &amp;&amp; config.execution.stages;
+        if (!stages || !stages.length)
+            return [];
+
+        var needle = String(completedModuleCode || '').trim().toUpperCase();
+        var idx = -1;
+        for (var i = 0; i &lt; stages.length &amp;&amp; idx === -1; i++)
+            for (var k = 0; k &lt; stages[i].modules.length; k++)
+                if (stages[i].modules[k].trim().toUpperCase().indexOf(needle) !== -1) {
+                    idx = i;
+                    break;
+                }
+        if (idx === -1) {
+            gs.error('[Orchestration] Module not found in any stage: ' + completedModuleCode);
+            return [];
+        }
+
+        // All parallel siblings in this stage must be complete before advancing
+        var current = stages[idx];
+        for (var j = 0; j &lt; current.modules.length; j++)
+            if (!this._isComplete(current.modules[j], submissionId))
+                return [];
+
+        if (idx === stages.length - 1) {
+            this._onJourneyComplete(submissionId);
+            return [];
+        }
+        return this._startStage(config, stages[idx + 1].stage, submissionId);
+    },
+
+    /**
+     * Clearance failed / submission declined: cancel every module case that
+     * has not completed.
+     */
+    cancelRemaining: function(submissionId) {
+        for (var code in this.MODULE_MAP) {
+            var m = this.MODULE_MAP[code];
+            var gr = new GlideRecord(m.table);
+            gr.addQuery('submission', submissionId);
+            gr.addQuery('state', 'NOT IN', this.STATE.complete + ',' + this.STATE.cancelled);
+            gr.query();
+            while (gr.next()) {
+                gr.setValue('state', this.STATE.cancelled);
+                gr.update();
+            }
+        }
+    },
+
+    /** Activate a stage: flip pre-created cases to active, create missing ones active. */
+    _startStage: function(config, stageNumber, submissionId) {
+        var stages = config.execution.stages || [];
+        var licensed = config.licensed_modules || [];
+        var started = [];
+        for (var i = 0; i &lt; stages.length; i++) {
+            if (stages[i].stage !== stageNumber)
+                continue;
+            for (var j = 0; j &lt; stages[i].modules.length; j++) {
+                var code = stages[i].modules[j];
+                if (licensed.indexOf(code) === -1)
+                    continue;
+                var m = this.MODULE_MAP[code];
+                var gr = new GlideRecord(m.table);
+                gr.addQuery('submission', submissionId);
+                gr.setLimit(1);
+                gr.query();
+                if (gr.next()) {
+                    if (String(gr.getValue('state')) === this.STATE.inactive) {
+                        gr.setValue('state', this.STATE.active);
+                        gr.setValue('is_active', true);
+                        gr.update();
+                    }
+                } else {
+                    this._createCase(code, submissionId, stageNumber, true);
+                }
+                started.push(code);
+            }
+        }
+        return started;
+    },
+
+    _createCase: function(moduleCode, submissionId, stage, active) {
+        var m = this.MODULE_MAP[moduleCode];
+        if (!m)
+            return '';
+        var gr = new GlideRecord(m.table);
+        gr.initialize();
+        gr.submission = submissionId;
+        gr.stage = stage;
+        gr.setValue('state', active ? this.STATE.active : this.STATE.inactive);
+        gr.setValue('is_active', !!active);
+        if (gr.isValidField('short_description'))
+            gr.short_description = moduleCode + ' for submission';
+        return gr.insert();
+    },
+
+    _isComplete: function(moduleCode, submissionId) {
+        var m = this.MODULE_MAP[moduleCode];
+        if (!m)
+            return true; // unmapped module never blocks the chain
+        var gr = new GlideRecord(m.table);
+        gr.addQuery('submission', submissionId);
+        gr.addQuery('state', this.STATE.complete);
+        gr.setLimit(1);
+        gr.query();
+        return gr.hasNext();
+    },
+
+    _stageOf: function(config, moduleCode) {
+        var stages = config.execution.stages || [];
+        for (var i = 0; i &lt; stages.length; i++)
+            if (stages[i].modules.indexOf(moduleCode) !== -1)
+                return stages[i].stage;
+        return 0;
+    },
+
+    /** Last stage closed: the pre-binding journey is done. */
+    _onJourneyComplete: function(submissionId) {
+        var sub = new GlideRecord('x_gegis_ins_policy_submission');
+        if (sub.get(submissionId)) {
+            sub.state = 'quoted';
+            sub.update();
+        }
+    },
+
+    _getConfig: function() {
+        var raw = gs.getProperty(this.PROPERTY);
+        if (!raw) {
+            gs.error('[Orchestration] Property not set: ' + this.PROPERTY);
+            return null;
+        }
+        try {
+            return JSON.parse(raw);
+        } catch (e) {
+            gs.error('[Orchestration] Invalid execution config JSON: ' + e);
+            return null;
+        }
+    },
+
+    type: 'OrchestrationService'
+};</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-07-11 12:00:00</sys_created_on>
+        <sys_id>05e6b6215a5561eecd6a563c15fdb108</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>OrchestrationService</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_05e6b6215a5561eecd6a563c15fdb108</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-07-13 12:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>

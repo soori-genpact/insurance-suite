@@ -76,28 +76,290 @@
             "composition": [
                 {
                     "definition": {
-                        "id": "2d56f06d55f46bbd4e79b5e624beb940",
+                        "id": "cf1abbe3c064d4628630b8214c980e05",
                         "type": "MACROPONENT"
                     },
-                    "elementId": "rich_text_1",
-                    "elementLabel": "Description",
+                    "elementId": "alert_banner_1",
+                    "elementLabel": "Alert Banner 1",
                     "eventMappings": [],
-                    "isHero": false,
                     "isHidden": {
                         "type": "JSON_LITERAL",
-                        "value": ""
+                        "value": null
                     },
-                    "isNonDestructive": false,
-                    "overrides": null,
-                    "preset": {
-                        "controllerElementId": "playbook_activity_ui_controller",
-                        "disabledEventTargetIds": [],
-                        "id": "86a2dd4299dfe03b5fc42804d508b498"
+                    "preset": null,
+                    "propertyValues": {
+                        "aiLabel": {
+                            "type": "JSON_LITERAL",
+                            "value": "AI Quick Assessment:"
+                        },
+                        "bodyText": {
+                            "type": "JSON_LITERAL",
+                            "value": "Confirmed sanctions match detected: Viktor Petrov. This submission cannot proceed per regulatory compliance requirements. All verification and documentation has been completed."
+                        },
+                        "detailLine1": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "detailLine2": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "linkText": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "showBodyText": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "showDetailLines": {
+                            "type": "JSON_LITERAL",
+                            "value": false
+                        },
+                        "showIcon": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "showLinkText": {
+                            "type": "JSON_LITERAL",
+                            "value": false
+                        },
+                        "showSubtitle": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "showTitle": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "subtitle": {
+                            "type": "JSON_LITERAL",
+                            "value": "As of : January 9, 2026 at 3:03 PM"
+                        },
+                        "title": {
+                            "type": "JSON_LITERAL",
+                            "value": "True Hit - Sanctions Match Confirmed"
+                        },
+                        "variant": {
+                            "type": "JSON_LITERAL",
+                            "value": "critical"
+                        }
                     },
-                    "propertyValues": {},
+                    "slot": "content",
+                    "styles": null
+                },
+                {
+                    "definition": {
+                        "id": "8e3c91bf74e1881c6607c345c52e2ac3",
+                        "type": "MACROPONENT"
+                    },
+                    "elementId": "json_data_table_1",
+                    "elementLabel": "JSON Data Table 1",
+                    "eventMappings": [],
+                    "isHidden": {
+                        "type": "JSON_LITERAL",
+                        "value": null
+                    },
+                    "preset": null,
+                    "propertyValues": {
+                        "enableRowClick": {
+                            "type": "JSON_LITERAL",
+                            "value": false
+                        },
+                        "referenceColor": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "showSectionHeaders": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "stripedRows": {
+                            "type": "JSON_LITERAL",
+                            "value": false
+                        },
+                        "tableJson": {
+                            "type": "JSON_LITERAL",
+                            "value": {
+                                "columns": [
+                                    {
+                                        "key": "recordId",
+                                        "label": "RECORD ID",
+                                        "table": "x_gegis_library_screening_record",
+                                        "type": "reference",
+                                        "width": "150px"
+                                    },
+                                    {
+                                        "key": "alertId",
+                                        "label": "ALERT ID",
+                                        "type": "text",
+                                        "width": "140px"
+                                    },
+                                    {
+                                        "key": "entityName",
+                                        "label": "ENTITY NAME",
+                                        "type": "text",
+                                        "width": "200px"
+                                    },
+                                    {
+                                        "key": "screeningResult",
+                                        "label": "SCREENING RESULT",
+                                        "type": "pill",
+                                        "width": "140px"
+                                    },
+                                    {
+                                        "key": "complianceStatus",
+                                        "label": "COMPLIANCE STATUS",
+                                        "type": "pill",
+                                        "width": "140px"
+                                    },
+                                    {
+                                        "key": "reviewState",
+                                        "label": "REVIEW STATE",
+                                        "type": "pill",
+                                        "width": "120px"
+                                    },
+                                    {
+                                        "key": "lastUpdate",
+                                        "label": "LAST UPDATE",
+                                        "type": "text",
+                                        "width": "1fr"
+                                    },
+                                    {
+                                        "key": "expand",
+                                        "label": "",
+                                        "type": "action",
+                                        "width": "48px"
+                                    }
+                                ],
+                                "rows": [
+                                    {
+                                        "alertId": "ALR-2024-0101",
+                                        "complianceStatus": {
+                                            "type": "text",
+                                            "value": "-"
+                                        },
+                                        "entityName": "TechGlobal Industries",
+                                        "expand": {
+                                            "buttons": [
+                                                {
+                                                    "actionKey": "expand",
+                                                    "icon": "chevron-right-outline",
+                                                    "iconOnly": true,
+                                                    "label": "Expand"
+                                                }
+                                            ]
+                                        },
+                                        "id": "rec-101",
+                                        "lastUpdate": "2026-02-12 14:22:18",
+                                        "recordId": "REC-101",
+                                        "reviewState": {
+                                            "type": "text",
+                                            "value": "-"
+                                        },
+                                        "screeningResult": {
+                                            "value": "No Hit",
+                                            "variant": "neutral"
+                                        },
+                                        "sysId": ""
+                                    },
+                                    {
+                                        "alertId": "ALR-2024-0102",
+                                        "complianceStatus": {
+                                            "value": "False Hit",
+                                            "variant": "included"
+                                        },
+                                        "entityName": "International Risk Solutions",
+                                        "expand": {
+                                            "buttons": [
+                                                {
+                                                    "actionKey": "expand",
+                                                    "icon": "chevron-right-outline",
+                                                    "iconOnly": true,
+                                                    "label": "Expand"
+                                                }
+                                            ]
+                                        },
+                                        "id": "rec-102",
+                                        "lastUpdate": "2026-02-12 14:22:18",
+                                        "recordId": "REC-102",
+                                        "reviewState": {
+                                            "value": "Closed",
+                                            "variant": "neutral"
+                                        },
+                                        "screeningResult": {
+                                            "value": "Match",
+                                            "variant": "medium"
+                                        },
+                                        "sysId": ""
+                                    },
+                                    {
+                                        "alertId": "ALR-2024-0103",
+                                        "complianceStatus": {
+                                            "value": "False Hit",
+                                            "variant": "included"
+                                        },
+                                        "entityName": "Michael Anderson",
+                                        "expand": {
+                                            "buttons": [
+                                                {
+                                                    "actionKey": "expand",
+                                                    "icon": "chevron-right-outline",
+                                                    "iconOnly": true,
+                                                    "label": "Expand"
+                                                }
+                                            ]
+                                        },
+                                        "id": "rec-103",
+                                        "lastUpdate": "2026-02-12 14:22:18",
+                                        "recordId": "REC-103",
+                                        "reviewState": {
+                                            "value": "Open",
+                                            "variant": "info"
+                                        },
+                                        "screeningResult": {
+                                            "value": "Match",
+                                            "variant": "medium"
+                                        },
+                                        "sysId": ""
+                                    },
+                                    {
+                                        "alertId": "ALR-2024-0104",
+                                        "complianceStatus": {
+                                            "type": "text",
+                                            "value": "-"
+                                        },
+                                        "entityName": "Nordic Reinsurance Group",
+                                        "expand": {
+                                            "buttons": [
+                                                {
+                                                    "actionKey": "expand",
+                                                    "icon": "chevron-right-outline",
+                                                    "iconOnly": true,
+                                                    "label": "Expand"
+                                                }
+                                            ]
+                                        },
+                                        "id": "rec-104",
+                                        "lastUpdate": "2026-02-12 14:22:18",
+                                        "recordId": "REC-104",
+                                        "reviewState": {
+                                            "type": "text",
+                                            "value": "-"
+                                        },
+                                        "screeningResult": {
+                                            "value": "No Hit",
+                                            "variant": "neutral"
+                                        },
+                                        "sysId": ""
+                                    }
+                                ]
+                            }
+                        }
+                    },
                     "slot": "content",
                     "styles": {
-                        "padding-bottom": "var(--now-static-space--lg)"
+                        "padding-top": "var(--now-scalable-space--3xl)"
                     }
                 }
             ],
@@ -1023,7 +1285,39 @@
     }
 ]</props>
         <required_sys_props/>
-        <required_translations>[ ]</required_translations>
+        <required_translations>[ {
+  "message" : "ALERT ID",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "COMPLIANCE STATUS",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "ENTITY NAME",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Expand",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "LAST UPDATE",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "RECORD ID",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "REVIEW STATE",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "SCREENING RESULT",
+  "code" : "",
+  "comment" : ""
+} ]</required_translations>
         <root_component/>
         <root_component_config>{}</root_component_config>
         <root_component_definition/>
@@ -1072,14 +1366,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-01 06:05:09</sys_created_on>
         <sys_id>791a553d33bdc3147ef8f499ed5c7bb1</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>PS Check for Sanctions AUI</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_791a553d33bdc3147ef8f499ed5c7bb1</sys_update_name>
         <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-07-01 06:05:53</sys_updated_on>
+        <sys_updated_on>2026-07-10 13:34:06</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=791a553d33bdc3147ef8f499ed5c7bb1"/>
 </record_update>

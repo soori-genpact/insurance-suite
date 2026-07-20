@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.Constants</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Single source of truth for scoped system property names and their typed accessors. Callers use x_gegis_ins_policy.Constants.PROP.* for names and the helpers (getBool/getString/isAutoApprove) instead of hard-coding property strings or calling gs.getProperty directly.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>Constants</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var Constants = (function () {
+
+    var SCOPE = 'x_gegis_ins_policy';
+
+    // ---------------------------------------------------------------------
+    // System property names - the ONLY place these strings are written.
+    // ---------------------------------------------------------------------
+    var PROP = {
+        // Auto-approve extraction payloads per pipeline intent.
+        // true  = auto-accept extracted fields + auto-close the HITL task
+        // false = leave fields needs_review + keep the HITL task open
+        AUTO_APPROVE_NEW:    SCOPE + '.extraction.auto_approve.new',
+        AUTO_APPROVE_UPDATE: SCOPE + '.extraction.auto_approve.update',
+
+        // License + staged execution plan (JSON) for module orchestration:
+        // clearance, exposure, risk, quote &amp; bind.
+        MODULE_EXECUTION_CONFIG: SCOPE + '.module_execution_config'
+    };
+
+    // Fail-safe defaults, mirrored from the property defaults.
+    var DEFAULT = {};
+    DEFAULT[PROP.AUTO_APPROVE_NEW]    = 'true';
+    DEFAULT[PROP.AUTO_APPROVE_UPDATE] = 'false';
+
+    // ---------------------------------------------------------------------
+    // Generic typed getters. dflt is optional; when omitted the registered
+    // DEFAULT for that property (or a safe empty/false) is used.
+    // ---------------------------------------------------------------------
+    function getString(name, dflt) {
+        var d = (dflt !== undefined) ? dflt : (DEFAULT[name] !== undefined ? DEFAULT[name] : '');
+        return gs.getProperty(name, d);
+    }
+
+    function getBool(name, dflt) {
+        var d = (dflt !== undefined) ? (dflt ? 'true' : 'false')
+                                     : (DEFAULT[name] !== undefined ? DEFAULT[name] : 'false');
+        return getString(name, d) === 'true';
+    }
+
+    // Parse a JSON-valued property. Returns the parsed object, or dflt
+    // (default {}) when the property is empty or not valid JSON.
+    function getJson(name, dflt) {
+        var fallback = (dflt !== undefined) ? dflt : {};
+        var raw = getString(name, '');
+        if (!raw)
+            return fallback;
+        try {
+            var parsed = JSON.parse(raw);
+            return (parsed &amp;&amp; typeof parsed === 'object') ? parsed : fallback;
+        } catch (e) {
+            gs.warn('[Constants] property ' + name + ' is not valid JSON: ' + e.message);
+            return fallback;
+        }
+    }
+
+    // ---------------------------------------------------------------------
+    // Domain helpers.
+    // ---------------------------------------------------------------------
+    // intent: 'new' (POST /submission) | 'update' (PUT /submission/{number}).
+    // Returns true when that intent's extraction should be auto-approved.
+    function isAutoApprove(intent) {
+        return (String(intent) === 'update')
+            ? getBool(PROP.AUTO_APPROVE_UPDATE)
+            : getBool(PROP.AUTO_APPROVE_NEW);
+    }
+
+    // Parsed license + staged execution plan. Empty object if unset/invalid.
+    function getModuleExecutionConfig() {
+        return getJson(PROP.MODULE_EXECUTION_CONFIG, {});
+    }
+
+    return {
+        SCOPE: SCOPE,
+        PROP: PROP,
+        getString: getString,
+        getBool: getBool,
+        getJson: getJson,
+        isAutoApprove: isAutoApprove,
+        getModuleExecutionConfig: getModuleExecutionConfig
+    };
+})();</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-07-12 10:00:00</sys_created_on>
+        <sys_id>b7c9d1e3f5a7290418365a7b9c1d3e5f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Constants</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_b7c9d1e3f5a7290418365a7b9c1d3e5f</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-07-12 10:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>
