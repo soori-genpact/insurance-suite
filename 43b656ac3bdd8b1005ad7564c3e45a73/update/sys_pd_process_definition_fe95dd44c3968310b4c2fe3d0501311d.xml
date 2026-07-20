@@ -29,7 +29,7 @@
         <run_strategy>run_once</run_strategy>
         <run_strategy_on_process_definition>true</run_strategy_on_process_definition>
         <schema_version>3</schema_version>
-        <snapshot display_value="submission_quote">dff555c4c3968310b4c2fe3d0501317e</snapshot>
+        <snapshot display_value="submission_quote">6d503580c39a8310b4c2fe3d05013117</snapshot>
         <start_non_blocking>true</start_non_blocking>
         <status>published</status>
         <sync_state>COMPLETE</sync_state>
@@ -45,7 +45,7 @@
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_pd_process_definition_fe95dd44c3968310b4c2fe3d0501311d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-20 15:49:16</sys_updated_on>
+        <sys_updated_on>2026-07-20 17:44:23</sys_updated_on>
         <view_type>DIAGRAM</view_type>
     </sys_pd_process_definition>
     <sys_translated_text action="delete_multiple" query="documentkey=fe95dd44c3968310b4c2fe3d0501311d"/>
@@ -253,7 +253,8 @@
         <description/>
         <enable_ai_agent>false</enable_ai_agent>
         <inputs/>
-        <label>QuoteAndBind Standalone</label>
+        <inputs/>
+        <label>Quote And Bind </label>
         <lane display_value="Quote">edab66eb433698b4c7945370ba940a1f</lane>
         <name>quoteandbind_standalone</name>
         <order>2</order>
@@ -270,9 +271,9 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-07-20 15:49:05</sys_created_on>
         <sys_id>692443896a7d6694d940ecbc9c9538a5</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-20 15:49:13</sys_updated_on>
+        <sys_updated_on>2026-07-20 17:44:19</sys_updated_on>
         <type_vals/>
         <variant/>
     </sys_pd_activity>
@@ -305,7 +306,31 @@
         <value>697bd045cfb90b50ccf631ad5d851c4a</value>
         <variable display_value="Playbook Definition">123f5536a3d4f610ea7f10c4141e6115</variable>
     </sys_variable_value>
-    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_flow_input_02fe5532a3d4f610ea7f10c4141e61e0^id=692443896a7d6694d940ecbc9c9538a5"/>
+    <sys_element_mapping action="delete_multiple" query="id=692443896a7d6694d940ecbc9c9538a5"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>playbook_definition</field>
+        <id>692443896a7d6694d940ecbc9c9538a5</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:49:05</sys_created_on>
+        <sys_id>f8f55d84c3968310b4c2fe3d0501312a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 15:49:05</sys_updated_on>
+        <table>var__m_sys_hub_flow_input_02fe5532a3d4f610ea7f10c4141e61e0</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>playbook_inputs</field>
+        <id>692443896a7d6694d940ecbc9c9538a5</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 15:49:05</sys_created_on>
+        <sys_id>30f55d84c3968310b4c2fe3d0501312b</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-20 17:44:19</sys_updated_on>
+        <table>var__m_sys_hub_flow_input_02fe5532a3d4f610ea7f10c4141e61e0</table>
+        <value>{"uiModel":"697bd045cfb90b50ccf631ad5d851c4a","parent_record":{"value":"{{act.4382244bc193fa5bc70313501c69361f.outputs.quoteandbindcase}}","display_value":"","variableValue":"","variableMapping":"{{act.4382244bc193fa5bc70313501c69361f.outputs.quoteandbindcase}}","variableName":"parent_record","definition":{"label":"Parent Record","type":"reference","order":1,"mandatory":false,"reference":"sys_playbook_execution","readonly":false,"type_label":"String"}},"quote_and_bind_case":{"value":"{{act.4382244bc193fa5bc70313501c69361f.outputs.quoteandbindcase}}","display_value":"","variableValue":"","variableMapping":"{{act.4382244bc193fa5bc70313501c69361f.outputs.quoteandbindcase}}","variableName":"quote_and_bind_case","definition":{"label":"Quote and Bind Case","type":"reference","order":100,"mandatory":false,"reference":"x_gegis_ins_policy_quote_and_bind_case","readonly":false,"type_label":"String"}}}</value>
+    </sys_element_mapping>
     <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_flow_output_02fe5532a3d4f610ea7f10c4141e61e0^id=692443896a7d6694d940ecbc9c9538a5"/>
     <sys_pd_activity_action_override action="delete_multiple" query="activity=692443896a7d6694d940ecbc9c9538a5"/>
     <sys_pd_process_variant action="delete_multiple" query="process_definition=fe95dd44c3968310b4c2fe3d0501311d"/>
@@ -313,65 +338,65 @@
     <sys_pd_derivative action="delete_multiple" query="derivative_parent=692443896a7d6694d940ecbc9c9538a5"/>
     <sys_pd_activity_override action="delete_multiple" query="override_parent=4382244bc193fa5bc70313501c69361f"/>
     <sys_pd_activity_override action="delete_multiple" query="override_parent=692443896a7d6694d940ecbc9c9538a5"/>
-    <sys_pd_snapshot action="delete_multiple" query="sys_id=dff555c4c3968310b4c2fe3d0501317e^sys_idNOT INdff555c4c3968310b4c2fe3d0501317e"/>
+    <sys_pd_snapshot action="delete_multiple" query="sys_id=6d503580c39a8310b4c2fe3d05013117^sys_idNOT IN6d503580c39a8310b4c2fe3d05013117"/>
     <sys_pd_snapshot action="INSERT_OR_UPDATE">
         <access>public</access>
-        <derivatives>{"table":"sys_pd_snapshot","id":"dff555c4c3968310b4c2fe3d0501317e","name":"derivatives","type":"com.snc.pd.model.serialization.DerivativeFetcher"}</derivatives>
+        <derivatives>{"table":"sys_pd_snapshot","id":"6d503580c39a8310b4c2fe3d05013117","name":"derivatives","type":"com.snc.pd.model.serialization.DerivativeFetcher"}</derivatives>
         <name>submission_quote</name>
-        <process_definition>{"table":"sys_pd_snapshot","id":"dff555c4c3968310b4c2fe3d0501317e","name":"process_definition","type":"com.snc.pd.model.ProcessDefinition"}</process_definition>
-        <process_dependencies>{"table":"sys_pd_snapshot","id":"dff555c4c3968310b4c2fe3d0501317e","name":"process_dependencies","type":"com.snc.pd.model.dependency.InstructionBasedProcessDependenciesCollection"}</process_dependencies>
-        <process_plan>{"table":"sys_pd_snapshot","id":"dff555c4c3968310b4c2fe3d0501317e","name":"process_plan","type":"com.snc.process_flow.engine.ProcessPlan"}</process_plan>
+        <process_definition>{"table":"sys_pd_snapshot","id":"6d503580c39a8310b4c2fe3d05013117","name":"process_definition","type":"com.snc.pd.model.ProcessDefinition"}</process_definition>
+        <process_dependencies>{"table":"sys_pd_snapshot","id":"6d503580c39a8310b4c2fe3d05013117","name":"process_dependencies","type":"com.snc.pd.model.dependency.InstructionBasedProcessDependenciesCollection"}</process_dependencies>
+        <process_plan>{"table":"sys_pd_snapshot","id":"6d503580c39a8310b4c2fe3d05013117","name":"process_plan","type":"com.snc.process_flow.engine.ProcessPlan"}</process_plan>
         <source display_value="Submission Quote ">fe95dd44c3968310b4c2fe3d0501311d</source>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-20 15:49:16</sys_created_on>
-        <sys_id>dff555c4c3968310b4c2fe3d0501317e</sys_id>
+        <sys_created_on>2026-07-20 17:44:23</sys_created_on>
+        <sys_id>6d503580c39a8310b4c2fe3d05013117</sys_id>
         <sys_mod_count>1</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-20 15:49:16</sys_updated_on>
+        <sys_updated_on>2026-07-20 17:44:23</sys_updated_on>
     </sys_pd_snapshot>
-    <sys_json_chunk action="delete_multiple" query="document_id=dff555c4c3968310b4c2fe3d0501317e"/>
-    <sys_pd_snapshot_chunk action="delete_multiple" query="document_id=dff555c4c3968310b4c2fe3d0501317e^sys_idNOT IN2ff555c4c3968310b4c2fe3d05013181,a7f555c4c3968310b4c2fe3d05013183,abf555c4c3968310b4c2fe3d05013182,e3f555c4c3968310b4c2fe3d05013182"/>
+    <sys_json_chunk action="delete_multiple" query="document_id=6d503580c39a8310b4c2fe3d05013117"/>
+    <sys_pd_snapshot_chunk action="delete_multiple" query="document_id=6d503580c39a8310b4c2fe3d05013117^sys_idNOT IN21503580c39a8310b4c2fe3d0501311b,2d503580c39a8310b4c2fe3d0501311b,69503580c39a8310b4c2fe3d0501311a,a1503580c39a8310b4c2fe3d0501311a"/>
     <sys_pd_snapshot_chunk action="INSERT_OR_UPDATE">
-        <data>H4sIAAAAAAAA/+2YWU8jORCA/wqy9pFIfbgvniZAWCGxXAmRViPU8lFNrOm4s+5uWIT471t9JQ0JJIxWDA/zAsR1uI7PZYcnoiQ5IAlEnpSUCjfyQ9e2OBVOAq60PMt2bVuSfaLZHFAzL/lc5bnKdPxPmRWAkpRxSFE0Xor2rirRXi3TkJOD70/NPiAZ933g1HX9KMRdgoh6bmBxFlGL2clqHw0PcV6wu2oD/G0KctD6iHji2TKkAWtipdJxeeKEwuKBbyX+Bh9/NB72CROFulfFYywhUVoVGCs50GWarrJYN5KQC6MWL5U17JZOpXkqO7vMSDDdh9p/bMoU1lfi4nGxafmeGSzn0/M+MbBuLzIt66TiIkPBMlwJC9AStFB1M26rFaPuGRaj7U6i0qKKjGDIuIdiulhFXZe9V71dmvB828Z9DCl7vKir10beTy27B2OUhFaUslKLWYzV10X8MAMdLzvWQpCwNAfMdKZS2ejlna9OdSiqzS5Wnr/fomsswBIh2UbPW9wD7nvMjxgLbDsJNiNU2X8QoMbkNz7r+GxtwJfDp63XEiE7aTIQUZOBEwJYtoVZcE++gVDn44MYrcx+o7SO0tZGfDmUug5ftfdnv3pEzecgFasFrRvVv0GpGzoOpVzYkZswj4vAcm0Xr2nhR67fv0HvoBAsBwMCe52/BR2xEovRqLr67Q1Xfxj1Lvg/oThCj9dLjy94JORnaNxFt2XVfqdUP88rub45jy/Oz/7GH0cjsgldQv4fcHfoXQ/srdpbwa4i+TSsWz79CGN2w8hngfT9iErsIgguIhF5bsi8FZ/185FpyZWW1eZasjTT8CaoQspESs6YK2ni2xawILEtQW1qg2+H/ZdofbKGWh6i671x3/XnEuu8IpYlSEisCpjnH2H2xSB4It9EynL8i5zqKUvR0bem8q4XgfSdgXAiZ0BBBIPQE3JguRH1Qztx3DCp0UxL2A1GqfIFkjXd3QIzQ4uiZW/G8ta2MCUypfSiLG5ykEvKcoX6MGlovbgcXt2MmhAnS0dNURC1zPwFeV59I2jXDCQ43bToDVb9foWqGoSuHHhOYA+o5HwQCUkHnsVDhzkcu2n3KrRegV+eITcMj++7SUo/DAIPQux7EA5oECYDxqQzsAJKHS7DBET4lZP8lQN6h+HVG9BbtbcP6Etc51n2I//ESX27qVZvhLk2i1697ibZdVf/LU1bgGn/OYDCp+e6Nq0J443FaDwZXk+Gh2ej+GR4Nh6t2tQG+doH8lRhjHxNG72jqhTI0jBZNnpR8lSJoUC88mXJ5urOoJWcZKOpc2Ky+VizRT7LejzAvyDKBrKmVc07KpbIFGjS9QfMRBUpdHdJs3S8fsk0gvEse2heTyeZmS/D6cQr0VTBw0vT7iSdKEhl/lJ2Wh3IeiYsmKlwaWKtlLCHC5NVyZ/BPaTD/ouyarvIFs1oxy9gPhMulzLktoXPZxl4Pj4KgXoscKv+lnqY46k3q1OPe8/ZFEzTEbfF5TzTh2kmfih9100MtB0XVcXvHi/05fGG5arApY4zHAPk+T8DLv13lRIAAA==</data>
-        <document_id display_value="submission_quote">dff555c4c3968310b4c2fe3d0501317e</document_id>
-        <field>process_definition</field>
-        <length>1568</length>
+        <data>H4sIAAAAAAAA/62SMW/DIBCF/wvq6AF8gLlslbp06NSxynAc58hSiqPYyRLlvxen2aFSmRge7333uJs6nWeWZXmTk+QkmSdZ1O6mXiItsl2udJ4or+9J7fLleOzUkbK88jpdp7VoP+i0qSRR9F6iBfAYouUBrYNBR0KryYxq96UshL63NrJBGMlFHjQYcNqwR/BF0ymPRQABPQ3Je7SpvBaOjIwOAjm1v3eKcgFe5/OnrO3p+66e/1BVEVom2TCnzPP3lA9PRnJOjyZoq5ECGJ0ijX3U2hmNbOXhOwq6lKxlQL9pyiT9KJB0sQZjkip8VU3xkWeWD79ZrEcCFhcTA/Qlq62NOvO/9dXVmYtP03rMl/Uw/633Fr6Wvup8bf/X0ntLXy371PJ/9X26l/MDPcUMc0wEAAA=</data>
+        <document_id display_value="submission_quote">6d503580c39a8310b4c2fe3d05013117</document_id>
+        <field>process_dependencies</field>
+        <length>416</length>
         <position>0</position>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-20 15:49:16</sys_created_on>
-        <sys_id>2ff555c4c3968310b4c2fe3d05013181</sys_id>
+        <sys_created_on>2026-07-20 17:44:23</sys_created_on>
+        <sys_id>21503580c39a8310b4c2fe3d0501311b</sys_id>
     </sys_pd_snapshot_chunk>
     <sys_pd_snapshot_chunk action="INSERT_OR_UPDATE">
-        <data>H4sIAAAAAAAA/3VSXY/aMBD8L37OQ7gQuOONwtEiHZwEqDxUFdrEC3Hr2Km9vh463X/vOh9cValvyXi8OzOeN6GkmJmgdSIM1ChmwoeiVt4ra06/giUUibCNF7Nv3xNRaFv+5O+390R4Aor843x9WG8/ixa5YM9Ec1EGF9BAobSi61d0caSY3T2kaZoI5Q/oaRcYOYP2mAiHpXXyCFRW6LZBtqM6ZaTqf6EXcL0OF8zcR91XT1iLFjgqqnZWD2JAa/v7i7pUeyyDYzX9Wb+5geBR7hB8FChEt/Bgd+hDGwkjFfglEOzJIdS3m+icdRv0no0Pypj5GOEbqeT1ylz2Nrjyxipto1CunK0HpE3vSbEJg24Azyx8iQRKs1lBtvkUX+BwbaKs1dPzMb6OU5z1Ws6NjAd9LPHmnrdE4jgrJvkEyqyQ8r4YpWkOcppPxmWG4xymGQ9RhtAZ0Nv/lIAn2he2qySeamgaNjRo5HasrNthYx39DbeyejVDBp2gjhBiaqea3UlO9hYMM1uTCxsMbaAZDjR4aoNdQLhU9BFvpbRcWNb/Smt5K0hXwA38sO6je5yygcZXlpnsUp7PeZ6XnMPD5D4bpcW4vDtjJtM8HWWjaaw+WQL93KAD4hH+8ZUbRMiX09gbh4bWy2GltDXEh+j+3/8A3q0YcFwDAAA=</data>
-        <document_id display_value="submission_quote">dff555c4c3968310b4c2fe3d0501317e</document_id>
+        <data>H4sIAAAAAAAA/3VSTW8aMRT8Lz7vYcmyQLhRCC1SIBKgcqgq9NZ+sG69tuuPNFGU/97n/SBVpd52x+P3ZsbzxqRgcx2VypiGBtmc+Vg10ntp9PlXNAFZxoz1bP7te8YqZfhP+n57z5gPEBL/tNgcN7vPrEWu2DNRX6XGJViopJLh9Su6NJLN7+7zPM+Y9Ef0YR8JuYDymDGH3DhxgsBrdLso2lGdsiCbf6FncL0OF/XCJ92vPmDDWuAkQ703ahADSpnfX+S1PiCPjtT0Z/1mC9Gj2CP4JJCxbuHR7NHHNhJCavArCHAIDqG53UTnjNui92R8UEbMhwTfSJzWS309mOj4jcWNlSjWzjQD0qb3KMmERjeAFxK+wgBSkVkWjP2UXuD4apOs9ePTKb2Ok5T1Riy0SAd9LOnmgbYk4rioJuUEeFEJMatGeV6CmJaTMS9wXMK0oCFSB3Qa1O4/JaCJ5pnsSoHnBqwlQ4NGasfauD1a48LfcCurVzNk0AnqCDGldm7InaBkb8EQszW5NFGHLdjhQIEPbbBLiNc6fMRbSyWWhvS/hI24FaQr4BZ+GPfRPUpZg/W1ISa5nIgyL8pZzot7mBWjvBrzuwsWIi/zUTEaTVMTTAD1ZNFBoBH+4YUaFJAu56k3DnXYrIaVwjSQHqL7f/8DI4Z2blwDAAA=</data>
+        <document_id display_value="submission_quote">6d503580c39a8310b4c2fe3d05013117</document_id>
         <field>process_plan</field>
         <length>680</length>
         <position>0</position>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-20 15:49:16</sys_created_on>
-        <sys_id>a7f555c4c3968310b4c2fe3d05013183</sys_id>
+        <sys_created_on>2026-07-20 17:44:23</sys_created_on>
+        <sys_id>2d503580c39a8310b4c2fe3d0501311b</sys_id>
     </sys_pd_snapshot_chunk>
     <sys_pd_snapshot_chunk action="INSERT_OR_UPDATE">
-        <data>H4sIAAAAAAAA/62SP2/DIBDFvwvq6AF8cHDZKmXp0KljleH4F1lKsRU7WaJ89+ImO64UJobHe+9+x01M5zGked6nKZWYShjSLHY38eZ5TuvlyueBy/IRxa5cTqdOnLik97AM12Gp2k+eVlWK7BGT1wBIzutgSRuw0jNpySqL3bfQ4Ppeax8UQWbjg5WgwEgVkACrphNIVQCOkG1EJB3r6xR8oEAGHBtxuHeCSy28jOevtGxPP3Tt/D9Vs8KWSdaaQwnjz1COz47ks1HRacuEDpTUsQefexektygzrr45kYlR6wAPTZ2kzwmirNagVBS1X3z6+KfGejSMxGyVyvbh08bYtbOqTzNrG9X27K/kPl6W4/g/7m3fbdy37G8Lr1ft71Xc2//gXs8voDaDMkwEAAA=</data>
-        <document_id display_value="submission_quote">dff555c4c3968310b4c2fe3d0501317e</document_id>
-        <field>process_dependencies</field>
-        <length>408</length>
-        <position>0</position>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-20 15:49:16</sys_created_on>
-        <sys_id>abf555c4c3968310b4c2fe3d05013182</sys_id>
-    </sys_pd_snapshot_chunk>
-    <sys_pd_snapshot_chunk action="INSERT_OR_UPDATE">
-        <data>H4sIAAAAAAAA/+1VS3PbNhD+Kx36amoAEnz5lEebTGaa2Inj9ODJcBbAQkZLAypB2VY9/u9diJSi2nGc9tJ66pOofT8+7HedNNIUXNeigqasc86EznJpsloxWZXMlHvJwXVibDdgnxwkyX5yAb0FN7zRyYFbdt1+YvWocHCO9PXWq9/oXwcSu40JqMFekNJAF3A/0RhUbxeD9W5jobzTNgrafrkVWvq6vtlPhovxFxfJwenn6G8o0bvDwyNKhFeoYo0IH1eL3QK8omzRMXo6kB22YFuYoxu2lWwErZe/4lTkVPJGE+Mv15Wde31XvQxxMLeE1EN7aYeztvcdhjtqStaCHvuFrtU4gO2+GgTCzoAusA8w+axNJiX1J/I6y4SQije5gUKqiuU8LxhXZZOX3Ow9ZPB9W34wyhYFcxwU0GhQ+V6HL3hIXuPwkhQftooNNoZ+eRsasZBbwIiiNSySGN4tz2Ws+Dp5pjoINI/kjfsEHRk9WxecNxk3hcJU1SBSIWtIoTY6rSSITEGjjczX3XbL7Wq1DYsOVp9GWUw44DlJhunfGYRJN5Zs3WI5nATUW1QFS/Y4wfHw6Pn7k5/GJB+3gcZU2Pe+f4sh0Do3sh4Njc2piJvTz7Tb2OiwjnVvmxmHsm7ApAVClQrOq1TKokybSkkAEKaRxX+7zXtfOTMMRCOEyvn6PkmhMoO5ZoS6nNfN1y7Aqx93339i9LHyC9TvRmhetXOc29BaF9qF76xazf6CVmqU5iK9j1fkEuzQGt+3ysdmJ1zGiZDS6Cnh8cmLVz8f/pL8H06NnghD5iNhVLIsoGwAKs5N9UQYj2OLZUN3PK+bEipdlo3QjWCopGpUU+Q1FHsPGXzflh+MskXB70s/IDgtrdNtGOgLOu9whzneR4vnTr8gix+Ody3+KYVs3jkN1FhnR497j6wAkLVQRVoayFJBNyitWZalJUOd52UmQckvR3YnDJ2OWXBqtug9nbvQms5fztDNrcMZgcFCZ/9Yr2n2+sNR769W8RZH+JFvWNGR0u3GdafQ/bUuVnZKY66kZqJQRjZMFkwpU+YcdKHrgisBCb2B3l8mB4y8fD9sOYBGNUH75g4j3D/vf5cPt1tbJwrf2BirMkYUX6fEfzoVGbBU1qVJa0JhJQvkcndjj4oWldZGayL3XAtTcka8bzhTgguOJa/x79PivPMSulkHS6fOWodhQMLdExPef0O5GZlQNSMTZjUi44zYUBb6iQkfxRZv/gTbTe5MAg8AAA==</data>
-        <document_id display_value="submission_quote">dff555c4c3968310b4c2fe3d0501317e</document_id>
+        <data>H4sIAAAAAAAA/+1X23LbNhD9FQ/zamrAq0k/5dIkk5k6duLEfYg6nAWwUNDQAEtSvsSjf+8CpGjZsa1k2k6bSV5saRd7PzgLXQVpUsRxmnIRlYmCjIs9lkRJxiKRl0keqUfbDgT7V4HSdY9tsB8Eu8EZtBpM/0oG+2ZZ17uBpk9bw5ChgVOkkwvsBXTYorCt7EheA8eaFC+xf0aKt5MCRK/PyKRvl7gbSOxEq5teWzMkIqyR2n2t2uUo0sZl69yb5Sl3GV8Fj0UNXUf6V+YEajr02CccI2Ic7amQl1KEaZKpEEAmYSYTKKQsy0KBr7Ze4rpSqbumhsuTQeYC9nhKkn789hG6UTekrE2z7N93SPEU1B1JOk3n8d1l4ywOj568ef98CPJucjSEwra17QF2HSwmWYuK2mYEUjUffl/t+kJ77+veMiOV5gkHFYoiZ67MPKTqONWaRFAoQcUn/+8yqc7+jCqk/9g4iYMCoTJgikFapqlIorxIIsZTEStMJCPUJVFRUkS8QOGagzDm8uIXBzgrKE2Pa3ksbIPy9QDNi2qBC91V2nRVY2stLmc30EqFUl+4tZ/IyznovlK2rYR1xY64dB0hpZJjwOP3T1/8evhb4MpAA7zGCnRF1Zp+6tZaUFn+B46YH1oxaVwhS4/1Uyu/VC87h/VbQroV1bnuP1atrV0vb6kpWAVyuEFQVxJ70PWdTmAypit3hm0Ho40/MiqpPsgypqKCpawENxBJuIs5Y1nESpFi9ujrqOSaKg6s+HRNEGNmY4PG3t1ghSnJTV4YPZsBQndD6fXh4dFdcFknsAbMjzDFvCQeT4oyhz2Z52Uqy5Sh4KIUZZYUkD3aduDrprzVy4SCP5e2RzCSayOrrqdPUFuDG5vjjTux88TInad0ZudvrI71/aZGKm30YHEvuea5UlmJRcjShIfERCosIBZhjjzLUIGI0+iaXDfcEGXMOiNmTWuJ5rpK1fZ8hmahDc4IBBpq/dmPZ/by7VFrLy4dBzvYkW13SeQkq7XpRqK7Xucy+0Dt3eOSpZlQvGQ8Y0KonBhfZrLIIpFCQNhv7Xmwz8jKtv3E/dSqEdKrLzbBrT4fb87iv92E09x8oO6BmcFemhUoWMiIrsI0LiGkkakwAeC5kCxWvHh4IQ6y++ody/s3C74LSHLW6LqeHdGf5xdNO5VbMgVlWWZhorgiiGZpWMSlDJVADplKeZoMi7Jxt/VqHiz1AXFTPQ/251tBNA9250EDracYvyHJjHz45nkPV1d0E2fbHoczu+zd2GabV92t3dXKhxj7X1379WJPLHQpTu4WH0DTaLP4B/NYe3bPBe/2Vu0u1ek6Dq3wFOXPHvmzO2+vz7qnm1dN0/ViUmNL8og+n7ob1tv2cr7G0Y3TZOvpYI3+acF4Ry2CtKbetHUhq+ucjvvWd4j22nzg2YoCVp5pXd0/2Djv7MCDQx0YEdaM+GxtsW20jH3VcL98kFb35fgtw14Fqwfe1UJKRT8R6BeCTFUeMYQ9FTGRRmmEeVTgt7+rF7XlUM9qWBrxsTLY9Sirn0/pBx5hcTk8pbEYntKC2FfSeETCMlpfP5/S38UUcfxBlK+nSMs4EZhx+tGdxD+n+D1McfUX3mrA9kMTAAA=</data>
+        <document_id display_value="submission_quote">6d503580c39a8310b4c2fe3d05013117</document_id>
         <field>derivatives</field>
-        <length>1264</length>
+        <length>1632</length>
         <position>0</position>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-20 15:49:16</sys_created_on>
-        <sys_id>e3f555c4c3968310b4c2fe3d05013182</sys_id>
+        <sys_created_on>2026-07-20 17:44:23</sys_created_on>
+        <sys_id>69503580c39a8310b4c2fe3d0501311a</sys_id>
     </sys_pd_snapshot_chunk>
-    <sys_pd_snapshot_input action="delete_multiple" query="model=dff555c4c3968310b4c2fe3d0501317e^sys_idNOT INabf555c4c3968310b4c2fe3d05013187"/>
+    <sys_pd_snapshot_chunk action="INSERT_OR_UPDATE">
+        <data>H4sIAAAAAAAA/+2YWU/jSBCA/wqy9hFLtrt98TQBwgqJ5UqItBohq48yaY3TzrYdWIT471u+EkMCCaMVw8O8AOk6uo6vqzs8WUpaB1YKsS8lpYLEQURch1PhpUCk4zsucV1p7VuazQA1iwWfqaJQuU7+WeQloCRjHDIUjZaivatKtFfLNBTWwfenZh+QjAcBcEpIEEe4SxhTn4QOZzF1mJuu9tHwkBQlu6s2wN+mtA5aH8z3ndSNHOrErIpVcpZ63HF814kFBX+Djz8aD/sWE6W6V+VjIiFVWpUYq3WgF1m2ymLdSEIhjJq/VNawWzqV5qns7HIjwXQfav+JWWSwvpKUj/NNy/fMYDmfnvctA+v2IteyTiopcxQsw5UwBy1BC1U347ZaMeqeYTHa7qQqK6vILAwZ91BMl6uo67L3qrdLE55v27iPIWOPF3X12sj7qeX3YIyS0IoyttBimmD1dZk8TEEny461EKQsKwAznapMNnpF56tTHYhqs4uV5++36BoLsEQI2uiDqIleOCkjAnwuBSHeZoQq+w8C1Jj8xmcdn60N+HL4tPVaIuTFTQbQZcB9RyIUgji+H21GqPPxQYxWZr9RWkdpayO+HEpdh6/a+7NfPUvNZiAVqwWtG9W/QSmJPI9SLtyYpMznInSIS/CaFkFMgv4NegelYAUYENjr4i3oLCd1GI2rq9/dcPVHce+C/xPKI/R4vfT4gkfL+hkad9FtWXXfKdXP82pd35wnF+dnf+OPo6G1CV3L+n/A3aF3PbC3am8Fu4rk07Bu+QxijJlEccBCGQQxldhFEFzEIvZJxHpzsX4+Mi250rLaXEuW5RreBFVImUp8ZzAiaRq4DrAwxeNOXepC4Eb9l2jz/BxouXeIzvc+nVTvFaksRTISVcKs+AirLwbAk/VNZKzAv6xTPWEZOvpWV9yRTijCILC543s2JVTYLOSRDTSKwUtTEqRxjWS2gN0glKqYI1GT3S0wM7QoW+amrGhtS7NAlpSeL8qbAuSSrkKhPowbSi8uB1c3wybE8dJRUxRELDd/QVFU3wTaNQMpTjUtegNVv1shP2KBgDC2qZCRTTmN7MgVoQ2hSxwJLoFQ9Cq0XoFfniE3DI/tu0l6EIZEhMKOg5jZNPAdm8dealNfUOoFLkQs+spJ/srBvMPQ6g3mrdrbB/MlrvM8/1F84oS+3VSrN8Jcm0WvXnXj/Lqr/5amzcG0/xRA4dNzXZvWhPHGYjgaD67Hg8OzYXIyOBsNV21qg3ztA3mqMEa+Jo3eUVUKZGmQLhs9X/BMiYFAvIplyWbqzqCVHOfDiXdi8tlIs3kxzXs8wL8gFg1kTaua91MikSnQVtcfMGNVZtDdJc3S8fol0whG0/yheTWd5Ga2DKcTr0QTBQ8vTbuTdKIgk8VL2Wl1IOuZMGemwqWJtVLCHs5NXiV/BveQDfovyartIp83o50HfsAE4VJG3MXv70yGfoCPQaA+C0nV34UeFHjqzerU494zNgHTdIS0uJzn+jDLxQ+l77qJgbajsqr43eOFvjzesFwVeKGTHMeA9fwfIShCCI0SAAA=</data>
+        <document_id display_value="submission_quote">6d503580c39a8310b4c2fe3d05013117</document_id>
+        <field>process_definition</field>
+        <length>1568</length>
+        <position>0</position>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-20 17:44:23</sys_created_on>
+        <sys_id>a1503580c39a8310b4c2fe3d0501311a</sys_id>
+    </sys_pd_snapshot_chunk>
+    <sys_pd_snapshot_input action="delete_multiple" query="model=6d503580c39a8310b4c2fe3d05013117^sys_idNOT IN21503580c39a8310b4c2fe3d05013120"/>
     <sys_pd_snapshot_input action="INSERT_OR_UPDATE">
         <active>true</active>
         <array>false</array>
@@ -412,10 +437,10 @@
         <label>Parent record</label>
         <mandatory>false</mandatory>
         <max_length>32</max_length>
-        <model display_value="submission_quote">dff555c4c3968310b4c2fe3d0501317e</model>
-        <model_id>dff555c4c3968310b4c2fe3d0501317e</model_id>
+        <model display_value="submission_quote">6d503580c39a8310b4c2fe3d05013117</model>
+        <model_id>6d503580c39a8310b4c2fe3d05013117</model_id>
         <model_table/>
-        <name>var__m_sys_pd_snapshot_input_dff555c4c3968310b4c2fe3d0501317e</name>
+        <name>var__m_sys_pd_snapshot_input_6d503580c39a8310b4c2fe3d05013117</name>
         <next_element/>
         <order>1</order>
         <primary>false</primary>
@@ -434,16 +459,16 @@
         <staged>false</staged>
         <sys_class_name>sys_pd_snapshot_input</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-20 15:49:16</sys_created_on>
-        <sys_id>abf555c4c3968310b4c2fe3d05013187</sys_id>
+        <sys_created_on>2026-07-20 17:44:23</sys_created_on>
+        <sys_id>21503580c39a8310b4c2fe3d05013120</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Parent record</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
-        <sys_update_name>sys_pd_snapshot_input_abf555c4c3968310b4c2fe3d05013187</sys_update_name>
+        <sys_update_name>sys_pd_snapshot_input_21503580c39a8310b4c2fe3d05013120</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-20 15:49:16</sys_updated_on>
+        <sys_updated_on>2026-07-20 17:44:23</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -456,56 +481,56 @@
         <write_roles/>
         <xml_view>false</xml_view>
     </sys_pd_snapshot_input>
-    <sys_pd_snapshot_output action="delete_multiple" query="model=dff555c4c3968310b4c2fe3d0501317e"/>
-    <sys_flow_compiled_flow action="delete_multiple" query="sys_id=23f555c4f7968310c5eb0d3a156b4f84^sys_idNOT IN23f555c4f7968310c5eb0d3a156b4f84"/>
+    <sys_pd_snapshot_output action="delete_multiple" query="model=6d503580c39a8310b4c2fe3d05013117"/>
+    <sys_flow_compiled_flow action="delete_multiple" query="sys_id=a5503580e69a83108eaeb14c9875371c^sys_idNOT INa5503580e69a83108eaeb14c9875371c"/>
     <sys_flow_compiled_flow action="INSERT_OR_UPDATE">
         <parent_snapshot_id/>
         <signature/>
-        <snapshot_id>dff555c4c3968310b4c2fe3d0501317e</snapshot_id>
+        <snapshot_id>6d503580c39a8310b4c2fe3d05013117</snapshot_id>
         <sys_created_by>system</sys_created_by>
-        <sys_created_on>2026-07-20 15:49:16</sys_created_on>
-        <sys_id>23f555c4f7968310c5eb0d3a156b4f84</sys_id>
+        <sys_created_on>2026-07-20 17:44:23</sys_created_on>
+        <sys_id>a5503580e69a83108eaeb14c9875371c</sys_id>
     </sys_flow_compiled_flow>
-    <sys_flow_compiled_flow_chunk action="delete_multiple" query="document_id=23f555c4f7968310c5eb0d3a156b4f84^sys_idNOT IN2ff555c4c3968310b4c2fe3d05013186,abf555c4c3968310b4c2fe3d05013185,63f555c4c3968310b4c2fe3d05013185,e3f555c4c3968310b4c2fe3d05013186"/>
+    <sys_flow_compiled_flow_chunk action="delete_multiple" query="document_id=a5503580e69a83108eaeb14c9875371c^sys_idNOT INa1503580c39a8310b4c2fe3d0501311f,21503580c39a8310b4c2fe3d0501311e,e5503580c39a8310b4c2fe3d0501311d,69503580c39a8310b4c2fe3d0501311e"/>
     <sys_flow_compiled_flow_chunk action="INSERT_OR_UPDATE">
         <data>H4sIAAAAAAAA/zWPy27CQAxF/8XrLILyoMquFUJCaotUkLqsnNgBq844zExACPHvHaBsr8+5ti/Qq50WHFEUmgtEG9/Uut/teWRoYPm+/oYMzMtO3IpeHd0GIZHX7G5uOruDZdHWVY1d0RK9tLM8r5DmVV12BZcVzotUIi6yd6ifONyMMLWDhCDmfg6TRYbUaEf2Xog/cBzF7aBxk2oGaYcwLb0Nz2SPYYERN9EzprBHDZw4VE3a/00P8vFeL05iWrWiZ45T3JtnWrsvVsaQhPz6B1IuT44OAQAA</data>
-        <document_id display_value="Created 2026-07-20 08:49:16">23f555c4f7968310c5eb0d3a156b4f84</document_id>
+        <document_id display_value="Created 2026-07-20 10:44:23">a5503580e69a83108eaeb14c9875371c</document_id>
         <field>flow_config_param</field>
         <length>292</length>
         <position>0</position>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-20 15:49:16</sys_created_on>
-        <sys_id>2ff555c4c3968310b4c2fe3d05013186</sys_id>
+        <sys_created_on>2026-07-20 17:44:23</sys_created_on>
+        <sys_id>a1503580c39a8310b4c2fe3d0501311f</sys_id>
     </sys_flow_compiled_flow_chunk>
     <sys_flow_compiled_flow_chunk action="INSERT_OR_UPDATE">
-        <data>H4sIAAAAAAAA/+1YW2/iOBT+L9E+IprgXAhPS2lXizTTIuiutBqNIsd2aLSJnY2dmaKK/z7HSaCQhCmwi1qp+1LRc7e/j3OOeTaiRHy/TVjKuJLG6MuzIUWREzalxsiQRZjGUsaCB/8UQjGjV2vvcMp+pv8jLv0j5juU2jZBvjtElhnaZBAxRE3HtJBl0a39OIkxZDdyIRQIM5xDOYtdFS+SpGeoVabzzsY3wWx+P7ldLHQIIkqpjULXcTFBIaXD0DJNB1PPcSE7sx3sITBNYz7lUuUFUVC0rtEEIX5qCJ1Bz2B5LvIHnC+Z2mQHw1st7bDOWSZyFfPlVBijZ+NXXWh9SXOG6T1PVjcswkWi7guVFUqCXc+IOXwE+3XPEKW4+kx3LbVo/ZJ7kjDMi+xQwW21BvUrpJLT3xeKZcYowolkkDCnLIfy7q7GupJH+aJc9/ZYwNn3QCq8bMHfVtS4M4pD12WhjZDrDwF1z7cd5Jkh9m0TW1EL922k4AjXDnZsiLPDj0/ju9t/S45BFzls9xRyaOs3Jse24IuS4xf4m6uDFGmoa6L4YeRYdGh7uGoQNh2gMBoMiRl6rhm5h4lSxQuOCNBFl5P4tkOq8eRh+uf04a+LEMs6qetYb991rEt2HbgBgiXLGQEf2eTVAW1NKxsNBwPbDonlowg7IfFMZCEYOsT1kdvRf/bDBUf4v0dWWaiLVgN0Cq209RvTalvwJWhV7imY0zDmVIPFKU4Eb42218xqork+0AQNfRd71HV9mwK8jITEJ76DhthpEe1A3OCIQO+RcQO7i3HIPoVx2vqNGbct+LITknF6eD7uKmt20Xq4hfX67AFC2PUx9iwr8n46HSFacIT7e+QUcv/futqcAnu5AkE6LkOUYLE6kH7CLco9vL4VqDbmcVXJ9WoPXn2Y+KWU69VnJmXp+mxciUzLcKJzfIvVqrw3kmCpeUFE2pec9DPaTwVlSX8nTH+apoXCYcJmN2NK7xtxds6uD6YfLPDuwhut5romI50IrtiT0oJ9wH6DE85ZBAOaE92Ev+Gk0PKYQzkBqdwCCAyni84KEzXDSI4z+ShOLCYXBO4zeAEg2MSpw/IqRvuqgU8VEjO8SgQ+KWvtoaGVm7s3RnDl0IuMq7qoCQbH5CxIK9c2irb/wVHcv1rdc7CE2zk+Ve3QQK4eI9v4c1a9ns7Brvbt+ApaDfBe+7UmyNnmEfcRQZ5vT/+ffFE5AAjD6TPOttNmKXYF5QyGtq4KWXoHUMcSINCvnU6ykMc4obOakSLNEqaOWCzP6gd19MP9HTkNch2z4H4kUp0HFixcoiCPmx3o1QWr3/yFtr/d7vqvJQvKVJ1kg3OQsuYngHciCq7KH1KX4hqTvx9EVV65cFyvqn8+4bCcPeumValo7SjrH5XOsHOYFgAA</data>
-        <document_id display_value="Created 2026-07-20 08:49:16">23f555c4f7968310c5eb0d3a156b4f84</document_id>
+        <data>H4sIAAAAAAAA/+1YXW/iOBT9L9E+IprgJBCeltKuFmmmRdBdaTUaRY7t0GgTOxs7M0UV/32uk5BCEqbALmql7ktF77d9Dvde82yEsfh+G7OEcSWN8ZdnQ4o8I2xGjbEh8yCJpIwE9//JhWJGr9Le4YT9TP9HVPiHzHMotW2CPHeELDOwySBkiJqOaSHLorX9JI4wZDcyIRQIU5xBOctdFc/juGeodarzzic3/nxxP71dLnUIIgqpjQLXcTFBAaWjwDJNB9Oh40J2Zjt4iMA0ifiMS5XlREHRukYThPipIXQGPYNlmcgecLZiapsdDG+1tMM6Y6nIVMRXM2GMn41fdaHVJS0Ypvc8Xt+wEOexus9VmisJdj0j4vAR7Dc9QxTi8jPdtdSizUvuacwwz9NDBbfVGtSvkErOfl8qlhrjEMeSQcKMsgzKu7ua6Eoe5Yty09tjAWfffanwqgV/W1HhzigOXJcFNkKuNwLUh57toKEZYM82sRW2cK8j+Ue4drBjS5wdfnya3N3+W3IMushhu6eQQ1u/MTnqgi9Kjl/gb6YOUqShroiCHccMrZFpmx7WDYIGOBwEAI5lesRmzmGilPH8IwJ00eUkvu2QajJ9mP05e/jrIsSyTuo61tt3HeuSXQdugGDJMkbARzZ5dUBb0cpGo8HAtgNieSjETkCGJrIQDB3iesjt6D/74fwj/N8jqyzURasBOoVW2vqNaVUXfAlaFXsK5jSIONVgcYpjwVuj7TWzimiuBzRBI8/FQ+q6nk0BXkYC4hHPQSPc7l8H4vpHBHqPjBvYXYxD9imM09ZvzLi64MtOSMbp4fm4q9yuUdVwc0flcCNmiBFhTkAJQoOfTkeI5h/h/h45hdz/t642p8BerkGQTIoQBVisCqSfcMtiD69uBaqNeFRWcr3eg1cfJnop5Xr9mUlZuD4bVyLVMhzrHN8itS7ujcRYal4QkfQlJ/2U9hNBWdzfCdOfJUmucBCz+c2E0vtGnJ2z64PpBwu8u/BWq7muyUingiv2pLRgH7Df4IQLFsKA5kQ34W84zrU84lCOT0o3HwLD6cKzwoTNMJLjVD6KE4vJBIH79F8A8LdxqrC8jNG+auBTicQcr2OBT8paeWho5fbujTFcOfQi46oqaorBMT4L0tK1jaLtfXAU969W9xws4XaOT1U5NJCrxkgdf8HK19M52FW+HV9BqwHea7/W+BnbPuI+IsiL+vT/yReVA4AwnD7jtJ42K7ErKGYwtHWVy8LbhzpWAIF+7XSShTxGMZ1XjBRJGjN1xGJ5Vj+ooh/u78hpkOuYBfcjkeo8sGDhEjl53O5Ary5Y/eYvtP16u+u/lswvUnWSDc5BipqfAN6pyLkqfkhdiWtM/n4QZXnFwnG9Lv/5hINi9myaVoWitaNsfgACioYdmBYAAA==</data>
+        <document_id display_value="Created 2026-07-20 10:44:23">a5503580e69a83108eaeb14c9875371c</document_id>
         <field>flow_structure</field>
-        <length>1416</length>
+        <length>1420</length>
         <position>0</position>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-20 15:49:16</sys_created_on>
-        <sys_id>abf555c4c3968310b4c2fe3d05013185</sys_id>
+        <sys_created_on>2026-07-20 17:44:23</sys_created_on>
+        <sys_id>21503580c39a8310b4c2fe3d0501311e</sys_id>
     </sys_flow_compiled_flow_chunk>
     <sys_flow_compiled_flow_chunk action="INSERT_OR_UPDATE">
-        <data>H4sIAAAAAAAA/+2c2W7jNhSG30XXhiAu2nLV2VoELTKFk7YXxcCgSCoRRpZci0oaBHn3IR0lk/ES0mOSvrDuYllcdM75f/ED6TwEVdOJZU9F1TZdcPbvQ/ALrUkn/wxoOw+7hoYLFs5bxuvw1a3h+XzeC1LU/M+Pl4Isxfn374JJULHgLJoERH6+rcT9ufwYlDyPGcOYojzJEIgKTGHJEYviCCAA2KxT/cjGC/ahbQT/X6hmcj7ifsEvyJzLPn6t27spL/mSN5TLW29J3avrVSNnOaNPzWZy9MdJUP5UN+V6N11DFt1Nu+dkli3lXTdjvKyaSgVl9tzP0G3z1EfXF/Oq69QN//Wt4C9BqLrPC9WO1MFZSeqOP05+IjUfOa0Yv1BB2MgP2DM/p5IZO5G/vGn7mr0bAjztm80EwElQk4LLYQKMiiROCEUFY1kBoigmLI0TmQuOY5KicL1OwobfqVq55mFelDFgGU7JU94wg6goYUajIk2iMnkpqR+yrWt1Ktle9s1zkv7wkQw5nrm6h9mX8gHDWzgUHBPt9qL7h1Tiqv3Kt5QamgTtQvY8/fTb+eXVp6m8fPd89+/83qAeZur+mVANAhuTvSLLa77FlbAnUYhqzpdWnkSFffM5YgcR1ljO9Hspb84n8RTXp/oerWbnK7/p6/qg2piogljUXAwacp1R1jbqUUXb0xs/I66GUkMqjXoacmUHq9fB+7qlX6vmOjiTEuKOvHqX/aWeZKrqyaH7Zf7d70oVzW7/y0dT2mpKfl62g6BVjt9dk6rxI+pVkXsWMIg8xXRly46XjQAM68a/LlyuHA+BWDjq+rgUC5CdgscogxDjgoIclSQuaBohgOII0CRHCSi3Y6yu1amk2zLGapNxHIwFWMux2pl74lgQe5KFa5AFiYMYH0KywNIa2bDGR7vZD2X3KQ7LKKsd2jrK6tVpHWUNDWENZVfu7HspnHkSqmOYBbl/B9TQLFzfXBuNyR7OGovaLs6alblnDUPgKaY+cBZCA5x1Lu23cBaiUddH3pS1tAGV5DJtKMsTkrIkyTHLccRpQXOaxygj8Xac1bU6lXRbxlltMo6DszDW4qx25p5wFlraP9Q+j2uchamDGB+Cs9DSKtmwxke72Q9n9ykOyzirHdo6zurVaR1nDQ3h+DuzMPekU8c0iyL/BqihWbR+FHH0JXs0a6xpuzRrVuaeNYwsHbk0c2bXZ/qQAc06l/ZbNIvwqOvj0iyytGxnw656MZwNT2VXJMkJSQEo011njHWtTiXdlmlWm4wjnTFOtTSrnbknmkWWmEv7PK5pFm1uTRwe40NoFls6/mRY46Pd7Eez+xSHZZrVDm2dZvXqtE6zhoZwfJrFlvZ1jArKoQFi6N8ANTSL1/dwRl+yR7PGmrZLs2Zl7lvDlraqzJzZ8eoRxwY061zab9EsTkZdH5dm8auTf9pfkw/LifEnzmZAqo3n82LQ3OU0Cf8wdLglz9la3k4lL8bF/SoZu/6RwJv5+jIJ5CxIX0ufW/TibzVJmbuHx5frn3vxwxeP3wBg0PobKkIAAA==</data>
-        <document_id display_value="Created 2026-07-20 08:49:16">23f555c4f7968310c5eb0d3a156b4f84</document_id>
+        <data>H4sIAAAAAAAA/+2cy27jNhSG30VrQxAvkqWsOrcWQYtM4aTtohgYFEklwsiSa1FJgyDvPqSjZDK+hPSYpBbWLpbFi845/y9+IJ2HoKxbseqoKJu6Dc7+fQh+oRVp5Z8BbRZhW9NwycJFw3gVvro1PF8sOkHyiv/58VKQlTj//l0wCUoWnEWTgMjPt6W4P5cfg4JnMWMYU5QlKQJRjiksOGJRHAEEAJu3qh/ZeMk+NLXg/wvVTM5H3C/5BVlw2cevVXM34wVf8ZpyeestqTp1vazlLOf0qdlcjv44CYqf6qbY7KatybK9aQ6czKqhvG3njBdlXaqgzJ/76butn/pou3xRtq264b+uEfwlCGX7eanakSo4K0jV8sfJT6TmI6cl4xcqCFv5AQfm51QyYyfylzdNV7F3fYBnXb2dADgJKpJzOUyAUZ7ECaEoZyzNQRTFhE3jROaC45hMUbhZJ2HN71StXPOQxHFUgDTCUUZU3lhOCpjLLkCUUczjl5L6Idu6VqeS7VVXPyfpDx/JkOOZq7uffSEfMLyFfcEx0ewuun9IKa6ar3xHqaFJ0Cxlz7NPv51fXn2ayct3z3f/zu8N6mGu7p8L1SCwMdkrsrrmO1wJexKFKBd8ZeVJVNi3nyN2EGGN5cy+l/L2fBJPcX2q79Fq9r7y666qjqqNiSqIZcVFryHXGWVNrR5VNB298TPieig1pNKopyHXdrB+HbyvGvq1rK+DMykh7sir99nf1JNMVT05dL/Uv/tdqaLZ73/ZaEo7TcnPy7YXtMrxu2tS1n5EvS5yzwIGkaeYrm3Z8bIRgH7d+NeFy5XjMRALR10PS7EA2Sl4jFIIMc4pyFBB4pxOIwRQHAGaZCgBxW6M1bU6lXRbxlhtMobBWIC1HKuduSeOBbEnWbgGWZA4iPExJAssrZENa3y0m8NQ9pDisIyy2qGto6xendZR1tAQNlB27c6+l8KpJ6E6hlmQ+XdADc3Czc210Zjs4ayxqO3irFmZe9YwBJ5i6gNnITTAWefSfgtnIRp1PfCmrKUNqCSTaUNplpApS5IMswxHnOY0o1mMUrJnV1bX6lTSbRlntckYBmdhrMVZ7cw94Sy0tH+ofR7XOAunDmJ8DM5CS6tkwxof7eYwnD2kOCzjrHZo6zirV6d1nDU0hOF3ZmHmSaeOaRZF/g1QQ7No8yji6Ev2aNZY03Zp1qzMPWsYWTpyaebMrs/0IQOadS7tt2gW4VHXw9IssrRs5/2uepI+7arTqCCI8jhnFCG474yxrtWppNsyzWqTMdAZ46mWZrUz90SzyBJzaZ/HNc2i7a2J42N8DM1iS8efDGt8tJvDaPaQ4rBMs9qhrdOsXp3WadbQEIanWWxpX8eooBwaIIb+DVBDs3hzD2f0JXs0a6xpuzRrVua+NWxpq8rMmR2vHnFsQLPOpf0WzeJk1PWwNItfnfzT/pq8X06MP3E2A1JtPJ8Xg+Yup0n4h77DHXlON/J2KnkxLu5Xydj3jwTezNeXSSBnQbpK+tyyE3+rScrcPTy+XP/ciR++ePwGI9eFSipCAAA=</data>
+        <document_id display_value="Created 2026-07-20 10:44:23">a5503580e69a83108eaeb14c9875371c</document_id>
         <field>instructions</field>
         <length>1556</length>
         <position>0</position>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-20 15:49:16</sys_created_on>
-        <sys_id>63f555c4c3968310b4c2fe3d05013185</sys_id>
+        <sys_created_on>2026-07-20 17:44:23</sys_created_on>
+        <sys_id>e5503580c39a8310b4c2fe3d0501311d</sys_id>
     </sys_flow_compiled_flow_chunk>
     <sys_flow_compiled_flow_chunk action="INSERT_OR_UPDATE">
         <data>H4sIAAAAAAAA/6tWyswrLikqTS7JzM/zTAnJD0rNzS9L9U6tdEosSc5QsqqurQUAOtk80SQAAAA=</data>
-        <document_id display_value="Created 2026-07-20 08:49:16">23f555c4f7968310c5eb0d3a156b4f84</document_id>
+        <document_id display_value="Created 2026-07-20 10:44:23">a5503580e69a83108eaeb14c9875371c</document_id>
         <field>runtime_value_metadata</field>
         <length>76</length>
         <position>0</position>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-20 15:49:16</sys_created_on>
-        <sys_id>e3f555c4c3968310b4c2fe3d05013186</sys_id>
+        <sys_created_on>2026-07-20 17:44:23</sys_created_on>
+        <sys_id>69503580c39a8310b4c2fe3d0501311e</sys_id>
     </sys_flow_compiled_flow_chunk>
     <sys_pd_trigger_instance action="delete_multiple" query="sys_id=ce24f884f365591f03e33b94a89c7bb4^sys_idNOT INce24f884f365591f03e33b94a89c7bb4"/>
     <sys_pd_trigger_instance action="INSERT_OR_UPDATE">
@@ -568,7 +593,7 @@
         <table>var__m_sys_pd_process_input_fe95dd44c3968310b4c2fe3d0501311d</table>
         <value>{{triggerRecord}}</value>
     </sys_element_mapping>
-    <sys_trigger_runner_mapping action="delete_multiple" query="identifier=ce24f884f365591f03e33b94a89c7bb4^sys_idNOT IN93f555c4c3968310b4c2fe3d05013172"/>
+    <sys_trigger_runner_mapping action="delete_multiple" query="identifier=ce24f884f365591f03e33b94a89c7bb4^sys_idNOT INe5503580c39a8310b4c2fe3d05013117"/>
     <sys_trigger_runner_mapping action="INSERT_OR_UPDATE">
         <active>true</active>
         <data>{"trigger_on_unique_change":"false","parent_record":{"elementMapping":"{{triggerRecord}}","variableValue":null,"elementMappingOrVariableValue":"{{triggerRecord}}"},"run_trigger":"run_once"}</data>
@@ -576,15 +601,15 @@
         <identifier_type>playbook</identifier_type>
         <runner>PDTriggerRunner</runner>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-20 15:49:16</sys_created_on>
-        <sys_id>93f555c4c3968310b4c2fe3d05013172</sys_id>
+        <sys_created_on>2026-07-20 17:44:23</sys_created_on>
+        <sys_id>e5503580c39a8310b4c2fe3d05013117</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-20 15:49:16</sys_updated_on>
-        <trigger display_value="">97f555c4c3968310b4c2fe3d05013171</trigger>
+        <sys_updated_on>2026-07-20 17:44:23</sys_updated_on>
+        <trigger display_value="">6d503580c39a8310b4c2fe3d05013116</trigger>
     </sys_trigger_runner_mapping>
-    <sys_json_chunk action="delete_multiple" query="document_id=93f555c4c3968310b4c2fe3d05013172"/>
-    <sys_flow_record_trigger action="delete_multiple" query="sys_id=97f555c4c3968310b4c2fe3d05013171^sys_idNOT IN97f555c4c3968310b4c2fe3d05013171"/>
+    <sys_json_chunk action="delete_multiple" query="document_id=e5503580c39a8310b4c2fe3d05013117"/>
+    <sys_flow_record_trigger action="delete_multiple" query="sys_id=6d503580c39a8310b4c2fe3d05013116^sys_idNOT IN6d503580c39a8310b4c2fe3d05013116"/>
     <sys_flow_record_trigger action="INSERT_OR_UPDATE">
         <active>true</active>
         <condition table="x_gegis_ins_policy_submission">playbook_quote_and_bindISNOTEMPTY<item endquery="false" field="playbook_quote_and_bind" goto="false" newquery="false" operator="ISNOTEMPTY" or="false" value=""/>
@@ -601,15 +626,15 @@
         <run_when_user_setting>any</run_when_user_setting>
         <sys_class_name>sys_flow_record_trigger</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-20 15:49:16</sys_created_on>
+        <sys_created_on>2026-07-20 17:44:23</sys_created_on>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
-        <sys_id>97f555c4c3968310b4c2fe3d05013171</sys_id>
+        <sys_id>6d503580c39a8310b4c2fe3d05013116</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_overrides/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-20 15:49:16</sys_updated_on>
+        <sys_updated_on>2026-07-20 17:44:23</sys_updated_on>
         <table>x_gegis_ins_policy_submission</table>
         <trigger_definition/>
     </sys_flow_record_trigger>
@@ -643,7 +668,7 @@
         <run_strategy>run_once</run_strategy>
         <run_strategy_on_process_definition>true</run_strategy_on_process_definition>
         <schema_version>3</schema_version>
-        <snapshot display_value="submission_quote">dff555c4c3968310b4c2fe3d0501317e</snapshot>
+        <snapshot display_value="submission_quote">6d503580c39a8310b4c2fe3d05013117</snapshot>
         <start_non_blocking>true</start_non_blocking>
         <status>published</status>
         <sync_state>COMPLETE</sync_state>
@@ -659,7 +684,7 @@
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_pd_process_definition_fe95dd44c3968310b4c2fe3d0501311d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-20 15:49:16</sys_updated_on>
+        <sys_updated_on>2026-07-20 17:44:23</sys_updated_on>
         <view_type>DIAGRAM</view_type>
     </sys_pd_process_definition>
     <sys_translated_text action="delete_multiple" query="documentkey=fe95dd44c3968310b4c2fe3d0501311d"/>
