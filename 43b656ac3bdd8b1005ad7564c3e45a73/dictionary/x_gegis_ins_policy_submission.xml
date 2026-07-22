@@ -1,77 +1,170 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="06d5cff0333d4f907ef8f499ed5c7b23" label="Submission" max_length="40" name="x_gegis_ins_policy_submission" type="collection">
-        <element label="Current extraction" max_length="32" name="current_extraction" reference="x_gegis_ins_policy_extraction" type="reference"/>
-        <element label="Currency" max_length="3" name="currency" type="string"/>
-        <element label="Locked" max_length="40" name="is_locked" type="boolean"/>
-        <element label="Need by date" max_length="40" name="need_by_date" type="glide_date"/>
-        <element choice="3" default="medium" label="Priority" max_length="40" name="priority" type="string">
-            <choice/>
+        <element choice="1" label="Activity Status" max_length="40" name="activity_status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Underwriting Guidelines" sequence="100" value="risk_underwriting_guidelines"/>
+                <element inactive_on_update="false" label="Quality Assurance" sequence="70" value="clearance_quality_assurance"/>
+                <element inactive_on_update="false" label="Insured Verification" sequence="30" value="clearance_insured_verification"/>
+                <element inactive_on_update="false" label="Initiate Submission Request" sequence="10" value="clearance_initiate_submission_request"/>
+                <element inactive_on_update="false" label="Concentration Analysis" sequence="240" value="exposure_concentration_analysis"/>
+                <element inactive_on_update="false" label="Extract" sequence="200" value="exposure_extract"/>
+                <element inactive_on_update="false" label="Underwriter Narrative" sequence="170" value="risk_underwriter_narrative"/>
+                <element inactive_on_update="false" label="Broker Decision" sequence="320" value="quotebind_broker_decision"/>
+                <element inactive_on_update="false" label="Bind Propensity" sequence="140" value="risk_bind_propensity"/>
+                <element inactive_on_update="false" label="Extract" sequence="280" value="quotebind_extract"/>
+                <element inactive_on_update="false" label="Extract" sequence="20" value="clearance_extract"/>
+                <element inactive_on_update="false" label="Letter Of Authority" sequence="90" value="risk_letter_of_authority"/>
+                <element inactive_on_update="false" label="Confirm Data Review" sequence="60" value="clearance_confirm_data_review"/>
+                <element inactive_on_update="false" label="Fraud Detection" sequence="160" value="risk_fraud_detection"/>
+                <element inactive_on_update="false" label="Underwriter Decision" sequence="310" value="quotebind_underwriter_decision"/>
+                <element inactive_on_update="false" label="Loss Prediction" sequence="130" value="risk_loss_prediction"/>
+                <element inactive_on_update="false" label="Initiate Quote &amp; Bind" sequence="270" value="quotebind_initiate_quote_and_bind"/>
+                <element inactive_on_update="false" label="Capacity management" sequence="230" value="exposure_capacity_management"/>
+                <element inactive_on_update="false" label="Initiate Exposure" sequence="190" value="exposure_initiate_exposure"/>
+                <element inactive_on_update="false" label="Initiate Risk Assessment" sequence="80" value="risk_initiate_risk_assessment"/>
+                <element inactive_on_update="false" label="Check for Sanctions" sequence="50" value="clearance_check_for_sanctions"/>
+                <element inactive_on_update="false" label="Survey Results" sequence="120" value="risk_survey_results"/>
+                <element inactive_on_update="false" label="Catastrophe Modelling" sequence="220" value="exposure_catastrophe_modelling"/>
+                <element inactive_on_update="false" label="Exposure Data" sequence="150" value="risk_exposure_data"/>
+                <element inactive_on_update="false" label="Quote Workspace" sequence="300" value="quotebind_quote_workspace"/>
+                <element inactive_on_update="false" label="Exposure Management Summary" sequence="260" value="exposure_management_summary"/>
+                <element inactive_on_update="false" label="Bind Details" sequence="340" value="quotebind_bind_details"/>
+                <element inactive_on_update="false" label="Benchmarking" sequence="110" value="risk_benchmarking"/>
+                <element inactive_on_update="false" label="Check for Duplicates" sequence="40" value="clearance_check_for_duplicates"/>
+                <element inactive_on_update="false" label="Product Selection Details" sequence="290" value="quotebind_product_selection_details"/>
+                <element inactive_on_update="false" label="Portfolio Optimization" sequence="250" value="exposure_portfolio_optimization"/>
+                <element inactive_on_update="false" label="Geo Mapping" sequence="210" value="exposure_geo_mapping"/>
+                <element inactive_on_update="false" label="Risk Summary" sequence="180" value="risk_risk_summary"/>
+                <element inactive_on_update="false" label="Sanctions" sequence="330" value="quotebind_sanctions"/>
+            </choice>
         </element>
-        <element label="Requires review" max_length="40" name="requires_review" type="boolean"/>
+        <element label="Broker" max_length="32" name="broker" reference="x_gegis_ins_policy_party" type="reference"/>
+        <element label="Locked" max_length="40" name="is_locked" type="boolean"/>
+        <element label="Target expiration date" max_length="40" name="target_expiration_date" type="glide_date"/>
+        <element label="Insured Address" max_length="400" name="insured_address" type="string"/>
+        <element label="External ID" max_length="100" name="external_id" type="string"/>
+        <element default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
         <element choice="1" label="Source channel" max_length="40" name="source_channel" type="string">
             <choice/>
         </element>
-        <element label="Playbook Quote and Bind" max_length="40" name="playbook_quote_and_bind" type="string"/>
-        <element label="Insured Name" max_length="120" name="insured_name" type="string"/>
-        <element label="Line of Business" max_length="40" name="line_of_business" type="string"/>
-        <element label="Received date" max_length="40" name="received_date" type="glide_date_time"/>
-        <element choice="1" label="Sanctions status" max_length="40" name="sanctions_status" type="string">
-            <choice/>
-        </element>
-        <element label="Target expiration date" max_length="40" name="target_expiration_date" type="glide_date"/>
-        <element label="Underwriter" max_length="32" name="underwriter" reference="sys_user" type="reference"/>
-        <element label="Target effective date" max_length="40" name="target_effective_date" type="glide_date"/>
-        <element label="Total estimated premium" max_length="40" name="total_estimated_premium" type="decimal"/>
-        <element label="Duplicate of" max_length="32" name="duplicate_of" reference="x_gegis_ins_policy_submission" type="reference"/>
-        <element label="Appetite score" max_length="40" name="appetite_score" type="decimal"/>
-        <element label="Broker" max_length="32" name="broker" reference="x_gegis_ins_policy_party" type="reference"/>
-        <element choice="3" default="received" label="State" max_length="40" name="state" type="string">
-            <choice/>
-        </element>
-        <element label="Status reason" max_length="400" name="status_reason" type="string"/>
-        <element label="Playbook Risk" max_length="40" name="playbook_risk" type="string"/>
-        <element label="Insured Address" max_length="400" name="insured_address" type="string"/>
-        <element label="Source reference" max_length="200" name="source_reference" type="string"/>
-        <element choice="3" default="received" label="Status" max_length="40" name="status" type="string">
-            <choice/>
-        </element>
-        <element choice="3" default="new_business" label="Submission type" max_length="40" name="submission_type" type="string">
-            <choice/>
-        </element>
-        <element label="Underwriting assistant" max_length="32" name="underwriting_assistant" reference="sys_user" type="reference"/>
-        <element label="External ID" max_length="100" name="external_id" type="string"/>
-        <element label="Broker contact" max_length="32" name="broker_contact" reference="x_gegis_ins_policy_contact" type="reference"/>
-        <element label="Playbook Exposure" max_length="40" name="playbook_exposure" type="string"/>
-        <element label="Playbook Clearance" max_length="40" name="playbook_clearance" type="string"/>
         <element choice="3" default="none" label="Extraction status" max_length="40" name="extraction_status" type="string">
             <choice/>
         </element>
+        <element label="Playbook Renewal" max_length="40" name="playbook_renewal" type="string"/>
+        <element label="Total estimated premium" max_length="40" name="total_estimated_premium" type="decimal"/>
+        <element label="Overall confidence" max_length="40" name="overall_confidence" type="decimal"/>
+        <element choice="3" default="new" label="State" max_length="40" name="state" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Declined" sequence="40" value="declined"/>
+                <element inactive_on_update="false" label="New" sequence="10" value="new"/>
+                <element inactive_on_update="false" label="On Hold" sequence="30" value="on_hold"/>
+                <element inactive_on_update="false" label="Cancelled" sequence="60" value="cancelled"/>
+                <element inactive_on_update="false" label="In Progress" sequence="20" value="in_progress"/>
+                <element inactive_on_update="false" label="Closed" sequence="50" value="closed"/>
+            </choice>
+        </element>
+        <element label="Need by date" max_length="40" name="need_by_date" type="glide_date"/>
+        <element label="Underwriter" max_length="32" name="underwriter" reference="sys_user" type="reference"/>
+        <element label="Source reference" max_length="200" name="source_reference" type="string"/>
+        <element label="Broker contact" max_length="32" name="broker_contact" reference="x_gegis_ins_policy_contact" type="reference"/>
+        <element label="Primary insured" max_length="32" name="primary_insured" reference="x_gegis_ins_policy_party" type="reference"/>
+        <element label="Playbook Quote and Bind" max_length="40" name="playbook_quote_and_bind" type="string"/>
         <element label="Winnability" max_length="40" name="winnability" type="decimal"/>
+        <element label="Current extraction" max_length="32" name="current_extraction" reference="x_gegis_ins_policy_extraction" type="reference"/>
+        <element label="Insured Name" max_length="120" name="insured_name" type="string"/>
         <element choice="3" default="pending" label="Clearance status" max_length="40" name="clearance_status" type="string">
             <choice/>
         </element>
+        <element label="Duplicate of" max_length="32" name="duplicate_of" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element label="Received date" max_length="40" name="received_date" type="glide_date_time"/>
+        <element label="Status reason" max_length="400" name="status_reason" type="string"/>
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element choice="3" default="medium" label="Priority" max_length="40" name="priority" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Low" sequence="40" value="low"/>
+                <element inactive_on_update="false" label="Medium" sequence="30" value="medium"/>
+                <element inactive_on_update="false" label="Critical" sequence="10" value="critical"/>
+                <element inactive_on_update="false" label="High" sequence="20" value="high"/>
+            </choice>
+        </element>
+        <element label="Target effective date" max_length="40" name="target_effective_date" type="glide_date"/>
+        <element choice="1" label="Status" max_length="40" name="status" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Rejected" sequence="70" value="rejected"/>
+                <element inactive_on_update="false" label="Pending Approval" sequence="30" value="pending_approval"/>
+                <element inactive_on_update="false" label="Bound" sequence="110" value="bound"/>
+                <element inactive_on_update="false" label="Renewed" sequence="100" value="renewed"/>
+                <element inactive_on_update="false" label="Declined" sequence="60" value="declined"/>
+                <element inactive_on_update="false" label="Under Review" sequence="20" value="under_review"/>
+                <element inactive_on_update="false" label="Approved" sequence="50" value="approved"/>
+                <element inactive_on_update="false" label="Draft" sequence="10" value="draft"/>
+                <element inactive_on_update="false" label="Closed" sequence="130" value="closed"/>
+                <element inactive_on_update="false" label="Renewal Due" sequence="90" value="renewal_due"/>
+                <element inactive_on_update="false" label="Cancelled" sequence="120" value="cancelled"/>
+                <element inactive_on_update="false" label="Duplicate" sequence="80" value="duplicate"/>
+                <element inactive_on_update="false" label="Missing Data" sequence="40" value="missing_data"/>
+            </choice>
+        </element>
+        <element label="Playbook Exposure" max_length="40" name="playbook_exposure" type="string"/>
+        <element label="Requires review" max_length="40" name="requires_review" type="boolean"/>
+        <element choice="3" default="new_business" label="Submission type" max_length="40" name="submission_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Renewal" sequence="20" value="renewal"/>
+                <element inactive_on_update="false" label="Reinstatement" sequence="50" value="reinstatement"/>
+                <element inactive_on_update="false" label="Cancellation" sequence="40" value="cancellation"/>
+                <element inactive_on_update="false" label="New Business" sequence="10" value="new_business"/>
+                <element inactive_on_update="false" label="Endorsement" sequence="30" value="endorsement"/>
+            </choice>
+        </element>
+        <element label="Playbook Clearance" max_length="40" name="playbook_clearance" type="string"/>
+        <element choice="1" default="property" label="Line of Business" max_length="40" name="line_of_business" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Energy" sequence="60" value="energy"/>
+                <element inactive_on_update="false" label="Auto" sequence="20" value="auto"/>
+                <element inactive_on_update="false" label="Cyber" sequence="100" value="cyber"/>
+                <element inactive_on_update="false" label="Aviation" sequence="90" value="aviation"/>
+                <element inactive_on_update="false" label="Marine" sequence="50" value="marine"/>
+                <element inactive_on_update="false" label="Casualty" sequence="40" value="casualty"/>
+                <element inactive_on_update="false" label="Construction" sequence="80" value="construction"/>
+                <element inactive_on_update="false" label="Property" sequence="10" value="property"/>
+                <element inactive_on_update="false" label="Financial Lines" sequence="70" value="financial_lines"/>
+                <element inactive_on_update="false" label="General" sequence="30" value="general"/>
+                <element inactive_on_update="false" label="Specialty" sequence="110" value="specialty"/>
+            </choice>
+        </element>
         <element label="Broker Name" max_length="120" name="broker_name" type="string"/>
-        <element label="Playbook Renewal" max_length="40" name="playbook_renewal" type="string"/>
-        <element label="Overall confidence" max_length="40" name="overall_confidence" type="decimal"/>
-        <element default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
-        <element label="Primary insured" max_length="32" name="primary_insured" reference="x_gegis_ins_policy_party" type="reference"/>
+        <element label="Appetite score" max_length="40" name="appetite_score" type="decimal"/>
+        <element label="Currency" max_length="3" name="currency" type="string"/>
+        <element choice="1" label="Sanctions status" max_length="40" name="sanctions_status" type="string">
+            <choice/>
+        </element>
+        <element label="Playbook Risk" max_length="40" name="playbook_risk" type="string"/>
+        <element label="Underwriting assistant" max_length="32" name="underwriting_assistant" reference="sys_user" type="reference"/>
+        <element choice="1" label="Stage" max_length="40" name="stage" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Quote &amp; Bind" sequence="40" value="quote_and_bind"/>
+                <element inactive_on_update="false" label="Clearance" sequence="10" value="clearance"/>
+                <element inactive_on_update="false" label="Exposure Management" sequence="30" value="exposure_management"/>
+                <element inactive_on_update="false" label="Risk Assessment" sequence="20" value="risk_assessment"/>
+            </choice>
+        </element>
         <index name="index">
-            <element name="current_extraction"/>
-        </index>
-        <index name="index2">
-            <element name="underwriter"/>
-        </index>
-        <index name="index3">
             <element name="broker"/>
         </index>
-        <index name="index4">
+        <index name="index2">
             <element name="broker_contact"/>
+        </index>
+        <index name="index3">
+            <element name="current_extraction"/>
+        </index>
+        <index name="index4">
+            <element name="duplicate_of"/>
         </index>
         <index name="index5">
             <element name="primary_insured"/>
         </index>
         <index name="index6">
-            <element name="duplicate_of"/>
+            <element name="underwriter"/>
         </index>
         <index name="index7">
             <element name="underwriting_assistant"/>
