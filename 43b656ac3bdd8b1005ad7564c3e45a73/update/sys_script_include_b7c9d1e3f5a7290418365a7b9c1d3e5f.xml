@@ -54,9 +54,14 @@
 
     // Value tokens that appear on more than one field. Defined once here.
     var SHARED = {
-        DECLINED:  'declined',
-        CANCELLED: 'cancelled',
-        CLOSED:    'closed'
+        NEW:         'new',
+        IN_PROGRESS: 'in_progress',
+        ON_HOLD:     'on_hold',
+        DUPLICATE:   'duplicate',
+        REJECTED:    'rejected',
+        DECLINED:    'declined',
+        CANCELLED:   'cancelled',
+        CLOSED:      'closed'
     };
 
     // submission.stage -- also the prefix namespace for activity_status values.
@@ -136,9 +141,9 @@
 
         // submission.state
         STATE: {
-            NEW:         'new',
-            IN_PROGRESS: 'in_progress',
-            ON_HOLD:     'on_hold',
+            NEW:         SHARED.NEW,
+            IN_PROGRESS: SHARED.IN_PROGRESS,
+            ON_HOLD:     SHARED.ON_HOLD,
             DECLINED:    SHARED.DECLINED,
             CLOSED:      SHARED.CLOSED,
             CANCELLED:   SHARED.CANCELLED
@@ -152,13 +157,34 @@
             MISSING_DATA:     'missing_data',
             APPROVED:         'approved',
             DECLINED:         SHARED.DECLINED,
-            REJECTED:         'rejected',
-            DUPLICATE:        'duplicate',
+            REJECTED:         SHARED.REJECTED,
+            DUPLICATE:        SHARED.DUPLICATE,
             RENEWAL_DUE:      'renewal_due',
             RENEWED:          'renewed',
             BOUND:            'bound',
             CANCELLED:        SHARED.CANCELLED,
             CLOSED:           SHARED.CLOSED
+        },
+
+        // x_gegis_ins_policy_intake_case.status
+        INTAKE_STATUS: {
+            NEW:             SHARED.NEW,
+            IN_PROGRESS:     SHARED.IN_PROGRESS,
+            AWAITING_ACTION: 'awaiting_action',
+            COMPLETED:       'completed',
+            DUPLICATE:       SHARED.DUPLICATE,
+            REJECTED:        SHARED.REJECTED,
+            CANCELLED:       SHARED.CANCELLED,
+            FAILED:          'failed',
+            READY_TO_SEND:   'ready_to_send',
+            SENT:            'sent',
+            ACKNOWLEDGED:    'acknowledged'
+        },
+
+        // x_gegis_ins_policy_intake_case.direction
+        DIRECTION: {
+            INBOUND:  'inbound',
+            OUTBOUND: 'outbound'
         },
 
         SUBMISSION_TYPE: {
