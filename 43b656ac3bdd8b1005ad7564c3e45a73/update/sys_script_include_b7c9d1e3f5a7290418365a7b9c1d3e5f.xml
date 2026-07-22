@@ -5,7 +5,7 @@
         <api_name>x_gegis_ins_policy.Constants</api_name>
         <caller_access/>
         <client_callable>false</client_callable>
-        <description>Single source of truth for scoped system property names and their typed accessors. Callers use x_gegis_ins_policy.Constants.PROP.* for names and the helpers (getBool/getString/isAutoApprove) instead of hard-coding property strings or calling gs.getProperty directly.</description>
+        <description>Single source of truth for scoped system property names, their typed accessors, and all custom choice VALUES. Callers use x_gegis_ins_policy.Constants.PROP.* for property names, CHOICE.* for lower_snake_case choice values (never raw string literals), and the helpers (getBool/getString/isAutoApprove/values) instead of hard-coding strings. GOLDEN RULE: every custom choice value is a lowercase constant defined here.</description>
         <mobile_callable>false</mobile_callable>
         <name>Constants</name>
         <sandbox_callable>false</sandbox_callable>
@@ -32,6 +32,168 @@
     var DEFAULT = {};
     DEFAULT[PROP.AUTO_APPROVE_NEW]    = 'true';
     DEFAULT[PROP.AUTO_APPROVE_UPDATE] = 'false';
+
+    // =====================================================================
+    // CUSTOM CHOICE VALUES  --  GOLDEN RULE
+    // ---------------------------------------------------------------------
+    // Every custom choice value in Policy Suite is a lower_snake_case string
+    // and lives here as a named constant. Scripts, flows and business rules
+    // reference x_gegis_ins_policy.Constants.CHOICE.* -- never a raw string
+    // literal. Labels stay in the instance UI (choices are configured there,
+    // not generated); this catalog is the source of truth for the VALUES.
+    //
+    // Same value used in more than one place:
+    //   1. Same LABEL, different meaning per context  -> give each its own
+    //      value, namespaced by its stage prefix (e.g. "Extract" becomes
+    //      ACTIVITY.CLEARANCE.EXTRACT = 'clearance_extract' vs
+    //      ACTIVITY.EXPOSURE.EXTRACT = 'exposure_extract'). Values stay unique.
+    //   2. Same VALUE legitimately shared across fields (e.g. 'declined',
+    //      'cancelled', 'closed' on both state and status) -> define the token
+    //      ONCE in SHARED and reference it. Never re-type the literal.
+    // =====================================================================
+
+    // Value tokens that appear on more than one field. Defined once here.
+    var SHARED = {
+        DECLINED:  'declined',
+        CANCELLED: 'cancelled',
+        CLOSED:    'closed'
+    };
+
+    // submission.stage -- also the prefix namespace for activity_status values.
+    var STAGE = {
+        CLEARANCE:           'clearance',
+        RISK_ASSESSMENT:     'risk_assessment',
+        EXPOSURE_MANAGEMENT: 'exposure_management',
+        QUOTE_AND_BIND:      'quote_and_bind'
+    };
+
+    // activity_status, grouped per stage. Each token defined ONCE here.
+    // A case table's activity_status = its own group. The submission's
+    // activity_status = the union of all four (see CHOICE.ACTIVITY.all()).
+    var ACTIVITY = {
+        CLEARANCE: {
+            INITIATE_SUBMISSION_REQUEST: 'clearance_initiate_submission_request',
+            EXTRACT:                     'clearance_extract',
+            INSURED_VERIFICATION:        'clearance_insured_verification',
+            CHECK_FOR_DUPLICATES:        'clearance_check_for_duplicates',
+            CHECK_FOR_SANCTIONS:         'clearance_check_for_sanctions',
+            CONFIRM_DATA_REVIEW:         'clearance_confirm_data_review',
+            QUALITY_ASSURANCE:           'clearance_quality_assurance'
+        },
+        RISK: {
+            INITIATE_RISK_ASSESSMENT: 'risk_initiate_risk_assessment',
+            LETTER_OF_AUTHORITY:      'risk_letter_of_authority',
+            UNDERWRITING_GUIDELINES:  'risk_underwriting_guidelines',
+            BENCHMARKING:             'risk_benchmarking',
+            SURVEY_RESULTS:           'risk_survey_results',
+            LOSS_PREDICTION:          'risk_loss_prediction',
+            BIND_PROPENSITY:          'risk_bind_propensity',
+            EXPOSURE_DATA:            'risk_exposure_data',
+            FRAUD_DETECTION:          'risk_fraud_detection',
+            UNDERWRITER_NARRATIVE:    'risk_underwriter_narrative',
+            RISK_SUMMARY:             'risk_risk_summary'
+        },
+        EXPOSURE: {
+            INITIATE_EXPOSURE:          'exposure_initiate_exposure',
+            EXTRACT:                    'exposure_extract',
+            GEO_MAPPING:                'exposure_geo_mapping',
+            CATASTROPHE_MODELLING:      'exposure_catastrophe_modelling',
+            CAPACITY_MANAGEMENT:        'exposure_capacity_management',
+            CONCENTRATION_ANALYSIS:     'exposure_concentration_analysis',
+            PORTFOLIO_OPTIMIZATION:     'exposure_portfolio_optimization',
+            EXPOSURE_MANAGEMENT_SUMMARY:'exposure_management_summary'
+        },
+        QUOTEBIND: {
+            INITIATE_QUOTE_AND_BIND:   'quotebind_initiate_quote_and_bind',
+            EXTRACT:                   'quotebind_extract',
+            PRODUCT_SELECTION_DETAILS: 'quotebind_product_selection_details',
+            QUOTE_WORKSPACE:           'quotebind_quote_workspace',
+            UNDERWRITER_DECISION:      'quotebind_underwriter_decision',
+            BROKER_DECISION:           'quotebind_broker_decision',
+            SANCTIONS:                 'quotebind_sanctions',
+            BIND_DETAILS:              'quotebind_bind_details'
+        }
+    };
+
+    // Union of all activity_status values, in stage order (submission set).
+    ACTIVITY.all = function () {
+        return values(ACTIVITY.CLEARANCE)
+            .concat(values(ACTIVITY.RISK))
+            .concat(values(ACTIVITY.EXPOSURE))
+            .concat(values(ACTIVITY.QUOTEBIND));
+    };
+
+    var CHOICE = {
+        STAGE:    STAGE,
+        ACTIVITY: ACTIVITY,
+
+        PRIORITY: {
+            CRITICAL: 'critical',
+            HIGH:     'high',
+            MEDIUM:   'medium',
+            LOW:      'low'
+        },
+
+        // submission.state
+        STATE: {
+            NEW:         'new',
+            IN_PROGRESS: 'in_progress',
+            ON_HOLD:     'on_hold',
+            DECLINED:    SHARED.DECLINED,
+            CLOSED:      SHARED.CLOSED,
+            CANCELLED:   SHARED.CANCELLED
+        },
+
+        // submission.status  (shares declined/cancelled/closed with STATE)
+        STATUS: {
+            DRAFT:            'draft',
+            UNDER_REVIEW:     'under_review',
+            PENDING_APPROVAL: 'pending_approval',
+            MISSING_DATA:     'missing_data',
+            APPROVED:         'approved',
+            DECLINED:         SHARED.DECLINED,
+            REJECTED:         'rejected',
+            DUPLICATE:        'duplicate',
+            RENEWAL_DUE:      'renewal_due',
+            RENEWED:          'renewed',
+            BOUND:            'bound',
+            CANCELLED:        SHARED.CANCELLED,
+            CLOSED:           SHARED.CLOSED
+        },
+
+        SUBMISSION_TYPE: {
+            NEW_BUSINESS:  'new_business',
+            RENEWAL:       'renewal',
+            ENDORSEMENT:   'endorsement',
+            CANCELLATION:  'cancellation',
+            REINSTATEMENT: 'reinstatement'
+        },
+
+        LINE_OF_BUSINESS: {
+            PROPERTY:        'property',
+            AUTO:            'auto',
+            GENERAL:         'general',
+            CASUALTY:        'casualty',
+            MARINE:          'marine',
+            ENERGY:          'energy',
+            FINANCIAL_LINES: 'financial_lines',
+            CONSTRUCTION:    'construction',
+            AVIATION:        'aviation',
+            CYBER:           'cyber',
+            SPECIALTY:       'specialty'
+        }
+    };
+
+    // Collect the value strings of a choice group as an array (for IN queries,
+    // validation, etc.). Skips function members such as ACTIVITY.all.
+    function values(map) {
+        var out = [];
+        for (var k in map) {
+            if (map.hasOwnProperty(k) &amp;&amp; typeof map[k] === 'string')
+                out.push(map[k]);
+        }
+        return out;
+    }
 
     // ---------------------------------------------------------------------
     // Generic typed getters. dflt is optional; when omitted the registered
@@ -83,6 +245,8 @@
     return {
         SCOPE: SCOPE,
         PROP: PROP,
+        CHOICE: CHOICE,
+        values: values,
         getString: getString,
         getBool: getBool,
         getJson: getJson,
