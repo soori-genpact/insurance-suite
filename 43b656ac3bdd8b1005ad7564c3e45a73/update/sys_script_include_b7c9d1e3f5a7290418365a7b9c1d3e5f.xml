@@ -59,6 +59,9 @@
         ON_HOLD:     'on_hold',
         DUPLICATE:   'duplicate',
         REJECTED:    'rejected',
+        FAILED:      'failed',
+        EXTRACTED:   'extracted',
+        APPLIED:     'applied',
         DECLINED:    'declined',
         CANCELLED:   'cancelled',
         CLOSED:      'closed'
@@ -175,7 +178,7 @@
             DUPLICATE:       SHARED.DUPLICATE,
             REJECTED:        SHARED.REJECTED,
             CANCELLED:       SHARED.CANCELLED,
-            FAILED:          'failed',
+            FAILED:          SHARED.FAILED,
             READY_TO_SEND:   'ready_to_send',
             SENT:            'sent',
             ACKNOWLEDGED:    'acknowledged'
@@ -185,6 +188,50 @@
         DIRECTION: {
             INBOUND:  'inbound',
             OUTBOUND: 'outbound'
+        },
+
+        // x_gegis_ins_policy_extraction.extraction_status -- consumer / HITL
+        // status: what the end user is doing with the extracted data.
+        EXTRACTION_STATUS: {
+            STARTED:        'started',
+            PENDING:        'pending',
+            EXTRACTED:      SHARED.EXTRACTED,
+            PENDING_REVIEW: 'pending_review',
+            REVIEWED:       'reviewed',
+            APPLIED:        SHARED.APPLIED,
+            ACCEPTED:       'accepted',
+            REJECTED:       SHARED.REJECTED,
+            FAILED:         SHARED.FAILED
+        },
+
+        // x_gegis_ins_policy_extraction.extraction_method -- the technique /
+        // engine that produced the extraction (AI provenance for HITL).
+        EXTRACTION_METHOD: {
+            OCR:            'ocr',
+            AZURE_DI:       'azure_di',
+            AZ_CU:          'az_cu',
+            LLM_EXTRACTION: 'llm_extraction',
+            HYBRID:         'hybrid',
+            MANUAL:         'manual'
+        },
+
+        // x_gegis_ins_policy_extraction.disposition -- AI / system status:
+        // what the pipeline did with the extraction record.
+        DISPOSITION: {
+            EXTRACTED:  SHARED.EXTRACTED,
+            APPLIED:    SHARED.APPLIED,
+            MERGED:     'merged',
+            SUPERSEDED: 'superseded'
+        },
+
+        // x_gegis_ins_policy_extraction.source -- origination channel of the
+        // extracted document/data (feeds submission.source_channel).
+        SOURCE: {
+            EMAIL:  'email',
+            FILE:   'file',
+            CASE:   'case',
+            API:    'api',
+            PORTAL: 'portal'
         },
 
         SUBMISSION_TYPE: {
