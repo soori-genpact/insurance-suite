@@ -62,9 +62,15 @@
         FAILED:      'failed',
         EXTRACTED:   'extracted',
         APPLIED:     'applied',
+        // shared by extraction.source and case_task.category
+        CASE:        'case',
         DECLINED:    'declined',
         CANCELLED:   'cancelled',
-        CLOSED:      'closed'
+        CLOSED:      'closed',
+        // renewal decision tokens - shared by uw_decision + system_decision
+        FULL_RE_UNDERWRITING: 'full_re_underwriting',
+        AUTO_RENEW:           'auto_renew',
+        DO_NOT_RENEW:         'do_not_renew'
     };
 
     // submission.stage -- also the prefix namespace for activity_status values.
@@ -140,6 +146,14 @@
             HIGH:     'high',
             MEDIUM:   'medium',
             LOW:      'low'
+        },
+
+        // x_gegis_ins_policy_case_task.category -- what kind of task this is.
+        CATEGORY: {
+            HITL:     'hitl',
+            REFERRAL: 'referral',
+            CASE:     SHARED.CASE,
+            OTHER:    'other'
         },
 
         // submission.state
@@ -229,9 +243,33 @@
         SOURCE: {
             EMAIL:  'email',
             FILE:   'file',
-            CASE:   'case',
+            CASE:   SHARED.CASE,
             API:    'api',
             PORTAL: 'portal'
+        },
+
+        // x_gegis_ins_policy_renewal_case.uw_decision -- underwriter's renewal
+        // decision (human). Same value set as system_decision (see SHARED).
+        UW_DECISION: {
+            FULL_RE_UNDERWRITING: SHARED.FULL_RE_UNDERWRITING,
+            AUTO_RENEW:           SHARED.AUTO_RENEW,
+            DO_NOT_RENEW:         SHARED.DO_NOT_RENEW
+        },
+
+        // x_gegis_ins_policy_renewal_case.system_decision -- rule-engine /
+        // automated renewal decision. Same value set as uw_decision.
+        SYSTEM_DECISION: {
+            FULL_RE_UNDERWRITING: SHARED.FULL_RE_UNDERWRITING,
+            AUTO_RENEW:           SHARED.AUTO_RENEW,
+            DO_NOT_RENEW:         SHARED.DO_NOT_RENEW
+        },
+
+        // x_gegis_ins_policy_renewal_case.notification_mode -- how the renewal
+        // reminder is delivered.
+        NOTIFICATION_MODE: {
+            EMAIL:  'email',
+            SMS:    'sms',
+            OTHERS: 'others'
         },
 
         SUBMISSION_TYPE: {
