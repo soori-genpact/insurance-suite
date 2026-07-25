@@ -555,14 +555,17 @@
                 "type": "local"
             },
             {
-                "icon": "user-group-outline",
+                "icon": {
+                    "type": "JSON_LITERAL",
+                    "value": "user-group-outline"
+                },
                 "id": "my_team_work_items",
                 "label": {
                     "type": "TRANSLATION_LITERAL",
                     "value": {
                         "code": null,
                         "comment": "",
-                        "message": "My Team Work Items"
+                        "message": "My Team's Work Items"
                     }
                 },
                 "order": 200,
@@ -591,8 +594,8 @@
                                     "id": "d356d14b6e293a3020a244b63d278d8f",
                                     "type": "MACROPONENT"
                                 },
-                                "elementId": "column_layout_3",
-                                "elementLabel": "Column layout 3",
+                                "elementId": "column_layout_4",
+                                "elementLabel": "Column layout 4",
                                 "eventMappings": [],
                                 "isHidden": {
                                     "type": "JSON_LITERAL",
@@ -605,7 +608,7 @@
                                                 "id": "d356d14b6e293a3020a244b63d278d8f",
                                                 "type": "MACROPONENT"
                                             },
-                                            "elementId": "__wjjEurPITCkPieeddPYOGRyeFxea__column_1",
+                                            "elementId": "__WhhAVuPuPAEzeeeeddOcIodwYcAqR__column_1",
                                             "elementLabel": "Column 1",
                                             "eventMappings": [],
                                             "isHidden": {
@@ -613,15 +616,408 @@
                                                 "value": null
                                             },
                                             "overrides": {
-                                                "composition": [],
+                                                "composition": [
+                                                    {
+                                                        "definition": {
+                                                            "id": "7e1e2677363f30722971c25d60d7a66f",
+                                                            "type": "MACROPONENT"
+                                                        },
+                                                        "elementId": "my_open_items",
+                                                        "elementLabel": "my open items",
+                                                        "eventMappings": [],
+                                                        "isHidden": {
+                                                            "type": "JSON_LITERAL",
+                                                            "value": null
+                                                        },
+                                                        "preset": null,
+                                                        "propertyValues": {
+                                                            "aggregation": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "count"
+                                                            },
+                                                            "aggregationField": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "autoRefresh": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
+                                                            "clickAction": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "emit"
+                                                            },
+                                                            "formatNumber": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "header": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "My Open Items"
+                                                            },
+                                                            "headerColor": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "#0F6E56"
+                                                            },
+                                                            "icon": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "bullseye-arrow-fill"
+                                                            },
+                                                            "iconColor": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "#0F6E56"
+                                                            },
+                                                            "query": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "refreshSeconds": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": 60
+                                                            },
+                                                            "table": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "value": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "5"
+                                                            },
+                                                            "valueColor": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "#0F6E56"
+                                                            }
+                                                        },
+                                                        "slot": null,
+                                                        "styles": null
+                                                    }
+                                                ],
                                                 "layout": {
                                                     "default": {
                                                         "children": null,
-                                                        "items": [],
+                                                        "items": [
+                                                            {
+                                                                "element_id": "my_open_items"
+                                                            }
+                                                        ],
                                                         "root": null,
                                                         "styles": {
                                                             "align-items": "stretch",
+                                                            "background": "#EAF5F0",
+                                                            "border-color": "rgb(var(--now-color--neutral-1))",
+                                                            "border-radius": "15px",
+                                                            "border-style": "id",
+                                                            "border-width": "1px",
                                                             "box-sizing": "border-box",
+                                                            "display": "flex",
+                                                            "flex-direction": "column",
+                                                            "height": "100%",
+                                                            "justify-content": "flex-start",
+                                                            "overflow": "auto"
+                                                        },
+                                                        "type": "flex"
+                                                    },
+                                                    "disableAutoReflow": true,
+                                                    "version": "3.1.0"
+                                                }
+                                            },
+                                            "preset": null,
+                                            "propertyValues": {
+                                                "hideEmptyStateUi": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                },
+                                                "slotWrapperBehavior": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "contents"
+                                                }
+                                            },
+                                            "scratchPad": {
+                                                "uib": {
+                                                    "layout": {
+                                                        "column": {
+                                                            "columnNumber": 0,
+                                                            "id": "default",
+                                                            "styleConfig": {
+                                                                "external": {},
+                                                                "internal": {}
+                                                            }
+                                                        },
+                                                        "type": "column"
+                                                    },
+                                                    "version": "1.0.0"
+                                                }
+                                            },
+                                            "slot": null,
+                                            "styles": {
+                                                "default": {
+                                                    "display": "contents"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "definition": {
+                                                "id": "d356d14b6e293a3020a244b63d278d8f",
+                                                "type": "MACROPONENT"
+                                            },
+                                            "elementId": "__eehhaaRcfvRlAaaRVeeddLiiDMaagSZSSu__column_2",
+                                            "elementLabel": "Column 2",
+                                            "eventMappings": [],
+                                            "isHidden": {
+                                                "type": "JSON_LITERAL",
+                                                "value": null
+                                            },
+                                            "overrides": {
+                                                "composition": [
+                                                    {
+                                                        "definition": {
+                                                            "id": "7e1e2677363f30722971c25d60d7a66f",
+                                                            "type": "MACROPONENT"
+                                                        },
+                                                        "elementId": "my_sla_at_risk",
+                                                        "elementLabel": "my sla at risk",
+                                                        "eventMappings": [],
+                                                        "isHidden": {
+                                                            "type": "JSON_LITERAL",
+                                                            "value": null
+                                                        },
+                                                        "preset": null,
+                                                        "propertyValues": {
+                                                            "aggregation": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "count"
+                                                            },
+                                                            "aggregationField": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "autoRefresh": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
+                                                            "clickAction": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "emit"
+                                                            },
+                                                            "formatNumber": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "header": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "SLA at Risk"
+                                                            },
+                                                            "headerColor": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "#8A5B12"
+                                                            },
+                                                            "icon": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "circle-exclamation-outline"
+                                                            },
+                                                            "iconColor": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "#8A5B12"
+                                                            },
+                                                            "query": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "refreshSeconds": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": 60
+                                                            },
+                                                            "table": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "value": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "4"
+                                                            },
+                                                            "valueColor": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "#8A5B12"
+                                                            }
+                                                        },
+                                                        "slot": null,
+                                                        "styles": null
+                                                    }
+                                                ],
+                                                "layout": {
+                                                    "default": {
+                                                        "children": null,
+                                                        "items": [
+                                                            {
+                                                                "element_id": "my_sla_at_risk"
+                                                            }
+                                                        ],
+                                                        "root": null,
+                                                        "styles": {
+                                                            "align-items": "stretch",
+                                                            "background": "#FDF1DC",
+                                                            "border-color": "RGB(var(--now-color--neutral-5))",
+                                                            "border-radius": "15px",
+                                                            "border-style": "id",
+                                                            "border-width": "var(--now-static-space--xxs)",
+                                                            "box-sizing": "border-box",
+                                                            "display": "flex",
+                                                            "flex-direction": "column",
+                                                            "height": "100%",
+                                                            "justify-content": "flex-start",
+                                                            "overflow": "auto"
+                                                        },
+                                                        "type": "flex"
+                                                    },
+                                                    "disableAutoReflow": true,
+                                                    "version": "3.1.0"
+                                                }
+                                            },
+                                            "preset": null,
+                                            "propertyValues": {
+                                                "hideEmptyStateUi": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                },
+                                                "slotWrapperBehavior": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "contents"
+                                                }
+                                            },
+                                            "scratchPad": {
+                                                "uib": {
+                                                    "layout": {
+                                                        "column": {
+                                                            "columnNumber": 0,
+                                                            "id": "default",
+                                                            "styleConfig": {
+                                                                "external": {},
+                                                                "internal": {}
+                                                            }
+                                                        },
+                                                        "type": "column"
+                                                    },
+                                                    "version": "1.0.0"
+                                                }
+                                            },
+                                            "slot": null,
+                                            "styles": {
+                                                "default": {
+                                                    "display": "contents"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "definition": {
+                                                "id": "d356d14b6e293a3020a244b63d278d8f",
+                                                "type": "MACROPONENT"
+                                            },
+                                            "elementId": "__LfffjzeehhGlDUSVeeddJcMccjjaiiaeeddggh__column_3",
+                                            "elementLabel": "Column 3",
+                                            "eventMappings": [],
+                                            "isHidden": {
+                                                "type": "JSON_LITERAL",
+                                                "value": null
+                                            },
+                                            "overrides": {
+                                                "composition": [
+                                                    {
+                                                        "definition": {
+                                                            "id": "7e1e2677363f30722971c25d60d7a66f",
+                                                            "type": "MACROPONENT"
+                                                        },
+                                                        "elementId": "my_sla_breached",
+                                                        "elementLabel": "my sla breached",
+                                                        "eventMappings": [],
+                                                        "isHidden": {
+                                                            "type": "JSON_LITERAL",
+                                                            "value": null
+                                                        },
+                                                        "preset": null,
+                                                        "propertyValues": {
+                                                            "aggregation": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "count"
+                                                            },
+                                                            "aggregationField": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "autoRefresh": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
+                                                            "clickAction": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "emit"
+                                                            },
+                                                            "formatNumber": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "header": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "SLA Breached"
+                                                            },
+                                                            "headerColor": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "#FFFFFF"
+                                                            },
+                                                            "icon": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "flag-event-fill"
+                                                            },
+                                                            "iconColor": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "#FFFFFF"
+                                                            },
+                                                            "query": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "refreshSeconds": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": 60
+                                                            },
+                                                            "table": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "value": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "valueColor": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "#FFFFFF"
+                                                            }
+                                                        },
+                                                        "slot": null,
+                                                        "styles": {
+                                                            "default": {
+                                                                "color": "white !important"
+                                                            }
+                                                        }
+                                                    }
+                                                ],
+                                                "layout": {
+                                                    "default": {
+                                                        "children": null,
+                                                        "items": [
+                                                            {
+                                                                "element_id": "my_sla_breached"
+                                                            }
+                                                        ],
+                                                        "root": null,
+                                                        "styles": {
+                                                            "align-items": "stretch",
+                                                            "background": "#FB7979",
+                                                            "border-color": "RGB(var(--now-color--neutral-5))",
+                                                            "border-radius": "15px",
+                                                            "border-style": "id",
+                                                            "border-width": "1px",
+                                                            "box-sizing": "border-box",
+                                                            "display": "flex",
                                                             "flex-direction": "column",
                                                             "height": "100%",
                                                             "justify-content": "flex-start",
@@ -674,21 +1070,27 @@
                                             "isInline": null,
                                             "items": [
                                                 {
-                                                    "element_id": "__wjjEurPITCkPieeddPYOGRyeFxea__column_1"
+                                                    "element_id": "__WhhAVuPuPAEzeeeeddOcIodwYcAqR__column_1"
+                                                },
+                                                {
+                                                    "element_id": "__eehhaaRcfvRlAaaRVeeddLiiDMaagSZSSu__column_2"
+                                                },
+                                                {
+                                                    "element_id": "__LfffjzeehhGlDUSVeeddJcMccjjaiiaeeddggh__column_3"
                                                 }
                                             ],
                                             "root": null,
                                             "rules": null,
                                             "styles": {
-                                                "background": "rgb(var(--now-color--neutral-1))",
                                                 "box-sizing": "border-box",
+                                                "column-gap": "var(--now-scalable-space--md)",
                                                 "display": "grid",
                                                 "grid-auto-columns": "1fr",
                                                 "grid-auto-rows": "1fr",
-                                                "grid-template-columns": "100fr",
+                                                "grid-template-columns": "33.33fr 33.33fr 33.33fr",
                                                 "grid-template-rows": "1fr",
-                                                "margin-top": "var(--now-scalable-space--lg)",
-                                                "max-height": "30px",
+                                                "padding-bottom": "var(--now-scalable-space--lg)",
+                                                "padding-top": "var(--now-scalable-space--lg)",
                                                 "width": "auto"
                                             },
                                             "type": "grid"
@@ -711,14 +1113,10 @@
                                                     "type": "grid"
                                                 },
                                                 "query": {
-                                                    "max-width": 50
+                                                    "max-width": 640
                                                 }
                                             }
                                         ],
-                                        "styleClass": {
-                                            "type": "JSON_LITERAL",
-                                            "value": "blank-bg"
-                                        },
                                         "version": "3.1.0"
                                     }
                                 },
@@ -740,7 +1138,7 @@
                                                 "breakpoints": [
                                                     {
                                                         "behavior": "stack",
-                                                        "max-width": 50,
+                                                        "max-width": 640,
                                                         "styles": {
                                                             "grid-template-columns": "1fr",
                                                             "height": "fit-content",
@@ -753,7 +1151,17 @@
                                                     {
                                                         "columnNumber": 1,
                                                         "unit": "%",
-                                                        "width": 100
+                                                        "width": 33.33
+                                                    },
+                                                    {
+                                                        "columnNumber": 2,
+                                                        "unit": "%",
+                                                        "width": 33.33
+                                                    },
+                                                    {
+                                                        "columnNumber": 3,
+                                                        "unit": "%",
+                                                        "width": 33.33
                                                     }
                                                 ],
                                                 "id": "UIB_COLUMN_SECTION_SINGLE_COLUMN_SECTION",
@@ -1370,7 +1778,7 @@
                                 "children": null,
                                 "items": [
                                     {
-                                        "element_id": "column_layout_3"
+                                        "element_id": "column_layout_4"
                                     },
                                     {
                                         "element_id": "column_layout_2"
@@ -1433,7 +1841,7 @@
                         "type": "MACROPONENT"
                     },
                     "elementId": "my_team_work_items",
-                    "elementLabel": "My Team Work Items",
+                    "elementLabel": "My Team's Work Items",
                     "eventMappings": [],
                     "isHidden": {
                         "type": "JSON_LITERAL",
@@ -1441,11 +1849,1306 @@
                     },
                     "name": "My Team Work Items",
                     "overrides": {
-                        "composition": [],
+                        "composition": [
+                            {
+                                "definition": {
+                                    "id": "d356d14b6e293a3020a244b63d278d8f",
+                                    "type": "MACROPONENT"
+                                },
+                                "elementId": "column_layout_5",
+                                "elementLabel": "Column layout 5",
+                                "eventMappings": [],
+                                "isHidden": {
+                                    "type": "JSON_LITERAL",
+                                    "value": null
+                                },
+                                "overrides": {
+                                    "composition": [
+                                        {
+                                            "definition": {
+                                                "id": "d356d14b6e293a3020a244b63d278d8f",
+                                                "type": "MACROPONENT"
+                                            },
+                                            "elementId": "__ZjjhhZefaeeAkjddjjcaaMiieepeffzGdd__column_1",
+                                            "elementLabel": "Column 1",
+                                            "eventMappings": [],
+                                            "isHidden": {
+                                                "type": "JSON_LITERAL",
+                                                "value": null
+                                            },
+                                            "overrides": {
+                                                "composition": [
+                                                    {
+                                                        "definition": {
+                                                            "id": "7e1e2677363f30722971c25d60d7a66f",
+                                                            "type": "MACROPONENT"
+                                                        },
+                                                        "elementId": "single_score_chart_1",
+                                                        "elementLabel": "Single Score Chart 1",
+                                                        "eventMappings": [],
+                                                        "isHidden": {
+                                                            "type": "JSON_LITERAL",
+                                                            "value": null
+                                                        },
+                                                        "preset": null,
+                                                        "propertyValues": {
+                                                            "aggregation": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "count"
+                                                            },
+                                                            "aggregationField": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "autoRefresh": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
+                                                            "clickAction": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "emit"
+                                                            },
+                                                            "formatNumber": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "header": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "My  Team's work"
+                                                            },
+                                                            "headerColor": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "#0F6E56"
+                                                            },
+                                                            "icon": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "bullseye-arrow-fill"
+                                                            },
+                                                            "iconColor": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "#0F6E56"
+                                                            },
+                                                            "query": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "refreshSeconds": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": 60
+                                                            },
+                                                            "table": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "value": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "36"
+                                                            },
+                                                            "valueColor": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "#0F6E56"
+                                                            }
+                                                        },
+                                                        "slot": null,
+                                                        "styles": null
+                                                    }
+                                                ],
+                                                "layout": {
+                                                    "default": {
+                                                        "children": null,
+                                                        "items": [
+                                                            {
+                                                                "element_id": "single_score_chart_1"
+                                                            }
+                                                        ],
+                                                        "root": null,
+                                                        "styles": {
+                                                            "align-items": "stretch",
+                                                            "background": "#EAF5F0",
+                                                            "border-color": "RGB(var(--now-color--neutral-5))",
+                                                            "border-radius": "15px",
+                                                            "border-style": "id",
+                                                            "border-width": "var(--now-static-space--xxs)",
+                                                            "box-sizing": "border-box",
+                                                            "display": "flex",
+                                                            "flex-direction": "column",
+                                                            "height": "100%",
+                                                            "justify-content": "flex-start",
+                                                            "overflow": "auto"
+                                                        },
+                                                        "type": "flex"
+                                                    },
+                                                    "disableAutoReflow": true,
+                                                    "version": "3.1.0"
+                                                }
+                                            },
+                                            "preset": null,
+                                            "propertyValues": {
+                                                "hideEmptyStateUi": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                },
+                                                "slotWrapperBehavior": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "contents"
+                                                }
+                                            },
+                                            "scratchPad": {
+                                                "uib": {
+                                                    "layout": {
+                                                        "column": {
+                                                            "columnNumber": 0,
+                                                            "id": "default",
+                                                            "styleConfig": {
+                                                                "external": {},
+                                                                "internal": {}
+                                                            }
+                                                        },
+                                                        "type": "column"
+                                                    },
+                                                    "version": "1.0.0"
+                                                }
+                                            },
+                                            "slot": null,
+                                            "styles": {
+                                                "default": {
+                                                    "display": "contents"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "definition": {
+                                                "id": "d356d14b6e293a3020a244b63d278d8f",
+                                                "type": "MACROPONENT"
+                                            },
+                                            "elementId": "__EddTrSeehhgkDaapLjjksGRddQohbbZE__column_2",
+                                            "elementLabel": "Column 2",
+                                            "eventMappings": [],
+                                            "isHidden": {
+                                                "type": "JSON_LITERAL",
+                                                "value": null
+                                            },
+                                            "overrides": {
+                                                "composition": [
+                                                    {
+                                                        "definition": {
+                                                            "id": "7e1e2677363f30722971c25d60d7a66f",
+                                                            "type": "MACROPONENT"
+                                                        },
+                                                        "elementId": "single_score_chart_2",
+                                                        "elementLabel": "Single Score Chart 2",
+                                                        "eventMappings": [],
+                                                        "isHidden": {
+                                                            "type": "JSON_LITERAL",
+                                                            "value": null
+                                                        },
+                                                        "preset": null,
+                                                        "propertyValues": {
+                                                            "aggregation": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "count"
+                                                            },
+                                                            "aggregationField": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "autoRefresh": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
+                                                            "clickAction": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "emit"
+                                                            },
+                                                            "formatNumber": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "header": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "SLA's at Risk"
+                                                            },
+                                                            "headerColor": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "#8A5B12"
+                                                            },
+                                                            "icon": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "bullseye-arrow-fill"
+                                                            },
+                                                            "iconColor": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "#8A5B12"
+                                                            },
+                                                            "query": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "refreshSeconds": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": 60
+                                                            },
+                                                            "table": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "value": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "14"
+                                                            },
+                                                            "valueColor": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "#8A5B12"
+                                                            }
+                                                        },
+                                                        "slot": null,
+                                                        "styles": null
+                                                    }
+                                                ],
+                                                "layout": {
+                                                    "default": {
+                                                        "children": null,
+                                                        "items": [
+                                                            {
+                                                                "element_id": "single_score_chart_2"
+                                                            }
+                                                        ],
+                                                        "root": null,
+                                                        "styles": {
+                                                            "align-items": "stretch",
+                                                            "background": "#FDF1DC",
+                                                            "border-color": "RGB(var(--now-color--neutral-5))",
+                                                            "border-radius": "15px",
+                                                            "border-style": "id",
+                                                            "border-width": "var(--now-static-space--xxs)",
+                                                            "box-sizing": "border-box",
+                                                            "display": "flex",
+                                                            "flex-direction": "column",
+                                                            "height": "100%",
+                                                            "justify-content": "flex-start",
+                                                            "overflow": "auto"
+                                                        },
+                                                        "type": "flex"
+                                                    },
+                                                    "disableAutoReflow": true,
+                                                    "version": "3.1.0"
+                                                }
+                                            },
+                                            "preset": null,
+                                            "propertyValues": {
+                                                "hideEmptyStateUi": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                },
+                                                "slotWrapperBehavior": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "contents"
+                                                }
+                                            },
+                                            "scratchPad": {
+                                                "uib": {
+                                                    "layout": {
+                                                        "column": {
+                                                            "columnNumber": 0,
+                                                            "id": "default",
+                                                            "styleConfig": {
+                                                                "external": {},
+                                                                "internal": {}
+                                                            }
+                                                        },
+                                                        "type": "column"
+                                                    },
+                                                    "version": "1.0.0"
+                                                }
+                                            },
+                                            "slot": null,
+                                            "styles": {
+                                                "default": {
+                                                    "display": "contents"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "definition": {
+                                                "id": "d356d14b6e293a3020a244b63d278d8f",
+                                                "type": "MACROPONENT"
+                                            },
+                                            "elementId": "__ReehhffuiiPErDaaXeeeddJkPhheeddVOtsmW__column_3",
+                                            "elementLabel": "Column 3",
+                                            "eventMappings": [],
+                                            "isHidden": {
+                                                "type": "JSON_LITERAL",
+                                                "value": null
+                                            },
+                                            "overrides": {
+                                                "composition": [
+                                                    {
+                                                        "definition": {
+                                                            "id": "7e1e2677363f30722971c25d60d7a66f",
+                                                            "type": "MACROPONENT"
+                                                        },
+                                                        "elementId": "single_score_chart_3",
+                                                        "elementLabel": "Single Score Chart 3",
+                                                        "eventMappings": [],
+                                                        "isHidden": {
+                                                            "type": "JSON_LITERAL",
+                                                            "value": null
+                                                        },
+                                                        "preset": null,
+                                                        "propertyValues": {
+                                                            "aggregation": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "count"
+                                                            },
+                                                            "aggregationField": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "autoRefresh": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
+                                                            "clickAction": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "emit"
+                                                            },
+                                                            "formatNumber": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "header": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "SLA's Breached"
+                                                            },
+                                                            "headerColor": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "#FFFFFF"
+                                                            },
+                                                            "icon": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "bullseye-arrow-fill"
+                                                            },
+                                                            "iconColor": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "#FFFFFF"
+                                                            },
+                                                            "query": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "refreshSeconds": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": 60
+                                                            },
+                                                            "table": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "value": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "9"
+                                                            },
+                                                            "valueColor": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "#FFFFFF"
+                                                            }
+                                                        },
+                                                        "slot": null,
+                                                        "styles": null
+                                                    }
+                                                ],
+                                                "layout": {
+                                                    "default": {
+                                                        "children": null,
+                                                        "items": [
+                                                            {
+                                                                "element_id": "single_score_chart_3"
+                                                            }
+                                                        ],
+                                                        "root": null,
+                                                        "styles": {
+                                                            "align-items": "stretch",
+                                                            "background": "#FB7979",
+                                                            "border-color": "RGB(var(--now-color--neutral-5))",
+                                                            "border-radius": "15px",
+                                                            "border-style": "id",
+                                                            "border-width": "var(--now-static-space--xxs)",
+                                                            "box-sizing": "border-box",
+                                                            "display": "flex",
+                                                            "flex-direction": "column",
+                                                            "height": "100%",
+                                                            "justify-content": "flex-start",
+                                                            "overflow": "auto"
+                                                        },
+                                                        "type": "flex"
+                                                    },
+                                                    "disableAutoReflow": true,
+                                                    "version": "3.1.0"
+                                                }
+                                            },
+                                            "preset": null,
+                                            "propertyValues": {
+                                                "hideEmptyStateUi": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                },
+                                                "slotWrapperBehavior": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "contents"
+                                                }
+                                            },
+                                            "scratchPad": {
+                                                "uib": {
+                                                    "layout": {
+                                                        "column": {
+                                                            "columnNumber": 0,
+                                                            "id": "default",
+                                                            "styleConfig": {
+                                                                "external": {},
+                                                                "internal": {}
+                                                            }
+                                                        },
+                                                        "type": "column"
+                                                    },
+                                                    "version": "1.0.0"
+                                                }
+                                            },
+                                            "slot": null,
+                                            "styles": {
+                                                "default": {
+                                                    "display": "contents"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "layout": {
+                                        "default": {
+                                            "children": null,
+                                            "isInline": null,
+                                            "items": [
+                                                {
+                                                    "element_id": "__ZjjhhZefaeeAkjddjjcaaMiieepeffzGdd__column_1"
+                                                },
+                                                {
+                                                    "element_id": "__EddTrSeehhgkDaapLjjksGRddQohbbZE__column_2"
+                                                },
+                                                {
+                                                    "element_id": "__ReehhffuiiPErDaaXeeeddJkPhheeddVOtsmW__column_3"
+                                                }
+                                            ],
+                                            "root": null,
+                                            "rules": null,
+                                            "styles": {
+                                                "box-sizing": "border-box",
+                                                "column-gap": "var(--now-scalable-space--md)",
+                                                "display": "grid",
+                                                "grid-auto-columns": "1fr",
+                                                "grid-auto-rows": "1fr",
+                                                "grid-template-columns": "33.33fr 33.33fr 33.33fr",
+                                                "grid-template-rows": "1fr",
+                                                "padding-bottom": "var(--now-scalable-space--lg)",
+                                                "padding-top": "var(--now-scalable-space--lg)",
+                                                "width": "auto"
+                                            },
+                                            "type": "grid"
+                                        },
+                                        "disableAutoReflow": true,
+                                        "queries": [
+                                            {
+                                                "layout": {
+                                                    "children": null,
+                                                    "isInline": null,
+                                                    "items": [],
+                                                    "root": null,
+                                                    "rules": null,
+                                                    "styles": {
+                                                        "grid-template-columns": "1fr",
+                                                        "height": "fit-content",
+                                                        "max-height": "max-content",
+                                                        "min-height": "min-content"
+                                                    },
+                                                    "type": "grid"
+                                                },
+                                                "query": {
+                                                    "max-width": 640
+                                                }
+                                            }
+                                        ],
+                                        "version": "3.1.0"
+                                    }
+                                },
+                                "preset": null,
+                                "propertyValues": {
+                                    "hideEmptyStateUi": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "slotWrapperBehavior": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "contents"
+                                    }
+                                },
+                                "scratchPad": {
+                                    "uib": {
+                                        "layout": {
+                                            "columnSection": {
+                                                "breakpoints": [
+                                                    {
+                                                        "behavior": "stack",
+                                                        "max-width": 640,
+                                                        "styles": {
+                                                            "grid-template-columns": "1fr",
+                                                            "height": "fit-content",
+                                                            "max-height": "max-content",
+                                                            "min-height": "min-content"
+                                                        }
+                                                    }
+                                                ],
+                                                "children": [
+                                                    {
+                                                        "columnNumber": 1,
+                                                        "unit": "%",
+                                                        "width": 33.33
+                                                    },
+                                                    {
+                                                        "columnNumber": 2,
+                                                        "unit": "%",
+                                                        "width": 33.33
+                                                    },
+                                                    {
+                                                        "columnNumber": 3,
+                                                        "unit": "%",
+                                                        "width": 33.33
+                                                    }
+                                                ],
+                                                "id": "UIB_COLUMN_SECTION_SINGLE_COLUMN_SECTION",
+                                                "styleConfig": {
+                                                    "external": {},
+                                                    "internal": {}
+                                                }
+                                            },
+                                            "type": "columnSection"
+                                        },
+                                        "version": "1.0.0"
+                                    }
+                                },
+                                "slot": null,
+                                "styles": {
+                                    "default": {
+                                        "display": "contents"
+                                    }
+                                }
+                            },
+                            {
+                                "definition": {
+                                    "id": "d356d14b6e293a3020a244b63d278d8f",
+                                    "type": "MACROPONENT"
+                                },
+                                "elementId": "column_layout_6",
+                                "elementLabel": "Column layout 6",
+                                "eventMappings": [],
+                                "isHidden": {
+                                    "type": "JSON_LITERAL",
+                                    "value": null
+                                },
+                                "overrides": {
+                                    "composition": [
+                                        {
+                                            "definition": {
+                                                "id": "d356d14b6e293a3020a244b63d278d8f",
+                                                "type": "MACROPONENT"
+                                            },
+                                            "elementId": "__beeddaagZPEffCaavhjjqkJiixUYYFyeedd__column_1",
+                                            "elementLabel": "Column 1",
+                                            "eventMappings": [],
+                                            "isHidden": {
+                                                "type": "JSON_LITERAL",
+                                                "value": null
+                                            },
+                                            "overrides": {
+                                                "composition": [
+                                                    {
+                                                        "definition": {
+                                                            "id": "51562c3df6f77b3f31ba9e2c613aa81e",
+                                                            "type": "MACROPONENT"
+                                                        },
+                                                        "elementId": "record_list_1",
+                                                        "elementLabel": "Record List 1",
+                                                        "eventMappings": [],
+                                                        "isHidden": {
+                                                            "type": "JSON_LITERAL",
+                                                            "value": null
+                                                        },
+                                                        "preset": null,
+                                                        "propertyValues": {
+                                                            "aggregationMode": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "client"
+                                                            },
+                                                            "aggregations": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": {
+                                                                    "items": [
+                                                                        {
+                                                                            "field": "premium",
+                                                                            "fn": "sum",
+                                                                            "format": "currency",
+                                                                            "label": "Total Premium"
+                                                                        },
+                                                                        {
+                                                                            "field": "premium",
+                                                                            "fn": "avg",
+                                                                            "format": "currency",
+                                                                            "label": "Avg Premium"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            },
+                                                            "columns": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": {
+                                                                    "items": [
+                                                                        {
+                                                                            "field": "number",
+                                                                            "label": "Submission",
+                                                                            "refTable": "x_gegis_wum_submission",
+                                                                            "type": "reference",
+                                                                            "width": "150px"
+                                                                        },
+                                                                        {
+                                                                            "field": "account",
+                                                                            "label": "Insured",
+                                                                            "minWidth": 160,
+                                                                            "type": "text"
+                                                                        },
+                                                                        {
+                                                                            "field": "line_of_business",
+                                                                            "label": "LOB",
+                                                                            "type": "text",
+                                                                            "width": "130px"
+                                                                        },
+                                                                        {
+                                                                            "field": "stage",
+                                                                            "label": "Stage",
+                                                                            "type": "pill",
+                                                                            "width": "130px"
+                                                                        },
+                                                                        {
+                                                                            "align": "right",
+                                                                            "field": "premium",
+                                                                            "label": "Premium",
+                                                                            "type": "number",
+                                                                            "width": "120px"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            },
+                                                            "data": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": {
+                                                                    "items": []
+                                                                }
+                                                            },
+                                                            "editSaveMode": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "auto"
+                                                            },
+                                                            "emptyMessage": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "No records found."
+                                                            },
+                                                            "enableColumnPersonalization": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "enableColumnReorder": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "enableReferenceLinks": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "enableResize": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "enableRowClick": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
+                                                            "enableSort": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "exportFileName": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "exportMode": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "csv"
+                                                            },
+                                                            "fontSize": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "1rem"
+                                                            },
+                                                            "grandTotalWhenFlat": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
+                                                            "groupBy": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "groupPaging": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "records"
+                                                            },
+                                                            "groupSort": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": {
+                                                                    "items": []
+                                                                }
+                                                            },
+                                                            "headerColor": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "heading": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "Active Transactions"
+                                                            },
+                                                            "maxGroupDepth": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": 8
+                                                            },
+                                                            "maxGroupRows": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": 5000
+                                                            },
+                                                            "navigateReferenceOnClick": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "orderBy": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "orderDescending": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
+                                                            "pageSize": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": 20
+                                                            },
+                                                            "pageSizes": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "10,20,50,100"
+                                                            },
+                                                            "query": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "recordUrlTemplate": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "/record/{table}/{sysId}"
+                                                            },
+                                                            "referenceOpenIn": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "same"
+                                                            },
+                                                            "roleBasedColumns": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
+                                                            "rowIconSize": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": 18
+                                                            },
+                                                            "rowIconsEnd": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": {
+                                                                    "items": [
+                                                                        {
+                                                                            "actionCode": "pin",
+                                                                            "icon": "thumbtack-outline",
+                                                                            "tooltip": "Pin"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            },
+                                                            "rowIconsStart": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": {
+                                                                    "items": []
+                                                                }
+                                                            },
+                                                            "sampleRows": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": {
+                                                                    "items": [
+                                                                        {
+                                                                            "account": {
+                                                                                "display_value": "Acme Corp",
+                                                                                "value": "Acme Corp"
+                                                                            },
+                                                                            "line_of_business": {
+                                                                                "display_value": "Property",
+                                                                                "value": "Property"
+                                                                            },
+                                                                            "number": {
+                                                                                "display_value": "SUB-0001",
+                                                                                "link": "/api/now/table/x_gegis_wum_submission/a1",
+                                                                                "value": "SUB-0001"
+                                                                            },
+                                                                            "premium": {
+                                                                                "display_value": "42000",
+                                                                                "value": "42000"
+                                                                            },
+                                                                            "stage": {
+                                                                                "display_value": "Data Capture",
+                                                                                "value": "Data Capture"
+                                                                            },
+                                                                            "sys_id": {
+                                                                                "display_value": "a1",
+                                                                                "value": "a1"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "account": {
+                                                                                "display_value": "Globex",
+                                                                                "value": "Globex"
+                                                                            },
+                                                                            "line_of_business": {
+                                                                                "display_value": "Property",
+                                                                                "value": "Property"
+                                                                            },
+                                                                            "number": {
+                                                                                "display_value": "SUB-0002",
+                                                                                "link": "/api/now/table/x_gegis_wum_submission/a2",
+                                                                                "value": "SUB-0002"
+                                                                            },
+                                                                            "premium": {
+                                                                                "display_value": "88000",
+                                                                                "value": "88000"
+                                                                            },
+                                                                            "stage": {
+                                                                                "display_value": "Underwriting",
+                                                                                "value": "Underwriting"
+                                                                            },
+                                                                            "sys_id": {
+                                                                                "display_value": "a2",
+                                                                                "value": "a2"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "account": {
+                                                                                "display_value": "Initech",
+                                                                                "value": "Initech"
+                                                                            },
+                                                                            "line_of_business": {
+                                                                                "display_value": "Property",
+                                                                                "value": "Property"
+                                                                            },
+                                                                            "number": {
+                                                                                "display_value": "SUB-0003",
+                                                                                "link": "/api/now/table/x_gegis_wum_submission/a3",
+                                                                                "value": "SUB-0003"
+                                                                            },
+                                                                            "premium": {
+                                                                                "display_value": "15500",
+                                                                                "value": "15500"
+                                                                            },
+                                                                            "stage": {
+                                                                                "display_value": "Data Capture",
+                                                                                "value": "Data Capture"
+                                                                            },
+                                                                            "sys_id": {
+                                                                                "display_value": "a3",
+                                                                                "value": "a3"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "account": {
+                                                                                "display_value": "Umbrella",
+                                                                                "value": "Umbrella"
+                                                                            },
+                                                                            "line_of_business": {
+                                                                                "display_value": "Casualty",
+                                                                                "value": "Casualty"
+                                                                            },
+                                                                            "number": {
+                                                                                "display_value": "SUB-0004",
+                                                                                "link": "/api/now/table/x_gegis_wum_submission/a4",
+                                                                                "value": "SUB-0004"
+                                                                            },
+                                                                            "premium": {
+                                                                                "display_value": "63000",
+                                                                                "value": "63000"
+                                                                            },
+                                                                            "stage": {
+                                                                                "display_value": "Referral",
+                                                                                "value": "Referral"
+                                                                            },
+                                                                            "sys_id": {
+                                                                                "display_value": "a4",
+                                                                                "value": "a4"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "account": {
+                                                                                "display_value": "Soylent",
+                                                                                "value": "Soylent"
+                                                                            },
+                                                                            "line_of_business": {
+                                                                                "display_value": "Casualty",
+                                                                                "value": "Casualty"
+                                                                            },
+                                                                            "number": {
+                                                                                "display_value": "SUB-0005",
+                                                                                "link": "/api/now/table/x_gegis_wum_submission/a5",
+                                                                                "value": "SUB-0005"
+                                                                            },
+                                                                            "premium": {
+                                                                                "display_value": "27500",
+                                                                                "value": "27500"
+                                                                            },
+                                                                            "stage": {
+                                                                                "display_value": "Underwriting",
+                                                                                "value": "Underwriting"
+                                                                            },
+                                                                            "sys_id": {
+                                                                                "display_value": "a5",
+                                                                                "value": "a5"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "account": {
+                                                                                "display_value": "Stark Ind",
+                                                                                "value": "Stark Ind"
+                                                                            },
+                                                                            "line_of_business": {
+                                                                                "display_value": "Cyber",
+                                                                                "value": "Cyber"
+                                                                            },
+                                                                            "number": {
+                                                                                "display_value": "SUB-0006",
+                                                                                "link": "/api/now/table/x_gegis_wum_submission/a6",
+                                                                                "value": "SUB-0006"
+                                                                            },
+                                                                            "premium": {
+                                                                                "display_value": "120000",
+                                                                                "value": "120000"
+                                                                            },
+                                                                            "stage": {
+                                                                                "display_value": "Data Capture",
+                                                                                "value": "Data Capture"
+                                                                            },
+                                                                            "sys_id": {
+                                                                                "display_value": "a6",
+                                                                                "value": "a6"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "account": {
+                                                                                "display_value": "Wayne Ent",
+                                                                                "value": "Wayne Ent"
+                                                                            },
+                                                                            "line_of_business": {
+                                                                                "display_value": "Cyber",
+                                                                                "value": "Cyber"
+                                                                            },
+                                                                            "number": {
+                                                                                "display_value": "SUB-0007",
+                                                                                "link": "/api/now/table/x_gegis_wum_submission/a7",
+                                                                                "value": "SUB-0007"
+                                                                            },
+                                                                            "premium": {
+                                                                                "display_value": "54000",
+                                                                                "value": "54000"
+                                                                            },
+                                                                            "stage": {
+                                                                                "display_value": "Referral",
+                                                                                "value": "Referral"
+                                                                            },
+                                                                            "sys_id": {
+                                                                                "display_value": "a7",
+                                                                                "value": "a7"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "account": {
+                                                                                "display_value": "Tyrell",
+                                                                                "value": "Tyrell"
+                                                                            },
+                                                                            "line_of_business": {
+                                                                                "display_value": "Property",
+                                                                                "value": "Property"
+                                                                            },
+                                                                            "number": {
+                                                                                "display_value": "SUB-0008",
+                                                                                "link": "/api/now/table/x_gegis_wum_submission/a8",
+                                                                                "value": "SUB-0008"
+                                                                            },
+                                                                            "premium": {
+                                                                                "display_value": "33000",
+                                                                                "value": "33000"
+                                                                            },
+                                                                            "stage": {
+                                                                                "display_value": "Referral",
+                                                                                "value": "Referral"
+                                                                            },
+                                                                            "sys_id": {
+                                                                                "display_value": "a8",
+                                                                                "value": "a8"
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            },
+                                                            "searchPlaceholder": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "Search"
+                                                            },
+                                                            "selectionMode": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "none"
+                                                            },
+                                                            "showCount": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "showExport": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "showFilter": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "showGrandTotal": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "showGroupControl": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "showLastRefreshed": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "showPageSizeControl": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "showRefresh": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "showSearch": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "showSortControl": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "stripedRows": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "subtotalPlacement": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "header"
+                                                            },
+                                                            "surfaceColor": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "table": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "toolbarButtons": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": {
+                                                                    "items": []
+                                                                }
+                                                            }
+                                                        },
+                                                        "slot": null,
+                                                        "styles": null
+                                                    }
+                                                ],
+                                                "layout": {
+                                                    "default": {
+                                                        "children": null,
+                                                        "items": [
+                                                            {
+                                                                "element_id": "record_list_1"
+                                                            }
+                                                        ],
+                                                        "root": null,
+                                                        "styles": {
+                                                            "align-items": "stretch",
+                                                            "box-sizing": "border-box",
+                                                            "flex-direction": "column",
+                                                            "height": "100%",
+                                                            "justify-content": "flex-start",
+                                                            "overflow": "auto"
+                                                        },
+                                                        "type": "flex"
+                                                    },
+                                                    "disableAutoReflow": true,
+                                                    "version": "3.1.0"
+                                                }
+                                            },
+                                            "preset": null,
+                                            "propertyValues": {
+                                                "hideEmptyStateUi": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                },
+                                                "slotWrapperBehavior": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "contents"
+                                                }
+                                            },
+                                            "scratchPad": {
+                                                "uib": {
+                                                    "layout": {
+                                                        "column": {
+                                                            "columnNumber": 0,
+                                                            "id": "default",
+                                                            "styleConfig": {
+                                                                "external": {},
+                                                                "internal": {}
+                                                            }
+                                                        },
+                                                        "type": "column"
+                                                    },
+                                                    "version": "1.0.0"
+                                                }
+                                            },
+                                            "slot": null,
+                                            "styles": {
+                                                "default": {
+                                                    "display": "contents"
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "layout": {
+                                        "default": {
+                                            "children": null,
+                                            "isInline": null,
+                                            "items": [
+                                                {
+                                                    "element_id": "__beeddaagZPEffCaavhjjqkJiixUYYFyeedd__column_1"
+                                                }
+                                            ],
+                                            "root": null,
+                                            "rules": null,
+                                            "styles": {
+                                                "box-sizing": "border-box",
+                                                "grid-template-columns": "100fr",
+                                                "grid-template-rows": "1fr",
+                                                "width": "auto"
+                                            },
+                                            "type": "grid"
+                                        },
+                                        "disableAutoReflow": true,
+                                        "queries": [
+                                            {
+                                                "layout": {
+                                                    "children": null,
+                                                    "isInline": null,
+                                                    "items": [],
+                                                    "root": null,
+                                                    "rules": null,
+                                                    "styles": {
+                                                        "grid-template-columns": "1fr",
+                                                        "height": "fit-content",
+                                                        "max-height": "max-content",
+                                                        "min-height": "min-content"
+                                                    },
+                                                    "type": "grid"
+                                                },
+                                                "query": {
+                                                    "max-width": 640
+                                                }
+                                            }
+                                        ],
+                                        "version": "3.1.0"
+                                    }
+                                },
+                                "preset": null,
+                                "propertyValues": {
+                                    "hideEmptyStateUi": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "slotWrapperBehavior": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "contents"
+                                    }
+                                },
+                                "scratchPad": {
+                                    "uib": {
+                                        "layout": {
+                                            "columnSection": {
+                                                "breakpoints": [
+                                                    {
+                                                        "behavior": "stack",
+                                                        "max-width": 640,
+                                                        "styles": {
+                                                            "grid-template-columns": "1fr",
+                                                            "height": "fit-content",
+                                                            "max-height": "max-content",
+                                                            "min-height": "min-content"
+                                                        }
+                                                    }
+                                                ],
+                                                "children": [
+                                                    {
+                                                        "columnNumber": 1,
+                                                        "unit": "%",
+                                                        "width": 100
+                                                    }
+                                                ],
+                                                "id": "UIB_COLUMN_SECTION_SINGLE_COLUMN_SECTION",
+                                                "styleConfig": {
+                                                    "external": {},
+                                                    "internal": {}
+                                                }
+                                            },
+                                            "type": "columnSection"
+                                        },
+                                        "version": "1.0.0"
+                                    }
+                                },
+                                "slot": null,
+                                "styles": {
+                                    "default": {
+                                        "display": "contents"
+                                    }
+                                }
+                            }
+                        ],
                         "layout": {
                             "default": {
                                 "children": null,
-                                "items": [],
+                                "items": [
+                                    {
+                                        "element_id": "column_layout_5"
+                                    },
+                                    {
+                                        "element_id": "column_layout_6"
+                                    }
+                                ],
                                 "root": null,
                                 "rules": null,
                                 "styles": {
@@ -1456,7 +3159,7 @@
                                 "templateId": "5832fd4d53c31010e6bcddeeff7b12db",
                                 "type": "flex"
                             },
-                            "version": "3.0.0"
+                            "version": "3.1.0"
                         }
                     },
                     "preset": null,
@@ -2128,6 +3831,10 @@
                 },
                 "type": "CONTEXT_BINDING"
             },
+            "recordCountLimit": {
+                "type": "JSON_LITERAL",
+                "value": 20
+            },
             "rowLimit": {
                 "type": "JSON_LITERAL",
                 "value": 10
@@ -2580,6 +4287,14 @@
                 },
                 "type": "CONTEXT_BINDING"
             },
+            "recordCountLimit": {
+                "type": "JSON_LITERAL",
+                "value": 20
+            },
+            "rowLimit": {
+                "type": "JSON_LITERAL",
+                "value": 5
+            },
             "table": {
                 "type": "JSON_LITERAL",
                 "value": "task"
@@ -2650,6 +4365,7 @@
             "background": "linear-gradient(180deg, rgb(207,232,234) 0%, rgb(232,241,218) 100%)",
             "display": "flex",
             "flex-direction": "column",
+            "min-height": "calc(100vh - 125px)",
             "padding": "var(--now-scalable-space--lg)",
             "padding-bottom": "var(--now-scalable-space--lg)",
             "padding-left": "var(--now-scalable-space--lg)",
@@ -2681,11 +4397,43 @@
         <props>[]</props>
         <required_sys_props/>
         <required_translations>[ {
+  "message" : "Avg Premium",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Insured",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "LOB",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "My Team Work Items",
   "code" : "",
   "comment" : ""
 }, {
+  "message" : "My Team's Work Items",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "My Work Items",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Premium",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Stage",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Submission",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Total Premium",
   "code" : "",
   "comment" : ""
 } ]</required_translations>
@@ -2713,7 +4461,8 @@
         {
             "default": {
                 "base": {
-                    "border-radius": "20px !important"
+                    "border-radius": "20px !important",
+                    "color": "white !important"
                 }
             },
             "name": "border-radius"
@@ -2733,14 +4482,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-06-28 11:39:26</sys_created_on>
         <sys_id>d1d903f4337d4f907ef8f499ed5c7be6</sys_id>
-        <sys_mod_count>26</sys_mod_count>
+        <sys_mod_count>81</sys_mod_count>
         <sys_name>Dashboard default</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_d1d903f4337d4f907ef8f499ed5c7be6</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-18 17:29:21</sys_updated_on>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-07-25 15:38:21</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=d1d903f4337d4f907ef8f499ed5c7be6"/>
 </record_update>
