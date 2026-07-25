@@ -83,11 +83,11 @@
                         "composition": [
                             {
                                 "definition": {
-                                    "id": "03e311025c7d1ae665b297d338b6d364",
+                                    "id": "6b4d98b3f1ec1afcdc164fa64b6a4c41",
                                     "type": "MACROPONENT"
                                 },
-                                "elementId": "saved_data_visualization_1",
-                                "elementLabel": "Saved data visualization 1",
+                                "elementId": "column_chart_with_rotated_labels_2",
+                                "elementLabel": "Column Chart with Rotated Labels 2",
                                 "eventMappings": [],
                                 "isHidden": {
                                     "type": "JSON_LITERAL",
@@ -95,21 +95,90 @@
                                 },
                                 "preset": null,
                                 "propertyValues": {
-                                    "filterConfigurations": {
-                                        "binding": {
-                                            "address": [
-                                                "parFilters"
-                                            ]
-                                        },
-                                        "type": "STATE_BINDING"
-                                    },
-                                    "sysId": {
+                                    "categoryField": {
                                         "type": "JSON_LITERAL",
-                                        "value": "281017c9cf068314ccf631ad5d851ccb"
+                                        "value": "status"
+                                    },
+                                    "chartData": {
+                                        "type": "JSON_LITERAL",
+                                        "value": [
+                                            {
+                                                "count": 14,
+                                                "status": "Initiate",
+                                                "value_key": "clearance_initiate_submission_request"
+                                            },
+                                            {
+                                                "count": 16,
+                                                "status": "Extract",
+                                                "value_key": "clearance_extract"
+                                            },
+                                            {
+                                                "count": 21,
+                                                "status": "Insured Verify",
+                                                "value_key": "clearance_insured_verification"
+                                            },
+                                            {
+                                                "count": 27,
+                                                "status": "Duplicates",
+                                                "value_key": "clearance_check_for_duplicates"
+                                            },
+                                            {
+                                                "count": 16,
+                                                "status": "Sanctions",
+                                                "value_key": "clearance_check_for_sanctions"
+                                            },
+                                            {
+                                                "count": 9,
+                                                "status": "Data Review",
+                                                "value_key": "clearance_confirm_data_review"
+                                            },
+                                            {
+                                                "count": 6,
+                                                "status": "QA",
+                                                "value_key": "clearance_quality_assurance"
+                                            }
+                                        ]
+                                    },
+                                    "chartHeight": {
+                                        "type": "JSON_LITERAL",
+                                        "value": ""
+                                    },
+                                    "chartSubtitle": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "by Status"
+                                    },
+                                    "chartTitle": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Clearance "
+                                    },
+                                    "colorMode": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "palette"
+                                    },
+                                    "labelRotation": {
+                                        "type": "JSON_LITERAL",
+                                        "value": -45
+                                    },
+                                    "seriesName": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Clearance Cases"
+                                    },
+                                    "showLegend": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "valueField": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "count"
                                     }
                                 },
                                 "slot": null,
-                                "styles": null
+                                "styles": {
+                                    "default": {
+                                        "align-self": "flex-start",
+                                        "flex": "1 0 auto"
+                                    }
+                                }
                             }
                         ],
                         "layout": {
@@ -117,7 +186,7 @@
                                 "children": null,
                                 "items": [
                                     {
-                                        "element_id": "saved_data_visualization_1"
+                                        "element_id": "column_chart_with_rotated_labels_2"
                                     }
                                 ],
                                 "root": null,
@@ -504,7 +573,8 @@
                         "grid-auto-rows": "1fr",
                         "grid-template-columns": "25fr 25fr 25fr 25fr",
                         "grid-template-rows": "1fr",
-                        "max-height": "200px",
+                        "max-height": "300px",
+                        "min-height": "250px",
                         "padding": "var(--now-scalable-space--lg)",
                         "padding-bottom": "var(--now-scalable-space--lg)",
                         "padding-left": "var(--now-scalable-space--lg)",
@@ -1821,14 +1891,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-06-28 11:36:39</sys_created_on>
         <sys_id>203903f0337d4f907ef8f499ed5c7b82</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>20</sys_mod_count>
         <sys_name>Clearance default</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_203903f0337d4f907ef8f499ed5c7b82</sys_update_name>
         <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-07-18 02:49:24</sys_updated_on>
+        <sys_updated_on>2026-07-25 12:29:05</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=203903f0337d4f907ef8f499ed5c7b82"/>
 </record_update>
