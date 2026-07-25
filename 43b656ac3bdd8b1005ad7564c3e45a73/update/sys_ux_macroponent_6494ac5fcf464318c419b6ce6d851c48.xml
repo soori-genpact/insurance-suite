@@ -338,8 +338,8 @@
                                                             "id": "51562c3df6f77b3f31ba9e2c613aa81e",
                                                             "type": "MACROPONENT"
                                                         },
-                                                        "elementId": "record_list_1",
-                                                        "elementLabel": "Record List 1",
+                                                        "elementId": "ref_received_list",
+                                                        "elementLabel": "Ref Received List",
                                                         "eventMappings": [],
                                                         "isHidden": {
                                                             "type": "JSON_LITERAL",
@@ -376,35 +376,53 @@
                                                                     "items": [
                                                                         {
                                                                             "field": "number",
-                                                                            "label": "Submission",
-                                                                            "refTable": "x_gegis_wum_submission",
+                                                                            "label": "Task",
                                                                             "type": "reference",
-                                                                            "width": 150
+                                                                            "width": "130px"
                                                                         },
                                                                         {
-                                                                            "field": "account",
-                                                                            "label": "Insured",
-                                                                            "type": "text",
-                                                                            "width": 170
+                                                                            "field": "submission",
+                                                                            "label": "Submission",
+                                                                            "refTable": "x_gegis_ins_policy_submission",
+                                                                            "type": "reference",
+                                                                            "width": "120px"
                                                                         },
                                                                         {
-                                                                            "field": "line_of_business",
+                                                                            "field": "submission.insured_name",
+                                                                            "label": "Insured Name",
+                                                                            "type": "text"
+                                                                        },
+                                                                        {
+                                                                            "field": "submission.line_of_business",
                                                                             "label": "LOB",
-                                                                            "type": "text",
-                                                                            "width": 130
-                                                                        },
-                                                                        {
-                                                                            "field": "stage",
-                                                                            "label": "Stage",
                                                                             "type": "pill",
-                                                                            "width": 130
+                                                                            "width": "120px"
                                                                         },
                                                                         {
-                                                                            "align": "right",
-                                                                            "field": "premium",
-                                                                            "label": "Premium",
-                                                                            "type": "number",
-                                                                            "width": 120
+                                                                            "field": "description",
+                                                                            "label": "Description",
+                                                                            "type": "text"
+                                                                        },
+                                                                        {
+                                                                            "field": "comments",
+                                                                            "label": "Comments",
+                                                                            "type": "text"
+                                                                        },
+                                                                        {
+                                                                            "field": "priority",
+                                                                            "label": "Priority",
+                                                                            "type": "pill",
+                                                                            "width": "110px"
+                                                                        },
+                                                                        {
+                                                                            "field": "opened_at",
+                                                                            "label": "Referred On",
+                                                                            "type": "date"
+                                                                        },
+                                                                        {
+                                                                            "field": "opened_by",
+                                                                            "label": "Referred By",
+                                                                            "type": "text"
                                                                         }
                                                                     ]
                                                                 }
@@ -471,7 +489,7 @@
                                                             },
                                                             "heading": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": "Active Transactions"
+                                                                "value": "Referred to Me"
                                                             },
                                                             "maxGroupDepth": {
                                                                 "type": "JSON_LITERAL",
@@ -503,11 +521,11 @@
                                                             },
                                                             "query": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": ""
+                                                                "value": "category=referral^assigned_toDYNAMIC90d1921e5f510100a9ad2572f2b477fe"
                                                             },
                                                             "recordUrlTemplate": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": "/record/{table}/{sysId}"
+                                                                "value": "x/gegis/insurance-policy-suite/record/{table}/{sysId}"
                                                             },
                                                             "referenceOpenIn": {
                                                                 "type": "JSON_LITERAL",
@@ -518,9 +536,22 @@
                                                                 "value": {
                                                                     "items": [
                                                                         {
-                                                                            "actionCode": "pin",
-                                                                            "icon": "thumbtack-outline",
-                                                                            "tooltip": "Pin"
+                                                                            "actionCode": "approve",
+                                                                            "color": "green",
+                                                                            "icon": "circle-check-outline",
+                                                                            "tooltip": "Approve"
+                                                                        },
+                                                                        {
+                                                                            "actionCode": "decline",
+                                                                            "color": "red",
+                                                                            "icon": "circle-close-outline",
+                                                                            "tooltip": "Decline"
+                                                                        },
+                                                                        {
+                                                                            "actionCode": "comment",
+                                                                            "color": "blue",
+                                                                            "icon": "chat-outline",
+                                                                            "tooltip": "Comment"
                                                                         }
                                                                     ]
                                                                 }
@@ -792,7 +823,7 @@
                                                             },
                                                             "table": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": ""
+                                                                "value": "x_gegis_ins_policy_case_task"
                                                             },
                                                             "toolbarButtons": {
                                                                 "type": "JSON_LITERAL",
@@ -814,7 +845,7 @@
                                                         "children": null,
                                                         "items": [
                                                             {
-                                                                "element_id": "record_list_1"
+                                                                "element_id": "ref_received_list"
                                                             }
                                                         ],
                                                         "root": null,
@@ -888,8 +919,8 @@
                                                             "id": "51562c3df6f77b3f31ba9e2c613aa81e",
                                                             "type": "MACROPONENT"
                                                         },
-                                                        "elementId": "record_list_2",
-                                                        "elementLabel": "Record List 2",
+                                                        "elementId": "ref_fowarded_list",
+                                                        "elementLabel": "Ref Fowarded List",
                                                         "eventMappings": [],
                                                         "isHidden": {
                                                             "type": "JSON_LITERAL",
@@ -926,35 +957,48 @@
                                                                     "items": [
                                                                         {
                                                                             "field": "number",
-                                                                            "label": "Submission",
-                                                                            "refTable": "x_gegis_wum_submission",
+                                                                            "label": "Task",
                                                                             "type": "reference",
-                                                                            "width": 150
+                                                                            "width": "130px"
                                                                         },
                                                                         {
-                                                                            "field": "account",
-                                                                            "label": "Insured",
-                                                                            "type": "text",
-                                                                            "width": 170
+                                                                            "field": "submission",
+                                                                            "label": "Submission",
+                                                                            "refTable": "x_gegis_ins_policy_submission",
+                                                                            "type": "reference",
+                                                                            "width": "120px"
                                                                         },
                                                                         {
-                                                                            "field": "line_of_business",
+                                                                            "field": "submission.insured_name",
+                                                                            "label": "Insured Name",
+                                                                            "type": "text"
+                                                                        },
+                                                                        {
+                                                                            "field": "submission.line_of_business",
                                                                             "label": "LOB",
-                                                                            "type": "text",
-                                                                            "width": 130
-                                                                        },
-                                                                        {
-                                                                            "field": "stage",
-                                                                            "label": "Stage",
                                                                             "type": "pill",
-                                                                            "width": 130
+                                                                            "width": "120px"
                                                                         },
                                                                         {
-                                                                            "align": "right",
-                                                                            "field": "premium",
-                                                                            "label": "Premium",
-                                                                            "type": "number",
-                                                                            "width": 120
+                                                                            "field": "description",
+                                                                            "label": "Description",
+                                                                            "type": "text"
+                                                                        },
+                                                                        {
+                                                                            "field": "priority",
+                                                                            "label": "Priority",
+                                                                            "type": "pill",
+                                                                            "width": "110px"
+                                                                        },
+                                                                        {
+                                                                            "field": "opened_at",
+                                                                            "label": "Referred On",
+                                                                            "type": "date"
+                                                                        },
+                                                                        {
+                                                                            "field": "assigned_to",
+                                                                            "label": "Referred To",
+                                                                            "type": "text"
                                                                         }
                                                                     ]
                                                                 }
@@ -1021,7 +1065,7 @@
                                                             },
                                                             "heading": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": "Active Transactions"
+                                                                "value": "Referred by Me"
                                                             },
                                                             "maxGroupDepth": {
                                                                 "type": "JSON_LITERAL",
@@ -1037,11 +1081,11 @@
                                                             },
                                                             "orderBy": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": ""
+                                                                "value": "sys_created_on"
                                                             },
                                                             "orderDescending": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": false
+                                                                "value": true
                                                             },
                                                             "pageSize": {
                                                                 "type": "JSON_LITERAL",
@@ -1053,11 +1097,11 @@
                                                             },
                                                             "query": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": ""
+                                                                "value": "category=referral^opened_byDYNAMIC90d1921e5f510100a9ad2572f2b477fe"
                                                             },
                                                             "recordUrlTemplate": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": "/record/{table}/{sysId}"
+                                                                "value": "x/gegis/insurance-policy-suite/record/{table}/{sysId}"
                                                             },
                                                             "referenceOpenIn": {
                                                                 "type": "JSON_LITERAL",
@@ -1068,9 +1112,16 @@
                                                                 "value": {
                                                                     "items": [
                                                                         {
-                                                                            "actionCode": "pin",
-                                                                            "icon": "thumbtack-outline",
-                                                                            "tooltip": "Pin"
+                                                                            "actionCode": "withdraw",
+                                                                            "color": "orange",
+                                                                            "icon": "circle-close-outline",
+                                                                            "tooltip": "Withdraw / Cancel"
+                                                                        },
+                                                                        {
+                                                                            "actionCode": "comment",
+                                                                            "color": "gray",
+                                                                            "icon": "chat-outline",
+                                                                            "tooltip": "Comment"
                                                                         }
                                                                     ]
                                                                 }
@@ -1342,7 +1393,7 @@
                                                             },
                                                             "table": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": ""
+                                                                "value": "x_gegis_ins_policy_case_task"
                                                             },
                                                             "toolbarButtons": {
                                                                 "type": "JSON_LITERAL",
@@ -1364,7 +1415,7 @@
                                                         "children": null,
                                                         "items": [
                                                             {
-                                                                "element_id": "record_list_2"
+                                                                "element_id": "ref_fowarded_list"
                                                             }
                                                         ],
                                                         "root": null,
@@ -1839,11 +1890,19 @@
   "code" : "",
   "comment" : ""
 }, {
+  "message" : "Comments",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Description",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "Forwarded",
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "Insured",
+  "message" : "Insured Name",
   "code" : "",
   "comment" : ""
 }, {
@@ -1851,7 +1910,7 @@
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "Premium",
+  "message" : "Priority",
   "code" : "",
   "comment" : ""
 }, {
@@ -1859,11 +1918,23 @@
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "Stage",
+  "message" : "Referred By",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Referred On",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Referred To",
   "code" : "",
   "comment" : ""
 }, {
   "message" : "Submission",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Task",
   "code" : "",
   "comment" : ""
 }, {
@@ -1882,14 +1953,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-18 04:17:54</sys_created_on>
         <sys_id>6494ac5fcf464318c419b6ce6d851c48</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>15</sys_mod_count>
         <sys_name>Referrals default</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_6494ac5fcf464318c419b6ce6d851c48</sys_update_name>
         <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-07-18 11:42:29</sys_updated_on>
+        <sys_updated_on>2026-07-25 05:33:49</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=6494ac5fcf464318c419b6ce6d851c48"/>
 </record_update>
