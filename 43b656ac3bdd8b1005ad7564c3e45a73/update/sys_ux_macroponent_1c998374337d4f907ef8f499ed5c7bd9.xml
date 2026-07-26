@@ -97,70 +97,34 @@
                                 "propertyValues": {
                                     "categoryField": {
                                         "type": "JSON_LITERAL",
-                                        "value": "country"
+                                        "value": "stage"
                                     },
                                     "chartData": {
                                         "type": "JSON_LITERAL",
                                         "value": [
                                             {
-                                                "country": "USA",
-                                                "value": 2025
+                                                "count": 1401,
+                                                "stage": "Extract"
                                             },
                                             {
-                                                "country": "China",
-                                                "value": 1882
+                                                "count": 1288,
+                                                "stage": "Product Selection Details"
                                             },
                                             {
-                                                "country": "Japan",
-                                                "value": 1809
+                                                "count": 1174,
+                                                "stage": "Quote Workspace"
                                             },
                                             {
-                                                "country": "Germany",
-                                                "value": 1322
+                                                "count": 903,
+                                                "stage": "Underwriter Decision"
                                             },
                                             {
-                                                "country": "UK",
-                                                "value": 1122
+                                                "count": 512,
+                                                "stage": "Broker Decision"
                                             },
                                             {
-                                                "country": "France",
-                                                "value": 1114
-                                            },
-                                            {
-                                                "country": "India",
-                                                "value": 984
-                                            },
-                                            {
-                                                "country": "Spain",
-                                                "value": 711
-                                            },
-                                            {
-                                                "country": "Netherlands",
-                                                "value": 665
-                                            },
-                                            {
-                                                "country": "South Korea",
-                                                "value": 443
-                                            },
-                                            {
-                                                "country": "Canada",
-                                                "value": 441
-                                            },
-                                            {
-                                                "country": "Brazil",
-                                                "value": 395
-                                            },
-                                            {
-                                                "country": "Australia",
-                                                "value": 386
-                                            },
-                                            {
-                                                "country": "Italy",
-                                                "value": 348
-                                            },
-                                            {
-                                                "country": "Mexico",
-                                                "value": 285
+                                                "count": 498,
+                                                "stage": "Sanctions"
                                             }
                                         ]
                                     },
@@ -170,11 +134,11 @@
                                     },
                                     "chartSubtitle": {
                                         "type": "JSON_LITERAL",
-                                        "value": "Demo data"
+                                        "value": "Case Volume by Stage"
                                     },
                                     "chartTitle": {
                                         "type": "JSON_LITERAL",
-                                        "value": "Submissions by country"
+                                        "value": "Quote &amp; Bind Pipeline"
                                     },
                                     "colorMode": {
                                         "type": "JSON_LITERAL",
@@ -182,11 +146,11 @@
                                     },
                                     "gridLines": {
                                         "type": "JSON_LITERAL",
-                                        "value": "both"
+                                        "value": "none"
                                     },
                                     "labelRotation": {
                                         "type": "JSON_LITERAL",
-                                        "value": -90
+                                        "value": -45
                                     },
                                     "numberFormat": {
                                         "type": "JSON_LITERAL",
@@ -198,15 +162,15 @@
                                     },
                                     "seriesName": {
                                         "type": "JSON_LITERAL",
-                                        "value": "Submissions"
+                                        "value": "Quote &amp; Bind Cases"
                                     },
                                     "showLegend": {
                                         "type": "JSON_LITERAL",
-                                        "value": true
+                                        "value": false
                                     },
                                     "valueField": {
                                         "type": "JSON_LITERAL",
-                                        "value": "value"
+                                        "value": "count"
                                     }
                                 },
                                 "slot": null,
@@ -1259,11 +1223,11 @@
                                 "slot": null,
                                 "styles": {
                                     "default": {
-                                        "padding": "var(--now-scalable-space--lg)",
-                                        "padding-bottom": "var(--now-scalable-space--lg)",
-                                        "padding-left": "var(--now-scalable-space--lg)",
-                                        "padding-right": "var(--now-scalable-space--lg)",
-                                        "padding-top": "var(--now-scalable-space--lg)"
+                                        "padding": "0",
+                                        "padding-bottom": "0",
+                                        "padding-left": "0",
+                                        "padding-right": "0",
+                                        "padding-top": "var(--now-scalable-space--md)"
                                     }
                                 }
                             }
@@ -1912,7 +1876,12 @@
             "background": "linear-gradient(180deg, rgb(207,232,234) 0%, rgb(232,241,218) 100%)",
             "display": "flex",
             "flex-direction": "column",
-            "min-height": "calc(100vh - 100px)"
+            "min-height": "calc(100vh - 100px)",
+            "padding": "var(--now-scalable-space--md)",
+            "padding-bottom": "var(--now-scalable-space--md)",
+            "padding-left": "var(--now-scalable-space--md)",
+            "padding-right": "var(--now-scalable-space--md)",
+            "padding-top": "var(--now-scalable-space--md)"
         },
         "templateId": "5832fd4d53c31010e6bcddeeff7b12db",
         "type": "flex"
@@ -1978,14 +1947,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-06-28 11:38:17</sys_created_on>
         <sys_id>1c998374337d4f907ef8f499ed5c7bd9</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>9</sys_mod_count>
         <sys_name>Quote&amp;Bind default</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_1c998374337d4f907ef8f499ed5c7bd9</sys_update_name>
         <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-07-26 10:45:56</sys_updated_on>
+        <sys_updated_on>2026-07-26 19:34:44</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=1c998374337d4f907ef8f499ed5c7bd9"/>
 </record_update>
