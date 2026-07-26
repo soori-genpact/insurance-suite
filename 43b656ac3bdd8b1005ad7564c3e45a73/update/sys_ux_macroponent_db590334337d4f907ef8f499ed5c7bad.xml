@@ -83,11 +83,11 @@
                         "composition": [
                             {
                                 "definition": {
-                                    "id": "03e311025c7d1ae665b297d338b6d364",
+                                    "id": "6b4d98b3f1ec1afcdc164fa64b6a4c41",
                                     "type": "MACROPONENT"
                                 },
-                                "elementId": "saved_data_visualization_1",
-                                "elementLabel": "Saved data visualization 1",
+                                "elementId": "column_chart_1",
+                                "elementLabel": "Column Chart 1",
                                 "eventMappings": [],
                                 "isHidden": {
                                     "type": "JSON_LITERAL",
@@ -95,17 +95,102 @@
                                 },
                                 "preset": null,
                                 "propertyValues": {
-                                    "filterConfigurations": {
-                                        "binding": {
-                                            "address": [
-                                                "parFilters"
-                                            ]
-                                        },
-                                        "type": "STATE_BINDING"
-                                    },
-                                    "sysId": {
+                                    "categoryField": {
                                         "type": "JSON_LITERAL",
-                                        "value": "281017c9cf068314ccf631ad5d851ccb"
+                                        "value": "stage"
+                                    },
+                                    "chartData": {
+                                        "type": "JSON_LITERAL",
+                                        "value": [
+                                            {
+                                                "count": 1240,
+                                                "stage": "Initiate Risk Assessment"
+                                            },
+                                            {
+                                                "count": 1118,
+                                                "stage": "Letter Of Authority"
+                                            },
+                                            {
+                                                "count": 1042,
+                                                "stage": "Underwriting Guidelines"
+                                            },
+                                            {
+                                                "count": 961,
+                                                "stage": "Benchmarking"
+                                            },
+                                            {
+                                                "count": 884,
+                                                "stage": "Survey Results"
+                                            },
+                                            {
+                                                "count": 812,
+                                                "stage": "Loss Prediction"
+                                            },
+                                            {
+                                                "count": 749,
+                                                "stage": "Bind Propensity"
+                                            },
+                                            {
+                                                "count": 703,
+                                                "stage": "Exposure Data"
+                                            },
+                                            {
+                                                "count": 668,
+                                                "stage": "Fraud Detection"
+                                            },
+                                            {
+                                                "count": 591,
+                                                "stage": "Underwriter Narrative"
+                                            },
+                                            {
+                                                "count": 524,
+                                                "stage": "Risk Summary"
+                                            }
+                                        ]
+                                    },
+                                    "chartHeight": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "200px"
+                                    },
+                                    "chartSubtitle": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Case Volume by Stage"
+                                    },
+                                    "chartTitle": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Risk Assessment Pipeline"
+                                    },
+                                    "colorMode": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "palette"
+                                    },
+                                    "gridLines": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "horizontal"
+                                    },
+                                    "labelRotation": {
+                                        "type": "JSON_LITERAL",
+                                        "value": -45
+                                    },
+                                    "numberFormat": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "#,###."
+                                    },
+                                    "seriesColor": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "#5c6bc0"
+                                    },
+                                    "seriesName": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Risk Assessment"
+                                    },
+                                    "showLegend": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "valueField": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "count"
                                     }
                                 },
                                 "slot": null,
@@ -117,7 +202,7 @@
                                 "children": null,
                                 "items": [
                                     {
-                                        "element_id": "saved_data_visualization_1"
+                                        "element_id": "column_chart_1"
                                     }
                                 ],
                                 "root": null,
@@ -185,11 +270,11 @@
                         "composition": [
                             {
                                 "definition": {
-                                    "id": "03e311025c7d1ae665b297d338b6d364",
+                                    "id": "bd927ce3217537c9fc63f47fa611b128",
                                     "type": "MACROPONENT"
                                 },
-                                "elementId": "saved_data_visualization_2",
-                                "elementLabel": "Saved data visualization 2",
+                                "elementId": "funnel_chart_1",
+                                "elementLabel": "Funnel Chart 1",
                                 "eventMappings": [],
                                 "isHidden": {
                                     "type": "JSON_LITERAL",
@@ -197,17 +282,86 @@
                                 },
                                 "preset": null,
                                 "propertyValues": {
-                                    "filterConfigurations": {
-                                        "binding": {
-                                            "address": [
-                                                "parFilters"
-                                            ]
-                                        },
-                                        "type": "STATE_BINDING"
-                                    },
-                                    "sysId": {
+                                    "bottomRatio": {
                                         "type": "JSON_LITERAL",
-                                        "value": "281017c9cf068314ccf631ad5d851ccb"
+                                        "value": 1
+                                    },
+                                    "categoryField": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "stage"
+                                    },
+                                    "chartData": {
+                                        "type": "JSON_LITERAL",
+                                        "value": [
+                                            {
+                                                "stage": "Clearance",
+                                                "value": 80
+                                            },
+                                            {
+                                                "stage": "Risk",
+                                                "value": 68
+                                            },
+                                            {
+                                                "stage": "Exposure",
+                                                "value": 49
+                                            },
+                                            {
+                                                "stage": "Quote &amp; Bind",
+                                                "value": 26
+                                            }
+                                        ]
+                                    },
+                                    "chartHeight": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "320px"
+                                    },
+                                    "chartSubtitle": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Stage conversion rate"
+                                    },
+                                    "chartTitle": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Submission conversion"
+                                    },
+                                    "colorMode": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "palette"
+                                    },
+                                    "cornerRadius": {
+                                        "type": "JSON_LITERAL",
+                                        "value": 8
+                                    },
+                                    "labelMode": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "value"
+                                    },
+                                    "numberFormat": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "#,###.##"
+                                    },
+                                    "seriesColor": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "#5c6bc0"
+                                    },
+                                    "seriesName": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Conversion"
+                                    },
+                                    "showLabels": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "showLegend": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "valueField": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "value"
+                                    },
+                                    "valueSuffix": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "%"
                                     }
                                 },
                                 "slot": null,
@@ -219,7 +373,7 @@
                                 "children": null,
                                 "items": [
                                     {
-                                        "element_id": "saved_data_visualization_2"
+                                        "element_id": "funnel_chart_1"
                                     }
                                 ],
                                 "root": null,
@@ -287,11 +441,11 @@
                         "composition": [
                             {
                                 "definition": {
-                                    "id": "03e311025c7d1ae665b297d338b6d364",
+                                    "id": "8d60f00b798ef6103711f8c918faeff5",
                                     "type": "MACROPONENT"
                                 },
-                                "elementId": "saved_data_visualization_3",
-                                "elementLabel": "Saved data visualization 3",
+                                "elementId": "semi_circle_pie_1",
+                                "elementLabel": "Semi Circle Pie 1",
                                 "eventMappings": [],
                                 "isHidden": {
                                     "type": "JSON_LITERAL",
@@ -299,17 +453,121 @@
                                 },
                                 "preset": null,
                                 "propertyValues": {
-                                    "filterConfigurations": {
-                                        "binding": {
-                                            "address": [
-                                                "parFilters"
-                                            ]
-                                        },
-                                        "type": "STATE_BINDING"
-                                    },
-                                    "sysId": {
+                                    "categoryField": {
                                         "type": "JSON_LITERAL",
-                                        "value": "281017c9cf068314ccf631ad5d851ccb"
+                                        "value": "lob"
+                                    },
+                                    "chartData": {
+                                        "type": "JSON_LITERAL",
+                                        "value": [
+                                            {
+                                                "count": 92,
+                                                "lob": "Property",
+                                                "value_key": "property"
+                                            },
+                                            {
+                                                "count": 78,
+                                                "lob": "Auto",
+                                                "value_key": "auto"
+                                            },
+                                            {
+                                                "count": 66,
+                                                "lob": "General",
+                                                "value_key": "general"
+                                            },
+                                            {
+                                                "count": 34,
+                                                "lob": "Casualty",
+                                                "value_key": "casualty"
+                                            },
+                                            {
+                                                "count": 27,
+                                                "lob": "Marine",
+                                                "value_key": "marine"
+                                            },
+                                            {
+                                                "count": 23,
+                                                "lob": "Energy",
+                                                "value_key": "energy"
+                                            },
+                                            {
+                                                "count": 19,
+                                                "lob": "Financial Lines",
+                                                "value_key": "financial_lines"
+                                            },
+                                            {
+                                                "count": 15,
+                                                "lob": "Construction",
+                                                "value_key": "construction"
+                                            },
+                                            {
+                                                "count": 11,
+                                                "lob": "Aviation",
+                                                "value_key": "aviation"
+                                            },
+                                            {
+                                                "count": 9,
+                                                "lob": "Cyber",
+                                                "value_key": "cyber"
+                                            },
+                                            {
+                                                "count": 6,
+                                                "lob": "Specialty",
+                                                "value_key": "specialty"
+                                            }
+                                        ]
+                                    },
+                                    "chartHeight": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "240px"
+                                    },
+                                    "chartSubtitle": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Share of clearance cases"
+                                    },
+                                    "chartTitle": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Submissions by line of business"
+                                    },
+                                    "colorMode": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "palette"
+                                    },
+                                    "innerRadiusPercent": {
+                                        "type": "JSON_LITERAL",
+                                        "value": 50
+                                    },
+                                    "labelMode": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "category"
+                                    },
+                                    "minLabelPercent": {
+                                        "type": "JSON_LITERAL",
+                                        "value": 4
+                                    },
+                                    "numberFormat": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "#,###."
+                                    },
+                                    "seriesColor": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "#5c6bc0"
+                                    },
+                                    "seriesName": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Clearance cases"
+                                    },
+                                    "showLabels": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "showLegend": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "valueField": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "count"
                                     }
                                 },
                                 "slot": null,
@@ -321,109 +579,7 @@
                                 "children": null,
                                 "items": [
                                     {
-                                        "element_id": "saved_data_visualization_3"
-                                    }
-                                ],
-                                "root": null,
-                                "styles": {
-                                    "align-items": "stretch",
-                                    "box-sizing": "border-box",
-                                    "flex-direction": "column",
-                                    "height": "100%",
-                                    "justify-content": "flex-start",
-                                    "overflow": "auto"
-                                },
-                                "type": "flex"
-                            },
-                            "disableAutoReflow": true,
-                            "version": "3.1.0"
-                        }
-                    },
-                    "preset": null,
-                    "propertyValues": {
-                        "hideEmptyStateUi": {
-                            "type": "JSON_LITERAL",
-                            "value": true
-                        },
-                        "slotWrapperBehavior": {
-                            "type": "JSON_LITERAL",
-                            "value": "contents"
-                        }
-                    },
-                    "scratchPad": {
-                        "uib": {
-                            "layout": {
-                                "column": {
-                                    "columnNumber": 0,
-                                    "id": "default",
-                                    "styleConfig": {
-                                        "external": {},
-                                        "internal": {}
-                                    }
-                                },
-                                "type": "column"
-                            },
-                            "version": "1.0.0"
-                        }
-                    },
-                    "slot": null,
-                    "styles": {
-                        "default": {
-                            "display": "contents"
-                        }
-                    }
-                },
-                {
-                    "definition": {
-                        "id": "d356d14b6e293a3020a244b63d278d8f",
-                        "type": "MACROPONENT"
-                    },
-                    "elementId": "__QeWtccvKsCUuYeeddGYHgfhvHniiM__column_4",
-                    "elementLabel": "Column 4",
-                    "eventMappings": [],
-                    "isHidden": {
-                        "type": "JSON_LITERAL",
-                        "value": null
-                    },
-                    "overrides": {
-                        "composition": [
-                            {
-                                "definition": {
-                                    "id": "03e311025c7d1ae665b297d338b6d364",
-                                    "type": "MACROPONENT"
-                                },
-                                "elementId": "saved_data_visualization_4",
-                                "elementLabel": "Saved data visualization 4",
-                                "eventMappings": [],
-                                "isHidden": {
-                                    "type": "JSON_LITERAL",
-                                    "value": null
-                                },
-                                "preset": null,
-                                "propertyValues": {
-                                    "filterConfigurations": {
-                                        "binding": {
-                                            "address": [
-                                                "parFilters"
-                                            ]
-                                        },
-                                        "type": "STATE_BINDING"
-                                    },
-                                    "sysId": {
-                                        "type": "JSON_LITERAL",
-                                        "value": "281017c9cf068314ccf631ad5d851ccb"
-                                    }
-                                },
-                                "slot": null,
-                                "styles": null
-                            }
-                        ],
-                        "layout": {
-                            "default": {
-                                "children": null,
-                                "items": [
-                                    {
-                                        "element_id": "saved_data_visualization_4"
+                                        "element_id": "semi_circle_pie_1"
                                     }
                                 ],
                                 "root": null,
@@ -489,9 +645,6 @@
                         },
                         {
                             "element_id": "__UniJieehheehheehhDEbaeeddKAGAQcaYfJd__column_3"
-                        },
-                        {
-                            "element_id": "__QeWtccvKsCUuYeeddGYHgfhvHniiM__column_4"
                         }
                     ],
                     "root": null,
@@ -502,9 +655,10 @@
                         "display": "grid",
                         "grid-auto-columns": "1fr",
                         "grid-auto-rows": "1fr",
-                        "grid-template-columns": "25fr 25fr 25fr 25fr",
+                        "grid-template-columns": "33.33333333333333fr 33.33333333333333fr 33.33333333333333fr",
                         "grid-template-rows": "1fr",
-                        "max-height": "200px",
+                        "max-height": "400px",
+                        "min-height": "250px",
                         "padding": "var(--now-scalable-space--lg)",
                         "padding-bottom": "var(--now-scalable-space--lg)",
                         "padding-left": "var(--now-scalable-space--lg)",
@@ -570,22 +724,17 @@
                             {
                                 "columnNumber": 1,
                                 "unit": "%",
-                                "width": 25
+                                "width": 33.33333333333333
                             },
                             {
                                 "columnNumber": 2,
                                 "unit": "%",
-                                "width": 25
+                                "width": 33.33333333333333
                             },
                             {
                                 "columnNumber": 3,
                                 "unit": "%",
-                                "width": 25
-                            },
-                            {
-                                "columnNumber": 4,
-                                "unit": "%",
-                                "width": 25
+                                "width": 33.33333333333333
                             }
                         ],
                         "id": "UIB_COLUMN_SECTION_SINGLE_COLUMN_SECTION",
@@ -1755,7 +1904,10 @@
         "root": null,
         "rules": null,
         "styles": {
-            "flex-direction": "column"
+            "background": "linear-gradient(180deg, rgb(207,232,234) 0%, rgb(232,241,218) 100%)",
+            "display": "flex",
+            "flex-direction": "column",
+            "min-height": "calc(100vh - 116px)"
         },
         "templateId": "5832fd4d53c31010e6bcddeeff7b12db",
         "type": "flex"
@@ -1821,14 +1973,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-06-28 11:37:23</sys_created_on>
         <sys_id>db590334337d4f907ef8f499ed5c7bad</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>17</sys_mod_count>
         <sys_name>Risk default</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_db590334337d4f907ef8f499ed5c7bad</sys_update_name>
         <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-07-18 02:52:30</sys_updated_on>
+        <sys_updated_on>2026-07-26 10:29:23</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=db590334337d4f907ef8f499ed5c7bad"/>
 </record_update>
