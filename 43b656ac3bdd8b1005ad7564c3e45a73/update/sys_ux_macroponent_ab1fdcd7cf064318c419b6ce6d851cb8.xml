@@ -57,7 +57,7 @@
                                     },
                                     "headingVariant": {
                                         "type": "JSON_LITERAL",
-                                        "value": "header-secondary"
+                                        "value": "header-primary"
                                     },
                                     "showDescription": {
                                         "type": "JSON_LITERAL",
@@ -94,6 +94,150 @@
                                 "items": [
                                     {
                                         "element_id": "section_header_1"
+                                    }
+                                ],
+                                "root": null,
+                                "styles": {
+                                    "align-items": "stretch",
+                                    "box-sizing": "border-box",
+                                    "display": "flex",
+                                    "flex-direction": "column",
+                                    "height": "100%",
+                                    "justify-content": "center",
+                                    "overflow": "auto"
+                                },
+                                "type": "flex"
+                            },
+                            "disableAutoReflow": true,
+                            "version": "3.1.0"
+                        }
+                    },
+                    "preset": null,
+                    "propertyValues": {
+                        "hideEmptyStateUi": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "slotWrapperBehavior": {
+                            "type": "JSON_LITERAL",
+                            "value": "contents"
+                        }
+                    },
+                    "scratchPad": {
+                        "uib": {
+                            "layout": {
+                                "column": {
+                                    "columnNumber": 0,
+                                    "id": "default",
+                                    "styleConfig": {
+                                        "external": {},
+                                        "internal": {}
+                                    }
+                                },
+                                "type": "column"
+                            },
+                            "version": "1.0.0"
+                        }
+                    },
+                    "slot": null,
+                    "styles": {
+                        "default": {
+                            "display": "contents"
+                        }
+                    }
+                },
+                {
+                    "definition": {
+                        "id": "d356d14b6e293a3020a244b63d278d8f",
+                        "type": "MACROPONENT"
+                    },
+                    "elementId": "__RqzlxeehhjpAEddAeeddOUDaaccOcctDbbl__column_2",
+                    "elementLabel": "Column 2",
+                    "eventMappings": [],
+                    "isHidden": {
+                        "type": "JSON_LITERAL",
+                        "value": null
+                    },
+                    "overrides": {
+                        "composition": [
+                            {
+                                "definition": {
+                                    "id": "15fe506403f8a98575b6df59008ea8f1",
+                                    "type": "MACROPONENT"
+                                },
+                                "elementId": "image_1",
+                                "elementLabel": "Image 1",
+                                "eventMappings": [],
+                                "isHidden": {
+                                    "type": "JSON_LITERAL",
+                                    "value": null
+                                },
+                                "preset": null,
+                                "propertyValues": {
+                                    "alt": {
+                                        "type": "TRANSLATION_LITERAL",
+                                        "value": {
+                                            "code": "x_gegis_ins_policy.uxf.00580b3c333d4f907ef8f499ed5c7bde.ab1fdcd7cf064318c419b6ce6d851cb8.image_1.alt",
+                                            "comment": "",
+                                            "message": ""
+                                        }
+                                    },
+                                    "configAria": {
+                                        "container": {
+                                            "link": {
+                                                "container": {},
+                                                "type": "MAP_CONTAINER"
+                                            }
+                                        },
+                                        "type": "MAP_CONTAINER"
+                                    },
+                                    "fit": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "contain"
+                                    },
+                                    "height": {
+                                        "type": "JSON_LITERAL",
+                                        "value": 120
+                                    },
+                                    "href": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "landmark": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "position": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "bottom right"
+                                    },
+                                    "sources": {
+                                        "type": "JSON_LITERAL",
+                                        "value": []
+                                    },
+                                    "src": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "upload_Intake_1785059193121_tqebqi.svg"
+                                    },
+                                    "supportRtl": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "width": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    }
+                                },
+                                "slot": null,
+                                "styles": null
+                            }
+                        ],
+                        "layout": {
+                            "default": {
+                                "children": null,
+                                "items": [
+                                    {
+                                        "element_id": "image_1"
                                     }
                                 ],
                                 "root": null,
@@ -153,13 +297,19 @@
                     "items": [
                         {
                             "element_id": "__IiiggIffEdDkXaeeddBADbBQQfhOjj__column_1"
+                        },
+                        {
+                            "element_id": "__RqzlxeehhjpAEddAeeddOUDaaccOcctDbbl__column_2"
                         }
                     ],
                     "root": null,
                     "rules": null,
                     "styles": {
                         "box-sizing": "border-box",
-                        "grid-template-columns": "100fr",
+                        "display": "grid",
+                        "grid-auto-columns": "1fr",
+                        "grid-auto-rows": "1fr",
+                        "grid-template-columns": "50fr 50fr",
                         "grid-template-rows": "1fr",
                         "width": "auto"
                     },
@@ -221,7 +371,12 @@
                             {
                                 "columnNumber": 1,
                                 "unit": "%",
-                                "width": 100
+                                "width": 50
+                            },
+                            {
+                                "columnNumber": 2,
+                                "unit": "%",
+                                "width": 50
                             }
                         ],
                         "id": "UIB_COLUMN_SECTION_SINGLE_COLUMN_SECTION",
@@ -2810,14 +2965,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-18 03:54:04</sys_created_on>
         <sys_id>ab1fdcd7cf064318c419b6ce6d851cb8</sys_id>
-        <sys_mod_count>49</sys_mod_count>
+        <sys_mod_count>53</sys_mod_count>
         <sys_name>Intake default</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_ab1fdcd7cf064318c419b6ce6d851cb8</sys_update_name>
         <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-07-25 04:49:38</sys_updated_on>
+        <sys_updated_on>2026-07-26 09:49:50</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=ab1fdcd7cf064318c419b6ce6d851cb8"/>
 </record_update>
