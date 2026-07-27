@@ -57,6 +57,8 @@
         NEW:         'new',
         IN_PROGRESS: 'in_progress',
         ON_HOLD:     'on_hold',
+        // shared by extraction.extraction_status and the case tables' u_status
+        PENDING:     'pending',
         DUPLICATE:   'duplicate',
         REJECTED:    'rejected',
         FAILED:      'failed',
@@ -64,6 +66,9 @@
         APPLIED:     'applied',
         // shared by extraction.source and case_task.category
         CASE:        'case',
+        // shared by case_task.category and case_task.u_type -- a referral is
+        // both a category of task and a kind of hand-off
+        REFERRAL:    'referral',
         DECLINED:    'declined',
         CANCELLED:   'cancelled',
         CLOSED:      'closed',
@@ -149,11 +154,26 @@
         },
 
         // x_gegis_ins_policy_case_task.category -- what kind of task this is.
+        // Listed in the instance's choice sequence order (10/15/20/25/30).
         CATEGORY: {
-            HITL:     'hitl',
-            REFERRAL: 'referral',
-            CASE:     SHARED.CASE,
-            OTHER:    'other'
+            HITL:       'hitl',
+            EXTRACTION: 'extraction',
+            REFERRAL:   SHARED.REFERRAL,
+            CASE:       SHARED.CASE,
+            OTHER:      'other'
+        },
+
+        // x_gegis_ins_policy_case_task.u_type -- WHY the task exists, i.e. the
+        // trigger that raised it. Orthogonal to CATEGORY, which is what kind of
+        // task it is. Listed in the instance's choice sequence order
+        // (10/20/30/40/50/60).
+        U_TYPE: {
+            CONTEXT_ENRICHMENT:    'context_enrichment',
+            DUPLICATE_CHECK:       'duplicate_check',
+            CLASSIFICATION_FAILED: 'classification_failed',
+            SUBMISSION_LOCKED:     'submission_locked',
+            EXTRACTION_REVIEW:     'extraction_review',
+            REFERRAL:              SHARED.REFERRAL
         },
 
         // submission.state
@@ -198,6 +218,18 @@
             ACKNOWLEDGED:    'acknowledged'
         },
 
+        // u_status on ALL FOUR module case tables -- clearance_case, risk_case,
+        // exposure_case and quote_and_bind_case share one status list: how far
+        // that module's work has got. Distinct from activity_status (WHICH step
+        // the case is on) and from the base task `state` (the task lifecycle).
+        U_STATUS: {
+            PENDING:     SHARED.PENDING,
+            IN_PROGRESS: SHARED.IN_PROGRESS,
+            COMPLETE:    'complete',
+            BLOCKED:     'blocked',
+            DECLINED:    SHARED.DECLINED
+        },
+
         // x_gegis_ins_policy_intake_case.direction
         DIRECTION: {
             INBOUND:  'inbound',
@@ -208,7 +240,7 @@
         // status: what the end user is doing with the extracted data.
         EXTRACTION_STATUS: {
             STARTED:        'started',
-            PENDING:        'pending',
+            PENDING:        SHARED.PENDING,
             EXTRACTED:      SHARED.EXTRACTED,
             PENDING_REVIEW: 'pending_review',
             REVIEWED:       'reviewed',
