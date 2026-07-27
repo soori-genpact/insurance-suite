@@ -26,7 +26,7 @@
             </choice>
         </element>
         <element label="Notification Template" max_length="32" name="notification_template" reference="sysevent_email_template" type="reference"/>
-        <element choice="3" default="email" label="Notification Mode" max_length="40" name="notification_mode" type="choice">
+        <element choice="1" label="Notification Mode" max_length="40" name="notification_mode" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Others" sequence="30" value="others"/>
                 <element inactive_on_update="false" label="Email" sequence="10" value="email"/>
