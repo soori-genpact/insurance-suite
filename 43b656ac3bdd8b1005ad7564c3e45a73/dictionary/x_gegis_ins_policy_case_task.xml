@@ -5,6 +5,7 @@
         <element attributes="edge_encryption_enabled=true" choice="1" label="Type" max_length="40" name="u_type" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Extraction Review" sequence="50" value="extraction_review"/>
+                <element inactive_on_update="false" label="Referral" sequence="60" value="referral"/>
                 <element inactive_on_update="false" label="Duplicate Check" sequence="20" value="duplicate_check"/>
                 <element inactive_on_update="false" label="Submission Locked" sequence="40" value="submission_locked"/>
                 <element inactive_on_update="false" label="Context Enrichment" sequence="10" value="context_enrichment"/>
@@ -15,9 +16,10 @@
         <element attributes="edge_encryption_enabled=true" choice="1" label="Category" mandatory="true" max_length="40" name="category" type="choice">
             <choice>
                 <element inactive_on_update="false" label="HITL" sequence="10" value="hitl"/>
-                <element inactive_on_update="false" label="Referral" sequence="15" value="referral"/>
+                <element inactive_on_update="false" label="Referral" sequence="20" value="referral"/>
+                <element inactive_on_update="false" label="Extraction" sequence="15" value="extraction"/>
                 <element inactive_on_update="false" label="Other" sequence="30" value="other"/>
-                <element inactive_on_update="false" label="Case" sequence="20" value="case"/>
+                <element inactive_on_update="false" label="Case" sequence="25" value="case"/>
             </choice>
         </element>
         <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Extraction" max_length="32" name="extraction" reference="x_gegis_ins_policy_extraction" type="reference"/>
