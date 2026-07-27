@@ -3,6 +3,9 @@
         <element label="Stage" max_length="40" name="stage" type="integer"/>
         <element label="Notes" max_length="4000" name="notes" type="string"/>
         <element label="Total TIV" max_length="40" name="total_tiv" type="decimal"/>
+        <element choice="1" label="Status" max_length="40" name="status" type="choice">
+            <choice/>
+        </element>
         <element label="Active" max_length="40" name="is_active" type="boolean"/>
         <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
         <element choice="1" label="Activity Status" max_length="40" name="activity_status" type="choice">

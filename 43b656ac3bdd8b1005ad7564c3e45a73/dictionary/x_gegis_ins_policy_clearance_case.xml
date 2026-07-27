@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="ba064b34333d4f907ef8f499ed5c7b59" extends="task" label="Clearance Case" max_length="40" name="x_gegis_ins_policy_clearance_case" type="collection">
-        <element label="Submission" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
-        <element label="Stage" max_length="40" name="stage" type="integer"/>
+        <element choice="1" label="Status" max_length="40" name="status" type="choice">
+            <choice/>
+        </element>
         <element choice="1" label="Activity Status" max_length="40" name="activity_status" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Check for Sanctions" sequence="50" value="clearance_check_for_sanctions"/>
-                <element inactive_on_update="false" label="Confirm Data Review" sequence="60" value="clearance_confirm_data_review"/>
-                <element inactive_on_update="false" label="Quality Assurance" sequence="70" value="clearance_quality_assurance"/>
                 <element inactive_on_update="false" label="Initiate Submission Request" sequence="10" value="clearance_initiate_submission_request"/>
                 <element inactive_on_update="false" label="Insured Verification" sequence="30" value="clearance_insured_verification"/>
+                <element inactive_on_update="false" label="Confirm Data Review" sequence="60" value="clearance_confirm_data_review"/>
+                <element inactive_on_update="false" label="Check for Sanctions" sequence="50" value="clearance_check_for_sanctions"/>
                 <element inactive_on_update="false" label="Check for Duplicates" sequence="40" value="clearance_check_for_duplicates"/>
+                <element inactive_on_update="false" label="Quality Assurance" sequence="70" value="clearance_quality_assurance"/>
                 <element inactive_on_update="false" label="Extract" sequence="20" value="clearance_extract"/>
             </choice>
         </element>
         <element label="Active" max_length="40" name="is_active" type="boolean"/>
+        <element label="Submission" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element label="Stage" max_length="40" name="stage" type="integer"/>
+        <index name="index">
+            <element name="submission"/>
+            <element name="active"/>
+        </index>
     </element>
 </database>
