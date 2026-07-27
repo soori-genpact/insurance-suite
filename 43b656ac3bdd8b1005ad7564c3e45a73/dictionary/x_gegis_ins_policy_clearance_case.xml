@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="ba064b34333d4f907ef8f499ed5c7b59" extends="task" label="Clearance Case" max_length="40" name="x_gegis_ins_policy_clearance_case" type="collection">
         <element choice="1" label="Status" max_length="40" name="status" type="choice">
-            <choice/>
+            <choice>
+                <element inactive_on_update="false" label="Declined" sequence="50" value="declined"/>
+                <element inactive_on_update="false" label="Complete" sequence="30" value="complete"/>
+                <element inactive_on_update="false" label="Pending" sequence="10" value="pending"/>
+                <element inactive_on_update="false" label="Blocked" sequence="40" value="blocked"/>
+                <element inactive_on_update="false" label="In Progress" sequence="20" value="in_progress"/>
+            </choice>
         </element>
         <element choice="1" label="Activity Status" max_length="40" name="activity_status" type="choice">
             <choice>

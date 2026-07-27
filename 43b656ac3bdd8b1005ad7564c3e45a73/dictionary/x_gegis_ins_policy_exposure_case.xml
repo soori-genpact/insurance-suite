@@ -4,7 +4,13 @@
         <element label="Notes" max_length="4000" name="notes" type="string"/>
         <element label="Total TIV" max_length="40" name="total_tiv" type="decimal"/>
         <element choice="1" label="Status" max_length="40" name="status" type="choice">
-            <choice/>
+            <choice>
+                <element inactive_on_update="false" label="Pending" sequence="10" value="pending"/>
+                <element inactive_on_update="false" label="Complete" sequence="30" value="complete"/>
+                <element inactive_on_update="false" label="Blocked" sequence="40" value="blocked"/>
+                <element inactive_on_update="false" label="In Progress" sequence="20" value="in_progress"/>
+                <element inactive_on_update="false" label="Declined" sequence="50" value="declined"/>
+            </choice>
         </element>
         <element label="Active" max_length="40" name="is_active" type="boolean"/>
         <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
