@@ -86,8 +86,8 @@
                                     "id": "6b4d98b3f1ec1afcdc164fa64b6a4c41",
                                     "type": "MACROPONENT"
                                 },
-                                "elementId": "column_chart_1",
-                                "elementLabel": "Column Chart 1",
+                                "elementId": "risk_assessment_pipeline",
+                                "elementLabel": "Risk Assessment Pipeline",
                                 "eventMappings": [],
                                 "isHidden": {
                                     "type": "JSON_LITERAL",
@@ -194,7 +194,7 @@
                                 "children": null,
                                 "items": [
                                     {
-                                        "element_id": "column_chart_1"
+                                        "element_id": "risk_assessment_pipeline"
                                     }
                                 ],
                                 "root": null,
@@ -265,8 +265,8 @@
                                     "id": "bd927ce3217537c9fc63f47fa611b128",
                                     "type": "MACROPONENT"
                                 },
-                                "elementId": "funnel_chart_1",
-                                "elementLabel": "Funnel Chart 1",
+                                "elementId": "risk_submission_funnel",
+                                "elementLabel": "Risk Submission Funnel",
                                 "eventMappings": [],
                                 "isHidden": {
                                     "type": "JSON_LITERAL",
@@ -365,7 +365,7 @@
                                 "children": null,
                                 "items": [
                                     {
-                                        "element_id": "funnel_chart_1"
+                                        "element_id": "risk_submission_funnel"
                                     }
                                 ],
                                 "root": null,
@@ -433,11 +433,11 @@
                         "composition": [
                             {
                                 "definition": {
-                                    "id": "8d60f00b798ef6103711f8c918faeff5",
+                                    "id": "3632917a29a737a626ddc09f2a9708d8",
                                     "type": "MACROPONENT"
                                 },
-                                "elementId": "semi_circle_pie_1",
-                                "elementLabel": "Semi Circle Pie 1",
+                                "elementId": "risk_heatmap_1",
+                                "elementLabel": "Risk Heatmap 1",
                                 "eventMappings": [],
                                 "isHidden": {
                                     "type": "JSON_LITERAL",
@@ -445,121 +445,121 @@
                                 },
                                 "preset": null,
                                 "propertyValues": {
-                                    "categoryField": {
+                                    "bandColors": {
                                         "type": "JSON_LITERAL",
-                                        "value": "lob"
+                                        "value": "#0b7d03,#5dbe24,#e1d92d,#e17a2d,#ca0101"
+                                    },
+                                    "bandField": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "risk"
+                                    },
+                                    "bandLabels": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Very low,Low,Medium,High,Critical"
+                                    },
+                                    "bubbleColor": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "#000000"
+                                    },
+                                    "cellColor": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "#e17a2d"
                                     },
                                     "chartData": {
                                         "type": "JSON_LITERAL",
-                                        "value": [
-                                            {
-                                                "count": 92,
-                                                "lob": "Property",
-                                                "value_key": "property"
-                                            },
-                                            {
-                                                "count": 78,
-                                                "lob": "Auto",
-                                                "value_key": "auto"
-                                            },
-                                            {
-                                                "count": 66,
-                                                "lob": "General",
-                                                "value_key": "general"
-                                            },
-                                            {
-                                                "count": 34,
-                                                "lob": "Casualty",
-                                                "value_key": "casualty"
-                                            },
-                                            {
-                                                "count": 27,
-                                                "lob": "Marine",
-                                                "value_key": "marine"
-                                            },
-                                            {
-                                                "count": 23,
-                                                "lob": "Energy",
-                                                "value_key": "energy"
-                                            },
-                                            {
-                                                "count": 19,
-                                                "lob": "Financial Lines",
-                                                "value_key": "financial_lines"
-                                            },
-                                            {
-                                                "count": 15,
-                                                "lob": "Construction",
-                                                "value_key": "construction"
-                                            },
-                                            {
-                                                "count": 11,
-                                                "lob": "Aviation",
-                                                "value_key": "aviation"
-                                            },
-                                            {
-                                                "count": 9,
-                                                "lob": "Cyber",
-                                                "value_key": "cyber"
-                                            },
-                                            {
-                                                "count": 6,
-                                                "lob": "Specialty",
-                                                "value_key": "specialty"
-                                            }
-                                        ]
+                                        "value": null
                                     },
                                     "chartHeight": {
                                         "type": "JSON_LITERAL",
-                                        "value": "240px"
+                                        "value": "260px"
                                     },
                                     "chartSubtitle": {
                                         "type": "JSON_LITERAL",
-                                        "value": "Share of clearance cases"
+                                        "value": "Open risks (demo data)"
                                     },
                                     "chartTitle": {
                                         "type": "JSON_LITERAL",
-                                        "value": "Submissions by line of business"
+                                        "value": "Risk heatmap"
                                     },
                                     "colorMode": {
                                         "type": "JSON_LITERAL",
-                                        "value": "palette"
+                                        "value": "auto"
                                     },
-                                    "innerRadiusPercent": {
+                                    "highColor": {
                                         "type": "JSON_LITERAL",
-                                        "value": 50
+                                        "value": "#ca0101"
                                     },
-                                    "labelMode": {
+                                    "labelRotation": {
                                         "type": "JSON_LITERAL",
-                                        "value": "category"
+                                        "value": 0
                                     },
-                                    "minLabelPercent": {
+                                    "lowColor": {
                                         "type": "JSON_LITERAL",
-                                        "value": 4
+                                        "value": "#fffb77"
+                                    },
+                                    "maxBubbleRadius": {
+                                        "type": "JSON_LITERAL",
+                                        "value": 35
+                                    },
+                                    "minBubbleRadius": {
+                                        "type": "JSON_LITERAL",
+                                        "value": 10
                                     },
                                     "numberFormat": {
                                         "type": "JSON_LITERAL",
                                         "value": "#,###."
                                     },
-                                    "seriesColor": {
-                                        "type": "JSON_LITERAL",
-                                        "value": "#5c6bc0"
-                                    },
                                     "seriesName": {
                                         "type": "JSON_LITERAL",
-                                        "value": "Clearance cases"
+                                        "value": "Risks"
                                     },
-                                    "showLabels": {
+                                    "severityOrder": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "ascending"
+                                    },
+                                    "showBubbles": {
                                         "type": "JSON_LITERAL",
                                         "value": true
                                     },
-                                    "showLegend": {
+                                    "showDiagnostics": {
                                         "type": "JSON_LITERAL",
                                         "value": false
                                     },
+                                    "showLegend": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "showValues": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
                                     "valueField": {
                                         "type": "JSON_LITERAL",
-                                        "value": "count"
+                                        "value": "value"
+                                    },
+                                    "xAxisTitle": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Control rating"
+                                    },
+                                    "xCategories": {
+                                        "type": "JSON_LITERAL",
+                                        "value": ""
+                                    },
+                                    "xField": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "x"
+                                    },
+                                    "yAxisTitle": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Risk rating"
+                                    },
+                                    "yCategories": {
+                                        "type": "JSON_LITERAL",
+                                        "value": ""
+                                    },
+                                    "yField": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "y"
                                     }
                                 },
                                 "slot": null,
@@ -571,7 +571,7 @@
                                 "children": null,
                                 "items": [
                                     {
-                                        "element_id": "semi_circle_pie_1"
+                                        "element_id": "risk_heatmap_1"
                                     }
                                 ],
                                 "root": null,
@@ -1965,14 +1965,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-06-28 11:37:23</sys_created_on>
         <sys_id>db590334337d4f907ef8f499ed5c7bad</sys_id>
-        <sys_mod_count>18</sys_mod_count>
+        <sys_mod_count>20</sys_mod_count>
         <sys_name>Risk default</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_db590334337d4f907ef8f499ed5c7bad</sys_update_name>
         <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-07-26 19:25:31</sys_updated_on>
+        <sys_updated_on>2026-07-27 05:15:44</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=db590334337d4f907ef8f499ed5c7bad"/>
 </record_update>
