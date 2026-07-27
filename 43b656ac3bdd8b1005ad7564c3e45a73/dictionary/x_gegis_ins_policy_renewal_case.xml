@@ -35,6 +35,7 @@
         </element>
         <element label="Prior Policy #" max_length="40" name="prior_policy_number" type="string"/>
         <element label="Notification Start Date" max_length="40" name="notification_start_date" type="glide_date_time"/>
+        <element default="90" label="Lead Time" max_length="40" name="lead_time" type="integer"/>
         <element choice="1" label="UW Decision" max_length="40" name="uw_decision" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Auto renew" sequence="20" value="auto_renew"/>
