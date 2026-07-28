@@ -431,15 +431,15 @@
             {
                 "icon": {
                     "type": "JSON_LITERAL",
-                    "value": "bot-ai-sparkle-outline"
+                    "value": "user-verify-outline"
                 },
-                "id": "inflight_data_extractions",
+                "id": "tab_inflight_hitl",
                 "label": {
                     "type": "TRANSLATION_LITERAL",
                     "value": {
                         "code": null,
                         "comment": "",
-                        "message": "Data Extractions"
+                        "message": "HITL"
                     }
                 },
                 "order": 200,
@@ -448,15 +448,15 @@
             {
                 "icon": {
                     "type": "JSON_LITERAL",
-                    "value": "user-verify-outline"
+                    "value": "bot-ai-sparkle-outline"
                 },
-                "id": "inflight_hitl",
+                "id": "tab_inflight_extraction",
                 "label": {
                     "type": "TRANSLATION_LITERAL",
                     "value": {
                         "code": null,
                         "comment": "",
-                        "message": "Human in the Loop"
+                        "message": "Data Extractions"
                     }
                 },
                 "order": 300,
@@ -465,9 +465,26 @@
             {
                 "icon": {
                     "type": "JSON_LITERAL",
-                    "value": "workflow-path-ai-sparkle-outline"
+                    "value": "binoculars-outline"
                 },
-                "id": "inflight_submissions",
+                "id": "tab_inflight_ext_task",
+                "label": {
+                    "type": "TRANSLATION_LITERAL",
+                    "value": {
+                        "code": null,
+                        "comment": "",
+                        "message": "Extraction Task"
+                    }
+                },
+                "order": 400,
+                "type": "local"
+            },
+            {
+                "icon": {
+                    "type": "JSON_LITERAL",
+                    "value": "tree-flow-ai-sparkle-outline"
+                },
+                "id": "tab_inflight_submissions",
                 "label": {
                     "type": "TRANSLATION_LITERAL",
                     "value": {
@@ -476,7 +493,7 @@
                         "message": "Submissions"
                     }
                 },
-                "order": 400,
+                "order": 500,
                 "type": "local"
             }
         ],
@@ -850,14 +867,592 @@
                         "id": "d356d14b6e293a3020a244b63d278d8f",
                         "type": "MACROPONENT"
                     },
-                    "elementId": "inflight_data_extractions",
-                    "elementLabel": "Data Extractions",
+                    "elementId": "tab_inflight_hitl",
+                    "elementLabel": "HITL",
                     "eventMappings": [],
                     "isHidden": {
                         "type": "JSON_LITERAL",
                         "value": null
                     },
                     "name": "Emails",
+                    "overrides": {
+                        "composition": [
+                            {
+                                "definition": {
+                                    "id": "51562c3df6f77b3f31ba9e2c613aa81e",
+                                    "type": "MACROPONENT"
+                                },
+                                "elementId": "human_in_the_loop_list",
+                                "elementLabel": "Human In The Loop List",
+                                "eventMappings": [],
+                                "isHidden": {
+                                    "type": "JSON_LITERAL",
+                                    "value": null
+                                },
+                                "preset": null,
+                                "propertyValues": {
+                                    "aggregationMode": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "client"
+                                    },
+                                    "aggregations": {
+                                        "type": "JSON_LITERAL",
+                                        "value": {
+                                            "items": [
+                                                {
+                                                    "field": "premium",
+                                                    "fn": "sum",
+                                                    "format": "currency",
+                                                    "label": "Total Premium"
+                                                },
+                                                {
+                                                    "field": "premium",
+                                                    "fn": "avg",
+                                                    "format": "currency",
+                                                    "label": "Avg Premium"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "columns": {
+                                        "type": "JSON_LITERAL",
+                                        "value": {
+                                            "items": [
+                                                {
+                                                    "field": "number",
+                                                    "label": "Task",
+                                                    "refTable": "x_gegis_ins_policy_case_task",
+                                                    "type": "reference"
+                                                },
+                                                {
+                                                    "field": "intake_case",
+                                                    "label": "Intake case",
+                                                    "refTable": "x_gegis_ins_policy_intake_case",
+                                                    "type": "reference"
+                                                },
+                                                {
+                                                    "field": "u_type",
+                                                    "label": "Type",
+                                                    "type": "pill"
+                                                },
+                                                {
+                                                    "field": "state",
+                                                    "label": "State",
+                                                    "type": "pill"
+                                                },
+                                                {
+                                                    "field": "priority",
+                                                    "label": "Priority",
+                                                    "type": "pill"
+                                                },
+                                                {
+                                                    "field": "assigned_to",
+                                                    "label": "Assigned to",
+                                                    "type": "text"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "data": {
+                                        "type": "JSON_LITERAL",
+                                        "value": {
+                                            "items": []
+                                        }
+                                    },
+                                    "editSaveMode": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "auto"
+                                    },
+                                    "emptyMessage": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "No records found."
+                                    },
+                                    "enableColumnPersonalization": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "enableReferenceLinks": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "enableResize": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "enableRowClick": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "enableSort": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "exportFileName": {
+                                        "type": "JSON_LITERAL",
+                                        "value": ""
+                                    },
+                                    "exportMode": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "csv"
+                                    },
+                                    "grandTotalWhenFlat": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "groupBy": {
+                                        "type": "JSON_LITERAL",
+                                        "value": ""
+                                    },
+                                    "groupPaging": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "records"
+                                    },
+                                    "groupSort": {
+                                        "type": "JSON_LITERAL",
+                                        "value": {
+                                            "items": []
+                                        }
+                                    },
+                                    "headerColor": {
+                                        "type": "JSON_LITERAL",
+                                        "value": ""
+                                    },
+                                    "heading": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Human In the Loop Task"
+                                    },
+                                    "maxGroupDepth": {
+                                        "type": "JSON_LITERAL",
+                                        "value": 8
+                                    },
+                                    "maxGroupRows": {
+                                        "type": "JSON_LITERAL",
+                                        "value": 5000
+                                    },
+                                    "navigateReferenceOnClick": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "orderBy": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "sys_created_on"
+                                    },
+                                    "orderDescending": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "pageSize": {
+                                        "type": "JSON_LITERAL",
+                                        "value": 20
+                                    },
+                                    "pageSizes": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "10,20,50,100"
+                                    },
+                                    "query": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "category=hitl"
+                                    },
+                                    "recordUrlTemplate": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "x/gegis/insurance-policy-suite/record/{table}/{sysId}"
+                                    },
+                                    "referenceOpenIn": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "workspace"
+                                    },
+                                    "rowIconsEnd": {
+                                        "type": "JSON_LITERAL",
+                                        "value": {
+                                            "items": [
+                                                {
+                                                    "actionCode": "pin",
+                                                    "icon": "thumbtack-outline",
+                                                    "tooltip": "Pin"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "rowIconsStart": {
+                                        "type": "JSON_LITERAL",
+                                        "value": {
+                                            "items": []
+                                        }
+                                    },
+                                    "sampleRows": {
+                                        "type": "JSON_LITERAL",
+                                        "value": {
+                                            "items": [
+                                                {
+                                                    "account": {
+                                                        "display_value": "Acme Corp",
+                                                        "value": "Acme Corp"
+                                                    },
+                                                    "line_of_business": {
+                                                        "display_value": "Property",
+                                                        "value": "Property"
+                                                    },
+                                                    "number": {
+                                                        "display_value": "SUB-0001",
+                                                        "link": "/api/now/table/x_gegis_wum_submission/a1",
+                                                        "value": "SUB-0001"
+                                                    },
+                                                    "premium": {
+                                                        "display_value": "42000",
+                                                        "value": "42000"
+                                                    },
+                                                    "stage": {
+                                                        "display_value": "Data Capture",
+                                                        "value": "Data Capture"
+                                                    },
+                                                    "sys_id": {
+                                                        "display_value": "a1",
+                                                        "value": "a1"
+                                                    }
+                                                },
+                                                {
+                                                    "account": {
+                                                        "display_value": "Globex",
+                                                        "value": "Globex"
+                                                    },
+                                                    "line_of_business": {
+                                                        "display_value": "Property",
+                                                        "value": "Property"
+                                                    },
+                                                    "number": {
+                                                        "display_value": "SUB-0002",
+                                                        "link": "/api/now/table/x_gegis_wum_submission/a2",
+                                                        "value": "SUB-0002"
+                                                    },
+                                                    "premium": {
+                                                        "display_value": "88000",
+                                                        "value": "88000"
+                                                    },
+                                                    "stage": {
+                                                        "display_value": "Underwriting",
+                                                        "value": "Underwriting"
+                                                    },
+                                                    "sys_id": {
+                                                        "display_value": "a2",
+                                                        "value": "a2"
+                                                    }
+                                                },
+                                                {
+                                                    "account": {
+                                                        "display_value": "Initech",
+                                                        "value": "Initech"
+                                                    },
+                                                    "line_of_business": {
+                                                        "display_value": "Property",
+                                                        "value": "Property"
+                                                    },
+                                                    "number": {
+                                                        "display_value": "SUB-0003",
+                                                        "link": "/api/now/table/x_gegis_wum_submission/a3",
+                                                        "value": "SUB-0003"
+                                                    },
+                                                    "premium": {
+                                                        "display_value": "15500",
+                                                        "value": "15500"
+                                                    },
+                                                    "stage": {
+                                                        "display_value": "Data Capture",
+                                                        "value": "Data Capture"
+                                                    },
+                                                    "sys_id": {
+                                                        "display_value": "a3",
+                                                        "value": "a3"
+                                                    }
+                                                },
+                                                {
+                                                    "account": {
+                                                        "display_value": "Umbrella",
+                                                        "value": "Umbrella"
+                                                    },
+                                                    "line_of_business": {
+                                                        "display_value": "Casualty",
+                                                        "value": "Casualty"
+                                                    },
+                                                    "number": {
+                                                        "display_value": "SUB-0004",
+                                                        "link": "/api/now/table/x_gegis_wum_submission/a4",
+                                                        "value": "SUB-0004"
+                                                    },
+                                                    "premium": {
+                                                        "display_value": "63000",
+                                                        "value": "63000"
+                                                    },
+                                                    "stage": {
+                                                        "display_value": "Referral",
+                                                        "value": "Referral"
+                                                    },
+                                                    "sys_id": {
+                                                        "display_value": "a4",
+                                                        "value": "a4"
+                                                    }
+                                                },
+                                                {
+                                                    "account": {
+                                                        "display_value": "Soylent",
+                                                        "value": "Soylent"
+                                                    },
+                                                    "line_of_business": {
+                                                        "display_value": "Casualty",
+                                                        "value": "Casualty"
+                                                    },
+                                                    "number": {
+                                                        "display_value": "SUB-0005",
+                                                        "link": "/api/now/table/x_gegis_wum_submission/a5",
+                                                        "value": "SUB-0005"
+                                                    },
+                                                    "premium": {
+                                                        "display_value": "27500",
+                                                        "value": "27500"
+                                                    },
+                                                    "stage": {
+                                                        "display_value": "Underwriting",
+                                                        "value": "Underwriting"
+                                                    },
+                                                    "sys_id": {
+                                                        "display_value": "a5",
+                                                        "value": "a5"
+                                                    }
+                                                },
+                                                {
+                                                    "account": {
+                                                        "display_value": "Stark Ind",
+                                                        "value": "Stark Ind"
+                                                    },
+                                                    "line_of_business": {
+                                                        "display_value": "Cyber",
+                                                        "value": "Cyber"
+                                                    },
+                                                    "number": {
+                                                        "display_value": "SUB-0006",
+                                                        "link": "/api/now/table/x_gegis_wum_submission/a6",
+                                                        "value": "SUB-0006"
+                                                    },
+                                                    "premium": {
+                                                        "display_value": "120000",
+                                                        "value": "120000"
+                                                    },
+                                                    "stage": {
+                                                        "display_value": "Data Capture",
+                                                        "value": "Data Capture"
+                                                    },
+                                                    "sys_id": {
+                                                        "display_value": "a6",
+                                                        "value": "a6"
+                                                    }
+                                                },
+                                                {
+                                                    "account": {
+                                                        "display_value": "Wayne Ent",
+                                                        "value": "Wayne Ent"
+                                                    },
+                                                    "line_of_business": {
+                                                        "display_value": "Cyber",
+                                                        "value": "Cyber"
+                                                    },
+                                                    "number": {
+                                                        "display_value": "SUB-0007",
+                                                        "link": "/api/now/table/x_gegis_wum_submission/a7",
+                                                        "value": "SUB-0007"
+                                                    },
+                                                    "premium": {
+                                                        "display_value": "54000",
+                                                        "value": "54000"
+                                                    },
+                                                    "stage": {
+                                                        "display_value": "Referral",
+                                                        "value": "Referral"
+                                                    },
+                                                    "sys_id": {
+                                                        "display_value": "a7",
+                                                        "value": "a7"
+                                                    }
+                                                },
+                                                {
+                                                    "account": {
+                                                        "display_value": "Tyrell",
+                                                        "value": "Tyrell"
+                                                    },
+                                                    "line_of_business": {
+                                                        "display_value": "Property",
+                                                        "value": "Property"
+                                                    },
+                                                    "number": {
+                                                        "display_value": "SUB-0008",
+                                                        "link": "/api/now/table/x_gegis_wum_submission/a8",
+                                                        "value": "SUB-0008"
+                                                    },
+                                                    "premium": {
+                                                        "display_value": "33000",
+                                                        "value": "33000"
+                                                    },
+                                                    "stage": {
+                                                        "display_value": "Referral",
+                                                        "value": "Referral"
+                                                    },
+                                                    "sys_id": {
+                                                        "display_value": "a8",
+                                                        "value": "a8"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "searchPlaceholder": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Search"
+                                    },
+                                    "selectionMode": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "none"
+                                    },
+                                    "showCount": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "showExport": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "showFilter": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "showGrandTotal": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "showGroupControl": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "showLastRefreshed": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "showPageSizeControl": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "showRefresh": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "showSearch": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "showSortControl": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "stripedRows": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "subtotalPlacement": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "header"
+                                    },
+                                    "surfaceColor": {
+                                        "type": "JSON_LITERAL",
+                                        "value": ""
+                                    },
+                                    "table": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "x_gegis_ins_policy_case_task"
+                                    },
+                                    "toolbarButtons": {
+                                        "type": "JSON_LITERAL",
+                                        "value": {
+                                            "items": []
+                                        }
+                                    }
+                                },
+                                "slot": null,
+                                "styles": {
+                                    "default": {
+                                        "padding-top": "var(--now-scalable-space--lg)"
+                                    }
+                                }
+                            }
+                        ],
+                        "layout": {
+                            "default": {
+                                "children": null,
+                                "items": [
+                                    {
+                                        "element_id": "human_in_the_loop_list"
+                                    }
+                                ],
+                                "root": null,
+                                "rules": null,
+                                "styles": {
+                                    "flex-direction": "column",
+                                    "min-height": "300px",
+                                    "width": "100%"
+                                },
+                                "templateId": "5832fd4d53c31010e6bcddeeff7b12db",
+                                "type": "flex"
+                            },
+                            "version": "3.1.0"
+                        }
+                    },
+                    "preset": null,
+                    "propertyValues": {
+                        "ariaRegionHeadingLevel": {
+                            "type": "JSON_LITERAL",
+                            "value": 1
+                        },
+                        "ariaRegionName": {
+                            "type": "TRANSLATION_LITERAL",
+                            "value": {
+                                "code": null,
+                                "comment": "",
+                                "message": ""
+                            }
+                        },
+                        "ariaRole": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "hideEmptyStateUi": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "includeAriaHeading": {
+                            "type": "JSON_LITERAL",
+                            "value": false
+                        },
+                        "slotWrapperBehavior": {
+                            "type": "JSON_LITERAL",
+                            "value": "fullheight"
+                        },
+                        "type": {
+                            "type": "JSON_LITERAL",
+                            "value": "section"
+                        }
+                    },
+                    "slot": "tab_inflight_hitl",
+                    "styles": null
+                },
+                {
+                    "definition": {
+                        "id": "d356d14b6e293a3020a244b63d278d8f",
+                        "type": "MACROPONENT"
+                    },
+                    "elementId": "tab_inflight_extraction",
+                    "elementLabel": "Data Extractions",
+                    "eventMappings": [],
+                    "isHidden": {
+                        "type": "JSON_LITERAL",
+                        "value": null
+                    },
+                    "name": "Data Extractions",
                     "overrides": {
                         "composition": [
                             {
@@ -1436,7 +2031,7 @@
                             "value": "section"
                         }
                     },
-                    "slot": "inflight_data_extractions",
+                    "slot": "tab_inflight_extraction",
                     "styles": null
                 },
                 {
@@ -1444,14 +2039,14 @@
                         "id": "d356d14b6e293a3020a244b63d278d8f",
                         "type": "MACROPONENT"
                     },
-                    "elementId": "inflight_hitl",
-                    "elementLabel": "Human in the Loop",
+                    "elementId": "tab_inflight_ext_task",
+                    "elementLabel": "Extraction Task",
                     "eventMappings": [],
                     "isHidden": {
                         "type": "JSON_LITERAL",
                         "value": null
                     },
-                    "name": "Data Extractions",
+                    "name": "Human in the Loop",
                     "overrides": {
                         "composition": [
                             {
@@ -1459,8 +2054,8 @@
                                     "id": "51562c3df6f77b3f31ba9e2c613aa81e",
                                     "type": "MACROPONENT"
                                 },
-                                "elementId": "human_in_the_loop_list",
-                                "elementLabel": "Human In The Loop List",
+                                "elementId": "extraction_task_list",
+                                "elementLabel": "Extraction Task List",
                                 "eventMappings": [],
                                 "isHidden": {
                                     "type": "JSON_LITERAL",
@@ -1499,12 +2094,6 @@
                                                     "field": "number",
                                                     "label": "Task",
                                                     "refTable": "x_gegis_ins_policy_case_task",
-                                                    "type": "reference"
-                                                },
-                                                {
-                                                    "field": "intake_case",
-                                                    "label": "Intake case",
-                                                    "refTable": "x_gegis_ins_policy_intake_case",
                                                     "type": "reference"
                                                 },
                                                 {
@@ -1554,6 +2143,10 @@
                                         "type": "JSON_LITERAL",
                                         "value": true
                                     },
+                                    "enableColumnReorder": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
                                     "enableReferenceLinks": {
                                         "type": "JSON_LITERAL",
                                         "value": true
@@ -1577,6 +2170,10 @@
                                     "exportMode": {
                                         "type": "JSON_LITERAL",
                                         "value": "csv"
+                                    },
+                                    "fontSize": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "1rem"
                                     },
                                     "grandTotalWhenFlat": {
                                         "type": "JSON_LITERAL",
@@ -1602,7 +2199,7 @@
                                     },
                                     "heading": {
                                         "type": "JSON_LITERAL",
-                                        "value": "Human In the Loop Task"
+                                        "value": "Extraction Task"
                                     },
                                     "maxGroupDepth": {
                                         "type": "JSON_LITERAL",
@@ -1622,7 +2219,7 @@
                                     },
                                     "orderDescending": {
                                         "type": "JSON_LITERAL",
-                                        "value": true
+                                        "value": false
                                     },
                                     "pageSize": {
                                         "type": "JSON_LITERAL",
@@ -1634,7 +2231,7 @@
                                     },
                                     "query": {
                                         "type": "JSON_LITERAL",
-                                        "value": "category=hitl"
+                                        "value": "category=extraction"
                                     },
                                     "recordUrlTemplate": {
                                         "type": "JSON_LITERAL",
@@ -1642,7 +2239,15 @@
                                     },
                                     "referenceOpenIn": {
                                         "type": "JSON_LITERAL",
-                                        "value": "workspace"
+                                        "value": "same"
+                                    },
+                                    "roleBasedColumns": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "rowIconSize": {
+                                        "type": "JSON_LITERAL",
+                                        "value": 18
                                     },
                                     "rowIconsEnd": {
                                         "type": "JSON_LITERAL",
@@ -1957,11 +2562,7 @@
                                     }
                                 },
                                 "slot": null,
-                                "styles": {
-                                    "default": {
-                                        "padding-top": "var(--now-scalable-space--lg)"
-                                    }
-                                }
+                                "styles": null
                             }
                         ],
                         "layout": {
@@ -1969,7 +2570,7 @@
                                 "children": null,
                                 "items": [
                                     {
-                                        "element_id": "human_in_the_loop_list"
+                                        "element_id": "extraction_task_list"
                                     }
                                 ],
                                 "root": null,
@@ -2020,7 +2621,7 @@
                             "value": "section"
                         }
                     },
-                    "slot": "inflight_hitl",
+                    "slot": "tab_inflight_ext_task",
                     "styles": null
                 },
                 {
@@ -2028,14 +2629,14 @@
                         "id": "d356d14b6e293a3020a244b63d278d8f",
                         "type": "MACROPONENT"
                     },
-                    "elementId": "inflight_submissions",
+                    "elementId": "tab_inflight_submissions",
                     "elementLabel": "Submissions",
                     "eventMappings": [],
                     "isHidden": {
                         "type": "JSON_LITERAL",
                         "value": null
                     },
-                    "name": "Human in the Loop",
+                    "name": "Extraction Task",
                     "overrides": {
                         "composition": [
                             {
@@ -2533,7 +3134,7 @@
                     "propertyValues": {
                         "ariaRegionHeadingLevel": {
                             "type": "JSON_LITERAL",
-                            "value": 1
+                            "value": "1"
                         },
                         "ariaRegionName": {
                             "type": "TRANSLATION_LITERAL",
@@ -2564,7 +3165,7 @@
                             "value": "section"
                         }
                     },
-                    "slot": "inflight_submissions",
+                    "slot": "tab_inflight_submissions",
                     "styles": null
                 }
             ],
@@ -2573,17 +3174,17 @@
         "preset": null,
         "propertyValues": {
             "activeRoute": {
-                "icon": "user-verify-outline",
-                "id": "human_in_the_loop",
+                "icon": null,
+                "id": "extraction_task",
                 "label": {
                     "type": "TRANSLATION_LITERAL",
                     "value": {
                         "code": null,
                         "comment": "",
-                        "message": "Human in the Loop"
+                        "message": "Extraction Task"
                     }
                 },
-                "order": 400,
+                "order": 500,
                 "type": "local"
             },
             "ariaLabel": {
@@ -2600,7 +3201,7 @@
             },
             "enableCollapsing": {
                 "type": "JSON_LITERAL",
-                "value": false
+                "value": true
             },
             "fixedWidth": {
                 "type": "JSON_LITERAL",
@@ -2862,11 +3463,15 @@
   "code" : "",
   "comment" : ""
 }, {
+  "message" : "Extraction Task",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "From",
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "Human in the Loop",
+  "message" : "HITL",
   "code" : "",
   "comment" : ""
 }, {
@@ -2965,14 +3570,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-18 03:54:04</sys_created_on>
         <sys_id>ab1fdcd7cf064318c419b6ce6d851cb8</sys_id>
-        <sys_mod_count>54</sys_mod_count>
+        <sys_mod_count>58</sys_mod_count>
         <sys_name>Intake default</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_ab1fdcd7cf064318c419b6ce6d851cb8</sys_update_name>
-        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-07-26 11:08:02</sys_updated_on>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 04:13:06</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=ab1fdcd7cf064318c419b6ce6d851cb8"/>
 </record_update>

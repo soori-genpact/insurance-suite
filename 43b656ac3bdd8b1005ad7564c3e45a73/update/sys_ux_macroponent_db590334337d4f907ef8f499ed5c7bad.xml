@@ -780,8 +780,8 @@
                                     "id": "51562c3df6f77b3f31ba9e2c613aa81e",
                                     "type": "MACROPONENT"
                                 },
-                                "elementId": "record_list_1",
-                                "elementLabel": "Record List 1",
+                                "elementId": "risk_assessment_cases_list",
+                                "elementLabel": "Risk Assessment Cases List",
                                 "eventMappings": [],
                                 "isHidden": {
                                     "type": "JSON_LITERAL",
@@ -818,35 +818,45 @@
                                             "items": [
                                                 {
                                                     "field": "number",
-                                                    "label": "Submission",
-                                                    "refTable": "x_gegis_wum_submission",
+                                                    "label": "Risk",
+                                                    "refTable": "x_gegis_ins_policy_risk_case",
                                                     "type": "reference",
-                                                    "width": 150
+                                                    "width": "140px"
                                                 },
                                                 {
-                                                    "field": "account",
-                                                    "label": "Insured",
+                                                    "field": "submission",
+                                                    "label": "Submission",
+                                                    "refTable": "x_gegis_ins_policy_submission",
+                                                    "type": "reference",
+                                                    "width": "140px"
+                                                },
+                                                {
+                                                    "field": "submission.insured_name",
+                                                    "label": "Insured Name",
                                                     "type": "text",
-                                                    "width": 170
+                                                    "width": "280px"
                                                 },
                                                 {
-                                                    "field": "line_of_business",
+                                                    "field": "submission.broker_name",
+                                                    "label": "Broker",
+                                                    "type": "text",
+                                                    "width": "280px"
+                                                },
+                                                {
+                                                    "field": "submission.line_of_business",
                                                     "label": "LOB",
-                                                    "type": "text",
-                                                    "width": 130
+                                                    "type": "text"
                                                 },
                                                 {
-                                                    "field": "stage",
-                                                    "label": "Stage",
+                                                    "field": "activity_status",
+                                                    "label": "Actvity",
                                                     "type": "pill",
-                                                    "width": 130
+                                                    "width": "220px"
                                                 },
                                                 {
-                                                    "align": "right",
-                                                    "field": "premium",
-                                                    "label": "Premium",
-                                                    "type": "number",
-                                                    "width": 120
+                                                    "field": "priority",
+                                                    "label": "Priority",
+                                                    "type": "pill"
                                                 }
                                             ]
                                         }
@@ -929,11 +939,11 @@
                                     },
                                     "orderBy": {
                                         "type": "JSON_LITERAL",
-                                        "value": ""
+                                        "value": "sys_created_on"
                                     },
                                     "orderDescending": {
                                         "type": "JSON_LITERAL",
-                                        "value": false
+                                        "value": true
                                     },
                                     "pageSize": {
                                         "type": "JSON_LITERAL",
@@ -945,11 +955,11 @@
                                     },
                                     "query": {
                                         "type": "JSON_LITERAL",
-                                        "value": ""
+                                        "value": "is_active=true"
                                     },
                                     "recordUrlTemplate": {
                                         "type": "JSON_LITERAL",
-                                        "value": "/record/{table}/{sysId}"
+                                        "value": "x/gegis/insurance-policy-suite/record/{table}/{sysId}"
                                     },
                                     "referenceOpenIn": {
                                         "type": "JSON_LITERAL",
@@ -1234,7 +1244,7 @@
                                     },
                                     "table": {
                                         "type": "JSON_LITERAL",
-                                        "value": ""
+                                        "value": "x_gegis_ins_policy_risk_case"
                                     },
                                     "toolbarButtons": {
                                         "type": "JSON_LITERAL",
@@ -1260,7 +1270,7 @@
                                 "children": null,
                                 "items": [
                                     {
-                                        "element_id": "record_list_1"
+                                        "element_id": "risk_assessment_cases_list"
                                     }
                                 ],
                                 "root": null,
@@ -1926,11 +1936,19 @@
         <props>[]</props>
         <required_sys_props/>
         <required_translations>[ {
+  "message" : "Actvity",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "Avg Premium",
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "Insured",
+  "message" : "Broker",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Insured Name",
   "code" : "",
   "comment" : ""
 }, {
@@ -1938,11 +1956,11 @@
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "Premium",
+  "message" : "Priority",
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "Stage",
+  "message" : "Risk",
   "code" : "",
   "comment" : ""
 }, {
@@ -1965,14 +1983,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-06-28 11:37:23</sys_created_on>
         <sys_id>db590334337d4f907ef8f499ed5c7bad</sys_id>
-        <sys_mod_count>20</sys_mod_count>
+        <sys_mod_count>23</sys_mod_count>
         <sys_name>Risk default</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_db590334337d4f907ef8f499ed5c7bad</sys_update_name>
-        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-07-27 05:15:44</sys_updated_on>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 07:16:07</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=db590334337d4f907ef8f499ed5c7bad"/>
 </record_update>
