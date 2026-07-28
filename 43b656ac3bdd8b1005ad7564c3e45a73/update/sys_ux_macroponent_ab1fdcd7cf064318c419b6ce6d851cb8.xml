@@ -614,7 +614,7 @@
                                     },
                                     "enableColumnPersonalization": {
                                         "type": "JSON_LITERAL",
-                                        "value": true
+                                        "value": false
                                     },
                                     "enableReferenceLinks": {
                                         "type": "JSON_LITERAL",
@@ -680,11 +680,11 @@
                                     },
                                     "orderBy": {
                                         "type": "JSON_LITERAL",
-                                        "value": ""
+                                        "value": "sys_created_on"
                                     },
                                     "orderDescending": {
                                         "type": "JSON_LITERAL",
-                                        "value": false
+                                        "value": true
                                     },
                                     "pageSize": {
                                         "type": "JSON_LITERAL",
@@ -738,7 +738,7 @@
                                     },
                                     "showExport": {
                                         "type": "JSON_LITERAL",
-                                        "value": true
+                                        "value": false
                                     },
                                     "showFilter": {
                                         "type": "JSON_LITERAL",
@@ -762,7 +762,7 @@
                                     },
                                     "showRefresh": {
                                         "type": "JSON_LITERAL",
-                                        "value": true
+                                        "value": false
                                     },
                                     "showSearch": {
                                         "type": "JSON_LITERAL",
@@ -943,6 +943,12 @@
                                                 {
                                                     "field": "priority",
                                                     "label": "Priority",
+                                                    "pillColors": {
+                                                        "1 - Critical": "critical",
+                                                        "2 - High": "warning",
+                                                        "3 - Moderate": "positive",
+                                                        "4 - Low": "info"
+                                                    },
                                                     "type": "pill"
                                                 },
                                                 {
@@ -969,7 +975,7 @@
                                     },
                                     "enableColumnPersonalization": {
                                         "type": "JSON_LITERAL",
-                                        "value": true
+                                        "value": false
                                     },
                                     "enableReferenceLinks": {
                                         "type": "JSON_LITERAL",
@@ -1064,6 +1070,12 @@
                                     "rowIconsEnd": {
                                         "type": "JSON_LITERAL",
                                         "value": {
+                                            "items": []
+                                        }
+                                    },
+                                    "rowIconsStart": {
+                                        "type": "JSON_LITERAL",
+                                        "value": {
                                             "items": [
                                                 {
                                                     "actionCode": "pin",
@@ -1071,12 +1083,6 @@
                                                     "tooltip": "Pin"
                                                 }
                                             ]
-                                        }
-                                    },
-                                    "rowIconsStart": {
-                                        "type": "JSON_LITERAL",
-                                        "value": {
-                                            "items": []
                                         }
                                     },
                                     "sampleRows": {
@@ -1316,7 +1322,7 @@
                                     },
                                     "showExport": {
                                         "type": "JSON_LITERAL",
-                                        "value": true
+                                        "value": false
                                     },
                                     "showFilter": {
                                         "type": "JSON_LITERAL",
@@ -1340,7 +1346,7 @@
                                     },
                                     "showRefresh": {
                                         "type": "JSON_LITERAL",
-                                        "value": true
+                                        "value": false
                                     },
                                     "showSearch": {
                                         "type": "JSON_LITERAL",
@@ -2141,7 +2147,7 @@
                                     },
                                     "enableColumnPersonalization": {
                                         "type": "JSON_LITERAL",
-                                        "value": true
+                                        "value": false
                                     },
                                     "enableColumnReorder": {
                                         "type": "JSON_LITERAL",
@@ -2219,7 +2225,7 @@
                                     },
                                     "orderDescending": {
                                         "type": "JSON_LITERAL",
-                                        "value": false
+                                        "value": true
                                     },
                                     "pageSize": {
                                         "type": "JSON_LITERAL",
@@ -2252,13 +2258,7 @@
                                     "rowIconsEnd": {
                                         "type": "JSON_LITERAL",
                                         "value": {
-                                            "items": [
-                                                {
-                                                    "actionCode": "pin",
-                                                    "icon": "thumbtack-outline",
-                                                    "tooltip": "Pin"
-                                                }
-                                            ]
+                                            "items": []
                                         }
                                     },
                                     "rowIconsStart": {
@@ -2504,7 +2504,7 @@
                                     },
                                     "showExport": {
                                         "type": "JSON_LITERAL",
-                                        "value": true
+                                        "value": false
                                     },
                                     "showFilter": {
                                         "type": "JSON_LITERAL",
@@ -2528,7 +2528,7 @@
                                     },
                                     "showRefresh": {
                                         "type": "JSON_LITERAL",
-                                        "value": true
+                                        "value": false
                                     },
                                     "showSearch": {
                                         "type": "JSON_LITERAL",
@@ -2698,6 +2698,12 @@
                                                 {
                                                     "field": "stage",
                                                     "label": "Stage",
+                                                    "pillColors": {
+                                                        "Clearance": "info",
+                                                        "Exposure Management": "warning",
+                                                        "Quote &amp; Bind": "positive",
+                                                        "Risk Assessment": "critical"
+                                                    },
                                                     "type": "pill"
                                                 },
                                                 {
@@ -2786,11 +2792,11 @@
                                     },
                                     "orderBy": {
                                         "type": "JSON_LITERAL",
-                                        "value": ""
+                                        "value": "sys_created_on"
                                     },
                                     "orderDescending": {
                                         "type": "JSON_LITERAL",
-                                        "value": false
+                                        "value": true
                                     },
                                     "pageSize": {
                                         "type": "JSON_LITERAL",
@@ -3570,14 +3576,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-18 03:54:04</sys_created_on>
         <sys_id>ab1fdcd7cf064318c419b6ce6d851cb8</sys_id>
-        <sys_mod_count>58</sys_mod_count>
+        <sys_mod_count>64</sys_mod_count>
         <sys_name>Intake default</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_ab1fdcd7cf064318c419b6ce6d851cb8</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-28 04:13:06</sys_updated_on>
+        <sys_updated_on>2026-07-28 13:18:08</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=ab1fdcd7cf064318c419b6ce6d851cb8"/>
 </record_update>

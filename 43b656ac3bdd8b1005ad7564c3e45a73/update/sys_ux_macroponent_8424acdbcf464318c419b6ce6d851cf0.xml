@@ -482,7 +482,8 @@
                                                 {
                                                     "field": "insured_name",
                                                     "label": "Insured Name",
-                                                    "type": "text"
+                                                    "type": "text",
+                                                    "width": "250px"
                                                 },
                                                 {
                                                     "field": "line_of_business",
@@ -492,22 +493,26 @@
                                                 },
                                                 {
                                                     "field": "expiry_date",
-                                                    "label": "Expiry Date",
+                                                    "label": "Expiry",
                                                     "type": "date",
-                                                    "width": "220px"
+                                                    "width": "120px"
                                                 },
                                                 {
-                                                    "align": "right",
                                                     "field": "days_to_expiry",
                                                     "label": "Days Left",
                                                     "type": "number",
-                                                    "width": "100px"
+                                                    "width": "120px"
                                                 },
                                                 {
                                                     "field": "system_decision",
                                                     "label": "System Decision",
+                                                    "pillColors": {
+                                                        "Auto renew": "positive",
+                                                        "Do not renew": "critical",
+                                                        "Full re-underwriting": "warning"
+                                                    },
                                                     "type": "pill",
-                                                    "width": "150px"
+                                                    "width": "200px"
                                                 },
                                                 {
                                                     "field": "notification_mode",
@@ -516,17 +521,14 @@
                                                     "width": "100px"
                                                 },
                                                 {
-                                                    "align": "right",
                                                     "field": "notification_reminder_frequency",
-                                                    "label": "Notification Frequency",
-                                                    "type": "number",
-                                                    "width": "150px"
+                                                    "label": "Reminder Frequency",
+                                                    "type": "number"
                                                 },
                                                 {
                                                     "field": "notification_start_date",
                                                     "label": "Notification Start",
-                                                    "type": "date",
-                                                    "width": "220px"
+                                                    "type": "date"
                                                 },
                                                 {
                                                     "field": "notification_template",
@@ -1196,7 +1198,7 @@
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "Expiry Date",
+  "message" : "Expiry",
   "code" : "",
   "comment" : ""
 }, {
@@ -1212,15 +1214,15 @@
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "Notification Frequency",
-  "code" : "",
-  "comment" : ""
-}, {
   "message" : "Notification Start",
   "code" : "",
   "comment" : ""
 }, {
   "message" : "Prior Policy #",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Reminder Frequency",
   "code" : "",
   "comment" : ""
 }, {
@@ -1251,14 +1253,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-18 04:15:57</sys_created_on>
         <sys_id>8424acdbcf464318c419b6ce6d851cf0</sys_id>
-        <sys_mod_count>24</sys_mod_count>
+        <sys_mod_count>31</sys_mod_count>
         <sys_name>Renewals default</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_8424acdbcf464318c419b6ce6d851cf0</sys_update_name>
-        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-07-26 11:09:28</sys_updated_on>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-28 13:04:45</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=8424acdbcf464318c419b6ce6d851cf0"/>
 </record_update>
