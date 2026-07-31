@@ -18,7 +18,7 @@
         <filter_condition/>
         <is_rest>false</is_rest>
         <message/>
-        <name>Activity Sync Trigger</name>
+        <name>Activity (Individual Step) Sync Trigger</name>
         <order>100</order>
         <priority>100</priority>
         <rest_method/>
@@ -29,7 +29,8 @@
         <role_conditions/>
         <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
     new PlaybookActivitySync().syncActivity(current);
-})(current, previous);]]></script>
+})(current, previous);
+]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-07-31 16:29:56</sys_created_on>

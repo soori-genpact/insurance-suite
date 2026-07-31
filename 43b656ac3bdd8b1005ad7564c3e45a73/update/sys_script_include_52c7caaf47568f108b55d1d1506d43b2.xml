@@ -15,10 +15,286 @@ PlaybookActivitySync.prototype = {
     type: 'PlaybookActivitySync',
     SYNC_FLAG: 'x_gegis_playbook_syncing',
 
+    initialize: function() {},
+
+    // ═══════════════════════════════════════════════════════════════
+    // ENTRY POINT: Activity State Sync
+    // ═══════════════════════════════════════════════════════════════
+
     /**
-     * Case tables in this app. Each extends task and has a 'submission' reference.
-     * This is SCHEMA (stable) — not playbook IDs that change on republish.
+     * Called when a playbook activity transitions to a terminal state.
+     * Finds matching activities (same name + same associated_record) in
+     * OTHER contexts and advances them to the same state.
+     *
+     * Key insight: activities in parallel playbook contexts that represent
+     * the same work share both `name` and `associated_record`. This single
+     * query replaces complex context resolution and unreliable CONTAINS searches.
      */
+    syncActivity: function(activityContextGR) {
+        var LOG = 'PlaybookActivitySync.syncActivity: ';
+
+        // Prevent infinite recursion
+        if (gs.getSession().getClientData(this.SYNC_FLAG) == 'true') {
+            gs.info(LOG + 'SKIP - sync flag active (recursion guard)');
+            return;
+        }
+
+        var newState = activityContextGR.getValue('state');
+        var actName = activityContextGR.getValue('name') || '';
+        var contextId = activityContextGR.getValue('context');
+        var associatedRecord = activityContextGR.getValue('associated_record');
+
+        gs.info(LOG + 'ENTER - name: "' + actName + '", state: ' + newState +
+                ', context: ' + contextId + ', associated_record: ' + associatedRecord);
+
+        // Skip infrastructure/stage activities
+        if (!actName || actName.indexOf('$') > -1) {
+            gs.info(LOG + 'EXIT - infrastructure activity (contains $)');
+            return;
+        }
+
+        // Must have an associated_record to find matching activities
+        if (!associatedRecord) {
+            gs.info(LOG + 'EXIT - no associated_record, cannot find matching activities');
+            return;
+        }
+
+        // Find ALL matching activities in OTHER contexts
+        var targetGR = new GlideRecord('sys_pd_activity_context');
+        targetGR.addQuery('associated_record', associatedRecord);
+        targetGR.addQuery('name', actName);
+        targetGR.addQuery('context', '!=', contextId);
+        targetGR.addQuery('state', 'NOT IN', 'COMPLETE,CANCELLED,SKIPPED,BYPASSED');
+        targetGR.query();
+
+        var targetCount = targetGR.getRowCount();
+        gs.info(LOG + 'found ' + targetCount + ' target(s) to sync');
+
+        if (targetCount === 0) return;
+
+        gs.getSession().putClientData(this.SYNC_FLAG, 'true');
+        try {
+            while (targetGR.next()) {
+                var targetId = targetGR.getUniqueValue();
+                var targetCtx = targetGR.getValue('context');
+                gs.info(LOG + 'syncing target: ' + targetId + ' in ctx ' + targetCtx);
+                this._advanceActivity(targetGR, newState, activityContextGR);
+            }
+        } finally {
+            gs.getSession().putClientData(this.SYNC_FLAG, 'false');
+        }
+
+        gs.info(LOG + 'DONE - synced "' + actName + '" → ' + newState + ' to ' + targetCount + ' target(s)');
+    },
+
+    // ═══════════════════════════════════════════════════════════════
+    // ENTRY POINT: Context State Sync
+    // ═══════════════════════════════════════════════════════════════
+
+    /**
+     * Called when an overall playbook context reaches a terminal state.
+     * Advances matching contexts (same process_definition + same case).
+     */
+    syncContextState: function(contextGR) {
+        var LOG = 'PlaybookActivitySync.syncContextState: ';
+
+        if (gs.getSession().getClientData(this.SYNC_FLAG) == 'true') return;
+
+        var newState = contextGR.getValue('state');
+        var contextId = contextGR.getUniqueValue();
+        var processDefId = contextGR.getValue('process_definition');
+
+        gs.info(LOG + 'ENTER - context: ' + contextId + ', state: ' + newState + ', process_def: ' + processDefId);
+
+        // Find sibling contexts: same process_definition, same input relationship
+        // that are still active
+        var caseInfo = this._resolveCaseFromContext(contextGR);
+        if (!caseInfo) {
+            gs.info(LOG + 'EXIT - cannot resolve case from context');
+            return;
+        }
+
+        gs.info(LOG + 'case: ' + caseInfo.table + ':' + caseInfo.id);
+
+        // Find other contexts running the same playbook for the same case
+        var siblingContexts = this._findSiblingContexts(processDefId, caseInfo, contextId);
+        if (siblingContexts.length === 0) {
+            gs.info(LOG + 'EXIT - no sibling contexts found');
+            return;
+        }
+
+        gs.getSession().putClientData(this.SYNC_FLAG, 'true');
+        try {
+            for (var i = 0; i < siblingContexts.length; i++) {
+                this._advanceContext(siblingContexts[i], newState);
+            }
+        } finally {
+            gs.getSession().putClientData(this.SYNC_FLAG, 'false');
+        }
+
+        gs.info(LOG + 'DONE - synced context state ' + newState + ' to ' + siblingContexts.length + ' sibling(s)');
+    },
+
+    // ═══════════════════════════════════════════════════════════════
+    // ACTIVITY ADVANCEMENT
+    // ═══════════════════════════════════════════════════════════════
+
+    /**
+     * Advances a target activity to match the source state.
+     *
+     * For COMPLETE: sets sys_flow_data state AND directly forces activity state.
+     * For SKIPPED/CANCELLED/BYPASSED: forces activity state, then kills backing flow.
+     */
+    _advanceActivity: function(targetActGR, targetState, sourceActGR) {
+        var LOG = 'PlaybookActivitySync._advanceActivity: ';
+        var targetId = targetActGR.getUniqueValue();
+
+        // Parse locals to check if subflow-backed
+        var localsStr = targetActGR.getValue('locals') || '{}';
+        var locals;
+        try {
+            locals = JSON.parse(localsStr);
+        } catch (e) {
+            locals = {};
+        }
+
+        var isSubflowBacked = locals.fdContext && locals.wait_for_completion == 'true';
+        gs.info(LOG + targetId + ' → ' + targetState + ' (subflow-backed: ' + isSubflowBacked + ')');
+
+        if (targetState == 'COMPLETE') {
+            if (isSubflowBacked) {
+                // Complete the sys_flow_data (drives the UI icon + may trigger cascade)
+                this._completeFlowData(targetActGR);
+            }
+            // ALWAYS directly set the activity state as well
+            // Use setWorkflow(true) so the playbook engine BRs fire and advance to next activity
+            this._setActivityState(targetActGR, 'COMPLETE');
+        } else {
+            // SKIPPED / CANCELLED / BYPASSED
+            // Force the activity state first
+            this._setActivityState(targetActGR, targetState);
+            // Then kill the backing flow if subflow-backed
+            if (isSubflowBacked) {
+                this._cancelBackingFlow(locals.fdContext, targetState);
+                this._cancelFlowData(targetActGR, targetState);
+            }
+        }
+    },
+
+    /**
+     * Sets activity state. Uses setWorkflow(false) to prevent OUR BR from
+     * re-firing (SYNC_FLAG handles this too, but belt-and-suspenders).
+     * The playbook engine has its own mechanisms to detect state changes.
+     */
+    _setActivityState: function(actGR, state) {
+        var LOG = 'PlaybookActivitySync._setActivityState: ';
+        var actId = actGR.getUniqueValue();
+        var currentState = actGR.getValue('state');
+
+        if (currentState == state) {
+            gs.info(LOG + actId + ' already in state ' + state);
+            return;
+        }
+
+        // Re-read to avoid stale record issues
+        var gr = new GlideRecord('sys_pd_activity_context');
+        if (!gr.get(actId)) {
+            gs.info(LOG + 'ERROR - could not re-read activity ' + actId);
+            return;
+        }
+
+        if (gr.getValue('state') == state) {
+            gs.info(LOG + actId + ' already in state ' + state + ' (on re-read)');
+            return;
+        }
+
+        gr.setWorkflow(false);
+        gr.autoSysFields(false);
+        gr.setValue('state', state);
+        var result = gr.update();
+        gs.info(LOG + actId + ' → ' + state + ' (update result: ' + result + ')');
+    },
+
+    /**
+     * Completes the sys_flow_data record backing a manual activity.
+     * This updates the UI icon and may trigger the flow cascade.
+     */
+    _completeFlowData: function(actGR) {
+        var LOG = 'PlaybookActivitySync._completeFlowData: ';
+
+        var flowDataId = this._getFlowDataId(actGR);
+        if (!flowDataId) {
+            gs.info(LOG + 'no experience_status_record found');
+            return;
+        }
+
+        var fdGR = new GlideRecord('sys_flow_data');
+        if (!fdGR.get(flowDataId)) {
+            gs.info(LOG + 'sys_flow_data not found: ' + flowDataId);
+            return;
+        }
+
+        var currentState = fdGR.getValue('state');
+        if (currentState == 'COMPLETE') {
+            gs.info(LOG + flowDataId + ' already COMPLETE');
+            return;
+        }
+
+        fdGR.setValue('state', 'COMPLETE');
+        var result = fdGR.update();
+        gs.info(LOG + flowDataId + ' → COMPLETE (was: ' + currentState + ', result: ' + result + ')');
+    },
+
+    /**
+     * Cancels/skips the sys_flow_data for non-COMPLETE states.
+     */
+    _cancelFlowData: function(actGR, targetState) {
+        var LOG = 'PlaybookActivitySync._cancelFlowData: ';
+
+        var flowDataId = this._getFlowDataId(actGR);
+        if (!flowDataId) return;
+
+        var fdGR = new GlideRecord('sys_flow_data');
+        if (!fdGR.get(flowDataId)) return;
+
+        if (fdGR.getValue('state') == 'COMPLETE' || fdGR.getValue('state') == 'CANCELLED') return;
+
+        fdGR.setValue('state', 'CANCELLED');
+        fdGR.update();
+        gs.info(LOG + flowDataId + ' → CANCELLED (for activity ' + targetState + ')');
+    },
+
+    /**
+     * Cancels the backing flow context for a skipped/cancelled activity.
+     */
+    _cancelBackingFlow: function(fdContextId, reason) {
+        var LOG = 'PlaybookActivitySync._cancelBackingFlow: ';
+
+        if (!fdContextId) return;
+
+        var fcGR = new GlideRecord('sys_flow_context');
+        if (!fcGR.get(fdContextId)) {
+            gs.info(LOG + 'flow_context not found: ' + fdContextId);
+            return;
+        }
+
+        var currentState = fcGR.getValue('state');
+        if (currentState == 'COMPLETE' || currentState == 'CANCELLED') {
+            gs.info(LOG + 'flow_context already terminal (' + currentState + ')');
+            return;
+        }
+
+        fcGR.setWorkflow(false);
+        fcGR.autoSysFields(false);
+        fcGR.setValue('state', 'CANCELLED');
+        fcGR.update();
+        gs.info(LOG + 'cancelled flow_context ' + fdContextId + ' (reason: ' + reason + ')');
+    },
+
+    // ═══════════════════════════════════════════════════════════════
+    // CONTEXT RESOLUTION (for context-level sync)
+    // ═══════════════════════════════════════════════════════════════
+
     CASE_TABLES: [
         'x_gegis_ins_policy_clearance_case',
         'x_gegis_ins_policy_risk_case',
@@ -27,19 +303,11 @@ PlaybookActivitySync.prototype = {
         'x_gegis_ins_policy_renewal_case'
     ],
 
-    LAUNCH_NESTED_ACTIVITY_TYPE: '5b1d8d30ff36b210d27dffffffffffc4',
-
-    initialize: function() {},
-
-    // ═══════════════════════════════════════════════════════════════
-    // CASE RESOLUTION — determines the case from ANY context type
-    // ═══════════════════════════════════════════════════════════════
-
-    _resolveCase: function(contextGR) {
+    _resolveCaseFromContext: function(contextGR) {
         var inputTable = contextGR.getValue('input_table');
         var inputRecord = contextGR.getValue('input_record');
 
-        // Direct: input IS on a case table (Case Standard or manual standalone)
+        // Direct: input IS on a case table
         if (this.CASE_TABLES.indexOf(inputTable) > -1 && inputRecord) {
             return { table: inputTable, id: inputRecord };
         }
@@ -75,7 +343,7 @@ PlaybookActivitySync.prototype = {
 
                 var refTable = variable.definition.reference;
                 if (this.CASE_TABLES.indexOf(refTable) > -1 && variable.value) {
-                    gs.info(LOG + 'found case via input "' + key + '": table=' + refTable + ', id=' + variable.value);
+                    gs.info(LOG + 'found case: ' + refTable + ':' + variable.value);
                     return { table: refTable, id: variable.value };
                 }
             }
@@ -83,230 +351,71 @@ PlaybookActivitySync.prototype = {
             gs.info(LOG + 'parse error: ' + e.getMessage());
         }
 
-        // If parent is also nested, trace up the chain
+        // Trace up the chain
         var parentCtxId = actGR.getValue('context');
         if (parentCtxId) {
             var parentCtxGR = new GlideRecord('sys_pd_context');
             if (parentCtxGR.get(parentCtxId)) {
-                return this._resolveCase(parentCtxGR);
+                return this._resolveCaseFromContext(parentCtxGR);
             }
         }
 
         return null;
     },
 
-    // ═══════════════════════════════════════════════════════════════
-    // CONTEXT DISCOVERY — finds all related contexts for a case
-    // ═══════════════════════════════════════════════════════════════
+    /**
+     * Finds sibling contexts: same process_definition, associated with same case,
+     * still in active state.
+     */
+    _findSiblingContexts: function(processDefId, caseInfo, excludeContextId) {
+        var LOG = 'PlaybookActivitySync._findSiblingContexts: ';
+        var siblings = [];
 
-    _findRelatedContexts: function(caseTable, caseId, excludeContextId) {
-        var LOG = 'PlaybookActivitySync._findRelatedContexts: ';
-        var contexts = [];
-
-        // 1. Direct contexts on the case record (Case Standard / manual standalone)
-        var ctxGR = new GlideRecord('sys_pd_context');
-        ctxGR.addQuery('input_table', caseTable);
-        ctxGR.addQuery('input_record', caseId);
-        ctxGR.addQuery('state', 'IN_PROGRESS');
-        ctxGR.addQuery('sys_id', '!=', excludeContextId);
-        ctxGR.query();
-
-        while (ctxGR.next()) {
-            contexts.push(ctxGR.getUniqueValue());
-        }
-        gs.info(LOG + 'direct contexts: ' + contexts.length);
-
-        // 2. Nested contexts launched with this case
+        // Strategy: find activities associated with this case in contexts
+        // running the same process definition
         var actGR = new GlideRecord('sys_pd_activity_context');
-        actGR.addQuery('state', 'IN_PROGRESS');
-        actGR.addQuery('activity_type', this.LAUNCH_NESTED_ACTIVITY_TYPE);
-        actGR.addQuery('inputs', 'CONTAINS', caseId);
+        actGR.addQuery('associated_record', caseInfo.id);
+        actGR.addQuery('context', '!=', excludeContextId);
         actGR.query();
 
         while (actGR.next()) {
-            var localsStr = actGR.getValue('locals') || '{}';
-            try {
-                var locals = JSON.parse(localsStr);
-                var nestedCtxId = locals.launch_nested_process_context_id;
-                if (nestedCtxId && nestedCtxId != excludeContextId && contexts.indexOf(nestedCtxId) == -1) {
-                    var verifyGR = new GlideRecord('sys_pd_context');
-                    if (verifyGR.get(nestedCtxId) && verifyGR.getValue('state') == 'IN_PROGRESS') {
-                        contexts.push(nestedCtxId);
-                    }
+            var ctxId = actGR.getValue('context');
+            if (siblings.indexOf(ctxId) > -1) continue;
+
+            // Verify context is active and same playbook
+            var ctxGR = new GlideRecord('sys_pd_context');
+            if (ctxGR.get(ctxId)) {
+                if (ctxGR.getValue('state') == 'IN_PROGRESS' &&
+                    ctxGR.getValue('process_definition') == processDefId) {
+                    siblings.push(ctxId);
                 }
-            } catch (e) { /* skip */ }
+            }
         }
 
-        gs.info(LOG + 'total: ' + contexts.length + ' for case ' + caseTable + ':' + caseId);
-        return contexts;
+        gs.info(LOG + 'found ' + siblings.length + ' siblings for case ' + caseInfo.id);
+        return siblings;
     },
 
-    // ═══════════════════════════════════════════════════════════════
-    // SYNC ENTRY POINTS
-    // ═══════════════════════════════════════════════════════════════
-
-    syncActivity: function(activityContextGR) {
-        var LOG = 'PlaybookActivitySync.syncActivity: ';
-
-        if (gs.getSession().getClientData(this.SYNC_FLAG) == 'true') return;
-
-        var newState = activityContextGR.getValue('state');
-        var contextId = activityContextGR.getValue('context');
-        var actName = activityContextGR.getValue('name') || '';
-
-        gs.info(LOG + 'ENTER - activity: ' + actName + ', state: ' + newState + ', contextId: ' + contextId);
-
-        // Skip system/stage activities
-        if (!contextId || actName == '$start' || actName == '$end') return;
-        if (actName.indexOf('$') > -1) return;
+    _advanceContext: function(targetContextId, targetState) {
+        var LOG = 'PlaybookActivitySync._advanceContext: ';
 
         var ctxGR = new GlideRecord('sys_pd_context');
-        if (!ctxGR.get(contextId)) {
-            gs.info(LOG + 'EXIT - context not found');
-            return;
-        }
+        if (!ctxGR.get(targetContextId)) return;
+        if (ctxGR.getValue('state') == targetState) return;
 
-        var caseInfo = this._resolveCase(ctxGR);
-        if (!caseInfo) {
-            gs.info(LOG + 'EXIT - could not resolve case (input_table: ' + ctxGR.getValue('input_table') + ')');
-            return;
-        }
-
-        gs.info(LOG + 'case: ' + caseInfo.table + ':' + caseInfo.id);
-
-        var targets = this._findRelatedContexts(caseInfo.table, caseInfo.id, contextId);
-        if (targets.length === 0) {
-            gs.info(LOG + 'EXIT - no related contexts');
-            return;
-        }
-
-        gs.getSession().putClientData(this.SYNC_FLAG, 'true');
-        try {
-            for (var i = 0; i < targets.length; i++) {
-                this._advanceActivityByName(targets[i], actName, newState, activityContextGR);
-            }
-        } finally {
-            gs.getSession().putClientData(this.SYNC_FLAG, 'false');
-        }
-
-        gs.info(LOG + 'DONE - synced "' + actName + '" to ' + targets.length + ' context(s)');
-    },
-
-    syncContextState: function(contextGR) {
-        var LOG = 'PlaybookActivitySync.syncContextState: ';
-
-        if (gs.getSession().getClientData(this.SYNC_FLAG) == 'true') return;
-
-        var newState = contextGR.getValue('state');
-        var contextId = contextGR.getUniqueValue();
-
-        var caseInfo = this._resolveCase(contextGR);
-        if (!caseInfo) return;
-
-        var targets = this._findRelatedContexts(caseInfo.table, caseInfo.id, contextId);
-        if (targets.length === 0) return;
-
-        gs.getSession().putClientData(this.SYNC_FLAG, 'true');
-        try {
-            for (var i = 0; i < targets.length; i++) {
-                this._advanceContext(targets[i], newState);
-            }
-        } finally {
-            gs.getSession().putClientData(this.SYNC_FLAG, 'false');
-        }
-
-        gs.info(LOG + 'synced ' + newState + ' to ' + targets.length + ' context(s) for case ' + caseInfo.id);
+        ctxGR.setWorkflow(false);
+        ctxGR.autoSysFields(false);
+        ctxGR.setValue('state', targetState);
+        ctxGR.update();
+        gs.info(LOG + targetContextId + ' → ' + targetState);
     },
 
     // ═══════════════════════════════════════════════════════════════
-    // ACTIVITY ADVANCEMENT — the key fix: complete via sys_flow_data
+    // UTILITIES
     // ═══════════════════════════════════════════════════════════════
-
-    /**
-     * Advances a matching activity in the target context.
-     * Manual activities are backed by a subflow (playbook_manual_activity_flow)
-     * that waits on a sys_flow_data record. Setting flow_data.state=COMPLETE
-     * triggers the flow engine cascade: flow resumes → flow completes → activity completes.
-     */
-    _advanceActivityByName: function(targetContextId, actName, targetState, sourceActGR) {
-        var LOG = 'PlaybookActivitySync._advanceActivityByName: ';
-
-        var actGR = new GlideRecord('sys_pd_activity_context');
-        actGR.addQuery('context', targetContextId);
-        actGR.addQuery('name', actName);
-        actGR.addQuery('state', 'NOT IN', 'COMPLETE,CANCELLED,SKIPPED,BYPASSED');
-        actGR.setLimit(1);
-        actGR.query();
-
-        if (!actGR.next()) {
-            gs.info(LOG + 'no matching activity "' + actName + '" in ctx ' + targetContextId);
-            return;
-        }
-
-        var targetActId = actGR.getUniqueValue();
-        gs.info(LOG + targetActId + ' (' + actName + ') → ' + targetState);
-
-        // Check if activity is backed by a subflow (manual activity pattern)
-        var localsStr = actGR.getValue('locals') || '{}';
-        var locals;
-        try {
-            locals = JSON.parse(localsStr);
-        } catch (e) {
-            locals = {};
-        }
-
-        if (locals.fdContext && locals.wait_for_completion == 'true') {
-            // SUBFLOW-BACKED ACTIVITY: complete via sys_flow_data
-            gs.info(LOG + 'subflow-backed activity, using sys_flow_data approach');
-            this._completeViaFlowData(actGR, targetState);
-        } else {
-            // NON-SUBFLOW ACTIVITY: direct state update (for simple/automated activities)
-            gs.info(LOG + 'non-subflow activity, direct update');
-            this._directUpdate(targetActId, targetState, sourceActGR);
-        }
-    },
-
-    /**
-     * Completes a manual activity by updating its backing sys_flow_data record.
-     * This is EXACTLY what the user does when clicking "Mark Complete" in the UI.
-     * The cascade: flow_data.state=COMPLETE → flow resumes → flow completes → activity completes.
-     */
-    _completeViaFlowData: function(actGR, targetState) {
-        var LOG = 'PlaybookActivitySync._completeViaFlowData: ';
-
-        if (targetState != 'COMPLETE') {
-            gs.info(LOG + 'only COMPLETE is supported via flow_data (got: ' + targetState + ')');
-            return;
-        }
-
-        // Extract sys_flow_data sys_id from experience_properties
-        var flowDataId = this._getFlowDataId(actGR);
-        if (!flowDataId) {
-            gs.info(LOG + 'no experience_status_record found, trying fdContext approach');
-            this._completeViaFlowContext(actGR);
-            return;
-        }
-
-        var flowDataGR = new GlideRecord('sys_flow_data');
-        if (!flowDataGR.get(flowDataId)) {
-            gs.info(LOG + 'sys_flow_data record not found: ' + flowDataId);
-            return;
-        }
-
-        if (flowDataGR.getValue('state') == 'COMPLETE') {
-            gs.info(LOG + 'sys_flow_data already COMPLETE: ' + flowDataId);
-            return;
-        }
-
-        flowDataGR.setValue('state', 'COMPLETE');
-        flowDataGR.update();
-        gs.info(LOG + 'SUCCESS - set sys_flow_data ' + flowDataId + ' to COMPLETE (cascade will complete activity)');
-    },
 
     /**
      * Extracts the sys_flow_data record ID from activity's experience_properties.
-     * experience_properties is a JSON array with items like:
-     *   { name: "experience_status_record", value: "abc123...", elementReference: "sys_flow_data" }
      */
     _getFlowDataId: function(actGR) {
         var expPropsStr = actGR.getValue('experience_properties');
@@ -320,66 +429,10 @@ PlaybookActivitySync.prototype = {
                 }
             }
         } catch (e) {
-            gs.info('PlaybookActivitySync._getFlowDataId: parse error: ' + e.getMessage());
+            gs.info('PlaybookActivitySync._getFlowDataId: parse error');
         }
 
         return null;
-    },
-
-    /**
-     * Fallback: complete via flow context if sys_flow_data not found.
-     * Uses sn_fd.FlowAPI to cancel/complete the waiting flow.
-     */
-    _completeViaFlowContext: function(actGR) {
-        var LOG = 'PlaybookActivitySync._completeViaFlowContext: ';
-
-        var localsStr = actGR.getValue('locals') || '{}';
-        try {
-            var locals = JSON.parse(localsStr);
-            var fdContextId = locals.fdContext;
-            if (!fdContextId) return;
-
-            // Try to cancel the waiting flow context (which completes the activity)
-            var fcGR = new GlideRecord('sys_flow_context');
-            if (fcGR.get(fdContextId) && fcGR.getValue('state') == 'WAITING') {
-                fcGR.setValue('state', 'COMPLETE');
-                fcGR.update();
-                gs.info(LOG + 'completed flow_context: ' + fdContextId);
-            }
-        } catch (e) {
-            gs.info(LOG + 'error: ' + e.getMessage());
-        }
-    },
-
-    /**
-     * Direct state update for non-subflow activities (automated/simple).
-     */
-    _directUpdate: function(activityContextId, targetState, sourceActGR) {
-        var LOG = 'PlaybookActivitySync._directUpdate: ';
-
-        var gr = new GlideRecord('sys_pd_activity_context');
-        if (!gr.get(activityContextId)) return;
-
-        gr.autoSysFields(false);
-        gr.setValue('state', targetState);
-        if (targetState == 'COMPLETE' && sourceActGR) {
-            var outputs = sourceActGR.getValue('outputs');
-            if (outputs) gr.setValue('outputs', outputs);
-        }
-        gr.update();
-        gs.info(LOG + activityContextId + ' → ' + targetState);
-    },
-
-    _advanceContext: function(targetContextId, targetState) {
-        var ctxGR = new GlideRecord('sys_pd_context');
-        if (!ctxGR.get(targetContextId)) return;
-        if (ctxGR.getValue('state') == targetState) return;
-
-        ctxGR.setWorkflow(false);
-        ctxGR.autoSysFields(false);
-        ctxGR.setValue('state', targetState);
-        ctxGR.update();
-        gs.info('PlaybookActivitySync._advanceContext: ' + targetContextId + ' → ' + targetState);
     }
 };
 ]]></script>
