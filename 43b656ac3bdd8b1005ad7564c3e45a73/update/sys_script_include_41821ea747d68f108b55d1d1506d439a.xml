@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.PlaybookDataRetriever</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>PlaybookDataRetriever</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var PlaybookDataRetriever = Class.create();
+PlaybookDataRetriever.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+
+    type: 'PlaybookDataRetriever',
+
+    /**
+     * Main method - returns full playbook execution tree for a record
+     * @param {string} tableName - e.g. 'sys_user'
+     * @param {string} recordId - sys_id of the record
+     * @param {boolean} excludeSystemActivities - if true, filters out $start and $end
+     * @returns {object} Full playbook structure
+     */
+    getPlaybookData: function(tableName, recordId, excludeSystemActivities) {
+        if (!tableName || !recordId) {
+            return {
+                error: 'tableName and recordId are required'
+            };
+        }
+
+        var result = {
+            record: {
+                table: tableName,
+                sys_id: recordId
+            },
+            playbooks: []
+        };
+
+        var ctxGR = new GlideRecord('sys_pd_context');
+        if (!ctxGR.isValid()) return {
+            error: 'sys_pd_context table not found'
+        };
+
+        ctxGR.addQuery('input_table', tableName);
+        ctxGR.addQuery('input_record', recordId);
+        ctxGR.addNullQuery('parent_activity_context');
+        ctxGR.orderByDesc('sys_created_on');
+        ctxGR.query();
+
+        while (ctxGR.next()) {
+            var pb = this._buildPlaybookNode(ctxGR, 0, excludeSystemActivities);
+            if (pb) result.playbooks.push(pb);
+        }
+
+        return result;
+    },
+
+    _buildPlaybookNode: function(ctxGR, depth, excludeSystemActivities) {
+        if (depth > 10) return null;
+
+        var contextId = ctxGR.getUniqueValue();
+        var defName = '';
+        var defId = '';
+
+        if (!ctxGR.process_definition.nil()) {
+            defId = ctxGR.getValue('process_definition');
+            var defGR = new GlideRecord('sys_pd_process_definition');
+            if (defGR.isValid() && defGR.get(defId)) {
+                defName = defGR.getValue('label') || defGR.getValue('name') || '';
+            }
+        }
+
+        var playbook = {
+            sys_id: contextId,
+            name: ctxGR.getValue('name') || ctxGR.getValue('label') || defName || 'Unknown',
+            process_definition: defId,
+            state: ctxGR.getValue('state') || 'unknown',
+            created_on: ctxGR.getValue('sys_created_on') || '',
+            lanes: [],
+            nested_depth: depth
+        };
+
+        playbook.lanes = this._getLanes(contextId, depth, excludeSystemActivities);
+        return playbook;
+    },
+
+    _getLanes: function(contextId, depth, excludeSystemActivities) {
+        var lanes = [];
+        var laneGR = new GlideRecord('sys_pd_lane_context');
+        if (!laneGR.isValid()) return lanes;
+
+        laneGR.addQuery('context', contextId);
+        laneGR.orderBy('order');
+        laneGR.query();
+
+        while (laneGR.next()) {
+            var lane = {
+                sys_id: laneGR.getUniqueValue(),
+                name: laneGR.getValue('label') || laneGR.getValue('name') || 'Unnamed Lane',
+                order: parseInt(laneGR.getValue('order') || '0', 10),
+                state: laneGR.getValue('state') || 'unknown',
+                activities: []
+            };
+
+            lane.activities = this._getActivities(contextId, laneGR.getUniqueValue(), depth, excludeSystemActivities);
+            lanes.push(lane);
+        }
+
+        return lanes;
+    },
+
+    _getActivities: function(contextId, laneContextId, depth, excludeSystemActivities) {
+        var activities = [];
+        var actGR = new GlideRecord('sys_pd_activity_context');
+        if (!actGR.isValid()) return activities;
+
+        actGR.addQuery('context', contextId);
+        actGR.addQuery('lane_context', laneContextId);
+        actGR.orderBy('order'); // Fallback order; will override with design-time order
+        actGR.query();
+
+        var rawActivities = [];
+
+        while (actGR.next()) {
+            var actName = actGR.getValue('name') || '';
+            // --- FLAG: Exclude $start and $end ---
+            if (excludeSystemActivities && (actName.includes('$start') || actName.includes('$end'))) {
+                continue;
+            }
+
+            // --- INTERACTIVE CHECK: activity_type = "UI Layout" field ---
+            var isInteractive = !actGR.activity_type.nil();
+
+            // --- DESIGN-TIME ORDER from sys_pd_activity ---
+            var designOrder = parseInt(actGR.getValue('order') || '0', 10); // fallback
+            if (!actGR.activity.nil()) {
+                var actDefGR = actGR.activity.getRefRecord();
+                if (actDefGR && actDefGR.isValidRecord()) {
+                    designOrder = parseInt(actDefGR.getValue('order') || '0', 10);
+                }
+            }
+
+            var act = {
+                sys_id: actGR.getUniqueValue(),
+                name: actGR.getValue('label') || actName || 'Unnamed Activity',
+                internal_name: actName,
+                order: designOrder,
+                state: actGR.getValue('state') || 'unknown',
+                activity_definition: actGR.getValue('activity_definition') || '',
+                interaction_type: isInteractive ? 'Interactive' : 'Non-Interactive',
+                nested_playbook: null
+            };
+
+            // --- NESTED PLAYBOOK CHECK ---
+            var nestedGR = new GlideRecord('sys_pd_context');
+            if (nestedGR.isValid()) {
+                nestedGR.addQuery('parent_activity_context', actGR.getUniqueValue());
+                nestedGR.setLimit(1);
+                nestedGR.query();
+                if (nestedGR.next()) {
+                    act.nested_playbook = this._buildPlaybookNode(nestedGR, depth + 1, excludeSystemActivities);
+                }
+            }
+
+            rawActivities.push(act);
+        }
+
+        // --- SORT BY DESIGN-TIME ORDER (sys_pd_activity.order) ---
+        rawActivities.sort(function(a, b) {
+            return a.order - b.order;
+        });
+
+        return rawActivities;
+    },
+
+    /**
+     * GlideAjax entry point
+     */
+    getPlaybookDataAjax: function() {
+        var tableName = this.getParameter('sysparm_table');
+        var recordId = this.getParameter('sysparm_record_id');
+        var exclude = this.getParameter('sysparm_exclude_system') == 'true';
+        var data = this.getPlaybookData(tableName, recordId, exclude);
+        return JSON.stringify(data);
+    }
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-31 17:12:50</sys_created_on>
+        <sys_id>41821ea747d68f108b55d1d1506d439a</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>PlaybookDataRetriever</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_41821ea747d68f108b55d1d1506d439a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-31 17:13:43</sys_updated_on>
+    </sys_script_include>
+</record_update>
