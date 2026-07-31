@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.PlaybookActivitySync</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>PlaybookActivitySync</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var PlaybookActivitySync = Class.create();
+PlaybookActivitySync.prototype = {
+
+    type: 'PlaybookActivitySync',
+    SYNC_FLAG: 'x_gegis_playbook_syncing',
+
+    /**
+     * Case tables in this app. Each extends task and has a 'submission' reference.
+     * This is SCHEMA (stable) — not playbook IDs that change on republish.
+     */
+    CASE_TABLES: [
+        'x_gegis_ins_policy_clearance_case',
+        'x_gegis_ins_policy_risk_case',
+        'x_gegis_ins_policy_exposure_case',
+        'x_gegis_ins_policy_quote_and_bind_case',
+        'x_gegis_ins_policy_renewal_case'
+    ],
+
+    LAUNCH_NESTED_ACTIVITY_TYPE: '5b1d8d30ff36b210d27dffffffffffc4',
+
+    initialize: function() {},
+
+    // ═══════════════════════════════════════════════════════════════
+    // CASE RESOLUTION — determines the case from ANY context type
+    // ═══════════════════════════════════════════════════════════════
+
+    _resolveCase: function(contextGR) {
+        var inputTable = contextGR.getValue('input_table');
+        var inputRecord = contextGR.getValue('input_record');
+
+        // Direct: input IS on a case table (Case Standard or manual standalone)
+        if (this.CASE_TABLES.indexOf(inputTable) > -1 && inputRecord) {
+            return { table: inputTable, id: inputRecord };
+        }
+
+        // Nested: trace parent activity's playbook_inputs
+        var parentActId = contextGR.getValue('parent_activity_context');
+        if (parentActId) {
+            return this._resolveCaseFromParentActivity(parentActId);
+        }
+
+        return null;
+    },
+
+    _resolveCaseFromParentActivity: function(parentActId) {
+        var LOG = 'PlaybookActivitySync._resolveCaseFromParentActivity: ';
+
+        var actGR = new GlideRecord('sys_pd_activity_context');
+        if (!actGR.get(parentActId)) return null;
+
+        var inputsStr = actGR.getValue('inputs');
+        if (!inputsStr) return null;
+
+        try {
+            var inputs = JSON.parse(inputsStr);
+            if (!inputs.playbook_inputs || !inputs.playbook_inputs.value) return null;
+
+            var pbInputs = JSON.parse(inputs.playbook_inputs.value);
+
+            for (var key in pbInputs) {
+                if (key == 'uiModel' || key == 'parent_record') continue;
+                var variable = pbInputs[key];
+                if (!variable || !variable.definition || !variable.definition.reference) continue;
+
+                var refTable = variable.definition.reference;
+                if (this.CASE_TABLES.indexOf(refTable) > -1 && variable.value) {
+                    gs.info(LOG + 'found case via input "' + key + '": table=' + refTable + ', id=' + variable.value);
+                    return { table: refTable, id: variable.value };
+                }
+            }
+        } catch (e) {
+            gs.info(LOG + 'parse error: ' + e.getMessage());
+        }
+
+        // If parent is also nested, trace up the chain
+        var parentCtxId = actGR.getValue('context');
+        if (parentCtxId) {
+            var parentCtxGR = new GlideRecord('sys_pd_context');
+            if (parentCtxGR.get(parentCtxId)) {
+                return this._resolveCase(parentCtxGR);
+            }
+        }
+
+        return null;
+    },
+
+    // ═══════════════════════════════════════════════════════════════
+    // CONTEXT DISCOVERY — finds all related contexts for a case
+    // ═══════════════════════════════════════════════════════════════
+
+    _findRelatedContexts: function(caseTable, caseId, excludeContextId) {
+        var LOG = 'PlaybookActivitySync._findRelatedContexts: ';
+        var contexts = [];
+
+        // 1. Direct contexts on the case record (Case Standard / manual standalone)
+        var ctxGR = new GlideRecord('sys_pd_context');
+        ctxGR.addQuery('input_table', caseTable);
+        ctxGR.addQuery('input_record', caseId);
+        ctxGR.addQuery('state', 'IN_PROGRESS');
+        ctxGR.addQuery('sys_id', '!=', excludeContextId);
+        ctxGR.query();
+
+        while (ctxGR.next()) {
+            contexts.push(ctxGR.getUniqueValue());
+        }
+        gs.info(LOG + 'direct contexts: ' + contexts.length);
+
+        // 2. Nested contexts launched with this case
+        var actGR = new GlideRecord('sys_pd_activity_context');
+        actGR.addQuery('state', 'IN_PROGRESS');
+        actGR.addQuery('activity_type', this.LAUNCH_NESTED_ACTIVITY_TYPE);
+        actGR.addQuery('inputs', 'CONTAINS', caseId);
+        actGR.query();
+
+        while (actGR.next()) {
+            var localsStr = actGR.getValue('locals') || '{}';
+            try {
+                var locals = JSON.parse(localsStr);
+                var nestedCtxId = locals.launch_nested_process_context_id;
+                if (nestedCtxId && nestedCtxId != excludeContextId && contexts.indexOf(nestedCtxId) == -1) {
+                    var verifyGR = new GlideRecord('sys_pd_context');
+                    if (verifyGR.get(nestedCtxId) && verifyGR.getValue('state') == 'IN_PROGRESS') {
+                        contexts.push(nestedCtxId);
+                    }
+                }
+            } catch (e) { /* skip */ }
+        }
+
+        gs.info(LOG + 'total: ' + contexts.length + ' for case ' + caseTable + ':' + caseId);
+        return contexts;
+    },
+
+    // ═══════════════════════════════════════════════════════════════
+    // SYNC ENTRY POINTS
+    // ═══════════════════════════════════════════════════════════════
+
+    syncActivity: function(activityContextGR) {
+        var LOG = 'PlaybookActivitySync.syncActivity: ';
+
+        if (gs.getSession().getClientData(this.SYNC_FLAG) == 'true') return;
+
+        var newState = activityContextGR.getValue('state');
+        var contextId = activityContextGR.getValue('context');
+        var actName = activityContextGR.getValue('name') || '';
+
+        gs.info(LOG + 'ENTER - activity: ' + actName + ', state: ' + newState + ', contextId: ' + contextId);
+
+        // Skip system/stage activities
+        if (!contextId || actName == '$start' || actName == '$end') return;
+        if (actName.indexOf('$') > -1) return;
+
+        var ctxGR = new GlideRecord('sys_pd_context');
+        if (!ctxGR.get(contextId)) {
+            gs.info(LOG + 'EXIT - context not found');
+            return;
+        }
+
+        var caseInfo = this._resolveCase(ctxGR);
+        if (!caseInfo) {
+            gs.info(LOG + 'EXIT - could not resolve case (input_table: ' + ctxGR.getValue('input_table') + ')');
+            return;
+        }
+
+        gs.info(LOG + 'case: ' + caseInfo.table + ':' + caseInfo.id);
+
+        var targets = this._findRelatedContexts(caseInfo.table, caseInfo.id, contextId);
+        if (targets.length === 0) {
+            gs.info(LOG + 'EXIT - no related contexts');
+            return;
+        }
+
+        gs.getSession().putClientData(this.SYNC_FLAG, 'true');
+        try {
+            for (var i = 0; i < targets.length; i++) {
+                this._advanceActivityByName(targets[i], actName, newState, activityContextGR);
+            }
+        } finally {
+            gs.getSession().putClientData(this.SYNC_FLAG, 'false');
+        }
+
+        gs.info(LOG + 'DONE - synced "' + actName + '" to ' + targets.length + ' context(s)');
+    },
+
+    syncContextState: function(contextGR) {
+        var LOG = 'PlaybookActivitySync.syncContextState: ';
+
+        if (gs.getSession().getClientData(this.SYNC_FLAG) == 'true') return;
+
+        var newState = contextGR.getValue('state');
+        var contextId = contextGR.getUniqueValue();
+
+        var caseInfo = this._resolveCase(contextGR);
+        if (!caseInfo) return;
+
+        var targets = this._findRelatedContexts(caseInfo.table, caseInfo.id, contextId);
+        if (targets.length === 0) return;
+
+        gs.getSession().putClientData(this.SYNC_FLAG, 'true');
+        try {
+            for (var i = 0; i < targets.length; i++) {
+                this._advanceContext(targets[i], newState);
+            }
+        } finally {
+            gs.getSession().putClientData(this.SYNC_FLAG, 'false');
+        }
+
+        gs.info(LOG + 'synced ' + newState + ' to ' + targets.length + ' context(s) for case ' + caseInfo.id);
+    },
+
+    // ═══════════════════════════════════════════════════════════════
+    // ACTIVITY ADVANCEMENT — the key fix: complete via sys_flow_data
+    // ═══════════════════════════════════════════════════════════════
+
+    /**
+     * Advances a matching activity in the target context.
+     * Manual activities are backed by a subflow (playbook_manual_activity_flow)
+     * that waits on a sys_flow_data record. Setting flow_data.state=COMPLETE
+     * triggers the flow engine cascade: flow resumes → flow completes → activity completes.
+     */
+    _advanceActivityByName: function(targetContextId, actName, targetState, sourceActGR) {
+        var LOG = 'PlaybookActivitySync._advanceActivityByName: ';
+
+        var actGR = new GlideRecord('sys_pd_activity_context');
+        actGR.addQuery('context', targetContextId);
+        actGR.addQuery('name', actName);
+        actGR.addQuery('state', 'NOT IN', 'COMPLETE,CANCELLED,SKIPPED,BYPASSED');
+        actGR.setLimit(1);
+        actGR.query();
+
+        if (!actGR.next()) {
+            gs.info(LOG + 'no matching activity "' + actName + '" in ctx ' + targetContextId);
+            return;
+        }
+
+        var targetActId = actGR.getUniqueValue();
+        gs.info(LOG + targetActId + ' (' + actName + ') → ' + targetState);
+
+        // Check if activity is backed by a subflow (manual activity pattern)
+        var localsStr = actGR.getValue('locals') || '{}';
+        var locals;
+        try {
+            locals = JSON.parse(localsStr);
+        } catch (e) {
+            locals = {};
+        }
+
+        if (locals.fdContext && locals.wait_for_completion == 'true') {
+            // SUBFLOW-BACKED ACTIVITY: complete via sys_flow_data
+            gs.info(LOG + 'subflow-backed activity, using sys_flow_data approach');
+            this._completeViaFlowData(actGR, targetState);
+        } else {
+            // NON-SUBFLOW ACTIVITY: direct state update (for simple/automated activities)
+            gs.info(LOG + 'non-subflow activity, direct update');
+            this._directUpdate(targetActId, targetState, sourceActGR);
+        }
+    },
+
+    /**
+     * Completes a manual activity by updating its backing sys_flow_data record.
+     * This is EXACTLY what the user does when clicking "Mark Complete" in the UI.
+     * The cascade: flow_data.state=COMPLETE → flow resumes → flow completes → activity completes.
+     */
+    _completeViaFlowData: function(actGR, targetState) {
+        var LOG = 'PlaybookActivitySync._completeViaFlowData: ';
+
+        if (targetState != 'COMPLETE') {
+            gs.info(LOG + 'only COMPLETE is supported via flow_data (got: ' + targetState + ')');
+            return;
+        }
+
+        // Extract sys_flow_data sys_id from experience_properties
+        var flowDataId = this._getFlowDataId(actGR);
+        if (!flowDataId) {
+            gs.info(LOG + 'no experience_status_record found, trying fdContext approach');
+            this._completeViaFlowContext(actGR);
+            return;
+        }
+
+        var flowDataGR = new GlideRecord('sys_flow_data');
+        if (!flowDataGR.get(flowDataId)) {
+            gs.info(LOG + 'sys_flow_data record not found: ' + flowDataId);
+            return;
+        }
+
+        if (flowDataGR.getValue('state') == 'COMPLETE') {
+            gs.info(LOG + 'sys_flow_data already COMPLETE: ' + flowDataId);
+            return;
+        }
+
+        flowDataGR.setValue('state', 'COMPLETE');
+        flowDataGR.update();
+        gs.info(LOG + 'SUCCESS - set sys_flow_data ' + flowDataId + ' to COMPLETE (cascade will complete activity)');
+    },
+
+    /**
+     * Extracts the sys_flow_data record ID from activity's experience_properties.
+     * experience_properties is a JSON array with items like:
+     *   { name: "experience_status_record", value: "abc123...", elementReference: "sys_flow_data" }
+     */
+    _getFlowDataId: function(actGR) {
+        var expPropsStr = actGR.getValue('experience_properties');
+        if (!expPropsStr) return null;
+
+        try {
+            var props = JSON.parse(expPropsStr);
+            for (var i = 0; i < props.length; i++) {
+                if (props[i].name == 'experience_status_record' && props[i].value) {
+                    return props[i].value;
+                }
+            }
+        } catch (e) {
+            gs.info('PlaybookActivitySync._getFlowDataId: parse error: ' + e.getMessage());
+        }
+
+        return null;
+    },
+
+    /**
+     * Fallback: complete via flow context if sys_flow_data not found.
+     * Uses sn_fd.FlowAPI to cancel/complete the waiting flow.
+     */
+    _completeViaFlowContext: function(actGR) {
+        var LOG = 'PlaybookActivitySync._completeViaFlowContext: ';
+
+        var localsStr = actGR.getValue('locals') || '{}';
+        try {
+            var locals = JSON.parse(localsStr);
+            var fdContextId = locals.fdContext;
+            if (!fdContextId) return;
+
+            // Try to cancel the waiting flow context (which completes the activity)
+            var fcGR = new GlideRecord('sys_flow_context');
+            if (fcGR.get(fdContextId) && fcGR.getValue('state') == 'WAITING') {
+                fcGR.setValue('state', 'COMPLETE');
+                fcGR.update();
+                gs.info(LOG + 'completed flow_context: ' + fdContextId);
+            }
+        } catch (e) {
+            gs.info(LOG + 'error: ' + e.getMessage());
+        }
+    },
+
+    /**
+     * Direct state update for non-subflow activities (automated/simple).
+     */
+    _directUpdate: function(activityContextId, targetState, sourceActGR) {
+        var LOG = 'PlaybookActivitySync._directUpdate: ';
+
+        var gr = new GlideRecord('sys_pd_activity_context');
+        if (!gr.get(activityContextId)) return;
+
+        gr.autoSysFields(false);
+        gr.setValue('state', targetState);
+        if (targetState == 'COMPLETE' && sourceActGR) {
+            var outputs = sourceActGR.getValue('outputs');
+            if (outputs) gr.setValue('outputs', outputs);
+        }
+        gr.update();
+        gs.info(LOG + activityContextId + ' → ' + targetState);
+    },
+
+    _advanceContext: function(targetContextId, targetState) {
+        var ctxGR = new GlideRecord('sys_pd_context');
+        if (!ctxGR.get(targetContextId)) return;
+        if (ctxGR.getValue('state') == targetState) return;
+
+        ctxGR.setWorkflow(false);
+        ctxGR.autoSysFields(false);
+        ctxGR.setValue('state', targetState);
+        ctxGR.update();
+        gs.info('PlaybookActivitySync._advanceContext: ' + targetContextId + ' → ' + targetState);
+    }
+};
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-31 16:26:09</sys_created_on>
+        <sys_id>52c7caaf47568f108b55d1d1506d43b2</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>PlaybookActivitySync</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_52c7caaf47568f108b55d1d1506d43b2</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-31 16:27:32</sys_updated_on>
+    </sys_script_include>
+</record_update>
