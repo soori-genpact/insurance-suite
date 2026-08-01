@@ -1,25 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="8119eea1abea0b7532f8f45d5b73700c" label="Submission Party" max_length="40" name="x_gegis_ins_policy_submission_party" type="collection">
-        <element label="Contact Address" max_length="400" name="contact_address" type="string"/>
-        <element label="Is primary" max_length="40" name="is_primary" type="boolean"/>
-        <element label="Organization" mandatory="true" max_length="32" name="organization" reference="f6e981c0e186c16931d2c9bb6c8baeca" type="reference"/>
-        <element label="Parent organization" max_length="32" name="parent_organization" reference="f6e981c0e186c16931d2c9bb6c8baeca" type="reference"/>
-        <element label="Ownership %" max_length="40" name="ownership_percent" type="decimal"/>
         <element label="Sequence" max_length="40" name="sequence" type="integer"/>
-        <element label="Contact name" max_length="200" name="contact_name" type="string"/>
-        <element label="Contact email" max_length="200" name="contact_email" type="string"/>
-        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="06d5cff0333d4f907ef8f499ed5c7b23" type="reference"/>
-        <element label="Relationship to primary" max_length="40" name="relationship_to_primary" type="string"/>
-        <element label="Role" mandatory="true" max_length="40" name="role" type="string"/>
-        <element label="Contact phone" max_length="50" name="contact_phone" type="string"/>
+        <element choice="1" label="Relationship to primary" max_length="40" name="relationship_to_primary" type="string">
+            <choice/>
+        </element>
+        <element label="Interest address" max_length="400" name="interest_address" type="string"/>
+        <element label="Organization" mandatory="true" max_length="32" name="organization" reference="x_gegis_ins_policy_party" type="reference"/>
+        <element label="Contact" max_length="32" name="contact" reference="x_gegis_ins_policy_contact" type="reference"/>
+        <element choice="1" label="Interest type" max_length="40" name="interest_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Certificate Holder" sequence="40" value="certificate_holder"/>
+                <element inactive_on_update="false" label="Lienholder" sequence="30" value="lienholder"/>
+                <element inactive_on_update="false" label="Loss Payee" sequence="20" value="loss_payee"/>
+                <element inactive_on_update="false" label="Mortgagee" sequence="10" value="mortgagee"/>
+                <element inactive_on_update="false" label="Additional Interest" sequence="50" value="additional_interest"/>
+            </choice>
+        </element>
+        <element choice="1" label="Role" mandatory="true" max_length="40" name="role" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Co-Applicant" sequence="20" value="co_applicant"/>
+                <element inactive_on_update="false" label="Broker" sequence="60" value="broker"/>
+                <element inactive_on_update="false" label="Third Party" sequence="90" value="third_party"/>
+                <element inactive_on_update="false" label="Interest Holder" sequence="50" value="interest_holder"/>
+                <element inactive_on_update="false" label="Primary Insured" sequence="10" value="primary_insured"/>
+                <element inactive_on_update="false" label="Premium Payer" sequence="80" value="premium_payer"/>
+                <element inactive_on_update="false" label="Additional Insured" sequence="40" value="additional_insured"/>
+                <element inactive_on_update="false" label="Producer" sequence="70" value="producer"/>
+                <element inactive_on_update="false" label="Secondary Insured" sequence="30" value="secondary_insured"/>
+            </choice>
+        </element>
+        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element label="Submission line" max_length="32" name="submission_line" reference="x_gegis_ins_policy_submission_line" type="reference"/>
+        <element label="Ownership %" max_length="40" name="ownership_percent" type="decimal"/>
+        <element label="Loan number" max_length="100" name="loan_number" type="string"/>
+        <element choice="3" default="manual" label="Source" max_length="40" name="source" type="string">
+            <choice/>
+        </element>
         <index name="index">
-            <element name="organization"/>
+            <element name="contact"/>
         </index>
         <index name="index2">
-            <element name="parent_organization"/>
+            <element name="organization"/>
         </index>
         <index name="index3">
             <element name="submission"/>
+        </index>
+        <index name="index4">
+            <element name="submission_line"/>
         </index>
     </element>
 </database>
