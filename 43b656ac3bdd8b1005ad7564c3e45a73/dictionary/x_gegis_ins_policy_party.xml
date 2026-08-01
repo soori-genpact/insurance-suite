@@ -1,20 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="f6e981c0e186c16931d2c9bb6c8baeca" label="Party" max_length="40" name="x_gegis_ins_policy_party" type="collection">
-        <element label="SIC description" max_length="200" name="sic_description" type="string"/>
-        <element label="Broker agent org" max_length="200" name="broker_agent_organization" type="string"/>
-        <element label="source" max_length="40" name="source" type="string"/>
         <element label="Client ID" max_length="40" name="client_id" type="string"/>
-        <element label="FEI / FEIN" max_length="20" name="fei_number" type="string"/>
-        <element choice="3" default="COMPANY" label="Party type" max_length="40" name="party_type" type="string">
+        <element choice="1" label="Status" max_length="40" name="status" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Company" sequence="10" value="COMPANY"/>
-                <element inactive_on_update="false" label="Person" sequence="20" value="PERSON"/>
+                <element inactive_on_update="false" label="Inactive" sequence="20" value="inactive"/>
+                <element inactive_on_update="false" label="Active" sequence="10" value="active"/>
+                <element inactive_on_update="false" label="Prospect" sequence="30" value="prospect"/>
+            </choice>
+        </element>
+        <element label="Verification Expiry Date" max_length="40" name="verification_expiry_date" type="glide_date_time"/>
+        <element default="False" label="Verified" max_length="40" name="verified" type="boolean"/>
+        <element label="SIC description" max_length="200" name="sic_description" type="string"/>
+        <element label="FEI / FEIN" max_length="20" name="fei_number" type="string"/>
+        <element label="SIC code" max_length="10" name="sic_code" type="string"/>
+        <element label="Business established" max_length="40" name="business_established" type="glide_date"/>
+        <element label="Broker agent org" max_length="200" name="broker_agent_organization" type="string"/>
+        <element choice="3" default="company" label="Party type" max_length="40" name="party_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Company" sequence="10" value="company"/>
+                <element inactive_on_update="false" label="Person" sequence="20" value="person"/>
             </choice>
         </element>
         <element label="Industry" max_length="100" name="industry" type="string"/>
-        <element label="Status" max_length="40" name="status" type="string"/>
-        <element label="SIC code" max_length="10" name="sic_code" type="string"/>
-        <element label="Business established" max_length="40" name="business_established" type="glide_date"/>
         <element label="Industry code" max_length="20" name="industry_code" type="string"/>
+        <element label="source" max_length="40" name="source" type="string"/>
+        <element label="Verified On" max_length="40" name="verified_on" type="glide_date_time"/>
+        <element choice="1" label="Verification Source" max_length="40" name="verification_source" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="D&amp;B" sequence="10" value="dnb"/>
+                <element inactive_on_update="false" label="Other" sequence="60" value="other"/>
+                <element inactive_on_update="false" label="GLEIF" sequence="20" value="gleif"/>
+                <element inactive_on_update="false" label="Middesk" sequence="50" value="middesk"/>
+                <element inactive_on_update="false" label="Moody's Orbis" sequence="40" value="moodys_orbis"/>
+                <element inactive_on_update="false" label="LexisNexis" sequence="30" value="lexisnexis"/>
+            </choice>
+        </element>
     </element>
 </database>
