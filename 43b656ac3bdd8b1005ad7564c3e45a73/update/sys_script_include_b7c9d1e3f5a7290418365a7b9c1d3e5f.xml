@@ -72,6 +72,8 @@
         DECLINED:    'declined',
         CANCELLED:   'cancelled',
         CLOSED:      'closed',
+        // shared by case_task.category and party.verification_source
+        OTHER:       'other',
         // renewal decision tokens - shared by uw_decision + system_decision
         FULL_RE_UNDERWRITING: 'full_re_underwriting',
         AUTO_RENEW:           'auto_renew',
@@ -160,7 +162,7 @@
             EXTRACTION: 'extraction',
             REFERRAL:   SHARED.REFERRAL,
             CASE:       SHARED.CASE,
-            OTHER:      'other'
+            OTHER:      SHARED.OTHER
         },
 
         // x_gegis_ins_policy_case_task.u_type -- WHY the task exists, i.e. the
@@ -278,6 +280,37 @@
             CASE:   SHARED.CASE,
             API:    'api',
             PORTAL: 'portal'
+        },
+
+        // x_gegis_ins_policy_party.party_type -- an organisation or an individual.
+        // Values were originally UPPERCASE ('COMPANY'/'PERSON'); converted to
+        // lower_snake_case by add_party_type_choices.js so party_type matches
+        // every other custom choice in the app. The dictionary default moved
+        // from 'COMPANY' to 'company' at the same time.
+        PARTY_TYPE: {
+            COMPANY: 'company',
+            PERSON:  'person'
+        },
+
+        // x_gegis_ins_policy_party.status -- lifecycle of the party registry
+        // entry itself, NOT the status of any submission or policy the party
+        // appears on. A prospect has been captured but not yet transacted with.
+        PARTY_STATUS: {
+            ACTIVE:   'active',
+            INACTIVE: 'inactive',
+            PROSPECT: 'prospect'
+        },
+
+        // x_gegis_ins_policy_party.verification_source -- which external business
+        // registry / data provider was used to verify this party. GLEIF is the
+        // free LEI registry; the rest are commercial.
+        VERIFICATION_SOURCE: {
+            DNB:          'dnb',
+            GLEIF:        'gleif',
+            LEXISNEXIS:   'lexisnexis',
+            MOODYS_ORBIS: 'moodys_orbis',
+            MIDDESK:      'middesk',
+            OTHER:        SHARED.OTHER
         },
 
         // x_gegis_ins_policy_renewal_case.uw_decision -- underwriter's renewal
