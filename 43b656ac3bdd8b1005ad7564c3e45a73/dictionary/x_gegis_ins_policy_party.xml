@@ -8,22 +8,33 @@
                 <element inactive_on_update="false" label="Prospect" sequence="30" value="prospect"/>
             </choice>
         </element>
+        <element display="true" label="Name" mandatory="true" max_length="200" name="name" type="string"/>
         <element label="Verification Expiry Date" max_length="40" name="verification_expiry_date" type="glide_date_time"/>
+        <element label="City" max_length="100" name="city" type="string"/>
         <element default="False" label="Verified" max_length="40" name="verified" type="boolean"/>
         <element label="SIC description" max_length="200" name="sic_description" type="string"/>
         <element label="FEI / FEIN" max_length="20" name="fei_number" type="string"/>
         <element label="SIC code" max_length="10" name="sic_code" type="string"/>
+        <element label="Street" max_length="255" name="street" type="string"/>
         <element label="Business established" max_length="40" name="business_established" type="glide_date"/>
-        <element label="Broker agent org" max_length="200" name="broker_agent_organization" type="string"/>
+        <element label="Email" max_length="100" name="email" type="string"/>
+        <element label="Longitude" max_length="40" name="longitude" type="float"/>
         <element choice="3" default="company" label="Party type" max_length="40" name="party_type" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Company" sequence="10" value="company"/>
                 <element inactive_on_update="false" label="Person" sequence="20" value="person"/>
             </choice>
         </element>
+        <element label="Website" max_length="255" name="website" type="string"/>
+        <element label="Zip / Postal code" max_length="40" name="zip" type="string"/>
+        <element label="Parent organization" max_length="32" name="parent" reference="x_gegis_ins_policy_party" type="reference"/>
+        <element label="Country" max_length="40" name="country" type="string"/>
+        <element label="Phone" max_length="40" name="phone" type="string"/>
         <element label="Industry" max_length="100" name="industry" type="string"/>
         <element label="Industry code" max_length="20" name="industry_code" type="string"/>
+        <element label="Latitude" max_length="40" name="latitude" type="float"/>
         <element label="source" max_length="40" name="source" type="string"/>
+        <element label="State / Province" max_length="40" name="state" type="string"/>
         <element label="Verified On" max_length="40" name="verified_on" type="glide_date_time"/>
         <element choice="1" label="Verification Source" max_length="40" name="verification_source" type="choice">
             <choice>
@@ -35,5 +46,8 @@
                 <element inactive_on_update="false" label="LexisNexis" sequence="30" value="lexisnexis"/>
             </choice>
         </element>
+        <index name="index">
+            <element name="parent"/>
+        </index>
     </element>
 </database>
