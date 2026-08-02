@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_client_script">
+    <sys_ux_client_script action="DELETE">
+        <controller_preset/>
+        <includes/>
+        <macroponent display_value="playbookv2">fb572de783fdcf106a009529feaad356</macroponent>
+        <name>SetRequestInfoContent</name>
+        <preset/>
+        <required_translations>[]</required_translations>
+        <script><![CDATA[/**
+* @param {params} params
+* @param {api} params.api
+* @param {any} params.event
+* @param {any} params.imports
+* @param {ApiHelpers} params.helpers
+*/
+function handler({api, event, helpers, imports}) {
+     var content = event.payload.fieldValue.trim();
+ 
+    api.setState("postDisable", !(content && content.length > 0));
+    api.setState("textContent", content);
+}]]></script>
+        <script_api_version>2.0.0</script_api_version>
+        <sys_class_name>sys_ux_client_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-06 17:32:36</sys_created_on>
+        <sys_id>20676de783fdcf106a009529feaad300</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>SetRequestInfoContent</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_ux_client_script_20676de783fdcf106a009529feaad300</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-06 17:32:36</sys_updated_on>
+        <target>macroponent</target>
+        <type>default</type>
+    </sys_ux_client_script>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</application>
+        <file_path/>
+        <instance_id>37f92b2bfb5687dc843df4344eefdcef</instance_id>
+        <instance_name>dev441273</instance_name>
+        <name>sys_ux_client_script_20676de783fdcf106a009529feaad300</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_ux_client_script"&gt;
+    &lt;sys_ux_client_script action="INSERT_OR_UPDATE"&gt;
+        &lt;controller_preset/&gt;
+        &lt;includes/&gt;
+        &lt;macroponent display_value="playbookv2"&gt;fb572de783fdcf106a009529feaad356&lt;/macroponent&gt;
+        &lt;name&gt;SetRequestInfoContent&lt;/name&gt;
+        &lt;preset/&gt;
+        &lt;required_translations&gt;[]&lt;/required_translations&gt;
+        &lt;script&gt;&lt;![CDATA[/**
+* @param {params} params
+* @param {api} params.api
+* @param {any} params.event
+* @param {any} params.imports
+* @param {ApiHelpers} params.helpers
+*/
+function handler({api, event, helpers, imports}) {
+     var content = event.payload.fieldValue.trim();
+ 
+    api.setState("postDisable", !(content &amp;&amp; content.length &gt; 0));
+    api.setState("textContent", content);
+}]]&gt;&lt;/script&gt;
+        &lt;script_api_version&gt;2.0.0&lt;/script_api_version&gt;
+        &lt;sys_class_name&gt;sys_ux_client_script&lt;/sys_class_name&gt;
+        &lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2026-07-06 17:32:36&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;20676de783fdcf106a009529feaad300&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;
+        &lt;sys_name&gt;SetRequestInfoContent&lt;/sys_name&gt;
+        &lt;sys_package display_value="Policy Suite" source="x_gegis_ins_policy"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_package&gt;
+        &lt;sys_policy/&gt;
+        &lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;
+        &lt;sys_update_name&gt;sys_ux_client_script_20676de783fdcf106a009529feaad300&lt;/sys_update_name&gt;
+        &lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2026-07-06 17:32:36&lt;/sys_updated_on&gt;
+        &lt;target&gt;macroponent&lt;/target&gt;
+        &lt;type&gt;default&lt;/type&gt;
+    &lt;/sys_ux_client_script&gt;
+&lt;/record_update&gt;</payload>
+        <payload_hash>6669833</payload_hash>
+        <record_name>SetRequestInfoContent</record_name>
+        <reverted_from/>
+        <source>ef7d343783de031058301080deaad35b</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-08-01 05:45:28</sys_created_on>
+        <sys_id>2bde307b8312431058301080deaad3eb</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19fbbdb21a00000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-08-01 05:45:28</sys_updated_on>
+        <type>UX Client Script</type>
+        <update_guid>e7de307b9a1243105a925b2fc5bd70eb</update_guid>
+        <update_guid_history>e7de307b9a1243105a925b2fc5bd70eb:6669833</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-08-02 07:18:49</sys_created_on>
+        <sys_db_object display_value="" name="sys_ux_client_script">sys_ux_client_script</sys_db_object>
+        <sys_id>146fd1f5b2e14cd4b64ab3b4b1d7e4e1</sys_id>
+        <sys_metadata>20676de783fdcf106a009529feaad300</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>SetRequestInfoContent</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_scope_delete display_value="">00c1089b958e45ed83140febec97e3d1</sys_scope_delete>
+        <sys_update_name>sys_ux_client_script_20676de783fdcf106a009529feaad300</sys_update_name>
+        <sys_update_version display_value="sys_ux_client_script_20676de783fdcf106a009529feaad300">2bde307b8312431058301080deaad3eb</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-08-02 07:18:49</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
