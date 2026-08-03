@@ -301,6 +301,58 @@
             PROSPECT: 'prospect'
         },
 
+        // x_gegis_ins_policy_submission_party.role -- WHAT a party is on the deal.
+        // Roles live on the relationship, never on the party itself, so the same
+        // registry entry can be the insured on one submission and an interest
+        // holder on another.
+        //
+        // DELIBERATELY NON-OVERLAPPING with its two sibling columns:
+        //   interest_type            holds the KIND of financial interest, so
+        //                            'mortgagee' / 'loss_payee' / 'lienholder' are
+        //                            NOT roles - use role = interest_holder and put
+        //                            the kind in interest_type.
+        //   relationship_to_primary  holds the corporate relationship, so
+        //                            'parent' / 'subsidiary' / 'affiliate' are NOT
+        //                            roles either.
+        // One fact, one column.
+        SUBMISSION_PARTY_ROLE: {
+            PRIMARY_INSURED:    'primary_insured',
+            CO_APPLICANT:       'co_applicant',
+            SECONDARY_INSURED:  'secondary_insured',
+            ADDITIONAL_INSURED: 'additional_insured',
+            INTEREST_HOLDER:    'interest_holder',
+            BROKER:             'broker',
+            PRODUCER:           'producer',
+            PREMIUM_PAYER:      'premium_payer',
+            THIRD_PARTY:        'third_party'
+        },
+
+        // x_gegis_ins_policy_submission_party.interest_type -- the KIND of
+        // financial stake a party holds in the risk. Only meaningful when
+        // role = interest_holder; that pairing is what makes loan_number and
+        // interest_address usable.
+        //
+        //   mortgagee          lender secured on insured REAL property. Mortgagee
+        //                      clause, named on the loss draft, gets cancellation
+        //                      notice. Needs loan_number + interest_address.
+        //   loss_payee         paid from claim proceeds ahead of the insured,
+        //                      typically financed equipment or fleet. Loss payable
+        //                      clause, joint claim settlement.
+        //   lienholder         lien over a specific asset, usually a vehicle.
+        //                      Shows per vehicle on the auto schedule.
+        //   certificate_holder needs EVIDENCE of insurance only - no claim rights
+        //                      and no notice obligation. Not the same as
+        //                      ROLE.ADDITIONAL_INSURED, who actually has cover.
+        //   additional_interest catch-all for any other recorded interest, so
+        //                      nobody invents new values. No 'other' on purpose.
+        INTEREST_TYPE: {
+            MORTGAGEE:           'mortgagee',
+            LOSS_PAYEE:          'loss_payee',
+            LIENHOLDER:          'lienholder',
+            CERTIFICATE_HOLDER:  'certificate_holder',
+            ADDITIONAL_INTEREST: 'additional_interest'
+        },
+
         // x_gegis_ins_policy_party.verification_source -- which external business
         // registry / data provider was used to verify this party. GLEIF is the
         // free LEI registry; the rest are commercial.
