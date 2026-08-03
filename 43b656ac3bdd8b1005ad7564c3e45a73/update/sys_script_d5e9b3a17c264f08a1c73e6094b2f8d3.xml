@@ -27,14 +27,12 @@
         <rest_service_text/>
         <rest_variables/>
         <role_conditions/>
-        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
 
-    var base = '';          // number prefix
+    var base = ''; // number prefix
     var ga = new GlideAggregate('x_gegis_ins_policy_case_task');
 
     if (!current.intake_case.nil()) {
-        // Task directly on the intake case: number under the case number,
-        // counting only case-level tasks (no parent).
         var caseRec = new GlideRecord('x_gegis_ins_policy_intake_case');
         if (!caseRec.get(current.intake_case + ''))
             return;
@@ -43,13 +41,20 @@
         ga.addNullQuery('parent');
 
     } else if (!current.parent.nil()) {
-        // Subtask under a parent task: number under the parent task's number,
-        // counting that parent's existing children.
+
         var parentTask = current.parent.getRefRecord();
         if (!parentTask.isValidRecord())
             return;
         base = parentTask.number + '';
         ga.addQuery('parent', parentTask.getUniqueValue());
+
+    } else if (!current.submission.nil()) {
+
+        var submissionTask = current.submission.getRefRecord();
+        if (!submissionTask.isValidRecord())
+            return;
+        base = submissionTask.number + '';
+        ga.addQuery('submission', submissionTask.getUniqueValue());
 
     } else {
         return;
@@ -72,15 +77,15 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>d5e9b3a17c264f08a1c73e6094b2f8d3</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>Case task numbering</sys_name>
         <sys_overrides/>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_script_d5e9b3a17c264f08a1c73e6094b2f8d3</sys_update_name>
-        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-07-11 14:20:00</sys_updated_on>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-08-03 10:34:13</sys_updated_on>
         <template/>
         <when>before</when>
     </sys_script>
