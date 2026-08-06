@@ -13,7 +13,7 @@
         <client_callable>false</client_callable>
         <collection>sys_pd_activity_context</collection>
         <condition>current.state.changes() &amp;&amp; current.state.toString() != previous.state.toString() &amp;&amp; ['COMPLETE','CANCELLED','SKIPPED','BYPASSED'].indexOf(current.getValue('state')) &gt; -1</condition>
-        <description/>
+        <description>Backstop for activities with no flow-data backing (automated steps).</description>
         <execute_function>false</execute_function>
         <filter_condition/>
         <is_rest>false</is_rest>
@@ -27,25 +27,24 @@
         <rest_service_text/>
         <rest_variables/>
         <role_conditions/>
-        <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
-    new PlaybookActivitySync().syncActivity(current);
-})(current, previous);
-]]></script>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+    new PlaybookSyncEngine().syncActivity(current);
+})(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-07-31 16:29:56</sys_created_on>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>1a68422347968f108b55d1d1506d43cd</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>Activity Sync Trigger</sys_name>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Activity (Individual Step) Sync Trigger</sys_name>
         <sys_overrides/>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_script_1a68422347968f108b55d1d1506d43cd</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-31 16:29:56</sys_updated_on>
+        <sys_updated_on>2026-08-06 18:36:09</sys_updated_on>
         <template/>
         <when>after</when>
     </sys_script>

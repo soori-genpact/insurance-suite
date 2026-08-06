@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_declarative_action_assignment">
+    <sys_declarative_action_assignment action="DELETE">
+        <action/>
+        <action_attributes/>
+        <action_name>x_gegis_next_activity</action_name>
+        <action_payload/>
+        <action_type>type</action_type>
+        <active>true</active>
+        <animate_icon>false</animate_icon>
+        <button_position>right</button_position>
+        <button_type>primary</button_type>
+        <client_action/>
+        <client_conditions/>
+        <client_conditions_on_fields/>
+        <client_script><![CDATA[function onClick() { }]]></client_script>
+        <confirmation_message/>
+        <confirmation_required>false</confirmation_required>
+        <create_access>false</create_access>
+        <declarative_action_render_mode display_value="Button">928532675b4000101a6d7c1bf481c7db</declarative_action_render_mode>
+        <declarative_action_type>server_script</declarative_action_type>
+        <delete_access>false</delete_access>
+        <dependency/>
+        <description>Finish this activity and move the playbook to the next one. PlaybookSyncEngine mirrors the move onto the paired playbook for the same submission.</description>
+        <design_icon/>
+        <dynamic_record_condition/>
+        <dynamic_script_condition/>
+        <enable_dynamic_evaluation>false</enable_dynamic_evaluation>
+        <enable_for_all_experiences>false</enable_for_all_experiences>
+        <enabled>true</enabled>
+        <experience_restricted>false</experience_restricted>
+        <field_name/>
+        <field_type>glide_date</field_type>
+        <form_fields_required>false</form_fields_required>
+        <form_position/>
+        <group/>
+        <group_by>false</group_by>
+        <icon/>
+        <interaction/>
+        <interaction_input_map/>
+        <label>Next</label>
+        <model display_value="Playbook Card">ca57d12e730333004a905ee515f6a7b2</model>
+        <model_conditions table="var__m_sys_declarative_action_model_field_ca57d12e730333004a905ee515f6a7b2">can_complete=true^state=IN_PROGRESS^EQ<item endquery="false" field="can_complete" goto="false" newquery="false" operator="=" or="false" value="true"/>
+            <item display_value="In Progress" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="IN_PROGRESS"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </model_conditions>
+        <model_field_required/>
+        <order>150</order>
+        <payload_map/>
+        <read_access>true</read_access>
+        <record_conditions/>
+        <record_selection_required>false</record_selection_required>
+        <required_roles/>
+        <required_translations/>
+        <required_user_role_names>snc_internal</required_user_role_names>
+        <requires_value>false</requires_value>
+        <script_condition/>
+        <scripted_client_condition/>
+        <server_script><![CDATA[try {
+    new x_gegis_ins_policy.PlaybookSyncEngine().stepNext(current);
+} catch (e) {
+    gs.error("[Next] " + e);
+}]]></server_script>
+        <specificity>1</specificity>
+        <sys_class_name>sys_declarative_action_assignment</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-08-06 19:06:44</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>7136a5a5832243106b0fc4e0deaad345</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_gegis_next_activity</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_declarative_action_assignment_7136a5a5832243106b0fc4e0deaad345</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-08-06 19:06:44</sys_updated_on>
+        <table>global</table>
+        <tooltip/>
+        <ui_component/>
+        <view/>
+        <workspace/>
+        <write_access>false</write_access>
+    </sys_declarative_action_assignment>
+    <sys_translated_text action="DELETE" query="documentkey=7136a5a5832243106b0fc4e0deaad345"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</application>
+        <file_path/>
+        <instance_id>f8fb73d5fbe6cf9489a2f4344eefdca7</instance_id>
+        <instance_name>dev441622</instance_name>
+        <name>sys_declarative_action_assignment_7136a5a5832243106b0fc4e0deaad345</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sys_declarative_action_assignment"&gt;&lt;sys_declarative_action_assignment action="INSERT_OR_UPDATE"&gt;&lt;action/&gt;&lt;action_attributes/&gt;&lt;action_name&gt;x_gegis_next_activity&lt;/action_name&gt;&lt;action_payload/&gt;&lt;action_type&gt;type&lt;/action_type&gt;&lt;active&gt;true&lt;/active&gt;&lt;animate_icon&gt;false&lt;/animate_icon&gt;&lt;button_position&gt;right&lt;/button_position&gt;&lt;button_type&gt;primary&lt;/button_type&gt;&lt;client_action/&gt;&lt;client_conditions/&gt;&lt;client_conditions_on_fields/&gt;&lt;client_script&gt;&lt;![CDATA[function onClick() { }]]&gt;&lt;/client_script&gt;&lt;confirmation_message/&gt;&lt;confirmation_required&gt;false&lt;/confirmation_required&gt;&lt;create_access&gt;false&lt;/create_access&gt;&lt;declarative_action_render_mode display_value="Button"&gt;928532675b4000101a6d7c1bf481c7db&lt;/declarative_action_render_mode&gt;&lt;declarative_action_type&gt;server_script&lt;/declarative_action_type&gt;&lt;delete_access&gt;false&lt;/delete_access&gt;&lt;dependency/&gt;&lt;description&gt;Finish this activity and move the playbook to the next one. PlaybookSyncEngine mirrors the move onto the paired playbook for the same submission.&lt;/description&gt;&lt;design_icon/&gt;&lt;dynamic_record_condition/&gt;&lt;dynamic_script_condition/&gt;&lt;enable_dynamic_evaluation&gt;false&lt;/enable_dynamic_evaluation&gt;&lt;enable_for_all_experiences&gt;false&lt;/enable_for_all_experiences&gt;&lt;enabled&gt;true&lt;/enabled&gt;&lt;experience_restricted&gt;false&lt;/experience_restricted&gt;&lt;field_name/&gt;&lt;field_type&gt;glide_date&lt;/field_type&gt;&lt;form_fields_required&gt;false&lt;/form_fields_required&gt;&lt;form_position/&gt;&lt;group/&gt;&lt;group_by&gt;false&lt;/group_by&gt;&lt;icon/&gt;&lt;interaction/&gt;&lt;interaction_input_map/&gt;&lt;label&gt;Next&lt;/label&gt;&lt;model display_value="Playbook Card"&gt;ca57d12e730333004a905ee515f6a7b2&lt;/model&gt;&lt;model_conditions table="var__m_sys_declarative_action_model_field_ca57d12e730333004a905ee515f6a7b2"&gt;can_complete=true^state=IN_PROGRESS^EQ&lt;item endquery="false" field="can_complete" goto="false" newquery="false" operator="=" or="false" value="true"/&gt;&lt;item display_value="In Progress" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="IN_PROGRESS"/&gt;&lt;item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/&gt;&lt;/model_conditions&gt;&lt;model_field_required/&gt;&lt;order&gt;150&lt;/order&gt;&lt;payload_map/&gt;&lt;read_access&gt;true&lt;/read_access&gt;&lt;record_conditions/&gt;&lt;record_selection_required&gt;false&lt;/record_selection_required&gt;&lt;required_roles/&gt;&lt;required_translations/&gt;&lt;required_user_role_names&gt;snc_internal&lt;/required_user_role_names&gt;&lt;requires_value&gt;false&lt;/requires_value&gt;&lt;script_condition/&gt;&lt;scripted_client_condition/&gt;&lt;server_script&gt;&lt;![CDATA[try {
+    new x_gegis_ins_policy.PlaybookSyncEngine().stepNext(current);
+} catch (e) {
+    gs.error("[Next] " + e);
+}]]&gt;&lt;/server_script&gt;&lt;specificity&gt;1&lt;/specificity&gt;&lt;sys_class_name&gt;sys_declarative_action_assignment&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-08-06 19:06:44&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;7136a5a5832243106b0fc4e0deaad345&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;x_gegis_next_activity&lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="Policy Suite" source="x_gegis_ins_policy"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_declarative_action_assignment_7136a5a5832243106b0fc4e0deaad345&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-08-06 19:06:44&lt;/sys_updated_on&gt;&lt;table&gt;global&lt;/table&gt;&lt;tooltip/&gt;&lt;ui_component/&gt;&lt;view/&gt;&lt;workspace/&gt;&lt;write_access&gt;false&lt;/write_access&gt;&lt;/sys_declarative_action_assignment&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=7136a5a5832243106b0fc4e0deaad345"/&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-115142109</payload_hash>
+        <record_name>x_gegis_next_activity</record_name>
+        <reverted_from/>
+        <source>9055f6338c9503100a22deb6dd2b4ead</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-08-06 19:06:44</sys_created_on>
+        <sys_id>7536a5a5832243106b0fc4e0deaad35c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19fd87883d10000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-08-06 19:06:44</sys_updated_on>
+        <type>Action Assignment</type>
+        <update_guid>3536a5a5b1224310af5f5bc1a8b89f5b</update_guid>
+        <update_guid_history>3536a5a5b1224310af5f5bc1a8b89f5b:-115142109</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-08-06 19:15:29</sys_created_on>
+        <sys_db_object display_value="" name="sys_declarative_action_assignment">sys_declarative_action_assignment</sys_db_object>
+        <sys_id>17b92771242d4d7b9b37a5d856736839</sys_id>
+        <sys_metadata>7136a5a5832243106b0fc4e0deaad345</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_gegis_next_activity</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_scope_delete display_value="">00c1089b958e45ed83140febec97e3d1</sys_scope_delete>
+        <sys_update_name>sys_declarative_action_assignment_7136a5a5832243106b0fc4e0deaad345</sys_update_name>
+        <sys_update_version display_value="sys_declarative_action_assignment_7136a5a5832243106b0fc4e0deaad345">7536a5a5832243106b0fc4e0deaad35c</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-08-06 19:15:29</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

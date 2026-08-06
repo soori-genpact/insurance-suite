@@ -13,7 +13,7 @@
         <client_callable>false</client_callable>
         <collection>sys_pd_context</collection>
         <condition>current.state.changes() &amp;&amp; ['COMPLETE','CANCELLED'].indexOf(current.getValue('state')) &gt; -1</condition>
-        <description/>
+        <description>Final activity done -&gt; close the paired playbook and roll up to the module case.</description>
         <execute_function>false</execute_function>
         <filter_condition/>
         <is_rest>false</is_rest>
@@ -27,8 +27,8 @@
         <rest_service_text/>
         <rest_variables/>
         <role_conditions/>
-        <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
-    new PlaybookActivitySync().syncContextState(current);
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+    new PlaybookSyncEngine().syncContext(current);
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>admin</sys_created_by>
@@ -36,7 +36,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>b3f88a6f47568f108b55d1d1506d4318</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>Context (Overall Playbook) Sync Trigger</sys_name>
         <sys_overrides/>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
@@ -44,7 +44,7 @@
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_script_b3f88a6f47568f108b55d1d1506d4318</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-31 16:32:07</sys_updated_on>
+        <sys_updated_on>2026-08-06 18:36:09</sys_updated_on>
         <template/>
         <when>after</when>
     </sys_script>

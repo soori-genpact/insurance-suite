@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.PlaybookSyncEngine</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Keeps paired module playbooks (submission-hosted and case-hosted) in lockstep. Pairs activities by sys_flow_data.activity_id and mirrors state through the flow-data layer so the playbook engine advances normally instead of being force-written.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>PlaybookSyncEngine</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var PlaybookSyncEngine = Class.create();
+PlaybookSyncEngine.prototype = {
+    type: 'PlaybookSyncEngine',
+
+    FLAG: 'x_gegis_pb_sync_busy',
+    SUBMISSION: 'x_gegis_ins_policy_submission',
+
+    // Module case tables that can host a module playbook, and the submission
+    // column that back-references the case (used to find the paired playbook).
+    CASE_TABLES: {
+        'x_gegis_ins_policy_clearance_case': 'playbook_clearance',
+        'x_gegis_ins_policy_risk_case': 'playbook_risk',
+        'x_gegis_ins_policy_exposure_case': 'playbook_exposure',
+        'x_gegis_ins_policy_quote_and_bind_case': 'playbook_quote_and_bind'
+    },
+
+    // sys_flow_data states that represent "the user is done with this activity"
+    TERMINAL_FD: ['COMPLETE', 'SKIPPED', 'CANCELLED'],
+
+    initialize: function() {},
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // ENTRY POINT 1 — a sys_flow_data reached a terminal state.
+    // This is the authoritative signal: the platform drives playbook activity
+    // completion through sys_flow_data, so mirroring at THIS level makes the
+    // sibling playbook advance through the engine (no forced state writes,
+    // therefore no "stuck" activities).
+    // ═══════════════════════════════════════════════════════════════════════
+    syncFlowData: function(fdGR) {
+        var LOG = '[PBSync.flowData] ';
+        if (this._busy()) return;
+
+        var state = fdGR.getValue('state');
+        if (this.TERMINAL_FD.indexOf(state) === -1) return;
+
+        var srcCtx = fdGR.getValue('playbook_context');
+        var activityId = fdGR.getValue('activity_id');
+        if (!srcCtx || !activityId) {
+            gs.info(LOG + 'skip - missing playbook_context/activity_id on ' + fdGR.getUniqueValue());
+            return;
+        }
+
+        var siblings = this.findSiblingContexts(srcCtx);
+        gs.info(LOG + 'fd=' + fdGR.getUniqueValue() + ' state=' + state + ' activity_id=' + activityId +
+                ' ctx=' + srcCtx + ' siblings=' + siblings.join(','));
+        if (!siblings.length) return;
+
+        this._lock();
+        try {
+            for (var i = 0; i < siblings.length; i++)
+                this._mirrorFlowData(siblings[i], activityId, state);
+        } finally {
+            this._unlock();
+        }
+    },
+
+    /** Set the paired sys_flow_data in a sibling context to the same state. */
+    _mirrorFlowData: function(ctxId, activityId, state) {
+        var LOG = '[PBSync.mirrorFD] ';
+        var fd = new GlideRecord('sys_flow_data');
+        fd.addQuery('playbook_context', ctxId);
+        fd.addQuery('activity_id', activityId);
+        fd.setLimit(1);
+        fd.query();
+
+        if (!fd.next()) {
+            // The paired activity has not been reached yet, so it has no backing
+            // flow data. Fall back to the activity context so the state is not lost.
+            gs.info(LOG + 'no paired flow_data in ctx ' + ctxId + ' for activity ' + activityId + ' - falling back');
+            this._mirrorActivityContext(ctxId, activityId, state);
+            return;
+        }
+
+        var cur = fd.getValue('state');
+        if (this.TERMINAL_FD.indexOf(cur) > -1) {
+            gs.info(LOG + fd.getUniqueValue() + ' already terminal (' + cur + ') - nothing to do');
+            return;
+        }
+
+        // setWorkflow stays ON: the platform business rules on sys_flow_data are
+        // what complete the activity and activate the next one. Suppressing them
+        // is exactly what left nested playbooks stuck.
+        fd.setValue('state', state);
+        fd.update();
+        gs.info(LOG + fd.getUniqueValue() + ' ' + cur + ' -> ' + state + ' (ctx ' + ctxId + ')');
+    },
+
+    /**
+     * Fallback for activities with no flow data yet: mirror onto
+     * sys_pd_activity_context. Workflow is left ON so the playbook engine still
+     * advances the sibling playbook.
+     */
+    _mirrorActivityContext: function(ctxId, activityId, fdState) {
+        var LOG = '[PBSync.mirrorAct] ';
+        var actState = (fdState == 'CANCELLED') ? 'CANCELLED' : (fdState == 'SKIPPED' ? 'SKIPPED' : 'COMPLETE');
+
+        // sys_flow_data.activity_id and sys_pd_activity_context.activity_id hold
+        // the same snapshot activity id, so it pairs the two sides exactly.
+        var a = new GlideRecord('sys_pd_activity_context');
+        a.addQuery('context', ctxId);
+        a.addQuery('activity_id', activityId);
+        a.query();
+        if (!a.hasNext()) {
+            gs.info(LOG + 'no activity context in ' + ctxId + ' for activity_id ' + activityId);
+            return;
+        }
+        while (a.next()) {
+            if (['COMPLETE', 'CANCELLED', 'SKIPPED', 'BYPASSED'].indexOf(a.getValue('state')) > -1) continue;
+            a.setValue('state', actState);
+            a.update();
+            gs.info(LOG + a.getUniqueValue() + ' -> ' + actState);
+        }
+    },
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // ENTRY POINT 2 — an activity context reached a terminal state.
+    // Backstop for activities that are not flow-data backed (automated steps).
+    // ═══════════════════════════════════════════════════════════════════════
+    syncActivity: function(actGR) {
+        var LOG = '[PBSync.activity] ';
+        if (this._busy()) return;
+
+        var state = actGR.getValue('state');
+        if (['COMPLETE', 'CANCELLED', 'SKIPPED', 'BYPASSED'].indexOf(state) === -1) return;
+
+        var name = actGR.getValue('name') || '';
+        if (!name || name.indexOf('$') > -1) return; // stage/infrastructure markers
+
+        var srcCtx = actGR.getValue('context');
+        var activityId = actGR.getValue('activity_id');
+        var siblings = this.findSiblingContexts(srcCtx);
+        if (!siblings.length) return;
+
+        gs.info(LOG + '"' + name + '" -> ' + state + ' ctx=' + srcCtx + ' siblings=' + siblings.join(','));
+
+        this._lock();
+        try {
+            for (var i = 0; i < siblings.length; i++) {
+                var t = new GlideRecord('sys_pd_activity_context');
+                t.addQuery('context', siblings[i]);
+                // activity_id pairs the two sides exactly; name is the fallback
+                // for activities that predate a snapshot id.
+                if (activityId) t.addQuery('activity_id', activityId);
+                else t.addQuery('name', name);
+                t.addQuery('state', 'NOT IN', 'COMPLETE,CANCELLED,SKIPPED,BYPASSED');
+                t.query();
+                while (t.next()) {
+                    // Prefer driving through flow data so the engine advances.
+                    var fdId = this._flowDataIdOf(t);
+                    if (fdId) {
+                        var fd = new GlideRecord('sys_flow_data');
+                        if (fd.get(fdId)) {
+                            if (this.TERMINAL_FD.indexOf(fd.getValue('state')) > -1) {
+                                // Flow data is already terminal, so the engine is
+                                // mid-flight closing this activity. Forcing the state
+                                // here would race it; leave it alone.
+                                gs.info(LOG + 'skip ' + t.getUniqueValue() + ' - flow_data already ' + fd.getValue('state'));
+                                continue;
+                            }
+                            fd.setValue('state', state == 'COMPLETE' ? 'COMPLETE' : (state == 'SKIPPED' ? 'SKIPPED' : 'CANCELLED'));
+                            fd.update();
+                            gs.info(LOG + 'via flow_data ' + fdId + ' -> ' + fd.getValue('state'));
+                            continue;
+                        }
+                    }
+                    t.setValue('state', state);
+                    t.update();
+                    gs.info(LOG + 'direct ' + t.getUniqueValue() + ' -> ' + state);
+                }
+            }
+        } finally {
+            this._unlock();
+        }
+    },
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // ENTRY POINT 3 — a whole playbook context finished.
+    // Completes the paired playbook and rolls the result up to the module case
+    // and the submission.
+    // ═══════════════════════════════════════════════════════════════════════
+    syncContext: function(ctxGR) {
+        var LOG = '[PBSync.context] ';
+        var state = ctxGR.getValue('state');
+        if (['COMPLETE', 'CANCELLED'].indexOf(state) === -1) return;
+
+        var ctxId = ctxGR.getUniqueValue();
+        gs.info(LOG + ctxId + ' -> ' + state);
+
+        if (!this._busy()) {
+            var siblings = this.findSiblingContexts(ctxId);
+            this._lock();
+            try {
+                for (var i = 0; i < siblings.length; i++) {
+                    var s = new GlideRecord('sys_pd_context');
+                    if (!s.get(siblings[i])) continue;
+                    if (['COMPLETE', 'CANCELLED'].indexOf(s.getValue('state')) > -1) continue;
+                    // Terminate any still-open activities first so the sibling
+                    // does not linger half finished, then close the context.
+                    this._closeOpenActivities(siblings[i], state);
+                    s.setValue('state', state);
+                    s.update();
+                    gs.info(LOG + 'sibling ' + siblings[i] + ' -> ' + state);
+                }
+            } finally {
+                this._unlock();
+            }
+        }
+
+        this.rollUp(ctxId, state);
+    },
+
+    /** Force-close activities that are still open in a context being terminated. */
+    _closeOpenActivities: function(ctxId, ctxState) {
+        var target = (ctxState == 'CANCELLED') ? 'CANCELLED' : 'COMPLETE';
+        var a = new GlideRecord('sys_pd_activity_context');
+        a.addQuery('context', ctxId);
+        a.addQuery('state', 'NOT IN', 'COMPLETE,CANCELLED,SKIPPED,BYPASSED');
+        a.query();
+        while (a.next()) {
+            if ((a.getValue('name') || '').indexOf('$') > -1) continue;
+            var fdId = this._flowDataIdOf(a);
+            if (fdId) {
+                var fd = new GlideRecord('sys_flow_data');
+                if (fd.get(fdId) && this.TERMINAL_FD.indexOf(fd.getValue('state')) === -1) {
+                    fd.setValue('state', target);
+                    fd.update();
+                    continue;
+                }
+            }
+            a.setValue('state', target);
+            a.update();
+        }
+    },
+
+    /** Push a finished module playbook onto its case record and the submission. */
+    rollUp: function(ctxId, ctxState) {
+        var LOG = '[PBSync.rollUp] ';
+        var anchor = this.resolveAnchor(ctxId);
+        if (!anchor || !anchor.submission) return;
+
+        var caseTable = anchor.caseTable;
+        var caseId = anchor.caseId;
+
+        // A submission-hosted context has no case of its own: find the module
+        // case the paired playbook belongs to via the submission back-reference.
+        if (!caseTable) {
+            var sib = this.findSiblingContexts(ctxId);
+            for (var i = 0; i < sib.length && !caseTable; i++) {
+                var a2 = this.resolveAnchor(sib[i]);
+                if (a2 && a2.caseTable) { caseTable = a2.caseTable; caseId = a2.caseId; }
+            }
+        }
+        if (!caseTable || !caseId) {
+            gs.info(LOG + 'no module case resolved for ctx ' + ctxId);
+            return;
+        }
+
+        var cs = new GlideRecord(caseTable);
+        if (!cs.get(caseId)) return;
+
+        var closed = (ctxState == 'CANCELLED') ? '7' : '3'; // Closed Skipped / Closed Complete
+        if (cs.getValue('state') != closed) {
+            cs.setValue('state', closed);
+            if (cs.isValidField('is_active')) cs.setValue('is_active', false);
+            if (cs.isValidField('status')) cs.setValue('status', ctxState == 'CANCELLED' ? 'cancelled' : 'complete');
+            cs.update();
+            gs.info(LOG + caseTable + ':' + caseId + ' -> state ' + closed);
+        }
+    },
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // PAIR RESOLUTION
+    // ═══════════════════════════════════════════════════════════════════════
+
+    /**
+     * The submission (and module case, when known) that owns a playbook context.
+     * Nested contexts have input_table=sys_playbook_execution, so the chain is
+     * walked up through parent_activity_context until a business record is found.
+     */
+    resolveAnchor: function(ctxId, depth) {
+        depth = depth || 0;
+        if (!ctxId || depth > 8) return null;
+
+        var c = new GlideRecord('sys_pd_context');
+        if (!c.get(ctxId)) return null;
+
+        var it = c.getValue('input_table');
+        var ir = c.getValue('input_record');
+
+        if (it == this.SUBMISSION && ir)
+            return { submission: ir, caseTable: '', caseId: '' };
+
+        if (this.CASE_TABLES[it] && ir) {
+            var cs = new GlideRecord(it);
+            if (cs.get(ir))
+                return { submission: cs.getValue('submission'), caseTable: it, caseId: ir };
+        }
+
+        var paId = c.getValue('parent_activity_context');
+        if (paId) {
+            var pa = new GlideRecord('sys_pd_activity_context');
+            if (pa.get(paId)) return this.resolveAnchor(pa.getValue('context'), depth + 1);
+        }
+        return null;
+    },
+
+    /**
+     * Contexts running the SAME playbook definition for the SAME submission.
+     * Bounded: only the context trees hanging off this submission and its module
+     * cases are walked, never a full sys_pd_context scan.
+     */
+    findSiblingContexts: function(ctxId) {
+        var out = [];
+        var me = new GlideRecord('sys_pd_context');
+        if (!me.get(ctxId)) return out;
+
+        var pd = me.getValue('process_definition');
+        var anchor = this.resolveAnchor(ctxId);
+        if (!anchor || !anchor.submission) return out;
+
+        var all = this._contextTreeForSubmission(anchor.submission);
+        for (var i = 0; i < all.length; i++) {
+            if (all[i].id == ctxId) continue;
+            if (all[i].pd == pd) out.push(all[i].id);
+        }
+        return out;
+    },
+
+    /** Every playbook context reachable from a submission and its module cases. */
+    _contextTreeForSubmission: function(subId) {
+        var roots = [];
+        var seen = {};
+
+        var addRoots = function(table, id) {
+            var c = new GlideRecord('sys_pd_context');
+            c.addQuery('input_table', table);
+            c.addQuery('input_record', id);
+            c.query();
+            while (c.next()) roots.push(c.getUniqueValue());
+        };
+
+        addRoots(this.SUBMISSION, subId);
+        for (var tbl in this.CASE_TABLES) {
+            var cs = new GlideRecord(tbl);
+            cs.addQuery('submission', subId);
+            cs.query();
+            while (cs.next()) addRoots(tbl, cs.getUniqueValue());
+        }
+
+        var result = [];
+        var queue = roots.slice();
+        var guard = 0;
+        while (queue.length && guard++ < 500) {
+            var id = queue.shift();
+            if (seen[id]) continue;
+            seen[id] = true;
+
+            var c = new GlideRecord('sys_pd_context');
+            if (!c.get(id)) continue;
+            result.push({ id: id, pd: c.getValue('process_definition') });
+
+            // Descend: child contexts hang off this context's activities.
+            var a = new GlideRecord('sys_pd_activity_context');
+            a.addQuery('context', id);
+            a.query();
+            var actIds = [];
+            while (a.next()) actIds.push(a.getUniqueValue());
+            if (!actIds.length) continue;
+
+            var kid = new GlideRecord('sys_pd_context');
+            kid.addQuery('parent_activity_context', 'IN', actIds.join(','));
+            kid.query();
+            while (kid.next()) if (!seen[kid.getUniqueValue()]) queue.push(kid.getUniqueValue());
+        }
+        return result;
+    },
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // NAVIGATION — the Back / Next playbook actions
+    // ═══════════════════════════════════════════════════════════════════════
+
+    /**
+     * Next: finish the current activity. The playbook engine activates the
+     * following one and syncFlowData mirrors both onto the paired playbook.
+     */
+    stepNext: function(fdGR) {
+        if (this.TERMINAL_FD.indexOf(fdGR.getValue('state')) > -1) {
+            gs.info('[PBSync.next] ' + fdGR.getUniqueValue() + ' already ' + fdGR.getValue('state'));
+            return false;
+        }
+        fdGR.setValue('state', 'COMPLETE');
+        fdGR.update();
+        gs.info('[PBSync.next] ' + fdGR.getUniqueValue() + ' -> COMPLETE');
+        return true;
+    },
+
+    /** Back: reopen the previous activity, in this playbook and in its pair. */
+    stepBack: function(fdGR) {
+        var ctxId = fdGR.getValue('playbook_context');
+        var activityId = fdGR.getValue('activity_id');
+
+        if (!this._rewind(ctxId, activityId)) return false;
+
+        var sibs = this.findSiblingContexts(ctxId);
+        for (var i = 0; i < sibs.length; i++) this._rewind(sibs[i], activityId);
+        return true;
+    },
+
+    /** Park the current activity and reopen the nearest earlier one. */
+    _rewind: function(ctxId, activityId) {
+        var LOG = '[PBSync.back] ';
+
+        var cur = new GlideRecord('sys_pd_activity_context');
+        cur.addQuery('context', ctxId);
+        cur.addQuery('activity_id', activityId);
+        cur.setLimit(1);
+        cur.query();
+        if (!cur.next()) return false;
+
+        var curOrder = parseInt(cur.getValue('order'), 10);
+        if (isNaN(curOrder)) return false;
+
+        var prev = new GlideRecord('sys_pd_activity_context');
+        prev.addQuery('context', ctxId);
+        prev.addQuery('order', '<', curOrder);
+        prev.addQuery('name', 'DOES NOT CONTAIN', '$'); // skip stage markers
+        prev.orderByDesc('order');
+        prev.setLimit(1);
+        prev.query();
+        if (!prev.next()) {
+            gs.info(LOG + ctxId + ': already at the first activity');
+            return false;
+        }
+
+        this._forceState(cur, 'PENDING', 'PENDING');
+        this._forceState(prev, 'IN_PROGRESS', 'PENDING');
+        gs.info(LOG + ctxId + ': ' + cur.getValue('name') + ' -> PENDING, ' +
+                prev.getValue('name') + ' -> IN_PROGRESS');
+        return true;
+    },
+
+    /**
+     * Rewind writes deliberately bypass workflow: a playbook only ever moves
+     * forward on its own, so letting the engine react here would immediately
+     * re-complete the activity we just reopened.
+     */
+    _forceState: function(actGR, actState, fdState) {
+        var a = new GlideRecord('sys_pd_activity_context');
+        if (a.get(actGR.getUniqueValue())) {
+            a.setWorkflow(false);
+            a.setValue('state', actState);
+            a.update();
+        }
+        var fdId = this._flowDataIdOf(actGR);
+        if (fdId) {
+            var fd = new GlideRecord('sys_flow_data');
+            if (fd.get(fdId)) {
+                fd.setWorkflow(false);
+                fd.setValue('state', fdState);
+                fd.update();
+            }
+        }
+    },
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // UTILITIES
+    // ═══════════════════════════════════════════════════════════════════════
+
+    /** sys_flow_data id backing an activity context, from experience_properties. */
+    _flowDataIdOf: function(actGR) {
+        var raw = actGR.getValue('experience_properties');
+        if (!raw) return null;
+        try {
+            var props = JSON.parse(raw);
+            for (var i = 0; i < props.length; i++)
+                if (props[i].name == 'experience_status_record' && props[i].value) return props[i].value;
+        } catch (e) {}
+        return null;
+    },
+
+    _busy: function() {
+        return gs.getSession().getClientData(this.FLAG) == '1';
+    },
+    _lock: function() {
+        gs.getSession().putClientData(this.FLAG, '1');
+    },
+    _unlock: function() {
+        gs.getSession().putClientData(this.FLAG, '0');
+    }
+};
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-08-06 18:36:07</sys_created_on>
+        <sys_id>9d3f99a183ee03106b0fc4e0deaad3c7</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>PlaybookSyncEngine</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_9d3f99a183ee03106b0fc4e0deaad3c7</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-08-06 18:51:35</sys_updated_on>
+    </sys_script_include>
+</record_update>
