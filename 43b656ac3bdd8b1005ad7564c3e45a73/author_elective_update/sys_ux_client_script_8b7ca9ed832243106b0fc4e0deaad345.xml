@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_client_script">
+    <sys_ux_client_script action="DELETE">
+        <controller_preset/>
+        <includes/>
+        <macroponent/>
+        <name>autoAdvancePlaybookActivity</name>
+        <preset/>
+        <required_translations>[]</required_translations>
+        <script><![CDATA[/**
+ * Hook for playbook card auto-advance. The ITEM_FINISHED wiring below is the
+ * hard-won part: the event MUST be referenced as
+ * now_playbook_exp.PLAYBOOK#ITEM_FINISHED (scope-prefixed) or the handler
+ * silently never runs, and the event fires several times per action so it has to
+ * be de-duplicated.
+ *
+ * The refresh action itself is still unsolved - see
+ * SCRIPTS/PLAYBOOK_NESTED_FINDINGS.md section 7 for everything already ruled out
+ * (report-only selection prop, sandboxed client scripts, navigate.to opening a new
+ * tab, isHidden remount not refetching, api.emit and an EVENT-target mapping of
+ * AMB_UPDATE_RECEIVED both having no effect).
+ *
+ * @param {params} params
+ * @param {api} params.api
+ * @param {any} params.event
+ * @param {any} params.imports
+ * @param {ApiHelpers} params.helpers
+ */
+function handler({
+    api,
+    event,
+    helpers,
+    imports
+}) {
+    if (!event || event.name !== 'PLAYBOOK#ITEM_FINISHED') {
+        return;
+    }
+    var finishedId = (event.payload || {}).activityContextId;
+    if (!finishedId) {
+        return;
+    }
+
+    var seen = '';
+    try {
+        seen = api.state.currentActivityContextId || '';
+    } catch (e) {
+        seen = '';
+    }
+    if (seen === finishedId) {
+        return;
+    }
+    api.setState('currentActivityContextId', finishedId);
+
+    /* eslint-disable-next-line no-console */
+    console.log('[AUTOADVANCE] activity finished:', finishedId);
+}
+]]></script>
+        <script_api_version>2.0.0</script_api_version>
+        <sys_class_name>sys_ux_client_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-08-06 19:34:08</sys_created_on>
+        <sys_id>8b7ca9ed832243106b0fc4e0deaad345</sys_id>
+        <sys_mod_count>16</sys_mod_count>
+        <sys_name>autoAdvancePlaybookActivity</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_ux_client_script_8b7ca9ed832243106b0fc4e0deaad345</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-08-06 20:55:10</sys_updated_on>
+        <target>macroponent</target>
+        <type>default</type>
+    </sys_ux_client_script>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</application>
+        <file_path/>
+        <instance_id>f8fb73d5fbe6cf9489a2f4344eefdca7</instance_id>
+        <instance_name>dev441622</instance_name>
+        <name>sys_ux_client_script_8b7ca9ed832243106b0fc4e0deaad345</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_ux_client_script"&gt;&lt;sys_ux_client_script action="INSERT_OR_UPDATE"&gt;&lt;controller_preset/&gt;&lt;includes/&gt;&lt;macroponent/&gt;&lt;name&gt;autoAdvancePlaybookActivity&lt;/name&gt;&lt;preset/&gt;&lt;required_translations&gt;[]&lt;/required_translations&gt;&lt;script&gt;&lt;![CDATA[/**
+ * Hook for playbook card auto-advance. The ITEM_FINISHED wiring below is the
+ * hard-won part: the event MUST be referenced as
+ * now_playbook_exp.PLAYBOOK#ITEM_FINISHED (scope-prefixed) or the handler
+ * silently never runs, and the event fires several times per action so it has to
+ * be de-duplicated.
+ *
+ * The refresh action itself is still unsolved - see
+ * SCRIPTS/PLAYBOOK_NESTED_FINDINGS.md section 7 for everything already ruled out
+ * (report-only selection prop, sandboxed client scripts, navigate.to opening a new
+ * tab, isHidden remount not refetching, api.emit and an EVENT-target mapping of
+ * AMB_UPDATE_RECEIVED both having no effect).
+ *
+ * @param {params} params
+ * @param {api} params.api
+ * @param {any} params.event
+ * @param {any} params.imports
+ * @param {ApiHelpers} params.helpers
+ */
+function handler({
+    api,
+    event,
+    helpers,
+    imports
+}) {
+    if (!event || event.name !== 'PLAYBOOK#ITEM_FINISHED') {
+        return;
+    }
+    var finishedId = (event.payload || {}).activityContextId;
+    if (!finishedId) {
+        return;
+    }
+
+    var seen = '';
+    try {
+        seen = api.state.currentActivityContextId || '';
+    } catch (e) {
+        seen = '';
+    }
+    if (seen === finishedId) {
+        return;
+    }
+    api.setState('currentActivityContextId', finishedId);
+
+    /* eslint-disable-next-line no-console */
+    console.log('[AUTOADVANCE] activity finished:', finishedId);
+}
+]]&gt;&lt;/script&gt;&lt;script_api_version&gt;2.0.0&lt;/script_api_version&gt;&lt;sys_class_name&gt;sys_ux_client_script&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-08-06 19:34:08&lt;/sys_created_on&gt;&lt;sys_id&gt;8b7ca9ed832243106b0fc4e0deaad345&lt;/sys_id&gt;&lt;sys_mod_count&gt;16&lt;/sys_mod_count&gt;&lt;sys_name&gt;autoAdvancePlaybookActivity&lt;/sys_name&gt;&lt;sys_package display_value="Policy Suite" source="x_gegis_ins_policy"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_ux_client_script_8b7ca9ed832243106b0fc4e0deaad345&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-08-06 20:55:10&lt;/sys_updated_on&gt;&lt;target&gt;macroponent&lt;/target&gt;&lt;type&gt;default&lt;/type&gt;&lt;/sys_ux_client_script&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>775016109</payload_hash>
+        <record_name>autoAdvancePlaybookActivity</record_name>
+        <reverted_from/>
+        <source>9055f6338c9503100a22deb6dd2b4ead</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-08-06 20:55:10</sys_created_on>
+        <sys_id>960fb1a1832643106b0fc4e0deaad3c9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>19fd8dbc8f70000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-08-06 20:55:10</sys_updated_on>
+        <type>UX Client Script</type>
+        <update_guid>860fb1a193264310bf53aa7e13a0a3c8</update_guid>
+        <update_guid_history>860fb1a193264310bf53aa7e13a0a3c8:775016109,ebfdbdede1e24310b56532d97de05dce:1066280536,12acb16dfde243109693064682622de6:647869460,5febb9e955e24310165432dbf209f69b:-1769377714,b9da7d29d0e243100b67cdf8ba6d0499:-856302256,9c0ab5e552e24310129cfc3474173d44:1623906448,14677161b7e24310efaf4141fd6e2a25:302635119,fec67ded15a243102ef66aeb278ea709:-1823907187,2966356d40a24310d5868b0b846755ad:2027568788,4df57d6d4ea2431010779d5f80d9e6f7:694298510,9c957d2d26a2431086a7384ad4da1da5:-1680721574,ea35f52d67a2431045e6e78c023757b9:-40340220,5f74f1a9cba2431087b7da0055677708:-128291834,1a143de57da24310ce75834f1acd7302:-1658126237,7973752983a24310cee779e4a98c42da:680634179,0281b16174a243105391b22f32f8681a:-1889845731,cf7ca92965624310a46e75cb500cee0d:121021882</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-08-07 04:04:40</sys_created_on>
+        <sys_db_object display_value="" name="sys_ux_client_script">sys_ux_client_script</sys_db_object>
+        <sys_id>0b07ed8a6c9b43b2a93e40e09425a591</sys_id>
+        <sys_metadata>8b7ca9ed832243106b0fc4e0deaad345</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>autoAdvancePlaybookActivity</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_scope_delete display_value="">00c1089b958e45ed83140febec97e3d1</sys_scope_delete>
+        <sys_update_name>sys_ux_client_script_8b7ca9ed832243106b0fc4e0deaad345</sys_update_name>
+        <sys_update_version display_value="sys_ux_client_script_8b7ca9ed832243106b0fc4e0deaad345">960fb1a1832643106b0fc4e0deaad3c9</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-08-07 04:04:40</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
