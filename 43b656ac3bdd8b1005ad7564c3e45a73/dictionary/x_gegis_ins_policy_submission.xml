@@ -41,7 +41,7 @@
         <element label="Locked" max_length="40" name="is_locked" type="boolean"/>
         <element label="Target effective date" max_length="40" name="target_effective_date" type="glide_date"/>
         <element label="Current extraction" max_length="32" name="current_extraction" reference="x_gegis_ins_policy_extraction" type="reference"/>
-        <element choice="3" default="new" label="State" max_length="40" name="state" type="string">
+        <element choice="3" default="new" label="State" max_length="40" name="state" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Cancelled" sequence="60" value="cancelled"/>
                 <element inactive_on_update="false" label="In Progress" sequence="20" value="in_progress"/>
@@ -140,7 +140,7 @@
         <element label="Source reference" max_length="200" name="source_reference" type="string"/>
         <element label="Underwriter" max_length="32" name="underwriter" reference="sys_user" type="reference"/>
         <element label="Received date" max_length="40" name="received_date" type="glide_date_time"/>
-        <element choice="1" label="Status" max_length="40" name="status" type="string">
+        <element choice="1" label="Status" max_length="40" name="status" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Bound" sequence="110" value="bound"/>
                 <element inactive_on_update="false" label="Closed" sequence="130" value="closed"/>

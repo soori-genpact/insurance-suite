@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="6967d7eebbbcde52d5aa071beb3c0feb" label="MFL / PML" max_length="40" name="x_gegis_ins_policy_mfl_pml" type="collection">
+        <element label="PML amount" max_length="40" name="amount_of_pml" type="decimal"/>
+        <element label="MFL amount" max_length="40" name="amount_of_mfl" type="decimal"/>
+        <element label="Scenario" max_length="2000" name="mfl_pml_scenario" type="string"/>
+        <element label="Risk case" mandatory="true" max_length="32" name="risk_case" reference="x_gegis_ins_policy_risk_case" type="reference"/>
+        <element choice="1" label="MFL or PML" max_length="40" name="mfl_or_pml" type="string">
+            <choice/>
+        </element>
+        <element choice="3" label="Currency" max_length="40" name="original_currency" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="JPY" sequence="60" value="jpy"/>
+                <element inactive_on_update="false" label="GBP" sequence="20" value="gbp"/>
+                <element inactive_on_update="false" label="AUD" sequence="50" value="aud"/>
+                <element inactive_on_update="false" label="CAD" sequence="40" value="cad"/>
+                <element inactive_on_update="false" label="USD" sequence="10" value="usd"/>
+                <element inactive_on_update="false" label="EUR" sequence="30" value="eur"/>
+                <element inactive_on_update="false" label="CHF" sequence="70" value="chf"/>
+            </choice>
+        </element>
+        <element label="% of TIV" max_length="40" name="percent_of_tiv" type="decimal"/>
+        <index name="index">
+            <element name="risk_case"/>
+        </index>
+    </element>
+</database>

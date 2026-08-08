@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="452e4926fdceec2eeaa9e35c5ef87b19" label="Coverage Category" max_length="40" name="x_gegis_ins_policy_coverage_category" type="collection">
+        <element label="Display order" mandatory="true" max_length="40" name="display_order" type="integer"/>
+        <element label="Help text" max_length="1000" name="help_text" type="string"/>
+        <element choice="3" label="Required / Optional / Excluded" mandatory="true" max_length="40" name="coverage_selection" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Optional" sequence="20" value="optional"/>
+                <element inactive_on_update="false" label="Required" sequence="10" value="required"/>
+                <element inactive_on_update="false" label="Excluded" sequence="30" value="excluded"/>
+            </choice>
+        </element>
+        <element label="Eligibility rule" max_length="200" name="eligibility_rule" type="string"/>
+        <element label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Category name" mandatory="true" max_length="200" name="category_name" type="string"/>
+        <element label="Minimum coverages" max_length="40" name="minimum_coverages" type="integer"/>
+        <element label="Category code" mandatory="true" max_length="100" name="category_code" type="string"/>
+    </element>
+</database>
