@@ -8091,7 +8091,7 @@
                                                                                     },
                                                                                     "activeSlotId": {
                                                                                         "type": "JSON_LITERAL",
-                                                                                        "value": ""
+                                                                                        "value": "1"
                                                                                     },
                                                                                     "conditionMode": {
                                                                                         "type": "JSON_LITERAL",
@@ -8127,7 +8127,7 @@
                                                                                     },
                                                                                     "expandOnHover": {
                                                                                         "type": "JSON_LITERAL",
-                                                                                        "value": true
+                                                                                        "value": false
                                                                                     },
                                                                                     "groupsCollapsible": {
                                                                                         "type": "JSON_LITERAL",
@@ -8171,7 +8171,7 @@
                                                                                     },
                                                                                     "navWidth": {
                                                                                         "type": "JSON_LITERAL",
-                                                                                        "value": "256px"
+                                                                                        "value": "250px"
                                                                                     },
                                                                                     "nextLabel": {
                                                                                         "type": "JSON_LITERAL",
@@ -8197,13 +8197,21 @@
                                                                                         "type": "JSON_LITERAL",
                                                                                         "value": false
                                                                                     },
+                                                                                    "shellHeight": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": "auto"
+                                                                                    },
                                                                                     "showAllSlotsDesignTime": {
                                                                                         "type": "JSON_LITERAL",
                                                                                         "value": false
                                                                                     },
                                                                                     "showDiagnostics": {
                                                                                         "type": "JSON_LITERAL",
-                                                                                        "value": false
+                                                                                        "value": true
+                                                                                    },
+                                                                                    "showNav": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": true
                                                                                     },
                                                                                     "showNavToggle": {
                                                                                         "type": "JSON_LITERAL",
@@ -8211,88 +8219,96 @@
                                                                                     },
                                                                                     "showNextButton": {
                                                                                         "type": "JSON_LITERAL",
-                                                                                        "value": true
+                                                                                        "value": false
                                                                                     },
                                                                                     "showPrevButton": {
                                                                                         "type": "JSON_LITERAL",
-                                                                                        "value": true
+                                                                                        "value": false
                                                                                     },
                                                                                     "showSectionHeadings": {
                                                                                         "type": "JSON_LITERAL",
                                                                                         "value": false
                                                                                     },
-                                                                                    "showTitle": {
+                                                                                    "showSlotJumpButton": {
                                                                                         "type": "JSON_LITERAL",
                                                                                         "value": true
                                                                                     },
+                                                                                    "showTitle": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": false
+                                                                                    },
                                                                                     "slotCapacity": {
                                                                                         "type": "JSON_LITERAL",
-                                                                                        "value": 20
+                                                                                        "value": 10
                                                                                     },
                                                                                     "slots": {
                                                                                         "type": "JSON_LITERAL",
                                                                                         "value": [
                                                                                             {
                                                                                                 "group": "Submission",
-                                                                                                "icon": "document-outline",
+                                                                                                "icon": "action-ai-sparkle-outline",
                                                                                                 "id": "1",
                                                                                                 "title": "Details"
                                                                                             },
                                                                                             {
                                                                                                 "group": "Submission",
-                                                                                                "icon": "document-outline",
+                                                                                                "icon": "shield-check-outline",
                                                                                                 "id": "2",
                                                                                                 "title": "Coverages"
                                                                                             },
                                                                                             {
                                                                                                 "group": "Submission",
-                                                                                                "icon": "document-outline",
+                                                                                                "icon": "arena-outline",
                                                                                                 "id": "3",
                                                                                                 "title": "Loss Record (5Y)"
                                                                                             },
                                                                                             {
                                                                                                 "group": "Submission",
-                                                                                                "icon": "clipboard-outline",
+                                                                                                "icon": "regular-expression-outline",
                                                                                                 "id": "4",
                                                                                                 "title": "Top Risk"
                                                                                             },
                                                                                             {
                                                                                                 "group": "Insured",
-                                                                                                "icon": "clipboard-outline",
+                                                                                                "icon": "user-tag-outline",
                                                                                                 "id": "5",
                                                                                                 "title": "Details"
                                                                                             },
                                                                                             {
                                                                                                 "group": "Insured",
-                                                                                                "icon": "clipboard-outline",
+                                                                                                "icon": "script-check-outline",
                                                                                                 "id": "6",
                                                                                                 "title": "Existing Policies"
                                                                                             },
                                                                                             {
                                                                                                 "group": "Insured",
-                                                                                                "icon": "clipboard-outline",
+                                                                                                "icon": "circle-exclamation-outline",
                                                                                                 "id": "7",
                                                                                                 "title": "Claims History"
                                                                                             },
                                                                                             {
                                                                                                 "group": "Broker",
-                                                                                                "icon": "table-outline",
+                                                                                                "icon": "user-verify-outline",
                                                                                                 "id": "8",
                                                                                                 "title": "Details"
                                                                                             },
                                                                                             {
                                                                                                 "group": "Broker",
-                                                                                                "icon": "table-outline",
+                                                                                                "icon": "official-verification-outline",
                                                                                                 "id": "9",
                                                                                                 "title": "Book of Business"
                                                                                             },
                                                                                             {
                                                                                                 "group": "Broker",
-                                                                                                "icon": "table-outline",
+                                                                                                "icon": "journal-pencil-outline",
                                                                                                 "id": "10",
                                                                                                 "title": "Related Submissions"
                                                                                             }
                                                                                         ]
+                                                                                    },
+                                                                                    "startCollapsed": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": true
                                                                                     },
                                                                                     "stickyTop": {
                                                                                         "type": "JSON_LITERAL",
@@ -8302,6 +8318,10 @@
                                                                                         "type": "JSON_LITERAL",
                                                                                         "value": ""
                                                                                     }
+                                                                                },
+                                                                                "showNav": {
+                                                                                    "type": "JSON_LITERAL",
+                                                                                    "value": false
                                                                                 },
                                                                                 "slot": null,
                                                                                 "styles": {
@@ -8972,7 +8992,7 @@
         "description": null,
         "disabled": false,
         "fieldType": "string",
-        "label": "query",
+        "label": "Query",
         "mandatory": false,
         "name": "query",
         "readOnly": true,
@@ -10285,14 +10305,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-08-02 07:20:22</sys_created_on>
         <sys_id>772e9a408322071058301080deaad325</sys_id>
-        <sys_mod_count>101</sys_mod_count>
+        <sys_mod_count>118</sys_mod_count>
         <sys_name>playbook</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_772e9a408322071058301080deaad325</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-08-07 14:02:43</sys_updated_on>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-08-08 07:03:27</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=772e9a408322071058301080deaad325"/>
 </record_update>
