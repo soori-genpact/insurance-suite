@@ -35,7 +35,7 @@
             </choice>
         </element>
         <element label="Quote option" max_length="32" name="quote_option" reference="x_gegis_ins_policy_quote_option" type="reference"/>
-        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" display="true" label="Number" max_length="40" name="number" type="string"/>
         <element label="Broker" max_length="32" name="broker" reference="x_gegis_ins_policy_party" type="reference"/>
         <element label="Renewed from" max_length="32" name="renewed_from" reference="x_gegis_ins_policy_policy" type="reference"/>
         <element label="Policy number" mandatory="true" max_length="40" name="policy_number" type="string"/>

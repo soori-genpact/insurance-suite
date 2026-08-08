@@ -11,7 +11,7 @@
         <element label="Accepted quote" mandatory="true" max_length="32" name="accepted_quote" reference="x_gegis_ins_policy_quote" type="reference"/>
         <element label="Bound by" max_length="32" name="bound_by" reference="sys_user" type="reference"/>
         <element label="Q&amp;B case" mandatory="true" max_length="32" name="qnb_case" reference="x_gegis_ins_policy_quote_and_bind_case" type="reference"/>
-        <element label="Policy number" max_length="40" name="policy_number" type="string"/>
+        <element display="true" label="Policy number" max_length="40" name="policy_number" type="string"/>
         <element label="Bind date" mandatory="true" max_length="40" name="bind_date" type="glide_date_time"/>
         <element label="Effective date" mandatory="true" max_length="40" name="effective_date" type="glide_date"/>
         <element label="Bound premium" mandatory="true" max_length="40" name="bound_premium" type="decimal"/>

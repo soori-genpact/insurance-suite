@@ -12,6 +12,7 @@
                 <element inactive_on_update="false" label="Rejected" sequence="50" value="rejected"/>
             </choice>
         </element>
+        <element display="true" label="Name" max_length="200" name="name" type="string"/>
         <element label="Description" max_length="2000" name="description" type="string"/>
         <element label="Premium delta" max_length="40" name="premium_delta" type="decimal"/>
         <element choice="3" label="Type" mandatory="true" max_length="40" name="type" type="choice">

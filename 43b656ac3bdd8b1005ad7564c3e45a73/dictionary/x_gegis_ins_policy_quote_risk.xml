@@ -34,6 +34,7 @@
             </choice>
         </element>
         <element label="Quote" mandatory="true" max_length="32" name="quote" reference="x_gegis_ins_policy_quote" type="reference"/>
+        <element display="true" label="Name" max_length="200" name="name" type="string"/>
         <element choice="3" label="Construction" max_length="40" name="construction" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Joisted Masonry" sequence="40" value="joisted_masonry"/>

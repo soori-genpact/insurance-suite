@@ -26,7 +26,7 @@
         <element label="Insured" max_length="32" name="insured" reference="x_gegis_ins_policy_party" type="reference"/>
         <element label="Product" max_length="32" name="product" reference="x_gegis_ins_policy_product" type="reference"/>
         <element label="Terms &amp; conditions" max_length="4000" name="terms_conditions" type="string"/>
-        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" display="true" label="Number" max_length="40" name="number" type="string"/>
         <element label="Total premium" max_length="40" name="total_premium" type="decimal"/>
         <element label="Quote number" mandatory="true" max_length="20" name="quote_number" type="string"/>
         <index name="index">

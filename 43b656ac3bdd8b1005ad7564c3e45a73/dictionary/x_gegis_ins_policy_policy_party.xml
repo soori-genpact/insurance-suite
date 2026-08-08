@@ -2,6 +2,7 @@
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="15cb9299b0261745182f5996ba9aea48" label="Policy Party" max_length="40" name="x_gegis_ins_policy_policy_party" type="collection">
         <element label="Is primary" max_length="40" name="is_primary" type="boolean"/>
         <element label="Policy" mandatory="true" max_length="32" name="policy" reference="x_gegis_ins_policy_policy" type="reference"/>
+        <element display="true" label="Name" max_length="200" name="name" type="string"/>
         <element label="Account" mandatory="true" max_length="32" name="account" reference="x_gegis_ins_policy_party" type="reference"/>
         <element choice="3" label="Party role" mandatory="true" max_length="40" name="party_role" type="choice">
             <choice>
