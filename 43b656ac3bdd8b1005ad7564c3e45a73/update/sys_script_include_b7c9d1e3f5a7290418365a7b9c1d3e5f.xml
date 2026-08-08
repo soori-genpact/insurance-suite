@@ -88,6 +88,9 @@
         DRAFT:       'draft',
         // shared by extraction.extraction_status and quote.status
         ACCEPTED:    'accepted',
+        // shared by quote.status and bind.status -- the quote is issued to the
+        // broker, the bound policy is issued to the insured
+        ISSUED:      'issued',
         // ---- product catalog / rating tokens that span more than one column ----
         // coverage.coverage_selection, major_exclusion.choice_value,
         // exposure_peril.expiring_status
@@ -258,10 +261,22 @@
         // issued = sent to the broker; accepted/declined are the broker's answer.
         QUOTE_STATUS: {
             DRAFT:    SHARED.DRAFT,
-            ISSUED:   'issued',
+            ISSUED:   SHARED.ISSUED,
             ACCEPTED: SHARED.ACCEPTED,
             DECLINED: SHARED.DECLINED,
             EXPIRED:  SHARED.EXPIRED
+        },
+
+        // x_gegis_ins_policy_bind.status -- what happened to the BIND, not to
+        // the quote. bound = risk accepted and on cover; issued = the policy
+        // document has gone out; cancelled = bound then unwound (flat cancel or
+        // cancelled mid-term). The sys_choice rows for these three already exist
+        // on the instance and are exported with the app; this group is the
+        // catalogue entry that was missing, so scripts stop needing literals.
+        BIND_STATUS: {
+            BOUND:     SHARED.BOUND,
+            ISSUED:    SHARED.ISSUED,
+            CANCELLED: SHARED.CANCELLED
         },
 
         // x_gegis_ins_policy_intake_case.status
