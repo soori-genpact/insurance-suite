@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="ce76c7b4333d4f907ef8f499ed5c7b06" extends="task" label="Quote and Bind Case" max_length="40" name="x_gegis_ins_policy_quote_and_bind_case" type="collection">
-        <element label="Stage" max_length="40" name="stage" type="integer"/>
+        <element label="Active" max_length="40" name="is_active" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Submission" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
         <element choice="1" label="Activity Status" max_length="40" name="activity_status" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Initiate Quote &amp; Bind" sequence="10" value="quotebind_initiate_quote_and_bind"/>
-                <element inactive_on_update="false" label="Sanctions" sequence="70" value="quotebind_sanctions"/>
-                <element inactive_on_update="false" label="Underwriter Decision" sequence="50" value="quotebind_underwriter_decision"/>
                 <element inactive_on_update="false" label="Extract" sequence="20" value="quotebind_extract"/>
                 <element inactive_on_update="false" label="Product Selection Details" sequence="30" value="quotebind_product_selection_details"/>
-                <element inactive_on_update="false" label="Quote Workspace" sequence="40" value="quotebind_quote_workspace"/>
+                <element inactive_on_update="false" label="Sanctions" sequence="70" value="quotebind_sanctions"/>
+                <element inactive_on_update="false" label="Initiate Quote and Bind" sequence="10" value="quotebind_initiate_quote_and_bind"/>
+                <element inactive_on_update="false" label="Underwriter Decision" sequence="50" value="quotebind_underwriter_decision"/>
                 <element inactive_on_update="false" label="Broker Decision" sequence="60" value="quotebind_broker_decision"/>
                 <element inactive_on_update="false" label="Bind Details" sequence="80" value="quotebind_bind_details"/>
+                <element inactive_on_update="false" label="Quote Workspace" sequence="40" value="quotebind_quote_workspace"/>
             </choice>
         </element>
+        <element label="Stage" max_length="40" name="stage" type="integer"/>
         <element choice="1" label="Status" max_length="40" name="status" type="choice">
             <choice>
-                <element inactive_on_update="false" label="In Progress" sequence="20" value="in_progress"/>
-                <element inactive_on_update="false" label="Declined" sequence="50" value="declined"/>
                 <element inactive_on_update="false" label="Complete" sequence="30" value="complete"/>
-                <element inactive_on_update="false" label="Pending" sequence="10" value="pending"/>
                 <element inactive_on_update="false" label="Blocked" sequence="40" value="blocked"/>
+                <element inactive_on_update="false" label="Pending" sequence="10" value="pending"/>
+                <element inactive_on_update="false" label="Declined" sequence="50" value="declined"/>
+                <element inactive_on_update="false" label="In Progress" sequence="20" value="in_progress"/>
             </choice>
         </element>
-        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Submission" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
-        <element label="Active" max_length="40" name="is_active" type="boolean"/>
-        <index name="index">
-            <element name="submission"/>
-            <element name="active"/>
-        </index>
     </element>
 </database>

@@ -1,35 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="3056c774333d4f907ef8f499ed5c7bbe" extends="task" label="Risk Case" max_length="40" name="x_gegis_ins_policy_risk_case" type="collection">
-        <element label="Stage" max_length="40" name="stage" type="integer"/>
+        <element label="Active" max_length="40" name="is_active" type="boolean"/>
         <element choice="1" label="Activity Status" max_length="40" name="activity_status" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Fraud Detection" sequence="90" value="risk_fraud_detection"/>
-                <element inactive_on_update="false" label="Bind Propensity" sequence="70" value="risk_bind_propensity"/>
-                <element inactive_on_update="false" label="Risk Summary" sequence="110" value="risk_risk_summary"/>
-                <element inactive_on_update="false" label="Letter Of Authority" sequence="20" value="risk_letter_of_authority"/>
-                <element inactive_on_update="false" label="Survey Results" sequence="50" value="risk_survey_results"/>
-                <element inactive_on_update="false" label="Exposure Data" sequence="80" value="risk_exposure_data"/>
-                <element inactive_on_update="false" label="Loss Prediction" sequence="60" value="risk_loss_prediction"/>
-                <element inactive_on_update="false" label="Underwriter Narrative" sequence="100" value="risk_underwriter_narrative"/>
                 <element inactive_on_update="false" label="Underwriting Guidelines" sequence="30" value="risk_underwriting_guidelines"/>
+                <element inactive_on_update="false" label="Letter of Authority" sequence="20" value="risk_letter_of_authority"/>
+                <element inactive_on_update="false" label="Fraud Detection" sequence="90" value="risk_fraud_detection"/>
+                <element inactive_on_update="false" label="Loss Prediction" sequence="60" value="risk_loss_prediction"/>
                 <element inactive_on_update="false" label="Initiate Risk Assessment" sequence="10" value="risk_initiate_risk_assessment"/>
+                <element inactive_on_update="false" label="Survey Results" sequence="50" value="risk_survey_results"/>
+                <element inactive_on_update="false" label="Risk Summary" sequence="110" value="risk_risk_summary"/>
+                <element inactive_on_update="false" label="Exposure Data" sequence="80" value="risk_exposure_data"/>
+                <element inactive_on_update="false" label="Underwriter Narrative" sequence="100" value="risk_underwriter_narrative"/>
+                <element inactive_on_update="false" label="Bind Propensity" sequence="70" value="risk_bind_propensity"/>
                 <element inactive_on_update="false" label="Benchmarking" sequence="40" value="risk_benchmarking"/>
             </choice>
         </element>
         <element choice="1" label="Status" max_length="40" name="status" type="choice">
             <choice>
+                <element inactive_on_update="false" label="Complete" sequence="30" value="complete"/>
                 <element inactive_on_update="false" label="Pending" sequence="10" value="pending"/>
                 <element inactive_on_update="false" label="In Progress" sequence="20" value="in_progress"/>
                 <element inactive_on_update="false" label="Blocked" sequence="40" value="blocked"/>
-                <element inactive_on_update="false" label="Complete" sequence="30" value="complete"/>
                 <element inactive_on_update="false" label="Declined" sequence="50" value="declined"/>
             </choice>
         </element>
-        <element label="Active" max_length="40" name="is_active" type="boolean"/>
         <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Submission" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
-        <index name="index">
-            <element name="submission"/>
-            <element name="active"/>
-        </index>
+        <element label="Stage" max_length="40" name="stage" type="integer"/>
     </element>
 </database>
