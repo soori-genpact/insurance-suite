@@ -77,7 +77,43 @@
         // renewal decision tokens - shared by uw_decision + system_decision
         FULL_RE_UNDERWRITING: 'full_re_underwriting',
         AUTO_RENEW:           'auto_renew',
-        DO_NOT_RENEW:         'do_not_renew'
+        DO_NOT_RENEW:         'do_not_renew',
+        // shared by party.status and policy.status
+        ACTIVE:      'active',
+        // shared by submission.status and policy.status
+        BOUND:       'bound',
+        // shared by policy.status and quote.status
+        EXPIRED:     'expired',
+        // shared by submission.status and quote.status
+        DRAFT:       'draft',
+        // shared by extraction.extraction_status and quote.status
+        ACCEPTED:    'accepted',
+        // ---- product catalog / rating tokens that span more than one column ----
+        // coverage.coverage_selection, major_exclusion.choice_value,
+        // exposure_peril.expiring_status
+        EXCLUDED:       'excluded',
+        // major_exclusion.choice_value and exposure_peril.expiring_status
+        INCLUDED:       'included',
+        // coverage_term.term_type and policy_coverage_term.term_type
+        LIMIT:          'limit',
+        DEDUCTIBLE:     'deductible',
+        // coverage.deductible_type, coverage_term.term_type,
+        // coverage_term.data_type, rate_table.rate_type
+        PERCENTAGE:     'percentage',
+        // coverage.deductible_type and rate_table.rate_type
+        FLAT:           'flat',
+        // coverage.deductible_type and coverage.limit_type
+        PER_OCCURRENCE: 'per_occurrence',
+        PER_LOCATION:   'per_location',
+        // coverage.deductible_type and policy_coverage_term.term_type
+        WAITING_PERIOD: 'waiting_period',
+        // coverage_term.term_type and coverage_term.data_type
+        DURATION:       'duration',
+        // rate_table_entry.zone and rate_table_entry.engine_cc -- WILDCARD, not a
+        // real zone or band: the rate applies regardless of that dimension
+        ANY:            'any',
+        // rate_table_entry.vehicle_type and vehicle.vehicle_use
+        COMMERCIAL:     'commercial'
     };
 
     // submission.stage -- also the prefix namespace for activity_status values.
@@ -190,7 +226,7 @@
 
         // submission.status  (shares declined/cancelled/closed with STATE)
         STATUS: {
-            DRAFT:            'draft',
+            DRAFT:            SHARED.DRAFT,
             UNDER_REVIEW:     'under_review',
             PENDING_APPROVAL: 'pending_approval',
             MISSING_DATA:     'missing_data',
@@ -200,9 +236,32 @@
             DUPLICATE:        SHARED.DUPLICATE,
             RENEWAL_DUE:      'renewal_due',
             RENEWED:          'renewed',
-            BOUND:            'bound',
+            BOUND:            SHARED.BOUND,
             CANCELLED:        SHARED.CANCELLED,
             CLOSED:           SHARED.CLOSED
+        },
+
+        // x_gegis_ins_policy_policy.status -- lifecycle of the POLICY CONTRACT,
+        // not of the submission that produced it. bound = paperwork done,
+        // in_force = cover actually running, non_renewed = allowed to lapse at
+        // expiry (distinct from cancelled, which ends it mid-term).
+        POLICY_STATUS: {
+            ACTIVE:      SHARED.ACTIVE,
+            BOUND:       SHARED.BOUND,
+            IN_FORCE:    'in_force',
+            CANCELLED:   SHARED.CANCELLED,
+            EXPIRED:     SHARED.EXPIRED,
+            NON_RENEWED: 'non_renewed'
+        },
+
+        // x_gegis_ins_policy_quote.status -- lifecycle of the quote document.
+        // issued = sent to the broker; accepted/declined are the broker's answer.
+        QUOTE_STATUS: {
+            DRAFT:    SHARED.DRAFT,
+            ISSUED:   'issued',
+            ACCEPTED: SHARED.ACCEPTED,
+            DECLINED: SHARED.DECLINED,
+            EXPIRED:  SHARED.EXPIRED
         },
 
         // x_gegis_ins_policy_intake_case.status
@@ -247,7 +306,7 @@
             PENDING_REVIEW: 'pending_review',
             REVIEWED:       'reviewed',
             APPLIED:        SHARED.APPLIED,
-            ACCEPTED:       'accepted',
+            ACCEPTED:       SHARED.ACCEPTED,
             REJECTED:       SHARED.REJECTED,
             FAILED:         SHARED.FAILED
         },
@@ -296,7 +355,7 @@
         // entry itself, NOT the status of any submission or policy the party
         // appears on. A prospect has been captured but not yet transacted with.
         PARTY_STATUS: {
-            ACTIVE:   'active',
+            ACTIVE:   SHARED.ACTIVE,
             INACTIVE: 'inactive',
             PROSPECT: 'prospect'
         },
@@ -397,9 +456,25 @@
             REINSTATEMENT: 'reinstatement'
         },
 
+        // line_of_business on policy, product, quote_option, existing_policy,
+        // exposure_item, rate_table and rate_factor. The last two carried this as
+        // `lob` until the column was dropped and re-added under the proper name -
+        // one taxonomy, one column name, everywhere.
+        // MOTOR and WORKERS_COMP were live on the tables before
+        // they were catalogued here, so the list was reconciled upwards rather
+        // than deleting values in use. MOTOR is not a duplicate of AUTO: auto is
+        // the US personal/commercial auto line, motor the non-US equivalent, and
+        // both appear on Product.
+        //
+        // NOT the same list as submission_line / extraction_mapping, which carry
+        // a broker-facing taxonomy (general_liability, inland_marine, umbrella,
+        // plus an 'all' sentinel on the mapping table). Those stay separate on
+        // purpose - merging them is a data-model decision, not a cleanup.
         LINE_OF_BUSINESS: {
             PROPERTY:        'property',
             AUTO:            'auto',
+            MOTOR:           'motor',
+            WORKERS_COMP:    'workers_comp',
             GENERAL:         'general',
             CASUALTY:        'casualty',
             MARINE:          'marine',
@@ -409,6 +484,264 @@
             AVIATION:        'aviation',
             CYBER:           'cyber',
             SPECIALTY:       'specialty'
+        },
+
+        // currency on policy, quote, submission and exposure_item. ISO 4217
+        // alpha-3, stored lower_snake_case like every other choice; the LABEL is
+        // the uppercase code. Column is max_length 3.
+        CURRENCY: {
+            USD: 'usd',
+            GBP: 'gbp',
+            EUR: 'eur',
+            CAD: 'cad',
+            AUD: 'aud',
+            JPY: 'jpy',
+            CHF: 'chf'
+        },
+
+        // x_gegis_ins_policy_policy.territory -- underwriting territory the risk
+        // sits in. GLOBAL is a real selection (worldwide cover), not a wildcard.
+        TERRITORY: {
+            US:     'us',
+            UK:     'uk',
+            EU:     'eu',
+            APAC:   'apac',
+            GLOBAL: 'global'
+        },
+
+        // =================================================================
+        // PRODUCT CATALOG
+        // =================================================================
+
+        // product.status and coverage.status -- AUTHORING lifecycle of the
+        // definition. Nothing to do with a policy being live: see POLICY_STATUS
+        // for that. A published product is sellable; archived is withdrawn but
+        // still referenced by policies already written on it.
+        CATALOG_STATUS: {
+            DRAFT:     SHARED.DRAFT,
+            PUBLISHED: 'published',
+            ARCHIVED:  'archived'
+        },
+
+        // coverage.coverage_selection and coverage_category.coverage_selection --
+        // whether the coverage must be taken on this product.
+        COVERAGE_SELECTION: {
+            REQUIRED: 'required',
+            OPTIONAL: 'optional',
+            EXCLUDED: SHARED.EXCLUDED
+        },
+
+        // coverage.cause_of_loss_form -- breadth of perils on a property form,
+        // narrowest to widest. SPECIAL is open-perils (all but what is excluded).
+        CAUSE_OF_LOSS_FORM: {
+            BASIC:        'basic',
+            BROAD:        'broad',
+            SPECIAL:      'special',
+            NAMED_PERILS: 'named_perils'
+        },
+
+        // coverage.deductible_type -- how the deductible is expressed and what it
+        // attaches to.
+        DEDUCTIBLE_TYPE: {
+            FLAT:           SHARED.FLAT,
+            PERCENTAGE:     SHARED.PERCENTAGE,
+            PER_OCCURRENCE: SHARED.PER_OCCURRENCE,
+            PER_LOCATION:   SHARED.PER_LOCATION,
+            WAITING_PERIOD: SHARED.WAITING_PERIOD
+        },
+
+        // coverage.limit_type -- the basis the limit attaches to.
+        LIMIT_TYPE: {
+            PER_OCCURRENCE:        SHARED.PER_OCCURRENCE,
+            PER_LOCATION:          SHARED.PER_LOCATION,
+            AGGREGATE:             'aggregate',
+            PER_ITEM:              'per_item',
+            COMBINED_SINGLE_LIMIT: 'combined_single_limit'
+        },
+
+        // coverage.valuation_basis -- how a loss is valued at settlement.
+        VALUATION_BASIS: {
+            RCV:                    'rcv',
+            ACV:                    'acv',
+            AGREED_VALUE:           'agreed_value',
+            FUNCTIONAL_REPLACEMENT: 'functional_replacement'
+        },
+
+        // coverage_term.term_type -- the PRODUCT CATALOG side. Prices and shapes
+        // a term before anything is sold, so PREMIUM and FEE live here.
+        // Deliberately a different set from POLICY_TERM_TYPE despite the shared
+        // column name: same name, different domain.
+        TERM_TYPE: {
+            LIMIT:      SHARED.LIMIT,
+            DEDUCTIBLE: SHARED.DEDUCTIBLE,
+            DURATION:   SHARED.DURATION,
+            PREMIUM:    'premium',
+            PERCENTAGE: SHARED.PERCENTAGE,
+            FEE:        'fee'
+        },
+
+        // policy_coverage_term.term_type -- the ISSUED POLICY side. Records the
+        // shape of cover actually granted, so SUBLIMIT and COINSURANCE live here.
+        POLICY_TERM_TYPE: {
+            LIMIT:          SHARED.LIMIT,
+            DEDUCTIBLE:     SHARED.DEDUCTIBLE,
+            SUBLIMIT:       'sublimit',
+            WAITING_PERIOD: SHARED.WAITING_PERIOD,
+            COINSURANCE:    'coinsurance'
+        },
+
+        // coverage_term.data_type -- how a term's VALUE is stored and rendered.
+        // CURRENCY here is a DATA TYPE, not a currency code; it is deliberately
+        // not shared with CHOICE.CURRENCY, which holds usd/gbp/...
+        TERM_DATA_TYPE: {
+            CURRENCY:   'currency',
+            PERCENTAGE: SHARED.PERCENTAGE,
+            INTEGER:    'integer',
+            TEXT:       'text',
+            DATE:       'date',
+            DURATION:   SHARED.DURATION
+        },
+
+        // policy_coverage.status -- a strict subset of POLICY_STATUS. A coverage
+        // line is only ever running, killed mid-term, or lapsed at expiry.
+        POLICY_COVERAGE_STATUS: {
+            ACTIVE:    SHARED.ACTIVE,
+            CANCELLED: SHARED.CANCELLED,
+            EXPIRED:   SHARED.EXPIRED
+        },
+
+        // major_exclusion.exclusion_type -- the market-standard major exclusions
+        // an underwriter must positively address on every submission.
+        EXCLUSION_TYPE: {
+            AFFIRMATIVE_CYBER:         'affirmative_cyber',
+            NUCLEAR:                   'nuclear',
+            RADIOACTIVE_CONTAMINATION: 'radioactive_contamination',
+            WAR_CIVIL_WAR:             'war_civil_war',
+            COMMUNICABLE_DISEASE:      'communicable_disease',
+            OTHER:                     SHARED.OTHER
+        },
+
+        // major_exclusion.choice_value -- how that exclusion was actually treated
+        // on this deal. SUB_LIMITED is the middle ground: covered, but capped.
+        EXCLUSION_TREATMENT: {
+            INCLUDED:    SHARED.INCLUDED,
+            EXCLUDED:    SHARED.EXCLUDED,
+            SUB_LIMITED: 'sub_limited'
+        },
+
+        // =================================================================
+        // RATING
+        // =================================================================
+
+        // rate_table.rate_type -- the unit a rate is quoted in.
+        RATE_TYPE: {
+            PER_MILLE:  'per_mille',
+            PERCENTAGE: SHARED.PERCENTAGE,
+            FLAT:       SHARED.FLAT
+        },
+
+        // rate_factor.factor_type -- direction the factor moves premium.
+        FACTOR_TYPE: {
+            DISCOUNT:   'discount',
+            LOADING:    'loading',
+            MULTIPLIER: 'multiplier'
+        },
+
+        // rate_factor.applies_to -- level the factor bites at.
+        FACTOR_APPLIES_TO: {
+            POLICY:   'policy',
+            RISK:     'risk',
+            COVERAGE: 'coverage'
+        },
+
+        // rate_table_entry.zone -- motor rating territory. ANY is a WILDCARD row
+        // meaning the rate applies regardless of zone, not a real zone.
+        ZONE: {
+            METRO: 'metro',
+            URBAN: 'urban',
+            RURAL: 'rural',
+            ANY:   SHARED.ANY
+        },
+
+        // rate_table_entry.vehicle_type -- motor RATING classes. Deliberately NOT
+        // the same list as vehicle.vehicle_type, which classifies the physical
+        // vehicle (private_passenger, light_truck, ...). Same column name, two
+        // different questions: how it rates vs what it is.
+        RATING_VEHICLE_TYPE: {
+            PRIVATE_CAR: 'private_car',
+            TWO_WHEELER: 'two_wheeler',
+            COMMERCIAL:  SHARED.COMMERCIAL,
+            TAXI:        'taxi'
+        },
+
+        // rate_table_entry.engine_cc -- motor rating band. ANY is the same
+        // wildcard as ZONE.ANY.
+        ENGINE_CC: {
+            UPTO_350CC:   'upto_350cc',
+            UPTO_1500CC:  'upto_1500cc',
+            ABOVE_1500CC: 'above_1500cc',
+            ANY:          SHARED.ANY
+        },
+
+        // =================================================================
+        // RISK -- the columns rating MATCHES ON. policy_risk, quote_risk and
+        // rate_table_entry must stay byte-identical here or premium lookup
+        // silently misses and quotes come back empty.
+        // =================================================================
+
+        // ISO construction class. ALSO location.construction_type, which used to
+        // carry 'masonry_non_comb' where the rating tables carry 'masonry' - that
+        // mismatch broke the join and is retired by
+        // add_product_rating_choices.js.
+        CONSTRUCTION: {
+            FIRE_RESISTIVE:          'fire_resistive',
+            MODIFIED_FIRE_RESISTIVE: 'modified_fire_resistive',
+            MASONRY:                 'masonry',
+            JOISTED_MASONRY:         'joisted_masonry',
+            NON_COMBUSTIBLE:         'non_combustible',
+            FRAME:                   'frame'
+        },
+
+        OCCUPANCY: {
+            RETAIL_MALL:   'retail_mall',
+            WAREHOUSE:     'warehouse',
+            OFFICE:        'office',
+            IT_OFFICE:     'it_office',
+            MANUFACTURING: 'manufacturing',
+            RESTAURANT:    'restaurant',
+            HEALTHCARE:    'healthcare',
+            EDUCATION:     'education',
+            HOSPITALITY:   'hospitality'
+        },
+
+        PROTECTION: {
+            SPRINKLERED:       'sprinklered',
+            NO_SPRINKLER:      'no_sprinkler',
+            PARTIAL_SPRINKLER: 'partial_sprinkler',
+            FIRE_ALARM_ONLY:   'fire_alarm_only',
+            FULL_SUPPRESSION:  'full_suppression'
+        },
+
+        // policy_risk.exposure / quote_risk.exposure -- the surroundings of the
+        // risk. Named RISK_EXPOSURE here so it is never confused with the
+        // exposure-management module or with exposure_item.
+        RISK_EXPOSURE: {
+            URBAN_LOW:       'urban_low',
+            SUBURBAN_MEDIUM: 'suburban_medium',
+            INDUSTRIAL_HIGH: 'industrial_high',
+            RURAL_LOW:       'rural_low',
+            COASTAL:         'coastal',
+            FLOOD_ZONE:      'flood_zone'
+        },
+
+        // policy_risk.risk_type / quote_risk.risk_type -- what the risk line
+        // actually covers.
+        RISK_TYPE: {
+            BUILDING:              'building',
+            CONTENTS:              'contents',
+            BUSINESS_INTERRUPTION: 'business_interruption',
+            VEHICLE:               'vehicle',
+            EQUIPMENT:             'equipment'
         }
     };
 
