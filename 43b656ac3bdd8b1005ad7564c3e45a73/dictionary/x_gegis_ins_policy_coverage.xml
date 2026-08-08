@@ -51,7 +51,7 @@
                 <element inactive_on_update="false" label="Optional" sequence="20" value="optional"/>
             </choice>
         </element>
-        <element label="Coverage name" mandatory="true" max_length="200" name="coverage_name" type="string"/>
+        <element display="true" label="Coverage name" mandatory="true" max_length="200" name="coverage_name" type="string"/>
         <element label="Coverage category" mandatory="true" max_length="32" name="coverage_category" reference="x_gegis_ins_policy_coverage_category" type="reference"/>
         <element label="Applicable states" max_length="1024" name="applicable_states" type="glide_list"/>
         <element choice="3" label="Valuation basis" max_length="40" name="valuation_basis" type="choice">

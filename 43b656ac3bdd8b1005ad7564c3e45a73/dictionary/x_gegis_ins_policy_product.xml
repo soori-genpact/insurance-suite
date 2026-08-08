@@ -18,7 +18,7 @@
                 <element inactive_on_update="false" label="Casualty" sequence="60" value="casualty"/>
             </choice>
         </element>
-        <element label="Product name" mandatory="true" max_length="200" name="product_name" type="string"/>
+        <element display="true" label="Product name" mandatory="true" max_length="200" name="product_name" type="string"/>
         <element choice="3" label="Status" mandatory="true" max_length="40" name="status" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Published" sequence="20" value="published"/>

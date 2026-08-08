@@ -17,7 +17,7 @@
         <element label="Coverage" mandatory="true" max_length="32" name="coverage" reference="x_gegis_ins_policy_coverage" type="reference"/>
         <element label="Required" max_length="40" name="required" type="boolean"/>
         <element label="Dependency rule" max_length="200" name="dependency_rule" type="string"/>
-        <element label="Term name" mandatory="true" max_length="200" name="term_name" type="string"/>
+        <element display="true" label="Term name" mandatory="true" max_length="200" name="term_name" type="string"/>
         <element label="Default value" max_length="40" name="default_value" type="decimal"/>
         <element choice="3" label="Term type" mandatory="true" max_length="40" name="term_type" type="choice">
             <choice>

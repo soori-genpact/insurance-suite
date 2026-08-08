@@ -3,7 +3,7 @@
         <element label="Exclusion Code" mandatory="true" max_length="100" name="exclusion_code" type="string"/>
         <element label="Exclusion Text" max_length="4000" name="exclusion_text" type="string"/>
         <element label="Display Order" max_length="40" name="display_order" type="integer"/>
-        <element label="Exclusion Name" mandatory="true" max_length="200" name="exclusion_name" type="string"/>
+        <element display="true" label="Exclusion Name" mandatory="true" max_length="200" name="exclusion_name" type="string"/>
         <element choice="3" label="Exclusion Type" max_length="40" name="exclusion_type" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Affirmative Cyber" sequence="10" value="affirmative_cyber"/>
