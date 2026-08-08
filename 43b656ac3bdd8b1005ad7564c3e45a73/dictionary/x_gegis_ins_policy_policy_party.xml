@@ -3,7 +3,7 @@
         <element label="Is primary" max_length="40" name="is_primary" type="boolean"/>
         <element label="Policy" mandatory="true" max_length="32" name="policy" reference="x_gegis_ins_policy_policy" type="reference"/>
         <element label="Account" mandatory="true" max_length="32" name="account" reference="x_gegis_ins_policy_party" type="reference"/>
-        <element choice="1" label="Party role" mandatory="true" max_length="40" name="party_role" type="string">
+        <element choice="1" label="Party role" mandatory="true" max_length="40" name="party_role" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Loss Payee" sequence="20" value="loss_payee"/>
                 <element inactive_on_update="false" label="Broker" sequence="30" value="broker"/>

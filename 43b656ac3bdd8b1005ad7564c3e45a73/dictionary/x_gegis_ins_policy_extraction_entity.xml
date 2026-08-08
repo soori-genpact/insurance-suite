@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="5e0a7ba1b20b7b3fdeaa9d44859de55e" label="Extraction Entity" max_length="40" name="x_gegis_ins_policy_extraction_entity" type="collection">
-        <element choice="1" label="Entity type" mandatory="true" max_length="40" name="entity_type" type="string">
+        <element choice="1" label="Entity type" mandatory="true" max_length="40" name="entity_type" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Submission Line" sequence="20" value="submission_line"/>
                 <element inactive_on_update="false" label="Loss Record" sequence="60" value="loss_record"/>
@@ -12,7 +12,7 @@
             </choice>
         </element>
         <element display="true" label="Label" max_length="200" name="label" type="string"/>
-        <element choice="3" default="new" label="Match status" max_length="40" name="match_status" type="string">
+        <element choice="3" default="new" label="Match status" max_length="40" name="match_status" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Matched" sequence="20" value="matched"/>
                 <element inactive_on_update="false" label="Ambiguous" sequence="30" value="ambiguous"/>
@@ -23,7 +23,7 @@
         <element label="Matched record" max_length="40" name="matched_record" type="string"/>
         <element label="Confidence" max_length="40" name="confidence" type="decimal"/>
         <element label="Entity index" max_length="40" name="entity_index" type="integer"/>
-        <element choice="3" default="pending" label="Disposition" max_length="40" name="disposition" type="string">
+        <element choice="3" default="pending" label="Disposition" max_length="40" name="disposition" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Merged" sequence="40" value="merged"/>
                 <element inactive_on_update="false" label="Accepted" sequence="20" value="accepted"/>

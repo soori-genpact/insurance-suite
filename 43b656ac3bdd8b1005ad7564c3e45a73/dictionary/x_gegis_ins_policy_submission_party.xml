@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="8119eea1abea0b7532f8f45d5b73700c" label="Submission Party" max_length="40" name="x_gegis_ins_policy_submission_party" type="collection">
-        <element choice="1" label="Relationship to primary" max_length="40" name="relationship_to_primary" type="string">
+        <element choice="1" label="Relationship to primary" max_length="40" name="relationship_to_primary" type="choice">
             <choice>
                 <element inactive_on_update="false" label="None" sequence="50" value="none"/>
                 <element inactive_on_update="false" label="Subsidiary" sequence="20" value="subsidiary"/>
@@ -25,7 +25,7 @@
         <element label="Loan number" max_length="100" name="loan_number" type="string"/>
         <element label="Interest address" max_length="400" name="interest_address" type="string"/>
         <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
-        <element choice="3" default="manual" label="Source" max_length="40" name="source" type="string">
+        <element choice="3" default="manual" label="Source" max_length="40" name="source" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Manual" sequence="20" value="manual"/>
                 <element inactive_on_update="false" label="Extracted" sequence="10" value="extracted"/>

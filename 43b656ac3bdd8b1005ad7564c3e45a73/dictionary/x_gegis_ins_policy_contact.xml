@@ -3,7 +3,7 @@
         <element label="First name" max_length="100" name="first_name" type="string"/>
         <element label="Phone" max_length="50" name="phone" type="string"/>
         <element label="Email" max_length="200" name="email" type="string"/>
-        <element choice="3" default="manual" label="Source" max_length="40" name="source" type="string">
+        <element choice="3" default="manual" label="Source" max_length="40" name="source" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Manual" sequence="20" value="manual"/>
                 <element inactive_on_update="false" label="Extracted" sequence="10" value="extracted"/>

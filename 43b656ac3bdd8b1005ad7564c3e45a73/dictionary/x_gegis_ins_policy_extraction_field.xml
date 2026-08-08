@@ -4,7 +4,7 @@
         <element label="Applied by" max_length="32" name="applied_by" reference="sys_user" type="reference"/>
         <element label="Target table" max_length="100" name="target_table" type="string"/>
         <element label="Target column" max_length="100" name="target_column" type="string"/>
-        <element choice="1" label="Review status" max_length="40" name="review_status" type="string">
+        <element choice="1" label="Review status" max_length="40" name="review_status" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Auto-Accepted" sequence="10" value="auto_accepted"/>
                 <element inactive_on_update="false" label="Corrected" sequence="50" value="corrected"/>
@@ -15,7 +15,7 @@
             </choice>
         </element>
         <element label="Mapped value" max_length="2000" name="mapped_value" type="string"/>
-        <element choice="3" default="string" label="Data type" max_length="40" name="data_type" type="string">
+        <element choice="3" default="string" label="Data type" max_length="40" name="data_type" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Decimal" sequence="30" value="decimal"/>
                 <element inactive_on_update="false" label="True/False" sequence="60" value="boolean"/>

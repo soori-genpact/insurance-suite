@@ -3,7 +3,7 @@
         <element label="Existing policy expired" max_length="40" name="existing_policy_expired" type="boolean"/>
         <element label="Current carrier" max_length="200" name="current_carrier_name" type="string"/>
         <element label="Garaging state" max_length="50" name="garaging_state" type="string"/>
-        <element choice="1" label="Vehicle type" max_length="40" name="vehicle_type" type="string">
+        <element choice="1" label="Vehicle type" max_length="40" name="vehicle_type" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Trailer" sequence="50" value="trailer"/>
                 <element inactive_on_update="false" label="Light Truck" sequence="20" value="light_truck"/>
@@ -20,7 +20,7 @@
         <element label="Garaging city" max_length="100" name="garaging_city" type="string"/>
         <element label="Garaging zip" max_length="20" name="garaging_zip_code" type="string"/>
         <element label="Carries employees" max_length="40" name="insured_vehicle_carry_employees" type="boolean"/>
-        <element choice="1" label="Telematics type" max_length="40" name="telematics_type" type="string">
+        <element choice="1" label="Telematics type" max_length="40" name="telematics_type" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Aftermarket" sequence="20" value="aftermarket"/>
                 <element inactive_on_update="false" label="Factory Fitted" sequence="10" value="factory_fitted"/>
@@ -34,7 +34,7 @@
         <element label="Make" max_length="100" name="make" type="string"/>
         <element label="Year" max_length="40" name="year" type="integer"/>
         <element label="Cost new" max_length="40" name="cost_of_new_vehicle" type="decimal"/>
-        <element choice="1" label="Vehicle use" max_length="40" name="vehicle_use" type="string">
+        <element choice="1" label="Vehicle use" max_length="40" name="vehicle_use" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Commercial" sequence="10" value="commercial"/>
                 <element inactive_on_update="false" label="Service" sequence="20" value="service"/>

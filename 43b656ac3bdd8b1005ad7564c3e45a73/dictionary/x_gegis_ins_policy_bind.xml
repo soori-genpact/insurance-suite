@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="81740a8034d457f1bd11aea6c4f455ea" label="Bind" max_length="40" name="x_gegis_ins_policy_bind" type="collection">
-        <element choice="1" label="Status" mandatory="true" max_length="40" name="status" type="string">
+        <element choice="1" label="Status" mandatory="true" max_length="40" name="status" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Issued" sequence="20" value="issued"/>
                 <element inactive_on_update="false" label="Cancelled" sequence="30" value="cancelled"/>

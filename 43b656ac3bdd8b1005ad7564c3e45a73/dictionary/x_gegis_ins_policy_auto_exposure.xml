@@ -7,7 +7,7 @@
         <element label="Full glass coverage" max_length="40" name="full_glass_coverage" type="boolean"/>
         <element label="Submission line" max_length="32" name="submission_line" reference="x_gegis_ins_policy_submission_line" type="reference"/>
         <element label="Exposure case" mandatory="true" max_length="32" name="exposure_case" reference="x_gegis_ins_policy_exposure_case" type="reference"/>
-        <element choice="1" label="Deductible applies to" max_length="40" name="perils_deductible_applies_to" type="string">
+        <element choice="1" label="Deductible applies to" max_length="40" name="perils_deductible_applies_to" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Per Vehicle" sequence="10" value="per_vehicle"/>
                 <element inactive_on_update="false" label="Per Occurrence" sequence="20" value="per_occurrence"/>
@@ -28,7 +28,7 @@
         <element label="Uninsured payment" max_length="40" name="uninsured_payment" type="decimal"/>
         <element label="Rental amount/day" max_length="40" name="rental_amount_per_day" type="decimal"/>
         <element label="No-fault" max_length="40" name="no_faults" type="boolean"/>
-        <element choice="1" label="Coverage type" max_length="40" name="policy_coverage_type" type="string">
+        <element choice="1" label="Coverage type" max_length="40" name="policy_coverage_type" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Liability Only" sequence="10" value="liability_only"/>
                 <element inactive_on_update="false" label="Physical Damage Only" sequence="20" value="physical_damage_only"/>
@@ -37,7 +37,7 @@
         </element>
         <element label="State" max_length="50" name="state" type="string"/>
         <element label="Per vehicle deductible" max_length="40" name="per_vehicle_deductible" type="decimal"/>
-        <element choice="1" label="Peril" max_length="40" name="peril" type="string">
+        <element choice="1" label="Peril" max_length="40" name="peril" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Collision" sequence="20" value="collision"/>
                 <element inactive_on_update="false" label="Comprehensive" sequence="10" value="comprehensive"/>
