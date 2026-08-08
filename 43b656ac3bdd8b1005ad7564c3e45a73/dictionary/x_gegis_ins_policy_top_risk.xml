@@ -14,7 +14,12 @@
             </choice>
         </element>
         <element choice="1" label="Impact" max_length="40" name="impact" type="string">
-            <choice/>
+            <choice>
+                <element inactive_on_update="false" label="Critical" sequence="40" value="critical"/>
+                <element inactive_on_update="false" label="Medium" sequence="20" value="medium"/>
+                <element inactive_on_update="false" label="High" sequence="30" value="high"/>
+                <element inactive_on_update="false" label="Low" sequence="10" value="low"/>
+            </choice>
         </element>
         <index name="index">
             <element name="risk_case"/>

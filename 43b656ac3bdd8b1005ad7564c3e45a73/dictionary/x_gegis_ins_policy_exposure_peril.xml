@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="7e85089b70287df4fa6f1252351f74e8" label="Exposure Peril" max_length="40" name="x_gegis_ins_policy_exposure_peril" type="collection">
+        <element label="New sublimit" max_length="40" name="new_sub_limit_amount" type="decimal"/>
+        <element label="Exposure item" mandatory="true" max_length="32" name="exposure_item" reference="x_gegis_ins_policy_exposure_item" type="reference"/>
+        <element label="Remarks" max_length="2000" name="remarks" type="string"/>
+        <element choice="1" label="Peril" mandatory="true" max_length="40" name="peril" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Earthquake" sequence="50" value="earthquake"/>
+                <element inactive_on_update="false" label="Boiler &amp; Machinery" sequence="90" value="boiler_and_machinery"/>
+                <element inactive_on_update="false" label="CBI Named" sequence="100" value="cbi_named"/>
+                <element inactive_on_update="false" label="Civil Authority" sequence="140" value="civil_authority"/>
+                <element inactive_on_update="false" label="BI" sequence="180" value="bi"/>
+                <element inactive_on_update="false" label="Course of Construction" sequence="150" value="course_of_construction"/>
+                <element inactive_on_update="false" label="Flood" sequence="20" value="flood"/>
+                <element inactive_on_update="false" label="EQ California" sequence="60" value="eq_california"/>
+                <element inactive_on_update="false" label="CBI Unnamed" sequence="110" value="cbi_unnamed"/>
+                <element inactive_on_update="false" label="Other" sequence="190" value="other"/>
+                <element inactive_on_update="false" label="Tsunami" sequence="70" value="tsunami"/>
+                <element inactive_on_update="false" label="Hail" sequence="120" value="hail"/>
+                <element inactive_on_update="false" label="Theft" sequence="160" value="theft"/>
+                <element inactive_on_update="false" label="Windstorm" sequence="30" value="windstorm"/>
+                <element inactive_on_update="false" label="Fire" sequence="10" value="fire"/>
+                <element inactive_on_update="false" label="Liability" sequence="170" value="liability"/>
+                <element inactive_on_update="false" label="Terrorism" sequence="40" value="terrorism"/>
+                <element inactive_on_update="false" label="SRCC" sequence="80" value="srcc"/>
+                <element inactive_on_update="false" label="Service Interruption" sequence="130" value="service_interruption"/>
+            </choice>
+        </element>
+        <element choice="1" label="Expiring status" max_length="40" name="expiring_status" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Excluded" sequence="20" value="excluded"/>
+                <element inactive_on_update="false" label="Included" sequence="10" value="included"/>
+            </choice>
+        </element>
+        <element label="Wait days (expiring)" max_length="40" name="waiting_period_days_expiring" type="integer"/>
+        <element label="Wait days (new)" max_length="40" name="waiting_period_days_new" type="integer"/>
+        <element label="Expiring sublimit" max_length="40" name="expiring_sub_limit_amount" type="decimal"/>
+        <index name="index">
+            <element name="exposure_item"/>
+        </index>
+    </element>
+</database>

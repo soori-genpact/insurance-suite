@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="6d6510c28d4ecaa45854e5641fad3503" label="Policy Transaction" max_length="40" name="x_gegis_ins_policy_policy_transaction" type="collection">
+        <element label="Effective date" mandatory="true" max_length="40" name="effective_date" type="glide_date"/>
+        <element label="Policy" mandatory="true" max_length="32" name="policy" reference="x_gegis_ins_policy_policy" type="reference"/>
+        <element choice="1" label="Status" mandatory="true" max_length="40" name="status" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Voided" sequence="60" value="voided"/>
+                <element inactive_on_update="false" label="Pending Approval" sequence="20" value="pending_approval"/>
+                <element inactive_on_update="false" label="Approved" sequence="30" value="approved"/>
+                <element inactive_on_update="false" label="Draft" sequence="10" value="draft"/>
+                <element inactive_on_update="false" label="Completed" sequence="40" value="completed"/>
+                <element inactive_on_update="false" label="Rejected" sequence="50" value="rejected"/>
+            </choice>
+        </element>
+        <element label="Description" max_length="2000" name="description" type="string"/>
+        <element label="Premium delta" max_length="40" name="premium_delta" type="decimal"/>
+        <element choice="1" label="Type" mandatory="true" max_length="40" name="type" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Renewal" sequence="20" value="renewal"/>
+                <element inactive_on_update="false" label="Endorsement" sequence="30" value="endorsement"/>
+                <element inactive_on_update="false" label="Cancellation" sequence="40" value="cancellation"/>
+                <element inactive_on_update="false" label="New Business" sequence="10" value="new_business"/>
+                <element inactive_on_update="false" label="Reinstatement" sequence="50" value="reinstatement"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="policy"/>
+        </index>
+    </element>
+</database>

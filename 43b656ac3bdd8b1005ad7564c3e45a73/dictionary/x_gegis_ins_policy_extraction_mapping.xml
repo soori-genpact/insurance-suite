@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="b3c8d0d24971ec85d7778c3492a62c38" label="Extraction Mapping" max_length="40" name="x_gegis_ins_policy_extraction_mapping" type="collection">
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element choice="1" label="Entity type" max_length="40" name="entity_type" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Loss Record" sequence="60" value="loss_record"/>
+                <element inactive_on_update="false" label="Submission Line" sequence="20" value="submission_line"/>
+                <element inactive_on_update="false" label="Party" sequence="30" value="party"/>
+                <element inactive_on_update="false" label="Existing Policy" sequence="70" value="existing_policy"/>
+                <element inactive_on_update="false" label="Submission" sequence="10" value="submission"/>
+                <element inactive_on_update="false" label="Location" sequence="40" value="location"/>
+                <element inactive_on_update="false" label="Vehicle" sequence="50" value="vehicle"/>
+            </choice>
+        </element>
+        <element display="true" label="Name" max_length="100" name="name" type="string"/>
+        <element choice="3" default="string" label="Data type" max_length="40" name="data_type" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Date" sequence="40" value="date"/>
+                <element inactive_on_update="false" label="Choice" sequence="80" value="choice"/>
+                <element inactive_on_update="false" label="Date/Time" sequence="50" value="datetime"/>
+                <element inactive_on_update="false" label="Integer" sequence="20" value="integer"/>
+                <element inactive_on_update="false" label="True/False" sequence="60" value="boolean"/>
+                <element inactive_on_update="false" label="String" sequence="10" value="string"/>
+                <element inactive_on_update="false" label="Reference" sequence="70" value="reference"/>
+                <element inactive_on_update="false" label="Decimal" sequence="30" value="decimal"/>
+            </choice>
+        </element>
+        <element choice="3" default="all" label="Line of business" max_length="40" name="line_of_business" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Umbrella" sequence="60" value="umbrella"/>
+                <element inactive_on_update="false" label="Inland Marine" sequence="70" value="inland_marine"/>
+                <element inactive_on_update="false" label="Property" sequence="20" value="property"/>
+                <element inactive_on_update="false" label="Auto" sequence="30" value="auto"/>
+                <element inactive_on_update="false" label="General Liability" sequence="40" value="general_liability"/>
+                <element inactive_on_update="false" label="All" sequence="10" value="all"/>
+                <element inactive_on_update="false" label="Workers Compensation" sequence="50" value="workers_comp"/>
+            </choice>
+        </element>
+        <element label="Target column" max_length="100" name="target_column" type="string"/>
+        <element default="100" label="Order" max_length="40" name="order" type="integer"/>
+        <element label="Field path" mandatory="true" max_length="255" name="field_path" type="string"/>
+        <element label="Target table" max_length="100" name="target_table" type="string"/>
+    </element>
+</database>

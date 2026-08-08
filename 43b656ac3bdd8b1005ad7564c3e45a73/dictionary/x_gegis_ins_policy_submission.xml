@@ -10,7 +10,11 @@
         </element>
         <element label="Underwriting assistant" max_length="32" name="underwriting_assistant" reference="sys_user" type="reference"/>
         <element choice="1" label="Source channel" max_length="40" name="source_channel" type="string">
-            <choice/>
+            <choice>
+                <element inactive_on_update="false" label="Portal" sequence="20" value="portal"/>
+                <element inactive_on_update="false" label="API" sequence="30" value="api"/>
+                <element inactive_on_update="false" label="Email" sequence="10" value="email"/>
+            </choice>
         </element>
         <element label="Insured Address" max_length="400" name="insured_address" type="string"/>
         <element choice="1" default="property" label="Line of Business" max_length="40" name="line_of_business" type="choice">
@@ -80,11 +84,20 @@
         <element label="Playbook Risk" max_length="40" name="playbook_risk" type="string"/>
         <element label="Winnability" max_length="40" name="winnability" type="decimal"/>
         <element choice="3" default="none" label="Extraction status" max_length="40" name="extraction_status" type="string">
-            <choice/>
+            <choice>
+                <element inactive_on_update="false" label="Applied" sequence="40" value="applied"/>
+                <element inactive_on_update="false" label="None" sequence="10" value="none"/>
+                <element inactive_on_update="false" label="Pending Review" sequence="20" value="pending_review"/>
+                <element inactive_on_update="false" label="Reviewed" sequence="30" value="reviewed"/>
+            </choice>
         </element>
         <element label="Playbook Quote and Bind" max_length="40" name="playbook_quote_and_bind" type="string"/>
         <element choice="1" label="Sanctions status" max_length="40" name="sanctions_status" type="string">
-            <choice/>
+            <choice>
+                <element inactive_on_update="false" label="Hit" sequence="30" value="hit"/>
+                <element inactive_on_update="false" label="Pending" sequence="10" value="pending"/>
+                <element inactive_on_update="false" label="Clear" sequence="20" value="clear"/>
+            </choice>
         </element>
         <element choice="3" default="new_business" label="Submission type" max_length="40" name="submission_type" type="choice">
             <choice>
@@ -134,7 +147,12 @@
             </choice>
         </element>
         <element choice="3" default="pending" label="Clearance status" max_length="40" name="clearance_status" type="string">
-            <choice/>
+            <choice>
+                <element inactive_on_update="false" label="Cleared" sequence="20" value="cleared"/>
+                <element inactive_on_update="false" label="Duplicate" sequence="30" value="duplicate"/>
+                <element inactive_on_update="false" label="Pending" sequence="10" value="pending"/>
+                <element inactive_on_update="false" label="Blocked" sequence="40" value="blocked"/>
+            </choice>
         </element>
         <element label="Total estimated premium" max_length="40" name="total_estimated_premium" type="decimal"/>
         <element label="Primary insured" max_length="32" name="primary_insured" reference="x_gegis_ins_policy_party" type="reference"/>
