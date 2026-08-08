@@ -108,6 +108,14 @@
                 <element inactive_on_update="false" label="New Business" sequence="10" value="new_business"/>
             </choice>
         </element>
+        <element choice="3" default="NEW" label="Type" max_length="40" name="type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Renewal" sequence="20" value="RENEWAL"/>
+                <element inactive_on_update="false" label="Mid Term" sequence="30" value="MID-TERM"/>
+                <element inactive_on_update="false" label="New Policy" sequence="10" value="NEW"/>
+                <element inactive_on_update="false" label="Others" sequence="40" value="Others"/>
+            </choice>
+        </element>
         <element choice="3" label="Activity Status" max_length="40" name="activity_status" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Insured Verification" sequence="30" value="clearance_insured_verification"/>
