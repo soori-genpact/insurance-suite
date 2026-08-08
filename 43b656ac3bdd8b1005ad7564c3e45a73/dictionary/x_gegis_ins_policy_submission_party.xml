@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="8119eea1abea0b7532f8f45d5b73700c" label="Submission Party" max_length="40" name="x_gegis_ins_policy_submission_party" type="collection">
-        <element choice="1" label="Relationship to primary" max_length="40" name="relationship_to_primary" type="choice">
+        <element choice="3" label="Relationship to primary" max_length="40" name="relationship_to_primary" type="choice">
             <choice>
                 <element inactive_on_update="false" label="None" sequence="50" value="none"/>
                 <element inactive_on_update="false" label="Subsidiary" sequence="20" value="subsidiary"/>
@@ -9,7 +9,7 @@
                 <element inactive_on_update="false" label="Parent" sequence="10" value="parent"/>
             </choice>
         </element>
-        <element choice="1" label="Role" mandatory="true" max_length="40" name="role" type="choice">
+        <element choice="3" label="Role" mandatory="true" max_length="40" name="role" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Additional Insured" sequence="40" value="additional_insured"/>
                 <element inactive_on_update="false" label="Broker" sequence="60" value="broker"/>
@@ -34,7 +34,7 @@
         <element label="Organization" mandatory="true" max_length="32" name="organization" reference="x_gegis_ins_policy_party" type="reference"/>
         <element label="Submission line" max_length="32" name="submission_line" reference="x_gegis_ins_policy_submission_line" type="reference"/>
         <element label="Sequence" max_length="40" name="sequence" type="integer"/>
-        <element choice="1" label="Interest type" max_length="40" name="interest_type" type="choice">
+        <element choice="3" label="Interest type" max_length="40" name="interest_type" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Certificate Holder" sequence="40" value="certificate_holder"/>
                 <element inactive_on_update="false" label="Loss Payee" sequence="20" value="loss_payee"/>

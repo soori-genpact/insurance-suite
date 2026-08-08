@@ -8,7 +8,6 @@
         <element label="Selected" max_length="40" name="selected" type="boolean"/>
         <element label="Quote Option" mandatory="true" max_length="32" name="quote_option" reference="x_gegis_ins_policy_quote_option" type="reference"/>
         <element label="Limit" max_length="20" name="limit" type="decimal"/>
-        <element label="Coverage premium" max_length="40" name="coverage_premium" type="decimal"/>
         <element label="Coverage" mandatory="true" max_length="32" name="coverage" reference="x_gegis_ins_policy_coverage" type="reference"/>
         <index name="index">
             <element name="coverage"/>

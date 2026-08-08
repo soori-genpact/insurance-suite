@@ -2,26 +2,23 @@
     <element db_object_id="839fcf74c783df3943ea66806abda235" label="Exclusion" max_length="40" name="x_gegis_ins_policy_exclusion" type="collection">
         <element label="Exclusion Code" mandatory="true" max_length="100" name="exclusion_code" type="string"/>
         <element label="Exclusion Text" max_length="4000" name="exclusion_text" type="string"/>
-        <element label="Description" max_length="2000" name="description" type="string"/>
         <element label="Display Order" max_length="40" name="display_order" type="integer"/>
         <element label="Exclusion Name" mandatory="true" max_length="200" name="exclusion_name" type="string"/>
-        <element label="Code" mandatory="true" max_length="20" name="code" type="string"/>
-        <element label="Exclusion Type" max_length="40" name="exclusion_type" type="choice">
+        <element choice="3" label="Exclusion Type" max_length="40" name="exclusion_type" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Affirmative Cyber" sequence="1" value="affirmative_cyber"/>
-                <element inactive_on_update="false" label="Radioactive Contamination" sequence="3" value="radioactive_contamination"/>
-                <element inactive_on_update="false" label="War Civil War" sequence="4" value="war_civil_war"/>
-                <element inactive_on_update="false" label="Communicable Disease" sequence="5" value="communicable_disease"/>
-                <element inactive_on_update="false" label="Nuclear" sequence="2" value="nuclear"/>
-                <element inactive_on_update="false" label="Other" sequence="6" value="other"/>
+                <element inactive_on_update="false" label="Affirmative Cyber" sequence="10" value="affirmative_cyber"/>
+                <element inactive_on_update="false" label="Radioactive Contamination" sequence="30" value="radioactive_contamination"/>
+                <element inactive_on_update="false" label="War &amp; Civil War" sequence="40" value="war_civil_war"/>
+                <element inactive_on_update="false" label="Communicable Disease" sequence="50" value="communicable_disease"/>
+                <element inactive_on_update="false" label="Nuclear" sequence="20" value="nuclear"/>
+                <element inactive_on_update="false" label="Other" sequence="60" value="other"/>
             </choice>
         </element>
-        <element label="Name" mandatory="true" max_length="200" name="name" type="string"/>
-        <element label="Status" mandatory="true" max_length="40" name="status" type="choice">
+        <element choice="3" label="Status" mandatory="true" max_length="40" name="status" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Draft" sequence="1" value="draft"/>
-                <element inactive_on_update="false" label="Published" sequence="2" value="published"/>
-                <element inactive_on_update="false" label="Archived" sequence="3" value="archived"/>
+                <element inactive_on_update="false" label="Draft" sequence="10" value="draft"/>
+                <element inactive_on_update="false" label="Published" sequence="20" value="published"/>
+                <element inactive_on_update="false" label="Archived" sequence="30" value="archived"/>
             </choice>
         </element>
     </element>

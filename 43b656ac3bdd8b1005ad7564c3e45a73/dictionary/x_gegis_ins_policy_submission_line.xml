@@ -16,7 +16,7 @@
         <element label="Estimated premium" max_length="40" name="estimated_premium" type="decimal"/>
         <element label="Expiration date" max_length="40" name="expiration_date" type="glide_date"/>
         <element label="Total insured value" max_length="40" name="total_insured_value" type="decimal"/>
-        <element choice="1" label="Line of business" mandatory="true" max_length="40" name="line_of_business" type="choice">
+        <element choice="3" label="Line of business" mandatory="true" max_length="40" name="line_of_business" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Workers Compensation" sequence="40" value="workers_comp"/>
                 <element inactive_on_update="false" label="Umbrella" sequence="50" value="umbrella"/>

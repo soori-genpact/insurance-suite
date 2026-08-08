@@ -7,7 +7,7 @@
         <element label="No. of losses" max_length="40" name="total_number_of_losses" type="integer"/>
         <element label="Period of insurance" max_length="100" name="period_of_insurance" type="string"/>
         <element label="Paid incl. O/S payments" max_length="40" name="loss_paid_incl_os_payments" type="decimal"/>
-        <element choice="1" label="Peril" max_length="40" name="peril" type="choice">
+        <element choice="3" label="Peril" max_length="40" name="peril" type="choice">
             <choice>
                 <element inactive_on_update="false" label="EQ California" sequence="60" value="eq_california"/>
                 <element inactive_on_update="false" label="CBI Named" sequence="100" value="cbi_named"/>

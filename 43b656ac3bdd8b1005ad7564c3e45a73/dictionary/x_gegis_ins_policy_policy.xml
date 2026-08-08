@@ -15,7 +15,7 @@
         <element label="Originating submission" max_length="32" name="originating_submission" reference="x_gegis_ins_policy_submission" type="reference"/>
         <element label="Originating Q&amp;B" max_length="32" name="originating_qnb_case" reference="x_gegis_ins_policy_quote_and_bind_case" type="reference"/>
         <element label="Insured" mandatory="true" max_length="32" name="insured" reference="x_gegis_ins_policy_party" type="reference"/>
-        <element choice="1" label="Status" mandatory="true" max_length="40" name="status" type="choice">
+        <element choice="3" label="Status" mandatory="true" max_length="40" name="status" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Expired" sequence="50" value="expired"/>
                 <element inactive_on_update="false" label="Cancelled" sequence="40" value="cancelled"/>

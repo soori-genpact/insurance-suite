@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="d1273b635900c1214f26e3def3eda284" label="Product Coverage" max_length="40" name="x_gegis_ins_policy_product_coverage" type="collection">
         <element label="Min Limit" max_length="20" name="min_limit" type="decimal"/>
-        <element label="Mandatory" max_length="40" name="mandatory" type="boolean"/>
         <element label="Default Deductible" max_length="20" name="default_deductible" type="decimal"/>
         <element label="Display Order" mandatory="true" max_length="40" name="display_order" type="integer"/>
         <element label="Default Selected" max_length="40" name="default_selected" type="boolean"/>
         <element label="Coverage" mandatory="true" max_length="32" name="coverage" reference="x_gegis_ins_policy_coverage" type="reference"/>
         <element label="Max Limit" max_length="20" name="max_limit" type="decimal"/>
         <element label="Effective Date" max_length="40" name="effective_date" type="glide_date"/>
-        <element default="optional" label="Coverage Selection" mandatory="true" max_length="40" name="coverage_selection" type="choice">
+        <element choice="3" default="optional" label="Coverage Selection" mandatory="true" max_length="40" name="coverage_selection" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Optional" sequence="2" value="optional"/>
-                <element inactive_on_update="false" label="Required" sequence="1" value="required"/>
-                <element inactive_on_update="false" label="Excluded" sequence="3" value="excluded"/>
+                <element inactive_on_update="false" label="Optional" sequence="20" value="optional"/>
+                <element inactive_on_update="false" label="Required" sequence="10" value="required"/>
+                <element inactive_on_update="false" label="Excluded" sequence="30" value="excluded"/>
             </choice>
         </element>
         <element label="Product" mandatory="true" max_length="32" name="product" reference="x_gegis_ins_policy_product" type="reference"/>

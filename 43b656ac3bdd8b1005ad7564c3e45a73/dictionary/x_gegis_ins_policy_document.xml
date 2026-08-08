@@ -5,7 +5,7 @@
         <element label="Confidentiality" max_length="40" name="confidentiality" type="string"/>
         <element label="File type" max_length="40" name="file_type" type="string"/>
         <element label="Attachment type" max_length="40" name="attachment_type" type="string"/>
-        <element choice="1" label="Status" max_length="40" name="status" type="choice">
+        <element choice="3" label="Status" max_length="40" name="status" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Draft" sequence="10" value="draft"/>
                 <element inactive_on_update="false" label="Superseded" sequence="30" value="superseded"/>
@@ -24,7 +24,7 @@
         <element label="URL" max_length="1024" name="url" type="string"/>
         <element label="Document type" max_length="40" name="document_type" type="string"/>
         <element label="Scope" max_length="40" name="scope" type="string"/>
-        <element choice="1" default="new" label="State" max_length="40" name="state" type="choice">
+        <element choice="3" default="new" label="State" max_length="40" name="state" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Duplicate" sequence="60" value="duplicate"/>
                 <element inactive_on_update="false" label="Processed" sequence="50" value="processed"/>

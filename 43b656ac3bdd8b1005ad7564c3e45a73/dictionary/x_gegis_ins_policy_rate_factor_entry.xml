@@ -2,11 +2,8 @@
     <element db_object_id="e71f419bd85089a76216faa9d06c3d4c" label="Rate Factor Entry" max_length="40" name="x_gegis_ins_policy_rate_factor_entry" type="collection">
         <element label="Effective Date" max_length="40" name="effective_date" type="glide_date"/>
         <element label="Factor Value" mandatory="true" max_length="20" name="factor_value" type="decimal"/>
-        <element label="Condition value" mandatory="true" max_length="40" name="condition_value" type="decimal"/>
         <element label="Match Value" mandatory="true" max_length="100" name="match_value" type="string"/>
         <element label="Expiry Date" max_length="40" name="expiry_date" type="glide_date"/>
-        <element label="Multiplier" mandatory="true" max_length="40" name="multiplier" type="decimal"/>
-        <element label="Condition label" mandatory="true" max_length="200" name="condition_label" type="string"/>
         <element label="Display Order" max_length="40" name="display_order" type="integer"/>
         <element label="Rate Factor" mandatory="true" max_length="32" name="rate_factor" reference="x_gegis_ins_policy_rate_factor" type="reference"/>
         <element label="Attribute" mandatory="true" max_length="100" name="attribute" type="string"/>

@@ -3,7 +3,7 @@
         <element label="New sublimit" max_length="40" name="new_sub_limit_amount" type="decimal"/>
         <element label="Exposure item" mandatory="true" max_length="32" name="exposure_item" reference="x_gegis_ins_policy_exposure_item" type="reference"/>
         <element label="Remarks" max_length="2000" name="remarks" type="string"/>
-        <element choice="1" label="Peril" mandatory="true" max_length="40" name="peril" type="choice">
+        <element choice="3" label="Peril" mandatory="true" max_length="40" name="peril" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Earthquake" sequence="50" value="earthquake"/>
                 <element inactive_on_update="false" label="Boiler &amp; Machinery" sequence="90" value="boiler_and_machinery"/>
@@ -26,7 +26,7 @@
                 <element inactive_on_update="false" label="Service Interruption" sequence="130" value="service_interruption"/>
             </choice>
         </element>
-        <element choice="1" label="Expiring status" max_length="40" name="expiring_status" type="choice">
+        <element choice="3" label="Expiring status" max_length="40" name="expiring_status" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Excluded" sequence="20" value="excluded"/>
                 <element inactive_on_update="false" label="Included" sequence="10" value="included"/>

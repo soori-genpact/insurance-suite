@@ -2,7 +2,7 @@
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="ce76c7b4333d4f907ef8f499ed5c7b06" extends="task" label="Quote and Bind Case" max_length="40" name="x_gegis_ins_policy_quote_and_bind_case" type="collection">
         <element label="Active" max_length="40" name="is_active" type="boolean"/>
         <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Submission" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
-        <element choice="1" label="Activity Status" max_length="40" name="activity_status" type="choice">
+        <element choice="3" label="Activity Status" max_length="40" name="activity_status" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Extract" sequence="20" value="quotebind_extract"/>
                 <element inactive_on_update="false" label="Product Selection Details" sequence="30" value="quotebind_product_selection_details"/>
@@ -15,7 +15,7 @@
             </choice>
         </element>
         <element label="Stage" max_length="40" name="stage" type="integer"/>
-        <element choice="1" label="Status" max_length="40" name="status" type="choice">
+        <element choice="3" label="Status" max_length="40" name="status" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Complete" sequence="30" value="complete"/>
                 <element inactive_on_update="false" label="Blocked" sequence="40" value="blocked"/>

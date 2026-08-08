@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="06d5cff0333d4f907ef8f499ed5c7b23" label="Submission" max_length="40" name="x_gegis_ins_policy_submission" type="collection">
-        <element choice="1" label="Stage" max_length="40" name="stage" type="choice">
+        <element choice="3" label="Stage" max_length="40" name="stage" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Exposure Management" sequence="30" value="exposure_management"/>
                 <element inactive_on_update="false" label="Risk Assessment" sequence="20" value="risk_assessment"/>
@@ -9,7 +9,7 @@
             </choice>
         </element>
         <element label="Underwriting assistant" max_length="32" name="underwriting_assistant" reference="sys_user" type="reference"/>
-        <element choice="1" label="Source channel" max_length="40" name="source_channel" type="choice">
+        <element choice="3" label="Source channel" max_length="40" name="source_channel" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Portal" sequence="20" value="portal"/>
                 <element inactive_on_update="false" label="API" sequence="30" value="api"/>
@@ -17,7 +17,7 @@
             </choice>
         </element>
         <element label="Insured Address" max_length="400" name="insured_address" type="string"/>
-        <element choice="1" default="property" label="Line of Business" max_length="40" name="line_of_business" type="choice">
+        <element choice="3" default="property" label="Line of Business" max_length="40" name="line_of_business" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Specialty" sequence="130" value="specialty"/>
                 <element inactive_on_update="false" label="Financial Lines" sequence="90" value="financial_lines"/>
@@ -92,7 +92,7 @@
             </choice>
         </element>
         <element label="Playbook Quote and Bind" max_length="40" name="playbook_quote_and_bind" type="string"/>
-        <element choice="1" label="Sanctions status" max_length="40" name="sanctions_status" type="choice">
+        <element choice="3" label="Sanctions status" max_length="40" name="sanctions_status" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Hit" sequence="30" value="hit"/>
                 <element inactive_on_update="false" label="Pending" sequence="10" value="pending"/>
@@ -108,7 +108,7 @@
                 <element inactive_on_update="false" label="New Business" sequence="10" value="new_business"/>
             </choice>
         </element>
-        <element choice="1" label="Activity Status" max_length="40" name="activity_status" type="choice">
+        <element choice="3" label="Activity Status" max_length="40" name="activity_status" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Insured Verification" sequence="30" value="clearance_insured_verification"/>
                 <element inactive_on_update="false" label="Quality Assurance" sequence="70" value="clearance_quality_assurance"/>
@@ -160,7 +160,7 @@
         <element label="Source reference" max_length="200" name="source_reference" type="string"/>
         <element label="Underwriter" max_length="32" name="underwriter" reference="sys_user" type="reference"/>
         <element label="Received date" max_length="40" name="received_date" type="glide_date_time"/>
-        <element choice="1" label="Status" max_length="40" name="status" type="choice">
+        <element choice="3" label="Status" max_length="40" name="status" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Bound" sequence="110" value="bound"/>
                 <element inactive_on_update="false" label="Closed" sequence="130" value="closed"/>

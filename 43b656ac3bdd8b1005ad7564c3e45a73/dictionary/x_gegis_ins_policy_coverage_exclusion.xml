@@ -4,11 +4,11 @@
         <element label="Exclusion" mandatory="true" max_length="32" name="exclusion" reference="x_gegis_ins_policy_exclusion" type="reference"/>
         <element label="Coverage" mandatory="true" max_length="32" name="coverage" reference="x_gegis_ins_policy_coverage" type="reference"/>
         <element label="Display Order" max_length="40" name="display_order" type="integer"/>
-        <element label="Treatment" mandatory="true" max_length="40" name="treatment" type="choice">
+        <element choice="3" label="Treatment" mandatory="true" max_length="40" name="treatment" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Sub Limited" sequence="3" value="sub_limited"/>
-                <element inactive_on_update="false" label="Included" sequence="1" value="included"/>
-                <element inactive_on_update="false" label="Excluded" sequence="2" value="excluded"/>
+                <element inactive_on_update="false" label="Sub-limited" sequence="30" value="sub_limited"/>
+                <element inactive_on_update="false" label="Included" sequence="10" value="included"/>
+                <element inactive_on_update="false" label="Excluded" sequence="20" value="excluded"/>
             </choice>
         </element>
         <index name="index">

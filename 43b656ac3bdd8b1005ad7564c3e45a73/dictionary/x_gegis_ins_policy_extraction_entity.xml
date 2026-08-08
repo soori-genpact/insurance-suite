@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="5e0a7ba1b20b7b3fdeaa9d44859de55e" label="Extraction Entity" max_length="40" name="x_gegis_ins_policy_extraction_entity" type="collection">
-        <element choice="1" label="Entity type" mandatory="true" max_length="40" name="entity_type" type="choice">
+        <element choice="3" label="Entity type" mandatory="true" max_length="40" name="entity_type" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Submission Line" sequence="20" value="submission_line"/>
                 <element inactive_on_update="false" label="Loss Record" sequence="60" value="loss_record"/>

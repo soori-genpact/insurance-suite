@@ -2,7 +2,7 @@
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="39021084cf928758ccf631ad5d851cff" extends="task" label="Renewal Case" max_length="40" name="x_gegis_ins_policy_renewal_case" type="collection">
         <element default="90" label="Lead Time" max_length="40" name="lead_time" type="integer"/>
         <element label="Expiry Date" max_length="40" name="expiry_date" type="glide_date"/>
-        <element choice="1" label="Line of Business" max_length="40" name="line_of_business" type="choice">
+        <element choice="3" label="Line of Business" max_length="40" name="line_of_business" type="choice">
             <choice>
                 <element inactive_on_update="false" label="General" sequence="50" value="general"/>
                 <element inactive_on_update="false" label="Construction" sequence="100" value="construction"/>
@@ -20,14 +20,14 @@
             </choice>
         </element>
         <element label="Prior Policy #" max_length="40" name="prior_policy_number" type="string"/>
-        <element choice="1" label="UW Decision" max_length="40" name="uw_decision" type="choice">
+        <element choice="3" label="UW Decision" max_length="40" name="uw_decision" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Full Re-Underwriting" sequence="10" value="full_re_underwriting"/>
                 <element inactive_on_update="false" label="Auto Renew" sequence="20" value="auto_renew"/>
                 <element inactive_on_update="false" label="Do Not Renew" sequence="30" value="do_not_renew"/>
             </choice>
         </element>
-        <element choice="1" label="System Decision" max_length="40" name="system_decision" type="choice">
+        <element choice="3" label="System Decision" max_length="40" name="system_decision" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Auto Renew" sequence="20" value="auto_renew"/>
                 <element inactive_on_update="false" label="Full Re-Underwriting" sequence="10" value="full_re_underwriting"/>
@@ -35,7 +35,7 @@
             </choice>
         </element>
         <element default="0" label="Notification Frequency" max_length="40" name="notification_reminder_frequency" type="integer"/>
-        <element choice="1" label="Notification Mode" max_length="40" name="notification_mode" type="choice">
+        <element choice="3" label="Notification Mode" max_length="40" name="notification_mode" type="choice">
             <choice>
                 <element inactive_on_update="false" label="SMS" sequence="20" value="sms"/>
                 <element inactive_on_update="false" label="Email" sequence="10" value="email"/>
@@ -44,7 +44,7 @@
         </element>
         <element label="Notification Template" max_length="32" name="notification_template" reference="sysevent_email_template" type="reference"/>
         <element label="Notification Start Date" max_length="40" name="notification_start_date" type="glide_date_time"/>
-        <element choice="1" label="Status" max_length="40" name="status" type="choice">
+        <element choice="3" label="Status" max_length="40" name="status" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Declined" sequence="50" value="declined"/>
                 <element inactive_on_update="false" label="Complete" sequence="30" value="complete"/>

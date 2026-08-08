@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="3056c774333d4f907ef8f499ed5c7bbe" extends="task" label="Risk Case" max_length="40" name="x_gegis_ins_policy_risk_case" type="collection">
         <element label="Active" max_length="40" name="is_active" type="boolean"/>
-        <element choice="1" label="Activity Status" max_length="40" name="activity_status" type="choice">
+        <element choice="3" label="Activity Status" max_length="40" name="activity_status" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Underwriting Guidelines" sequence="30" value="risk_underwriting_guidelines"/>
                 <element inactive_on_update="false" label="Letter of Authority" sequence="20" value="risk_letter_of_authority"/>
@@ -16,7 +16,7 @@
                 <element inactive_on_update="false" label="Benchmarking" sequence="40" value="risk_benchmarking"/>
             </choice>
         </element>
-        <element choice="1" label="Status" max_length="40" name="status" type="choice">
+        <element choice="3" label="Status" max_length="40" name="status" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Complete" sequence="30" value="complete"/>
                 <element inactive_on_update="false" label="Pending" sequence="10" value="pending"/>

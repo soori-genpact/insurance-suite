@@ -3,7 +3,7 @@
         <element label="Reviewed date" max_length="40" name="reviewed_date" type="glide_date_time"/>
         <element label="Clearance case" mandatory="true" max_length="32" name="clearance_case" reference="x_gegis_ins_policy_clearance_case" type="reference"/>
         <element label="Confidence" max_length="40" name="confidence" type="decimal"/>
-        <element choice="1" label="Check type" mandatory="true" max_length="40" name="check_type" type="choice">
+        <element choice="3" label="Check type" mandatory="true" max_length="40" name="check_type" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Existing Policy" sequence="40" value="existing_policy"/>
                 <element inactive_on_update="false" label="Data Validation" sequence="50" value="data_validation"/>
@@ -13,14 +13,14 @@
             </choice>
         </element>
         <element label="Related record" max_length="32" name="related_record" type="document_id"/>
-        <element choice="1" label="Method" max_length="40" name="method" type="choice">
+        <element choice="3" label="Method" max_length="40" name="method" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Manual" sequence="30" value="manual"/>
                 <element inactive_on_update="false" label="Automated" sequence="10" value="automated"/>
                 <element inactive_on_update="false" label="AI" sequence="20" value="ai"/>
             </choice>
         </element>
-        <element choice="1" label="Disposition" max_length="40" name="disposition" type="choice">
+        <element choice="3" label="Disposition" max_length="40" name="disposition" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Escalated" sequence="20" value="escalated"/>
                 <element inactive_on_update="false" label="False Positive" sequence="30" value="false_positive"/>
@@ -29,7 +29,7 @@
                 <element inactive_on_update="false" label="Not Applicable" sequence="50" value="not_applicable"/>
             </choice>
         </element>
-        <element choice="1" label="Status" mandatory="true" max_length="40" name="status" type="choice">
+        <element choice="3" label="Status" mandatory="true" max_length="40" name="status" type="choice">
             <choice>
                 <element inactive_on_update="false" label="In Progress" sequence="20" value="in_progress"/>
                 <element inactive_on_update="false" label="Pass" sequence="30" value="pass"/>
