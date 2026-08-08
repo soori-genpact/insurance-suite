@@ -1,34 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="691c90f34f999ce43d27245a112079c6" extends="task" label="Exposure Case" max_length="40" name="x_gegis_ins_policy_exposure_case" type="collection">
-        <element label="Stage" max_length="40" name="stage" type="integer"/>
         <element label="Notes" max_length="4000" name="notes" type="string"/>
         <element label="Total TIV" max_length="40" name="total_tiv" type="decimal"/>
-        <element choice="1" label="Status" max_length="40" name="status" type="choice">
-            <choice>
-                <element inactive_on_update="false" label="Pending" sequence="10" value="pending"/>
-                <element inactive_on_update="false" label="Complete" sequence="30" value="complete"/>
-                <element inactive_on_update="false" label="Blocked" sequence="40" value="blocked"/>
-                <element inactive_on_update="false" label="In Progress" sequence="20" value="in_progress"/>
-                <element inactive_on_update="false" label="Declined" sequence="50" value="declined"/>
-            </choice>
-        </element>
-        <element label="Active" max_length="40" name="is_active" type="boolean"/>
-        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element label="Submission" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
         <element choice="1" label="Activity Status" max_length="40" name="activity_status" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Extract" sequence="20" value="exposure_extract"/>
-                <element inactive_on_update="false" label="Catastrophe Modelling" sequence="40" value="exposure_catastrophe_modelling"/>
+                <element inactive_on_update="false" label="Initiate Exposure" sequence="10" value="exposure_initiate_exposure"/>
                 <element inactive_on_update="false" label="Concentration Analysis" sequence="60" value="exposure_concentration_analysis"/>
+                <element inactive_on_update="false" label="Portfolio Optimization" sequence="70" value="exposure_portfolio_optimization"/>
                 <element inactive_on_update="false" label="Exposure Management Summary" sequence="80" value="exposure_management_summary"/>
                 <element inactive_on_update="false" label="Geo Mapping" sequence="30" value="exposure_geo_mapping"/>
+                <element inactive_on_update="false" label="Catastrophe Modelling" sequence="40" value="exposure_catastrophe_modelling"/>
                 <element inactive_on_update="false" label="Capacity management" sequence="50" value="exposure_capacity_management"/>
-                <element inactive_on_update="false" label="Initiate Exposure" sequence="10" value="exposure_initiate_exposure"/>
-                <element inactive_on_update="false" label="Portfolio Optimization" sequence="70" value="exposure_portfolio_optimization"/>
             </choice>
         </element>
-        <index name="index">
-            <element name="submission"/>
-            <element name="active"/>
-        </index>
+        <element label="Active" max_length="40" name="is_active" type="boolean"/>
+        <element label="Stage" max_length="40" name="stage" type="integer"/>
+        <element choice="1" label="Status" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Complete" sequence="30" value="complete"/>
+                <element inactive_on_update="false" label="Pending" sequence="10" value="pending"/>
+                <element inactive_on_update="false" label="In Progress" sequence="20" value="in_progress"/>
+                <element inactive_on_update="false" label="Declined" sequence="50" value="declined"/>
+                <element inactive_on_update="false" label="Blocked" sequence="40" value="blocked"/>
+            </choice>
+        </element>
     </element>
 </database>
