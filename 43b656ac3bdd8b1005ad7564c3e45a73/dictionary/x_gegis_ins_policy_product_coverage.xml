@@ -17,6 +17,7 @@
         <element label="Product" mandatory="true" max_length="32" name="product" reference="x_gegis_ins_policy_product" type="reference"/>
         <element label="Base premium" max_length="40" name="base_premium" type="decimal"/>
         <element label="Default Limit" max_length="20" name="default_limit" type="decimal"/>
+        <element display="true" label="Name" max_length="200" name="name" type="string"/>
         <element label="Expiration Date" max_length="40" name="expiration_date" type="glide_date"/>
         <index name="index">
             <element name="coverage"/>
