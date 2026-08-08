@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="e6cb1a81c403881b8ea75bff04d5faa5" label="Coverage Condition" max_length="40" name="x_gegis_ins_policy_coverage_condition" type="collection">
+        <element label="Coverage" mandatory="true" max_length="32" name="coverage" reference="x_gegis_ins_policy_coverage" type="reference"/>
+        <element default="true" label="Is Mandatory" max_length="40" name="is_mandatory" type="boolean"/>
+        <element label="Display Order" max_length="40" name="display_order" type="integer"/>
+        <element label="Condition" mandatory="true" max_length="32" name="condition" reference="x_gegis_ins_policy_condition" type="reference"/>
+        <index name="index">
+            <element name="condition"/>
+        </index>
+        <index name="index2">
+            <element name="coverage"/>
+        </index>
+    </element>
+</database>

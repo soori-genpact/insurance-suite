@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="64fda1abcfcecc9ae195204e35ad153f" label="Quote Option Coverage" max_length="40" name="x_gegis_ins_policy_quote_option_coverage" type="collection">
+        <element label="Premium" max_length="20" name="premium" type="decimal"/>
+        <element label="Product coverage" mandatory="true" max_length="32" name="product_coverage" reference="x_gegis_ins_policy_product_coverage" type="reference"/>
+        <element label="Quote risk" mandatory="true" max_length="32" name="quote_risk" reference="x_gegis_ins_policy_quote_risk" type="reference"/>
+        <element label="Deductible" max_length="20" name="deductible" type="decimal"/>
+        <element label="Display Order" max_length="40" name="display_order" type="integer"/>
+        <element label="Selected" max_length="40" name="selected" type="boolean"/>
+        <element label="Quote Option" mandatory="true" max_length="32" name="quote_option" reference="x_gegis_ins_policy_quote_option" type="reference"/>
+        <element label="Limit" max_length="20" name="limit" type="decimal"/>
+        <element label="Coverage premium" max_length="40" name="coverage_premium" type="decimal"/>
+        <element label="Coverage" mandatory="true" max_length="32" name="coverage" reference="x_gegis_ins_policy_coverage" type="reference"/>
+        <index name="index">
+            <element name="coverage"/>
+        </index>
+        <index name="index2">
+            <element name="product_coverage"/>
+        </index>
+        <index name="index3">
+            <element name="quote_option"/>
+        </index>
+        <index name="index4">
+            <element name="quote_risk"/>
+        </index>
+    </element>
+</database>

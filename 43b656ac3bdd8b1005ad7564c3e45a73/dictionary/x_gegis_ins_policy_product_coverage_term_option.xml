@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="768c4f6daf3ac843d2e5888ec4907099" label="Product Coverage Term Option" max_length="40" name="x_gegis_ins_policy_product_coverage_term_option" type="collection">
+        <element label="Option Label" max_length="200" name="option_label" type="string"/>
+        <element label="Product Coverage" mandatory="true" max_length="32" name="product_coverage" reference="x_gegis_ins_policy_product_coverage" type="reference"/>
+        <element label="Coverage term option" mandatory="true" max_length="32" name="coverage_term_option" reference="x_gegis_ins_policy_coverage_term" type="reference"/>
+        <element label="Option Value" mandatory="true" max_length="20" name="option_value" type="decimal"/>
+        <element label="Available" max_length="40" name="available" type="boolean"/>
+        <element label="Display Order" max_length="40" name="display_order" type="integer"/>
+        <element label="Premium impact" max_length="40" name="premium_impact" type="decimal"/>
+        <element label="Coverage Term" mandatory="true" max_length="32" name="coverage_term" reference="x_gegis_ins_policy_coverage_term" type="reference"/>
+        <element label="Is product default" max_length="40" name="is_product_default" type="boolean"/>
+        <element label="Is Default" max_length="40" name="is_default" type="boolean"/>
+        <index name="index">
+            <element name="coverage_term"/>
+        </index>
+        <index name="index2">
+            <element name="coverage_term_option"/>
+        </index>
+        <index name="index3">
+            <element name="product_coverage"/>
+        </index>
+    </element>
+</database>

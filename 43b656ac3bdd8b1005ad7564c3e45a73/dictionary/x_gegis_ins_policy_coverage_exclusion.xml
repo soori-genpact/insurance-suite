@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="b7345434fa35c9755864559b98fe85c6" label="Coverage Exclusion" max_length="40" name="x_gegis_ins_policy_coverage_exclusion" type="collection">
+        <element label="Sub Limit" max_length="20" name="sub_limit" type="decimal"/>
+        <element label="Exclusion" mandatory="true" max_length="32" name="exclusion" reference="x_gegis_ins_policy_exclusion" type="reference"/>
+        <element label="Coverage" mandatory="true" max_length="32" name="coverage" reference="x_gegis_ins_policy_coverage" type="reference"/>
+        <element label="Display Order" max_length="40" name="display_order" type="integer"/>
+        <element label="Treatment" mandatory="true" max_length="40" name="treatment" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Sub Limited" sequence="3" value="sub_limited"/>
+                <element inactive_on_update="false" label="Included" sequence="1" value="included"/>
+                <element inactive_on_update="false" label="Excluded" sequence="2" value="excluded"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="coverage"/>
+        </index>
+        <index name="index2">
+            <element name="exclusion"/>
+        </index>
+    </element>
+</database>
