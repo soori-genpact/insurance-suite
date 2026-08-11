@@ -821,8 +821,21 @@
             MIN: 'min'
         },
 
+        // loa_metric.source_anchor -- WHAT the source rows hang off, and therefore
+        // whether the metric can be checked at all on a given evaluation.
+        //   submission_line  readable from intake onwards
+        //   quote_option     readable only once a quote exists
+        // Per-occurrence limits and deductibles are QUOTE attributes: at
+        // submission stage there is nothing to check, and the honest answer is
+        // not_applicable, not "within authority". Without this the resolver has
+        // to guess from the source table's shape.
+        LOA_METRIC_SOURCE_ANCHOR: {
+            SUBMISSION_LINE: 'submission_line',
+            QUOTE_OPTION:    'quote_option'
+        },
+
         // loa_metric.aggregation -- how child rows roll up into one exposure
-        // figure. Child rows are found by their submission_line reference.
+        // figure. Child rows are found by the anchor reference above.
         LOA_METRIC_AGGREGATION: {
             NONE:  SHARED.NONE,
             SUM:   'sum',
