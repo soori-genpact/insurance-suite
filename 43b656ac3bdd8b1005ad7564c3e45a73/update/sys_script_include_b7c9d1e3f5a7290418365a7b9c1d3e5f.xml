@@ -116,7 +116,26 @@
         // real zone or band: the rate applies regardless of that dimension
         ANY:            'any',
         // rate_table_entry.vehicle_type and vehicle.vehicle_use
-        COMMERCIAL:     'commercial'
+        COMMERCIAL:     'commercial',
+        // ---- LOA tokens that span more than one column ----------------------
+        // loa_authority_limit.class_of_business and .business_type -- WILDCARD,
+        // meaning the limit applies regardless of that dimension. Distinct from
+        // ANY above only by which columns carry it; same intent.
+        ALL:            'all',
+        // submission.submission_type and loa_authority_limit.business_type
+        NEW_BUSINESS:   'new_business',
+        RENEWAL:        'renewal',
+        // loa_authority_grant.state and loa_authority_limit versioning language
+        SUPERSEDED:     'superseded',
+        REVOKED:        'revoked',
+        // loa_metric.comparison and loa_metric.aggregation -- "the largest value"
+        // in one case, "breach above the limit" in the other. Same token, and the
+        // column it sits on says which question is being asked.
+        MAX:            'max',
+        // loa_metric.value_type and loa_metric.aggregation
+        COUNT:          'count',
+        // loa_metric.aggregation -- read the source field directly, do not roll up
+        NONE:           'none'
     };
 
     // submission.stage -- also the prefix namespace for activity_status values.
@@ -464,8 +483,8 @@
         },
 
         SUBMISSION_TYPE: {
-            NEW_BUSINESS:  'new_business',
-            RENEWAL:       'renewal',
+            NEW_BUSINESS:  SHARED.NEW_BUSINESS,
+            RENEWAL:       SHARED.RENEWAL,
             ENDORSEMENT:   'endorsement',
             CANCELLATION:  'cancellation',
             REINSTATEMENT: 'reinstatement'
@@ -757,7 +776,189 @@
             BUSINESS_INTERRUPTION: 'business_interruption',
             VEHICLE:               'vehicle',
             EQUIPMENT:             'equipment'
+        },
+
+        // =================================================================
+        // LETTER OF AUTHORITY  (loa_* tables)
+        // -----------------------------------------------------------------
+        // The LOA subsystem is deliberately DATA-driven: a new LOB or a new
+        // metric is rows in loa_metric + loa_authority_limit, never a new column
+        // and never a new value here. These lists describe the SHAPE of a limit,
+        // not the limits themselves.
+        //
+        // Two things are reused rather than redefined and must stay that way:
+        //   line_of_business -> CHOICE.LINE_OF_BUSINESS  (above)
+        //   currency         -> CHOICE.CURRENCY          (above)
+        // A second LOA-only LOB list is exactly the GL / GENERAL_LIABILITY drift
+        // this model exists to remove.
+        // =================================================================
+
+        // loa_authority_tier.code is a STRING with a unique index, not a choice -
+        // adding Tier 6 must be one row, not an edit in five places. The known
+        // codes are named here so scripts and seeds never type 'tier_3' raw.
+        LOA_TIER: {
+            TIER_1: 'tier_1',
+            TIER_2: 'tier_2',
+            TIER_3: 'tier_3',
+            TIER_4: 'tier_4',
+            TIER_5: 'tier_5'
+        },
+
+        // loa_metric.value_type -- which of limit_amount / limit_count /
+        // limit_percent a limit row on this metric is expected to populate.
+        LOA_METRIC_VALUE_TYPE: {
+            AMOUNT:  'amount',
+            COUNT:   SHARED.COUNT,
+            PERCENT: 'percent'
+        },
+
+        // loa_metric.comparison -- the DIRECTION of a breach, held as data instead
+        // of being implied by a column name. MIN is not an edge case: deductible
+        // floors and minimum-premium rules breach when the actual value is BELOW
+        // the limit, and getting that backwards silently authorises bad risk.
+        LOA_METRIC_COMPARISON: {
+            MAX: SHARED.MAX,
+            MIN: 'min'
+        },
+
+        // loa_metric.aggregation -- how child rows roll up into one exposure
+        // figure. Child rows are found by their submission_line reference.
+        LOA_METRIC_AGGREGATION: {
+            NONE:  SHARED.NONE,
+            SUM:   'sum',
+            MAX:   SHARED.MAX,
+            COUNT: SHARED.COUNT
+        },
+
+        // loa_metric.peril -- cat perils a limit can be cut by. NOT yet applied to
+        // exposure_peril.peril, which carries an older uncatalogued list; see the
+        // note at the bottom of this block.
+        PERIL: {
+            WIND:      'wind',
+            QUAKE:     'quake',
+            FLOOD:     'flood',
+            HAIL:      'hail',
+            WILDFIRE:  'wildfire',
+            TERRORISM: 'terrorism',
+            ALL_OTHER: 'all_other'
+        },
+
+        // loa_jurisdiction.region -- grouping over jurisdictions, so a whole
+        // region can be granted in one action and reported on as one.
+        LOA_REGION: {
+            US_WEST:    'us_west',
+            US_EAST:    'us_east',
+            US_CENTRAL: 'us_central',
+            US_SOUTH:   'us_south',
+            NON_US:     'non_us'
+        },
+
+        // loa_authority_limit.operator -- how exposure is compared with the limit.
+        LOA_OPERATOR: {
+            LTE: 'lte',
+            GTE: 'gte',
+            EQ:  'eq'
+        },
+
+        // loa_authority_limit.class_of_business -- occupancy class the limit is cut
+        // by. ALL is a WILDCARD row (applies regardless of class), not a real class.
+        CLASS_OF_BUSINESS: {
+            ALL:           SHARED.ALL,
+            OFFICE:        'office',
+            RETAIL:        'retail',
+            MANUFACTURING: 'manufacturing',
+            WAREHOUSE:     'warehouse',
+            PETROCHEMICAL: 'petrochemical',
+            HOSPITALITY:   'hospitality',
+            HEALTHCARE:    'healthcare',
+            EDUCATION:     'education',
+            MUNICIPAL:     'municipal',
+            HABITATIONAL:  'habitational'
+        },
+
+        // loa_authority_limit.business_type -- new business vs renewal authority.
+        // Same tokens as SUBMISSION_TYPE plus the ALL wildcard; deliberately a
+        // separate group because it also answers "or both", which a submission
+        // type never does.
+        LOA_BUSINESS_TYPE: {
+            ALL:          SHARED.ALL,
+            NEW_BUSINESS: SHARED.NEW_BUSINESS,
+            RENEWAL:      SHARED.RENEWAL
+        },
+
+        // loa_authority_limit.bind_authority -- what the holder may actually DO
+        // once inside the limit. QUOTE_ONLY is the carve-out that lets a class be
+        // quoted at a tier but never bound there.
+        LOA_BIND_AUTHORITY: {
+            QUOTE_AND_BIND: 'quote_and_bind',
+            QUOTE_ONLY:     'quote_only',
+            REFER_ONLY:     'refer_only'
+        },
+
+        // loa_authority_grant.grantee_type -- ROLE is the standing grant and needs
+        // no maintenance when a person joins, moves or leaves. USER is the named
+        // exception, normally a delegation.
+        LOA_GRANTEE_TYPE: {
+            ROLE: 'role',
+            USER: 'user'
+        },
+
+        // loa_authority_grant.state -- the ONLY lifecycle field on a grant. There
+        // is deliberately no `active` boolean beside it: two fields that can
+        // disagree about whether authority is live is a bug waiting to happen.
+        LOA_GRANT_STATE: {
+            DRAFT:      SHARED.DRAFT,
+            ACTIVE:     SHARED.ACTIVE,
+            SUPERSEDED: SHARED.SUPERSEDED,
+            REVOKED:    SHARED.REVOKED,
+            EXPIRED:    SHARED.EXPIRED
+        },
+
+        // loa_evaluation.evaluation_trigger -- why this VERSION of the evaluation
+        // exists. Evaluations are never updated in place; a change writes a new
+        // version and deactivates the last.
+        LOA_EVALUATION_TRIGGER: {
+            INITIAL_EVALUATION:  'initial_evaluation',
+            INTAKE_CHANGE:       'intake_change',
+            EXPOSURE_CHANGE:     'exposure_change',
+            GRANT_CHANGE:        'grant_change',
+            QUOTE_CHANGE:        'quote_change',
+            MANUAL_REEVALUATION: 'manual_reevaluation'
+        },
+
+        // loa_evaluation.evaluation_status -- the decision. NO_AUTHORITY means no
+        // grant matched at all, which is a different problem from a breach and
+        // must never be reported as one: a breach means the underwriter is over
+        // their limit, no_authority means they have no limit on this LOB.
+        LOA_EVALUATION_STATUS: {
+            PENDING:                           SHARED.PENDING,
+            AUTHORIZED:                        'authorized',
+            BREACH:                            'breach',
+            // 'referred' (the decision), NOT SHARED.REFERRAL ('referral', the
+            // case_task category). Two different words for two different things.
+            REFERRED:                          'referred',
+            REFERRED_APPROVED:                 'referred_approved',
+            REFERRED_APPROVED_WITH_CONDITIONS: 'referred_approved_with_conditions',
+            REFERRED_REJECTED:                 'referred_rejected',
+            REFERRED_REJECTED_ALTERNATE_TERMS: 'referred_rejected_alternate_terms',
+            DECLINED:                          SHARED.DECLINED,
+            NO_AUTHORITY:                      'no_authority'
+        },
+
+        // loa_evaluation_line.result -- the per-metric outcome. NO_LIMIT means the
+        // tier has no limit row for that metric, which is NOT the same as being
+        // within one; reporting it as WITHIN would hide a gap in the grid.
+        LOA_LINE_RESULT: {
+            WITHIN:         'within',
+            BREACH:         'breach',
+            NOT_APPLICABLE: 'not_applicable',
+            NO_LIMIT:       'no_limit'
         }
+
+        // OPEN ITEM: exposure_peril.peril carries an uncatalogued list that predates
+        // CHOICE.PERIL above. Reconciling the two is a data decision (it would
+        // rewrite live exposure_peril rows), not a cleanup - leave both until it is
+        // taken deliberately.
     };
 
     // Collect the value strings of a choice group as an array (for IN queries,
