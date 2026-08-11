@@ -467,36 +467,46 @@
                                         "value": {
                                             "items": [
                                                 {
-                                                    "field": "number",
-                                                    "label": "Submission",
-                                                    "refTable": "x_gegis_wum_submission",
+                                                    "field": "product_code",
+                                                    "label": "Product",
+                                                    "refTable": "x_gegis_ins_policy_product",
                                                     "type": "reference",
                                                     "width": "150px"
                                                 },
                                                 {
-                                                    "field": "account",
-                                                    "label": "Insured",
-                                                    "minWidth": 160,
+                                                    "field": "product_name",
+                                                    "label": "Product Name",
                                                     "type": "text"
                                                 },
                                                 {
                                                     "field": "line_of_business",
                                                     "label": "LOB",
-                                                    "type": "text",
-                                                    "width": "130px"
+                                                    "type": "pill"
                                                 },
                                                 {
-                                                    "field": "stage",
-                                                    "label": "Stage",
-                                                    "type": "pill",
-                                                    "width": "130px"
+                                                    "field": "description",
+                                                    "label": "Description",
+                                                    "type": "text"
                                                 },
                                                 {
-                                                    "align": "right",
-                                                    "field": "premium",
-                                                    "label": "Premium",
-                                                    "type": "number",
-                                                    "width": "120px"
+                                                    "field": "effective_date",
+                                                    "label": "Effective Date",
+                                                    "type": "datetime"
+                                                },
+                                                {
+                                                    "field": "expiration_date",
+                                                    "label": "Expiration Date",
+                                                    "type": "datetime"
+                                                },
+                                                {
+                                                    "field": "status",
+                                                    "label": "Status",
+                                                    "type": "pill"
+                                                },
+                                                {
+                                                    "field": "version",
+                                                    "label": "Version",
+                                                    "type": "text"
                                                 }
                                             ]
                                         }
@@ -523,9 +533,13 @@
                                         "type": "JSON_LITERAL",
                                         "value": true
                                     },
+                                    "enablePinStore": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
                                     "enableReferenceLinks": {
                                         "type": "JSON_LITERAL",
-                                        "value": true
+                                        "value": false
                                     },
                                     "enableResize": {
                                         "type": "JSON_LITERAL",
@@ -591,11 +605,11 @@
                                     },
                                     "orderBy": {
                                         "type": "JSON_LITERAL",
-                                        "value": ""
+                                        "value": "sys_created_on"
                                     },
                                     "orderDescending": {
                                         "type": "JSON_LITERAL",
-                                        "value": false
+                                        "value": true
                                     },
                                     "pageSize": {
                                         "type": "JSON_LITERAL",
@@ -605,17 +619,21 @@
                                         "type": "JSON_LITERAL",
                                         "value": "10,20,50,100"
                                     },
+                                    "pinPerUser": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
                                     "query": {
                                         "type": "JSON_LITERAL",
                                         "value": ""
                                     },
                                     "recordUrlTemplate": {
                                         "type": "JSON_LITERAL",
-                                        "value": "/record/{table}/{sysId}"
+                                        "value": "x/gegis/insurance-policy-suite/record/{table}/{sysId}"
                                     },
                                     "referenceOpenIn": {
                                         "type": "JSON_LITERAL",
-                                        "value": "same"
+                                        "value": "workspace"
                                     },
                                     "roleBasedColumns": {
                                         "type": "JSON_LITERAL",
@@ -628,13 +646,7 @@
                                     "rowIconsEnd": {
                                         "type": "JSON_LITERAL",
                                         "value": {
-                                            "items": [
-                                                {
-                                                    "actionCode": "pin",
-                                                    "icon": "thumbtack-outline",
-                                                    "tooltip": "Pin"
-                                                }
-                                            ]
+                                            "items": []
                                         }
                                     },
                                     "rowIconsStart": {
@@ -928,7 +940,7 @@
                                     },
                                     "table": {
                                         "type": "JSON_LITERAL",
-                                        "value": ""
+                                        "value": "x_gegis_ins_policy_product"
                                     },
                                     "toolbarButtons": {
                                         "type": "JSON_LITERAL",
@@ -1168,7 +1180,15 @@
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "Insured",
+  "message" : "Description",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Effective Date",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Expiration Date",
   "code" : "",
   "comment" : ""
 }, {
@@ -1176,19 +1196,23 @@
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "Premium",
+  "message" : "Product",
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "Stage",
+  "message" : "Product Name",
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "Submission",
+  "message" : "Status",
   "code" : "",
   "comment" : ""
 }, {
   "message" : "Total Premium",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Version",
   "code" : "",
   "comment" : ""
 } ]</required_translations>
@@ -1203,14 +1227,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-18 12:30:49</sys_created_on>
         <sys_id>70655693cf82c318c419b6ce6d851cae</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>Products default</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_70655693cf82c318c419b6ce6d851cae</sys_update_name>
-        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-07-27 05:09:48</sys_updated_on>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-08-11 17:33:40</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=70655693cf82c318c419b6ce6d851cae"/>
 </record_update>
