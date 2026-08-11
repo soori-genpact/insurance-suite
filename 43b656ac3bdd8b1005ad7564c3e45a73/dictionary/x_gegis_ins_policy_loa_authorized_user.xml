@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="2922d30fc3624310fac6fc0d050131b8" label="LOA Authorized User" max_length="40" name="x_gegis_ins_policy_loa_authorized_user" type="collection">
+        <element label="Is primary" max_length="40" name="is_primary" type="boolean"/>
+        <element label="Grant" mandatory="true" max_length="32" name="grant" reference="x_gegis_ins_policy_loa_authority_grant" type="reference"/>
+        <element label="Authority tier" mandatory="true" max_length="32" name="authority_tier" reference="x_gegis_ins_policy_loa_authority_tier" type="reference"/>
+        <element label="Evaluation" mandatory="true" max_length="32" name="evaluation" reference="x_gegis_ins_policy_loa_evaluation" type="reference"/>
+        <element label="Is delegate" max_length="40" name="is_delegate" type="boolean"/>
+        <element label="User" mandatory="true" max_length="32" name="user" reference="sys_user" type="reference"/>
+        <index name="index">
+            <element name="authority_tier"/>
+        </index>
+        <index name="index2">
+            <element name="evaluation"/>
+        </index>
+        <index name="index3">
+            <element name="grant"/>
+        </index>
+        <index name="index4">
+            <element name="user"/>
+        </index>
+    </element>
+</database>

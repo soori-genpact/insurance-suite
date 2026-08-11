@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="58229fcbc3624310fac6fc0d050131e1" label="LOA Authority Limit" max_length="40" name="x_gegis_ins_policy_loa_authority_limit" type="collection">
+        <element label="Metric" mandatory="true" max_length="32" name="metric" reference="x_gegis_ins_policy_loa_metric" type="reference"/>
+        <element label="Product" max_length="32" name="product" reference="x_gegis_ins_policy_product" type="reference"/>
+        <element label="Authority tier" mandatory="true" max_length="32" name="authority_tier" reference="x_gegis_ins_policy_loa_authority_tier" type="reference"/>
+        <element label="Limit count" max_length="40" name="limit_count" type="integer"/>
+        <element label="Superseded by" max_length="32" name="superseded_by" reference="x_gegis_ins_policy_loa_authority_limit" type="reference"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" read_only="true" read_only_option="instance_configured" type="string"/>
+        <element label="Limit percent" max_length="15" name="limit_percent" type="decimal"/>
+        <element choice="3" default="all" label="Business type" max_length="40" name="business_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Renewal" sequence="30" value="renewal"/>
+                <element inactive_on_update="false" label="New Business" sequence="20" value="new_business"/>
+                <element inactive_on_update="false" label="All business" sequence="10" value="all"/>
+            </choice>
+        </element>
+        <element label="Valid to" max_length="40" name="valid_to" type="glide_date"/>
+        <element label="Max term months" max_length="40" name="max_term_months" type="integer"/>
+        <element label="Notes" max_length="500" name="notes" type="string"/>
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element choice="1" default="lte" label="Operator" mandatory="true" max_length="40" name="operator" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Greater than or equal to" sequence="20" value="gte"/>
+                <element inactive_on_update="false" label="Less than or equal to" sequence="10" value="lte"/>
+                <element inactive_on_update="false" label="Equal to" sequence="30" value="eq"/>
+            </choice>
+        </element>
+        <element label="Limit amount" max_length="20" name="limit_amount" type="decimal"/>
+        <element choice="1" label="Line of business" mandatory="true" max_length="40" name="line_of_business" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Property" sequence="10" value="property"/>
+                <element inactive_on_update="false" label="Workers Comp" sequence="40" value="workers_comp"/>
+                <element inactive_on_update="false" label="Cyber" sequence="120" value="cyber"/>
+                <element inactive_on_update="false" label="Energy" sequence="80" value="energy"/>
+                <element inactive_on_update="false" label="Motor" sequence="30" value="motor"/>
+                <element inactive_on_update="false" label="Aviation" sequence="110" value="aviation"/>
+                <element inactive_on_update="false" label="Marine" sequence="70" value="marine"/>
+                <element inactive_on_update="false" label="Casualty" sequence="60" value="casualty"/>
+                <element inactive_on_update="false" label="Auto" sequence="20" value="auto"/>
+                <element inactive_on_update="false" label="Construction" sequence="100" value="construction"/>
+                <element inactive_on_update="false" label="General" sequence="50" value="general"/>
+                <element inactive_on_update="false" label="Specialty" sequence="130" value="specialty"/>
+                <element inactive_on_update="false" label="Financial Lines" sequence="90" value="financial_lines"/>
+            </choice>
+        </element>
+        <element choice="3" default="usd" label="Currency" max_length="3" name="currency" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="AUD" sequence="50" value="aud"/>
+                <element inactive_on_update="false" label="CAD" sequence="40" value="cad"/>
+                <element inactive_on_update="false" label="GBP" sequence="20" value="gbp"/>
+                <element inactive_on_update="false" label="CHF" sequence="70" value="chf"/>
+                <element inactive_on_update="false" label="EUR" sequence="30" value="eur"/>
+                <element inactive_on_update="false" label="USD" sequence="10" value="usd"/>
+                <element inactive_on_update="false" label="JPY" sequence="60" value="jpy"/>
+            </choice>
+        </element>
+        <element choice="3" default="all" label="Class of business" max_length="40" name="class_of_business" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Municipal" sequence="100" value="municipal"/>
+                <element inactive_on_update="false" label="Petrochemical" sequence="60" value="petrochemical"/>
+                <element inactive_on_update="false" label="Office" sequence="20" value="office"/>
+                <element inactive_on_update="false" label="Warehouse &amp; Distribution" sequence="50" value="warehouse"/>
+                <element inactive_on_update="false" label="Education" sequence="90" value="education"/>
+                <element inactive_on_update="false" label="Healthcare" sequence="80" value="healthcare"/>
+                <element inactive_on_update="false" label="Manufacturing" sequence="40" value="manufacturing"/>
+                <element inactive_on_update="false" label="All classes" sequence="10" value="all"/>
+                <element inactive_on_update="false" label="Retail" sequence="30" value="retail"/>
+                <element inactive_on_update="false" label="Habitational" sequence="110" value="habitational"/>
+                <element inactive_on_update="false" label="Hospitality" sequence="70" value="hospitality"/>
+            </choice>
+        </element>
+        <element choice="1" default="quote_and_bind" label="Bind authority" mandatory="true" max_length="40" name="bind_authority" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Refer Only" sequence="30" value="refer_only"/>
+                <element inactive_on_update="false" label="Quote Only" sequence="20" value="quote_only"/>
+                <element inactive_on_update="false" label="Quote and Bind" sequence="10" value="quote_and_bind"/>
+            </choice>
+        </element>
+        <element label="Valid from" mandatory="true" max_length="40" name="valid_from" type="glide_date"/>
+        <index name="index">
+            <element name="authority_tier"/>
+        </index>
+        <index name="index2">
+            <element name="metric"/>
+        </index>
+        <index name="index3">
+            <element name="product"/>
+        </index>
+        <index name="index4">
+            <element name="superseded_by"/>
+        </index>
+    </element>
+</database>
