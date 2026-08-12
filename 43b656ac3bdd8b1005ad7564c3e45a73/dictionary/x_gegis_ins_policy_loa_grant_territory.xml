@@ -2,6 +2,7 @@
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="b822130fc3624310fac6fc0d05013175" label="LOA Grant Territory" max_length="40" name="x_gegis_ins_policy_loa_grant_territory" type="collection">
         <element label="Jurisdiction" mandatory="true" max_length="32" name="jurisdiction" reference="x_gegis_ins_policy_loa_jurisdiction" type="reference"/>
         <element label="Grant" mandatory="true" max_length="32" name="grant" reference="x_gegis_ins_policy_loa_authority_grant" type="reference"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
         <index name="index">
             <element name="grant"/>
         </index>

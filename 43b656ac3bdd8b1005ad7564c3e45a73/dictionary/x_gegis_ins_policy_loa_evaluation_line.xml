@@ -4,10 +4,10 @@
         <element label="Utilisation percent" max_length="15" name="utilisation_percent" type="decimal"/>
         <element choice="1" default="within" label="Result" mandatory="true" max_length="40" name="result" type="choice">
             <choice>
+                <element inactive_on_update="false" label="Breach" sequence="20" value="breach"/>
                 <element inactive_on_update="false" label="Within Authority" sequence="10" value="within"/>
                 <element inactive_on_update="false" label="No Limit Defined" sequence="40" value="no_limit"/>
                 <element inactive_on_update="false" label="Not Applicable" sequence="30" value="not_applicable"/>
-                <element inactive_on_update="false" label="Breach" sequence="20" value="breach"/>
             </choice>
         </element>
         <element label="Exposure amount" max_length="20" name="exposure_amount" type="decimal"/>
@@ -19,15 +19,16 @@
         <element label="Sequence" max_length="40" name="sequence" type="integer"/>
         <element label="Breach amount" max_length="20" name="breach_amount" type="decimal"/>
         <element label="Metric" mandatory="true" max_length="32" name="metric" reference="x_gegis_ins_policy_loa_metric" type="reference"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
         <element choice="3" default="usd" label="Currency" max_length="3" name="currency" type="choice">
             <choice>
-                <element inactive_on_update="false" label="USD" sequence="10" value="usd"/>
-                <element inactive_on_update="false" label="CAD" sequence="40" value="cad"/>
-                <element inactive_on_update="false" label="EUR" sequence="30" value="eur"/>
-                <element inactive_on_update="false" label="CHF" sequence="70" value="chf"/>
                 <element inactive_on_update="false" label="JPY" sequence="60" value="jpy"/>
                 <element inactive_on_update="false" label="GBP" sequence="20" value="gbp"/>
+                <element inactive_on_update="false" label="USD" sequence="10" value="usd"/>
                 <element inactive_on_update="false" label="AUD" sequence="50" value="aud"/>
+                <element inactive_on_update="false" label="CAD" sequence="40" value="cad"/>
+                <element inactive_on_update="false" label="CHF" sequence="70" value="chf"/>
+                <element inactive_on_update="false" label="EUR" sequence="30" value="eur"/>
             </choice>
         </element>
         <index name="index">
