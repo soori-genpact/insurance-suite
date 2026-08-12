@@ -653,77 +653,82 @@
                                                                 "value": {
                                                                     "items": [
                                                                         {
-                                                                            "field": "number",
-                                                                            "label": "Renewal Case",
-                                                                            "refTable": "x_gegis_ins_policy_renewal_case",
+                                                                            "field": "policy_number",
+                                                                            "label": "Policy",
+                                                                            "refTable": "x_gegis_ins_policy_policy",
                                                                             "type": "reference",
-                                                                            "width": "150px"
+                                                                            "width": 150
                                                                         },
                                                                         {
-                                                                            "field": "prior_policy_number",
-                                                                            "label": "Prior Policy #",
+                                                                            "field": "insured",
+                                                                            "label": "Insured",
                                                                             "type": "text",
-                                                                            "width": "150px"
+                                                                            "width": 200
                                                                         },
                                                                         {
-                                                                            "field": "insured_name",
-                                                                            "label": "Insured Name",
+                                                                            "field": "broker",
+                                                                            "label": "Broker",
                                                                             "type": "text",
-                                                                            "width": "250px"
+                                                                            "width": 170
                                                                         },
                                                                         {
                                                                             "field": "line_of_business",
                                                                             "label": "LOB",
                                                                             "type": "pill",
-                                                                            "width": "150px"
+                                                                            "width": 130
+                                                                        },
+                                                                        {
+                                                                            "field": "status",
+                                                                            "label": "Status",
+                                                                            "pillColors": {
+                                                                                "Active": "positive",
+                                                                                "Bound": "info",
+                                                                                "Cancelled": "critical",
+                                                                                "Expired": "neutral",
+                                                                                "In-Force": "positive",
+                                                                                "Non-Renewed": "critical"
+                                                                            },
+                                                                            "type": "pill",
+                                                                            "width": 130
+                                                                        },
+                                                                        {
+                                                                            "align": "right",
+                                                                            "field": "total_premium",
+                                                                            "label": "Premium",
+                                                                            "type": "number",
+                                                                            "width": 130
+                                                                        },
+                                                                        {
+                                                                            "align": "center",
+                                                                            "field": "currency",
+                                                                            "label": "Ccy",
+                                                                            "type": "text",
+                                                                            "width": 70
+                                                                        },
+                                                                        {
+                                                                            "field": "territory",
+                                                                            "label": "Territory",
+                                                                            "type": "pill",
+                                                                            "width": 110
+                                                                        },
+                                                                        {
+                                                                            "field": "effective_date",
+                                                                            "label": "Effective",
+                                                                            "type": "date",
+                                                                            "width": 120
                                                                         },
                                                                         {
                                                                             "field": "expiry_date",
                                                                             "label": "Expiry",
                                                                             "type": "date",
-                                                                            "width": "120px"
+                                                                            "width": 120
                                                                         },
                                                                         {
-                                                                            "field": "days_to_expiry",
-                                                                            "label": "Days Left",
-                                                                            "type": "number",
-                                                                            "width": "120px"
-                                                                        },
-                                                                        {
-                                                                            "field": "system_decision",
-                                                                            "label": "System Decision",
-                                                                            "pillColors": {
-                                                                                "Auto renew": "positive",
-                                                                                "Do not renew": "critical",
-                                                                                "Full re-underwriting": "warning"
-                                                                            },
-                                                                            "type": "pill",
-                                                                            "width": "200px"
-                                                                        },
-                                                                        {
-                                                                            "field": "notification_mode",
-                                                                            "label": "Mode",
-                                                                            "type": "pill",
-                                                                            "width": "100px"
-                                                                        },
-                                                                        {
-                                                                            "field": "notification_reminder_frequency",
-                                                                            "label": "Reminder Frequency",
-                                                                            "type": "number"
-                                                                        },
-                                                                        {
-                                                                            "field": "notification_start_date",
-                                                                            "label": "Notification Start",
-                                                                            "type": "date"
-                                                                        },
-                                                                        {
-                                                                            "field": "notification_template",
-                                                                            "label": "Template",
-                                                                            "refTable": "sysevent_email_template",
-                                                                            "roles": [
-                                                                                "email_admin"
-                                                                            ],
-                                                                            "type": "reference"
+                                                                            "field": "product",
+                                                                            "label": "Product",
+                                                                            "refTable": "x_gegis_ins_policy_product",
+                                                                            "type": "reference",
+                                                                            "width": 160
                                                                         }
                                                                     ]
                                                                 }
@@ -752,7 +757,7 @@
                                                             },
                                                             "enablePinStore": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": true
+                                                                "value": false
                                                             },
                                                             "enableReferenceLinks": {
                                                                 "type": "JSON_LITERAL",
@@ -842,7 +847,7 @@
                                                             },
                                                             "pinPerUser": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": true
+                                                                "value": false
                                                             },
                                                             "pinStorageKey": {
                                                                 "type": "JSON_LITERAL",
@@ -866,33 +871,54 @@
                                                             },
                                                             "rowIconSize": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": 24
+                                                                "value": 32
                                                             },
                                                             "rowIconsEnd": {
                                                                 "type": "JSON_LITERAL",
                                                                 "value": {
                                                                     "items": [
                                                                         {
-                                                                            "actionCode": "email",
+                                                                            "actionCode": "view",
+                                                                            "icon": "eye-outline",
+                                                                            "tooltip": "Quick view"
+                                                                        },
+                                                                        {
+                                                                            "actionCode": "schedule",
                                                                             "color": "primary",
-                                                                            "hideWhen": {
-                                                                                "field": "system_decision",
-                                                                                "value": "do_not_renew"
-                                                                            },
+                                                                            "icon": "document-pdf-outline",
+                                                                            "tooltip": "Policy schedule"
+                                                                        },
+                                                                        {
+                                                                            "actionCode": "email",
                                                                             "icon": "envelope-outline",
-                                                                            "tooltip": "Send email"
+                                                                            "tooltip": "Email broker"
                                                                         },
                                                                         {
-                                                                            "actionCode": "retrigger",
+                                                                            "actionCode": "renew",
                                                                             "color": "warning",
-                                                                            "icon": "magic-outline",
-                                                                            "tooltip": "Re Run Renewal Rules"
+                                                                            "icon": "sync-outline",
+                                                                            "showWhen": {
+                                                                                "field": "status",
+                                                                                "values": [
+                                                                                    "in_force",
+                                                                                    "active"
+                                                                                ]
+                                                                            },
+                                                                            "tooltip": "Start renewal"
                                                                         },
                                                                         {
-                                                                            "actionCode": "delete",
+                                                                            "actionCode": "cancel",
                                                                             "color": "critical",
                                                                             "icon": "circle-close-outline",
-                                                                            "tooltip": "Delete"
+                                                                            "showWhen": {
+                                                                                "field": "status",
+                                                                                "values": [
+                                                                                    "in_force",
+                                                                                    "active",
+                                                                                    "bound"
+                                                                                ]
+                                                                            },
+                                                                            "tooltip": "Cancel policy"
                                                                         }
                                                                     ]
                                                                 }
@@ -1188,7 +1214,7 @@
                                                             },
                                                             "table": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": "x_gegis_ins_policy_renewal_case"
+                                                                "value": "x_gegis_ins_policy_policy"
                                                             },
                                                             "toolbarButtons": {
                                                                 "type": "JSON_LITERAL",
@@ -1325,15 +1351,8 @@
                                                                 "value": {
                                                                     "items": [
                                                                         {
-                                                                            "field": "number",
-                                                                            "label": "Renewal Case",
-                                                                            "refTable": "x_gegis_ins_policy_renewal_case",
-                                                                            "type": "reference",
-                                                                            "width": "150px"
-                                                                        },
-                                                                        {
                                                                             "field": "prior_policy_number",
-                                                                            "label": "Prior Policy #",
+                                                                            "label": "Policy #",
                                                                             "type": "text",
                                                                             "width": "150px"
                                                                         },
@@ -1368,6 +1387,33 @@
                                                                                 "Auto renew": "positive",
                                                                                 "Do not renew": "critical",
                                                                                 "Full re-underwriting": "warning"
+                                                                            },
+                                                                            "type": "pill",
+                                                                            "width": "200px"
+                                                                        },
+                                                                        {
+                                                                            "choices": [
+                                                                                {
+                                                                                    "label": "Auto Renew",
+                                                                                    "value": "auto_renew"
+                                                                                },
+                                                                                {
+                                                                                    "label": "Full Re-Underwriting",
+                                                                                    "value": "full_re_underwriting"
+                                                                                },
+                                                                                {
+                                                                                    "label": "Do Not Renew",
+                                                                                    "value": "do_not_renew"
+                                                                                }
+                                                                            ],
+                                                                            "editable": true,
+                                                                            "editor": "choice",
+                                                                            "field": "uw_decision",
+                                                                            "label": "UW Decision",
+                                                                            "pillColors": {
+                                                                                "auto_renew": "positive",
+                                                                                "do_not_renew": "critical",
+                                                                                "full_re_underwriting": "warning"
                                                                             },
                                                                             "type": "pill",
                                                                             "width": "200px"
@@ -1941,77 +1987,63 @@
                                                                 "value": {
                                                                     "items": [
                                                                         {
-                                                                            "field": "number",
-                                                                            "label": "Renewal Case",
-                                                                            "refTable": "x_gegis_ins_policy_renewal_case",
+                                                                            "field": "policy",
+                                                                            "label": "Policy",
+                                                                            "refTable": "x_gegis_ins_policy_policy",
                                                                             "type": "reference",
                                                                             "width": "150px"
                                                                         },
                                                                         {
-                                                                            "field": "prior_policy_number",
-                                                                            "label": "Prior Policy #",
+                                                                            "field": "policy.insured",
+                                                                            "label": "Insured",
                                                                             "type": "text",
-                                                                            "width": "150px"
+                                                                            "width": "220px"
                                                                         },
                                                                         {
-                                                                            "field": "insured_name",
-                                                                            "label": "Insured Name",
-                                                                            "type": "text",
-                                                                            "width": "250px"
-                                                                        },
-                                                                        {
-                                                                            "field": "line_of_business",
+                                                                            "field": "policy.line_of_business",
                                                                             "label": "LOB",
                                                                             "type": "pill",
-                                                                            "width": "150px"
+                                                                            "width": "130px"
                                                                         },
                                                                         {
-                                                                            "field": "expiry_date",
-                                                                            "label": "Expiry",
+                                                                            "field": "status",
+                                                                            "label": "Status",
+                                                                            "pillColors": {
+                                                                                "approved": "info",
+                                                                                "completed": "positive",
+                                                                                "draft": "neutral",
+                                                                                "pending_approval": "warning",
+                                                                                "rejected": "critical",
+                                                                                "voided": "critical"
+                                                                            },
+                                                                            "type": "pill",
+                                                                            "width": "170px"
+                                                                        },
+                                                                        {
+                                                                            "align": "right",
+                                                                            "field": "premium_delta",
+                                                                            "label": "Premium Δ",
+                                                                            "type": "number",
+                                                                            "width": "140px"
+                                                                        },
+                                                                        {
+                                                                            "align": "center",
+                                                                            "field": "policy.currency",
+                                                                            "label": "Ccy",
+                                                                            "type": "text",
+                                                                            "width": "70px"
+                                                                        },
+                                                                        {
+                                                                            "field": "effective_date",
+                                                                            "label": "Effective",
                                                                             "type": "date",
                                                                             "width": "120px"
                                                                         },
                                                                         {
-                                                                            "field": "days_to_expiry",
-                                                                            "label": "Days Left",
-                                                                            "type": "number",
-                                                                            "width": "120px"
-                                                                        },
-                                                                        {
-                                                                            "field": "system_decision",
-                                                                            "label": "System Decision",
-                                                                            "pillColors": {
-                                                                                "Auto renew": "positive",
-                                                                                "Do not renew": "critical",
-                                                                                "Full re-underwriting": "warning"
-                                                                            },
-                                                                            "type": "pill",
-                                                                            "width": "200px"
-                                                                        },
-                                                                        {
-                                                                            "field": "notification_mode",
-                                                                            "label": "Mode",
-                                                                            "type": "pill",
-                                                                            "width": "100px"
-                                                                        },
-                                                                        {
-                                                                            "field": "notification_reminder_frequency",
-                                                                            "label": "Reminder Frequency",
-                                                                            "type": "number"
-                                                                        },
-                                                                        {
-                                                                            "field": "notification_start_date",
-                                                                            "label": "Notification Start",
-                                                                            "type": "date"
-                                                                        },
-                                                                        {
-                                                                            "field": "notification_template",
-                                                                            "label": "Template",
-                                                                            "refTable": "sysevent_email_template",
-                                                                            "roles": [
-                                                                                "email_admin"
-                                                                            ],
-                                                                            "type": "reference"
+                                                                            "field": "description",
+                                                                            "label": "Description",
+                                                                            "type": "text",
+                                                                            "width": "320px"
                                                                         }
                                                                     ]
                                                                 }
@@ -2040,7 +2072,7 @@
                                                             },
                                                             "enablePinStore": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": true
+                                                                "value": false
                                                             },
                                                             "enableReferenceLinks": {
                                                                 "type": "JSON_LITERAL",
@@ -2130,7 +2162,7 @@
                                                             },
                                                             "pinPerUser": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": true
+                                                                "value": false
                                                             },
                                                             "pinStorageKey": {
                                                                 "type": "JSON_LITERAL",
@@ -2138,7 +2170,7 @@
                                                             },
                                                             "query": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": ""
+                                                                "value": "type=endorsement"
                                                             },
                                                             "recordUrlTemplate": {
                                                                 "type": "JSON_LITERAL",
@@ -2476,7 +2508,7 @@
                                                             },
                                                             "table": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": "x_gegis_ins_policy_renewal_case"
+                                                                "value": "x_gegis_ins_policy_policy_transaction"
                                                             },
                                                             "toolbarButtons": {
                                                                 "type": "JSON_LITERAL",
@@ -2969,7 +3001,19 @@
         <props>[]</props>
         <required_sys_props/>
         <required_translations>[ {
+  "message" : "Auto Renew",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "Avg Premium",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Broker",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Ccy",
   "code" : "",
   "comment" : ""
 }, {
@@ -2977,7 +3021,27 @@
   "code" : "",
   "comment" : ""
 }, {
+  "message" : "Description",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Do Not Renew",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Effective",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "Expiry",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Full Re-Underwriting",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Insured",
   "code" : "",
   "comment" : ""
 }, {
@@ -3005,7 +3069,23 @@
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "Prior Policy #",
+  "message" : "Policy",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Policy #",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Premium",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Premium Δ",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Product",
   "code" : "",
   "comment" : ""
 }, {
@@ -3017,7 +3097,7 @@
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "Renewal Case",
+  "message" : "Status",
   "code" : "",
   "comment" : ""
 }, {
@@ -3029,7 +3109,15 @@
   "code" : "",
   "comment" : ""
 }, {
+  "message" : "Territory",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "Total Premium",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "UW Decision",
   "code" : "",
   "comment" : ""
 } ]</required_translations>
@@ -3093,14 +3181,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-18 04:15:57</sys_created_on>
         <sys_id>8424acdbcf464318c419b6ce6d851cf0</sys_id>
-        <sys_mod_count>46</sys_mod_count>
+        <sys_mod_count>53</sys_mod_count>
         <sys_name>Policy Master default</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_8424acdbcf464318c419b6ce6d851cf0</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-08-08 09:28:03</sys_updated_on>
+        <sys_updated_on>2026-08-12 12:40:25</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=8424acdbcf464318c419b6ce6d851cf0"/>
 </record_update>
