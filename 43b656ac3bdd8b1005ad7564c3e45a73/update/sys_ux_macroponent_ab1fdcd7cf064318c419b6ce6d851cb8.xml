@@ -977,6 +977,10 @@
                                         "type": "JSON_LITERAL",
                                         "value": false
                                     },
+                                    "enablePinStore": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
                                     "enableReferenceLinks": {
                                         "type": "JSON_LITERAL",
                                         "value": true
@@ -1055,6 +1059,10 @@
                                         "type": "JSON_LITERAL",
                                         "value": "10,20,50,100"
                                     },
+                                    "pinPerUser": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
                                     "query": {
                                         "type": "JSON_LITERAL",
                                         "value": "category=hitl"
@@ -1076,13 +1084,7 @@
                                     "rowIconsStart": {
                                         "type": "JSON_LITERAL",
                                         "value": {
-                                            "items": [
-                                                {
-                                                    "actionCode": "pin",
-                                                    "icon": "thumbtack-outline",
-                                                    "tooltip": "Pin"
-                                                }
-                                            ]
+                                            "items": []
                                         }
                                     },
                                     "sampleRows": {
@@ -1571,6 +1573,10 @@
                                         "type": "JSON_LITERAL",
                                         "value": true
                                     },
+                                    "enablePinStore": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
                                     "enableReferenceLinks": {
                                         "type": "JSON_LITERAL",
                                         "value": true
@@ -1649,6 +1655,10 @@
                                         "type": "JSON_LITERAL",
                                         "value": "10,20,50,100"
                                     },
+                                    "pinPerUser": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
                                     "query": {
                                         "type": "JSON_LITERAL",
                                         "value": ""
@@ -1664,13 +1674,7 @@
                                     "rowIconsEnd": {
                                         "type": "JSON_LITERAL",
                                         "value": {
-                                            "items": [
-                                                {
-                                                    "actionCode": "pin",
-                                                    "icon": "thumbtack-outline",
-                                                    "tooltip": "Pin"
-                                                }
-                                            ]
+                                            "items": []
                                         }
                                     },
                                     "rowIconsStart": {
@@ -3104,6 +3108,16 @@
                                         "value": {
                                             "items": []
                                         }
+                                    },
+                                    "userSysId": {
+                                        "binding": {
+                                            "address": [
+                                                "user",
+                                                "sys_id"
+                                            ],
+                                            "category": "session"
+                                        },
+                                        "type": "CONTEXT_BINDING"
                                     }
                                 },
                                 "slot": null,
@@ -3576,14 +3590,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-18 03:54:04</sys_created_on>
         <sys_id>ab1fdcd7cf064318c419b6ce6d851cb8</sys_id>
-        <sys_mod_count>64</sys_mod_count>
+        <sys_mod_count>67</sys_mod_count>
         <sys_name>Intake default</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_ab1fdcd7cf064318c419b6ce6d851cb8</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-28 13:18:08</sys_updated_on>
+        <sys_updated_on>2026-08-12 12:51:03</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=ab1fdcd7cf064318c419b6ce6d851cb8"/>
 </record_update>

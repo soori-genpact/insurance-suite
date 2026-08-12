@@ -1431,6 +1431,12 @@
                                                             "rowIconsEnd": {
                                                                 "type": "JSON_LITERAL",
                                                                 "value": {
+                                                                    "items": []
+                                                                }
+                                                            },
+                                                            "rowIconsStart": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": {
                                                                     "items": [
                                                                         {
                                                                             "actionCode": "pin",
@@ -1438,12 +1444,6 @@
                                                                             "tooltip": "Pin"
                                                                         }
                                                                     ]
-                                                                }
-                                                            },
-                                                            "rowIconsStart": {
-                                                                "type": "JSON_LITERAL",
-                                                                "value": {
-                                                                    "items": []
                                                                 }
                                                             },
                                                             "sampleRows": {
@@ -2722,6 +2722,10 @@
                                                                 "type": "JSON_LITERAL",
                                                                 "value": true
                                                             },
+                                                            "enablePinStore": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
                                                             "enableReferenceLinks": {
                                                                 "type": "JSON_LITERAL",
                                                                 "value": true
@@ -2804,6 +2808,10 @@
                                                                 "type": "JSON_LITERAL",
                                                                 "value": "10,20,50,100"
                                                             },
+                                                            "pinPerUser": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
                                                             "query": {
                                                                 "type": "JSON_LITERAL",
                                                                 "value": "assignment_groupDYNAMICd6435e965f510100a9ad2572f2b47744"
@@ -2827,13 +2835,7 @@
                                                             "rowIconsEnd": {
                                                                 "type": "JSON_LITERAL",
                                                                 "value": {
-                                                                    "items": [
-                                                                        {
-                                                                            "actionCode": "pin",
-                                                                            "icon": "thumbtack-outline",
-                                                                            "tooltip": "Pin"
-                                                                        }
-                                                                    ]
+                                                                    "items": []
                                                                 }
                                                             },
                                                             "rowIconsStart": {
@@ -3136,14 +3138,7 @@
                                                                 }
                                                             },
                                                             "userSysId": {
-                                                                "binding": {
-                                                                    "address": [
-                                                                        "user",
-                                                                        "sys_id"
-                                                                    ],
-                                                                    "category": "session"
-                                                                },
-                                                                "type": "CONTEXT_BINDING"
+                                                                "type": "JSON_LITERAL"
                                                             }
                                                         },
                                                         "slot": null,
@@ -4661,14 +4656,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-06-28 11:39:26</sys_created_on>
         <sys_id>d1d903f4337d4f907ef8f499ed5c7be6</sys_id>
-        <sys_mod_count>103</sys_mod_count>
+        <sys_mod_count>105</sys_mod_count>
         <sys_name>Dashboard default</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_d1d903f4337d4f907ef8f499ed5c7be6</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-08-08 08:02:33</sys_updated_on>
+        <sys_updated_on>2026-08-12 12:47:53</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=d1d903f4337d4f907ef8f499ed5c7be6"/>
 </record_update>
