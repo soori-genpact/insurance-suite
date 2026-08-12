@@ -778,6 +778,19 @@
             EQUIPMENT:             'equipment'
         },
 
+        // policy_transaction.status -- the lifecycle of a single ENDORSEMENT or
+        // other mid-term change, not of the policy. A voided transaction was
+        // reversed after completion; a rejected one never took effect at all.
+        // The policy's own lifecycle is POLICY_STATUS.
+        TRANSACTION_STATUS: {
+            DRAFT:            SHARED.DRAFT,
+            PENDING_APPROVAL: 'pending_approval',
+            APPROVED:         'approved',
+            COMPLETED:        'completed',
+            REJECTED:         SHARED.REJECTED,
+            VOIDED:           'voided'
+        },
+
         // =================================================================
         // LETTER OF AUTHORITY  (loa_* tables)
         // -----------------------------------------------------------------
