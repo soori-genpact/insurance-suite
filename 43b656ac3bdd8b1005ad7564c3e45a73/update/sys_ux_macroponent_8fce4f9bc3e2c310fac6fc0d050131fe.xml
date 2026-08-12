@@ -38,8 +38,8 @@
                                     "id": "1cabd639409da6359dd8f4247d488a34",
                                     "type": "MACROPONENT"
                                 },
-                                "elementId": "workspace_header_1",
-                                "elementLabel": "Workspace Header 1",
+                                "elementId": "policy_header",
+                                "elementLabel": "Policy Header",
                                 "eventMappings": [],
                                 "isHidden": {
                                     "type": "JSON_LITERAL",
@@ -371,7 +371,7 @@
                                 "children": null,
                                 "items": [
                                     {
-                                        "element_id": "workspace_header_1"
+                                        "element_id": "policy_header"
                                     }
                                 ],
                                 "root": null,
@@ -567,8 +567,8 @@
                                                 "id": "61a0ddde80f9eb14bce9885aaf86b8a6",
                                                 "type": "MACROPONENT"
                                             },
-                                            "elementId": "dynamic_form_1",
-                                            "elementLabel": "Dynamic Form 1",
+                                            "elementId": "policy_details_from",
+                                            "elementLabel": "Policy Details From",
                                             "eventMappings": [],
                                             "isHidden": {
                                                 "type": "JSON_LITERAL",
@@ -740,8 +740,8 @@
                                                 "id": "51562c3df6f77b3f31ba9e2c613aa81e",
                                                 "type": "MACROPONENT"
                                             },
-                                            "elementId": "record_list_1",
-                                            "elementLabel": "Record List 1",
+                                            "elementId": "policy_parties_list",
+                                            "elementLabel": "Policy Parties List",
                                             "eventMappings": [],
                                             "isHidden": {
                                                 "type": "JSON_LITERAL",
@@ -952,7 +952,7 @@
                                                 },
                                                 "recordUrlTemplate": {
                                                     "type": "JSON_LITERAL",
-                                                    "value": "/record/{table}/{sysId}"
+                                                    "value": "x/gegis/insurance-policy-suite/record/{table}/{sysId}"
                                                 },
                                                 "referenceOpenIn": {
                                                     "type": "JSON_LITERAL",
@@ -969,13 +969,7 @@
                                                 "rowIconsEnd": {
                                                     "type": "JSON_LITERAL",
                                                     "value": {
-                                                        "items": [
-                                                            {
-                                                                "actionCode": "pin",
-                                                                "icon": "thumbtack-fill",
-                                                                "tooltip": "Pin"
-                                                            }
-                                                        ]
+                                                        "items": []
                                                     }
                                                 },
                                                 "rowIconsStart": {
@@ -1290,8 +1284,8 @@
                                                 "id": "51562c3df6f77b3f31ba9e2c613aa81e",
                                                 "type": "MACROPONENT"
                                             },
-                                            "elementId": "record_list_2",
-                                            "elementLabel": "Record List 2",
+                                            "elementId": "policy_coverages_list",
+                                            "elementLabel": "Policy Coverages List",
                                             "eventMappings": [],
                                             "isHidden": {
                                                 "type": "JSON_LITERAL",
@@ -1520,7 +1514,7 @@
                                                 },
                                                 "recordUrlTemplate": {
                                                     "type": "JSON_LITERAL",
-                                                    "value": "/record/{table}/{sysId}"
+                                                    "value": "x/gegis/insurance-policy-suite/record/{table}/{sysId}"
                                                 },
                                                 "referenceOpenIn": {
                                                     "type": "JSON_LITERAL",
@@ -1537,13 +1531,7 @@
                                                 "rowIconsEnd": {
                                                     "type": "JSON_LITERAL",
                                                     "value": {
-                                                        "items": [
-                                                            {
-                                                                "actionCode": "pin",
-                                                                "icon": "thumbtack-fill",
-                                                                "tooltip": "Pin"
-                                                            }
-                                                        ]
+                                                        "items": []
                                                     }
                                                 },
                                                 "rowIconsStart": {
@@ -1858,8 +1846,8 @@
                                                 "id": "51562c3df6f77b3f31ba9e2c613aa81e",
                                                 "type": "MACROPONENT"
                                             },
-                                            "elementId": "record_list_3",
-                                            "elementLabel": "Record List 3",
+                                            "elementId": "policy_risk_items_list",
+                                            "elementLabel": "Policy Risk Items List",
                                             "eventMappings": [],
                                             "isHidden": {
                                                 "type": "JSON_LITERAL",
@@ -2106,7 +2094,7 @@
                                                 },
                                                 "recordUrlTemplate": {
                                                     "type": "JSON_LITERAL",
-                                                    "value": "/record/{table}/{sysId}"
+                                                    "value": "x/gegis/insurance-policy-suite/record/{table}/{sysId}"
                                                 },
                                                 "referenceOpenIn": {
                                                     "type": "JSON_LITERAL",
@@ -2123,13 +2111,7 @@
                                                 "rowIconsEnd": {
                                                     "type": "JSON_LITERAL",
                                                     "value": {
-                                                        "items": [
-                                                            {
-                                                                "actionCode": "pin",
-                                                                "icon": "thumbtack-fill",
-                                                                "tooltip": "Pin"
-                                                            }
-                                                        ]
+                                                        "items": []
                                                     }
                                                 },
                                                 "rowIconsStart": {
@@ -2444,8 +2426,8 @@
                                                 "id": "51562c3df6f77b3f31ba9e2c613aa81e",
                                                 "type": "MACROPONENT"
                                             },
-                                            "elementId": "record_list_4",
-                                            "elementLabel": "Record List 4",
+                                            "elementId": "policy_transactions_list",
+                                            "elementLabel": "Policy Transactions List",
                                             "eventMappings": [],
                                             "isHidden": {
                                                 "type": "JSON_LITERAL",
@@ -2681,7 +2663,7 @@
                                                 },
                                                 "recordUrlTemplate": {
                                                     "type": "JSON_LITERAL",
-                                                    "value": "/record/{table}/{sysId}"
+                                                    "value": "x/gegis/insurance-policy-suite/record/{table}/{sysId}"
                                                 },
                                                 "referenceOpenIn": {
                                                     "type": "JSON_LITERAL",
@@ -2698,13 +2680,7 @@
                                                 "rowIconsEnd": {
                                                     "type": "JSON_LITERAL",
                                                     "value": {
-                                                        "items": [
-                                                            {
-                                                                "actionCode": "pin",
-                                                                "icon": "thumbtack-fill",
-                                                                "tooltip": "Pin"
-                                                            }
-                                                        ]
+                                                        "items": []
                                                     }
                                                 },
                                                 "rowIconsStart": {
@@ -3166,27 +3142,27 @@
                                         "type": "JSON_LITERAL",
                                         "value": [
                                             {
-                                                "icon": "document-outline",
+                                                "icon": "circle-info-outline",
                                                 "id": "1",
                                                 "title": "Policy Details"
                                             },
                                             {
-                                                "icon": "clipboard-outline",
+                                                "icon": "user-group-outline",
                                                 "id": "2",
                                                 "title": "Parties"
                                             },
                                             {
-                                                "icon": "filter-outline",
+                                                "icon": "shield-circle-checkmark-outline",
                                                 "id": "3",
                                                 "title": "Coverges"
                                             },
                                             {
-                                                "icon": "table-outline",
+                                                "icon": "gear-minus-outline",
                                                 "id": "4",
                                                 "title": "Risk Information"
                                             },
                                             {
-                                                "icon": "filter-outline",
+                                                "icon": "briefcase-outline",
                                                 "id": "5",
                                                 "title": "Transactions"
                                             }
@@ -3620,14 +3596,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-08-12 13:13:02</sys_created_on>
         <sys_id>8fce4f9bc3e2c310fac6fc0d050131fe</sys_id>
-        <sys_mod_count>25</sys_mod_count>
+        <sys_mod_count>33</sys_mod_count>
         <sys_name>Policy</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_8fce4f9bc3e2c310fac6fc0d050131fe</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-08-12 15:35:59</sys_updated_on>
+        <sys_updated_on>2026-08-12 16:08:15</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=8fce4f9bc3e2c310fac6fc0d050131fe"/>
 </record_update>
