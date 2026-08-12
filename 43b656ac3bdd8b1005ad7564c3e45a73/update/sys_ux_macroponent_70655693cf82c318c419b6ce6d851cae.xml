@@ -467,36 +467,15 @@
                                         "value": {
                                             "items": [
                                                 {
-                                                    "field": "product_code",
-                                                    "label": "Product",
-                                                    "refTable": "x_gegis_ins_policy_product",
-                                                    "type": "reference",
-                                                    "width": "150px"
-                                                },
-                                                {
                                                     "field": "product_name",
                                                     "label": "Product Name",
+                                                    "minwidth": "250px",
                                                     "type": "text"
                                                 },
                                                 {
-                                                    "field": "line_of_business",
-                                                    "label": "LOB",
-                                                    "type": "pill"
-                                                },
-                                                {
-                                                    "field": "description",
-                                                    "label": "Description",
+                                                    "field": "version",
+                                                    "label": "Version",
                                                     "type": "text"
-                                                },
-                                                {
-                                                    "field": "effective_date",
-                                                    "label": "Effective Date",
-                                                    "type": "datetime"
-                                                },
-                                                {
-                                                    "field": "expiration_date",
-                                                    "label": "Expiration Date",
-                                                    "type": "datetime"
                                                 },
                                                 {
                                                     "field": "status",
@@ -504,9 +483,19 @@
                                                     "type": "pill"
                                                 },
                                                 {
-                                                    "field": "version",
-                                                    "label": "Version",
-                                                    "type": "text"
+                                                    "field": "line_of_business",
+                                                    "label": "LOB",
+                                                    "type": "pill"
+                                                },
+                                                {
+                                                    "field": "effective_date",
+                                                    "label": "Effective Date",
+                                                    "type": "datetime"
+                                                },
+                                                {
+                                                    "field": "sys_updated_on",
+                                                    "label": "Last Modified",
+                                                    "type": "datetime"
                                                 }
                                             ]
                                         }
@@ -646,7 +635,35 @@
                                     "rowIconsEnd": {
                                         "type": "JSON_LITERAL",
                                         "value": {
-                                            "items": []
+                                            "items": [
+                                                {
+                                                    "actionCode": "edit",
+                                                    "color": "primary",
+                                                    "icon": "pencil-page-outline",
+                                                    "tooltip": "Edit"
+                                                },
+                                                {
+                                                    "actionCode": "publish",
+                                                    "color": "primary",
+                                                    "icon": "indicator-check-outline",
+                                                    "showWhen": {
+                                                        "field": "status",
+                                                        "value": "draft"
+                                                    },
+                                                    "tooltip": "Publish"
+                                                },
+                                                {
+                                                    "actionCode": "clone",
+                                                    "icon": "clone-outline",
+                                                    "tooltip": "Clone"
+                                                },
+                                                {
+                                                    "actionCode": "delete",
+                                                    "color": "critical",
+                                                    "icon": "circle-close-outline",
+                                                    "tooltip": "Delete"
+                                                }
+                                            ]
                                         }
                                     },
                                     "rowIconsStart": {
@@ -892,7 +909,7 @@
                                     },
                                     "showExport": {
                                         "type": "JSON_LITERAL",
-                                        "value": true
+                                        "value": false
                                     },
                                     "showFilter": {
                                         "type": "JSON_LITERAL",
@@ -908,7 +925,7 @@
                                     },
                                     "showLastRefreshed": {
                                         "type": "JSON_LITERAL",
-                                        "value": true
+                                        "value": false
                                     },
                                     "showPageSizeControl": {
                                         "type": "JSON_LITERAL",
@@ -916,7 +933,7 @@
                                     },
                                     "showRefresh": {
                                         "type": "JSON_LITERAL",
-                                        "value": true
+                                        "value": false
                                     },
                                     "showSearch": {
                                         "type": "JSON_LITERAL",
@@ -945,7 +962,12 @@
                                     "toolbarButtons": {
                                         "type": "JSON_LITERAL",
                                         "value": {
-                                            "items": []
+                                            "items": [
+                                                {
+                                                    "eventCode": "new",
+                                                    "label": "New"
+                                                }
+                                            ]
                                         }
                                     }
                                 },
@@ -1180,15 +1202,7 @@
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "Description",
-  "code" : "",
-  "comment" : ""
-}, {
   "message" : "Effective Date",
-  "code" : "",
-  "comment" : ""
-}, {
-  "message" : "Expiration Date",
   "code" : "",
   "comment" : ""
 }, {
@@ -1196,7 +1210,11 @@
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "Product",
+  "message" : "Last Modified",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "New",
   "code" : "",
   "comment" : ""
 }, {
@@ -1227,14 +1245,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-18 12:30:49</sys_created_on>
         <sys_id>70655693cf82c318c419b6ce6d851cae</sys_id>
-        <sys_mod_count>6</sys_mod_count>
+        <sys_mod_count>11</sys_mod_count>
         <sys_name>Products default</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_70655693cf82c318c419b6ce6d851cae</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-08-11 17:33:40</sys_updated_on>
+        <sys_updated_on>2026-08-12 09:51:58</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=70655693cf82c318c419b6ce6d851cae"/>
 </record_update>
