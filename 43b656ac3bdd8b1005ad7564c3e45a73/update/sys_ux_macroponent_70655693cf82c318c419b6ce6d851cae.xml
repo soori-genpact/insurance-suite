@@ -432,7 +432,47 @@
                                 },
                                 "elementId": "products_list",
                                 "elementLabel": "Products List",
-                                "eventMappings": [],
+                                "eventMappings": [
+                                    {
+                                        "eventMappingId": "djjuemvHUBaakyeeddNMDFgkDsccCp",
+                                        "isConfiguration": false,
+                                        "offRowStorageId": null,
+                                        "sourceEventApiName": "x_gegis_library.RECORD_LIST_ROW_ACTION",
+                                        "sourceEventCorrelationId": null,
+                                        "sourceEventDefinition": {
+                                            "apiName": "x_gegis_library.RECORD_LIST_ROW_ACTION",
+                                            "id": null,
+                                            "type": "UXEVENT"
+                                        },
+                                        "sourceEventSysId": null,
+                                        "targets": [
+                                            {
+                                                "broker": null,
+                                                "clientScript": null,
+                                                "clientTransformScript": "javascript(/**\n * @param {params} params\n * @param {api} params.api\n * @param {any} params.event\n */\nfunction evaluateEvent({\n    api,\n    event\n}) {\n   if(event.payload.actionCode &amp;&amp; event.payload.actionCode == \"edit\"){\n    return {\n        route: \"record\",\n         fields: {\n        table: \"x_gegis_ins_policy_product\",\n        sysId: event.payload.sysId\n    },\n        params: null,\n        redirect: null,\n        passiveNavigation: null,\n        title: null,\n        multiInstField: null,\n        targetRoute: null,\n        external: null,\n        navigationOptions: null\n    };\n   }\n})",
+                                                "conditional": null,
+                                                "declarativeAction": null,
+                                                "event": {
+                                                    "apiName": "x_gegis_ins_policy.NAV_ITEM_SELECTED_RELAY_70655693cf82c318c419b6ce6d851cae",
+                                                    "payload": {
+                                                        "script": {
+                                                            "apiVersion": "1.0.0",
+                                                            "controllerElementId": null,
+                                                            "inlineScript": "/**\n * @param {params} params\n * @param {api} params.api\n * @param {any} params.event\n */\nfunction evaluateEvent({\n    api,\n    event\n}) {\n   if(event.payload.actionCode &amp;&amp; event.payload.actionCode == \"edit\"){\n    return {\n        route: \"record\",\n         fields: {\n        table: \"x_gegis_ins_policy_product\",\n        sysId: event.payload.sysId\n    },\n        params: null,\n        redirect: null,\n        passiveNavigation: null,\n        title: null,\n        multiInstField: null,\n        targetRoute: null,\n        external: null,\n        navigationOptions: null\n    };\n   }\n}",
+                                                            "scriptSysId": null,
+                                                            "target": null
+                                                        },
+                                                        "type": "CLIENT_TRANSFORM_SCRIPT"
+                                                    },
+                                                    "sysId": "13ce8b1fc3e2c310fac6fc0d0501319f"
+                                                },
+                                                "operation": null,
+                                                "targetId": "hhqKBofuCBkthjjaaUHnTddVlTqQ",
+                                                "type": "EVENT"
+                                            }
+                                        ]
+                                    }
+                                ],
                                 "isHidden": {
                                     "type": "JSON_LITERAL",
                                     "value": null
@@ -1134,7 +1174,7 @@
         <data>[]</data>
         <description/>
         <disable_auto_reflow>false</disable_auto_reflow>
-        <dispatched_events/>
+        <dispatched_events>13ce8b1fc3e2c310fac6fc0d0501319f</dispatched_events>
         <ext_controller_dep/>
         <extends display_value="Page Template">19be392623033300f4b4c50947bf65ba</extends>
         <extension_point/>
@@ -1245,14 +1285,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-18 12:30:49</sys_created_on>
         <sys_id>70655693cf82c318c419b6ce6d851cae</sys_id>
-        <sys_mod_count>11</sys_mod_count>
+        <sys_mod_count>14</sys_mod_count>
         <sys_name>Products default</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_70655693cf82c318c419b6ce6d851cae</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-08-12 09:51:58</sys_updated_on>
+        <sys_updated_on>2026-08-12 15:52:13</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=70655693cf82c318c419b6ce6d851cae"/>
 </record_update>
