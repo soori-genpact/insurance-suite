@@ -40,7 +40,74 @@
                                 },
                                 "elementId": "workspace_header_1",
                                 "elementLabel": "Workspace Header 1",
-                                "eventMappings": [],
+                                "eventMappings": [
+                                    {
+                                        "eventMappingId": "eehhjjybbOfQlBaabboeeddHYBcceehhFSffEcceedd",
+                                        "isConfiguration": false,
+                                        "offRowStorageId": null,
+                                        "sourceEventApiName": "x_gegis_library.WORKSPACE_HEADER_RECORD_LOADED",
+                                        "sourceEventCorrelationId": null,
+                                        "sourceEventDefinition": {
+                                            "apiName": "x_gegis_library.WORKSPACE_HEADER_RECORD_LOADED",
+                                            "id": null,
+                                            "type": "UXEVENT"
+                                        },
+                                        "sourceEventSysId": null,
+                                        "targets": [
+                                            {
+                                                "broker": null,
+                                                "clientScript": {
+                                                    "payload": {
+                                                        "type": "JSON_LITERAL",
+                                                        "value": {}
+                                                    },
+                                                    "sysId": "a3355667c32e0710fac6fc0d0501313e"
+                                                },
+                                                "clientTransformScript": "",
+                                                "conditional": null,
+                                                "declarativeAction": null,
+                                                "event": null,
+                                                "interaction": null,
+                                                "operation": null,
+                                                "targetId": "VoVtNPYbbBaaxljjhIPGhheeQyAMq",
+                                                "type": "CLIENT_SCRIPT"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "eventMappingId": "TjjZlefVTCUvjjjddiiHCLggveehhccIS",
+                                        "isConfiguration": false,
+                                        "offRowStorageId": null,
+                                        "sourceEventApiName": "x_gegis_library.WORKSPACE_HEADER_LOAD_ERROR",
+                                        "sourceEventCorrelationId": null,
+                                        "sourceEventDefinition": {
+                                            "apiName": "x_gegis_library.WORKSPACE_HEADER_LOAD_ERROR",
+                                            "id": null,
+                                            "type": "UXEVENT"
+                                        },
+                                        "sourceEventSysId": null,
+                                        "targets": [
+                                            {
+                                                "broker": null,
+                                                "clientScript": {
+                                                    "payload": {
+                                                        "type": "JSON_LITERAL",
+                                                        "value": {}
+                                                    },
+                                                    "sysId": "e3355667c32e0710fac6fc0d0501313e"
+                                                },
+                                                "clientTransformScript": "",
+                                                "conditional": null,
+                                                "declarativeAction": null,
+                                                "event": null,
+                                                "interaction": null,
+                                                "operation": null,
+                                                "targetId": "iiECvKeehhiddBaaPDjjdaaIBPeehhHlvccN",
+                                                "type": "CLIENT_SCRIPT"
+                                            }
+                                        ]
+                                    }
+                                ],
                                 "isHidden": {
                                     "type": "JSON_LITERAL",
                                     "value": null
@@ -103,6 +170,14 @@
                                         "type": "JSON_LITERAL",
                                         "value": false
                                     },
+                                    "fallbackPrimaryValue": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Product Configuraion"
+                                    },
+                                    "fallbackSubHeadingValue": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Configure a new product"
+                                    },
                                     "fields": {
                                         "type": "JSON_LITERAL",
                                         "value": ""
@@ -113,7 +188,7 @@
                                     },
                                     "headerImageIcon": {
                                         "type": "JSON_LITERAL",
-                                        "value": "document-outline"
+                                        "value": "toolbox-outline"
                                     },
                                     "headerImagePresence": {
                                         "type": "JSON_LITERAL",
@@ -146,6 +221,10 @@
                                     "headingVariant": {
                                         "type": "JSON_LITERAL",
                                         "value": "header-primary"
+                                    },
+                                    "hideActionsOnFallback": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
                                     },
                                     "hideTags": {
                                         "type": "JSON_LITERAL",
@@ -201,7 +280,7 @@
                                     },
                                     "primaryValue": {
                                         "type": "JSON_LITERAL",
-                                        "value": "Example primary value 123"
+                                        "value": "{product_name}"
                                     },
                                     "recordTags": {
                                         "type": "JSON_LITERAL",
@@ -229,7 +308,49 @@
                                     },
                                     "secondaryItems": {
                                         "type": "JSON_LITERAL",
-                                        "value": null
+                                        "value": [
+                                            {
+                                                "colorMap": {
+                                                    "*": "gray",
+                                                    "auto": "info",
+                                                    "aviation": "warning",
+                                                    "casualty": "moderate",
+                                                    "construction": "warning",
+                                                    "cyber": "critical",
+                                                    "energy": "high",
+                                                    "financial_lines": "high",
+                                                    "general": "gray",
+                                                    "marine": "moderate",
+                                                    "motor": "info",
+                                                    "property": "info",
+                                                    "specialty": "low",
+                                                    "workers_comp": "moderate"
+                                                },
+                                                "field": "line_of_business",
+                                                "label": "Line of business",
+                                                "showIcon": true,
+                                                "type": "highlighted",
+                                                "value": "Property"
+                                            },
+                                            {
+                                                "field": "version",
+                                                "label": "Version",
+                                                "type": "simple",
+                                                "value": "1.0"
+                                            },
+                                            {
+                                                "field": "effective_date",
+                                                "label": "Effective date",
+                                                "type": "simple",
+                                                "value": "01-01-2026"
+                                            },
+                                            {
+                                                "field": "expiration_date",
+                                                "label": "Expiration date",
+                                                "type": "simple",
+                                                "value": "31-12-2026"
+                                            }
+                                        ]
                                     },
                                     "secondaryMinWidth": {
                                         "type": "JSON_LITERAL",
@@ -281,7 +402,7 @@
                                     },
                                     "showErrors": {
                                         "type": "JSON_LITERAL",
-                                        "value": true
+                                        "value": false
                                     },
                                     "showPinToggle": {
                                         "type": "JSON_LITERAL",
@@ -297,7 +418,7 @@
                                     },
                                     "subHeadingValue": {
                                         "type": "JSON_LITERAL",
-                                        "value": "Example subheading"
+                                        "value": "{product_code}"
                                     },
                                     "sysId": {
                                         "binding": {
@@ -323,7 +444,7 @@
                                     },
                                     "tagsField": {
                                         "type": "JSON_LITERAL",
-                                        "value": ""
+                                        "value": "status"
                                     },
                                     "tagsIcon": {
                                         "type": "JSON_LITERAL",
@@ -548,6 +669,560 @@
                                     "type": "JSON_LITERAL",
                                     "value": null
                                 },
+                                "overrides": {
+                                    "composition": [
+                                        {
+                                            "definition": {
+                                                "id": "fd21520082406ec0722bb8338a25cde8",
+                                                "type": "MACROPONENT"
+                                            },
+                                            "elementId": "dynamic_form_v2__multi_table__1",
+                                            "elementLabel": "Dynamic Form V2 (multi-table) 1",
+                                            "eventMappings": [],
+                                            "isHidden": {
+                                                "type": "JSON_LITERAL",
+                                                "value": null
+                                            },
+                                            "preset": null,
+                                            "propertyValues": {
+                                                "applyUiPolicy": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                },
+                                                "autosave": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": false
+                                                },
+                                                "autosaveDelay": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": 800
+                                                },
+                                                "booleanControl": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "toggle"
+                                                },
+                                                "borderColor": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "lightgray"
+                                                },
+                                                "cacheMetadata": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": false
+                                                },
+                                                "columns": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": 2
+                                                },
+                                                "defaultValues": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": {
+                                                        "reference_field": {
+                                                            "display": "",
+                                                            "value": ""
+                                                        }
+                                                    }
+                                                },
+                                                "fieldConfig": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": {}
+                                                },
+                                                "formConfig": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": {
+                                                        "buttons": [
+                                                            {
+                                                                "action": "publish",
+                                                                "disabledWhen": "product_code ISEMPTY^OR effective_date ISEMPTY^OR expiration_date ISEMPTY^OR version ISEMPTY",
+                                                                "label": "Publish",
+                                                                "region": "header",
+                                                                "variant": "secondary",
+                                                                "visibleWhen": "status=draft"
+                                                            },
+                                                            {
+                                                                "action": "archive",
+                                                                "label": "Archive",
+                                                                "region": "header",
+                                                                "variant": "secondary",
+                                                                "visibleWhen": "status=published"
+                                                            },
+                                                            {
+                                                                "action": "new_version",
+                                                                "label": "New version",
+                                                                "region": "header",
+                                                                "variant": "tertiary",
+                                                                "visibleWhen": "status IN published,archived"
+                                                            },
+                                                            {
+                                                                "action": "reset",
+                                                                "label": "Discard",
+                                                                "region": "footer",
+                                                                "role": "reset",
+                                                                "variant": "tertiary"
+                                                            },
+                                                            {
+                                                                "action": "refresh",
+                                                                "label": "Reload",
+                                                                "region": "footer",
+                                                                "role": "refresh",
+                                                                "variant": "tertiary"
+                                                            },
+                                                            {
+                                                                "action": "save",
+                                                                "disabledWhen": "status=archived",
+                                                                "label": "Save changes",
+                                                                "region": "footer",
+                                                                "role": "save",
+                                                                "variant": "primary"
+                                                            }
+                                                        ],
+                                                        "chrome": {
+                                                            "status": {
+                                                                "label": "Draft",
+                                                                "tone": "info"
+                                                            },
+                                                            "version": "ver 1.0"
+                                                        },
+                                                        "sections": [
+                                                            {
+                                                                "columns": 2,
+                                                                "fields": [
+                                                                    {
+                                                                        "disabledWhen": "status IN published,archived",
+                                                                        "field": "product_code",
+                                                                        "label": "Product code"
+                                                                    },
+                                                                    {
+                                                                        "field": "product_name",
+                                                                        "label": "Product name"
+                                                                    },
+                                                                    {
+                                                                        "disabledWhen": "status IN published,archived",
+                                                                        "field": "line_of_business",
+                                                                        "label": "Line of business"
+                                                                    },
+                                                                    {
+                                                                        "field": "version",
+                                                                        "label": "Version",
+                                                                        "mandatoryWhen": "status=published"
+                                                                    },
+                                                                    {
+                                                                        "field": "description",
+                                                                        "label": "Description",
+                                                                        "placeholder": "What this product covers and who it is sold to",
+                                                                        "rows": 4,
+                                                                        "span": 2
+                                                                    }
+                                                                ],
+                                                                "title": "Identification"
+                                                            },
+                                                            {
+                                                                "columns": 2,
+                                                                "fields": [
+                                                                    {
+                                                                        "control": "pills",
+                                                                        "field": "status",
+                                                                        "label": "Status"
+                                                                    },
+                                                                    {
+                                                                        "disabledWhen": "status=archived",
+                                                                        "field": "effective_date",
+                                                                        "label": "Effective date"
+                                                                    },
+                                                                    {
+                                                                        "disabledWhen": "status=archived",
+                                                                        "field": "expiration_date",
+                                                                        "label": "Expiration date"
+                                                                    }
+                                                                ],
+                                                                "title": "Validity"
+                                                            },
+                                                            {
+                                                                "columns": 1,
+                                                                "disabledWhen": "status=archived",
+                                                                "fields": [
+                                                                    {
+                                                                        "field": "applicable_states",
+                                                                        "label": "Applicable states",
+                                                                        "span": 1
+                                                                    }
+                                                                ],
+                                                                "title": "Availability"
+                                                            }
+                                                        ],
+                                                        "uiActions": {
+                                                            "sysverb_delete": {
+                                                                "visible": false
+                                                            },
+                                                            "sysverb_update": {
+                                                                "visible": false
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "heading": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "Product configuration"
+                                                },
+                                                "hideSystemFields": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                },
+                                                "pillFields": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": ""
+                                                },
+                                                "readOnly": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": false
+                                                },
+                                                "refreshLabel": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "Refresh"
+                                                },
+                                                "refreshPosition": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "top"
+                                                },
+                                                "resetLabel": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "Reset"
+                                                },
+                                                "saveAlertText": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "Record saved"
+                                                },
+                                                "saveButtonPosition": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "bottom"
+                                                },
+                                                "saveLabel": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "Save"
+                                                },
+                                                "saveRelated": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": false
+                                                },
+                                                "showBorder": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                },
+                                                "showChoiceAsPills": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": false
+                                                },
+                                                "showReferencePreview": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": false
+                                                },
+                                                "showRefresh": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": false
+                                                },
+                                                "showReset": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": false
+                                                },
+                                                "showSave": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": false
+                                                },
+                                                "showSaveAlert": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": false
+                                                },
+                                                "showUiActions": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                },
+                                                "subheading": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "Definition, validity and availability"
+                                                },
+                                                "sysId": {
+                                                    "binding": {
+                                                        "address": [
+                                                            "sysId"
+                                                        ],
+                                                        "category": "props"
+                                                    },
+                                                    "type": "CONTEXT_BINDING"
+                                                },
+                                                "table": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "x_gegis_ins_policy_product"
+                                                },
+                                                "uiActionPosition": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "top"
+                                                },
+                                                "view": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": ""
+                                                }
+                                            },
+                                            "slot": "slot-1",
+                                            "styles": null
+                                        },
+                                        {
+                                            "definition": {
+                                                "id": "423c213c411209218cba64cb1738b5f0",
+                                                "type": "MACROPONENT"
+                                            },
+                                            "elementId": "table_crud_panel_1",
+                                            "elementLabel": "Table CRUD Panel 1",
+                                            "eventMappings": [],
+                                            "isHidden": {
+                                                "type": "JSON_LITERAL",
+                                                "value": null
+                                            },
+                                            "overrides": {
+                                                "composition": []
+                                            },
+                                            "preset": null,
+                                            "propertyValues": {
+                                                "canCreate": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                },
+                                                "canDelete": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": false
+                                                },
+                                                "canEdit": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                },
+                                                "columns": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": {
+                                                        "items": [
+                                                            {
+                                                                "field": "category_name",
+                                                                "label": "Category name",
+                                                                "required": true
+                                                            },
+                                                            {
+                                                                "field": "category_code",
+                                                                "label": "Category code",
+                                                                "required": true
+                                                            },
+                                                            {
+                                                                "field": "display_order",
+                                                                "label": "Display order",
+                                                                "required": true,
+                                                                "type": "number"
+                                                            },
+                                                            {
+                                                                "choices": [
+                                                                    {
+                                                                        "label": "Required",
+                                                                        "value": "required"
+                                                                    },
+                                                                    {
+                                                                        "label": "Optional",
+                                                                        "value": "optional"
+                                                                    },
+                                                                    {
+                                                                        "label": "Excluded",
+                                                                        "value": "excluded"
+                                                                    }
+                                                                ],
+                                                                "field": "coverage_selection",
+                                                                "label": "Required / Optional / Excluded",
+                                                                "required": true,
+                                                                "type": "choice"
+                                                            },
+                                                            {
+                                                                "field": "minimum_coverages",
+                                                                "label": "Minimum coverages",
+                                                                "type": "number"
+                                                            },
+                                                            {
+                                                                "field": "eligibility_rule",
+                                                                "label": "Eligibility rule",
+                                                                "placeholder": "Encoded query or rule name"
+                                                            },
+                                                            {
+                                                                "field": "help_text",
+                                                                "hidden": true,
+                                                                "label": "Help text"
+                                                            },
+                                                            {
+                                                                "field": "active",
+                                                                "label": "Active",
+                                                                "type": "boolean"
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                "displayTitle": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "Coverage Categories"
+                                                },
+                                                "filterEnabled": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                },
+                                                "fixedQuery": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "active=true"
+                                                },
+                                                "formConfig": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": {
+                                                        "buttons": [
+                                                            {
+                                                                "action": "discard",
+                                                                "label": "Discard",
+                                                                "region": "footer",
+                                                                "role": "reset",
+                                                                "variant": "tertiary"
+                                                            },
+                                                            {
+                                                                "action": "reload",
+                                                                "label": "Reload",
+                                                                "region": "footer",
+                                                                "role": "refresh",
+                                                                "variant": "tertiary",
+                                                                "visibleWhen": "category_code ISNOTEMPTY"
+                                                            },
+                                                            {
+                                                                "action": "save",
+                                                                "label": "Save Category",
+                                                                "region": "footer",
+                                                                "role": "save",
+                                                                "variant": "primary"
+                                                            }
+                                                        ],
+                                                        "chrome": {
+                                                            "status": {
+                                                                "label": "Coverage Category",
+                                                                "tone": "info"
+                                                            },
+                                                            "version": "ver 1.0"
+                                                        },
+                                                        "sections": [
+                                                            {
+                                                                "columns": 2,
+                                                                "fields": [
+                                                                    {
+                                                                        "field": "category_name",
+                                                                        "label": "Category name",
+                                                                        "mandatory": true,
+                                                                        "placeholder": "e.g. Property Damage"
+                                                                    },
+                                                                    {
+                                                                        "field": "category_code",
+                                                                        "label": "Category code",
+                                                                        "mandatory": true,
+                                                                        "placeholder": "CAT-PD"
+                                                                    },
+                                                                    {
+                                                                        "field": "display_order",
+                                                                        "label": "Display order",
+                                                                        "mandatory": true,
+                                                                        "placeholder": "10"
+                                                                    },
+                                                                    {
+                                                                        "field": "active",
+                                                                        "label": "Active"
+                                                                    }
+                                                                ],
+                                                                "title": "Category identity"
+                                                            },
+                                                            {
+                                                                "columns": 2,
+                                                                "fields": [
+                                                                    {
+                                                                        "field": "coverage_selection",
+                                                                        "label": "Required / Optional / Excluded",
+                                                                        "mandatory": true
+                                                                    },
+                                                                    {
+                                                                        "disabledWhen": "coverage_selection=excluded",
+                                                                        "field": "minimum_coverages",
+                                                                        "label": "Minimum coverages",
+                                                                        "mandatoryWhen": "coverage_selection=required",
+                                                                        "placeholder": "0"
+                                                                    },
+                                                                    {
+                                                                        "field": "eligibility_rule",
+                                                                        "label": "Eligibility rule",
+                                                                        "placeholder": "Encoded query / rule reference",
+                                                                        "span": 2,
+                                                                        "visibleWhen": "coverage_selection!=excluded"
+                                                                    }
+                                                                ],
+                                                                "title": "Selection rules"
+                                                            },
+                                                            {
+                                                                "columns": 1,
+                                                                "fields": [
+                                                                    {
+                                                                        "field": "help_text",
+                                                                        "label": "Help text",
+                                                                        "placeholder": "Underwriter guidance shown beside this category",
+                                                                        "rows": 4,
+                                                                        "span": 1
+                                                                    }
+                                                                ],
+                                                                "title": "Guidance"
+                                                            }
+                                                        ],
+                                                        "uiActions": {
+                                                            "sysverb_delete": {
+                                                                "visible": false
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "formEngine": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "dynamic-form-v2"
+                                                },
+                                                "formView": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "Default view"
+                                                },
+                                                "pageSize": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": 10
+                                                },
+                                                "panelMode": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "overlay"
+                                                },
+                                                "panelTitle": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "Category"
+                                                },
+                                                "panelWidth": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": 480
+                                                },
+                                                "searchFields": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "category_name,category_code,eligibility_rule,help_text"
+                                                },
+                                                "statusField": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "active"
+                                                },
+                                                "subtitle": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "Grouping and selection rules for product coverages"
+                                                },
+                                                "tableName": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "x_gegis_ins_policy_coverage_category"
+                                                }
+                                            },
+                                            "slot": "slot-2",
+                                            "styles": null
+                                        }
+                                    ]
+                                },
                                 "preset": null,
                                 "propertyValues": {
                                     "activeBgColor": {
@@ -680,7 +1355,7 @@
                                     },
                                     "showSectionHeadings": {
                                         "type": "JSON_LITERAL",
-                                        "value": true
+                                        "value": false
                                     },
                                     "showSlotJumpButton": {
                                         "type": "JSON_LITERAL",
@@ -961,7 +1636,7 @@
     "version": "3.1.0"
 }</layout>
         <macroponent_dependencies/>
-        <name>Product Builder</name>
+        <name>Product</name>
         <output_prop_mapping/>
         <props>[
     {
@@ -1045,7 +1720,119 @@
 ]</props>
         <required_sys_props/>
         <required_translations>[ {
+  "message" : "Active",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Applicable states",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Archive",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Category code",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Category name",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Coverage Category",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Description",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Discard",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Display order",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Draft",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Effective date",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Eligibility rule",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Excluded",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Expiration date",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Help text",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Line of business",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Minimum coverages",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "New version",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Optional",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Product code",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Product name",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "Publish",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Reload",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Required",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Required / Optional / Excluded",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Save Category",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Save changes",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Status",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Version",
   "code" : "",
   "comment" : ""
 }, {
@@ -1064,14 +1851,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-08-12 13:07:10</sys_created_on>
         <sys_id>457d0b5bc3e2c310fac6fc0d050131c1</sys_id>
-        <sys_mod_count>9</sys_mod_count>
-        <sys_name>Product Builder</sys_name>
+        <sys_mod_count>28</sys_mod_count>
+        <sys_name>Product</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_457d0b5bc3e2c310fac6fc0d050131c1</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-08-12 16:26:54</sys_updated_on>
+        <sys_updated_on>2026-08-14 09:56:55</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=457d0b5bc3e2c310fac6fc0d050131c1"/>
 </record_update>
