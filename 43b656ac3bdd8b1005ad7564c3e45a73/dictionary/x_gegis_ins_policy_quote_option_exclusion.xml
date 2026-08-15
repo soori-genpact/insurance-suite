@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="a2e54dd4c3f28b10fac6fc0d050131db" label="Quote Option Exclusion" max_length="40" name="x_gegis_ins_policy_quote_option_exclusion" type="collection">
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element default="true" label="Included" max_length="40" name="included" type="boolean"/>
+        <element label="Quote option" mandatory="true" max_length="32" name="quote_option" reference="x_gegis_ins_policy_quote_option" type="reference"/>
+        <element label="Product exclusion" mandatory="true" max_length="32" name="product_exclusion" reference="x_gegis_ins_policy_product_exclusion" type="reference"/>
+        <element label="Display order" max_length="40" name="display_order" type="integer"/>
+        <element display="true" label="Name" max_length="200" name="name" type="string"/>
+        <element label="Buy-back premium" max_length="40" name="buy_back_premium" type="decimal"/>
+        <index name="index">
+            <element name="product_exclusion"/>
+        </index>
+        <index name="index2">
+            <element name="quote_option"/>
+        </index>
+    </element>
+</database>

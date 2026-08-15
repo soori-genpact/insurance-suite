@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="fce549d4c3f28b10fac6fc0d05013121" label="Product Coverage Category" max_length="40" name="x_gegis_ins_policy_product_coverage_category" type="collection">
+        <element label="Display order" max_length="40" name="display_order" type="integer"/>
+        <element label="Maximum coverages" max_length="40" name="maximum_coverages" type="integer"/>
+        <element default="0" label="Minimum coverages" max_length="40" name="minimum_coverages" type="integer"/>
+        <element display="true" label="Name" max_length="200" name="name" type="string"/>
+        <element choice="1" default="optional" label="Coverage selection" mandatory="true" max_length="40" name="coverage_selection" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Required" sequence="10" value="required"/>
+                <element inactive_on_update="false" label="Optional" sequence="20" value="optional"/>
+                <element inactive_on_update="false" label="Excluded" sequence="30" value="excluded"/>
+            </choice>
+        </element>
+        <element label="Product" mandatory="true" max_length="32" name="product" reference="x_gegis_ins_policy_product" type="reference"/>
+        <element label="Coverage category" mandatory="true" max_length="32" name="coverage_category" reference="x_gegis_ins_policy_coverage_category" type="reference"/>
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <index name="index">
+            <element name="coverage_category"/>
+        </index>
+        <index name="index2">
+            <element name="product"/>
+        </index>
+    </element>
+</database>

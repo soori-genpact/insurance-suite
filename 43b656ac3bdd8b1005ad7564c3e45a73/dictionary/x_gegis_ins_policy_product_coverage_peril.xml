@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="55e589d4c3f28b10fac6fc0d05013184" label="Product Coverage Peril" max_length="40" name="x_gegis_ins_policy_product_coverage_peril" type="collection">
+        <element label="Product coverage" mandatory="true" max_length="32" name="product_coverage" reference="x_gegis_ins_policy_product_coverage" type="reference"/>
+        <element label="Cause of loss" mandatory="true" max_length="32" name="cause_of_loss" reference="x_gegis_ins_policy_cause_of_loss" type="reference"/>
+        <element default="true" label="Included by default" max_length="40" name="included_by_default" type="boolean"/>
+        <element display="true" label="Name" max_length="200" name="name" type="string"/>
+        <element label="Display order" max_length="40" name="display_order" type="integer"/>
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Waiting period (days)" max_length="40" name="waiting_period_days" type="integer"/>
+        <element label="Sub-limit" max_length="40" name="sub_limit" type="decimal"/>
+        <index name="index">
+            <element name="cause_of_loss"/>
+        </index>
+        <index name="index2">
+            <element name="product_coverage"/>
+        </index>
+    </element>
+</database>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="87e5cdd4c3f28b10fac6fc0d050131cf" label="Location Coverage Value" max_length="40" name="x_gegis_ins_policy_location_coverage_value" type="collection">
+        <element label="Quote option coverage" mandatory="true" max_length="32" name="quote_option_coverage" reference="x_gegis_ins_policy_quote_option_coverage" type="reference"/>
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Location" mandatory="true" max_length="32" name="location" reference="x_gegis_ins_policy_location" type="reference"/>
+        <element display="true" label="Name" max_length="200" name="name" type="string"/>
+        <element label="Display order" max_length="40" name="display_order" type="integer"/>
+        <element label="TIV share %" max_length="40" name="tiv_share_pct" type="decimal"/>
+        <element label="Insured value" mandatory="true" max_length="40" name="insured_value" type="decimal"/>
+        <index name="index">
+            <element name="location"/>
+        </index>
+        <index name="index2">
+            <element name="quote_option_coverage"/>
+        </index>
+    </element>
+</database>

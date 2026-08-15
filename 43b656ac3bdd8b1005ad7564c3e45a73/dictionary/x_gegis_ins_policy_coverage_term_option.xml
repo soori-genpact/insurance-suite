@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="ece509d4c3f28b10fac6fc0d05013176" label="Coverage Term Option" max_length="40" name="x_gegis_ins_policy_coverage_term_option" type="collection">
+        <element label="Coverage term" mandatory="true" max_length="32" name="coverage_term" reference="x_gegis_ins_policy_coverage_term" type="reference"/>
+        <element choice="1" default="draft" label="Status" mandatory="true" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Published" sequence="20" value="published"/>
+                <element inactive_on_update="false" label="Archived" sequence="30" value="archived"/>
+                <element inactive_on_update="false" label="Draft" sequence="10" value="draft"/>
+            </choice>
+        </element>
+        <element label="Option code" mandatory="true" max_length="100" name="option_code" type="string"/>
+        <element display="true" label="Option label" mandatory="true" max_length="200" name="option_label" type="string"/>
+        <element label="Display order" max_length="40" name="display_order" type="integer"/>
+        <element label="Option value" max_length="40" name="option_value" type="decimal"/>
+        <index name="index">
+            <element name="coverage_term"/>
+        </index>
+    </element>
+</database>

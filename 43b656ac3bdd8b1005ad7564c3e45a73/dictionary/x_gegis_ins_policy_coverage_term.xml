@@ -1,36 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="c390487e7031a14fcbbe95402bc2ea2c" label="Coverage Term" max_length="40" name="x_gegis_ins_policy_coverage_term" type="collection">
         <element label="Term code" mandatory="true" max_length="100" name="term_code" type="string"/>
-        <element label="Description" max_length="2000" name="description" type="string"/>
-        <element label="Minimum value" max_length="40" name="minimum_value" type="decimal"/>
-        <element label="Maximum value" max_length="40" name="maximum_value" type="decimal"/>
         <element choice="3" label="Data type" max_length="40" name="data_type" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Percentage" sequence="20" value="percentage"/>
-                <element inactive_on_update="false" label="Currency" sequence="10" value="currency"/>
-                <element inactive_on_update="false" label="Duration" sequence="60" value="duration"/>
-                <element inactive_on_update="false" label="Date" sequence="50" value="date"/>
                 <element inactive_on_update="false" label="Text" sequence="40" value="text"/>
                 <element inactive_on_update="false" label="Integer" sequence="30" value="integer"/>
+                <element inactive_on_update="false" label="Duration" sequence="60" value="duration"/>
+                <element inactive_on_update="false" label="Percentage" sequence="20" value="percentage"/>
+                <element inactive_on_update="false" label="Currency" sequence="10" value="currency"/>
+                <element inactive_on_update="false" label="Date" sequence="50" value="date"/>
             </choice>
         </element>
-        <element label="Coverage" mandatory="true" max_length="32" name="coverage" reference="x_gegis_ins_policy_coverage" type="reference"/>
-        <element label="Required" max_length="40" name="required" type="boolean"/>
-        <element label="Dependency rule" max_length="200" name="dependency_rule" type="string"/>
         <element display="true" label="Term name" mandatory="true" max_length="200" name="term_name" type="string"/>
+        <element label="Display order" max_length="40" name="display_order" type="integer"/>
+        <element label="Description" max_length="2000" name="description" type="string"/>
+        <element label="Coverage" mandatory="true" max_length="32" name="coverage" reference="x_gegis_ins_policy_coverage" type="reference"/>
         <element label="Default value" max_length="40" name="default_value" type="decimal"/>
+        <element choice="1" default="published" label="Status" mandatory="true" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Published" sequence="20" value="published"/>
+                <element inactive_on_update="false" label="Archived" sequence="30" value="archived"/>
+                <element inactive_on_update="false" label="Draft" sequence="10" value="draft"/>
+            </choice>
+        </element>
         <element choice="3" label="Term type" mandatory="true" max_length="40" name="term_type" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Premium" sequence="40" value="premium"/>
-                <element inactive_on_update="false" label="Limit" sequence="10" value="limit"/>
-                <element inactive_on_update="false" label="Duration" sequence="30" value="duration"/>
-                <element inactive_on_update="false" label="Fee" sequence="60" value="fee"/>
                 <element inactive_on_update="false" label="Deductible" sequence="20" value="deductible"/>
+                <element inactive_on_update="false" label="Fee" sequence="60" value="fee"/>
                 <element inactive_on_update="false" label="Percentage" sequence="50" value="percentage"/>
+                <element inactive_on_update="false" label="Limit" sequence="10" value="limit"/>
+                <element inactive_on_update="false" label="Premium" sequence="40" value="premium"/>
+                <element inactive_on_update="false" label="Duration" sequence="30" value="duration"/>
             </choice>
         </element>
+        <element label="Minimum value" max_length="40" name="minimum_value" type="decimal"/>
+        <element label="Required" max_length="40" name="required" type="boolean"/>
+        <element label="Dependency rule" max_length="200" name="dependency_rule" type="string"/>
         <element label="Affects rating" max_length="40" name="affects_rating" type="boolean"/>
-        <element label="Display order" max_length="40" name="display_order" type="integer"/>
+        <element label="Maximum value" max_length="40" name="maximum_value" type="decimal"/>
         <index name="index">
             <element name="coverage"/>
         </index>
