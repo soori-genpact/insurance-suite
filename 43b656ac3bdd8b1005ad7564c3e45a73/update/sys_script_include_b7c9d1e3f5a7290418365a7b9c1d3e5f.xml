@@ -91,6 +91,10 @@
         // shared by quote.status and bind.status -- the quote is issued to the
         // broker, the bound policy is issued to the insured
         ISSUED:      'issued',
+        // shared by catalog_status and quote_option_status -- a definition and a
+        // priced option are both "retired with no replacement", which is a
+        // different fact from superseded (replaced by a newer one)
+        ARCHIVED:    'archived',
         // ---- product catalog / rating tokens that span more than one column ----
         // coverage.coverage_selection, major_exclusion.choice_value,
         // exposure_peril.expiring_status
@@ -284,6 +288,34 @@
             ACCEPTED: SHARED.ACCEPTED,
             DECLINED: SHARED.DECLINED,
             EXPIRED:  SHARED.EXPIRED
+        },
+
+        // x_gegis_ins_policy_quote_option.status -- lifecycle of ONE priced
+        // option, not of the quote document. A quote carries several options at
+        // once and they are not all at the same point: Clone produces a draft,
+        // issuing makes one active, re-pricing supersedes it. superseded and
+        // archived are deliberately distinct -- superseded was replaced by a newer
+        // option, archived was retired with nothing put in its place.
+        QUOTE_OPTION_STATUS: {
+            DRAFT:      SHARED.DRAFT,
+            ACTIVE:     SHARED.ACTIVE,
+            SUPERSEDED: SHARED.SUPERSEDED,
+            ARCHIVED:   SHARED.ARCHIVED
+        },
+
+        // x_gegis_ins_policy_quote_premium_breakup.component -- the lines that
+        // sum to quote_option.total_premium. WRITTEN_PREMIUM is the rated base and
+        // everything after it is a load on top. COMMISSION is listed so it can be
+        // reported on, but it is a share OF the premium, not an addition TO it --
+        // seeding it as a breakup row would double-count the total.
+        PREMIUM_COMPONENT: {
+            WRITTEN_PREMIUM: 'written_premium',
+            ENDORSEMENT:     'endorsement',
+            SURCHARGES:      'surcharges',
+            FEES:            'fees',
+            TRIA:            'tria',
+            TAXES:           'taxes',
+            COMMISSION:      'commission'
         },
 
         // x_gegis_ins_policy_bind.status -- what happened to the BIND, not to
@@ -554,7 +586,7 @@
         CATALOG_STATUS: {
             DRAFT:     SHARED.DRAFT,
             PUBLISHED: 'published',
-            ARCHIVED:  'archived'
+            ARCHIVED:  SHARED.ARCHIVED
         },
 
         // coverage.coverage_selection and coverage_category.coverage_selection --
@@ -661,6 +693,21 @@
             INCLUDED:    SHARED.INCLUDED,
             EXCLUDED:    SHARED.EXCLUDED,
             SUB_LIMITED: 'sub_limited'
+        },
+
+        // exclusion.clause_type -- what KIND of clause a row in the exclusion
+        // library is. An Exclusion and a Condition have identical mechanics: a
+        // master clause, a per-product default, a per-quote override. One table
+        // serves both and this column says which is which, so there is no separate
+        // condition table to keep in step.
+        //
+        // NOT a duplicate of EXCLUSION_TYPE, which names the market-standard
+        // exclusion FAMILY (cyber / nuclear / war / ...). Two columns, two
+        // questions: clause_type asks "is this a carve-out or an obligation?",
+        // exclusion_type asks "which standard clause is it?".
+        CLAUSE_TYPE: {
+            EXCLUSION: 'exclusion',
+            CONDITION: 'condition'
         },
 
         // =================================================================
@@ -1061,13 +1108,13 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-12 10:00:00</sys_created_on>
         <sys_id>b7c9d1e3f5a7290418365a7b9c1d3e5f</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>Constants</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_script_include_b7c9d1e3f5a7290418365a7b9c1d3e5f</sys_update_name>
         <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-07-12 10:00:00</sys_updated_on>
+        <sys_updated_on>2026-08-15 12:00:00</sys_updated_on>
     </sys_script_include>
 </record_update>
