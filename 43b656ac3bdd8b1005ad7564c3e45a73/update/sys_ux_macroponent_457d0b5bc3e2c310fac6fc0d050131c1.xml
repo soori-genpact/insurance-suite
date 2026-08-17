@@ -398,7 +398,7 @@
                                     },
                                     "showDivider": {
                                         "type": "JSON_LITERAL",
-                                        "value": true
+                                        "value": false
                                     },
                                     "showErrors": {
                                         "type": "JSON_LITERAL",
@@ -659,284 +659,745 @@
                         "composition": [
                             {
                                 "definition": {
-                                    "id": "d7e1b32b48bba2df96dd79d5068d0d5c",
-                                    "type": "MACROPONENT"
+                                    "id": "b324da974cef96f2db1d484cfeda4e3e",
+                                    "type": "MACROPONENT_VIEWPORT"
                                 },
-                                "elementId": "product_builder",
-                                "elementLabel": "Product Builder",
+                                "elementId": "tabs_1",
+                                "elementLabel": "Tabs 1",
                                 "eventMappings": [],
+                                "extensionPoints": [],
                                 "isHidden": {
                                     "type": "JSON_LITERAL",
                                     "value": null
                                 },
-                                "preset": null,
-                                "propertyValues": {
-                                    "autoOpenFirstRow": {
-                                        "type": "JSON_LITERAL",
-                                        "value": false
+                                "items": [
+                                    {
+                                        "icon": {
+                                            "type": "JSON_LITERAL",
+                                            "value": "legend-outline"
+                                        },
+                                        "id": "product_details_tab",
+                                        "label": {
+                                            "type": "TRANSLATION_LITERAL",
+                                            "value": {
+                                                "code": null,
+                                                "comment": "",
+                                                "message": "Structure (Designer)"
+                                            }
+                                        },
+                                        "order": 100,
+                                        "type": "local"
                                     },
-                                    "columnWidths": {
-                                        "type": "JSON_LITERAL",
-                                        "value": {}
-                                    },
-                                    "deleteRemoved": {
-                                        "type": "JSON_LITERAL",
-                                        "value": true
-                                    },
-                                    "emptyMessage": {
-                                        "type": "JSON_LITERAL",
-                                        "value": "Nothing selected yet. Tick a row on the left to start building the product."
-                                    },
-                                    "enableCreate": {
-                                        "type": "JSON_LITERAL",
-                                        "value": true
-                                    },
-                                    "enableEdit": {
-                                        "type": "JSON_LITERAL",
-                                        "value": true
-                                    },
-                                    "enableProductEdit": {
-                                        "type": "JSON_LITERAL",
-                                        "value": true
-                                    },
-                                    "enableResize": {
-                                        "type": "JSON_LITERAL",
-                                        "value": true
-                                    },
-                                    "filtersStartOpen": {
-                                        "type": "JSON_LITERAL",
-                                        "value": false
-                                    },
-                                    "formColumns": {
-                                        "type": "JSON_LITERAL",
-                                        "value": 1
-                                    },
-                                    "formEngine": {
-                                        "type": "JSON_LITERAL",
-                                        "value": "dynamic-form-v2"
-                                    },
-                                    "formSaveLabel": {
-                                        "type": "JSON_LITERAL",
-                                        "value": "Save"
-                                    },
-                                    "formWidth": {
-                                        "type": "JSON_LITERAL",
-                                        "value": 460
-                                    },
-                                    "levels": {
-                                        "type": "JSON_LITERAL",
-                                        "value": {
-                                            "items": [
-                                                {
-                                                    "captionField": "help_text",
-                                                    "codeField": "category_code",
-                                                    "displayField": "category_name",
-                                                    "key": "category",
-                                                    "label": "Coverage category",
-                                                    "links": [],
-                                                    "orderBy": "display_order,category_name",
-                                                    "parentField": "",
-                                                    "productBadgeField": "coverage_selection",
-                                                    "productMinField": "minimum_coverages",
-                                                    "productOrderField": "display_order",
-                                                    "productParentField": "product",
-                                                    "productRefField": "coverage_category",
-                                                    "productTable": "x_gegis_ins_policy_product_coverage_category",
-                                                    "productValues": {
-                                                        "active": "true",
-                                                        "coverage_selection": "optional",
-                                                        "name": "$name"
+                                    {
+                                        "icon": {
+                                            "type": "JSON_LITERAL",
+                                            "value": "triangle-exclamation-outline"
+                                        },
+                                        "id": "product_exclusions_tab",
+                                        "label": {
+                                            "type": "TRANSLATION_LITERAL",
+                                            "value": {
+                                                "code": null,
+                                                "comment": "",
+                                                "message": "Exclusions"
+                                            }
+                                        },
+                                        "order": 200,
+                                        "type": "local"
+                                    }
+                                ],
+                                "overrides": {
+                                    "composition": [
+                                        {
+                                            "definition": {
+                                                "id": "d356d14b6e293a3020a244b63d278d8f",
+                                                "type": "MACROPONENT"
+                                            },
+                                            "elementId": "product_details_tab",
+                                            "elementLabel": "Structure (Designer)",
+                                            "eventMappings": [],
+                                            "isHidden": {
+                                                "type": "JSON_LITERAL",
+                                                "value": null
+                                            },
+                                            "name": "Untitled Tab",
+                                            "overrides": {
+                                                "composition": [
+                                                    {
+                                                        "definition": {
+                                                            "id": "d7e1b32b48bba2df96dd79d5068d0d5c",
+                                                            "type": "MACROPONENT"
+                                                        },
+                                                        "elementId": "product_builder",
+                                                        "elementLabel": "Product Builder",
+                                                        "eventMappings": [],
+                                                        "isHidden": {
+                                                            "type": "JSON_LITERAL",
+                                                            "value": null
+                                                        },
+                                                        "preset": null,
+                                                        "propertyValues": {
+                                                            "autoOpenFirstRow": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
+                                                            "columnWidths": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": {}
+                                                            },
+                                                            "deleteRemoved": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "emptyMessage": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "Nothing selected yet. Tick a row on the left to start building the product."
+                                                            },
+                                                            "enableCreate": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "enableEdit": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "enableProductEdit": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "enableResize": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "filtersStartOpen": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
+                                                            "formColumns": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": 1
+                                                            },
+                                                            "formEngine": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "dynamic-form-v2"
+                                                            },
+                                                            "formSaveLabel": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "Save"
+                                                            },
+                                                            "formWidth": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": 460
+                                                            },
+                                                            "levels": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": {
+                                                                    "items": [
+                                                                        {
+                                                                            "captionField": "help_text",
+                                                                            "codeField": "category_code",
+                                                                            "displayField": "category_name",
+                                                                            "key": "category",
+                                                                            "label": "Coverage category",
+                                                                            "links": [],
+                                                                            "orderBy": "display_order,category_name",
+                                                                            "parentField": "",
+                                                                            "productBadgeField": "coverage_selection",
+                                                                            "productMinField": "minimum_coverages",
+                                                                            "productOrderField": "display_order",
+                                                                            "productParentField": "product",
+                                                                            "productRefField": "coverage_category",
+                                                                            "productTable": "x_gegis_ins_policy_product_coverage_category",
+                                                                            "productValues": {
+                                                                                "active": "true",
+                                                                                "coverage_selection": "optional",
+                                                                                "name": "$name"
+                                                                            },
+                                                                            "query": "active=true",
+                                                                            "search": true,
+                                                                            "singular": "category",
+                                                                            "table": "x_gegis_ins_policy_coverage_category",
+                                                                            "title": "Categories",
+                                                                            "width": 290
+                                                                        },
+                                                                        {
+                                                                            "captionField": "description",
+                                                                            "codeField": "coverage_code",
+                                                                            "displayField": "coverage_name",
+                                                                            "key": "coverage",
+                                                                            "label": "Coverage",
+                                                                            "links": [
+                                                                                {
+                                                                                    "key": "exclusion",
+                                                                                    "label": "Exclusions",
+                                                                                    "masterCodeField": "exclusion_code",
+                                                                                    "masterDisplayField": "exclusion_name",
+                                                                                    "masterOrderBy": "display_order,exclusion_name",
+                                                                                    "masterQuery": "",
+                                                                                    "masterTable": "x_gegis_ins_policy_exclusion",
+                                                                                    "parentField": "product_coverage",
+                                                                                    "refField": "exclusion",
+                                                                                    "table": "x_gegis_ins_policy_product_coverage_exclusion",
+                                                                                    "values": {
+                                                                                        "active": "true",
+                                                                                        "included_by_default": "false",
+                                                                                        "name": "$name"
+                                                                                    }
+                                                                                }
+                                                                            ],
+                                                                            "orderBy": "display_order,coverage_name",
+                                                                            "parentField": "coverage_category",
+                                                                            "productBadgeField": "coverage_selection",
+                                                                            "productOrderField": "display_order",
+                                                                            "productParentField": "product_coverage_category",
+                                                                            "productRefField": "coverage",
+                                                                            "productTable": "x_gegis_ins_policy_product_coverage",
+                                                                            "productValues": {
+                                                                                "name": "$name",
+                                                                                "product": "$product"
+                                                                            },
+                                                                            "query": "active_status=true",
+                                                                            "search": true,
+                                                                            "singular": "coverage",
+                                                                            "table": "x_gegis_ins_policy_coverage",
+                                                                            "title": "Coverages",
+                                                                            "width": 290
+                                                                        },
+                                                                        {
+                                                                            "captionField": "description",
+                                                                            "codeField": "term_code",
+                                                                            "displayField": "term_name",
+                                                                            "key": "term",
+                                                                            "label": "Coverage term",
+                                                                            "links": [],
+                                                                            "orderBy": "display_order,term_name",
+                                                                            "parentField": "coverage",
+                                                                            "productOrderField": "display_order",
+                                                                            "productParentField": "product_coverage",
+                                                                            "productRefField": "coverage_term",
+                                                                            "productTable": "x_gegis_ins_policy_product_coverage_term",
+                                                                            "productValues": {
+                                                                                "active": "true",
+                                                                                "name": "$name"
+                                                                            },
+                                                                            "query": "",
+                                                                            "search": true,
+                                                                            "singular": "coverage term",
+                                                                            "table": "x_gegis_ins_policy_coverage_term",
+                                                                            "title": "Terms",
+                                                                            "width": 270
+                                                                        },
+                                                                        {
+                                                                            "codeField": "option_code",
+                                                                            "displayField": "option_label",
+                                                                            "key": "option",
+                                                                            "label": "Term option",
+                                                                            "links": [],
+                                                                            "orderBy": "display_order,option_label",
+                                                                            "parentField": "coverage_term",
+                                                                            "productOrderField": "display_order",
+                                                                            "productParentField": "product_coverage_term",
+                                                                            "productRefField": "coverage_term_option",
+                                                                            "productTable": "x_gegis_ins_policy_product_coverage_term_option",
+                                                                            "productValues": {
+                                                                                "available": "true",
+                                                                                "coverage_term": "$masterOf:term",
+                                                                                "name": "$name",
+                                                                                "option_label": "$name",
+                                                                                "option_value": "$field:option_value",
+                                                                                "product_coverage": "$rowOf:coverage"
+                                                                            },
+                                                                            "query": "",
+                                                                            "search": true,
+                                                                            "singular": "term option",
+                                                                            "table": "x_gegis_ins_policy_coverage_term_option",
+                                                                            "title": "Term options",
+                                                                            "width": 260
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            },
+                                                            "loadExisting": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "pageLimit": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": 200
+                                                            },
+                                                            "persistOnSave": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "preloadMetadata": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "previewStartCollapsed": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
+                                                            "previewSubtitle": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "Everything you tick on the left is assembled here in real time."
+                                                            },
+                                                            "previewTitle": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "Product blueprint"
+                                                            },
+                                                            "previewWidth": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": 380
+                                                            },
+                                                            "productName": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "productSysId": {
+                                                                "binding": {
+                                                                    "address": [
+                                                                        "sysId"
+                                                                    ],
+                                                                    "category": "props"
+                                                                },
+                                                                "type": "CONTEXT_BINDING"
+                                                            },
+                                                            "productTable": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "x_gegis_ins_policy_product"
+                                                            },
+                                                            "sampleData": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": {
+                                                                    "items": []
+                                                                }
+                                                            },
+                                                            "saveLabel": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "Save product"
+                                                            },
+                                                            "showBreadcrumb": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "showCodes": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "showLinks": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "showPreview": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "showReset": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "showToolbar": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            }
+                                                        },
+                                                        "slot": null,
+                                                        "styles": null
+                                                    }
+                                                ],
+                                                "layout": {
+                                                    "default": {
+                                                        "children": null,
+                                                        "items": [
+                                                            {
+                                                                "element_id": "product_builder"
+                                                            }
+                                                        ],
+                                                        "root": null,
+                                                        "rules": null,
+                                                        "styles": {
+                                                            "flex-direction": "column",
+                                                            "min-height": "300px",
+                                                            "width": "100%"
+                                                        },
+                                                        "templateId": "5832fd4d53c31010e6bcddeeff7b12db",
+                                                        "type": "flex"
                                                     },
-                                                    "query": "active=true",
-                                                    "search": true,
-                                                    "singular": "category",
-                                                    "table": "x_gegis_ins_policy_coverage_category",
-                                                    "title": "Categories",
-                                                    "width": 290
+                                                    "version": "3.1.0"
+                                                }
+                                            },
+                                            "preset": null,
+                                            "propertyValues": {
+                                                "ariaRegionHeadingLevel": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": 1
                                                 },
-                                                {
-                                                    "captionField": "description",
-                                                    "codeField": "coverage_code",
-                                                    "displayField": "coverage_name",
-                                                    "key": "coverage",
-                                                    "label": "Coverage",
-                                                    "links": [
-                                                        {
-                                                            "key": "exclusion",
-                                                            "label": "Exclusions",
-                                                            "masterCodeField": "exclusion_code",
-                                                            "masterDisplayField": "exclusion_name",
-                                                            "masterOrderBy": "display_order,exclusion_name",
-                                                            "masterQuery": "",
-                                                            "masterTable": "x_gegis_ins_policy_exclusion",
-                                                            "parentField": "product_coverage",
-                                                            "refField": "exclusion",
-                                                            "table": "x_gegis_ins_policy_product_coverage_exclusion",
-                                                            "values": {
-                                                                "active": "true",
-                                                                "included_by_default": "false",
-                                                                "name": "$name"
+                                                "ariaRegionName": {
+                                                    "type": "TRANSLATION_LITERAL",
+                                                    "value": {
+                                                        "code": null,
+                                                        "comment": "",
+                                                        "message": ""
+                                                    }
+                                                },
+                                                "ariaRole": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": ""
+                                                },
+                                                "hideEmptyStateUi": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                },
+                                                "includeAriaHeading": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": false
+                                                },
+                                                "slotWrapperBehavior": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "fullheight"
+                                                },
+                                                "type": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "section"
+                                                }
+                                            },
+                                            "slot": "product_details_tab",
+                                            "styles": null
+                                        },
+                                        {
+                                            "definition": {
+                                                "id": "d356d14b6e293a3020a244b63d278d8f",
+                                                "type": "MACROPONENT"
+                                            },
+                                            "elementId": "product_exclusions_tab",
+                                            "elementLabel": "Exclusions",
+                                            "eventMappings": [],
+                                            "isHidden": {
+                                                "type": "JSON_LITERAL",
+                                                "value": null
+                                            },
+                                            "name": "Exclusions",
+                                            "overrides": {
+                                                "composition": [
+                                                    {
+                                                        "definition": {
+                                                            "id": "78fb7b74d2479ab028a491efb23f4314",
+                                                            "type": "MACROPONENT"
+                                                        },
+                                                        "elementId": "toggle_card_1",
+                                                        "elementLabel": "Toggle Card 1",
+                                                        "eventMappings": [],
+                                                        "isHidden": {
+                                                            "type": "JSON_LITERAL",
+                                                            "value": null
+                                                        },
+                                                        "preset": null,
+                                                        "propertyValues": {
+                                                            "autoSave": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "items": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": [
+                                                                    {
+                                                                        "label": "War",
+                                                                        "on": true
+                                                                    },
+                                                                    {
+                                                                        "label": "Nuclear Hazard",
+                                                                        "on": true
+                                                                    },
+                                                                    {
+                                                                        "label": "Wear &amp; Tear",
+                                                                        "on": false
+                                                                    },
+                                                                    {
+                                                                        "label": "Pollution",
+                                                                        "on": false
+                                                                    },
+                                                                    {
+                                                                        "label": "Cyber Incident",
+                                                                        "on": false
+                                                                    },
+                                                                    {
+                                                                        "label": "Communicable Disease",
+                                                                        "on": false
+                                                                    }
+                                                                ]
+                                                            },
+                                                            "offLabel": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "Off"
+                                                            },
+                                                            "onLabel": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "On"
+                                                            },
+                                                            "saveButtonLabel": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "Save"
+                                                            },
+                                                            "showStateText": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "title": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            }
+                                                        },
+                                                        "slot": null,
+                                                        "styles": {
+                                                            "default": {
+                                                                "padding-top": "var(--now-scalable-space--md)"
                                                             }
                                                         }
-                                                    ],
-                                                    "orderBy": "display_order,coverage_name",
-                                                    "parentField": "coverage_category",
-                                                    "productBadgeField": "coverage_selection",
-                                                    "productOrderField": "display_order",
-                                                    "productParentField": "product_coverage_category",
-                                                    "productRefField": "coverage",
-                                                    "productTable": "x_gegis_ins_policy_product_coverage",
-                                                    "productValues": {
-                                                        "name": "$name",
-                                                        "product": "$product"
+                                                    }
+                                                ],
+                                                "layout": {
+                                                    "default": {
+                                                        "children": null,
+                                                        "items": [
+                                                            {
+                                                                "element_id": "toggle_card_1"
+                                                            }
+                                                        ],
+                                                        "root": null,
+                                                        "rules": null,
+                                                        "styles": {
+                                                            "flex-direction": "column",
+                                                            "min-height": "300px",
+                                                            "width": "100%"
+                                                        },
+                                                        "templateId": "5832fd4d53c31010e6bcddeeff7b12db",
+                                                        "type": "flex"
                                                     },
-                                                    "query": "active_status=true",
-                                                    "search": true,
-                                                    "singular": "coverage",
-                                                    "table": "x_gegis_ins_policy_coverage",
-                                                    "title": "Coverages",
-                                                    "width": 290
+                                                    "version": "3.1.0"
+                                                }
+                                            },
+                                            "preset": null,
+                                            "propertyValues": {
+                                                "ariaRegionHeadingLevel": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": 1
+                                                },
+                                                "ariaRegionName": {
+                                                    "type": "TRANSLATION_LITERAL",
+                                                    "value": {
+                                                        "code": null,
+                                                        "comment": "",
+                                                        "message": ""
+                                                    }
+                                                },
+                                                "ariaRole": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": ""
+                                                },
+                                                "hideEmptyStateUi": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                },
+                                                "includeAriaHeading": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": false
+                                                },
+                                                "slotWrapperBehavior": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "fullheight"
+                                                },
+                                                "type": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "section"
+                                                }
+                                            },
+                                            "slot": "product_exclusions_tab",
+                                            "styles": null
+                                        }
+                                    ],
+                                    "layout": null
+                                },
+                                "preset": null,
+                                "propertyValues": {
+                                    "activeRoute": {
+                                        "icon": "ban-outline",
+                                        "id": "product_exclusions_tab",
+                                        "label": {
+                                            "type": "TRANSLATION_LITERAL",
+                                            "value": {
+                                                "code": null,
+                                                "comment": "",
+                                                "message": "Exclusions"
+                                            }
+                                        },
+                                        "order": 200,
+                                        "type": "local"
+                                    },
+                                    "ariaLabel": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Tab List"
+                                    },
+                                    "defaultRoute": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "dynamicTabData": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "enableCollapsing": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "fixedWidth": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "hideLabel": {
+                                        "type": "CLIENT_RESPONSIVE_QUERY",
+                                        "value": {
+                                            "default": {
+                                                "type": "JSON_LITERAL",
+                                                "value": false
+                                            },
+                                            "queries": [
+                                                {
+                                                    "queryId": "custom_ff_1",
+                                                    "value": {
+                                                        "type": "JSON_LITERAL",
+                                                        "value": false
+                                                    }
                                                 },
                                                 {
-                                                    "captionField": "description",
-                                                    "codeField": "term_code",
-                                                    "displayField": "term_name",
-                                                    "key": "term",
-                                                    "label": "Coverage term",
-                                                    "links": [],
-                                                    "orderBy": "display_order,term_name",
-                                                    "parentField": "coverage",
-                                                    "productOrderField": "display_order",
-                                                    "productParentField": "product_coverage",
-                                                    "productRefField": "coverage_term",
-                                                    "productTable": "x_gegis_ins_policy_product_coverage_term",
-                                                    "productValues": {
-                                                        "active": "true",
-                                                        "name": "$name"
-                                                    },
-                                                    "query": "",
-                                                    "search": true,
-                                                    "singular": "coverage term",
-                                                    "table": "x_gegis_ins_policy_coverage_term",
-                                                    "title": "Terms",
-                                                    "width": 270
-                                                },
-                                                {
-                                                    "codeField": "option_code",
-                                                    "displayField": "option_label",
-                                                    "key": "option",
-                                                    "label": "Term option",
-                                                    "links": [],
-                                                    "orderBy": "display_order,option_label",
-                                                    "parentField": "coverage_term",
-                                                    "productOrderField": "display_order",
-                                                    "productParentField": "product_coverage_term",
-                                                    "productRefField": "coverage_term_option",
-                                                    "productTable": "x_gegis_ins_policy_product_coverage_term_option",
-                                                    "productValues": {
-                                                        "available": "true",
-                                                        "coverage_term": "$masterOf:term",
-                                                        "name": "$name",
-                                                        "option_label": "$name",
-                                                        "option_value": "$field:option_value",
-                                                        "product_coverage": "$rowOf:coverage"
-                                                    },
-                                                    "query": "",
-                                                    "search": true,
-                                                    "singular": "term option",
-                                                    "table": "x_gegis_ins_policy_coverage_term_option",
-                                                    "title": "Term options",
-                                                    "width": 260
+                                                    "queryId": "custom_ff_2",
+                                                    "value": {
+                                                        "type": "JSON_LITERAL",
+                                                        "value": true
+                                                    }
                                                 }
                                             ]
                                         }
                                     },
-                                    "loadExisting": {
-                                        "type": "JSON_LITERAL",
-                                        "value": true
-                                    },
-                                    "pageLimit": {
-                                        "type": "JSON_LITERAL",
-                                        "value": 200
-                                    },
-                                    "persistOnSave": {
-                                        "type": "JSON_LITERAL",
-                                        "value": true
-                                    },
-                                    "preloadMetadata": {
-                                        "type": "JSON_LITERAL",
-                                        "value": true
-                                    },
-                                    "previewStartCollapsed": {
+                                    "hidePadding": {
                                         "type": "JSON_LITERAL",
                                         "value": false
                                     },
-                                    "previewSubtitle": {
+                                    "initiallyCollapsed": {
                                         "type": "JSON_LITERAL",
-                                        "value": "Everything you tick on the left is assembled here in real time."
+                                        "value": false
                                     },
-                                    "previewTitle": {
+                                    "items": {
+                                        "container": [],
+                                        "type": "LIST_CONTAINER"
+                                    },
+                                    "maxWidth": {
                                         "type": "JSON_LITERAL",
-                                        "value": "Product blueprint"
+                                        "value": 240
                                     },
-                                    "previewWidth": {
-                                        "type": "JSON_LITERAL",
-                                        "value": 380
-                                    },
-                                    "productName": {
-                                        "type": "JSON_LITERAL",
-                                        "value": ""
-                                    },
-                                    "productSysId": {
-                                        "binding": {
-                                            "address": [
-                                                "sysId"
-                                            ],
-                                            "category": "props"
-                                        },
-                                        "type": "CONTEXT_BINDING"
-                                    },
-                                    "productTable": {
-                                        "type": "JSON_LITERAL",
-                                        "value": "x_gegis_ins_policy_product"
-                                    },
-                                    "sampleData": {
-                                        "type": "JSON_LITERAL",
+                                    "position": {
+                                        "type": "CLIENT_RESPONSIVE_QUERY",
                                         "value": {
-                                            "items": []
+                                            "default": {
+                                                "type": "JSON_LITERAL",
+                                                "value": "top"
+                                            },
+                                            "queries": [
+                                                {
+                                                    "queryId": "custom_ff_1",
+                                                    "value": {
+                                                        "type": "JSON_LITERAL",
+                                                        "value": "top"
+                                                    }
+                                                },
+                                                {
+                                                    "queryId": "custom_ff_2",
+                                                    "value": {
+                                                        "type": "JSON_LITERAL",
+                                                        "value": "top"
+                                                    }
+                                                }
+                                            ]
                                         }
                                     },
-                                    "saveLabel": {
+                                    "selectedTab": {
                                         "type": "JSON_LITERAL",
-                                        "value": "Save product"
+                                        "value": null
                                     },
-                                    "showBreadcrumb": {
+                                    "selectedTabIndex": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "showInlinePadding": {
                                         "type": "JSON_LITERAL",
                                         "value": true
                                     },
-                                    "showCodes": {
-                                        "type": "JSON_LITERAL",
-                                        "value": true
+                                    "size": {
+                                        "type": "CLIENT_RESPONSIVE_QUERY",
+                                        "value": {
+                                            "default": {
+                                                "type": "JSON_LITERAL",
+                                                "value": "md"
+                                            },
+                                            "queries": [
+                                                {
+                                                    "queryId": "custom_ff_1",
+                                                    "value": {
+                                                        "type": "JSON_LITERAL",
+                                                        "value": "md"
+                                                    }
+                                                },
+                                                {
+                                                    "queryId": "custom_ff_2",
+                                                    "value": {
+                                                        "type": "JSON_LITERAL",
+                                                        "value": "md"
+                                                    }
+                                                }
+                                            ]
+                                        }
                                     },
-                                    "showLinks": {
+                                    "spaceBetweenItems": {
                                         "type": "JSON_LITERAL",
-                                        "value": true
+                                        "value": "none"
                                     },
-                                    "showPreview": {
+                                    "tabStyles": {
                                         "type": "JSON_LITERAL",
-                                        "value": true
+                                        "value": ".tabset-tabs{\n\n}\n.tabset-container{\n\n}"
                                     },
-                                    "showReset": {
+                                    "viewportConfiguration": {
                                         "type": "JSON_LITERAL",
-                                        "value": true
-                                    },
-                                    "showToolbar": {
-                                        "type": "JSON_LITERAL",
-                                        "value": true
+                                        "value": {
+                                            "enableDataDrivenTabs": true,
+                                            "validation": {
+                                                "icon": {
+                                                    "required": false
+                                                },
+                                                "name": {
+                                                    "required": true
+                                                },
+                                                "order": {
+                                                    "required": false
+                                                }
+                                            }
+                                        }
                                     }
                                 },
                                 "slot": null,
-                                "styles": null
+                                "styles": {
+                                    "default": {},
+                                    "queries": [
+                                        {
+                                            "queryId": "custom_ff_1",
+                                            "value": {
+                                                "height": "auto"
+                                            }
+                                        },
+                                        {
+                                            "queryId": "custom_ff_2",
+                                            "value": {}
+                                        }
+                                    ]
+                                }
                             }
                         ],
                         "layout": {
@@ -944,7 +1405,7 @@
                                 "children": null,
                                 "items": [
                                     {
-                                        "element_id": "product_builder"
+                                        "element_id": "tabs_1"
                                     }
                                 ],
                                 "root": null,
@@ -1106,6 +1567,10 @@
     "custom_ff_1": {
         "max-width": 640,
         "reference": "macroponent"
+    },
+    "custom_ff_2": {
+        "max-width": 320,
+        "reference": "macroponent"
     }
 }</form_factors>
         <handled_events/>
@@ -1239,6 +1704,10 @@
 ]</props>
         <required_sys_props/>
         <required_translations>[ {
+  "message" : "Communicable Disease",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "Coverage",
   "code" : "",
   "comment" : ""
@@ -1248,6 +1717,10 @@
   "comment" : ""
 }, {
   "message" : "Coverage term",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Cyber Incident",
   "code" : "",
   "comment" : ""
 }, {
@@ -1267,7 +1740,19 @@
   "code" : "",
   "comment" : ""
 }, {
+  "message" : "Nuclear Hazard",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Pollution",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "Publish",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Structure (Designer)",
   "code" : "",
   "comment" : ""
 }, {
@@ -1282,6 +1767,14 @@
   "message" : "Versions",
   "code" : "",
   "comment" : ""
+}, {
+  "message" : "War",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Wear &amp; Tear",
+  "code" : "",
+  "comment" : ""
 } ]</required_translations>
         <root_component/>
         <root_component_config/>
@@ -1294,14 +1787,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-08-12 13:07:10</sys_created_on>
         <sys_id>457d0b5bc3e2c310fac6fc0d050131c1</sys_id>
-        <sys_mod_count>31</sys_mod_count>
+        <sys_mod_count>39</sys_mod_count>
         <sys_name>Product</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_457d0b5bc3e2c310fac6fc0d050131c1</sys_update_name>
-        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-08-15 12:47:08</sys_updated_on>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-08-17 05:32:18</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=457d0b5bc3e2c310fac6fc0d050131c1"/>
 </record_update>
