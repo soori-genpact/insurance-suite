@@ -109,8 +109,55 @@ OrchestrationService.prototype = {
         if (result.mode === Constants.CHOICE.SUBMISSION_UPDATE_MODE.NEW_VERSION
             &amp;&amp; result.submission) {
             this.kickoff(result.submission);
+        } else if (result.submission) {
+            // Override in place: re-assert the plan. Needed because an update
+            // can CANCEL the last outstanding module in a group (order 0), and
+            // a cancel does not set state = 3, so no advancer would ever fire
+            // and the journey would stall. Also self-heals a plan edited
+            // mid-flight.
+            this.resync(result.submission);
         }
         return result;
+    },
+
+    /**
+     * Walk the run groups in order and make sure the first one that is not
+     * finished is active, creating any case the plan expects but that does not
+     * exist. If every group is finished, close the journey.
+     *
+     * Idempotent - activating an already-active case is a no-op.
+     *
+     * @return Array of module codes activated
+     */
+    resync: function (submissionId) {
+        var groups = this.plan.groupsFor(submissionId);
+        if (!groups.length)
+            return [];
+
+        for (var g = 0; g &lt; groups.length; g++) {
+            var outstanding = false;
+            for (var i = 0; i &lt; groups[g].modules.length; i++) {
+                if (!this.plan._isDone(groups[g].modules[i].module, submissionId)) {
+                    outstanding = true;
+                    break;
+                }
+            }
+            if (!outstanding)
+                continue;
+
+            var started = [];
+            for (var j = 0; j &lt; groups[g].modules.length; j++) {
+                if (this._activate(groups[g].modules[j].module, submissionId, groups[g].order))
+                    started.push(groups[g].modules[j].module);
+            }
+            if (started.length)
+                gs.info(this.LOG + 'resync on ' + submissionId + ' activated group '
+                    + groups[g].order + ': ' + started.join(', '));
+            return started;
+        }
+
+        this._onJourneyComplete(submissionId);
+        return [];
     },
 
     /**

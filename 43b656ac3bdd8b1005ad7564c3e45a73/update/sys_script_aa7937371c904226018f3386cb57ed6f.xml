@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>false</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_gegis_ins_policy_submission</collection>
+        <condition>current.request_kind == 'update' &amp;&amp; !current.version.changes() &amp;&amp; !current.is_locked</condition>
+        <description>An update arrived for a submission already in flight: restart it in place or cut a new version, per submission_on_update on the resolved plan. Guarded so its own writes (version bump, locking the superseded row) cannot re-trigger it.</description>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Orchestration: submission updated</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script>(function executeRule(current, previous /*null when async*/) {
+
+    new OrchestrationService().onUpdate(current.getUniqueValue());
+
+})(current, previous);</script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-08-20 12:00:00</sys_created_on>
+        <sys_id>aa7937371c904226018f3386cb57ed6f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Orchestration: submission updated</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_aa7937371c904226018f3386cb57ed6f</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-08-20 12:00:00</sys_updated_on>
+        <template/>
+        <when>async</when>
+    </sys_script>
+</record_update>
