@@ -25,7 +25,23 @@
 
         // License + staged execution plan (JSON) for module orchestration:
         // clearance, exposure, risk, quote &amp; bind.
+        //
+        // The LICENCE half of this property (instance_id, expires_at,
+        // licensed_modules) is authoritative and is issued, not configured.
+        // The execution.stages half is now only a FALLBACK - the live execution
+        // plan lives in x_gegis_ins_policy_module_plan, which a business user
+        // edits. Licence always outranks the plan.
         MODULE_EXECUTION_CONFIG: SCOPE + '.module_execution_config'
+    };
+
+    // ---------------------------------------------------------------------
+    // Config tables read by OrchestrationService / ModulePlanService.
+    // ---------------------------------------------------------------------
+    var TABLE = {
+        MODULE_PLAN:       SCOPE + '_module_plan',
+        MODULE:            SCOPE + '_module',
+        VERSION_COPY_RULE: SCOPE + '_version_copy_rule',
+        SUBMISSION:        SCOPE + '_submission'
     };
 
     // Fail-safe defaults, mirrored from the property defaults.
@@ -74,10 +90,18 @@
         CLOSED:      'closed',
         // shared by case_task.category and party.verification_source
         OTHER:       'other',
-        // renewal decision tokens - shared by uw_decision + system_decision
+        // renewal decision tokens - shared by uw_decision + system_decision, and
+        // reused as module_plan.sub_type for renewals: "how is this renewal
+        // handled" is one axis, so it stays one taxonomy rather than a parallel
+        // full_uw/auto_approve list that would drift from these.
         FULL_RE_UNDERWRITING: 'full_re_underwriting',
         AUTO_RENEW:           'auto_renew',
         DO_NOT_RENEW:         'do_not_renew',
+        // restart mode - shared by module_plan.restart_* (per module) and
+        // module_plan.submission_on_update (the submission record itself).
+        // Override reuses the record; new_version replaces it, same number, v+1.
+        OVERRIDE:             'override',
+        NEW_VERSION:          'new_version',
         // shared by party.status and policy.status
         ACTIVE:      'active',
         // shared by submission.status and policy.status
@@ -1026,12 +1050,86 @@
             BREACH:         'breach',
             NOT_APPLICABLE: 'not_applicable',
             NO_LIMIT:       'no_limit'
-        }
+        },
 
         // OPEN ITEM: exposure_peril.peril carries an uncatalogued list that predates
         // CHOICE.PERIL above. Reconciling the two is a data decision (it would
         // rewrite live exposure_peril rows), not a cleanup - leave both until it is
         // taken deliberately.
+
+        // =================================================================
+        // MODULE EXECUTION PLAN  --  x_gegis_ins_policy_module_plan
+        // -----------------------------------------------------------------
+        // The plan is a flat matrix: one row per situation, one order column
+        // per module. 0 = do not create; equal numbers = run in parallel;
+        // higher = runs after. Restart is per module, in its own column.
+        // =================================================================
+
+        // Module identity. Deliberately an ALIAS of STAGE rather than a new
+        // list: a module and the submission stage it drives are the same
+        // thing, and reusing these lower_snake_case tokens retires the
+        // UPPERCASE codes (and the EXPOSURE_MANAGMENT misspelling) that the
+        // licence JSON and UwmConstants disagree on.
+        MODULE: STAGE,
+
+        // module_plan.request_kind - is this the first request or a revision?
+        REQUEST_KIND: {
+            NEW:    SHARED.NEW,
+            UPDATE: 'update'
+        },
+
+        // module_plan.sub_type / submission.sub_type. Optional everywhere:
+        // BLANK matches any sub type, so New Business rows can leave it empty
+        // and pick it up later without a schema change.
+        // Renewal tiers reuse the SHARED renewal decision tokens; the MTA
+        // tokens are new - a material change reopens underwriting, a
+        // non-material one does not.
+        SUB_TYPE: {
+            FULL_UW:      SHARED.FULL_RE_UNDERWRITING,
+            FAST_TRACK:   'fast_track',
+            AUTO_APPROVE: SHARED.AUTO_RENEW,
+            MATERIAL:     'material',
+            NON_MATERIAL: 'non_material'
+        },
+
+        // module_plan.config_mode. In ADVANCED mode every order and restart
+        // column on the row is ignored and advanced_script decides.
+        CONFIG_MODE: {
+            SIMPLE:   'simple',
+            ADVANCED: 'advanced'
+        },
+
+        // module_plan.restart_clearance / _risk / _exposure / _quote_and_bind.
+        // Applies only when submission_on_update = override; on a new
+        // submission version the cases are created fresh by the plan.
+        RESTART_MODE: {
+            NONE:        'none',
+            OVERRIDE:    SHARED.OVERRIDE,
+            NEW_VERSION: SHARED.NEW_VERSION
+        },
+
+        // module_plan.submission_on_update - what happens to the submission
+        // RECORD, as opposed to its module cases.
+        SUBMISSION_UPDATE_MODE: {
+            OVERRIDE:    SHARED.OVERRIDE,
+            NEW_VERSION: SHARED.NEW_VERSION
+        },
+
+        // version_copy_rule.action - what happens to each related table when a
+        // new submission version is cut. Nothing is copied implicitly: only a
+        // table with an explicit COPY rule travels, so a child table nobody
+        // catalogued cannot ride along on its copied parent.
+        COPY_ACTION: {
+            COPY:   'copy',
+            MOVE:   'move',
+            CANCEL: 'cancel',
+            SKIP:   'skip'
+        },
+
+        // module_plan.line_of_business carries the LINE_OF_BUSINESS values
+        // above PLUS this wildcard, matching the sentinel already used by
+        // extraction_mapping.line_of_business.
+        LOB_ALL: 'all'
     };
 
     // Collect the value strings of a choice group as an array (for IN queries,
@@ -1092,16 +1190,69 @@
         return getJson(PROP.MODULE_EXECUTION_CONFIG, {});
     }
 
+    // ---------------------------------------------------------------------
+    // Licence. Issued, not configured - it outranks the module plan, so a
+    // module the customer has not licensed can never be activated no matter
+    // how the plan (or an advanced script) is written.
+    // ---------------------------------------------------------------------
+    function getLicence() {
+        var cfg = getModuleExecutionConfig();
+        return {
+            instance_id:      cfg.instance_id || '',
+            customer_name:    cfg.customer_name || '',
+            license_version:  cfg.license_version || '',
+            expires_at:       cfg.expires_at || '',
+            licensed_modules: cfg.licensed_modules || []
+        };
+    }
+
+    // ISO-8601 ('2027-03-10T00:00:00Z') to the format GlideDateTime parses.
+    function isoToGlide(iso) {
+        return String(iso || '').replace('T', ' ').replace('Z', '').split('.')[0];
+    }
+
+    // No expires_at at all is treated as EXPIRED, not as perpetual - a missing
+    // licence must fail closed.
+    function isLicenceValid() {
+        var expires = isoToGlide(getLicence().expires_at);
+        if (!expires) {
+            gs.error('[Constants] licence has no expires_at - treating as expired');
+            return false;
+        }
+        return new GlideDateTime().compareTo(new GlideDateTime(expires)) &lt; 0;
+    }
+
+    // licenceCode is the UPPERCASE code carried in licensed_modules
+    // (SUBMISSION_CLEARANCE, EXPOSURE_MANAGEMENT, ...). Callers resolve a
+    // module's licence code from the module registry, not from a hard-coded map.
+    function isModuleLicensed(licenceCode) {
+        if (!isLicenceValid())
+            return false;
+        var wanted = String(licenceCode || '').trim().toUpperCase();
+        if (!wanted)
+            return false;
+        var licensed = getLicence().licensed_modules;
+        for (var i = 0; i &lt; licensed.length; i++) {
+            if (String(licensed[i]).trim().toUpperCase() === wanted)
+                return true;
+        }
+        return false;
+    }
+
     return {
         SCOPE: SCOPE,
         PROP: PROP,
+        TABLE: TABLE,
         CHOICE: CHOICE,
         values: values,
         getString: getString,
         getBool: getBool,
         getJson: getJson,
         isAutoApprove: isAutoApprove,
-        getModuleExecutionConfig: getModuleExecutionConfig
+        getModuleExecutionConfig: getModuleExecutionConfig,
+        getLicence: getLicence,
+        isLicenceValid: isLicenceValid,
+        isModuleLicensed: isModuleLicensed
     };
 })();</script>
         <sys_class_name>sys_script_include</sys_class_name>

@@ -1,0 +1,1074 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.ModulePlanService</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Resolves the module execution plan for a submission from x_gegis_ins_policy_module_plan (flat matrix: one row per situation, one order column per module, 0 = do not create, equal numbers = parallel). Handles simple and advanced (scripted) plan modes, licence filtering, per-module restart (none/override/new_version), playbook cancel/restart/trigger via sn_playbook.PlaybookExperience, and cutting a new submission version per x_gegis_ins_policy_version_copy_rule. OrchestrationService delegates every plan decision here.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>ModulePlanService</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var ModulePlanService = Class.create();
+ModulePlanService.prototype = {
+
+    initialize: function () {
+        // Task states, mirrored from OrchestrationService.
+        this.STATE = {
+            inactive:  '-5',
+            active:    '2',
+            complete:  '3',
+            cancelled: '7'
+        };
+        this.LOG = '[ModulePlan] ';
+        this._registryCache = null;
+        this._rulesCache = null;
+    },
+
+    // =================================================================
+    // MODULE REGISTRY  --  x_gegis_ins_policy_module
+    // -----------------------------------------------------------------
+    // Nothing in this service hard-codes a module, its case table, its
+    // licence code or its playbook. Adding a 5th module is a registry row
+    // plus two columns on the plan - no change here.
+    // =================================================================
+    _modules: function () {
+        if (this._registryCache)
+            return this._registryCache;
+
+        var out = [];
+        var gr = new GlideRecord(Constants.TABLE.MODULE);
+        gr.addQuery('active', true);
+        gr.orderBy('order');
+        gr.query();
+        while (gr.next()) {
+            out.push({
+                code:         String(gr.getValue('code') || '').trim(),
+                label:        String(gr.getValue('label') || '').trim(),
+                table:        String(gr.getValue('case_table') || '').trim(),
+                licence:      String(gr.getValue('licence_code') || '').trim(),
+                orderField:   String(gr.getValue('order_field') || '').trim(),
+                restartField: String(gr.getValue('restart_field') || '').trim(),
+                playbook:     String(gr.getValue('playbook_scoped_name') || '').trim()
+            });
+        }
+        if (!out.length)
+            gs.error(this.LOG + 'module registry is empty - no module can be orchestrated');
+
+        this._registryCache = out;
+        return out;
+    },
+
+    _moduleByCode: function (code) {
+        var wanted = String(code || '').trim().toUpperCase();
+        if (!wanted)
+            return null;
+        var mods = this._modules();
+        for (var i = 0; i &lt; mods.length; i++) {
+            // Accept the registry code OR the licence code, so existing flows
+            // that pass SUBMISSION_CLEARANCE keep working alongside 'clearance'.
+            // Exact match only - the old indexOf() matching meant a stray 'E'
+            // resolved to the first stage that happened to contain it.
+            if (mods[i].code.toUpperCase() === wanted || mods[i].licence.toUpperCase() === wanted)
+                return mods[i];
+        }
+        return null;
+    },
+
+    _codes: function () {
+        var mods = this._modules();
+        var out = [];
+        for (var i = 0; i &lt; mods.length; i++)
+            out.push(mods[i].code);
+        return out;
+    },
+
+    // =================================================================
+    // PLAN RESOLUTION
+    // =================================================================
+    // Most specific wins: an exact sub_type beats a blank one, an exact
+    // line_of_business beats the 'all' wildcard, and `order` breaks ties.
+    resolvePlan: function (submission) {
+        // Deliberately NOT isValidRecord(): resolution must also work on an
+        // initialize()d, un-inserted record so the plan can be resolved as a
+        // dry run (verify_module_plan.js) without creating anything.
+        if (!submission)
+            return null;
+
+        var wantedType = String(submission.getValue('submission_type') || '');
+        var wantedKind = String(submission.getValue('request_kind') || Constants.CHOICE.REQUEST_KIND.NEW);
+        var wantedSub  = String(submission.getValue('sub_type') || '');
+        var wantedLob  = String(submission.getValue('line_of_business') || '');
+
+        var bestId = '';
+        var bestScore = -1;
+
+        var gr = new GlideRecord(Constants.TABLE.MODULE_PLAN);
+        gr.addQuery('active', true);
+        gr.addQuery('submission_type', wantedType);
+        gr.addQuery('request_kind', wantedKind);
+        gr.orderBy('order');
+        gr.query();
+        while (gr.next()) {
+            var planSub = String(gr.getValue('sub_type') || '');
+            var planLob = String(gr.getValue('line_of_business') || '');
+            var score = 0;
+
+            if (planSub) {
+                if (planSub !== wantedSub)
+                    continue;
+                score += 20;
+            } else {
+                score += 10;   // blank sub_type matches any
+            }
+
+            if (planLob &amp;&amp; planLob !== Constants.CHOICE.LOB_ALL) {
+                if (planLob !== wantedLob)
+                    continue;
+                score += 2;
+            } else {
+                score += 1;    // 'all' or blank matches any LOB
+            }
+
+            if (score &gt; bestScore) {
+                bestScore = score;
+                bestId = gr.getUniqueValue();
+            }
+        }
+
+        if (!bestId) {
+            gs.warn(this.LOG + 'no module plan matches submission '
+                + submission.getValue('number') + ' (' + wantedType + '/'
+                + (wantedSub || 'any') + '/' + wantedKind + '/' + (wantedLob || 'any')
+                + ') - falling back to the licence execution plan');
+            return null;
+        }
+
+        var plan = new GlideRecord(Constants.TABLE.MODULE_PLAN);
+        return plan.get(bestId) ? plan : null;
+    },
+
+    // =================================================================
+    // NORMALIZATION
+    // -----------------------------------------------------------------
+    // Simple and advanced modes both produce the SAME shape, so everything
+    // downstream is one code path:
+    //   [{ module: 'clearance', order: 1, restart: 'override' }, ...]
+    // =================================================================
+    normalize: function (plan, submission) {
+        var simple = this._fromColumns(plan);
+        var mode = String(plan.getValue('config_mode') || Constants.CHOICE.CONFIG_MODE.SIMPLE);
+
+        var list = simple;
+        if (mode === Constants.CHOICE.CONFIG_MODE.ADVANCED) {
+            var scripted = this._evalAdvanced(plan, submission, simple);
+            // A script that throws or returns nothing usable falls back to the
+            // row's columns rather than stalling the journey.
+            list = scripted ? scripted : simple;
+        }
+
+        return this._licenceFilter(list);
+    },
+
+    _fromColumns: function (plan) {
+        var out = [];
+        var mods = this._modules();
+        for (var i = 0; i &lt; mods.length; i++) {
+            var m = mods[i];
+            if (!m.orderField)
+                continue;
+            if (!plan.isValidField(m.orderField)) {
+                gs.error(this.LOG + 'module ' + m.code + ' names order_field '
+                    + m.orderField + ' which does not exist on '
+                    + Constants.TABLE.MODULE_PLAN);
+                continue;
+            }
+
+            var order = parseInt(plan.getValue(m.orderField), 10);
+            if (isNaN(order) || order &lt;= 0)
+                continue;    // 0 (or empty) = do not create this module
+
+            var restart = Constants.CHOICE.RESTART_MODE.NONE;
+            if (m.restartField &amp;&amp; plan.isValidField(m.restartField))
+                restart = String(plan.getValue(m.restartField) || restart);
+
+            out.push({ module: m.code, order: order, restart: restart });
+        }
+        return out;
+    },
+
+    // The licence outranks the plan AND any advanced script: a module the
+    // customer has not licensed can never be activated, and an expired licence
+    // activates nothing at all.
+    _licenceFilter: function (list) {
+        var out = [];
+        for (var i = 0; i &lt; list.length; i++) {
+            var m = this._moduleByCode(list[i].module);
+            if (!m) {
+                gs.error(this.LOG + 'unknown module in plan: ' + list[i].module);
+                continue;
+            }
+            if (!Constants.isModuleLicensed(m.licence)) {
+                gs.warn(this.LOG + 'module ' + m.code + ' (' + m.licence
+                    + ') is not licensed or the licence has expired - excluded');
+                continue;
+            }
+            out.push(list[i]);
+        }
+        return out;
+    },
+
+    // =================================================================
+    // ADVANCED MODE
+    // -----------------------------------------------------------------
+    // The script sets `answer`. Every plan column on the row is ignored,
+    // but `simple` is handed in so a script can branch back to it.
+    // =================================================================
+    _evalAdvanced: function (plan, submission, simple) {
+        try {
+            var ev = new GlideScopedEvaluator();
+            ev.putVariable('submission', submission);
+            ev.putVariable('policy', this._policyOf(submission));
+            ev.putVariable('progress', this.progress(submission.getUniqueValue()));
+            ev.putVariable('plan', plan);
+            ev.putVariable('modules', this._codes());
+            ev.putVariable('simple', simple);
+            ev.putVariable('answer', []);
+
+            ev.evaluateScript(plan, 'advanced_script');
+
+            var clean = this._validateAnswer(ev.getVariable('answer'));
+            if (!clean.length) {
+                gs.warn(this.LOG + 'advanced script on plan ' + plan.getValue('name')
+                    + ' returned nothing usable - falling back to its columns');
+                return null;
+            }
+            return clean;
+        } catch (e) {
+            gs.error(this.LOG + 'advanced script on plan ' + plan.getValue('name')
+                + ' failed (' + e.message + ') - falling back to its columns');
+            return null;
+        }
+    },
+
+    _validateAnswer: function (answer) {
+        var out = [];
+        if (!answer || !answer.length)
+            return out;
+
+        var allowed = Constants.values(Constants.CHOICE.RESTART_MODE);
+
+        for (var i = 0; i &lt; answer.length; i++) {
+            var row = answer[i];
+            if (!row || !row.module) {
+                gs.error(this.LOG + 'advanced script entry ' + i + ' has no module - dropped');
+                continue;
+            }
+            var m = this._moduleByCode(row.module);
+            if (!m) {
+                gs.error(this.LOG + 'advanced script returned unknown module "'
+                    + row.module + '" - dropped');
+                continue;
+            }
+            var order = parseInt(row.order, 10);
+            if (isNaN(order) || order &lt;= 0)
+                continue;   // 0 from a script means the same as 0 in a column
+
+            var restart = String(row.restart || Constants.CHOICE.RESTART_MODE.NONE);
+            if (allowed.indexOf(restart) === -1) {
+                gs.error(this.LOG + 'advanced script returned unknown restart "'
+                    + restart + '" for ' + m.code + ' - using none');
+                restart = Constants.CHOICE.RESTART_MODE.NONE;
+            }
+
+            out.push({ module: m.code, order: order, restart: restart });
+        }
+        return out;
+    },
+
+    // =================================================================
+    // RUN GROUPS
+    // -----------------------------------------------------------------
+    // Equal order = one group = runs in parallel. Ascending order = runs
+    // after. This is the whole sequencing model.
+    // =================================================================
+    groupsFor: function (submissionId) {
+        var submission = this._submission(submissionId);
+        if (!submission)
+            return [];
+
+        var plan = this.resolvePlan(submission);
+        var list = plan ? this.normalize(plan, submission) : this._legacyList();
+
+        var byOrder = {};
+        for (var i = 0; i &lt; list.length; i++) {
+            var key = String(list[i].order);
+            if (!byOrder[key])
+                byOrder[key] = [];
+            byOrder[key].push(list[i]);
+        }
+
+        var orders = [];
+        for (var k in byOrder) {
+            if (byOrder.hasOwnProperty(k))
+                orders.push(parseInt(k, 10));
+        }
+        orders.sort(function (a, b) { return a - b; });
+
+        var groups = [];
+        for (var j = 0; j &lt; orders.length; j++) {
+            groups.push({
+                order: orders[j],
+                modules: byOrder[String(orders[j])]
+            });
+        }
+        return groups;
+    },
+
+    // Day-one safety net: when no plan row matches, fall back to the
+    // execution.stages still carried in the licence property.
+    _legacyList: function () {
+        var out = [];
+        var cfg = Constants.getModuleExecutionConfig();
+        var stages = (cfg.execution &amp;&amp; cfg.execution.stages) || [];
+        for (var i = 0; i &lt; stages.length; i++) {
+            var codes = stages[i].modules || [];
+            for (var j = 0; j &lt; codes.length; j++) {
+                var m = this._moduleByCode(codes[j]);
+                if (m) {
+                    out.push({
+                        module: m.code,
+                        order: parseInt(stages[i].stage, 10) || (i + 1),
+                        restart: Constants.CHOICE.RESTART_MODE.NONE
+                    });
+                }
+            }
+        }
+        return this._licenceFilter(out);
+    },
+
+    // The modules to activate now that completedModule has finished, or []
+    // when a parallel sibling is still outstanding or the journey is done.
+    nextGroup: function (completedModule, submissionId) {
+        var groups = this.groupsFor(submissionId);
+        if (!groups.length)
+            return [];
+
+        var done = this._moduleByCode(completedModule);
+        if (!done) {
+            gs.error(this.LOG + 'completed module not in the registry: ' + completedModule);
+            return [];
+        }
+
+        var idx = -1;
+        for (var i = 0; i &lt; groups.length &amp;&amp; idx === -1; i++) {
+            for (var j = 0; j &lt; groups[i].modules.length; j++) {
+                if (groups[i].modules[j].module === done.code) {
+                    idx = i;
+                    break;
+                }
+            }
+        }
+        if (idx === -1) {
+            gs.warn(this.LOG + 'module ' + done.code
+                + ' is not in the resolved plan for submission ' + submissionId);
+            return [];
+        }
+
+        // Every parallel sibling in this group must be finished first.
+        var siblings = groups[idx].modules;
+        for (var s = 0; s &lt; siblings.length; s++) {
+            if (!this._isDone(siblings[s].module, submissionId))
+                return [];
+        }
+
+        if (idx === groups.length - 1)
+            return [];   // last group - the caller closes the journey
+
+        return groups[idx + 1].modules;
+    },
+
+    // Complete OR cancelled both count as "no longer gating" - a cancelled
+    // case must never hold a run group open forever.
+    _isDone: function (moduleCode, submissionId) {
+        var m = this._moduleByCode(moduleCode);
+        if (!m || !m.table)
+            return true;
+        var kase = this.latestCase(m.table, submissionId);
+        if (!kase)
+            return false;
+        var state = String(kase.getValue('state') || '');
+        return state === this.STATE.complete || state === this.STATE.cancelled;
+    },
+
+    // =================================================================
+    // PROGRESS  --  handed to advanced scripts
+    // -----------------------------------------------------------------
+    // submission.stage / activity_status are single values for the whole
+    // submission and cannot say how far Risk got versus Exposure. This is
+    // built per module so a script can branch on real progress.
+    // EVERY registry module always gets a key, so progress.risk_assessment
+    // .status can never throw on a module that has not started.
+    // =================================================================
+    progress: function (submissionId) {
+        var out = {};
+        var mods = this._modules();
+        for (var i = 0; i &lt; mods.length; i++) {
+            var m = mods[i];
+            var row = {
+                exists: false,
+                state: '',
+                status: '',
+                activity_status: '',
+                stage: 0,
+                version: 0,
+                case_sys_id: '',
+                table: m.table
+            };
+            var kase = m.table ? this.latestCase(m.table, submissionId) : null;
+            if (kase) {
+                row.exists          = true;
+                row.state           = String(kase.getValue('state') || '');
+                row.status          = String(kase.getValue('status') || '');
+                row.activity_status = String(kase.getValue('activity_status') || '');
+                row.stage           = parseInt(kase.getValue('stage'), 10) || 0;
+                row.version         = parseInt(kase.getValue('version'), 10) || 1;
+                row.case_sys_id     = kase.getUniqueValue();
+            }
+            out[m.code] = row;
+        }
+        return out;
+    },
+
+    // Always the LATEST version of a module's case. The old
+    // addQuery(submission) + setLimit(1) returned an arbitrary row once a
+    // second version existed.
+    latestCase: function (table, submissionId) {
+        if (!table || !submissionId)
+            return null;
+        var gr = new GlideRecord(table);
+        if (!gr.isValid()) {
+            gs.error(this.LOG + 'case table does not exist: ' + table);
+            return null;
+        }
+        gr.addQuery('submission', submissionId);
+        gr.orderByDesc('version');
+        gr.setLimit(1);
+        gr.query();
+        return gr.next() ? gr : null;
+    },
+
+    // =================================================================
+    // UPDATE HANDLING
+    // =================================================================
+    // Returns { mode: 'override'|'new_version', submission: &lt;sys_id&gt; }.
+    applyResubmit: function (submissionId) {
+        var submission = this._submission(submissionId);
+        if (!submission)
+            return {};
+
+        var plan = this.resolvePlan(submission);
+        if (!plan) {
+            gs.warn(this.LOG + 'no plan for the update on ' + submission.getValue('number')
+                + ' - nothing restarted');
+            return {};
+        }
+
+        var mode = String(plan.getValue('submission_on_update')
+            || Constants.CHOICE.SUBMISSION_UPDATE_MODE.OVERRIDE);
+
+        if (mode === Constants.CHOICE.SUBMISSION_UPDATE_MODE.NEW_VERSION)
+            return { mode: mode, submission: this.newSubmissionVersion(submission, plan) };
+
+        this._overrideInPlace(submission, plan);
+        return { mode: mode, submission: submission.getUniqueValue() };
+    },
+
+    // One submission row: bump the version, restart the cases per the
+    // per-module restart columns. The number never changes.
+    _overrideInPlace: function (submission, plan) {
+        var submissionId = submission.getUniqueValue();
+        var list = this.normalize(plan, submission);
+
+        var included = {};
+        for (var i = 0; i &lt; list.length; i++)
+            included[list[i].module] = list[i];
+
+        var mods = this._modules();
+        for (var j = 0; j &lt; mods.length; j++) {
+            var m = mods[j];
+            var entry = included[m.code];
+            var kase = m.table ? this.latestCase(m.table, submissionId) : null;
+
+            // order 0: the plan says this module is no longer part of the
+            // journey, so an in-flight case is cancelled - record AND playbook.
+            if (!entry) {
+                if (kase &amp;&amp; String(kase.getValue('state')) !== this.STATE.cancelled)
+                    this.cancelCase(kase, m, 'Module removed by the module plan on update');
+                continue;
+            }
+
+            if (!kase)
+                continue;   // nothing to restart; the plan will create it
+
+            if (entry.restart === Constants.CHOICE.RESTART_MODE.OVERRIDE)
+                this.overrideCase(kase, m);
+            else if (entry.restart === Constants.CHOICE.RESTART_MODE.NEW_VERSION)
+                this.newCaseVersion(kase, m);
+            // NONE: deliberately untouched
+        }
+
+        submission.setValue('version', this._nextVersion(submission));
+        submission.setValue('request_kind', Constants.CHOICE.REQUEST_KIND.UPDATE);
+        submission.update();
+    },
+
+    _nextVersion: function (gr) {
+        return (parseInt(gr.getValue('version'), 10) || 1) + 1;
+    },
+
+    // =================================================================
+    // CASE RESTART
+    // =================================================================
+    cancelCase: function (kase, module, reason) {
+        this.cancelPlaybooks(kase, reason);
+        kase.setValue('state', this.STATE.cancelled);
+        kase.setValue('is_active', false);
+        kase.update();
+        gs.info(this.LOG + 'cancelled ' + module.code + ' case ' + kase.getUniqueValue()
+            + ' (' + reason + ')');
+    },
+
+    // Reuse the same row: same sys_id, same history, reset to active.
+    overrideCase: function (kase, module) {
+        kase.setValue('state', this.STATE.active);
+        kase.setValue('is_active', true);
+        kase.setValue('activity_status', '');
+        if (kase.isValidField('status'))
+            kase.setValue('status', '');
+        kase.update();
+
+        this.restartPlaybook(kase, module);
+        gs.info(this.LOG + 'override-restarted ' + module.code + ' case ' + kase.getUniqueValue());
+    },
+
+    // Replace the row: cancel the old one, create a fresh case carrying the
+    // SAME number with version + 1, and point supersedes back at the old one.
+    newCaseVersion: function (kase, module) {
+        var oldId = kase.getUniqueValue();
+        var version = this._nextVersion(kase);
+
+        this.cancelPlaybooks(kase, 'Superseded by version ' + version);
+        kase.setValue('state', this.STATE.cancelled);
+        kase.setValue('is_active', false);
+        kase.update();
+
+        var neu = new GlideRecord(module.table);
+        neu.initialize();
+        this._copyFields(kase, neu, module.table, {});
+        // The number is copied deliberately: a new version is the same case at
+        // a later revision. Set explicitly so the autonumber default, which only
+        // fires on an empty field, does not issue a fresh one. Business rules are
+        // NOT suppressed here.
+        if (neu.isValidField('number'))
+            neu.setValue('number', kase.getValue('number'));
+        neu.setValue('version', version);
+        if (neu.isValidField('supersedes'))
+            neu.setValue('supersedes', oldId);
+        neu.setValue('state', this.STATE.active);
+        neu.setValue('is_active', true);
+        neu.setValue('activity_status', '');
+        if (neu.isValidField('status'))
+            neu.setValue('status', '');
+        var newId = neu.insert();
+
+        if (!newId) {
+            gs.error(this.LOG + 'could not create version ' + version + ' of '
+                + module.code + ' case ' + oldId);
+            return '';
+        }
+
+        this._repointCaseRefs(module.table, oldId, newId);
+        this.triggerPlaybook(module, newId);
+
+        gs.info(this.LOG + module.code + ' case ' + oldId + ' superseded by ' + newId
+            + ' (version ' + version + ')');
+        return newId;
+    },
+
+    // A new case sys_id means anything pointing at the old row must move.
+    // case_task.parent_case is a document_id, so it is matched by value rather
+    // than found through sys_dictionary.
+    _repointCaseRefs: function (table, oldId, newId) {
+        var task = new GlideRecord(Constants.SCOPE + '_case_task');
+        if (task.isValid()) {
+            task.addQuery('parent_case', oldId);
+            task.query();
+            while (task.next()) {
+                task.setValue('parent_case', newId);
+                task.update();
+            }
+        }
+
+        var refs = this._referrersOf(table);
+        for (var i = 0; i &lt; refs.length; i++) {
+            var gr = new GlideRecord(refs[i].table);
+            if (!gr.isValid())
+                continue;
+            gr.addQuery(refs[i].field, oldId);
+            gr.query();
+            while (gr.next()) {
+                gr.setValue(refs[i].field, newId);
+                gr.update();
+            }
+        }
+    },
+
+    // Every reference column pointing at a table, discovered from the
+    // dictionary so a table added later is covered without a code change.
+    _referrersOf: function (table) {
+        var out = [];
+        var d = new GlideRecord('sys_dictionary');
+        d.addQuery('reference', table);
+        d.addQuery('internal_type', 'reference');
+        d.addQuery('active', true);
+        d.query();
+        while (d.next()) {
+            var owner = String(d.getValue('name') || '');
+            var field = String(d.getValue('element') || '');
+            if (owner &amp;&amp; field &amp;&amp; owner !== table)
+                out.push({ table: owner, field: field });
+        }
+        return out;
+    },
+
+    // =================================================================
+    // NEW SUBMISSION VERSION
+    // -----------------------------------------------------------------
+    // A new version is a brand new submission that happens to keep the
+    // number. Nothing is cloned implicitly: what travels is driven entirely
+    // by x_gegis_ins_policy_version_copy_rule, parents before children.
+    // =================================================================
+    newSubmissionVersion: function (submission, plan) {
+        var oldId = submission.getUniqueValue();
+        var version = this._nextVersion(submission);
+        var rules = this._copyRules();
+        var subRule = this._ruleFor(rules, Constants.TABLE.SUBMISSION);
+
+        var neu = new GlideRecord(Constants.TABLE.SUBMISSION);
+        neu.initialize();
+        this._copyFields(submission, neu, Constants.TABLE.SUBMISSION,
+            this._resetSet(subRule));
+        neu.setValue('number', submission.getValue('number'));
+        neu.setValue('version', version);
+        neu.setValue('supersedes', oldId);
+        neu.setValue('request_kind', Constants.CHOICE.REQUEST_KIND.UPDATE);
+        var newId = neu.insert();
+
+        if (!newId) {
+            gs.error(this.LOG + 'could not create version ' + version
+                + ' of submission ' + submission.getValue('number'));
+            return '';
+        }
+
+        // oldSysId -&gt; newSysId, so grandchildren re-parent onto the copy of
+        // their own parent rather than onto the submission.
+        var idMap = {};
+        idMap[oldId] = newId;
+
+        if (!subRule || subRule.copyAttachments)
+            this._copyAttachments(Constants.TABLE.SUBMISSION, oldId, newId);
+
+        for (var i = 0; i &lt; rules.length; i++) {
+            var rule = rules[i];
+            if (rule.table === Constants.TABLE.SUBMISSION)
+                continue;
+            if (rule.action === Constants.CHOICE.COPY_ACTION.SKIP)
+                continue;
+            this._applyRule(rule, idMap);
+        }
+
+        // The superseded row is closed and locked; its cases stay as history.
+        submission.setValue('state', Constants.CHOICE.STATE.CLOSED);
+        submission.setValue('active', false);
+        submission.setValue('is_locked', true);
+        submission.update();
+
+        gs.info(this.LOG + 'submission ' + submission.getValue('number')
+            + ' superseded: ' + oldId + ' -&gt; ' + newId + ' (version ' + version + ')');
+        return newId;
+    },
+
+    _applyRule: function (rule, idMap) {
+        var gr = new GlideRecord(rule.table);
+        if (!gr.isValid()) {
+            gs.error(this.LOG + 'version copy rule names a table that does not exist: '
+                + rule.table);
+            return;
+        }
+        if (!rule.parentField || !gr.isValidField(rule.parentField)) {
+            gs.error(this.LOG + 'version copy rule for ' + rule.table
+                + ' names parent_field "' + rule.parentField + '" which does not exist');
+            return;
+        }
+
+        var oldParents = [];
+        for (var key in idMap) {
+            if (idMap.hasOwnProperty(key))
+                oldParents.push(key);
+        }
+
+        gr.addQuery(rule.parentField, 'IN', oldParents.join(','));
+        gr.query();
+
+        var moved = 0;
+        var copied = 0;
+        var cancelled = 0;
+
+        while (gr.next()) {
+            var oldParent = String(gr.getValue(rule.parentField) || '');
+            var newParent = idMap[oldParent];
+            if (!newParent)
+                continue;
+
+            if (rule.action === Constants.CHOICE.COPY_ACTION.MOVE) {
+                gr.setValue(rule.parentField, newParent);
+                // Same two-parent problem as COPY: rewire every other link that
+                // points at something moved or copied in this pass.
+                this._rewire(gr, rule.table, idMap, rule.parentField);
+                gr.update();
+                moved++;
+                continue;
+            }
+
+            if (rule.action === Constants.CHOICE.COPY_ACTION.CANCEL) {
+                if (gr.isValidField('state'))
+                    gr.setValue('state', this.STATE.cancelled);
+                else if (gr.isValidField('active'))
+                    gr.setValue('active', false);
+                gr.update();
+                cancelled++;
+                continue;
+            }
+
+            // COPY
+            var srcId = gr.getUniqueValue();
+            var neu = new GlideRecord(rule.table);
+            neu.initialize();
+            this._copyFields(gr, neu, rule.table, this._resetSet(rule), idMap);
+            neu.setValue(rule.parentField, newParent);
+            var newRowId = neu.insert();
+            if (!newRowId) {
+                gs.error(this.LOG + 'could not copy ' + rule.table + ' row ' + srcId);
+                continue;
+            }
+            idMap[srcId] = newRowId;
+            copied++;
+
+            if (rule.copyAttachments)
+                this._copyAttachments(rule.table, srcId, newRowId);
+        }
+
+        gs.info(this.LOG + rule.table + ': ' + rule.action
+            + ' -&gt; copied ' + copied + ', moved ' + moved + ', cancelled ' + cancelled);
+    },
+
+    // Re-point every field on an existing row whose value names a record that
+    // has been copied or moved in this pass, except the one already handled.
+    _rewire: function (gr, table, idMap, exceptField) {
+        var cols = this._columnsOf(table);
+        for (var i = 0; i &lt; cols.length; i++) {
+            var col = cols[i];
+            if (col === exceptField || !gr.isValidField(col))
+                continue;
+            var val = gr.getValue(col);
+            if (val &amp;&amp; idMap[val])
+                gr.setValue(col, idMap[val]);
+        }
+    },
+
+    _copyRules: function () {
+        if (this._rulesCache)
+            return this._rulesCache;
+
+        var out = [];
+        var gr = new GlideRecord(Constants.TABLE.VERSION_COPY_RULE);
+        gr.addQuery('active', true);
+        gr.orderBy('order');
+        gr.query();
+        while (gr.next()) {
+            out.push({
+                table:           String(gr.getValue('table_name') || '').trim(),
+                parentField:     String(gr.getValue('parent_field') || '').trim(),
+                action:          String(gr.getValue('action') || Constants.CHOICE.COPY_ACTION.SKIP),
+                resetFields:     String(gr.getValue('reset_fields') || ''),
+                copyAttachments: gr.getValue('copy_attachments') === '1'
+                    || gr.getValue('copy_attachments') === 'true'
+            });
+        }
+        this._rulesCache = out;
+        return out;
+    },
+
+    _ruleFor: function (rules, table) {
+        for (var i = 0; i &lt; rules.length; i++) {
+            if (rules[i].table === table)
+                return rules[i];
+        }
+        return null;
+    },
+
+    // reset_fields revert to their dictionary default on the copy, so a new
+    // version starts clean on lifecycle columns (clearance_status = pending,
+    // extraction_status = none, ...) while insured, broker, dates and policy
+    // carry over. Without this a v1 sanctions clear would survive onto v2's
+    // changed exposure.
+    _resetSet: function (rule) {
+        var set = {};
+        if (!rule || !rule.resetFields)
+            return set;
+        var parts = rule.resetFields.split(',');
+        for (var i = 0; i &lt; parts.length; i++) {
+            var f = parts[i].trim();
+            if (f)
+                set[f] = true;
+        }
+        return set;
+    },
+
+    // idMap is optional. When given, ANY field whose value is a record already
+    // copied in this pass is rewired to the copy.
+    //
+    // This matters because several child tables carry TWO links up the tree -
+    // location, submission_party and loa_evaluation all reference both
+    // submission AND submission_line. Re-pointing only the rule's parent_field
+    // would leave the other reference aimed at v1, silently tying new-version
+    // rows back to the superseded submission.
+    _copyFields: function (src, tgt, table, resetSet, idMap) {
+        var skip = {
+            sys_id: true, sys_created_on: true, sys_created_by: true,
+            sys_updated_on: true, sys_updated_by: true, sys_mod_count: true,
+            sys_class_name: true, sys_tags: true, sys_domain: true,
+            sys_domain_path: true,
+            number: true, version: true, supersedes: true
+        };
+
+        var map = idMap || {};
+        var cols = this._columnsOf(table);
+        for (var i = 0; i &lt; cols.length; i++) {
+            var col = cols[i];
+            if (skip[col] || resetSet[col])
+                continue;
+            if (!src.isValidField(col) || !tgt.isValidField(col))
+                continue;
+            var val = src.getValue(col);
+            if (val === null || val === undefined)
+                continue;
+            tgt.setValue(col, map[val] ? map[val] : val);
+        }
+    },
+
+    // Own columns plus everything inherited, walked up the super_class chain -
+    // sys_dictionary only records a table's own elements.
+    _columnsOf: function (table) {
+        var out = [];
+        var seen = {};
+        var current = table;
+
+        while (current &amp;&amp; !seen[current]) {
+            seen[current] = true;
+
+            var d = new GlideRecord('sys_dictionary');
+            d.addQuery('name', current);
+            d.addQuery('active', true);
+            d.query();
+            while (d.next()) {
+                var el = String(d.getValue('element') || '');
+                var type = String(d.getValue('internal_type') || '');
+                if (el &amp;&amp; type !== 'collection' &amp;&amp; out.indexOf(el) === -1)
+                    out.push(el);
+            }
+
+            current = this._superClassOf(current);
+        }
+        return out;
+    },
+
+    _superClassOf: function (table) {
+        var o = new GlideRecord('sys_db_object');
+        o.addQuery('name', table);
+        o.setLimit(1);
+        o.query();
+        if (!o.next())
+            return '';
+        var parentId = String(o.getValue('super_class') || '');
+        if (!parentId)
+            return '';
+        var p = new GlideRecord('sys_db_object');
+        return p.get(parentId) ? String(p.getValue('name') || '') : '';
+    },
+
+    _copyAttachments: function (table, oldId, newId) {
+        try {
+            var copied = new GlideSysAttachment().copy(table, oldId, table, newId);
+            if (copied)
+                gs.info(this.LOG + 'copied attachments for ' + table + ' ' + oldId
+                    + ' -&gt; ' + newId);
+        } catch (e) {
+            gs.error(this.LOG + 'attachment copy failed for ' + table + ' ' + oldId
+                + ': ' + e.message);
+        }
+    },
+
+    // =================================================================
+    // PLAYBOOKS
+    // -----------------------------------------------------------------
+    // Setting state = 7 leaves the playbook running with pending
+    // activities, so cancellation has to reach Process Automation.
+    // =================================================================
+    // Cancelling is TWO calls: the first leaves the context in PENDING_CANCEL,
+    // and only a second force call stops activities already In Progress.
+    cancelPlaybooks: function (kase, reason) {
+        try {
+            var res = sn_playbook.PlaybookExperience
+                .cancelPlaybooksByParentRecord(kase, reason || 'Cancelled by the module plan');
+
+            var contexts = (res &amp;&amp; res.canceledPlaybookContext) || [];
+            for (var i = 0; i &lt; contexts.length; i++) {
+                var state = contexts[i].state &amp;&amp; contexts[i].state.value;
+                if (String(state) === 'PENDING_CANCEL')
+                    this._forceCancel(contexts[i].sys_id, reason);
+                this._logPlaybookErrors(contexts[i]);
+            }
+
+            // Not every playbook can be stopped - some started activities
+            // refuse. Never report a case clean when its playbook did not stop.
+            var skipped = (res &amp;&amp; res.skippedPlaybookContext) || [];
+            for (var s = 0; s &lt; skipped.length; s++) {
+                gs.warn(this.LOG + 'playbook ' + skipped[s].title
+                    + ' could NOT be cancelled on case ' + kase.getUniqueValue());
+                this._logPlaybookErrors(skipped[s]);
+            }
+            return skipped.length === 0;
+        } catch (e) {
+            gs.error(this.LOG + 'playbook cancellation failed for case '
+                + kase.getUniqueValue() + ': ' + e.message);
+            return false;
+        }
+    },
+
+    _forceCancel: function (contextId, reason) {
+        try {
+            var ctx = new GlideRecord('sys_pd_context');
+            if (!ctx.get(contextId))
+                return;
+            var res = sn_playbook.PlaybookExperience.cancelPlaybook(
+                ctx, reason || 'Cancelled by the module plan', undefined, true);
+            var list = (res &amp;&amp; res.canceledPlaybookContext) || [];
+            for (var i = 0; i &lt; list.length; i++)
+                this._logPlaybookErrors(list[i]);
+        } catch (e) {
+            gs.error(this.LOG + 'force cancel failed for playbook context '
+                + contextId + ': ' + e.message);
+        }
+    },
+
+    _logPlaybookErrors: function (ctx) {
+        var errors = (ctx &amp;&amp; ctx.errors) || [];
+        for (var i = 0; i &lt; errors.length; i++) {
+            gs.error(this.LOG + 'playbook ' + (ctx.title || ctx.sys_id)
+                + ': ' + errors[i].type + ' - ' + errors[i].message);
+        }
+    },
+
+    // restartPlaybook only accepts In Progress, Queued or Pending Cancel. An
+    // already-complete playbook cannot be restarted, so it is cancelled and
+    // re-triggered instead.
+    restartPlaybook: function (kase, module) {
+        var restartable = { IN_PROGRESS: true, QUEUED: true, PENDING_CANCEL: true };
+        try {
+            var running = sn_playbook.PlaybookExperience.getPlaybooksForParentRecord(kase);
+            if (!running || !running.length) {
+                this.triggerPlaybook(module, kase.getUniqueValue());
+                return;
+            }
+
+            for (var i = 0; i &lt; running.length; i++) {
+                var state = String((running[i].state &amp;&amp; running[i].state.value) || '');
+                var ctx = new GlideRecord('sys_pd_context');
+                if (!ctx.get(running[i].sys_id))
+                    continue;
+
+                if (restartable[state]) {
+                    var res = sn_playbook.PlaybookExperience.restartPlaybook(ctx);
+                    this._logPlaybookErrors(res);
+                } else {
+                    this.cancelPlaybooks(kase, 'Restarted by the module plan');
+                    this.triggerPlaybook(module, kase.getUniqueValue());
+                }
+            }
+        } catch (e) {
+            gs.error(this.LOG + 'playbook restart failed for case '
+                + kase.getUniqueValue() + ': ' + e.message);
+        }
+    },
+
+    triggerPlaybook: function (module, caseId) {
+        if (!module || !module.playbook) {
+            gs.warn(this.LOG + 'no playbook_scoped_name on module '
+                + (module ? module.code : '?') + ' - nothing triggered');
+            return '';
+        }
+        try {
+            var kase = new GlideRecord(module.table);
+            if (!kase.get(caseId))
+                return '';
+            var ctxId = sn_playbook.PlaybookExperience.triggerPlaybook(module.playbook, kase);
+            if (!ctxId)
+                gs.error(this.LOG + 'playbook ' + module.playbook
+                    + ' did not start for case ' + caseId);
+            return ctxId || '';
+        } catch (e) {
+            gs.error(this.LOG + 'playbook trigger failed for ' + module.playbook
+                + ' on case ' + caseId + ': ' + e.message);
+            return '';
+        }
+    },
+
+    // =================================================================
+    // HELPERS
+    // =================================================================
+    _submission: function (submissionId) {
+        var gr = new GlideRecord(Constants.TABLE.SUBMISSION);
+        if (gr.get(submissionId))
+            return gr;
+        gs.error(this.LOG + 'submission not found: ' + submissionId);
+        return null;
+    },
+
+    _policyOf: function (submission) {
+        if (!submission.isValidField('policy'))
+            return null;
+        var id = String(submission.getValue('policy') || '');
+        if (!id)
+            return null;
+        var gr = new GlideRecord(Constants.SCOPE + '_policy');
+        return gr.get(id) ? gr : null;
+    },
+
+    type: 'ModulePlanService'
+};</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-08-20 12:00:00</sys_created_on>
+        <sys_id>19d0a91e5df6a225190331bf27e147f3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ModulePlanService</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_19d0a91e5df6a225190331bf27e147f3</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-08-20 12:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>

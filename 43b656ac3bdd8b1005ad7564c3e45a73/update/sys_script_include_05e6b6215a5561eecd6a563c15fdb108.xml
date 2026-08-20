@@ -5,219 +5,248 @@
         <api_name>x_gegis_ins_policy.OrchestrationService</api_name>
         <caller_access/>
         <client_callable>false</client_callable>
-        <description>Staged module orchestration for submissions: creates module cases per the license execution plan, activates stages, advances on module completion. Called by the Orchestration: flows.</description>
+        <description>Staged module orchestration for submissions: creates module cases per the resolved module plan, activates run groups, advances on module completion, and handles updates (override in place or cut a new submission version). Every plan decision is delegated to ModulePlanService - this service holds no module-to-table map and does not parse the licence property. Called by the Orchestration: flows.</description>
         <mobile_callable>false</mobile_callable>
         <name>OrchestrationService</name>
         <sandbox_callable>false</sandbox_callable>
         <script>var OrchestrationService = Class.create();
 OrchestrationService.prototype = {
-    initialize: function() {
-        this.PROPERTY = 'x_gegis_ins_policy.module_execution_config';
+
+    initialize: function () {
         // All module case tables extend Task: standard task states
         // (-5 Pending = dormant, 2 Work in Progress = active,
         //  3 Closed Complete, 7 Closed Skipped = cancelled).
-        this.STATE = { inactive: '-5', active: '2', complete: '3', cancelled: '7' };
-        this.MODULE_MAP = {
-            'SUBMISSION_CLEARANCE': { table: 'x_gegis_ins_policy_clearance_case' },
-            'EXPOSURE_MANAGEMENT': { table: 'x_gegis_ins_policy_exposure_case' },
-            'RISK_ASSESSMENT': { table: 'x_gegis_ins_policy_risk_case' },
-            'QUOTE_AND_BIND': { table: 'x_gegis_ins_policy_quote_and_bind_case' }
+        this.STATE = {
+            inactive:  '-5',
+            active:    '2',
+            complete:  '3',
+            cancelled: '7'
         };
+        this.LOG = '[Orchestration] ';
+        this.plan = new ModulePlanService();
     },
 
     /**
-     * Submission created: create the stage-0 (initial) module cases INACTIVE,
-     * then activate stage 1. Licensed modules not in initial_modules are
-     * created lazily (directly active) when their stage starts.
+     * Submission created: create every planned module case, the first run
+     * group active and the rest dormant, then start the first group's
+     * playbooks.
+     *
+     * Which modules, in what order, and what runs in parallel all come from
+     * ModulePlanService - this service no longer parses the licence property
+     * and no longer holds a module-to-table map.
      *
      * @param submissionId sys_id of the new submission
      * @return Array of module codes created
      */
-    kickoff: function(submissionId) {
-        var config = this._getConfig();
-        if (!config)
+    kickoff: function (submissionId) {
+        var groups = this.plan.groupsFor(submissionId);
+        if (!groups.length) {
+            gs.warn(this.LOG + 'no module plan resolved for submission ' + submissionId
+                + ' - nothing created');
             return [];
-        var created = [];
-        var initial = config.execution &amp;&amp; config.execution.initial_modules;
-        var licensed = config.licensed_modules || [];
+        }
 
-        if (initial &amp;&amp; initial.modules) {
-            for (var i = 0; i &lt; initial.modules.length; i++) {
-                var code = initial.modules[i];
-                if (licensed.indexOf(code) === -1)
-                    continue;
-                this._createCase(code, submissionId, this._stageOf(config, code), false);
-                created.push(code);
+        var created = [];
+        for (var g = 0; g &lt; groups.length; g++) {
+            var first = (g === 0);
+            for (var i = 0; i &lt; groups[g].modules.length; i++) {
+                var code = groups[g].modules[i].module;
+                var caseId = this._createCase(code, submissionId, groups[g].order, first);
+                if (caseId) {
+                    created.push(code);
+                    if (first)
+                        this._startPlaybook(code, caseId);
+                }
             }
         }
-        this._startStage(config, 1, submissionId);
+
+        gs.info(this.LOG + 'kickoff for ' + submissionId + ' created ' + created.length
+            + ' cases in ' + groups.length + ' run group(s)');
         return created;
     },
 
     /**
-     * A module case reached Closed Complete: if every sibling in its stage is
-     * complete, activate (or lazily create) the next stage's modules.
-     * Port of the reference "Get Next Stage Modules" + activation loop.
+     * A module case reached Closed Complete: if every parallel sibling in its
+     * run group is finished, activate the next group. When the last group
+     * finishes, close the journey.
      *
-     * @param completedModuleCode e.g. 'SUBMISSION_CLEARANCE' (substring ok)
+     * @param completedModuleCode registry code ('clearance') or licence code
+     *        ('SUBMISSION_CLEARANCE') - both resolve
      * @param submissionId sys_id of the parent submission
-     * @return Array of module codes activated/created for the next stage
+     * @return Array of module codes activated for the next group
      */
-    advance: function(completedModuleCode, submissionId) {
-        var config = this._getConfig();
-        if (!config)
-            return [];
-        var stages = config.execution &amp;&amp; config.execution.stages;
-        if (!stages || !stages.length)
-            return [];
+    advance: function (completedModuleCode, submissionId) {
+        var next = this.plan.nextGroup(completedModuleCode, submissionId);
 
-        var needle = String(completedModuleCode || '').trim().toUpperCase();
-        var idx = -1;
-        for (var i = 0; i &lt; stages.length &amp;&amp; idx === -1; i++)
-            for (var k = 0; k &lt; stages[i].modules.length; k++)
-                if (stages[i].modules[k].trim().toUpperCase().indexOf(needle) !== -1) {
-                    idx = i;
-                    break;
-                }
-        if (idx === -1) {
-            gs.error('[Orchestration] Module not found in any stage: ' + completedModuleCode);
+        if (!next.length) {
+            // Either a sibling is still outstanding, or that was the last group.
+            if (this._allDone(submissionId))
+                this._onJourneyComplete(submissionId);
             return [];
         }
 
-        // All parallel siblings in this stage must be complete before advancing
-        var current = stages[idx];
-        for (var j = 0; j &lt; current.modules.length; j++)
-            if (!this._isComplete(current.modules[j], submissionId))
-                return [];
-
-        if (idx === stages.length - 1) {
-            this._onJourneyComplete(submissionId);
-            return [];
+        var started = [];
+        for (var i = 0; i &lt; next.length; i++) {
+            if (this._activate(next[i].module, submissionId, next[i].order))
+                started.push(next[i].module);
         }
-        return this._startStage(config, stages[idx + 1].stage, submissionId);
+
+        gs.info(this.LOG + 'advance after ' + completedModuleCode + ' on ' + submissionId
+            + ' started: ' + (started.join(', ') || 'nothing'));
+        return started;
+    },
+
+    /**
+     * An update arrived for a submission already in flight. Delegates to the
+     * plan: either the same record is bumped and its cases restarted per the
+     * restart columns, or a whole new submission version is cut and kicked off.
+     *
+     * @return { mode: 'override'|'new_version', submission: &lt;sys_id&gt; }
+     */
+    onUpdate: function (submissionId) {
+        var result = this.plan.applyResubmit(submissionId);
+
+        if (result.mode === Constants.CHOICE.SUBMISSION_UPDATE_MODE.NEW_VERSION
+            &amp;&amp; result.submission) {
+            this.kickoff(result.submission);
+        }
+        return result;
     },
 
     /**
      * Clearance failed / submission declined: cancel every module case that
-     * has not completed.
+     * has not completed - record AND playbook.
      */
-    cancelRemaining: function(submissionId) {
-        for (var code in this.MODULE_MAP) {
-            var m = this.MODULE_MAP[code];
+    cancelRemaining: function (submissionId) {
+        var mods = this.plan._modules();
+        var cancelled = 0;
+
+        for (var i = 0; i &lt; mods.length; i++) {
+            var m = mods[i];
+            if (!m.table)
+                continue;
             var gr = new GlideRecord(m.table);
+            if (!gr.isValid())
+                continue;
             gr.addQuery('submission', submissionId);
             gr.addQuery('state', 'NOT IN', this.STATE.complete + ',' + this.STATE.cancelled);
             gr.query();
             while (gr.next()) {
-                gr.setValue('state', this.STATE.cancelled);
-                gr.update();
+                this.plan.cancelCase(gr, m, 'Submission journey cancelled');
+                cancelled++;
             }
         }
+
+        gs.info(this.LOG + 'cancelled ' + cancelled + ' open case(s) on ' + submissionId);
+        return cancelled;
     },
 
-    /** Activate a stage: flip pre-created cases to active, create missing ones active. */
-    _startStage: function(config, stageNumber, submissionId) {
-        var stages = config.execution.stages || [];
-        var licensed = config.licensed_modules || [];
-        var started = [];
-        for (var i = 0; i &lt; stages.length; i++) {
-            if (stages[i].stage !== stageNumber)
-                continue;
-            for (var j = 0; j &lt; stages[i].modules.length; j++) {
-                var code = stages[i].modules[j];
-                if (licensed.indexOf(code) === -1)
-                    continue;
-                var m = this.MODULE_MAP[code];
-                var gr = new GlideRecord(m.table);
-                gr.addQuery('submission', submissionId);
-                gr.setLimit(1);
-                gr.query();
-                if (gr.next()) {
-                    if (String(gr.getValue('state')) === this.STATE.inactive) {
-                        gr.setValue('state', this.STATE.active);
-                        gr.setValue('is_active', true);
-                        gr.update();
-                    }
-                } else {
-                    this._createCase(code, submissionId, stageNumber, true);
-                }
-                started.push(code);
-            }
+    // Flip a dormant case to active, or create it if the plan changed since
+    // kickoff and it was never made.
+    _activate: function (moduleCode, submissionId, order) {
+        var m = this.plan._moduleByCode(moduleCode);
+        if (!m || !m.table)
+            return false;
+
+        var kase = this.plan.latestCase(m.table, submissionId);
+        if (!kase) {
+            var newId = this._createCase(moduleCode, submissionId, order, true);
+            if (newId)
+                this._startPlaybook(moduleCode, newId);
+            return !!newId;
         }
-        return started;
+
+        var state = String(kase.getValue('state') || '');
+        if (state !== this.STATE.inactive)
+            return false;   // already active, complete or cancelled
+
+        kase.setValue('state', this.STATE.active);
+        kase.setValue('is_active', true);
+        kase.update();
+        this._startPlaybook(moduleCode, kase.getUniqueValue());
+        return true;
     },
 
-    _createCase: function(moduleCode, submissionId, stage, active) {
-        var m = this.MODULE_MAP[moduleCode];
-        if (!m)
+    _createCase: function (moduleCode, submissionId, order, active) {
+        var m = this.plan._moduleByCode(moduleCode);
+        if (!m || !m.table) {
+            gs.error(this.LOG + 'no case table registered for module ' + moduleCode);
             return '';
+        }
+
         var gr = new GlideRecord(m.table);
+        if (!gr.isValid()) {
+            gs.error(this.LOG + 'case table does not exist: ' + m.table);
+            return '';
+        }
+
         gr.initialize();
-        gr.submission = submissionId;
-        gr.stage = stage;
+        gr.setValue('submission', submissionId);
+        gr.setValue('stage', order);
         gr.setValue('state', active ? this.STATE.active : this.STATE.inactive);
         gr.setValue('is_active', !!active);
+        if (gr.isValidField('version'))
+            gr.setValue('version', 1);
         if (gr.isValidField('short_description'))
-            gr.short_description = moduleCode + ' for submission';
+            gr.setValue('short_description', (m.label || m.code) + ' for submission');
+
+        // Business rules are deliberately NOT suppressed: the case number is
+        // generated by one.
         return gr.insert();
     },
 
-    _isComplete: function(moduleCode, submissionId) {
-        var m = this.MODULE_MAP[moduleCode];
-        if (!m)
-            return true; // unmapped module never blocks the chain
-        var gr = new GlideRecord(m.table);
-        gr.addQuery('submission', submissionId);
-        gr.addQuery('state', this.STATE.complete);
-        gr.setLimit(1);
-        gr.query();
-        return gr.hasNext();
+    _startPlaybook: function (moduleCode, caseId) {
+        var m = this.plan._moduleByCode(moduleCode);
+        if (m)
+            this.plan.triggerPlaybook(m, caseId);
     },
 
-    _stageOf: function(config, moduleCode) {
-        var stages = config.execution.stages || [];
-        for (var i = 0; i &lt; stages.length; i++)
-            if (stages[i].modules.indexOf(moduleCode) !== -1)
-                return stages[i].stage;
-        return 0;
+    // Every module in the resolved plan is complete or cancelled.
+    _allDone: function (submissionId) {
+        var groups = this.plan.groupsFor(submissionId);
+        if (!groups.length)
+            return false;
+        for (var g = 0; g &lt; groups.length; g++) {
+            for (var i = 0; i &lt; groups[g].modules.length; i++) {
+                if (!this.plan._isDone(groups[g].modules[i].module, submissionId))
+                    return false;
+            }
+        }
+        return true;
     },
 
-    /** Last stage closed: the pre-binding journey is done. */
-    _onJourneyComplete: function(submissionId) {
-        var sub = new GlideRecord('x_gegis_ins_policy_submission');
-        if (sub.get(submissionId)) {
-            sub.state = 'quoted';
-            sub.update();
-        }
-    },
-
-    _getConfig: function() {
-        var raw = gs.getProperty(this.PROPERTY);
-        if (!raw) {
-            gs.error('[Orchestration] Property not set: ' + this.PROPERTY);
-            return null;
-        }
-        try {
-            return JSON.parse(raw);
-        } catch (e) {
-            gs.error('[Orchestration] Invalid execution config JSON: ' + e);
-            return null;
-        }
+    /**
+     * Last run group closed: the pre-binding journey is done.
+     *
+     * ASSUMPTION: this writes state = closed and clears active. The previous
+     * implementation wrote state = 'quoted', which is NOT in the submission's
+     * choice list any more, so that write silently did nothing. `status` is
+     * deliberately left alone - bound / declined / rejected is a business
+     * outcome, not an orchestration one.
+     */
+    _onJourneyComplete: function (submissionId) {
+        var sub = new GlideRecord(Constants.TABLE.SUBMISSION);
+        if (!sub.get(submissionId))
+            return;
+        sub.setValue('state', Constants.CHOICE.STATE.CLOSED);
+        sub.setValue('active', false);
+        sub.update();
+        gs.info(this.LOG + 'journey complete for submission ' + sub.getValue('number'));
     },
 
     type: 'OrchestrationService'
 };</script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
-        <sys_created_on>2026-07-11 12:00:00</sys_created_on>
+        <sys_created_on>2026-08-20 12:00:00</sys_created_on>
         <sys_id>05e6b6215a5561eecd6a563c15fdb108</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>0</sys_mod_count>
         <sys_name>OrchestrationService</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_script_include_05e6b6215a5561eecd6a563c15fdb108</sys_update_name>
         <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-07-13 12:00:00</sys_updated_on>
+        <sys_updated_on>2026-08-20 12:00:00</sys_updated_on>
     </sys_script_include>
 </record_update>
