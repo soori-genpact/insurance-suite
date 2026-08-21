@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>unload.demo</directory>
+        <documentkey>ea2e911a47764710e8969889316d43b8</documentkey>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="x_gegis_ins_policy_module_plan"&gt;
+    &lt;x_gegis_ins_policy_module_plan action="INSERT_OR_UPDATE"&gt;
+        &lt;active&gt;true&lt;/active&gt;
+        &lt;advanced_script&gt;&lt;![CDATA[// New Business update: branch on how far the journey actually got.
+// Variables: submission, policy, progress, plan, modules, simple, answer
+if (progress.clearance.exists &amp;&amp; progress.clearance.status !== 'complete') {
+
+    // Still in clearance - reuse the existing cases and redo them.
+    answer = [
+        { module: 'clearance',           order: 1, restart: 'override' },
+        { module: 'risk_assessment',     order: 2, restart: 'override' },
+        { module: 'exposure_management', order: 2, restart: 'override' },
+        { module: 'quote_and_bind',      order: 3, restart: 'none' }
+    ];
+
+} else if (progress.quote_and_bind.exists) {
+
+    // Already quoting - re-cut the quote as a new version, leave the rest.
+    answer = [
+        { module: 'quote_and_bind', order: 1, restart: 'new_version' }
+    ];
+
+} else {
+
+    // Anything else: fall back to this row's own columns.
+    answer = simple;
+}]]&gt;&lt;/advanced_script&gt;
+        &lt;config_mode&gt;advanced&lt;/config_mode&gt;
+        &lt;description&gt;ADVANCED: the script decides from actual per-module progress. The order/restart columns here are the fallback if it fails.&lt;/description&gt;
+        &lt;line_of_business&gt;all&lt;/line_of_business&gt;
+        &lt;name&gt;New Business - Update&lt;/name&gt;
+        &lt;order&gt;10&lt;/order&gt;
+        &lt;order_clearance&gt;0&lt;/order_clearance&gt;
+        &lt;order_exposure&gt;2&lt;/order_exposure&gt;
+        &lt;order_quote_and_bind&gt;3&lt;/order_quote_and_bind&gt;
+        &lt;order_risk&gt;1&lt;/order_risk&gt;
+        &lt;request_kind&gt;update&lt;/request_kind&gt;
+        &lt;restart_clearance&gt;none&lt;/restart_clearance&gt;
+        &lt;restart_exposure&gt;override&lt;/restart_exposure&gt;
+        &lt;restart_quote_and_bind&gt;new_version&lt;/restart_quote_and_bind&gt;
+        &lt;restart_risk&gt;override&lt;/restart_risk&gt;
+        &lt;sub_type/&gt;
+        &lt;submission_on_update&gt;override&lt;/submission_on_update&gt;
+        &lt;submission_type&gt;new_business&lt;/submission_type&gt;
+        &lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2026-08-21 12:42:42&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;ea2e911a47764710e8969889316d43b8&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;
+        &lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2026-08-21 12:42:42&lt;/sys_updated_on&gt;
+    &lt;/x_gegis_ins_policy_module_plan&gt;
+&lt;/record_update&gt;
+</payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-08-21 12:46:04</sys_created_on>
+        <sys_id>bbeed11e47764710e8969889316d43b9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>New Business - Update</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_metadata_link_bbeed11e47764710e8969889316d43b9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-08-21 12:46:04</sys_updated_on>
+        <tablename>x_gegis_ins_policy_module_plan</tablename>
+    </sys_metadata_link>
+</record_update>
