@@ -9,7 +9,7 @@
         <mobile_callable>false</mobile_callable>
         <name>OrchestrationService</name>
         <sandbox_callable>false</sandbox_callable>
-        <script>var OrchestrationService = Class.create();
+        <script><![CDATA[var OrchestrationService = Class.create();
 OrchestrationService.prototype = {
 
     initialize: function () {
@@ -36,6 +36,19 @@ OrchestrationService.prototype = {
             'x_gegis_ins_policy_renewal_case':        'playbook_renewal'
         };
 
+        // The submission-level playbook per module. These trigger on a
+        // submission UPDATE with condition playbook_<module> is not empty, so
+        // they can never start themselves during kickoff: the stamp that
+        // satisfies their condition is written with setWorkflow(false) on
+        // purpose (see _stampSubmission). Orchestration therefore starts them
+        // explicitly, exactly as it starts the case-level ones.
+        this.SUBMISSION_PLAYBOOK = {
+            'clearance':           'x_gegis_ins_policy.submission_clearance_case_standard',
+            'risk_assessment':     'x_gegis_ins_policy.submission_risk_case_standard',
+            'exposure_management': 'x_gegis_ins_policy.submission_exposure_case_standard',
+            'quote_and_bind':      'x_gegis_ins_policy.submission_quote'
+        };
+
         this.plan = new ModulePlanService();
     },
 
@@ -60,18 +73,20 @@ OrchestrationService.prototype = {
         }
 
         var created = [];
-        for (var g = 0; g &lt; groups.length; g++) {
+        for (var g = 0; g < groups.length; g++) {
             var first = (g === 0);
-            for (var i = 0; i &lt; groups[g].modules.length; i++) {
+            for (var i = 0; i < groups[g].modules.length; i++) {
                 var code = groups[g].modules[i].module;
                 var caseId = this._createCase(code, submissionId, groups[g].order, first);
-                if (caseId) {
+                if (caseId)
                     created.push(code);
-                    if (first)
-                        this._startPlaybook(code, caseId);
-                }
             }
         }
+
+        // ONE playbook per case comes from that case table's own Record Create
+        // trigger - orchestration must not start a second one. What it does own
+        // is the submission-level set: one per module in the plan.
+        this._startSubmissionPlaybooks(submissionId, groups);
 
         gs.info(this.LOG + 'kickoff for ' + submissionId + ' created ' + created.length
             + ' cases in ' + groups.length + ' run group(s)');
@@ -99,7 +114,7 @@ OrchestrationService.prototype = {
         }
 
         var started = [];
-        for (var i = 0; i &lt; next.length; i++) {
+        for (var i = 0; i < next.length; i++) {
             if (this._activate(next[i].module, submissionId, next[i].order))
                 started.push(next[i].module);
         }
@@ -114,13 +129,13 @@ OrchestrationService.prototype = {
      * plan: either the same record is bumped and its cases restarted per the
      * restart columns, or a whole new submission version is cut and kicked off.
      *
-     * @return { mode: 'override'|'new_version', submission: &lt;sys_id&gt; }
+     * @return { mode: 'override'|'new_version', submission: <sys_id> }
      */
     onUpdate: function (submissionId) {
         var result = this.plan.applyResubmit(submissionId);
 
         if (result.mode === Constants.CHOICE.SUBMISSION_UPDATE_MODE.NEW_VERSION
-            &amp;&amp; result.submission) {
+            && result.submission) {
             this.kickoff(result.submission);
         } else if (result.submission) {
             // Override in place: re-assert the plan. Needed because an update
@@ -147,9 +162,9 @@ OrchestrationService.prototype = {
         if (!groups.length)
             return [];
 
-        for (var g = 0; g &lt; groups.length; g++) {
+        for (var g = 0; g < groups.length; g++) {
             var outstanding = false;
-            for (var i = 0; i &lt; groups[g].modules.length; i++) {
+            for (var i = 0; i < groups[g].modules.length; i++) {
                 if (!this.plan._isDone(groups[g].modules[i].module, submissionId)) {
                     outstanding = true;
                     break;
@@ -159,7 +174,7 @@ OrchestrationService.prototype = {
                 continue;
 
             var started = [];
-            for (var j = 0; j &lt; groups[g].modules.length; j++) {
+            for (var j = 0; j < groups[g].modules.length; j++) {
                 if (this._activate(groups[g].modules[j].module, submissionId, groups[g].order))
                     started.push(groups[g].modules[j].module);
             }
@@ -181,7 +196,7 @@ OrchestrationService.prototype = {
         var mods = this.plan._modules();
         var cancelled = 0;
 
-        for (var i = 0; i &lt; mods.length; i++) {
+        for (var i = 0; i < mods.length; i++) {
             var m = mods[i];
             if (!m.table)
                 continue;
@@ -210,9 +225,10 @@ OrchestrationService.prototype = {
 
         var kase = this.plan.latestCase(m.table, submissionId);
         if (!kase) {
+            // No playbook start here: the case table's Record Create trigger
+            // starts the case playbook, and the submission-level playbooks were
+            // started at kickoff.
             var newId = this._createCase(moduleCode, submissionId, order, true);
-            if (newId)
-                this._startPlaybook(moduleCode, newId);
             return !!newId;
         }
 
@@ -223,7 +239,6 @@ OrchestrationService.prototype = {
         kase.setValue('state', this.STATE.active);
         kase.setValue('is_active', true);
         kase.update();
-        this._startPlaybook(moduleCode, kase.getUniqueValue());
         return true;
     },
 
@@ -295,10 +310,45 @@ OrchestrationService.prototype = {
         return true;
     },
 
-    _startPlaybook: function (moduleCode, caseId) {
-        var m = this.plan._moduleByCode(moduleCode);
-        if (m)
-            this.plan.triggerPlaybook(m, caseId);
+    /**
+     * Start the SUBMISSION-level playbook for every module in the plan - four
+     * on a full New Business journey. These run on the submission record and
+     * are what its Worktrack tab renders.
+     *
+     * They cannot start themselves: the trigger is Record Update on the
+     * submission with condition playbook_<module> is not empty, and the stamp
+     * that satisfies it is written with setWorkflow(false) on purpose so it
+     * does not re-enter applyResubmit (see _stampSubmission).
+     */
+    _startSubmissionPlaybooks: function (submissionId, groups) {
+        var sub = new GlideRecord(Constants.TABLE.SUBMISSION);
+        if (!sub.get(submissionId))
+            return 0;
+
+        var started = 0, seen = {};
+        for (var g = 0; g < groups.length; g++) {
+            for (var i = 0; i < groups[g].modules.length; i++) {
+                var code = groups[g].modules[i].module;
+                var name = this.SUBMISSION_PLAYBOOK[code];
+                if (!name || seen[name])
+                    continue;
+                seen[name] = true;
+                try {
+                    var ctxId = sn_playbook.PlaybookExperience.triggerPlaybook(name, sub);
+                    if (ctxId)
+                        started++;
+                    else
+                        gs.error(this.LOG + name + ' did not start on '
+                            + sub.getValue('number'));
+                } catch (e) {
+                    gs.error(this.LOG + name + ' failed on ' + sub.getValue('number')
+                        + ': ' + e.message);
+                }
+            }
+        }
+        gs.info(this.LOG + started + ' submission-level playbook(s) started for '
+            + sub.getValue('number'));
+        return started;
     },
 
     // Every module in the resolved plan is complete or cancelled.
@@ -306,8 +356,8 @@ OrchestrationService.prototype = {
         var groups = this.plan.groupsFor(submissionId);
         if (!groups.length)
             return false;
-        for (var g = 0; g &lt; groups.length; g++) {
-            for (var i = 0; i &lt; groups[g].modules.length; i++) {
+        for (var g = 0; g < groups.length; g++) {
+            for (var i = 0; i < groups[g].modules.length; i++) {
                 if (!this.plan._isDone(groups[g].modules[i].module, submissionId))
                     return false;
             }
@@ -335,18 +385,18 @@ OrchestrationService.prototype = {
     },
 
     type: 'OrchestrationService'
-};</script>
+};]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-08-20 12:00:00</sys_created_on>
         <sys_id>05e6b6215a5561eecd6a563c15fdb108</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>OrchestrationService</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_script_include_05e6b6215a5561eecd6a563c15fdb108</sys_update_name>
-        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-08-20 12:00:00</sys_updated_on>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-08-24 14:18:18</sys_updated_on>
     </sys_script_include>
 </record_update>
