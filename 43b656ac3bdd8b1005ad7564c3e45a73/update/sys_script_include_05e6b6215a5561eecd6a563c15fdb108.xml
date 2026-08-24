@@ -268,11 +268,11 @@ OrchestrationService.prototype = {
      * knows which case each module produced.
      *
      * setWorkflow(false) is deliberate and is the ONLY safe option here. The
-     * \"Orchestration: submission updated\" rule has no filter condition, so any
+     * "Orchestration: submission updated" rule has no filter condition, so a
      * normal update() re-enters applyResubmit - and on a plan whose
      * submission_on_update is new_version that spawns an entire new submission
-     * version while we are still kicking off the first one. The row is already
-     * inserted and numbered, so no number-generating rule is being skipped.
+     * version while the first one is still being kicked off. The row is already
+     * inserted and numbered, so no number-generating rule is skipped.
      */
     _stampSubmission: function (caseTable, submissionId, caseNumber) {
         var col = this.PLAYBOOK_FIELD[caseTable];
