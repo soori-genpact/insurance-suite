@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_client_script">
+    <sys_ux_client_script action="DELETE">
+        <controller_preset/>
+        <includes/>
+        <macroponent display_value="Copy of FSO split view record list 3">3692c385cfb1c750c419b6ce6d851c4f</macroponent>
+        <name>spilt_list_panes/topPaneConstraints</name>
+        <preset/>
+        <required_translations>[
+    
+]</required_translations>
+        <script><![CDATA[/**
+ * @param {params} params
+ * @param {api} params.api
+ * @param {TransformApiHelpers} params.helpers
+ */
+function evaluateProperty({
+    api,
+    helpers
+}) {
+    if (api.state.selectedRecord == null || api.state.selectedRecord == undefined)
+        return {
+            "minRatio": 100
+        };
+    return {};
+}]]></script>
+        <script_api_version>2.0.0</script_api_version>
+        <sys_class_name>sys_ux_client_script</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-29 05:46:21</sys_created_on>
+        <sys_id>47920785cfb1c750c419b6ce6d851c73</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>spilt_list_panes/topPaneConstraints</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_ux_client_script_47920785cfb1c750c419b6ce6d851c73</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-29 05:46:21</sys_updated_on>
+        <target>macroponent</target>
+        <type>transform</type>
+    </sys_ux_client_script>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</application>
+        <file_path/>
+        <instance_id>27bc87902bdf2e54e83bf9f66e91bf33</instance_id>
+        <instance_name>dev354751</instance_name>
+        <name>sys_ux_client_script_47920785cfb1c750c419b6ce6d851c73</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_ux_client_script"&gt;
+    &lt;sys_ux_client_script action="INSERT_OR_UPDATE"&gt;
+        &lt;controller_preset/&gt;
+        &lt;includes/&gt;
+        &lt;macroponent display_value="Copy of FSO split view record list 3"&gt;3692c385cfb1c750c419b6ce6d851c4f&lt;/macroponent&gt;
+        &lt;name&gt;spilt_list_panes/topPaneConstraints&lt;/name&gt;
+        &lt;preset/&gt;
+        &lt;required_translations&gt;[
+    
+]&lt;/required_translations&gt;
+        &lt;script&gt;&lt;![CDATA[/**
+ * @param {params} params
+ * @param {api} params.api
+ * @param {TransformApiHelpers} params.helpers
+ */
+function evaluateProperty({
+    api,
+    helpers
+}) {
+    if (api.state.selectedRecord == null || api.state.selectedRecord == undefined)
+        return {
+            "minRatio": 100
+        };
+    return {};
+}]]&gt;&lt;/script&gt;
+        &lt;script_api_version&gt;2.0.0&lt;/script_api_version&gt;
+        &lt;sys_class_name&gt;sys_ux_client_script&lt;/sys_class_name&gt;
+        &lt;sys_created_by&gt;Palakala.SurenderReddy&lt;/sys_created_by&gt;
+        &lt;sys_created_on&gt;2026-06-29 05:46:21&lt;/sys_created_on&gt;
+        &lt;sys_id&gt;47920785cfb1c750c419b6ce6d851c73&lt;/sys_id&gt;
+        &lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;
+        &lt;sys_name&gt;spilt_list_panes/topPaneConstraints&lt;/sys_name&gt;
+        &lt;sys_package display_value="Policy Suite" source="x_gegis_ins_policy"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_package&gt;
+        &lt;sys_policy/&gt;
+        &lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;
+        &lt;sys_update_name&gt;sys_ux_client_script_47920785cfb1c750c419b6ce6d851c73&lt;/sys_update_name&gt;
+        &lt;sys_updated_by&gt;Palakala.SurenderReddy&lt;/sys_updated_by&gt;
+        &lt;sys_updated_on&gt;2026-06-29 05:46:21&lt;/sys_updated_on&gt;
+        &lt;target&gt;macroponent&lt;/target&gt;
+        &lt;type&gt;transform&lt;/type&gt;
+    &lt;/sys_ux_client_script&gt;
+&lt;/record_update&gt;</payload>
+        <payload_hash>-1740657298</payload_hash>
+        <record_name>spilt_list_panes/topPaneConstraints</record_name>
+        <reverted_from/>
+        <source>c88580d793b64310ad88f738dd03d667</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-08-24 08:56:57</sys_created_on>
+        <sys_id>fc470c93933a4310ad88f738dd03d635</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a032fcb51d0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-08-24 08:56:57</sys_updated_on>
+        <type>UX Client Script</type>
+        <update_guid>bc470c93213a4310e1d88f727a583d35</update_guid>
+        <update_guid_history>bc470c93213a4310e1d88f727a583d35:-1740657298</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-09-03 12:35:01</sys_created_on>
+        <sys_db_object display_value="" name="sys_ux_client_script">sys_ux_client_script</sys_db_object>
+        <sys_id>1127ac719735449eaaea76766cfebb51</sys_id>
+        <sys_metadata>47920785cfb1c750c419b6ce6d851c73</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>spilt_list_panes/topPaneConstraints</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_scope_delete display_value="">00c1089b958e45ed83140febec97e3d1</sys_scope_delete>
+        <sys_update_name>sys_ux_client_script_47920785cfb1c750c419b6ce6d851c73</sys_update_name>
+        <sys_update_version display_value="sys_ux_client_script_47920785cfb1c750c419b6ce6d851c73">fc470c93933a4310ad88f738dd03d635</sys_update_version>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-09-03 12:35:01</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ux_screen">
+    <sys_ux_screen action="DELETE">
+        <active>false</active>
+        <app_config display_value="Playbook Builder Config">2ba981dcc31a201098c960bc0eba8f00</app_config>
+        <description/>
+        <disable_auto_reflow>false</disable_auto_reflow>
+        <disable_interoperable>false</disable_interoperable>
+        <event_mappings>[]</event_mappings>
+        <macroponent display_value="Default">404914ea93470310ad88f738dd03d627</macroponent>
+        <macroponent_config>{
+    "activityDefinitionId": {
+        "type": "JSON_LITERAL",
+        "value": "47e9278fff131010834953bd6338f16e"
+    },
+    "activityLabel": {
+        "type": "JSON_LITERAL",
+        "value": "Sample Activity"
+    },
+    "activityState": {
+        "type": "JSON_LITERAL",
+        "value": "IN_PROGRESS"
+    },
+    "advanced": {
+        "type": "JSON_LITERAL",
+        "value": {
+            "activityType": {
+                "displayValue": "Record",
+                "value": "e12af577871333003058d1a936cb0ba4"
+            },
+            "associatedRecordModCount": 0,
+            "authorizedActions": [
+                "complete",
+                "skip",
+                "restart"
+            ],
+            "contextId": "",
+            "expandOnMountOrChange": false,
+            "filterData": [],
+            "formApi": {
+                "dispatchDeclarativeAction": null,
+                "formFieldsRequired": false,
+                "modalDeclarativeAction": null,
+                "requestReload": "",
+                "requestSubmitAction": "",
+                "requestValidation": "",
+                "visible": true
+            },
+            "inUIBuilder": true,
+            "loading": false,
+            "processedOn": 0,
+            "userSession": {},
+            "workspaceConfigId": ""
+        }
+    },
+    "assignedTo": {
+        "type": "JSON_LITERAL",
+        "value": {
+            "avatar": "58e13b44c3222010ae17dd981840ddd3.iix?t=small",
+            "displayValue": "Adela Cervantsz",
+            "value": "0a826bf03710200044e0bfc8bcbe5d7a"
+        }
+    },
+    "associatedRecord": {
+        "type": "JSON_LITERAL",
+        "value": "-1"
+    },
+    "associatedTable": {
+        "type": "JSON_LITERAL",
+        "value": "interaction"
+    },
+    "configProperties": {
+        "type": "JSON_LITERAL",
+        "value": {
+            "expandFirstPrioritizedCard": true,
+            "filterFields": "assigned_to",
+            "maxFormFieldsOnCard": 15,
+            "pendingActivityDisplay": "SHOW_ALL",
+            "showActivityState": true,
+            "showAutomatedManualIndicator": true,
+            "slaConfiguration": ""
+        }
+    },
+    "experienceProperties": {
+        "type": "JSON_LITERAL",
+        "value": {
+            "attachment_source": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "choice"
+                },
+                "value": ""
+            },
+            "attachments_read_only": {
+                "displayValue": "false",
+                "elementData": {
+                    "type": "boolean"
+                },
+                "value": "false"
+            },
+            "description": {
+                "displayValue": "&lt;p&gt;A sample description for an activity&lt;/p&gt;",
+                "elementData": {
+                    "type": "html"
+                },
+                "value": "&lt;p&gt;A sample description for an activity&lt;/p&gt;"
+            },
+            "experience_status_record": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "document_id"
+                },
+                "value": ""
+            },
+            "experience_status_table": {
+                "displayValue": "sys_flow_data",
+                "elementData": {
+                    "type": "table_name"
+                },
+                "value": "sys_flow_data"
+            },
+            "footer": {
+                "displayValue": "A sample footer for an activity",
+                "elementData": {
+                    "type": "string"
+                },
+                "value": "A sample footer for an activity"
+            },
+            "form_fields": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "field_list"
+                },
+                "value": "type,short_description"
+            },
+            "form_view": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "string"
+                },
+                "value": ""
+            },
+            "icon": {
+                "displayValue": "",
+                "elementData": {
+                    "reference": "st_sys_design_system_icon",
+                    "type": "reference"
+                },
+                "value": ""
+            },
+            "is_automated": {
+                "displayValue": "false",
+                "elementData": {
+                    "type": "boolean"
+                },
+                "value": "false"
+            },
+            "pending_description": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "html"
+                },
+                "value": ""
+            },
+            "pending_title": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "string"
+                },
+                "value": ""
+            },
+            "record_fields": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "field_list"
+                },
+                "relatedProperties": [
+                    {
+                        "displayValue": "Adela Cervantsz",
+                        "elementData": {
+                            "reference": "sys_user",
+                            "type": "reference"
+                        },
+                        "label": "Assigned to",
+                        "name": "assigned_to",
+                        "value": "0a826bf03710200044e0bfc8bcbe5d7a"
+                    },
+                    {
+                        "displayValue": "Work in Progress",
+                        "elementData": {
+                            "reference": null,
+                            "type": "string"
+                        },
+                        "label": "State",
+                        "name": "state",
+                        "value": "work_in_progress"
+                    },
+                    {
+                        "displayValue": "Chat",
+                        "elementData": {
+                            "reference": null,
+                            "type": "string"
+                        },
+                        "label": "Type",
+                        "name": "type",
+                        "value": "chat"
+                    }
+                ],
+                "value": "state,assigned_to"
+            },
+            "show_checklist": {
+                "displayValue": "false",
+                "elementData": {
+                    "type": "boolean"
+                },
+                "value": "false"
+            },
+            "show_sla": {
+                "displayValue": "false",
+                "elementData": {
+                    "type": "boolean"
+                },
+                "value": "false"
+            },
+            "tagline": {
+                "displayValue": "Sample Activity Tagline",
+                "elementData": {
+                    "type": "string"
+                },
+                "value": "Sample Activity Tagline"
+            },
+            "title": {
+                "displayValue": "Sample Activity Title",
+                "elementData": {
+                    "type": "string"
+                },
+                "value": "Sample Activity Title"
+            }
+        }
+    },
+    "fillContainer": {
+        "type": "JSON_LITERAL",
+        "value": false
+    },
+    "laneContext": {
+        "type": "JSON_LITERAL",
+        "value": {
+            "contextId": "",
+            "name": "",
+            "order": 0,
+            "state": {
+                "displayValue": "In Progress",
+                "value": "IN_PROGRESS"
+            },
+            "title": ""
+        }
+    },
+    "parentRecord": {
+        "type": "JSON_LITERAL",
+        "value": "-1"
+    },
+    "parentTable": {
+        "type": "JSON_LITERAL",
+        "value": "interaction"
+    },
+    "playbookContext": {
+        "type": "JSON_LITERAL",
+        "value": {
+            "contextId": "b0f9599e5a613010021c69334198ef8a",
+            "state": {
+                "displayValue": "In Progress",
+                "value": "IN_PROGRESS"
+            }
+        }
+    },
+    "playbookExperienceId": {
+        "type": "JSON_LITERAL",
+        "value": ""
+    },
+    "prioritized": {
+        "type": "JSON_LITERAL",
+        "value": false
+    }
+}</macroponent_config>
+        <name>Default</name>
+        <order>0</order>
+        <parent_macroponent/>
+        <required_translations>[ {
+  "message" : "Assigned to",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "State",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Type",
+  "code" : "",
+  "comment" : ""
+} ]</required_translations>
+        <rollback_screen/>
+        <screen_condition/>
+        <screen_type display_value="Global Activity UIs">89ddbb5ac3113010948404186e40dd1d</screen_type>
+        <sys_class_name>sys_ux_screen</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-03 12:35:50</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>384914ea93470310ad88f738dd03d67c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Default</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_ux_screen_384914ea93470310ad88f738dd03d67c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-03 12:35:50</sys_updated_on>
+    </sys_ux_screen>
+    <sys_translated_text action="DELETE" query="documentkey=384914ea93470310ad88f738dd03d67c"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</application>
+        <file_path/>
+        <instance_id>27bc87902bdf2e54e83bf9f66e91bf33</instance_id>
+        <instance_name>dev354751</instance_name>
+        <name>sys_ux_screen_384914ea93470310ad88f738dd03d67c</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ux_screen"><sys_ux_screen action="INSERT_OR_UPDATE"><active>false</active><app_config display_value="Playbook Builder Config">2ba981dcc31a201098c960bc0eba8f00</app_config><description/><disable_auto_reflow>false</disable_auto_reflow><disable_interoperable>false</disable_interoperable><event_mappings>[]</event_mappings><macroponent display_value="Default">404914ea93470310ad88f738dd03d627</macroponent><macroponent_config>{
+    "activityDefinitionId": {
+        "type": "JSON_LITERAL",
+        "value": "47e9278fff131010834953bd6338f16e"
+    },
+    "activityLabel": {
+        "type": "JSON_LITERAL",
+        "value": "Sample Activity"
+    },
+    "activityState": {
+        "type": "JSON_LITERAL",
+        "value": "IN_PROGRESS"
+    },
+    "advanced": {
+        "type": "JSON_LITERAL",
+        "value": {
+            "activityType": {
+                "displayValue": "Record",
+                "value": "e12af577871333003058d1a936cb0ba4"
+            },
+            "associatedRecordModCount": 0,
+            "authorizedActions": [
+                "complete",
+                "skip",
+                "restart"
+            ],
+            "contextId": "",
+            "expandOnMountOrChange": false,
+            "filterData": [],
+            "formApi": {
+                "dispatchDeclarativeAction": null,
+                "formFieldsRequired": false,
+                "modalDeclarativeAction": null,
+                "requestReload": "",
+                "requestSubmitAction": "",
+                "requestValidation": "",
+                "visible": true
+            },
+            "inUIBuilder": true,
+            "loading": false,
+            "processedOn": 0,
+            "userSession": {},
+            "workspaceConfigId": ""
+        }
+    },
+    "assignedTo": {
+        "type": "JSON_LITERAL",
+        "value": {
+            "avatar": "58e13b44c3222010ae17dd981840ddd3.iix?t=small",
+            "displayValue": "Adela Cervantsz",
+            "value": "0a826bf03710200044e0bfc8bcbe5d7a"
+        }
+    },
+    "associatedRecord": {
+        "type": "JSON_LITERAL",
+        "value": "-1"
+    },
+    "associatedTable": {
+        "type": "JSON_LITERAL",
+        "value": "interaction"
+    },
+    "configProperties": {
+        "type": "JSON_LITERAL",
+        "value": {
+            "expandFirstPrioritizedCard": true,
+            "filterFields": "assigned_to",
+            "maxFormFieldsOnCard": 15,
+            "pendingActivityDisplay": "SHOW_ALL",
+            "showActivityState": true,
+            "showAutomatedManualIndicator": true,
+            "slaConfiguration": ""
+        }
+    },
+    "experienceProperties": {
+        "type": "JSON_LITERAL",
+        "value": {
+            "attachment_source": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "choice"
+                },
+                "value": ""
+            },
+            "attachments_read_only": {
+                "displayValue": "false",
+                "elementData": {
+                    "type": "boolean"
+                },
+                "value": "false"
+            },
+            "description": {
+                "displayValue": "&lt;p&gt;A sample description for an activity&lt;/p&gt;",
+                "elementData": {
+                    "type": "html"
+                },
+                "value": "&lt;p&gt;A sample description for an activity&lt;/p&gt;"
+            },
+            "experience_status_record": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "document_id"
+                },
+                "value": ""
+            },
+            "experience_status_table": {
+                "displayValue": "sys_flow_data",
+                "elementData": {
+                    "type": "table_name"
+                },
+                "value": "sys_flow_data"
+            },
+            "footer": {
+                "displayValue": "A sample footer for an activity",
+                "elementData": {
+                    "type": "string"
+                },
+                "value": "A sample footer for an activity"
+            },
+            "form_fields": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "field_list"
+                },
+                "value": "type,short_description"
+            },
+            "form_view": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "string"
+                },
+                "value": ""
+            },
+            "icon": {
+                "displayValue": "",
+                "elementData": {
+                    "reference": "st_sys_design_system_icon",
+                    "type": "reference"
+                },
+                "value": ""
+            },
+            "is_automated": {
+                "displayValue": "false",
+                "elementData": {
+                    "type": "boolean"
+                },
+                "value": "false"
+            },
+            "pending_description": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "html"
+                },
+                "value": ""
+            },
+            "pending_title": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "string"
+                },
+                "value": ""
+            },
+            "record_fields": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "field_list"
+                },
+                "relatedProperties": [
+                    {
+                        "displayValue": "Adela Cervantsz",
+                        "elementData": {
+                            "reference": "sys_user",
+                            "type": "reference"
+                        },
+                        "label": "Assigned to",
+                        "name": "assigned_to",
+                        "value": "0a826bf03710200044e0bfc8bcbe5d7a"
+                    },
+                    {
+                        "displayValue": "Work in Progress",
+                        "elementData": {
+                            "reference": null,
+                            "type": "string"
+                        },
+                        "label": "State",
+                        "name": "state",
+                        "value": "work_in_progress"
+                    },
+                    {
+                        "displayValue": "Chat",
+                        "elementData": {
+                            "reference": null,
+                            "type": "string"
+                        },
+                        "label": "Type",
+                        "name": "type",
+                        "value": "chat"
+                    }
+                ],
+                "value": "state,assigned_to"
+            },
+            "show_checklist": {
+                "displayValue": "false",
+                "elementData": {
+                    "type": "boolean"
+                },
+                "value": "false"
+            },
+            "show_sla": {
+                "displayValue": "false",
+                "elementData": {
+                    "type": "boolean"
+                },
+                "value": "false"
+            },
+            "tagline": {
+                "displayValue": "Sample Activity Tagline",
+                "elementData": {
+                    "type": "string"
+                },
+                "value": "Sample Activity Tagline"
+            },
+            "title": {
+                "displayValue": "Sample Activity Title",
+                "elementData": {
+                    "type": "string"
+                },
+                "value": "Sample Activity Title"
+            }
+        }
+    },
+    "fillContainer": {
+        "type": "JSON_LITERAL",
+        "value": false
+    },
+    "laneContext": {
+        "type": "JSON_LITERAL",
+        "value": {
+            "contextId": "",
+            "name": "",
+            "order": 0,
+            "state": {
+                "displayValue": "In Progress",
+                "value": "IN_PROGRESS"
+            },
+            "title": ""
+        }
+    },
+    "parentRecord": {
+        "type": "JSON_LITERAL",
+        "value": "-1"
+    },
+    "parentTable": {
+        "type": "JSON_LITERAL",
+        "value": "interaction"
+    },
+    "playbookContext": {
+        "type": "JSON_LITERAL",
+        "value": {
+            "contextId": "b0f9599e5a613010021c69334198ef8a",
+            "state": {
+                "displayValue": "In Progress",
+                "value": "IN_PROGRESS"
+            }
+        }
+    },
+    "playbookExperienceId": {
+        "type": "JSON_LITERAL",
+        "value": ""
+    },
+    "prioritized": {
+        "type": "JSON_LITERAL",
+        "value": false
+    }
+}</macroponent_config><name>Default</name><order>0</order><parent_macroponent/><required_translations>[ {
+  "message" : "Assigned to",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "State",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Type",
+  "code" : "",
+  "comment" : ""
+} ]</required_translations><rollback_screen/><screen_condition/><screen_type display_value="Global Activity UIs">89ddbb5ac3113010948404186e40dd1d</screen_type><sys_class_name>sys_ux_screen</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-03 12:35:50</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>384914ea93470310ad88f738dd03d67c</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Default</sys_name><sys_overrides/><sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package><sys_policy/><sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope><sys_update_name>sys_ux_screen_384914ea93470310ad88f738dd03d67c</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-03 12:35:50</sys_updated_on></sys_ux_screen><sys_translated_text action="delete_multiple" query="documentkey=384914ea93470310ad88f738dd03d67c"/></record_update>]]></payload>
+        <payload_hash>1412151339</payload_hash>
+        <record_name>Default</record_name>
+        <reverted_from/>
+        <source>13a79c9393fa4310ad88f738dd03d631</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-03 12:35:50</sys_created_on>
+        <sys_id>fc4914ea93470310ad88f738dd03d684</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a06744b26a0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-03 12:35:50</sys_updated_on>
+        <type>UX Screen</type>
+        <update_guid>bc4914eacb470310cfff2c8d7e3bdc83</update_guid>
+        <update_guid_history>bc4914eacb470310cfff2c8d7e3bdc83:1412151339</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-03 12:36:20</sys_created_on>
+        <sys_db_object display_value="" name="sys_ux_screen">sys_ux_screen</sys_db_object>
+        <sys_id>85f88c7e00e4482c964357c0e7049410</sys_id>
+        <sys_metadata>384914ea93470310ad88f738dd03d67c</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Default</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_scope_delete display_value="">00c1089b958e45ed83140febec97e3d1</sys_scope_delete>
+        <sys_update_name>sys_ux_screen_384914ea93470310ad88f738dd03d67c</sys_update_name>
+        <sys_update_version display_value="sys_ux_screen_384914ea93470310ad88f738dd03d67c">fc4914ea93470310ad88f738dd03d684</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-03 12:36:20</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
