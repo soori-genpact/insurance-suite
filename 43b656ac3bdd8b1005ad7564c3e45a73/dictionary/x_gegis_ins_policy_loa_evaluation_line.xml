@@ -1,44 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="1922930fc3624310fac6fc0d050131dc" label="LOA Evaluation Line" max_length="40" name="x_gegis_ins_policy_loa_evaluation_line" type="collection">
-        <element label="Limit count snapshot" max_length="40" name="limit_count_snapshot" type="integer"/>
-        <element label="Utilisation percent" max_length="15" name="utilisation_percent" type="decimal"/>
+        <element label="Breach amount" max_length="20" name="breach_amount" type="decimal"/>
         <element choice="1" default="within" label="Result" mandatory="true" max_length="40" name="result" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Breach" sequence="20" value="breach"/>
                 <element inactive_on_update="false" label="Within Authority" sequence="10" value="within"/>
                 <element inactive_on_update="false" label="No Limit Defined" sequence="40" value="no_limit"/>
                 <element inactive_on_update="false" label="Not Applicable" sequence="30" value="not_applicable"/>
+                <element inactive_on_update="false" label="Breach" sequence="20" value="breach"/>
             </choice>
         </element>
-        <element label="Exposure amount" max_length="20" name="exposure_amount" type="decimal"/>
-        <element label="Evaluation" mandatory="true" max_length="32" name="evaluation" reference="x_gegis_ins_policy_loa_evaluation" type="reference"/>
-        <element label="Limit applied" max_length="32" name="limit_applied" reference="x_gegis_ins_policy_loa_authority_limit" type="reference"/>
         <element label="Exposure count" max_length="40" name="exposure_count" type="integer"/>
         <element label="Limit amount snapshot" max_length="20" name="limit_amount_snapshot" type="decimal"/>
-        <element label="Breach reason" max_length="255" name="breach_reason" type="string"/>
-        <element label="Sequence" max_length="40" name="sequence" type="integer"/>
-        <element label="Breach amount" max_length="20" name="breach_amount" type="decimal"/>
         <element label="Metric" mandatory="true" max_length="32" name="metric" reference="x_gegis_ins_policy_loa_metric" type="reference"/>
+        <element label="Exposure amount" max_length="20" name="exposure_amount" type="decimal"/>
+        <element label="Evaluation" mandatory="true" max_length="32" name="evaluation" reference="x_gegis_ins_policy_loa_evaluation" type="reference"/>
+        <element label="Breach reason" max_length="255" name="breach_reason" type="string"/>
         <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element label="Limit count snapshot" max_length="40" name="limit_count_snapshot" type="integer"/>
+        <element label="Utilisation percent" max_length="15" name="utilisation_percent" type="decimal"/>
+        <element label="Limit applied" max_length="32" name="limit_applied" reference="x_gegis_ins_policy_loa_authority_limit" type="reference"/>
+        <element label="Sequence" max_length="40" name="sequence" type="integer"/>
         <element choice="3" default="usd" label="Currency" max_length="3" name="currency" type="choice">
             <choice>
                 <element inactive_on_update="false" label="JPY" sequence="60" value="jpy"/>
                 <element inactive_on_update="false" label="GBP" sequence="20" value="gbp"/>
-                <element inactive_on_update="false" label="USD" sequence="10" value="usd"/>
                 <element inactive_on_update="false" label="AUD" sequence="50" value="aud"/>
+                <element inactive_on_update="false" label="USD" sequence="10" value="usd"/>
                 <element inactive_on_update="false" label="CAD" sequence="40" value="cad"/>
-                <element inactive_on_update="false" label="CHF" sequence="70" value="chf"/>
                 <element inactive_on_update="false" label="EUR" sequence="30" value="eur"/>
+                <element inactive_on_update="false" label="CHF" sequence="70" value="chf"/>
             </choice>
         </element>
         <index name="index">
             <element name="evaluation"/>
+            <element name="sequence"/>
         </index>
         <index name="index2">
             <element name="limit_applied"/>
         </index>
         <index name="index3">
             <element name="metric"/>
+            <element name="result"/>
         </index>
     </element>
 </database>

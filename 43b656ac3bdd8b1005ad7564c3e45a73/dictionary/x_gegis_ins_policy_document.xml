@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="437abcbb3bfea0c7443ad638ea0b1222" label="Document" max_length="40" name="x_gegis_ins_policy_document" type="collection">
-        <element label="Confidence" max_length="40" name="confidence" type="decimal"/>
+        <element label="Notes" max_length="2000" name="notes" type="string"/>
+        <element label="Scope" max_length="40" name="scope" type="string"/>
         <element label="Uploaded by" max_length="32" name="uploaded_by" reference="sys_user" type="reference"/>
-        <element label="Confidentiality" max_length="40" name="confidentiality" type="string"/>
-        <element label="File type" max_length="40" name="file_type" type="string"/>
-        <element label="Attachment type" max_length="40" name="attachment_type" type="string"/>
         <element choice="3" label="Status" max_length="40" name="status" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Draft" sequence="10" value="draft"/>
                 <element inactive_on_update="false" label="Superseded" sequence="30" value="superseded"/>
                 <element inactive_on_update="false" label="Final" sequence="20" value="final"/>
+                <element inactive_on_update="false" label="Draft" sequence="10" value="draft"/>
             </choice>
         </element>
-        <element label="Intake case" max_length="32" name="intake_case" reference="x_gegis_ins_policy_intake_case" type="reference"/>
-        <element label="Received date" max_length="40" name="received_date" type="glide_date_time"/>
-        <element label="File size (KB)" max_length="40" name="file_size_kb" type="integer"/>
-        <element label="Uploaded date" max_length="40" name="uploaded_date" type="glide_date_time"/>
         <element label="Submission" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element label="Intake case" max_length="32" name="intake_case" reference="x_gegis_ins_policy_intake_case" type="reference"/>
         <element label="Document name" max_length="200" name="document_name" type="string"/>
-        <element label="Page count" max_length="40" name="page_count" type="integer"/>
-        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
-        <element label="Notes" max_length="2000" name="notes" type="string"/>
-        <element label="URL" max_length="1024" name="url" type="string"/>
-        <element label="Document type" max_length="40" name="document_type" type="string"/>
-        <element label="Scope" max_length="40" name="scope" type="string"/>
         <element choice="3" default="new" label="State" max_length="40" name="state" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Duplicate" sequence="60" value="duplicate"/>
-                <element inactive_on_update="false" label="Processed" sequence="50" value="processed"/>
-                <element inactive_on_update="false" label="Failed" sequence="90" value="failed"/>
                 <element inactive_on_update="false" label="Stale" sequence="80" value="stale"/>
                 <element inactive_on_update="false" label="Extracted" sequence="40" value="extracted"/>
-                <element inactive_on_update="false" label="Pending" sequence="20" value="pending"/>
-                <element inactive_on_update="false" label="Processing" sequence="30" value="processing"/>
-                <element inactive_on_update="false" label="New" sequence="10" value="new"/>
                 <element inactive_on_update="false" label="Old" sequence="70" value="old"/>
+                <element inactive_on_update="false" label="Processing" sequence="30" value="processing"/>
+                <element inactive_on_update="false" label="Duplicate" sequence="60" value="duplicate"/>
+                <element inactive_on_update="false" label="Pending" sequence="20" value="pending"/>
+                <element inactive_on_update="false" label="Processed" sequence="50" value="processed"/>
+                <element inactive_on_update="false" label="New" sequence="10" value="new"/>
+                <element inactive_on_update="false" label="Failed" sequence="90" value="failed"/>
             </choice>
         </element>
+        <element label="Confidentiality" max_length="40" name="confidentiality" type="string"/>
+        <element label="File type" max_length="40" name="file_type" type="string"/>
+        <element label="Received date" max_length="40" name="received_date" type="glide_date_time"/>
+        <element label="Page count" max_length="40" name="page_count" type="integer"/>
+        <element label="URL" max_length="1024" name="url" type="string"/>
         <element label="Link" max_length="8000" name="doc_link" type="html"/>
+        <element label="Confidence" max_length="40" name="confidence" type="decimal"/>
         <element label="Version" max_length="20" name="version" type="string"/>
+        <element label="Attachment type" max_length="40" name="attachment_type" type="string"/>
+        <element label="Uploaded date" max_length="40" name="uploaded_date" type="glide_date_time"/>
+        <element label="File size (KB)" max_length="40" name="file_size_kb" type="integer"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element label="Document type" max_length="40" name="document_type" type="string"/>
         <index name="index">
             <element name="intake_case"/>
         </index>

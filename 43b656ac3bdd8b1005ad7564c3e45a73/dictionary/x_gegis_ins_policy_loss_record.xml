@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="457eebddf80da1e8e0bee55f040a5337" label="Loss Record" max_length="40" name="x_gegis_ins_policy_loss_record" type="collection">
-        <element label="Description" max_length="2000" name="description" type="string"/>
-        <element label="Risk case" mandatory="true" max_length="32" name="risk_case" reference="x_gegis_ins_policy_risk_case" type="reference"/>
         <element label="Total paid + O/S" max_length="40" name="total_paid_and_outstanding" type="decimal"/>
-        <element label="O/S (USD)" max_length="40" name="losses_outstanding_usd" type="decimal"/>
-        <element label="No. of losses" max_length="40" name="total_number_of_losses" type="integer"/>
-        <element label="Period of insurance" max_length="100" name="period_of_insurance" type="string"/>
-        <element label="Paid incl. O/S payments" max_length="40" name="loss_paid_incl_os_payments" type="decimal"/>
+        <element label="Risk case" mandatory="true" max_length="32" name="risk_case" reference="x_gegis_ins_policy_risk_case" type="reference"/>
         <element choice="3" label="Peril" max_length="40" name="peril" type="choice">
             <choice>
-                <element inactive_on_update="false" label="EQ California" sequence="60" value="eq_california"/>
-                <element inactive_on_update="false" label="CBI Named" sequence="100" value="cbi_named"/>
-                <element inactive_on_update="false" label="Civil Authority" sequence="140" value="civil_authority"/>
                 <element inactive_on_update="false" label="Flood" sequence="20" value="flood"/>
-                <element inactive_on_update="false" label="BI" sequence="180" value="bi"/>
                 <element inactive_on_update="false" label="Course of Construction" sequence="150" value="course_of_construction"/>
-                <element inactive_on_update="false" label="Windstorm" sequence="30" value="windstorm"/>
-                <element inactive_on_update="false" label="Other" sequence="190" value="other"/>
-                <element inactive_on_update="false" label="Tsunami" sequence="70" value="tsunami"/>
                 <element inactive_on_update="false" label="CBI Unnamed" sequence="110" value="cbi_unnamed"/>
+                <element inactive_on_update="false" label="Tsunami" sequence="70" value="tsunami"/>
+                <element inactive_on_update="false" label="Other" sequence="190" value="other"/>
+                <element inactive_on_update="false" label="EQ California" sequence="60" value="eq_california"/>
+                <element inactive_on_update="false" label="BI" sequence="180" value="bi"/>
                 <element inactive_on_update="false" label="Fire" sequence="10" value="fire"/>
-                <element inactive_on_update="false" label="SRCC" sequence="80" value="srcc"/>
-                <element inactive_on_update="false" label="Hail" sequence="120" value="hail"/>
-                <element inactive_on_update="false" label="Theft" sequence="160" value="theft"/>
+                <element inactive_on_update="false" label="Civil Authority" sequence="140" value="civil_authority"/>
+                <element inactive_on_update="false" label="CBI Named" sequence="100" value="cbi_named"/>
+                <element inactive_on_update="false" label="Service Interruption" sequence="130" value="service_interruption"/>
+                <element inactive_on_update="false" label="Boiler &amp; Machinery" sequence="90" value="boiler_and_machinery"/>
+                <element inactive_on_update="false" label="Earthquake" sequence="50" value="earthquake"/>
                 <element inactive_on_update="false" label="Terrorism" sequence="40" value="terrorism"/>
                 <element inactive_on_update="false" label="Liability" sequence="170" value="liability"/>
-                <element inactive_on_update="false" label="Earthquake" sequence="50" value="earthquake"/>
-                <element inactive_on_update="false" label="Boiler &amp; Machinery" sequence="90" value="boiler_and_machinery"/>
-                <element inactive_on_update="false" label="Service Interruption" sequence="130" value="service_interruption"/>
+                <element inactive_on_update="false" label="Windstorm" sequence="30" value="windstorm"/>
+                <element inactive_on_update="false" label="Theft" sequence="160" value="theft"/>
+                <element inactive_on_update="false" label="Hail" sequence="120" value="hail"/>
+                <element inactive_on_update="false" label="SRCC" sequence="80" value="srcc"/>
             </choice>
         </element>
+        <element label="Paid incl. O/S payments" max_length="40" name="loss_paid_incl_os_payments" type="decimal"/>
+        <element label="O/S (USD)" max_length="40" name="losses_outstanding_usd" type="decimal"/>
         <element label="Date of loss" max_length="40" name="date_of_loss" type="glide_date"/>
+        <element label="No. of losses" max_length="40" name="total_number_of_losses" type="integer"/>
+        <element label="Description" max_length="2000" name="description" type="string"/>
+        <element label="Period of insurance" max_length="100" name="period_of_insurance" type="string"/>
         <index name="index">
             <element name="risk_case"/>
         </index>

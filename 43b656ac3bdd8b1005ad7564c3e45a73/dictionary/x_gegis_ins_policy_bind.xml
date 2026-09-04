@@ -2,19 +2,19 @@
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="81740a8034d457f1bd11aea6c4f455ea" label="Bind" max_length="40" name="x_gegis_ins_policy_bind" type="collection">
         <element choice="3" label="Status" mandatory="true" max_length="40" name="status" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Issued" sequence="20" value="issued"/>
                 <element inactive_on_update="false" label="Cancelled" sequence="30" value="cancelled"/>
+                <element inactive_on_update="false" label="Issued" sequence="20" value="issued"/>
                 <element inactive_on_update="false" label="Bound" sequence="10" value="bound"/>
             </choice>
         </element>
-        <element label="Expiry date" mandatory="true" max_length="40" name="expiry_date" type="glide_date"/>
-        <element label="Accepted quote" mandatory="true" max_length="32" name="accepted_quote" reference="x_gegis_ins_policy_quote" type="reference"/>
-        <element label="Bound by" max_length="32" name="bound_by" reference="sys_user" type="reference"/>
-        <element label="Q&amp;B case" mandatory="true" max_length="32" name="qnb_case" reference="x_gegis_ins_policy_quote_and_bind_case" type="reference"/>
         <element display="true" label="Policy number" max_length="40" name="policy_number" type="string"/>
+        <element label="Expiry date" mandatory="true" max_length="40" name="expiry_date" type="glide_date"/>
         <element label="Bind date" mandatory="true" max_length="40" name="bind_date" type="glide_date_time"/>
+        <element label="Bound by" max_length="32" name="bound_by" reference="sys_user" type="reference"/>
+        <element label="Accepted quote" mandatory="true" max_length="32" name="accepted_quote" reference="x_gegis_ins_policy_quote" type="reference"/>
         <element label="Effective date" mandatory="true" max_length="40" name="effective_date" type="glide_date"/>
         <element label="Bound premium" mandatory="true" max_length="40" name="bound_premium" type="decimal"/>
+        <element label="Q&amp;B case" mandatory="true" max_length="32" name="qnb_case" reference="x_gegis_ins_policy_quote_and_bind_case" type="reference"/>
         <index name="index">
             <element name="accepted_quote"/>
         </index>

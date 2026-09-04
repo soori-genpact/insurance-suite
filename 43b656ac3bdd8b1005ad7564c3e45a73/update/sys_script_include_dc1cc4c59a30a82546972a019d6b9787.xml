@@ -9,7 +9,7 @@
         <mobile_callable>false</mobile_callable>
         <name>ExtractionApplier</name>
         <sandbox_callable>false</sandbox_callable>
-        <script>var ExtractionApplier = Class.create();
+        <script><![CDATA[var ExtractionApplier = Class.create();
 ExtractionApplier.prototype = {
     initialize: function() {
         this.ENTITY = 'x_gegis_ins_policy_extraction_entity';
@@ -38,7 +38,7 @@ ExtractionApplier.prototype = {
         f.query();
         while (f.next()) {
             var targetId = f.entity ? entityTarget[String(f.entity)] : '';
-            if (!targetId &amp;&amp; String(f.target_table) === 'x_gegis_ins_policy_submission')
+            if (!targetId && String(f.target_table) === 'x_gegis_ins_policy_submission')
                 targetId = submissionId;
             if (!targetId)
                 continue;
@@ -121,7 +121,7 @@ ExtractionApplier.prototype = {
     },
 
     type: 'ExtractionApplier'
-};</script>
+};]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-11 12:00:00</sys_created_on>

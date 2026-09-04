@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="339316ee894610ad00cafe258c6fa6f9" label="Contact" max_length="40" name="x_gegis_ins_policy_contact" type="collection">
-        <element label="First name" max_length="100" name="first_name" type="string"/>
-        <element label="Phone" max_length="50" name="phone" type="string"/>
-        <element label="Email" max_length="200" name="email" type="string"/>
         <element choice="3" default="manual" label="Source" max_length="40" name="source" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Manual" sequence="20" value="manual"/>
                 <element inactive_on_update="false" label="Extracted" sequence="10" value="extracted"/>
+                <element inactive_on_update="false" label="Manual" sequence="20" value="manual"/>
             </choice>
         </element>
-        <element display="true" label="Name" max_length="200" name="name" type="string"/>
-        <element label="Party" max_length="32" name="party" reference="x_gegis_ins_policy_party" type="reference"/>
-        <element label="Last name" max_length="100" name="last_name" type="string"/>
         <element label="Job title" max_length="100" name="job_title" type="string"/>
+        <element label="First name" max_length="100" name="first_name" type="string"/>
+        <element display="true" label="Name" max_length="200" name="name" type="string"/>
         <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Phone" max_length="50" name="phone" type="string"/>
+        <element label="Party" max_length="32" name="party" reference="x_gegis_ins_policy_party" type="reference"/>
+        <element label="Email" max_length="200" name="email" type="string"/>
+        <element label="Last name" max_length="100" name="last_name" type="string"/>
         <index name="index">
             <element name="party"/>
         </index>

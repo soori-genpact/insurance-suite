@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="226f2057d0880e65b57b80f897d3550d" label="Submission Line" max_length="40" name="x_gegis_ins_policy_submission_line" type="collection">
+        <element label="Expiration date" max_length="40" name="expiration_date" type="glide_date"/>
+        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element label="Underwriter" max_length="32" name="underwriter" reference="sys_user" type="reference"/>
+        <element label="Total insured value" max_length="40" name="total_insured_value" type="decimal"/>
         <element choice="3" default="pending" label="State" max_length="40" name="state" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Declined" sequence="50" value="declined"/>
+                <element inactive_on_update="false" label="Quoted" sequence="40" value="quoted"/>
+                <element inactive_on_update="false" label="Quoting" sequence="30" value="quoting"/>
                 <element inactive_on_update="false" label="In Appetite" sequence="20" value="in_appetite"/>
                 <element inactive_on_update="false" label="Not Taken Up" sequence="60" value="not_taken_up"/>
-                <element inactive_on_update="false" label="Quoting" sequence="30" value="quoting"/>
+                <element inactive_on_update="false" label="Declined" sequence="50" value="declined"/>
                 <element inactive_on_update="false" label="Pending" sequence="10" value="pending"/>
-                <element inactive_on_update="false" label="Quoted" sequence="40" value="quoted"/>
+            </choice>
+        </element>
+        <element label="Product" max_length="32" name="product" reference="x_gegis_ins_policy_product" type="reference"/>
+        <element label="Estimated premium" max_length="40" name="estimated_premium" type="decimal"/>
+        <element choice="3" label="Line of business" mandatory="true" max_length="40" name="line_of_business" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Workers Comp" sequence="40" value="workers_comp"/>
+                <element inactive="true" inactive_on_update="true" label="Umbrella (retired - use Casualty)" sequence="150" value="umbrella"/>
+                <element inactive_on_update="false" label="Aviation" sequence="110" value="aviation"/>
+                <element inactive_on_update="false" label="Energy" sequence="80" value="energy"/>
+                <element inactive_on_update="false" label="Construction" sequence="100" value="construction"/>
+                <element inactive_on_update="false" label="Marine" sequence="70" value="marine"/>
+                <element inactive_on_update="false" label="Motor" sequence="30" value="motor"/>
+                <element inactive="true" inactive_on_update="true" label="General Liability (retired - use Casualty)" sequence="140" value="general_liability"/>
+                <element inactive_on_update="false" label="Auto" sequence="20" value="auto"/>
+                <element inactive_on_update="false" label="Specialty" sequence="130" value="specialty"/>
+                <element inactive_on_update="false" label="Financial Lines" sequence="90" value="financial_lines"/>
+                <element inactive_on_update="false" label="Casualty" sequence="60" value="casualty"/>
+                <element inactive_on_update="false" label="General" sequence="50" value="general"/>
+                <element inactive_on_update="false" label="Property" sequence="10" value="property"/>
+                <element inactive="true" inactive_on_update="true" label="Inland Marine (retired - use Marine)" sequence="160" value="inland_marine"/>
+                <element inactive_on_update="false" label="Cyber" sequence="120" value="cyber"/>
             </choice>
         </element>
         <element label="Exposure summary" max_length="400" name="exposure_summary" type="string"/>
         <element label="Currency" max_length="3" name="currency" type="string"/>
-        <element label="Underwriter" max_length="32" name="underwriter" reference="sys_user" type="reference"/>
-        <element label="Estimated premium" max_length="40" name="estimated_premium" type="decimal"/>
-        <element label="Expiration date" max_length="40" name="expiration_date" type="glide_date"/>
-        <element label="Total insured value" max_length="40" name="total_insured_value" type="decimal"/>
-        <element choice="3" label="Line of business" mandatory="true" max_length="40" name="line_of_business" type="choice">
-            <choice>
-                <element inactive_on_update="false" label="Workers Comp" sequence="40" value="workers_comp"/>
-                <element inactive_on_update="false" label="Cyber" sequence="120" value="cyber"/>
-                <element inactive_on_update="false" label="Energy" sequence="80" value="energy"/>
-                <element inactive="true" inactive_on_update="true" label="Umbrella (retired - use Casualty)" sequence="150" value="umbrella"/>
-                <element inactive_on_update="false" label="Motor" sequence="30" value="motor"/>
-                <element inactive_on_update="false" label="Aviation" sequence="110" value="aviation"/>
-                <element inactive_on_update="false" label="Marine" sequence="70" value="marine"/>
-                <element inactive_on_update="false" label="Auto" sequence="20" value="auto"/>
-                <element inactive="true" inactive_on_update="true" label="Inland Marine (retired - use Marine)" sequence="160" value="inland_marine"/>
-                <element inactive_on_update="false" label="Construction" sequence="100" value="construction"/>
-                <element inactive_on_update="false" label="Casualty" sequence="60" value="casualty"/>
-                <element inactive_on_update="false" label="Specialty" sequence="130" value="specialty"/>
-                <element inactive="true" inactive_on_update="true" label="General Liability (retired - use Casualty)" sequence="140" value="general_liability"/>
-                <element inactive_on_update="false" label="Property" sequence="10" value="property"/>
-                <element inactive_on_update="false" label="General" sequence="50" value="general"/>
-                <element inactive_on_update="false" label="Financial Lines" sequence="90" value="financial_lines"/>
-            </choice>
-        </element>
         <element label="Effective date" max_length="40" name="effective_date" type="glide_date"/>
-        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
-        <element label="Product" max_length="32" name="product" reference="x_gegis_ins_policy_product" type="reference"/>
         <index name="index">
             <element name="product"/>
         </index>

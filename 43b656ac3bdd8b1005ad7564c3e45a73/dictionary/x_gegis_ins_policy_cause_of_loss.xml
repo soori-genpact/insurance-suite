@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="cce5c5d4c3f28b10fac6fc0d050131b7" label="Cause of Loss" max_length="40" name="x_gegis_ins_policy_cause_of_loss" type="collection">
         <element display="true" label="Peril name" mandatory="true" max_length="200" name="peril_name" type="string"/>
+        <element label="Description" max_length="2000" name="description" type="string"/>
         <element choice="1" default="draft" label="Status" mandatory="true" max_length="40" name="status" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Archived" sequence="30" value="archived"/>
                 <element inactive_on_update="false" label="Draft" sequence="10" value="draft"/>
+                <element inactive_on_update="false" label="Archived" sequence="30" value="archived"/>
                 <element inactive_on_update="false" label="Published" sequence="20" value="published"/>
             </choice>
         </element>
         <element choice="3" label="Peril" max_length="40" name="peril_token" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Hail" sequence="40" value="hail"/>
-                <element inactive_on_update="false" label="Wildfire" sequence="50" value="wildfire"/>
-                <element inactive_on_update="false" label="Terrorism" sequence="60" value="terrorism"/>
-                <element inactive_on_update="false" label="Wind" sequence="10" value="wind"/>
-                <element inactive_on_update="false" label="Earthquake" sequence="20" value="quake"/>
                 <element inactive_on_update="false" label="Flood" sequence="30" value="flood"/>
                 <element inactive_on_update="false" label="All Other Perils" sequence="70" value="all_other"/>
+                <element inactive_on_update="false" label="Earthquake" sequence="20" value="quake"/>
+                <element inactive_on_update="false" label="Terrorism" sequence="60" value="terrorism"/>
+                <element inactive_on_update="false" label="Wind" sequence="10" value="wind"/>
+                <element inactive_on_update="false" label="Wildfire" sequence="50" value="wildfire"/>
             </choice>
         </element>
         <element label="Peril code" mandatory="true" max_length="100" name="peril_code" type="string"/>
         <element label="Display order" max_length="40" name="display_order" type="integer"/>
-        <element label="Description" max_length="2000" name="description" type="string"/>
     </element>
 </database>

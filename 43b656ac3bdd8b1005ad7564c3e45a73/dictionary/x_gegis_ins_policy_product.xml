@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="1d3e47838a100a89779336589a06939c" label="Product" max_length="40" name="x_gegis_ins_policy_product" type="collection">
+        <element label="Effective date" mandatory="true" max_length="40" name="effective_date" type="glide_date_time"/>
+        <element label="Description" max_length="2000" name="description" type="string"/>
         <element label="Version" max_length="20" name="version" type="string"/>
+        <element label="Product code" mandatory="true" max_length="100" name="product_code" type="string"/>
         <element choice="3" label="Line of business" mandatory="true" max_length="40" name="line_of_business" type="choice">
             <choice>
-                <element inactive_on_update="false" label="General" sequence="50" value="general"/>
-                <element inactive_on_update="false" label="Property" sequence="10" value="property"/>
-                <element inactive_on_update="false" label="Specialty" sequence="130" value="specialty"/>
-                <element inactive_on_update="false" label="Financial Lines" sequence="90" value="financial_lines"/>
-                <element inactive_on_update="false" label="Workers Comp" sequence="40" value="workers_comp"/>
-                <element inactive_on_update="false" label="Energy" sequence="80" value="energy"/>
-                <element inactive_on_update="false" label="Cyber" sequence="120" value="cyber"/>
-                <element inactive_on_update="false" label="Motor" sequence="30" value="motor"/>
                 <element inactive_on_update="false" label="Aviation" sequence="110" value="aviation"/>
                 <element inactive_on_update="false" label="Marine" sequence="70" value="marine"/>
+                <element inactive_on_update="false" label="Motor" sequence="30" value="motor"/>
                 <element inactive_on_update="false" label="Auto" sequence="20" value="auto"/>
                 <element inactive_on_update="false" label="Construction" sequence="100" value="construction"/>
                 <element inactive_on_update="false" label="Casualty" sequence="60" value="casualty"/>
+                <element inactive_on_update="false" label="Financial Lines" sequence="90" value="financial_lines"/>
+                <element inactive_on_update="false" label="General" sequence="50" value="general"/>
+                <element inactive_on_update="false" label="Property" sequence="10" value="property"/>
+                <element inactive_on_update="false" label="Specialty" sequence="130" value="specialty"/>
+                <element inactive_on_update="false" label="Cyber" sequence="120" value="cyber"/>
+                <element inactive_on_update="false" label="Energy" sequence="80" value="energy"/>
+                <element inactive_on_update="false" label="Workers Comp" sequence="40" value="workers_comp"/>
             </choice>
         </element>
+        <element label="Expiration date" mandatory="true" max_length="40" name="expiration_date" type="glide_date_time"/>
         <element display="true" label="Product name" mandatory="true" max_length="200" name="product_name" type="string"/>
         <element choice="3" label="Status" mandatory="true" max_length="40" name="status" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Published" sequence="20" value="published"/>
                 <element inactive_on_update="false" label="Archived" sequence="30" value="archived"/>
+                <element inactive_on_update="false" label="Published" sequence="20" value="published"/>
                 <element inactive_on_update="false" label="Draft" sequence="10" value="draft"/>
             </choice>
         </element>
-        <element label="Effective date" mandatory="true" max_length="40" name="effective_date" type="glide_date_time"/>
-        <element label="Description" max_length="2000" name="description" type="string"/>
-        <element label="Product code" mandatory="true" max_length="100" name="product_code" type="string"/>
-        <element label="Expiration date" mandatory="true" max_length="40" name="expiration_date" type="glide_date_time"/>
         <element label="Applicable states" max_length="1024" name="applicable_states" type="glide_list"/>
     </element>
 </database>

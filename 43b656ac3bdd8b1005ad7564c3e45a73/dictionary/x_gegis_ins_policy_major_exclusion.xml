@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="16f7acb7780b29493033bd48923cb716" label="Major Exclusion" max_length="40" name="x_gegis_ins_policy_major_exclusion" type="collection">
+        <element label="Risk case" mandatory="true" max_length="32" name="risk_case" reference="x_gegis_ins_policy_risk_case" type="reference"/>
         <element choice="3" label="Status" max_length="40" name="choice_value" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Sub-limited" sequence="30" value="sub_limited"/>
-                <element inactive_on_update="false" label="Included" sequence="10" value="included"/>
                 <element inactive_on_update="false" label="Excluded" sequence="20" value="excluded"/>
+                <element inactive_on_update="false" label="Included" sequence="10" value="included"/>
             </choice>
         </element>
         <element label="Remarks" max_length="2000" name="remarks" type="string"/>
         <element choice="3" label="Exclusion type" mandatory="true" max_length="40" name="exclusion_type" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Affirmative Cyber" sequence="10" value="affirmative_cyber"/>
-                <element inactive_on_update="false" label="Radioactive Contamination" sequence="30" value="radioactive_contamination"/>
                 <element inactive_on_update="false" label="Other" sequence="60" value="other"/>
-                <element inactive_on_update="false" label="Nuclear" sequence="20" value="nuclear"/>
                 <element inactive_on_update="false" label="Communicable Disease" sequence="50" value="communicable_disease"/>
                 <element inactive_on_update="false" label="War &amp; Civil War" sequence="40" value="war_civil_war"/>
+                <element inactive_on_update="false" label="Radioactive Contamination" sequence="30" value="radioactive_contamination"/>
+                <element inactive_on_update="false" label="Nuclear" sequence="20" value="nuclear"/>
             </choice>
         </element>
-        <element label="Risk case" mandatory="true" max_length="32" name="risk_case" reference="x_gegis_ins_policy_risk_case" type="reference"/>
         <index name="index">
             <element name="risk_case"/>
         </index>

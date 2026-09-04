@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="72e5cdd4c3f28b10fac6fc0d05013118" label="Quote Premium Breakup" max_length="40" name="x_gegis_ins_policy_quote_premium_breakup" type="collection">
         <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Sequence" max_length="40" name="sequence" type="integer"/>
         <element display="true" label="Name" max_length="200" name="name" type="string"/>
+        <element label="Rate basis" max_length="200" name="rate_basis" type="string"/>
         <element label="Quote option" mandatory="true" max_length="32" name="quote_option" reference="x_gegis_ins_policy_quote_option" type="reference"/>
+        <element label="Amount" mandatory="true" max_length="40" name="amount" type="decimal"/>
         <element choice="1" default="written_premium" label="Component" mandatory="true" max_length="40" name="component" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Commission" sequence="70" value="commission"/>
-                <element inactive_on_update="false" label="Endorsement" sequence="20" value="endorsement"/>
-                <element inactive_on_update="false" label="Surcharges" sequence="30" value="surcharges"/>
-                <element inactive_on_update="false" label="Fees" sequence="40" value="fees"/>
-                <element inactive_on_update="false" label="TRIA" sequence="50" value="tria"/>
-                <element inactive_on_update="false" label="Taxes" sequence="60" value="taxes"/>
                 <element inactive_on_update="false" label="Written Premium" sequence="10" value="written_premium"/>
+                <element inactive_on_update="false" label="Commission" sequence="70" value="commission"/>
+                <element inactive_on_update="false" label="Fees" sequence="40" value="fees"/>
+                <element inactive_on_update="false" label="Surcharges" sequence="30" value="surcharges"/>
+                <element inactive_on_update="false" label="Taxes" sequence="60" value="taxes"/>
+                <element inactive_on_update="false" label="TRIA" sequence="50" value="tria"/>
+                <element inactive_on_update="false" label="Endorsement" sequence="20" value="endorsement"/>
             </choice>
         </element>
-        <element label="Sequence" max_length="40" name="sequence" type="integer"/>
-        <element label="Rate basis" max_length="200" name="rate_basis" type="string"/>
-        <element label="Amount" mandatory="true" max_length="40" name="amount" type="decimal"/>
         <index name="index">
             <element name="quote_option"/>
         </index>

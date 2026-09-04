@@ -1,67 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="485927e91e2f6130fcfffd9f15b2b404" label="Coverage" max_length="40" name="x_gegis_ins_policy_coverage" type="collection">
-        <element label="Default selected" max_length="40" name="default_selected" type="boolean"/>
+        <element label="Description text" max_length="2000" name="description" type="string"/>
         <element label="Minimum limit" max_length="40" name="minimum_limit" type="decimal"/>
-        <element display="true" label="Coverage name" mandatory="true" max_length="200" name="coverage_name" type="string"/>
-        <element choice="3" label="Status" mandatory="true" max_length="40" name="status" type="choice">
-            <choice>
-                <element inactive_on_update="false" label="Archived" sequence="30" value="archived"/>
-                <element inactive_on_update="false" label="Published" sequence="20" value="published"/>
-                <element inactive_on_update="false" label="Draft" sequence="10" value="draft"/>
-            </choice>
-        </element>
-        <element label="Coinsurance %" max_length="40" name="coinsurance_pct" type="decimal"/>
+        <element label="Default limit" max_length="40" name="default_limit" type="decimal"/>
         <element choice="3" label="Cause of loss form" max_length="40" name="cause_of_loss_form" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Broad Form" sequence="20" value="broad"/>
                 <element inactive_on_update="false" label="Basic Form" sequence="10" value="basic"/>
                 <element inactive_on_update="false" label="Named Perils" sequence="40" value="named_perils"/>
                 <element inactive_on_update="false" label="Special Form (Open Perils)" sequence="30" value="special"/>
-            </choice>
-        </element>
-        <element label="Maximum limit" max_length="40" name="maximum_limit" type="decimal"/>
-        <element label="Coverage category" mandatory="true" max_length="32" name="coverage_category" reference="x_gegis_ins_policy_coverage_category" type="reference"/>
-        <element choice="3" label="Limit type" max_length="40" name="limit_type" type="choice">
-            <choice>
-                <element inactive_on_update="false" label="Aggregate" sequence="30" value="aggregate"/>
-                <element inactive_on_update="false" label="Per Location" sequence="20" value="per_location"/>
-                <element inactive_on_update="false" label="Per Occurrence" sequence="10" value="per_occurrence"/>
-                <element inactive_on_update="false" label="Combined Single Limit" sequence="50" value="combined_single_limit"/>
-                <element inactive_on_update="false" label="Per Item" sequence="40" value="per_item"/>
+                <element inactive_on_update="false" label="Broad Form" sequence="20" value="broad"/>
             </choice>
         </element>
         <element label="Active status" max_length="40" name="active_status" type="boolean"/>
         <element choice="3" label="Deductible type" mandatory="true" max_length="40" name="deductible_type" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Per Occurrence" sequence="30" value="per_occurrence"/>
                 <element inactive_on_update="false" label="Percentage" sequence="20" value="percentage"/>
                 <element inactive_on_update="false" label="Waiting Period" sequence="50" value="waiting_period"/>
                 <element inactive_on_update="false" label="Flat" sequence="10" value="flat"/>
                 <element inactive_on_update="false" label="Per Location" sequence="40" value="per_location"/>
+                <element inactive_on_update="false" label="Per Occurrence" sequence="30" value="per_occurrence"/>
             </choice>
         </element>
-        <element label="Default deductible" max_length="40" name="default_deductible" type="decimal"/>
-        <element label="Eligibility rule reference" max_length="200" name="eligibility_rule_ref" type="string"/>
-        <element label="Description text" max_length="2000" name="description" type="string"/>
         <element label="Applicable states" max_length="1024" name="applicable_states" type="glide_list"/>
+        <element display="true" label="Coverage name" mandatory="true" max_length="200" name="coverage_name" type="string"/>
+        <element label="Display order" mandatory="true" max_length="40" name="display_order" type="integer"/>
+        <element label="Maximum limit" max_length="40" name="maximum_limit" type="decimal"/>
+        <element label="Coverage category" mandatory="true" max_length="32" name="coverage_category" reference="x_gegis_ins_policy_coverage_category" type="reference"/>
+        <element label="Default deductible" max_length="40" name="default_deductible" type="decimal"/>
         <element choice="3" label="Valuation basis" max_length="40" name="valuation_basis" type="choice">
             <choice>
+                <element inactive_on_update="false" label="Replacement Cost Value (RCV)" sequence="10" value="rcv"/>
                 <element inactive_on_update="false" label="Functional Replacement Cost" sequence="40" value="functional_replacement"/>
                 <element inactive_on_update="false" label="Agreed Value" sequence="30" value="agreed_value"/>
                 <element inactive_on_update="false" label="Actual Cash Value (ACV)" sequence="20" value="acv"/>
-                <element inactive_on_update="false" label="Replacement Cost Value (RCV)" sequence="10" value="rcv"/>
             </choice>
         </element>
-        <element label="Coverage code" mandatory="true" max_length="100" name="coverage_code" type="string"/>
-        <element label="Default limit" max_length="40" name="default_limit" type="decimal"/>
-        <element label="Display order" mandatory="true" max_length="40" name="display_order" type="integer"/>
+        <element choice="3" label="Status" mandatory="true" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Draft" sequence="10" value="draft"/>
+                <element inactive_on_update="false" label="Archived" sequence="30" value="archived"/>
+                <element inactive_on_update="false" label="Published" sequence="20" value="published"/>
+            </choice>
+        </element>
         <element choice="3" label="Required / Optional / Excluded" mandatory="true" max_length="40" name="coverage_selection" type="choice">
             <choice>
+                <element inactive_on_update="false" label="Required" sequence="10" value="required"/>
                 <element inactive_on_update="false" label="Excluded" sequence="30" value="excluded"/>
                 <element inactive_on_update="false" label="Optional" sequence="20" value="optional"/>
-                <element inactive_on_update="false" label="Required" sequence="10" value="required"/>
             </choice>
         </element>
+        <element label="Coinsurance %" max_length="40" name="coinsurance_pct" type="decimal"/>
+        <element choice="3" label="Limit type" max_length="40" name="limit_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Per Occurrence" sequence="10" value="per_occurrence"/>
+                <element inactive_on_update="false" label="Combined Single Limit" sequence="50" value="combined_single_limit"/>
+                <element inactive_on_update="false" label="Per Item" sequence="40" value="per_item"/>
+                <element inactive_on_update="false" label="Aggregate" sequence="30" value="aggregate"/>
+                <element inactive_on_update="false" label="Per Location" sequence="20" value="per_location"/>
+            </choice>
+        </element>
+        <element label="Eligibility rule reference" max_length="200" name="eligibility_rule_ref" type="string"/>
+        <element label="Default selected" max_length="40" name="default_selected" type="boolean"/>
+        <element label="Coverage code" mandatory="true" max_length="100" name="coverage_code" type="string"/>
         <index name="index">
             <element name="coverage_category"/>
         </index>

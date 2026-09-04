@@ -9,7 +9,7 @@
         <mobile_callable>false</mobile_callable>
         <name>IntakeService</name>
         <sandbox_callable>false</sandbox_callable>
-        <script>var IntakeService = Class.create();
+        <script><![CDATA[var IntakeService = Class.create();
 IntakeService.prototype = {
     initialize: function() {
         this.INTAKE = 'x_gegis_ins_policy_intake_case';
@@ -106,7 +106,7 @@ IntakeService.prototype = {
                          'Correlation ID: ' + body.correlation_id,
                          'Blob folder: ' + (body.container_name || '') + '/' + (body.folder_path || ''),
                          'Attachments (' + attachments.length + '):'];
-        for (var i = 0; i &lt; attachments.length; i++) {
+        for (var i = 0; i < attachments.length; i++) {
             var warning = this._createDocument(intake, attachments[i]);
             var att = attachments[i] || {};
             noteLines.push('  - ' + (att.file_name || '(unnamed)') + ' [' + (att.type || 'ATTACHMENT') + ']' +
@@ -147,7 +147,7 @@ IntakeService.prototype = {
         intake.query();
         if (!intake.next())
             return this._error(404, 'ERRORU-004', 'Intake case ' + caseNumber + ' not found');
-        if (this.FINAL_STATUSES.indexOf(String(intake.status)) &gt;= 0)
+        if (this.FINAL_STATUSES.indexOf(String(intake.status)) >= 0)
             return this._error(409, 'ERRORU-006', 'Case is already in final status');
 
         // SUBMISSION_LOCKED must carry a resolvable submission number.
@@ -252,7 +252,7 @@ IntakeService.prototype = {
     },
 
     type: 'IntakeService'
-};</script>
+};]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-11 12:00:00</sys_created_on>

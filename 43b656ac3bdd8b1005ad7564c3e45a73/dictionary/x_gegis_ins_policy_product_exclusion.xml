@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="e9e5c9d4c3f28b10fac6fc0d0501313b" label="Product Exclusion" max_length="40" name="x_gegis_ins_policy_product_exclusion" type="collection">
-        <element label="Product" mandatory="true" max_length="32" name="product" reference="x_gegis_ins_policy_product" type="reference"/>
-        <element label="Exclusion" mandatory="true" max_length="32" name="exclusion" reference="x_gegis_ins_policy_exclusion" type="reference"/>
+        <element label="Buy-back available" max_length="40" name="buy_back_available" type="boolean"/>
         <element label="Display order" max_length="40" name="display_order" type="integer"/>
         <element default="true" label="Included by default" max_length="40" name="included_by_default" type="boolean"/>
-        <element display="true" label="Name" max_length="200" name="name" type="string"/>
-        <element label="Buy-back premium" max_length="40" name="buy_back_premium" type="decimal"/>
-        <element label="Buy-back available" max_length="40" name="buy_back_available" type="boolean"/>
         <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Product" mandatory="true" max_length="32" name="product" reference="x_gegis_ins_policy_product" type="reference"/>
+        <element display="true" label="Name" max_length="200" name="name" type="string"/>
+        <element label="Exclusion" mandatory="true" max_length="32" name="exclusion" reference="x_gegis_ins_policy_exclusion" type="reference"/>
+        <element label="Buy-back premium" max_length="40" name="buy_back_premium" type="decimal"/>
         <index name="index">
             <element name="exclusion"/>
         </index>

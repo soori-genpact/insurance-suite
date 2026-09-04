@@ -9,7 +9,7 @@
         <mobile_callable>false</mobile_callable>
         <name>Constants</name>
         <sandbox_callable>false</sandbox_callable>
-        <script>var Constants = (function () {
+        <script><![CDATA[var Constants = (function () {
 
     var SCOPE = 'x_gegis_ins_policy';
 
@@ -24,7 +24,7 @@
         AUTO_APPROVE_UPDATE: SCOPE + '.extraction.auto_approve.update',
 
         // License + staged execution plan (JSON) for module orchestration:
-        // clearance, exposure, risk, quote &amp; bind.
+        // clearance, exposure, risk, quote & bind.
         //
         // The LICENCE half of this property (instance_id, expires_at,
         // licensed_modules) is authoritative and is issued, not configured.
@@ -185,8 +185,7 @@
             CHECK_FOR_DUPLICATES:        'clearance_check_for_duplicates',
             CHECK_FOR_SANCTIONS:         'clearance_check_for_sanctions',
             CONFIRM_DATA_REVIEW:         'clearance_confirm_data_review',
-            QUALITY_ASSURANCE:           'clearance_quality_assurance',
-            END_SUBMISSION_CLEARANCE:    'clearance_end_submission_clearance'
+            QUALITY_ASSURANCE:           'clearance_quality_assurance'
         },
         RISK: {
             INITIATE_RISK_ASSESSMENT: 'risk_initiate_risk_assessment',
@@ -254,73 +253,15 @@
 
         // x_gegis_ins_policy_case_task.u_type -- WHY the task exists, i.e. the
         // trigger that raised it. Orthogonal to CATEGORY, which is what kind of
-        // task it is. The original 6 (10-60) are generic HITL/exception triggers,
-        // not tied to a specific playbook step. From 70 on, one value per real
-        // Activity Definition - every activity's flow stamps its own task with
-        // its own type. GetCaseRecords is excluded (workaround activity, no UI,
-        // never creates a task). CHECK_FOR_DUPLICATES reuses DUPLICATE_CHECK
-        // rather than adding a near-duplicate value.
+        // task it is. Listed in the instance's choice sequence order
+        // (10/20/30/40/50/60).
         U_TYPE: {
             CONTEXT_ENRICHMENT:    'context_enrichment',
             DUPLICATE_CHECK:       'duplicate_check',
             CLASSIFICATION_FAILED: 'classification_failed',
             SUBMISSION_LOCKED:     'submission_locked',
             EXTRACTION_REVIEW:     'extraction_review',
-            REFERRAL:              SHARED.REFERRAL,
-
-            // Clearance
-            INITIATE_SUBMISSION_REQUEST: 'initiate_submission_request',
-            EXTRACT:                     'extract',
-            INSURED_VERIFICATION:        'insured_verification',
-            CHECK_FOR_SANCTIONS:         'check_for_sanctions',
-            CHECK_FOR_DUPLICATES:        'duplicate_check',
-            CONFIRM_DATA_REVIEW:         'confirm_data_review',
-            QUALITY_ASSURANCE:           'quality_assurance',
-            END_SUBMISSION_CLEARANCE:    'end_submission_clearance',
-
-            // Risk
-            INITIATE_RISK_ASSESSMENT: 'initiate_risk_assessment',
-            LETTER_OF_AUTHORITY:      'letter_of_authority',
-            UNDERWRITING_GUIDELINES:  'underwriting_guidelines',
-            BENCHMARKING:             'benchmarking',
-            SURVEY_RESULTS:           'survey_results',
-            LOSS_PREDICTION:          'loss_prediction',
-            BIND_PROPENSITY:          'bind_propensity',
-            EXPOSURE_DATA:            'exposure_data',
-            FRAUD_DETECTION:          'fraud_detection',
-            UNDERWRITER_NARRATIVE:    'underwriter_narrative',
-            RISK_SUMMARY:             'risk_summary',
-
-            // Exposure
-            INITIATE_EXPOSURE_MANAGEMENT: 'initiate_exposure_management',
-            GEO_MAPPING:                  'geo_mapping',
-            CATASTROPHE_MODELLING:        'catastrophe_modelling',
-            CAPACITY_MANAGEMENT:          'capacity_management',
-            CONCENTRATION_ANALYSIS:       'concentration_analysis',
-            PORTFOLIO_OPTIMIZATION:       'portfolio_optimization',
-            EXPOSURE_MANAGEMENT_SUMMARY:  'exposure_management_summary',
-
-            // Quote & Bind
-            INITIATE_QUOTE_AND_BIND:    'initiate_quote_and_bind',
-            PRODUCT_SELECTION_DETAILS:  'product_selection_details',
-            QUOTE_WORKSPACE:            'quote_workspace',
-            UNDERWRITING_DECISIONS:     'underwriting_decisions',
-            BROKER_DECISION:            'broker_decision',
-            BIND_DETAILS:               'bind_details'
-        },
-
-        // x_gegis_ins_policy_case_task.u_module -- WHICH module/stage raised the
-        // task. Reuses the STAGE tokens (clearance/risk_assessment/
-        // exposure_management/quote_and_bind) so this never drifts from
-        // module_plan's own vocabulary, plus INTAKE for tasks raised against an
-        // Intake Case before any module case exists (e.g. duplicate/sanctions
-        // checks at intake time).
-        CASE_TASK_MODULE: {
-            INTAKE:              'intake',
-            CLEARANCE:           STAGE.CLEARANCE,
-            RISK_ASSESSMENT:     STAGE.RISK_ASSESSMENT,
-            EXPOSURE_MANAGEMENT: STAGE.EXPOSURE_MANAGEMENT,
-            QUOTE_AND_BIND:      STAGE.QUOTE_AND_BIND
+            REFERRAL:              SHARED.REFERRAL
         },
 
         // submission.state
@@ -1196,7 +1137,7 @@
     function values(map) {
         var out = [];
         for (var k in map) {
-            if (map.hasOwnProperty(k) &amp;&amp; typeof map[k] === 'string')
+            if (map.hasOwnProperty(k) && typeof map[k] === 'string')
                 out.push(map[k]);
         }
         return out;
@@ -1226,7 +1167,7 @@
             return fallback;
         try {
             var parsed = JSON.parse(raw);
-            return (parsed &amp;&amp; typeof parsed === 'object') ? parsed : fallback;
+            return (parsed && typeof parsed === 'object') ? parsed : fallback;
         } catch (e) {
             gs.warn('[Constants] property ' + name + ' is not valid JSON: ' + e.message);
             return fallback;
@@ -1278,7 +1219,7 @@
             gs.error('[Constants] licence has no expires_at - treating as expired');
             return false;
         }
-        return new GlideDateTime().compareTo(new GlideDateTime(expires)) &lt; 0;
+        return new GlideDateTime().compareTo(new GlideDateTime(expires)) < 0;
     }
 
     // licenceCode is the UPPERCASE code carried in licensed_modules
@@ -1291,7 +1232,7 @@
         if (!wanted)
             return false;
         var licensed = getLicence().licensed_modules;
-        for (var i = 0; i &lt; licensed.length; i++) {
+        for (var i = 0; i < licensed.length; i++) {
             if (String(licensed[i]).trim().toUpperCase() === wanted)
                 return true;
         }
@@ -1313,18 +1254,18 @@
         isLicenceValid: isLicenceValid,
         isModuleLicensed: isModuleLicensed
     };
-})();</script>
+})();]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-12 10:00:00</sys_created_on>
         <sys_id>b7c9d1e3f5a7290418365a7b9c1d3e5f</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>Constants</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_script_include_b7c9d1e3f5a7290418365a7b9c1d3e5f</sys_update_name>
         <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-09-04 12:00:00</sys_updated_on>
+        <sys_updated_on>2026-08-15 12:00:00</sys_updated_on>
     </sys_script_include>
 </record_update>

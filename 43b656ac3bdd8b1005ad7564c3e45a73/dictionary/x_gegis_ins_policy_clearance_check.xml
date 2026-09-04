@@ -1,46 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="d1be27e3652cc8aede12603281f6a25c" label="Clearance Check" max_length="40" name="x_gegis_ins_policy_clearance_check" type="collection">
-        <element label="Reviewed date" max_length="40" name="reviewed_date" type="glide_date_time"/>
-        <element label="Clearance case" mandatory="true" max_length="32" name="clearance_case" reference="x_gegis_ins_policy_clearance_case" type="reference"/>
         <element label="Confidence" max_length="40" name="confidence" type="decimal"/>
-        <element choice="3" label="Check type" mandatory="true" max_length="40" name="check_type" type="choice">
-            <choice>
-                <element inactive_on_update="false" label="Existing Policy" sequence="40" value="existing_policy"/>
-                <element inactive_on_update="false" label="Data Validation" sequence="50" value="data_validation"/>
-                <element inactive_on_update="false" label="Duplicate Submission" sequence="20" value="duplicate_submission"/>
-                <element inactive_on_update="false" label="Sanctions" sequence="30" value="sanctions"/>
-                <element inactive_on_update="false" label="Insured Verification" sequence="10" value="insured_verification"/>
-            </choice>
-        </element>
-        <element label="Related record" max_length="32" name="related_record" type="document_id"/>
-        <element choice="3" label="Method" max_length="40" name="method" type="choice">
-            <choice>
-                <element inactive_on_update="false" label="Manual" sequence="30" value="manual"/>
-                <element inactive_on_update="false" label="Automated" sequence="10" value="automated"/>
-                <element inactive_on_update="false" label="AI" sequence="20" value="ai"/>
-            </choice>
-        </element>
-        <element choice="3" label="Disposition" max_length="40" name="disposition" type="choice">
-            <choice>
-                <element inactive_on_update="false" label="Escalated" sequence="20" value="escalated"/>
-                <element inactive_on_update="false" label="False Positive" sequence="30" value="false_positive"/>
-                <element inactive_on_update="false" label="Clear" sequence="10" value="clear"/>
-                <element inactive_on_update="false" label="Confirmed Hit" sequence="40" value="confirmed_hit"/>
-                <element inactive_on_update="false" label="Not Applicable" sequence="50" value="not_applicable"/>
-            </choice>
-        </element>
         <element choice="3" label="Status" mandatory="true" max_length="40" name="status" type="choice">
             <choice>
-                <element inactive_on_update="false" label="In Progress" sequence="20" value="in_progress"/>
-                <element inactive_on_update="false" label="Pass" sequence="30" value="pass"/>
-                <element inactive_on_update="false" label="Fail" sequence="40" value="fail"/>
                 <element inactive_on_update="false" label="Warning" sequence="50" value="warning"/>
                 <element inactive_on_update="false" label="Not Started" sequence="10" value="not_started"/>
+                <element inactive_on_update="false" label="Fail" sequence="40" value="fail"/>
+                <element inactive_on_update="false" label="Pass" sequence="30" value="pass"/>
                 <element inactive_on_update="false" label="Manual Review" sequence="60" value="manual_review"/>
+                <element inactive_on_update="false" label="In Progress" sequence="20" value="in_progress"/>
+            </choice>
+        </element>
+        <element label="Clearance case" mandatory="true" max_length="32" name="clearance_case" reference="x_gegis_ins_policy_clearance_case" type="reference"/>
+        <element choice="3" label="Disposition" max_length="40" name="disposition" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Not Applicable" sequence="50" value="not_applicable"/>
+                <element inactive_on_update="false" label="Clear" sequence="10" value="clear"/>
+                <element inactive_on_update="false" label="Confirmed Hit" sequence="40" value="confirmed_hit"/>
+                <element inactive_on_update="false" label="False Positive" sequence="30" value="false_positive"/>
+                <element inactive_on_update="false" label="Escalated" sequence="20" value="escalated"/>
+            </choice>
+        </element>
+        <element choice="3" label="Check type" mandatory="true" max_length="40" name="check_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Data Validation" sequence="50" value="data_validation"/>
+                <element inactive_on_update="false" label="Insured Verification" sequence="10" value="insured_verification"/>
+                <element inactive_on_update="false" label="Existing Policy" sequence="40" value="existing_policy"/>
+                <element inactive_on_update="false" label="Sanctions" sequence="30" value="sanctions"/>
+                <element inactive_on_update="false" label="Duplicate Submission" sequence="20" value="duplicate_submission"/>
             </choice>
         </element>
         <element label="Result summary" max_length="4000" name="result_summary" type="string"/>
+        <element label="Related record" max_length="32" name="related_record" type="document_id"/>
         <element label="Reviewed by" max_length="32" name="reviewed_by" reference="sys_user" type="reference"/>
+        <element choice="3" label="Method" max_length="40" name="method" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Automated" sequence="10" value="automated"/>
+                <element inactive_on_update="false" label="Manual" sequence="30" value="manual"/>
+                <element inactive_on_update="false" label="AI" sequence="20" value="ai"/>
+            </choice>
+        </element>
+        <element label="Reviewed date" max_length="40" name="reviewed_date" type="glide_date_time"/>
         <index name="index">
             <element name="clearance_case"/>
         </index>

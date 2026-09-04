@@ -1,25 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="7fc6c9d8a43144968d1d75ae9a7d9d02" label="Vehicle" max_length="40" name="x_gegis_ins_policy_vehicle" type="collection">
-        <element label="Existing policy expired" max_length="40" name="existing_policy_expired" type="boolean"/>
+        <element label="License plate" max_length="20" name="license_plate_number" type="string"/>
         <element label="Current carrier" max_length="200" name="current_carrier_name" type="string"/>
-        <element label="Garaging state" max_length="50" name="garaging_state" type="string"/>
-        <element choice="3" label="Vehicle type" max_length="40" name="vehicle_type" type="choice">
-            <choice>
-                <element inactive_on_update="false" label="Trailer" sequence="50" value="trailer"/>
-                <element inactive_on_update="false" label="Light Truck" sequence="20" value="light_truck"/>
-                <element inactive_on_update="false" label="Bus" sequence="60" value="bus"/>
-                <element inactive_on_update="false" label="Other" sequence="70" value="other"/>
-                <element inactive_on_update="false" label="Medium Truck" sequence="30" value="medium_truck"/>
-                <element inactive_on_update="false" label="Private Passenger" sequence="10" value="private_passenger"/>
-                <element inactive_on_update="false" label="Heavy Truck" sequence="40" value="heavy_truck"/>
-            </choice>
-        </element>
-        <element label="Exposure case" mandatory="true" max_length="32" name="exposure_case" reference="x_gegis_ins_policy_exposure_case" type="reference"/>
-        <element label="Transports seasonal workers" max_length="40" name="transports_seasonal_workers" type="boolean"/>
         <element label="Current auto policy" max_length="40" name="current_auto_policy" type="boolean"/>
-        <element label="Garaging city" max_length="100" name="garaging_city" type="string"/>
-        <element label="Garaging zip" max_length="20" name="garaging_zip_code" type="string"/>
-        <element label="Carries employees" max_length="40" name="insured_vehicle_carry_employees" type="boolean"/>
+        <element label="Transports seasonal workers" max_length="40" name="transports_seasonal_workers" type="boolean"/>
         <element choice="3" label="Telematics type" max_length="40" name="telematics_type" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Aftermarket" sequence="20" value="aftermarket"/>
@@ -27,21 +11,37 @@
             </choice>
         </element>
         <element label="Telematics installed" max_length="40" name="telematics_installed" type="boolean"/>
-        <element label="VIN" max_length="20" name="vin" type="string"/>
-        <element label="Submission line" max_length="32" name="submission_line" reference="x_gegis_ins_policy_submission_line" type="reference"/>
-        <element label="License plate" max_length="20" name="license_plate_number" type="string"/>
         <element label="Garaging address" max_length="300" name="garaging_address" type="string"/>
-        <element label="Make" max_length="100" name="make" type="string"/>
+        <element label="Garaging state" max_length="50" name="garaging_state" type="string"/>
+        <element label="Garaging city" max_length="100" name="garaging_city" type="string"/>
         <element label="Year" max_length="40" name="year" type="integer"/>
+        <element choice="3" label="Vehicle type" max_length="40" name="vehicle_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Trailer" sequence="50" value="trailer"/>
+                <element inactive_on_update="false" label="Private Passenger" sequence="10" value="private_passenger"/>
+                <element inactive_on_update="false" label="Heavy Truck" sequence="40" value="heavy_truck"/>
+                <element inactive_on_update="false" label="Medium Truck" sequence="30" value="medium_truck"/>
+                <element inactive_on_update="false" label="Other" sequence="70" value="other"/>
+                <element inactive_on_update="false" label="Light Truck" sequence="20" value="light_truck"/>
+                <element inactive_on_update="false" label="Bus" sequence="60" value="bus"/>
+            </choice>
+        </element>
+        <element label="Garaging zip" max_length="20" name="garaging_zip_code" type="string"/>
         <element label="Cost new" max_length="40" name="cost_of_new_vehicle" type="decimal"/>
+        <element label="VIN" max_length="20" name="vin" type="string"/>
+        <element label="Make" max_length="100" name="make" type="string"/>
+        <element label="Existing policy expired" max_length="40" name="existing_policy_expired" type="boolean"/>
+        <element label="Exposure case" mandatory="true" max_length="32" name="exposure_case" reference="x_gegis_ins_policy_exposure_case" type="reference"/>
+        <element label="Carries employees" max_length="40" name="insured_vehicle_carry_employees" type="boolean"/>
         <element choice="3" label="Vehicle use" max_length="40" name="vehicle_use" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Commercial" sequence="10" value="commercial"/>
-                <element inactive_on_update="false" label="Service" sequence="20" value="service"/>
-                <element inactive_on_update="false" label="Retail" sequence="30" value="retail"/>
                 <element inactive_on_update="false" label="Pleasure" sequence="40" value="pleasure"/>
+                <element inactive_on_update="false" label="Retail" sequence="30" value="retail"/>
+                <element inactive_on_update="false" label="Service" sequence="20" value="service"/>
             </choice>
         </element>
+        <element label="Submission line" max_length="32" name="submission_line" reference="x_gegis_ins_policy_submission_line" type="reference"/>
         <index name="index">
             <element name="exposure_case"/>
         </index>

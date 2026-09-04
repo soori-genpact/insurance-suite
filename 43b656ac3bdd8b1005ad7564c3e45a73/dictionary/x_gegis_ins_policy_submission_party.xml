@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="8119eea1abea0b7532f8f45d5b73700c" label="Submission Party" max_length="40" name="x_gegis_ins_policy_submission_party" type="collection">
-        <element choice="3" label="Relationship to primary" max_length="40" name="relationship_to_primary" type="choice">
-            <choice>
-                <element inactive_on_update="false" label="None" sequence="50" value="none"/>
-                <element inactive_on_update="false" label="Subsidiary" sequence="20" value="subsidiary"/>
-                <element inactive_on_update="false" label="Affiliate" sequence="30" value="affiliate"/>
-                <element inactive_on_update="false" label="Joint Venture" sequence="40" value="joint_venture"/>
-                <element inactive_on_update="false" label="Parent" sequence="10" value="parent"/>
-            </choice>
-        </element>
         <element choice="3" label="Role" mandatory="true" max_length="40" name="role" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Additional Insured" sequence="40" value="additional_insured"/>
-                <element inactive_on_update="false" label="Broker" sequence="60" value="broker"/>
                 <element inactive_on_update="false" label="Third Party" sequence="90" value="third_party"/>
                 <element inactive_on_update="false" label="Interest Holder" sequence="50" value="interest_holder"/>
-                <element inactive_on_update="false" label="Secondary Insured" sequence="30" value="secondary_insured"/>
-                <element inactive_on_update="false" label="Co-Applicant" sequence="20" value="co_applicant"/>
                 <element inactive_on_update="false" label="Premium Payer" sequence="80" value="premium_payer"/>
-                <element inactive_on_update="false" label="Producer" sequence="70" value="producer"/>
+                <element inactive_on_update="false" label="Additional Insured" sequence="40" value="additional_insured"/>
                 <element inactive_on_update="false" label="Primary Insured" sequence="10" value="primary_insured"/>
+                <element inactive_on_update="false" label="Producer" sequence="70" value="producer"/>
+                <element inactive_on_update="false" label="Secondary Insured" sequence="30" value="secondary_insured"/>
+                <element inactive_on_update="false" label="Broker" sequence="60" value="broker"/>
+                <element inactive_on_update="false" label="Co-Applicant" sequence="20" value="co_applicant"/>
+            </choice>
+        </element>
+        <element choice="3" default="manual" label="Source" max_length="40" name="source" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Extracted" sequence="10" value="extracted"/>
+                <element inactive_on_update="false" label="Manual" sequence="20" value="manual"/>
+            </choice>
+        </element>
+        <element choice="3" label="Interest type" max_length="40" name="interest_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Loss Payee" sequence="20" value="loss_payee"/>
+                <element inactive_on_update="false" label="Additional Interest" sequence="50" value="additional_interest"/>
+                <element inactive_on_update="false" label="Mortgagee" sequence="10" value="mortgagee"/>
+                <element inactive_on_update="false" label="Certificate Holder" sequence="40" value="certificate_holder"/>
+                <element inactive_on_update="false" label="Lienholder" sequence="30" value="lienholder"/>
             </choice>
         </element>
         <element label="Loan number" max_length="100" name="loan_number" type="string"/>
-        <element label="Interest address" max_length="400" name="interest_address" type="string"/>
-        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
-        <element choice="3" default="manual" label="Source" max_length="40" name="source" type="choice">
-            <choice>
-                <element inactive_on_update="false" label="Manual" sequence="20" value="manual"/>
-                <element inactive_on_update="false" label="Extracted" sequence="10" value="extracted"/>
-            </choice>
-        </element>
         <element label="Organization" mandatory="true" max_length="32" name="organization" reference="x_gegis_ins_policy_party" type="reference"/>
+        <element label="Contact" max_length="32" name="contact" reference="x_gegis_ins_policy_contact" type="reference"/>
+        <element label="Interest address" max_length="400" name="interest_address" type="string"/>
         <element label="Submission line" max_length="32" name="submission_line" reference="x_gegis_ins_policy_submission_line" type="reference"/>
-        <element label="Sequence" max_length="40" name="sequence" type="integer"/>
-        <element choice="3" label="Interest type" max_length="40" name="interest_type" type="choice">
+        <element label="Ownership %" max_length="40" name="ownership_percent" type="decimal"/>
+        <element choice="3" label="Relationship to primary" max_length="40" name="relationship_to_primary" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Certificate Holder" sequence="40" value="certificate_holder"/>
-                <element inactive_on_update="false" label="Loss Payee" sequence="20" value="loss_payee"/>
-                <element inactive_on_update="false" label="Mortgagee" sequence="10" value="mortgagee"/>
-                <element inactive_on_update="false" label="Lienholder" sequence="30" value="lienholder"/>
-                <element inactive_on_update="false" label="Additional Interest" sequence="50" value="additional_interest"/>
+                <element inactive_on_update="false" label="Affiliate" sequence="30" value="affiliate"/>
+                <element inactive_on_update="false" label="Subsidiary" sequence="20" value="subsidiary"/>
+                <element inactive_on_update="false" label="None" sequence="50" value="none"/>
+                <element inactive_on_update="false" label="Parent" sequence="10" value="parent"/>
+                <element inactive_on_update="false" label="Joint Venture" sequence="40" value="joint_venture"/>
             </choice>
         </element>
-        <element label="Contact" max_length="32" name="contact" reference="x_gegis_ins_policy_contact" type="reference"/>
-        <element label="Ownership %" max_length="40" name="ownership_percent" type="decimal"/>
+        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element label="Sequence" max_length="40" name="sequence" type="integer"/>
         <index name="index">
             <element name="contact"/>
         </index>

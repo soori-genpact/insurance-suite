@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="4b3d8039c93e288696d3fdc13dda2d53" label="Policy Coverage" max_length="40" name="x_gegis_ins_policy_policy_coverage" type="collection">
-        <element label="Policy" mandatory="true" max_length="32" name="policy" reference="x_gegis_ins_policy_policy" type="reference"/>
         <element label="Coverage" mandatory="true" max_length="32" name="coverage" reference="x_gegis_ins_policy_coverage" type="reference"/>
+        <element label="Coverage premium" max_length="40" name="coverage_premium" type="decimal"/>
         <element label="Policy risk" mandatory="true" max_length="32" name="policy_risk" reference="x_gegis_ins_policy_policy_risk" type="reference"/>
         <element choice="3" label="Status" mandatory="true" max_length="40" name="status" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Cancelled" sequence="20" value="cancelled"/>
                 <element inactive_on_update="false" label="Active" sequence="10" value="active"/>
                 <element inactive_on_update="false" label="Expired" sequence="30" value="expired"/>
+                <element inactive_on_update="false" label="Cancelled" sequence="20" value="cancelled"/>
             </choice>
         </element>
-        <element label="Mandatory" max_length="40" name="mandatory" type="boolean"/>
+        <element label="Policy" mandatory="true" max_length="32" name="policy" reference="x_gegis_ins_policy_policy" type="reference"/>
         <element display="true" label="Name" max_length="200" name="name" type="string"/>
-        <element label="Coverage premium" max_length="40" name="coverage_premium" type="decimal"/>
+        <element label="Mandatory" max_length="40" name="mandatory" type="boolean"/>
         <index name="index">
             <element name="coverage"/>
         </index>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="dae54dd4c3f28b10fac6fc0d05013123" label="Quote Option Coverage Peril" max_length="40" name="x_gegis_ins_policy_quote_option_coverage_peril" type="collection">
-        <element label="Product coverage peril" mandatory="true" max_length="32" name="product_coverage_peril" reference="x_gegis_ins_policy_product_coverage_peril" type="reference"/>
         <element display="true" label="Name" max_length="200" name="name" type="string"/>
+        <element label="Sub-limit" max_length="40" name="sub_limit" type="decimal"/>
+        <element label="Display order" max_length="40" name="display_order" type="integer"/>
         <element label="Quote option coverage" mandatory="true" max_length="32" name="quote_option_coverage" reference="x_gegis_ins_policy_quote_option_coverage" type="reference"/>
         <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Product coverage peril" mandatory="true" max_length="32" name="product_coverage_peril" reference="x_gegis_ins_policy_product_coverage_peril" type="reference"/>
         <element default="true" label="Included" max_length="40" name="included" type="boolean"/>
-        <element label="Display order" max_length="40" name="display_order" type="integer"/>
-        <element label="Sub-limit" max_length="40" name="sub_limit" type="decimal"/>
         <index name="index">
             <element name="product_coverage_peril"/>
         </index>

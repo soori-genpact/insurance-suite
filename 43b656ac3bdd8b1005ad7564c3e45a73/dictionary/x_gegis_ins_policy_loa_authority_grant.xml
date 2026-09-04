@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="e422dfcbc3624310fac6fc0d050131be" label="LOA Authority Grant" max_length="40" name="x_gegis_ins_policy_loa_authority_grant" type="collection">
-        <element label="Approved by" max_length="32" name="approved_by" reference="sys_user" type="reference"/>
         <element label="Guideline authority" max_length="255" name="guideline_authority" type="string"/>
+        <element label="Valid to" max_length="40" name="valid_to" type="glide_date"/>
+        <element label="Approved on" max_length="40" name="approved_on" type="glide_date_time"/>
+        <element choice="1" default="draft" label="State" mandatory="true" max_length="40" name="state" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Superseded" sequence="30" value="superseded"/>
+                <element inactive_on_update="false" label="Active" sequence="20" value="active"/>
+                <element inactive_on_update="false" label="Expired" sequence="50" value="expired"/>
+                <element inactive_on_update="false" label="Draft" sequence="10" value="draft"/>
+                <element inactive_on_update="false" label="Revoked" sequence="40" value="revoked"/>
+            </choice>
+        </element>
         <element choice="1" default="role" label="Grantee type" mandatory="true" max_length="40" name="grantee_type" type="choice">
             <choice>
                 <element inactive_on_update="false" label="User" sequence="20" value="user"/>
                 <element inactive_on_update="false" label="Role" sequence="10" value="role"/>
             </choice>
         </element>
-        <element label="Grantee user" max_length="32" name="grantee_user" reference="sys_user" type="reference"/>
-        <element label="Authority tier" mandatory="true" max_length="32" name="authority_tier" reference="x_gegis_ins_policy_loa_authority_tier" type="reference"/>
-        <element label="Valid to" max_length="40" name="valid_to" type="glide_date"/>
         <element default="1" label="Version" mandatory="true" max_length="40" name="version" type="integer"/>
-        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
-        <element label="Supersedes" max_length="32" name="supersedes" reference="x_gegis_ins_policy_loa_authority_grant" type="reference"/>
-        <element label="Delegation valid to" max_length="40" name="delegation_valid_to" type="glide_date"/>
-        <element label="Approved on" max_length="40" name="approved_on" type="glide_date_time"/>
         <element label="LOA document" max_length="255" name="loa_document" type="file_attachment"/>
+        <element label="Delegated from" max_length="32" name="delegated_from" reference="x_gegis_ins_policy_loa_authority_grant" type="reference"/>
+        <element label="Grantee user" max_length="32" name="grantee_user" reference="sys_user" type="reference"/>
+        <element label="Supersedes" max_length="32" name="supersedes" reference="x_gegis_ins_policy_loa_authority_grant" type="reference"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
         <element label="Grantee role" max_length="32" name="grantee_role" reference="sys_user_role" type="reference"/>
         <element choice="1" label="Line of business" mandatory="true" max_length="40" name="line_of_business" type="choice">
             <choice>
-                <element inactive_on_update="false" label="General" sequence="50" value="general"/>
-                <element inactive_on_update="false" label="Specialty" sequence="130" value="specialty"/>
-                <element inactive_on_update="false" label="Financial Lines" sequence="90" value="financial_lines"/>
+                <element inactive_on_update="false" label="Casualty" sequence="60" value="casualty"/>
                 <element inactive_on_update="false" label="Workers Comp" sequence="40" value="workers_comp"/>
+                <element inactive_on_update="false" label="Specialty" sequence="130" value="specialty"/>
+                <element inactive_on_update="false" label="Construction" sequence="100" value="construction"/>
+                <element inactive_on_update="false" label="General" sequence="50" value="general"/>
+                <element inactive_on_update="false" label="Motor" sequence="30" value="motor"/>
+                <element inactive_on_update="false" label="Financial Lines" sequence="90" value="financial_lines"/>
+                <element inactive_on_update="false" label="Auto" sequence="20" value="auto"/>
                 <element inactive_on_update="false" label="Cyber" sequence="120" value="cyber"/>
                 <element inactive_on_update="false" label="Energy" sequence="80" value="energy"/>
                 <element inactive_on_update="false" label="Property" sequence="10" value="property"/>
-                <element inactive_on_update="false" label="Motor" sequence="30" value="motor"/>
                 <element inactive_on_update="false" label="Aviation" sequence="110" value="aviation"/>
                 <element inactive_on_update="false" label="Marine" sequence="70" value="marine"/>
-                <element inactive_on_update="false" label="Auto" sequence="20" value="auto"/>
-                <element inactive_on_update="false" label="Construction" sequence="100" value="construction"/>
-                <element inactive_on_update="false" label="Casualty" sequence="60" value="casualty"/>
             </choice>
         </element>
+        <element label="Approved by" max_length="32" name="approved_by" reference="sys_user" type="reference"/>
+        <element label="Authority tier" mandatory="true" max_length="32" name="authority_tier" reference="x_gegis_ins_policy_loa_authority_tier" type="reference"/>
+        <element label="Delegation valid to" max_length="40" name="delegation_valid_to" type="glide_date"/>
         <element label="Valid from" mandatory="true" max_length="40" name="valid_from" type="glide_date"/>
-        <element choice="1" default="draft" label="State" mandatory="true" max_length="40" name="state" type="choice">
-            <choice>
-                <element inactive_on_update="false" label="Draft" sequence="10" value="draft"/>
-                <element inactive_on_update="false" label="Superseded" sequence="30" value="superseded"/>
-                <element inactive_on_update="false" label="Active" sequence="20" value="active"/>
-                <element inactive_on_update="false" label="Expired" sequence="50" value="expired"/>
-                <element inactive_on_update="false" label="Revoked" sequence="40" value="revoked"/>
-            </choice>
-        </element>
-        <element label="Delegated from" max_length="32" name="delegated_from" reference="x_gegis_ins_policy_loa_authority_grant" type="reference"/>
         <index name="index">
             <element name="approved_by"/>
         </index>
@@ -62,6 +62,13 @@
             <element name="grantee_user"/>
         </index>
         <index name="index6">
+            <element name="line_of_business"/>
+            <element name="authority_tier"/>
+            <element name="state"/>
+            <element name="valid_from"/>
+            <element name="valid_to"/>
+        </index>
+        <index name="index7">
             <element name="supersedes"/>
         </index>
     </element>

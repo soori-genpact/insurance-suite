@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="fd5804215db3855714dc8cb08fb66c32" label="Quote" max_length="40" name="x_gegis_ins_policy_quote" type="collection">
-        <element label="Version" max_length="20" name="version" type="string"/>
-        <element label="Product" max_length="32" name="product" reference="x_gegis_ins_policy_product" type="reference"/>
         <element label="Q&amp;B case" mandatory="true" max_length="32" name="qnb_case" reference="x_gegis_ins_policy_quote_and_bind_case" type="reference"/>
+        <element label="Total premium" max_length="40" name="total_premium" type="decimal"/>
+        <element label="Quote number" mandatory="true" max_length="20" name="quote_number" type="string"/>
         <element label="Terms &amp; conditions" max_length="4000" name="terms_conditions" type="string"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" display="true" label="Number" max_length="40" name="number" type="string"/>
         <element choice="3" label="Currency" max_length="3" name="currency" type="choice">
             <choice>
-                <element inactive_on_update="false" label="CHF" sequence="70" value="chf"/>
-                <element inactive_on_update="false" label="EUR" sequence="30" value="eur"/>
                 <element inactive_on_update="false" label="JPY" sequence="60" value="jpy"/>
                 <element inactive_on_update="false" label="GBP" sequence="20" value="gbp"/>
-                <element inactive_on_update="false" label="AUD" sequence="50" value="aud"/>
                 <element inactive_on_update="false" label="USD" sequence="10" value="usd"/>
+                <element inactive_on_update="false" label="CHF" sequence="70" value="chf"/>
+                <element inactive_on_update="false" label="AUD" sequence="50" value="aud"/>
                 <element inactive_on_update="false" label="CAD" sequence="40" value="cad"/>
+                <element inactive_on_update="false" label="EUR" sequence="30" value="eur"/>
             </choice>
         </element>
+        <element label="Effective date" max_length="40" name="effective_date" type="glide_date"/>
+        <element label="Version" max_length="20" name="version" type="string"/>
         <element label="Expiration date" max_length="40" name="expiration_date" type="glide_date"/>
+        <element label="Valid until" max_length="40" name="valid_until" type="glide_date"/>
+        <element label="Product" max_length="32" name="product" reference="x_gegis_ins_policy_product" type="reference"/>
         <element choice="3" label="Status" mandatory="true" max_length="40" name="status" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Issued" sequence="20" value="issued"/>
-                <element inactive_on_update="false" label="Expired" sequence="50" value="expired"/>
-                <element inactive_on_update="false" label="Draft" sequence="10" value="draft"/>
-                <element inactive_on_update="false" label="Declined" sequence="40" value="declined"/>
                 <element inactive_on_update="false" label="Accepted" sequence="30" value="accepted"/>
+                <element inactive_on_update="false" label="Draft" sequence="10" value="draft"/>
+                <element inactive_on_update="false" label="Expired" sequence="50" value="expired"/>
+                <element inactive_on_update="false" label="Issued" sequence="20" value="issued"/>
+                <element inactive_on_update="false" label="Declined" sequence="40" value="declined"/>
             </choice>
         </element>
-        <element label="Total premium" max_length="40" name="total_premium" type="decimal"/>
-        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" display="true" label="Number" max_length="40" name="number" type="string"/>
-        <element label="Effective date" max_length="40" name="effective_date" type="glide_date"/>
-        <element label="Valid until" max_length="40" name="valid_until" type="glide_date"/>
         <element label="Insured" max_length="32" name="insured" reference="x_gegis_ins_policy_party" type="reference"/>
-        <element label="Quote number" mandatory="true" max_length="20" name="quote_number" type="string"/>
         <index name="index">
             <element name="insured"/>
         </index>

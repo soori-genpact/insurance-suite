@@ -1,61 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="7b125fcbc3624310fac6fc0d05013159" label="LOA Metric" max_length="40" name="x_gegis_ins_policy_loa_metric" type="collection">
-        <element display="true" label="Label" mandatory="true" max_length="100" name="label" type="string"/>
-        <element choice="1" default="max" label="Comparison" mandatory="true" max_length="40" name="comparison" type="choice">
-            <choice>
-                <element inactive_on_update="false" label="Maximum - breach when exposure is above the limit" sequence="10" value="max"/>
-                <element inactive_on_update="false" label="Minimum - breach when exposure is below the limit" sequence="20" value="min"/>
-            </choice>
-        </element>
         <element label="Source field" max_length="100" name="source_field" type="string"/>
+        <element label="Zone" max_length="40" name="zone" type="string"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
         <element choice="3" default="none" label="Aggregation" max_length="40" name="aggregation" type="choice">
             <choice>
+                <element inactive_on_update="false" label="Count of rows" sequence="40" value="count"/>
                 <element inactive_on_update="false" label="Maximum" sequence="30" value="max"/>
                 <element inactive_on_update="false" label="Sum" sequence="20" value="sum"/>
-                <element inactive_on_update="false" label="Count of rows" sequence="40" value="count"/>
                 <element inactive_on_update="false" label="None - read the field directly" sequence="10" value="none"/>
             </choice>
         </element>
         <element choice="1" default="amount" label="Value type" mandatory="true" max_length="40" name="value_type" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Percent" sequence="30" value="percent"/>
-                <element inactive_on_update="false" label="Amount" sequence="10" value="amount"/>
                 <element inactive_on_update="false" label="Count" sequence="20" value="count"/>
+                <element inactive_on_update="false" label="Amount" sequence="10" value="amount"/>
             </choice>
         </element>
-        <element label="Code" mandatory="true" max_length="40" name="code" type="string"/>
-        <element choice="3" label="Peril" max_length="40" name="peril" type="choice">
-            <choice>
-                <element inactive_on_update="false" label="All Other Perils" sequence="70" value="all_other"/>
-                <element inactive_on_update="false" label="Flood" sequence="30" value="flood"/>
-                <element inactive_on_update="false" label="Earthquake" sequence="20" value="quake"/>
-                <element inactive_on_update="false" label="Terrorism" sequence="60" value="terrorism"/>
-                <element inactive_on_update="false" label="Wildfire" sequence="50" value="wildfire"/>
-                <element inactive_on_update="false" label="Wind" sequence="10" value="wind"/>
-                <element inactive_on_update="false" label="Hail" sequence="40" value="hail"/>
-            </choice>
-        </element>
-        <element label="Zone" max_length="40" name="zone" type="string"/>
         <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
-        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
         <element label="Source table" max_length="100" name="source_table" type="string"/>
         <element choice="3" label="Line of business" max_length="40" name="line_of_business" type="choice">
             <choice>
+                <element inactive_on_update="false" label="Cyber" sequence="120" value="cyber"/>
+                <element inactive_on_update="false" label="General" sequence="50" value="general"/>
                 <element inactive_on_update="false" label="Property" sequence="10" value="property"/>
                 <element inactive_on_update="false" label="Workers Comp" sequence="40" value="workers_comp"/>
-                <element inactive_on_update="false" label="Cyber" sequence="120" value="cyber"/>
-                <element inactive_on_update="false" label="Energy" sequence="80" value="energy"/>
                 <element inactive_on_update="false" label="Aviation" sequence="110" value="aviation"/>
+                <element inactive_on_update="false" label="Energy" sequence="80" value="energy"/>
+                <element inactive_on_update="false" label="Construction" sequence="100" value="construction"/>
                 <element inactive_on_update="false" label="Marine" sequence="70" value="marine"/>
                 <element inactive_on_update="false" label="Motor" sequence="30" value="motor"/>
                 <element inactive_on_update="false" label="Auto" sequence="20" value="auto"/>
-                <element inactive_on_update="false" label="Construction" sequence="100" value="construction"/>
-                <element inactive_on_update="false" label="Casualty" sequence="60" value="casualty"/>
-                <element inactive_on_update="false" label="Financial Lines" sequence="90" value="financial_lines"/>
-                <element inactive_on_update="false" label="General" sequence="50" value="general"/>
                 <element inactive_on_update="false" label="Specialty" sequence="130" value="specialty"/>
+                <element inactive_on_update="false" label="Financial Lines" sequence="90" value="financial_lines"/>
+                <element inactive_on_update="false" label="Casualty" sequence="60" value="casualty"/>
             </choice>
         </element>
+        <element display="true" label="Label" mandatory="true" max_length="100" name="label" type="string"/>
+        <element label="Code" mandatory="true" max_length="40" name="code" type="string"/>
         <element label="Sequence" max_length="40" name="sequence" type="integer"/>
+        <element choice="1" default="max" label="Comparison" mandatory="true" max_length="40" name="comparison" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Maximum - breach when exposure is above the limit" sequence="10" value="max"/>
+                <element inactive_on_update="false" label="Minimum - breach when exposure is below the limit" sequence="20" value="min"/>
+            </choice>
+        </element>
+        <element choice="3" label="Peril" max_length="40" name="peril" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="All Other Perils" sequence="70" value="all_other"/>
+                <element inactive_on_update="false" label="Wind" sequence="10" value="wind"/>
+                <element inactive_on_update="false" label="Terrorism" sequence="60" value="terrorism"/>
+                <element inactive_on_update="false" label="Wildfire" sequence="50" value="wildfire"/>
+                <element inactive_on_update="false" label="Flood" sequence="30" value="flood"/>
+                <element inactive_on_update="false" label="Hail" sequence="40" value="hail"/>
+                <element inactive_on_update="false" label="Earthquake" sequence="20" value="quake"/>
+            </choice>
+        </element>
+        <index name="index" unique="true">
+            <element name="code"/>
+            <element name="line_of_business"/>
+        </index>
+        <index name="index2">
+            <element name="line_of_business"/>
+            <element name="sequence"/>
+        </index>
     </element>
 </database>

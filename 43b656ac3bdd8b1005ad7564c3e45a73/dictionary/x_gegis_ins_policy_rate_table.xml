@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="829369f21b542ef89e97b3ad67ce3b0e" label="Rate Table" max_length="40" name="x_gegis_ins_policy_rate_table" type="collection">
-        <element label="Effective date" mandatory="true" max_length="40" name="effective_date" type="glide_date"/>
-        <element display="true" label="Name" mandatory="true" max_length="200" name="name" type="string"/>
+        <element label="Expiry date" max_length="40" name="expiry_date" type="glide_date"/>
         <element choice="3" label="Line of Business" max_length="40" name="line_of_business" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Financial Lines" sequence="90" value="financial_lines"/>
-                <element inactive_on_update="false" label="Specialty" sequence="130" value="specialty"/>
+                <element inactive_on_update="false" label="Construction" sequence="100" value="construction"/>
+                <element inactive_on_update="false" label="Casualty" sequence="60" value="casualty"/>
+                <element inactive_on_update="false" label="Motor" sequence="30" value="motor"/>
                 <element inactive_on_update="false" label="Auto" sequence="20" value="auto"/>
+                <element inactive_on_update="false" label="Specialty" sequence="130" value="specialty"/>
+                <element inactive_on_update="false" label="Financial Lines" sequence="90" value="financial_lines"/>
                 <element inactive_on_update="false" label="Cyber" sequence="120" value="cyber"/>
                 <element inactive_on_update="false" label="Energy" sequence="80" value="energy"/>
                 <element inactive_on_update="false" label="General" sequence="50" value="general"/>
+                <element inactive_on_update="false" label="Property" sequence="10" value="property"/>
                 <element inactive_on_update="false" label="Workers Comp" sequence="40" value="workers_comp"/>
                 <element inactive_on_update="false" label="Aviation" sequence="110" value="aviation"/>
                 <element inactive_on_update="false" label="Marine" sequence="70" value="marine"/>
-                <element inactive_on_update="false" label="Property" sequence="10" value="property"/>
-                <element inactive_on_update="false" label="Motor" sequence="30" value="motor"/>
-                <element inactive_on_update="false" label="Construction" sequence="100" value="construction"/>
-                <element inactive_on_update="false" label="Casualty" sequence="60" value="casualty"/>
             </choice>
         </element>
-        <element label="Expiry date" max_length="40" name="expiry_date" type="glide_date"/>
         <element label="Coverage" mandatory="true" max_length="32" name="coverage" reference="x_gegis_ins_policy_coverage" type="reference"/>
+        <element label="Effective date" mandatory="true" max_length="40" name="effective_date" type="glide_date"/>
         <element choice="3" label="Rate type" mandatory="true" max_length="40" name="rate_type" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Flat" sequence="30" value="flat"/>
                 <element inactive_on_update="false" label="Per Mille" sequence="10" value="per_mille"/>
+                <element inactive_on_update="false" label="Flat" sequence="30" value="flat"/>
                 <element inactive_on_update="false" label="Percentage" sequence="20" value="percentage"/>
             </choice>
         </element>
+        <element display="true" label="Name" mandatory="true" max_length="200" name="name" type="string"/>
         <index name="index">
             <element name="coverage"/>
         </index>

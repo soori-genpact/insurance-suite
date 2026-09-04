@@ -1,68 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="4122530fc3624310fac6fc0d0501316b" label="LOA Evaluation" max_length="40" name="x_gegis_ins_policy_loa_evaluation" type="collection">
-        <element label="Matched grant" max_length="32" name="matched_grant" reference="x_gegis_ins_policy_loa_authority_grant" type="reference"/>
-        <element choice="1" label="Line of business" mandatory="true" max_length="40" name="line_of_business" type="choice">
+        <element default="1" label="Version" mandatory="true" max_length="40" name="version" type="integer"/>
+        <element label="Message" max_length="1000" name="message" type="string"/>
+        <element label="Referral task" max_length="32" name="referral_task" reference="x_gegis_ins_policy_case_task" type="reference"/>
+        <element choice="1" default="pending" label="Evaluation status" mandatory="true" max_length="40" name="evaluation_status" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Specialty" sequence="130" value="specialty"/>
-                <element inactive_on_update="false" label="Financial Lines" sequence="90" value="financial_lines"/>
-                <element inactive_on_update="false" label="General" sequence="50" value="general"/>
-                <element inactive_on_update="false" label="Workers Comp" sequence="40" value="workers_comp"/>
-                <element inactive_on_update="false" label="Cyber" sequence="120" value="cyber"/>
-                <element inactive_on_update="false" label="Energy" sequence="80" value="energy"/>
-                <element inactive_on_update="false" label="Property" sequence="10" value="property"/>
-                <element inactive_on_update="false" label="Aviation" sequence="110" value="aviation"/>
-                <element inactive_on_update="false" label="Marine" sequence="70" value="marine"/>
-                <element inactive_on_update="false" label="Motor" sequence="30" value="motor"/>
-                <element inactive_on_update="false" label="Auto" sequence="20" value="auto"/>
-                <element inactive_on_update="false" label="Construction" sequence="100" value="construction"/>
-                <element inactive_on_update="false" label="Casualty" sequence="60" value="casualty"/>
+                <element inactive_on_update="false" label="No Authority" sequence="100" value="no_authority"/>
+                <element inactive_on_update="false" label="Referred - Approved with Conditions" sequence="60" value="referred_approved_with_conditions"/>
+                <element inactive_on_update="false" label="Declined" sequence="90" value="declined"/>
+                <element inactive_on_update="false" label="Referred - Approved" sequence="50" value="referred_approved"/>
+                <element inactive_on_update="false" label="Authorized" sequence="20" value="authorized"/>
+                <element inactive_on_update="false" label="Pending" sequence="10" value="pending"/>
+                <element inactive_on_update="false" label="Referred - Rejected, Alternate Terms Offered" sequence="80" value="referred_rejected_alternate_terms"/>
+                <element inactive_on_update="false" label="Referred" sequence="40" value="referred"/>
+                <element inactive_on_update="false" label="Referred - Rejected" sequence="70" value="referred_rejected"/>
+                <element inactive_on_update="false" label="Breach" sequence="30" value="breach"/>
             </choice>
         </element>
         <element label="Previous evaluation status" max_length="40" name="previous_evaluation_status" type="string"/>
+        <element label="Evaluated on" mandatory="true" max_length="40" name="evaluated_on" type="glide_date_time"/>
         <element label="Authority tier code" max_length="40" name="authority_tier_code" type="string"/>
-        <element label="Requires referral" max_length="40" name="requires_referral" type="boolean"/>
-        <element label="Quote" max_length="32" name="quote" reference="x_gegis_ins_policy_quote" type="reference"/>
-        <element default="1" label="Version" mandatory="true" max_length="40" name="version" type="integer"/>
+        <element label="Referred to tier" max_length="32" name="referred_to_tier" reference="x_gegis_ins_policy_loa_authority_tier" type="reference"/>
         <element choice="1" default="initial_evaluation" label="Evaluation trigger" mandatory="true" max_length="40" name="evaluation_trigger" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Initial Evaluation" sequence="10" value="initial_evaluation"/>
-                <element inactive_on_update="false" label="Authority Grant Change" sequence="40" value="grant_change"/>
-                <element inactive_on_update="false" label="Manual Re-evaluation" sequence="60" value="manual_reevaluation"/>
                 <element inactive_on_update="false" label="Exposure Change" sequence="30" value="exposure_change"/>
-                <element inactive_on_update="false" label="Quote Change" sequence="50" value="quote_change"/>
+                <element inactive_on_update="false" label="Manual Re-evaluation" sequence="60" value="manual_reevaluation"/>
                 <element inactive_on_update="false" label="Intake Change" sequence="20" value="intake_change"/>
+                <element inactive_on_update="false" label="Initial Evaluation" sequence="10" value="initial_evaluation"/>
+                <element inactive_on_update="false" label="Quote Change" sequence="50" value="quote_change"/>
+                <element inactive_on_update="false" label="Authority Grant Change" sequence="40" value="grant_change"/>
             </choice>
         </element>
-        <element label="Authority tier" max_length="32" name="authority_tier" reference="x_gegis_ins_policy_loa_authority_tier" type="reference"/>
-        <element default="0" label="Breach count" max_length="40" name="breach_count" type="integer"/>
-        <element label="Referral task" max_length="32" name="referral_task" reference="x_gegis_ins_policy_case_task" type="reference"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
         <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element default="0" label="Checks count" max_length="40" name="checks_count" type="integer"/>
+        <element label="Matched grant" max_length="32" name="matched_grant" reference="x_gegis_ins_policy_loa_authority_grant" type="reference"/>
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Requires referral" max_length="40" name="requires_referral" type="boolean"/>
+        <element label="Decision notes" max_length="1000" name="decision_notes" type="string"/>
+        <element label="Authority tier" max_length="32" name="authority_tier" reference="x_gegis_ins_policy_loa_authority_tier" type="reference"/>
+        <element label="Decided by" max_length="32" name="decided_by" reference="sys_user" type="reference"/>
         <element label="Decided on" max_length="40" name="decided_on" type="glide_date_time"/>
         <element label="Is authorized" max_length="40" name="is_authorized" type="boolean"/>
-        <element choice="1" default="pending" label="Evaluation status" mandatory="true" max_length="40" name="evaluation_status" type="choice">
+        <element choice="1" label="Line of business" mandatory="true" max_length="40" name="line_of_business" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Referred - Rejected" sequence="70" value="referred_rejected"/>
-                <element inactive_on_update="false" label="Pending" sequence="10" value="pending"/>
-                <element inactive_on_update="false" label="Breach" sequence="30" value="breach"/>
-                <element inactive_on_update="false" label="No Authority" sequence="100" value="no_authority"/>
-                <element inactive_on_update="false" label="Referred - Approved with Conditions" sequence="60" value="referred_approved_with_conditions"/>
-                <element inactive_on_update="false" label="Referred - Approved" sequence="50" value="referred_approved"/>
-                <element inactive_on_update="false" label="Authorized" sequence="20" value="authorized"/>
-                <element inactive_on_update="false" label="Declined" sequence="90" value="declined"/>
-                <element inactive_on_update="false" label="Referred - Rejected, Alternate Terms Offered" sequence="80" value="referred_rejected_alternate_terms"/>
-                <element inactive_on_update="false" label="Referred" sequence="40" value="referred"/>
+                <element inactive_on_update="false" label="Cyber" sequence="120" value="cyber"/>
+                <element inactive_on_update="false" label="Energy" sequence="80" value="energy"/>
+                <element inactive_on_update="false" label="Workers Comp" sequence="40" value="workers_comp"/>
+                <element inactive_on_update="false" label="Marine" sequence="70" value="marine"/>
+                <element inactive_on_update="false" label="Motor" sequence="30" value="motor"/>
+                <element inactive_on_update="false" label="Aviation" sequence="110" value="aviation"/>
+                <element inactive_on_update="false" label="Construction" sequence="100" value="construction"/>
+                <element inactive_on_update="false" label="Casualty" sequence="60" value="casualty"/>
+                <element inactive_on_update="false" label="Auto" sequence="20" value="auto"/>
+                <element inactive_on_update="false" label="General" sequence="50" value="general"/>
+                <element inactive_on_update="false" label="Property" sequence="10" value="property"/>
+                <element inactive_on_update="false" label="Specialty" sequence="130" value="specialty"/>
+                <element inactive_on_update="false" label="Financial Lines" sequence="90" value="financial_lines"/>
             </choice>
         </element>
-        <element default="0" label="Checks count" max_length="40" name="checks_count" type="integer"/>
-        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
         <element label="Max utilisation percent" max_length="15" name="max_utilisation_percent" type="decimal"/>
-        <element label="Evaluated on" mandatory="true" max_length="40" name="evaluated_on" type="glide_date_time"/>
-        <element label="Referred to tier" max_length="32" name="referred_to_tier" reference="x_gegis_ins_policy_loa_authority_tier" type="reference"/>
-        <element label="Decision notes" max_length="1000" name="decision_notes" type="string"/>
+        <element label="Quote" max_length="32" name="quote" reference="x_gegis_ins_policy_quote" type="reference"/>
         <element label="Submission line" max_length="32" name="submission_line" reference="x_gegis_ins_policy_submission_line" type="reference"/>
-        <element label="Message" max_length="1000" name="message" type="string"/>
-        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
-        <element label="Decided by" max_length="32" name="decided_by" reference="sys_user" type="reference"/>
+        <element default="0" label="Breach count" max_length="40" name="breach_count" type="integer"/>
         <index name="index">
             <element name="authority_tier"/>
         </index>
@@ -70,22 +70,27 @@
             <element name="decided_by"/>
         </index>
         <index name="index3">
-            <element name="matched_grant"/>
+            <element name="evaluation_status"/>
         </index>
         <index name="index4">
-            <element name="quote"/>
+            <element name="matched_grant"/>
         </index>
         <index name="index5">
-            <element name="referral_task"/>
+            <element name="quote"/>
         </index>
         <index name="index6">
-            <element name="referred_to_tier"/>
+            <element name="referral_task"/>
         </index>
         <index name="index7">
-            <element name="submission"/>
+            <element name="referred_to_tier"/>
         </index>
         <index name="index8">
+            <element name="submission"/>
+            <element name="active"/>
+        </index>
+        <index name="index9">
             <element name="submission_line"/>
+            <element name="version"/>
         </index>
     </element>
 </database>
