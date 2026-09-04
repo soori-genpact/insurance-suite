@@ -1,28 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="42dee7e74147197405b4651d4c65d397" extends="task" label="Task" max_length="40" name="x_gegis_ins_policy_case_task" type="collection">
-        <element label="LOA evaluation" max_length="32" name="loa_evaluation" reference="x_gegis_ins_policy_loa_evaluation" type="reference"/>
-        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Intake case" max_length="32" name="intake_case" reference="x_gegis_ins_policy_intake_case" type="reference"/>
-        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Extraction" max_length="32" name="extraction" reference="x_gegis_ins_policy_extraction" type="reference"/>
-        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Submission" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
-        <element attributes="edge_encryption_enabled=true" choice="3" label="Category" mandatory="true" max_length="40" name="category" type="choice">
+        <element label="Context" max_length="500" name="context" type="string"/>
+        <element choice="3" label="Module" max_length="40" name="u_module" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Extraction" sequence="15" value="extraction"/>
-                <element inactive_on_update="false" label="Case" sequence="25" value="case"/>
-                <element inactive_on_update="false" label="HITL" sequence="10" value="hitl"/>
-                <element inactive_on_update="false" label="Referral" sequence="20" value="referral"/>
-                <element inactive_on_update="false" label="Other" sequence="30" value="other"/>
+                <element inactive_on_update="false" label="Clearance" sequence="20" value="clearance"/>
+                <element inactive_on_update="false" label="Intake" sequence="10" value="intake"/>
+                <element inactive_on_update="false" label="Risk" sequence="30" value="risk_assessment"/>
+                <element inactive_on_update="false" label="Exposure" sequence="40" value="exposure_management"/>
+                <element inactive_on_update="false" label="Quote &amp; Bind" sequence="50" value="quote_and_bind"/>
             </choice>
         </element>
-        <element label="Context" max_length="500" name="context" type="string"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Intake case" max_length="32" name="intake_case" reference="x_gegis_ins_policy_intake_case" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" choice="3" label="Category" mandatory="true" max_length="40" name="category" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="HITL" sequence="10" value="hitl"/>
+                <element inactive_on_update="false" label="Other" sequence="30" value="other"/>
+                <element inactive_on_update="false" label="Case" sequence="25" value="case"/>
+                <element inactive_on_update="false" label="Referral" sequence="20" value="referral"/>
+                <element inactive_on_update="false" label="Extraction" sequence="15" value="extraction"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Submission" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element label="LOA evaluation" max_length="32" name="loa_evaluation" reference="x_gegis_ins_policy_loa_evaluation" type="reference"/>
         <element attributes="edge_encryption_enabled=true" label="Parent case" max_length="32" name="parent_case" type="document_id"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Extraction" max_length="32" name="extraction" reference="x_gegis_ins_policy_extraction" type="reference"/>
         <element attributes="edge_encryption_enabled=true" choice="3" label="Type" max_length="40" name="u_type" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Duplicate Check" sequence="20" value="duplicate_check"/>
-                <element inactive_on_update="false" label="Referral" sequence="60" value="referral"/>
-                <element inactive_on_update="false" label="Submission Locked" sequence="40" value="submission_locked"/>
-                <element inactive_on_update="false" label="Context Enrichment" sequence="10" value="context_enrichment"/>
-                <element inactive_on_update="false" label="Extraction Review" sequence="50" value="extraction_review"/>
                 <element inactive_on_update="false" label="Classification Failed" sequence="30" value="classification_failed"/>
+                <element inactive_on_update="false" label="Duplicate Check" sequence="20" value="duplicate_check"/>
+                <element inactive_on_update="false" label="Catastrophe Modelling" sequence="270" value="catastrophe_modelling"/>
+                <element inactive_on_update="false" label="Capacity management" sequence="280" value="capacity_management"/>
+                <element inactive_on_update="false" label="Concentration Analysis" sequence="290" value="concentration_analysis"/>
+                <element inactive_on_update="false" label="Portfolio Optimization" sequence="300" value="portfolio_optimization"/>
+                <element inactive_on_update="false" label="Exposure Management Summary" sequence="310" value="exposure_management_summary"/>
+                <element inactive_on_update="false" label="Initiate Q&amp;B" sequence="320" value="initiate_quote_and_bind"/>
+                <element inactive_on_update="false" label="Product Selection Details" sequence="330" value="product_selection_details"/>
+                <element inactive_on_update="false" label="Quote Workspace" sequence="340" value="quote_workspace"/>
+                <element inactive_on_update="false" label="Underwriting Decisions" sequence="350" value="underwriting_decisions"/>
+                <element inactive_on_update="false" label="Bind Details" sequence="370" value="bind_details"/>
+                <element inactive_on_update="false" label="Extraction Review" sequence="50" value="extraction_review"/>
+                <element inactive_on_update="false" label="End Submission Clearance" sequence="130" value="end_submission_clearance"/>
+                <element inactive_on_update="false" label="Context Enrichment" sequence="10" value="context_enrichment"/>
+                <element inactive_on_update="false" label="Referral" sequence="60" value="referral"/>
+                <element inactive_on_update="false" label="Insured Verification" sequence="90" value="insured_verification"/>
+                <element inactive_on_update="false" label="Check for Sanctions" sequence="100" value="check_for_sanctions"/>
+                <element inactive_on_update="false" label="Confirm Data Review" sequence="110" value="confirm_data_review"/>
+                <element inactive_on_update="false" label="Quality Assurance" sequence="120" value="quality_assurance"/>
+                <element inactive_on_update="false" label="Initiate Submission Request" sequence="70" value="initiate_submission_request"/>
+                <element inactive_on_update="false" label="Extract" sequence="80" value="extract"/>
+                <element inactive_on_update="false" label="Submission Locked" sequence="40" value="submission_locked"/>
+                <element inactive_on_update="false" label="Initiate Risk Assessment" sequence="140" value="initiate_risk_assessment"/>
+                <element inactive_on_update="false" label="Letter Of Authority" sequence="150" value="letter_of_authority"/>
+                <element inactive_on_update="false" label="Underwriting Guidelines" sequence="160" value="underwriting_guidelines"/>
+                <element inactive_on_update="false" label="Benchmarking" sequence="170" value="benchmarking"/>
+                <element inactive_on_update="false" label="Survey Results" sequence="180" value="survey_results"/>
+                <element inactive_on_update="false" label="Loss Prediction" sequence="190" value="loss_prediction"/>
+                <element inactive_on_update="false" label="Bind Propensity" sequence="200" value="bind_propensity"/>
+                <element inactive_on_update="false" label="Exposure Data" sequence="210" value="exposure_data"/>
+                <element inactive_on_update="false" label="Fraud Detection" sequence="220" value="fraud_detection"/>
+                <element inactive_on_update="false" label="Underwriter Narrative" sequence="230" value="underwriter_narrative"/>
+                <element inactive_on_update="false" label="Risk Summary" sequence="240" value="risk_summary"/>
+                <element inactive_on_update="false" label="Initiate Exposure Management" sequence="250" value="initiate_exposure_management"/>
+                <element inactive_on_update="false" label="Geo Mapping" sequence="260" value="geo_mapping"/>
+                <element inactive_on_update="false" label="Broker Decision" sequence="360" value="broker_decision"/>
             </choice>
         </element>
     </element>
