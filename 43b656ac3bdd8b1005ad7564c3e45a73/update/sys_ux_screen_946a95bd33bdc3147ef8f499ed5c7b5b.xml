@@ -83,11 +83,20 @@
     "experienceProperties": {
         "type": "JSON_LITERAL",
         "value": {
+            "associated_table": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "table_name"
+                },
+                "value": ""
+            },
             "description": {
+                "displayValue": "",
                 "elementData": {
                     "type": "html"
                 },
-                "value": "&lt;p&gt;A sample description for an activity&lt;/p&gt;"
+                "label": "Description (DEPRECATED)",
+                "value": ""
             },
             "experience_status_record": {
                 "displayValue": "",
@@ -107,7 +116,8 @@
                 "elementData": {
                     "type": "string"
                 },
-                "value": "A sample footer for an activity"
+                "label": "Footer (DEPRECATED)",
+                "value": ""
             },
             "icon": {
                 "displayValue": "",
@@ -122,25 +132,30 @@
                 "elementData": {
                     "type": "boolean"
                 },
-                "value": "0"
+                "label": "Is Automated (DEPRECATED)",
+                "value": "false"
             },
             "pending_description": {
+                "displayValue": "",
                 "elementData": {
                     "type": "html"
                 },
+                "label": "Pending State Description (DEPRECATED)",
                 "value": ""
             },
             "pending_title": {
                 "elementData": {
                     "type": "string"
                 },
+                "label": "Pending State Title (DEPRECATED)",
                 "value": ""
             },
             "tagline": {
                 "elementData": {
                     "type": "string"
                 },
-                "value": "Sample Activity Tagline"
+                "label": "Tagline (DEPRECATED)",
+                "value": ""
             },
             "title": {
                 "elementData": {
@@ -197,7 +212,31 @@
         <name>PS Confirm Data Review AUI</name>
         <order>0</order>
         <parent_macroponent display_value="Playbook App Shell">64f1d8fbc3ca201098c960bc0eba8fe3</parent_macroponent>
-        <required_translations>[ ]</required_translations>
+        <required_translations>[ {
+  "message" : "Description (DEPRECATED)",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Footer (DEPRECATED)",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Is Automated (DEPRECATED)",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Pending State Description (DEPRECATED)",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Pending State Title (DEPRECATED)",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Tagline (DEPRECATED)",
+  "code" : "",
+  "comment" : ""
+} ]</required_translations>
         <rollback_screen/>
         <screen_condition/>
         <screen_type display_value="Global Activity UIs">89ddbb5ac3113010948404186e40dd1d</screen_type>
@@ -207,7 +246,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>946a95bd33bdc3147ef8f499ed5c7b5b</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>10</sys_mod_count>
         <sys_name>PS Confirm Data Review AUI</sys_name>
         <sys_overrides/>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
@@ -215,7 +254,7 @@
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_screen_946a95bd33bdc3147ef8f499ed5c7b5b</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-07 07:23:25</sys_updated_on>
+        <sys_updated_on>2026-09-05 13:43:30</sys_updated_on>
     </sys_ux_screen>
     <sys_translated_text action="delete_multiple" query="documentkey=946a95bd33bdc3147ef8f499ed5c7b5b"/>
 </record_update>
