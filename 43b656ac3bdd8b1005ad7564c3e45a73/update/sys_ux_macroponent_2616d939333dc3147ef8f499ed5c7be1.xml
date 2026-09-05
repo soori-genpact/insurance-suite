@@ -460,6 +460,13 @@
         <props>[
     {
         "defaultValue": {
+            "associated_table": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "table_name"
+                },
+                "value": ""
+            },
             "attachment_source": {
                 "displayValue": "",
                 "elementData": {
@@ -599,6 +606,25 @@
             "choices": [],
             "schema": {
                 "properties": {
+                    "associated_table": {
+                        "properties": {
+                            "displayValue": {
+                                "type": "string"
+                            },
+                            "elementData": {
+                                "properties": {
+                                    "type": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "value": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
                     "attachment_source": {
                         "properties": {
                             "displayValue": {
@@ -978,14 +1004,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-01 05:47:43</sys_created_on>
         <sys_id>2616d939333dc3147ef8f499ed5c7be1</sys_id>
-        <sys_mod_count>24</sys_mod_count>
+        <sys_mod_count>26</sys_mod_count>
         <sys_name>PS Extract AUI</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_2616d939333dc3147ef8f499ed5c7be1</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-05 12:57:21</sys_updated_on>
+        <sys_updated_on>2026-09-05 14:17:46</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=2616d939333dc3147ef8f499ed5c7be1"/>
 </record_update>

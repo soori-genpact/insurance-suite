@@ -28,7 +28,7 @@
         <run_strategy>run_once</run_strategy>
         <run_strategy_on_process_definition>true</run_strategy_on_process_definition>
         <schema_version>3</schema_version>
-        <snapshot display_value="clearance_case_standard">142df243938f4710ad88f738dd03d63a</snapshot>
+        <snapshot display_value="clearance_case_standard">62770fcf93cf4710ad88f738dd03d6a8</snapshot>
         <start_non_blocking>true</start_non_blocking>
         <status>published</status>
         <sync_state>COMPLETE</sync_state>
@@ -44,7 +44,7 @@
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_pd_process_definition_d431a75b2f8a8b50fb1f2bba6fa4e39d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-05 13:48:45</sys_updated_on>
+        <sys_updated_on>2026-09-05 14:33:57</sys_updated_on>
         <view_type>DIAGRAM</view_type>
     </sys_pd_process_definition>
     <sys_translated_text action="delete_multiple" query="documentkey=d431a75b2f8a8b50fb1f2bba6fa4e39d"/>
@@ -164,7 +164,7 @@
     </sys_pd_lane>
     <sys_variable_value action="delete_multiple" query="document_key=7ff5fb7602ae0ed5656c8d33623af50b"/>
     <sys_pd_timer_attributes action="delete_multiple" query="process_definition=d431a75b2f8a8b50fb1f2bba6fa4e39d"/>
-    <sys_pd_activity action="delete_multiple" query="process_definition=d431a75b2f8a8b50fb1f2bba6fa4e39d^sys_idNOT INda89f29ec277e3a1a992629ccaa2b240,7d2a3d0a2c1d14fbd6cec573aa9f5442,9be5029adaaed62d3e3c035426734006,2d557efc27fec55d98117024c81c362a,4af9bc5d240492c25562b32e42270298,b3fc60b68a0a285d4f716c50880aa395"/>
+    <sys_pd_activity action="delete_multiple" query="process_definition=d431a75b2f8a8b50fb1f2bba6fa4e39d^sys_idNOT INda89f29ec277e3a1a992629ccaa2b240,7d2a3d0a2c1d14fbd6cec573aa9f5442,9be5029adaaed62d3e3c035426734006,2d557efc27fec55d98117024c81c362a,4af9bc5d240492c25562b32e42270298,b3fc60b68a0a285d4f716c50880aa395,659770453ce213a31a78a7017102e0d8,892e0e0ac28c882e39cf96df6d48837b"/>
     <sys_pd_activity action="INSERT_OR_UPDATE">
         <active>true</active>
         <activity_definition display_value="Initiate Submission Request">3f328049cf710b50ccf631ad5d851c7f</activity_definition>
@@ -2549,78 +2549,1046 @@
         <value/>
     </sys_element_mapping>
     <sys_pd_activity_action_override action="delete_multiple" query="activity=b3fc60b68a0a285d4f716c50880aa395"/>
+    <sys_pd_activity action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <activity_definition display_value="Quality Assurance">55374001cff10b50ccf631ad5d851cd3</activity_definition>
+        <ai_agent_execution_mode>off</ai_agent_execution_mode>
+        <ai_agent_obj_additional_detail/>
+        <ai_agent_objective/>
+        <ai_agent_run_as>playbook_user</ai_agent_run_as>
+        <ai_agent_run_with_roles/>
+        <ai_agent_user/>
+        <condition_to_run/>
+        <derivative_order/>
+        <derivative_parent/>
+        <description/>
+        <enable_ai_agent>false</enable_ai_agent>
+        <inputs/>
+        <inputs/>
+        <label>Quality Assurance</label>
+        <lane display_value="Clearance">7ff5fb7602ae0ed5656c8d33623af50b</lane>
+        <name>quality_assurance</name>
+        <order>7</order>
+        <outputs/>
+        <process_definition display_value="Clearance">d431a75b2f8a8b50fb1f2bba6fa4e39d</process_definition>
+        <restart_rule>RUN_ONLY_ONCE</restart_rule>
+        <start_rule/>
+        <start_rule_name>after_items</start_rule_name>
+        <start_rule_vars/>
+        <starts_after_activities>b3fc60b68a0a285d4f716c50880aa395</starts_after_activities>
+        <starts_after_branches/>
+        <starts_after_lanes/>
+        <swim_lane/>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>659770453ce213a31a78a7017102e0d8</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:11:30</sys_updated_on>
+        <type_vals/>
+        <type_vals/>
+        <variant/>
+    </sys_pd_activity>
+    <sys_variable_value action="delete_multiple" query="document_key=659770453ce213a31a78a7017102e0d8"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>659770453ce213a31a78a7017102e0d8</document_key>
+        <order>2</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>1b020b8f938f4710ad88f738dd03d601</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <value>clearance</value>
+        <variable display_value="Module">d61ffe87938f4710ad88f738dd03d6b0</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>659770453ce213a31a78a7017102e0d8</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>2b020b8f938f4710ad88f738dd03d606</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <value/>
+        <variable display_value="Associated record">34ba15b133fdc3147ef8f499ed5c7bf4</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>659770453ce213a31a78a7017102e0d8</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>2f020b8f938f4710ad88f738dd03d607</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <value/>
+        <variable display_value="Tagline">ddbad5b133fdc3147ef8f499ed5c7b15</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>659770453ce213a31a78a7017102e0d8</document_key>
+        <order>1</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>5f020b8f938f4710ad88f738dd03d601</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <value/>
+        <variable display_value="submission">5a1ffe87938f4710ad88f738dd03d667</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>659770453ce213a31a78a7017102e0d8</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>63020b8f938f4710ad88f738dd03d608</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <value/>
+        <variable display_value="Title">9dba95b133fdc3147ef8f499ed5c7bbd</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>659770453ce213a31a78a7017102e0d8</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>6b020b8f938f4710ad88f738dd03d605</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <value/>
+        <variable display_value="Footer">09ba95b133fdc3147ef8f499ed5c7b8d</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>659770453ce213a31a78a7017102e0d8</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>6f020b8f938f4710ad88f738dd03d606</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <value/>
+        <variable display_value="Icon">e5ba19b133fdc3147ef8f499ed5c7b11</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>659770453ce213a31a78a7017102e0d8</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>a3020b8f938f4710ad88f738dd03d607</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <value>x_gegis_ins_policy_case_task</value>
+        <variable display_value="Experience Status Table">f0ba55b133fdc3147ef8f499ed5c7b90</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>659770453ce213a31a78a7017102e0d8</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>af020b8f938f4710ad88f738dd03d605</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <value/>
+        <variable display_value="Experience Status Record">51bad5b133fdc3147ef8f499ed5c7ba0</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>659770453ce213a31a78a7017102e0d8</document_key>
+        <order>3</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>d3020b8f938f4710ad88f738dd03d601</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <value>quality_assurance</value>
+        <variable display_value="Activity">d61ffe87938f4710ad88f738dd03d6d7</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>659770453ce213a31a78a7017102e0d8</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>e3020b8f938f4710ad88f738dd03d606</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <value>sys_flow_data</value>
+        <variable display_value="Associated table">cdba55b133fdc3147ef8f499ed5c7bf8</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>659770453ce213a31a78a7017102e0d8</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>e7020b8f938f4710ad88f738dd03d607</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <value/>
+        <variable display_value="Description">30ba55b133fdc3147ef8f499ed5c7b6a</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=659770453ce213a31a78a7017102e0d8"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>activity</field>
+        <id>659770453ce213a31a78a7017102e0d8</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>97020b8f938f4710ad88f738dd03d600</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <table>var__m_sys_hub_flow_input_4a1ffe87938f4710ad88f738dd03d65b</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>associated_record</field>
+        <id>659770453ce213a31a78a7017102e0d8</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>6f020b8f938f4710ad88f738dd03d603</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_24ba91b133fdc3147ef8f499ed5c7b8d</table>
+        <value>{{vl.Playbook Manual Activity Flow./end.record}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>associated_table</field>
+        <id>659770453ce213a31a78a7017102e0d8</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>2b020b8f938f4710ad88f738dd03d603</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_24ba91b133fdc3147ef8f499ed5c7b8d</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>description</field>
+        <id>659770453ce213a31a78a7017102e0d8</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>2f020b8f938f4710ad88f738dd03d604</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_24ba91b133fdc3147ef8f499ed5c7b8d</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>experience_status_record</field>
+        <id>659770453ce213a31a78a7017102e0d8</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>e3020b8f938f4710ad88f738dd03d603</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_24ba91b133fdc3147ef8f499ed5c7b8d</table>
+        <value>{{vl.Playbook Manual Activity Flow./end.record}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>experience_status_table</field>
+        <id>659770453ce213a31a78a7017102e0d8</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>e7020b8f938f4710ad88f738dd03d604</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_24ba91b133fdc3147ef8f499ed5c7b8d</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>footer</field>
+        <id>659770453ce213a31a78a7017102e0d8</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>af020b8f938f4710ad88f738dd03d602</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_24ba91b133fdc3147ef8f499ed5c7b8d</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>icon</field>
+        <id>659770453ce213a31a78a7017102e0d8</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>a3020b8f938f4710ad88f738dd03d604</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_24ba91b133fdc3147ef8f499ed5c7b8d</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>module</field>
+        <id>659770453ce213a31a78a7017102e0d8</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>13020b8f938f4710ad88f738dd03d601</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <table>var__m_sys_hub_flow_input_4a1ffe87938f4710ad88f738dd03d65b</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>submission</field>
+        <id>659770453ce213a31a78a7017102e0d8</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>db020b8f938f4710ad88f738dd03d600</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:11:30</sys_updated_on>
+        <table>var__m_sys_hub_flow_input_4a1ffe87938f4710ad88f738dd03d65b</table>
+        <value>{{pd.inputRecord.submission}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>tagline</field>
+        <id>659770453ce213a31a78a7017102e0d8</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>63020b8f938f4710ad88f738dd03d605</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_24ba91b133fdc3147ef8f499ed5c7b8d</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>title</field>
+        <id>659770453ce213a31a78a7017102e0d8</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>a7020b8f938f4710ad88f738dd03d605</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_24ba91b133fdc3147ef8f499ed5c7b8d</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_flow_output_4a1ffe87938f4710ad88f738dd03d65b^id=659770453ce213a31a78a7017102e0d8"/>
+    <sys_element_mapping action="delete_multiple" query="id=659770453ce213a31a78a7017102e0d8"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>activity</field>
+        <id>659770453ce213a31a78a7017102e0d8</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>97020b8f938f4710ad88f738dd03d600</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <table>var__m_sys_hub_flow_input_4a1ffe87938f4710ad88f738dd03d65b</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>associated_record</field>
+        <id>659770453ce213a31a78a7017102e0d8</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>6f020b8f938f4710ad88f738dd03d603</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_24ba91b133fdc3147ef8f499ed5c7b8d</table>
+        <value>{{vl.Playbook Manual Activity Flow./end.record}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>associated_table</field>
+        <id>659770453ce213a31a78a7017102e0d8</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>2b020b8f938f4710ad88f738dd03d603</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_24ba91b133fdc3147ef8f499ed5c7b8d</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>description</field>
+        <id>659770453ce213a31a78a7017102e0d8</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>2f020b8f938f4710ad88f738dd03d604</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_24ba91b133fdc3147ef8f499ed5c7b8d</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>experience_status_record</field>
+        <id>659770453ce213a31a78a7017102e0d8</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>e3020b8f938f4710ad88f738dd03d603</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_24ba91b133fdc3147ef8f499ed5c7b8d</table>
+        <value>{{vl.Playbook Manual Activity Flow./end.record}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>experience_status_table</field>
+        <id>659770453ce213a31a78a7017102e0d8</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>e7020b8f938f4710ad88f738dd03d604</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_24ba91b133fdc3147ef8f499ed5c7b8d</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>footer</field>
+        <id>659770453ce213a31a78a7017102e0d8</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>af020b8f938f4710ad88f738dd03d602</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_24ba91b133fdc3147ef8f499ed5c7b8d</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>icon</field>
+        <id>659770453ce213a31a78a7017102e0d8</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>a3020b8f938f4710ad88f738dd03d604</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_24ba91b133fdc3147ef8f499ed5c7b8d</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>module</field>
+        <id>659770453ce213a31a78a7017102e0d8</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>13020b8f938f4710ad88f738dd03d601</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <table>var__m_sys_hub_flow_input_4a1ffe87938f4710ad88f738dd03d65b</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>submission</field>
+        <id>659770453ce213a31a78a7017102e0d8</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>db020b8f938f4710ad88f738dd03d600</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:11:30</sys_updated_on>
+        <table>var__m_sys_hub_flow_input_4a1ffe87938f4710ad88f738dd03d65b</table>
+        <value>{{pd.inputRecord.submission}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>tagline</field>
+        <id>659770453ce213a31a78a7017102e0d8</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>63020b8f938f4710ad88f738dd03d605</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_24ba91b133fdc3147ef8f499ed5c7b8d</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>title</field>
+        <id>659770453ce213a31a78a7017102e0d8</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:10:15</sys_created_on>
+        <sys_id>a7020b8f938f4710ad88f738dd03d605</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:10:15</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_24ba91b133fdc3147ef8f499ed5c7b8d</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_pd_activity_action_override action="delete_multiple" query="activity=659770453ce213a31a78a7017102e0d8"/>
+    <sys_pd_activity action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <activity_definition display_value="End Submission Clearance">6b47c801cff10b50ccf631ad5d851c82</activity_definition>
+        <ai_agent_execution_mode>off</ai_agent_execution_mode>
+        <ai_agent_obj_additional_detail/>
+        <ai_agent_objective/>
+        <ai_agent_run_as>playbook_user</ai_agent_run_as>
+        <ai_agent_run_with_roles/>
+        <ai_agent_user/>
+        <condition_to_run/>
+        <derivative_order/>
+        <derivative_parent/>
+        <description/>
+        <enable_ai_agent>false</enable_ai_agent>
+        <inputs/>
+        <inputs/>
+        <label>End Submission Clearance</label>
+        <lane display_value="Clearance">7ff5fb7602ae0ed5656c8d33623af50b</lane>
+        <name>end_submission_clearance</name>
+        <order>8</order>
+        <outputs/>
+        <process_definition display_value="Clearance">d431a75b2f8a8b50fb1f2bba6fa4e39d</process_definition>
+        <restart_rule>RUN_ONLY_ONCE</restart_rule>
+        <start_rule/>
+        <start_rule_name>after_items</start_rule_name>
+        <start_rule_vars/>
+        <starts_after_activities>659770453ce213a31a78a7017102e0d8</starts_after_activities>
+        <starts_after_branches/>
+        <starts_after_lanes/>
+        <swim_lane/>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>892e0e0ac28c882e39cf96df6d48837b</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:33:51</sys_updated_on>
+        <type_vals/>
+        <type_vals/>
+        <variant/>
+    </sys_pd_activity>
+    <sys_variable_value action="delete_multiple" query="document_key=892e0e0ac28c882e39cf96df6d48837b"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>892e0e0ac28c882e39cf96df6d48837b</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>2307474f93cf4710ad88f738dd03d645</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <value/>
+        <variable display_value="Experience Status Record">a51b957533fdc3147ef8f499ed5c7b08</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>892e0e0ac28c882e39cf96df6d48837b</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>2707474f93cf4710ad88f738dd03d646</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <value/>
+        <variable display_value="Description">011b157533fdc3147ef8f499ed5c7bc0</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>892e0e0ac28c882e39cf96df6d48837b</document_key>
+        <order>1</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>2b07c70f93cf4710ad88f738dd03d6fd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <value/>
+        <variable display_value="submission">52a5cb4b93cf4710ad88f738dd03d66b</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>892e0e0ac28c882e39cf96df6d48837b</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>6707474f93cf4710ad88f738dd03d645</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <value/>
+        <variable display_value="Icon">b11b957533fdc3147ef8f499ed5c7b3c</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>892e0e0ac28c882e39cf96df6d48837b</document_key>
+        <order>3</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>6707c70f93cf4710ad88f738dd03d6fc</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:33:32</sys_updated_on>
+        <value>end_submission_clearance</value>
+        <variable display_value="Activity">22a5cb4b93cf4710ad88f738dd03d683</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>892e0e0ac28c882e39cf96df6d48837b</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>6b07474f93cf4710ad88f738dd03d646</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <value/>
+        <variable display_value="Title">e51b557533fdc3147ef8f499ed5c7b6f</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>892e0e0ac28c882e39cf96df6d48837b</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>a707474f93cf4710ad88f738dd03d644</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <value/>
+        <variable display_value="Pending State Description">9d1b557533fdc3147ef8f499ed5c7b0b</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>892e0e0ac28c882e39cf96df6d48837b</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>ab07474f93cf4710ad88f738dd03d645</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <value>x_gegis_ins_policy_case_task</value>
+        <variable display_value="Experience Status Table">c11b157533fdc3147ef8f499ed5c7be6</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>892e0e0ac28c882e39cf96df6d48837b</document_key>
+        <order>2</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>e307c70f93cf4710ad88f738dd03d6fd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <value>clearance</value>
+        <variable display_value="Module">9ea5cb4b93cf4710ad88f738dd03d674</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>892e0e0ac28c882e39cf96df6d48837b</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>eb07474f93cf4710ad88f738dd03d644</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <value>sys_flow_data</value>
+        <variable display_value="Associated table">9d1b557533fdc3147ef8f499ed5c7b23</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity</document>
+        <document_key>892e0e0ac28c882e39cf96df6d48837b</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>ef07474f93cf4710ad88f738dd03d645</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <value/>
+        <variable display_value="Associated record">fc1bd17533fdc3147ef8f499ed5c7bb6</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=892e0e0ac28c882e39cf96df6d48837b"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>activity</field>
+        <id>892e0e0ac28c882e39cf96df6d48837b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>2307c70f93cf4710ad88f738dd03d6fb</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <table>var__m_sys_hub_flow_input_5aa5cb4b93cf4710ad88f738dd03d65e</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>associated_record</field>
+        <id>892e0e0ac28c882e39cf96df6d48837b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>6b07474f93cf4710ad88f738dd03d643</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_341bd17533fdc3147ef8f499ed5c7bb1</table>
+        <value>{{vl.Playbook Manual Activity Flow./end.record}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>associated_table</field>
+        <id>892e0e0ac28c882e39cf96df6d48837b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>af07c70f93cf4710ad88f738dd03d6fe</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_341bd17533fdc3147ef8f499ed5c7bb1</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>description</field>
+        <id>892e0e0ac28c882e39cf96df6d48837b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>af07474f93cf4710ad88f738dd03d643</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_341bd17533fdc3147ef8f499ed5c7bb1</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>experience_status_record</field>
+        <id>892e0e0ac28c882e39cf96df6d48837b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>ab07474f93cf4710ad88f738dd03d642</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_341bd17533fdc3147ef8f499ed5c7bb1</table>
+        <value>{{vl.Playbook Manual Activity Flow./end.record}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>experience_status_table</field>
+        <id>892e0e0ac28c882e39cf96df6d48837b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>2707474f93cf4710ad88f738dd03d643</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_341bd17533fdc3147ef8f499ed5c7bb1</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>icon</field>
+        <id>892e0e0ac28c882e39cf96df6d48837b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>ef07474f93cf4710ad88f738dd03d642</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_341bd17533fdc3147ef8f499ed5c7bb1</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>module</field>
+        <id>892e0e0ac28c882e39cf96df6d48837b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>a307c70f93cf4710ad88f738dd03d6fc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <table>var__m_sys_hub_flow_input_5aa5cb4b93cf4710ad88f738dd03d65e</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>pending_description</field>
+        <id>892e0e0ac28c882e39cf96df6d48837b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>6b07c70f93cf4710ad88f738dd03d6fe</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_341bd17533fdc3147ef8f499ed5c7bb1</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>submission</field>
+        <id>892e0e0ac28c882e39cf96df6d48837b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>6f07c70f93cf4710ad88f738dd03d6fb</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:33:51</sys_updated_on>
+        <table>var__m_sys_hub_flow_input_5aa5cb4b93cf4710ad88f738dd03d65e</table>
+        <value>{{pd.inputRecord.submission}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>title</field>
+        <id>892e0e0ac28c882e39cf96df6d48837b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>e307474f93cf4710ad88f738dd03d644</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_341bd17533fdc3147ef8f499ed5c7bb1</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_flow_output_5aa5cb4b93cf4710ad88f738dd03d65e^id=892e0e0ac28c882e39cf96df6d48837b"/>
+    <sys_element_mapping action="delete_multiple" query="id=892e0e0ac28c882e39cf96df6d48837b"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>activity</field>
+        <id>892e0e0ac28c882e39cf96df6d48837b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>2307c70f93cf4710ad88f738dd03d6fb</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <table>var__m_sys_hub_flow_input_5aa5cb4b93cf4710ad88f738dd03d65e</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>associated_record</field>
+        <id>892e0e0ac28c882e39cf96df6d48837b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>6b07474f93cf4710ad88f738dd03d643</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_341bd17533fdc3147ef8f499ed5c7bb1</table>
+        <value>{{vl.Playbook Manual Activity Flow./end.record}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>associated_table</field>
+        <id>892e0e0ac28c882e39cf96df6d48837b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>af07c70f93cf4710ad88f738dd03d6fe</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_341bd17533fdc3147ef8f499ed5c7bb1</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>description</field>
+        <id>892e0e0ac28c882e39cf96df6d48837b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>af07474f93cf4710ad88f738dd03d643</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_341bd17533fdc3147ef8f499ed5c7bb1</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>experience_status_record</field>
+        <id>892e0e0ac28c882e39cf96df6d48837b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>ab07474f93cf4710ad88f738dd03d642</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_341bd17533fdc3147ef8f499ed5c7bb1</table>
+        <value>{{vl.Playbook Manual Activity Flow./end.record}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>experience_status_table</field>
+        <id>892e0e0ac28c882e39cf96df6d48837b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>2707474f93cf4710ad88f738dd03d643</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_341bd17533fdc3147ef8f499ed5c7bb1</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>icon</field>
+        <id>892e0e0ac28c882e39cf96df6d48837b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>ef07474f93cf4710ad88f738dd03d642</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_341bd17533fdc3147ef8f499ed5c7bb1</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>module</field>
+        <id>892e0e0ac28c882e39cf96df6d48837b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>a307c70f93cf4710ad88f738dd03d6fc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <table>var__m_sys_hub_flow_input_5aa5cb4b93cf4710ad88f738dd03d65e</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>pending_description</field>
+        <id>892e0e0ac28c882e39cf96df6d48837b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>6b07c70f93cf4710ad88f738dd03d6fe</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_341bd17533fdc3147ef8f499ed5c7bb1</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>submission</field>
+        <id>892e0e0ac28c882e39cf96df6d48837b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>6f07c70f93cf4710ad88f738dd03d6fb</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:33:51</sys_updated_on>
+        <table>var__m_sys_hub_flow_input_5aa5cb4b93cf4710ad88f738dd03d65e</table>
+        <value>{{pd.inputRecord.submission}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>title</field>
+        <id>892e0e0ac28c882e39cf96df6d48837b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:32:07</sys_created_on>
+        <sys_id>e307474f93cf4710ad88f738dd03d644</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:32:07</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_341bd17533fdc3147ef8f499ed5c7bb1</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_pd_activity_action_override action="delete_multiple" query="activity=892e0e0ac28c882e39cf96df6d48837b"/>
     <sys_pd_process_variant action="delete_multiple" query="process_definition=d431a75b2f8a8b50fb1f2bba6fa4e39d"/>
     <sys_pd_derivative action="delete_multiple" query="derivative_parent=2d557efc27fec55d98117024c81c362a"/>
     <sys_pd_derivative action="delete_multiple" query="derivative_parent=4af9bc5d240492c25562b32e42270298"/>
+    <sys_pd_derivative action="delete_multiple" query="derivative_parent=659770453ce213a31a78a7017102e0d8"/>
     <sys_pd_derivative action="delete_multiple" query="derivative_parent=7d2a3d0a2c1d14fbd6cec573aa9f5442"/>
+    <sys_pd_derivative action="delete_multiple" query="derivative_parent=892e0e0ac28c882e39cf96df6d48837b"/>
     <sys_pd_derivative action="delete_multiple" query="derivative_parent=9be5029adaaed62d3e3c035426734006"/>
     <sys_pd_derivative action="delete_multiple" query="derivative_parent=b3fc60b68a0a285d4f716c50880aa395"/>
     <sys_pd_derivative action="delete_multiple" query="derivative_parent=da89f29ec277e3a1a992629ccaa2b240"/>
     <sys_pd_activity_override action="delete_multiple" query="override_parent=2d557efc27fec55d98117024c81c362a"/>
     <sys_pd_activity_override action="delete_multiple" query="override_parent=4af9bc5d240492c25562b32e42270298"/>
+    <sys_pd_activity_override action="delete_multiple" query="override_parent=659770453ce213a31a78a7017102e0d8"/>
     <sys_pd_activity_override action="delete_multiple" query="override_parent=7d2a3d0a2c1d14fbd6cec573aa9f5442"/>
+    <sys_pd_activity_override action="delete_multiple" query="override_parent=892e0e0ac28c882e39cf96df6d48837b"/>
     <sys_pd_activity_override action="delete_multiple" query="override_parent=9be5029adaaed62d3e3c035426734006"/>
     <sys_pd_activity_override action="delete_multiple" query="override_parent=b3fc60b68a0a285d4f716c50880aa395"/>
     <sys_pd_activity_override action="delete_multiple" query="override_parent=da89f29ec277e3a1a992629ccaa2b240"/>
-    <sys_pd_snapshot action="delete_multiple" query="sys_id=142df243938f4710ad88f738dd03d63a^sys_idNOT IN142df243938f4710ad88f738dd03d63a"/>
+    <sys_pd_snapshot action="delete_multiple" query="sys_id=62770fcf93cf4710ad88f738dd03d6a8^sys_idNOT IN62770fcf93cf4710ad88f738dd03d6a8"/>
     <sys_pd_snapshot action="INSERT_OR_UPDATE">
         <access>public</access>
-        <derivatives>{"table":"sys_pd_snapshot","id":"142df243938f4710ad88f738dd03d63a","name":"derivatives","type":"com.snc.pd.model.serialization.DerivativeFetcher"}</derivatives>
+        <derivatives>{"table":"sys_pd_snapshot","id":"62770fcf93cf4710ad88f738dd03d6a8","name":"derivatives","type":"com.snc.pd.model.serialization.DerivativeFetcher"}</derivatives>
         <name>clearance_case_standard</name>
-        <process_definition>{"table":"sys_pd_snapshot","id":"142df243938f4710ad88f738dd03d63a","name":"process_definition","type":"com.snc.pd.model.ProcessDefinition"}</process_definition>
-        <process_dependencies>{"table":"sys_pd_snapshot","id":"142df243938f4710ad88f738dd03d63a","name":"process_dependencies","type":"com.snc.pd.model.dependency.InstructionBasedProcessDependenciesCollection"}</process_dependencies>
-        <process_plan>{"table":"sys_pd_snapshot","id":"142df243938f4710ad88f738dd03d63a","name":"process_plan","type":"com.snc.process_flow.engine.ProcessPlan"}</process_plan>
+        <process_definition>{"table":"sys_pd_snapshot","id":"62770fcf93cf4710ad88f738dd03d6a8","name":"process_definition","type":"com.snc.pd.model.ProcessDefinition"}</process_definition>
+        <process_dependencies>{"table":"sys_pd_snapshot","id":"62770fcf93cf4710ad88f738dd03d6a8","name":"process_dependencies","type":"com.snc.pd.model.dependency.InstructionBasedProcessDependenciesCollection"}</process_dependencies>
+        <process_plan>{"table":"sys_pd_snapshot","id":"62770fcf93cf4710ad88f738dd03d6a8","name":"process_plan","type":"com.snc.process_flow.engine.ProcessPlan"}</process_plan>
         <source display_value="Clearance">d431a75b2f8a8b50fb1f2bba6fa4e39d</source>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-05 13:48:45</sys_created_on>
-        <sys_id>142df243938f4710ad88f738dd03d63a</sys_id>
+        <sys_created_on>2026-09-05 14:33:57</sys_created_on>
+        <sys_id>62770fcf93cf4710ad88f738dd03d6a8</sys_id>
         <sys_mod_count>1</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-05 13:48:45</sys_updated_on>
+        <sys_updated_on>2026-09-05 14:33:57</sys_updated_on>
     </sys_pd_snapshot>
-    <sys_json_chunk action="delete_multiple" query="document_id=142df243938f4710ad88f738dd03d63a"/>
-    <sys_pd_snapshot_chunk action="delete_multiple" query="document_id=142df243938f4710ad88f738dd03d63a^sys_idNOT IN142df243938f4710ad88f738dd03d63e,182df243938f4710ad88f738dd03d63d,502df243938f4710ad88f738dd03d63d,982df243938f4710ad88f738dd03d63c"/>
+    <sys_json_chunk action="delete_multiple" query="document_id=62770fcf93cf4710ad88f738dd03d6a8"/>
+    <sys_pd_snapshot_chunk action="delete_multiple" query="document_id=62770fcf93cf4710ad88f738dd03d6a8^sys_idNOT IN2e770fcf93cf4710ad88f738dd03d6cf,a6770fcf93cf4710ad88f738dd03d6d1,aa770fcf93cf4710ad88f738dd03d6d0,e2770fcf93cf4710ad88f738dd03d6d0"/>
     <sys_pd_snapshot_chunk action="INSERT_OR_UPDATE">
-        <data>H4sIAAAAAAAA/31SS4/aMBD+L3POIRBey43C0kZaWAlQOVQVGuyBuHVsy3a2i1b73zsJSbraQ2/WNw9/j3kDJWFuKq0TMFgSzEFoQo9G0ElgoFOIaCR6CQlYF2D+42cCZ23Fb36/vSfA9ViPHRf5Id9+hQa5UttJ5qoMLdHhWWkVb9/JB2UNzIcPaZomoMKBQtxVjFxQB0rAk7BeHjGKgvy2ks2qO8Goys/QC/qWh6/Mgp8QbiFSCQ1wVLHYWd2RQa3tn2/qWuxJVJ7ZtLX2Z4dVILkjDDVBgPuHB7ujUDXOMFJgWGHEffSEZT9J3lu/oRBYeMeMOx9ruG8KBl0obMzZcBiMhvIyHGUP2ewymg5SlLPZZZrNpEwzOckQajqeTMxX3UJpS1Qm7+MSLEeZ615YR58xW3nRg9YrDqG1qao5nkqKKFnHx7kvdahLW5m4QdcVNIbYyFhidS1iL0YUSsulNZFeWVAfxz3uDf6y/l/S7KONqJ8deYwMhcdX9j8SK0nba3lSHJoh3+25cFAr5qg0s+Zx15A73GqlsH56PkInK5cLI+tCq6+ebC2BUXaejCcosrOUs/MgTccop+PJSGQ0GuM04yWKFXiDevv/2+fF9oVTVpK9Q+fY495dF9bW78hZHz/ATEGRXHtb3pH3v1JDg8dqAwAA</data>
-        <document_id display_value="clearance_case_standard">142df243938f4710ad88f738dd03d63a</document_id>
-        <field>process_plan</field>
-        <length>672</length>
-        <position>0</position>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-05 13:48:45</sys_created_on>
-        <sys_id>142df243938f4710ad88f738dd03d63e</sys_id>
-    </sys_pd_snapshot_chunk>
-    <sys_pd_snapshot_chunk action="INSERT_OR_UPDATE">
-        <data>H4sIAAAAAAAA/9WUP4/bMAzFv4vQMQNFifqTrUCXDp06HjxQlHQwkNpB4rvlcN+9MtLdPOBQtJkM5IHke/49v5nrbZV2v39r17bUtsjc7ub8Zr4Uvrf94ZVvMy/b92rOy8vlcjIXXtpX2ebXeRvaH3zdVbF36iUGQG7QKgUKkqpzAR13gmLOTwYrUWxdMPYmRDUnayOgl2RlCNmcTOWUO+Y2NLE5tpwzBswizFjQw5Dk0ggwc2VuNWB1zQk48hii8wBhSIrrEqCExMCYqPoebRCClIDZZRqSWJFdHX+Lrdb3UoOMm6Jjzp28xyHx3HMRqmOtzyhIFLA4bB5xXJ2Tmd5PhpcR3rbefrbtTxKHLkcSn2Pz0MOkCPT8NCmW6W7WHKQAZVK8wb+J06ewohijCXlS7PqnstlLMi+y/pqX5w805HD1zrZ3liMV7IlTIejFdiyFQ2ffXK77HACsw40bbruPFhoShBoyMGTwUvY5Ig9NlIcm91hcQrK1+sDyaOzRLl3Xjncp26ip2qH3MeewaMoy/ncF2LlcX7bn9WNcanxquNRwoOFJw4GKb0XuGi6Pc9dxqembhktN/zVcar5HGi6P+/Y+fr8BgeIyUZYJAAA=</data>
-        <document_id display_value="clearance_case_standard">142df243938f4710ad88f738dd03d63a</document_id>
-        <field>process_dependencies</field>
-        <length>620</length>
-        <position>0</position>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-05 13:48:45</sys_created_on>
-        <sys_id>182df243938f4710ad88f738dd03d63d</sys_id>
-    </sys_pd_snapshot_chunk>
-    <sys_pd_snapshot_chunk action="INSERT_OR_UPDATE">
-        <data>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</data>
-        <document_id display_value="clearance_case_standard">142df243938f4710ad88f738dd03d63a</document_id>
-        <field>derivatives</field>
-        <length>4728</length>
-        <position>0</position>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-05 13:48:45</sys_created_on>
-        <sys_id>502df243938f4710ad88f738dd03d63d</sys_id>
-    </sys_pd_snapshot_chunk>
-    <sys_pd_snapshot_chunk action="INSERT_OR_UPDATE">
-        <data>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</data>
-        <document_id display_value="clearance_case_standard">142df243938f4710ad88f738dd03d63a</document_id>
+        <data>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</data>
+        <document_id display_value="clearance_case_standard">62770fcf93cf4710ad88f738dd03d6a8</document_id>
         <field>process_definition</field>
-        <length>2508</length>
+        <length>2956</length>
         <position>0</position>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-05 13:48:45</sys_created_on>
-        <sys_id>982df243938f4710ad88f738dd03d63c</sys_id>
+        <sys_created_on>2026-09-05 14:33:57</sys_created_on>
+        <sys_id>2e770fcf93cf4710ad88f738dd03d6cf</sys_id>
     </sys_pd_snapshot_chunk>
-    <sys_pd_snapshot_input action="delete_multiple" query="model=142df243938f4710ad88f738dd03d63a^sys_idNOT IN182df243938f4710ad88f738dd03d642"/>
+    <sys_pd_snapshot_chunk action="INSERT_OR_UPDATE">
+        <data>H4sIAAAAAAAA/31SS4/aMBD+Lz5zyG6AsNwoLG2khZUAlUNVocGeELeObY2d7aLV/vdOQpKu9tCb9c3D32PehFZibmtjRsJChWIupEEgsBJPEgKeQgSrgJQYCeeDmP/4ORJn4+Rvfr+9jwTXYzN2XOSHfPtVtMgFu060F21xCR7O2uh4/Y4UtLNifv+QJMlI6HDAEHc1IwWYgCNBKB2pI0RZIm1r1a66EYy6+gy9AHU8qLYLfopwDREr0QJHHcudMz0ZMMb9+aYv5R5lTcymq3U/e6gDqh1CaAgKcfvw4HYY6tYZRkoIK4iwj4RQDZNI5GiDIbDwnhl3Pjbw0BQs+FC6mLPhYnqfZUkhi4dUFuPsLgE1mxVZOlMqSdUUZqKhQ2hjvuoXKleBtvkQl2Q52l720nn8jLma5AA60hxCZ1PdcDxVGEGxjo9zX5pQl662cQO+LxgIsZWxhPpSxkGMLLVRS2cjvrKgIY5b3Bv45ehf0uyji2CePRJEhsLjK/sfkZUk3bU8aQ7NIvV7Cg5qxRy1YdY87ltyh2ujVKyfno+il5WrhVVNodPXTHaWiHF6nk6mINOzUrPzXZJMQGWT6VimOJ5AlvISzQrIgtn+//Z5sXvhlLVi78B79nhw14e1ox16R/EDzBQ0qjW56oa8/wWhfmbcagMAAA==</data>
+        <document_id display_value="clearance_case_standard">62770fcf93cf4710ad88f738dd03d6a8</document_id>
+        <field>process_plan</field>
+        <length>676</length>
+        <position>0</position>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:33:57</sys_created_on>
+        <sys_id>a6770fcf93cf4710ad88f738dd03d6d1</sys_id>
+    </sys_pd_snapshot_chunk>
+    <sys_pd_snapshot_chunk action="INSERT_OR_UPDATE">
+        <data>H4sIAAAAAAAA/+VWu4obQRD8l8GhgpmetzLDJQ4cOTw26OnuORbklZD2Ljnu3z3LOd8+EMJgwYJgi56umqpi383leia53Z7kIgvLQrPczPHdfGt4k+3PG15nXNYfbI7L6+l0MCdc5Dut89u8DuxPvGyo3HvsLScLKFY4ppiosPcJPPZomzk+G+AYs3SC3IVi5FqcyxYCFUcDiOZgGEvtUGVgsnh0WCskqESI0CDYAalNooWKjCicgL14sj4GSNkHa9OApFhztiF6EnAevcNcMFuXnQWxXAak+U7JtlTQIpTIoWeXKNpSLKKvcUAyA3oer8mxC71xorF29oi1xxBgQAL22ijy2CxUIIgxQfMgAWAQq9tBpY4jxSJBoVJAfKVeE/fEoRSfm5k+DgaXcQXr+fpL1r967mo19LyPWLs0J8W1HJ8nxWG6nTULKew2KXzwSFM+yHGT4qRH0r4Tp90xGm9NirP+KW0mRX/8n8W6tea80Pn3vLx8oTJ3OW5lFzZesUEvWFq0vbkOrWHqGIb8vM1xQ0Zq1PN4wmAfOEcr0krszlrqytI0LJ9zOn/OcaPYuqTOzoXIJEZZqxonadpw9/Y2Xns7b7z2NFTW1COrQZO0XQ3vVTFjzq7HxhzV18X5dX05fy0nGt01OdH4W5MTjb81OdHorsnJvu7KnCh8qcmJxpeanGj6UeNLTf41OdH0kSa3+339MX5/ANko7VcNDQAA</data>
+        <document_id display_value="clearance_case_standard">62770fcf93cf4710ad88f738dd03d6a8</document_id>
+        <field>process_dependencies</field>
+        <length>728</length>
+        <position>0</position>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:33:57</sys_created_on>
+        <sys_id>aa770fcf93cf4710ad88f738dd03d6d0</sys_id>
+    </sys_pd_snapshot_chunk>
+    <sys_pd_snapshot_chunk action="INSERT_OR_UPDATE">
+        <data>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</data>
+        <document_id display_value="clearance_case_standard">62770fcf93cf4710ad88f738dd03d6a8</document_id>
+        <field>derivatives</field>
+        <length>6012</length>
+        <position>0</position>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:33:57</sys_created_on>
+        <sys_id>e2770fcf93cf4710ad88f738dd03d6d0</sys_id>
+    </sys_pd_snapshot_chunk>
+    <sys_pd_snapshot_input action="delete_multiple" query="model=62770fcf93cf4710ad88f738dd03d6a8^sys_idNOT INaa770fcf93cf4710ad88f738dd03d6d5"/>
     <sys_pd_snapshot_input action="INSERT_OR_UPDATE">
         <active>true</active>
         <array>false</array>
@@ -2661,10 +3629,10 @@
         <label>Parent record</label>
         <mandatory>false</mandatory>
         <max_length>32</max_length>
-        <model display_value="clearance_case_standard">142df243938f4710ad88f738dd03d63a</model>
-        <model_id>142df243938f4710ad88f738dd03d63a</model_id>
+        <model display_value="clearance_case_standard">62770fcf93cf4710ad88f738dd03d6a8</model>
+        <model_id>62770fcf93cf4710ad88f738dd03d6a8</model_id>
         <model_table/>
-        <name>var__m_sys_pd_snapshot_input_142df243938f4710ad88f738dd03d63a</name>
+        <name>var__m_sys_pd_snapshot_input_62770fcf93cf4710ad88f738dd03d6a8</name>
         <next_element/>
         <order>1</order>
         <primary>false</primary>
@@ -2683,16 +3651,16 @@
         <staged>false</staged>
         <sys_class_name>sys_pd_snapshot_input</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-05 13:48:45</sys_created_on>
-        <sys_id>182df243938f4710ad88f738dd03d642</sys_id>
+        <sys_created_on>2026-09-05 14:33:57</sys_created_on>
+        <sys_id>aa770fcf93cf4710ad88f738dd03d6d5</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Parent record</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
-        <sys_update_name>sys_pd_snapshot_input_182df243938f4710ad88f738dd03d642</sys_update_name>
+        <sys_update_name>sys_pd_snapshot_input_aa770fcf93cf4710ad88f738dd03d6d5</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-05 13:48:45</sys_updated_on>
+        <sys_updated_on>2026-09-05 14:33:57</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -2705,56 +3673,56 @@
         <write_roles/>
         <xml_view>false</xml_view>
     </sys_pd_snapshot_input>
-    <sys_pd_snapshot_output action="delete_multiple" query="model=142df243938f4710ad88f738dd03d63a"/>
-    <sys_flow_compiled_flow action="delete_multiple" query="sys_id=9c2df243fd8f471006f65844e998a03e^sys_idNOT IN9c2df243fd8f471006f65844e998a03e"/>
+    <sys_pd_snapshot_output action="delete_multiple" query="model=62770fcf93cf4710ad88f738dd03d6a8"/>
+    <sys_flow_compiled_flow action="delete_multiple" query="sys_id=22770fcf82cf4710b46d6e55550228d2^sys_idNOT IN22770fcf82cf4710b46d6e55550228d2"/>
     <sys_flow_compiled_flow action="INSERT_OR_UPDATE">
         <parent_snapshot_id/>
         <signature/>
-        <snapshot_id>142df243938f4710ad88f738dd03d63a</snapshot_id>
+        <snapshot_id>62770fcf93cf4710ad88f738dd03d6a8</snapshot_id>
         <sys_created_by>system</sys_created_by>
-        <sys_created_on>2026-09-05 13:48:45</sys_created_on>
-        <sys_id>9c2df243fd8f471006f65844e998a03e</sys_id>
+        <sys_created_on>2026-09-05 14:33:57</sys_created_on>
+        <sys_id>22770fcf82cf4710b46d6e55550228d2</sys_id>
     </sys_flow_compiled_flow>
-    <sys_flow_compiled_flow_chunk action="delete_multiple" query="document_id=9c2df243fd8f471006f65844e998a03e^sys_idNOT IN982df243938f4710ad88f738dd03d641,182df243938f4710ad88f738dd03d640,dc2df243938f4710ad88f738dd03d63f,502df243938f4710ad88f738dd03d641"/>
+    <sys_flow_compiled_flow_chunk action="delete_multiple" query="document_id=22770fcf82cf4710b46d6e55550228d2^sys_idNOT IN2e770fcf93cf4710ad88f738dd03d6d4,aa770fcf93cf4710ad88f738dd03d6d3,62770fcf93cf4710ad88f738dd03d6d3,e2770fcf93cf4710ad88f738dd03d6d4"/>
     <sys_flow_compiled_flow_chunk action="INSERT_OR_UPDATE">
         <data>H4sIAAAAAAAA/zWPT2sCQQzFv0vOe9iyfyx7axFBaCvUQo8SJ1kNjZllZmwp4ndv1Hp9eb+X904wavyZc0FRGE5Q4vSsMXx9/E4MAyxeVp9QQUyyE1vSk9HlkN15rq7kOsSrsW22fddjaLZEj9uHuu6QZl3fhobbDmeNh4gVTob6hocLEZQxoQXeBMy8yQWNMBF4cPzmlIT4FadJbAeDHVUr8FfCtEjxcFf2mOdYcF0So4sjamb3oapj/9VuztvKUUyKRF9y1/FY9jExreydvVB2oD7/ASfxp1gVAQAA</data>
-        <document_id display_value="Created 2026-09-05 06:48:45">9c2df243fd8f471006f65844e998a03e</document_id>
+        <document_id display_value="Created 2026-09-05 07:33:57">22770fcf82cf4710b46d6e55550228d2</document_id>
         <field>flow_config_param</field>
         <length>296</length>
         <position>0</position>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-05 13:48:45</sys_created_on>
-        <sys_id>982df243938f4710ad88f738dd03d641</sys_id>
+        <sys_created_on>2026-09-05 14:33:57</sys_created_on>
+        <sys_id>2e770fcf93cf4710ad88f738dd03d6d4</sys_id>
     </sys_flow_compiled_flow_chunk>
     <sys_flow_compiled_flow_chunk action="INSERT_OR_UPDATE">
-        <data>H4sIAAAAAAAA/+2ZW0/rRhDHv4vVxwjsvfjCU0OgaqRzAAGtVFWVNd5LsI5jp74AEeK7n1nbCSE2aUIbJdLpCwqzs/+d3fllL5MXSyfZ02WipiotC+vszxeryKpcqLG0ziyRKMghFSoUUKiwKCGVkEtr0DpdwVRt4fZbXKtJRh3weES0D37EbR05mkQRuBqYosGb/zCJAWOx8iwr0TiDHIO7W21KqyQZWOV8Zoa/GV6EN7fXo8u7OyMhstrKaORyFwSNpPQjx7Y5SI+7TFDFOHgUXadxOk6LMq9EGWepidFGIzyvGQM+sFSeZ/k95BNVLkZHx0tj7fHO1SzLyzidjDPr7MX62QTartWtAnmdJvMLpaFKyuuqnFVlgX4DK07xI/q/DqysNjef5aqnMb2+jT3ClU+r2UcBd5tNiv/CoYrxr3elmllnGpJC4YC5VDmGd3U6NJE8FG+Nr4N3TKTqyWR4otYp6Da0efe05jryXJuAspXkmBbhS0pdQkFzO+rkfakUbtG1h44FOCt8fBleXf5bOEgfHH6wCxzG+8BwLAPeKxw/4d+8/BCRteYWFCGIjAijnvA18xw70F5EfcIdKRkmCz4GpdELtxDow2Un3lagGo7ux7+P7//YC1gO2QUs431gsJYB7wOsOI3LGEo8XKpoGhcFioa5+rtSRQeybVwXJxL4gSaBEsTzFAUHgoC4JBACgCBHdge4DdrhFmLHCJ9D++gjdBf6jPeB6VsGvA/61HOZg+iQtm5enHeSAJU2EOFIh+lIukIJ7lGAQHPGSIeqVifcouMxEkRYH0GU7UKQ8T4wQcuA97N/FVWuZPio8ljHAoxqd+Pa4NOyFUSK2yQACaCkSyRVVNiUM+J6lNm227NjdUXDLVSOETTK+0BjO13P2eGv52yf13PxoMS3UGd5KKtZYhKuis57bZNPCxqRnHtK42GmcQ/iMvAdx7MJE74jMM3du1ifaLiFyjGCxtw+0Li7C2jG+8CgLQPeL2gFPv0bzQ8567q0mDHQQSS4xPsRC4ggnLskokQxQpCTwN+A2VIz3ELkGCnjXh9lrrcLZcb7wJQtA94LZVmq43yKl+sS8Kb9GKunDmUbXFrKIqqFa0euD3i58rlk2nNcwW3ftwFowLuUdTXDLUSOkTLX76PM83ehzHgfmLJlwPstW6i0U93sb2zJsu2m4oCPv7rioAi3XekGNtiBzcSG2pZRC7fofoxMecH/pbAuU+hfzNEwHdYSdbJUK2Sq7Hd1cbRdFYy2LiaYSM7n79JrJhO/hXI+/6qKou76Yp1mM2ODxIzxGJfzet1EAkWzbU1PilSczOTJNJMqOVmRORlPp1UJUaJuLoZSXq/prMzdTMxUkfFFDYtWw7qBUY6ytMT3qjG8T9gvOMNbpRXSKkwJ+BGSqnnVYDihaLqFKIyz05+S0esyRQqz4iHbMZg8E7ie4VsCwoVOK5s2Gt2lRp6aTNzAPMlgp1HbHia1xWLtrTNcctyLrNM2qJH5ESX5VEqbrj1ZJD94Ft8vrdlzoMDV2X6otsNa5tpjZKl/q5qS9mdy1/btSR5bS94//YSGd5VFZf1HTPLtcvb/yRc1xQTi4fQVZsvTZpKtGuozGLf1smpKLSHGMcEUmGdOFxbsgIKzRD1jOkdZlZb1D46T7BzEt/usOTXrM+B83vzzBaJ6O3hd96obOsfG63dHabZUzh0AAA==</data>
-        <document_id display_value="Created 2026-09-05 06:48:45">9c2df243fd8f471006f65844e998a03e</document_id>
+        <data>H4sIAAAAAAAA/+2abU/jOBDHv0t0LxHrOHEeeHWF5XSVdgEBd9LpdIom9hiiTZNuHlgqxHe/cZqW0qRsyl2vlfbeoGKP/554fvXYkz5ZOs2/nac4wawqrZM/n6wyrwuJY2WdWDJFKCCTGEkoMSoryBQUyjpqjS5gggPMfksaNeU6Nvgi5jqAIBZMx7bmcQyeBhed8MV+lCZAvlhFnlfUOIWCnLtZ7crqND2yqtnUTH81+hhdXV+end/cGAmZN62uE3vCA+nESgWxzZgA5QvPlQ66AnyHTCdJNs7KqqhlleSZ8ZFRIzyuNdq2f2RhUeTFLRR3WC2mJ8tz09pnXuA0L6okuxvn1smT9bNxtV2tawR1maWzj6ihTqvLuprWVUl2R1aS0Ueyfz6y8qZ5/lmtWpqm55fJz2jts3q60eVuv4nyXzRXOf71psKpdaIhLZFmLBQW5N/Fh5Fx5b586Xw+eoVFht9MkO9wHYRuRxt6X2uhY99jHJChEhQZGSjH8bgDWrC4E/qlUjRgaA8gC3ZWEPk0ujj/p3zwfj7s7fiwD4AP+7/g4yf6W1QbKVnrXmwT6PsyllorqV3fZjYRoNHTyrZdoSRuZmWuFw0Q6CNmK+RWuBqd3Y5/H9/+sRu2+FZo8f2TxXcIVpIlVQIVpZg6niRlSaJRgV9rLDuQDTFdAAdBqHmIkvs+OmBDGHKPh1IC8Ji7rAPcG9rRALFDhM92+ujjzjb0Ges907d0eBf04WNVgOyQtt68SHmKg6MYcGkr29Wx8iRK4TsAoRauyztUtTrRgIGHSBB3+why3G0IMtZ7Jmjp8G72r7IuUEUPWCQ6kWBUuxvXGzYtW2GMgvEQFAAqjysHHckc4XLPd1zGvJ4dqysaDVA5RNAc0QeaK7YBzVjvGbSlw7sATd6j/BLpvIhUPU1NwLHs3NresmlB40oIHzUlM017kFBhQDcLxl0Z2JLCDB3Q+kSjASqHCJrr9YEmvG1AM9Z7Bm3p8G5BKyFrNTdy1jVpMXNBh7EUis5HbsglF8LjscPR5Zw4CYM3MFtqRgNEDpEy4fdR5m1VcvD2X3HwdllwkHmmk2JCh+sK6KT9kOC3DmVvmLSUxY6WHou9AOhwFQjlat/2pGBBwACcUHQp62pGA0QOkTIv6KPMD7ahzFjvmbKlw7ug7GsNaVLNIijpsGTKmeuMbTZoCfNE6PvMFY5Ebjtgyp0B+Mz2bcaRqe4+1lGMBkgcIl9+2MdXEG7Dl7HeM19Lh3dyf8zUasVgWTXvXCi/Z9fSFoREBDKQPJBBwNEJpQ49pT3lBoHjd4uqm4SjAUqHCF3YX65nbKuamTHfd9Fs6fJuy7EEwOZi7GpnS5jN55VUP55XUl2KCUOMA6HJZanfKMUa1gYMP0SsbGb/X+bv5Yrsyxk1TEaNRBMwbIXMe8Sb5t1Puy7kblMoNa6czl6F2DxN8uLK6ewzlmUz9Mn6kE9NG6RmjgdKjs3CyZRSZHMkmxyXmTyequNJrjA9XpE5Hk8mdQVxilcfR0pdrumsPLt5sGZ56A4Oi24DvCFSneVZhY+VaXgdsl/oEa9RIyHb7MYPkNbzkg35E8n5sIiU6fH0u2T0ukyZwbS8z7d0psglLWj0EoFoodPKZnON7loTUfNQXMEszWGrWdsRJrblYvGtE1pz2pCsD61TZybhpO+K6XxoXxjdHzyMr9fWbDtQ0vIMn6odsBa6Npks9a9x/sLuPcFrx/ZFz1uL3vd+J0BXscWLwx8xytfLp/9XvqoZRZAS1GeYLjPOXb7a0KRi2tmrel5JjsiPOwqBqeJ0aaEBJDhN8ZHCeZbXWdX8quIuPwX55Tafp84mDZzO5v98grjZEJ7XrZqOTuZ4/huMjSVGsyIAAA==</data>
+        <document_id display_value="Created 2026-09-05 07:33:57">22770fcf82cf4710b46d6e55550228d2</document_id>
         <field>flow_structure</field>
-        <length>1708</length>
+        <length>1880</length>
         <position>0</position>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-05 13:48:45</sys_created_on>
-        <sys_id>182df243938f4710ad88f738dd03d640</sys_id>
+        <sys_created_on>2026-09-05 14:33:57</sys_created_on>
+        <sys_id>aa770fcf93cf4710ad88f738dd03d6d3</sys_id>
     </sys_flow_compiled_flow_chunk>
     <sys_flow_compiled_flow_chunk action="INSERT_OR_UPDATE">
-        <data>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</data>
-        <document_id display_value="Created 2026-09-05 06:48:45">9c2df243fd8f471006f65844e998a03e</document_id>
+        <data>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</data>
+        <document_id display_value="Created 2026-09-05 07:33:57">22770fcf82cf4710b46d6e55550228d2</document_id>
         <field>instructions</field>
-        <length>2400</length>
+        <length>2860</length>
         <position>0</position>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-05 13:48:45</sys_created_on>
-        <sys_id>dc2df243938f4710ad88f738dd03d63f</sys_id>
+        <sys_created_on>2026-09-05 14:33:57</sys_created_on>
+        <sys_id>62770fcf93cf4710ad88f738dd03d6d3</sys_id>
     </sys_flow_compiled_flow_chunk>
     <sys_flow_compiled_flow_chunk action="INSERT_OR_UPDATE">
         <data>H4sIAAAAAAAA/6tWyswrLikqTS7JzM/zTAnJD0rNzS9L9U6tdEosSc5QsqqurQUAOtk80SQAAAA=</data>
-        <document_id display_value="Created 2026-09-05 06:48:45">9c2df243fd8f471006f65844e998a03e</document_id>
+        <document_id display_value="Created 2026-09-05 07:33:57">22770fcf82cf4710b46d6e55550228d2</document_id>
         <field>runtime_value_metadata</field>
         <length>76</length>
         <position>0</position>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-05 13:48:45</sys_created_on>
-        <sys_id>502df243938f4710ad88f738dd03d641</sys_id>
+        <sys_created_on>2026-09-05 14:33:57</sys_created_on>
+        <sys_id>e2770fcf93cf4710ad88f738dd03d6d4</sys_id>
     </sys_flow_compiled_flow_chunk>
     <sys_pd_trigger_instance action="delete_multiple" query="sys_id=e3a8848f6769f2a9cb145999a2521314^sys_idNOT INe3a8848f6769f2a9cb145999a2521314"/>
     <sys_pd_trigger_instance action="INSERT_OR_UPDATE">
@@ -2831,7 +3799,7 @@
         <table>var__m_sys_pd_process_input_d431a75b2f8a8b50fb1f2bba6fa4e39d</table>
         <value>{{triggerRecord}}</value>
     </sys_element_mapping>
-    <sys_trigger_runner_mapping action="delete_multiple" query="identifier=e3a8848f6769f2a9cb145999a2521314^sys_idNOT INdc2df243938f4710ad88f738dd03d62c"/>
+    <sys_trigger_runner_mapping action="delete_multiple" query="identifier=e3a8848f6769f2a9cb145999a2521314^sys_idNOT INea770fcf93cf4710ad88f738dd03d6a7"/>
     <sys_trigger_runner_mapping action="INSERT_OR_UPDATE">
         <active>true</active>
         <data>{"trigger_on_unique_change":"org.mozilla.javascript.UniqueTag@5ccf10e5: NOT_FOUND","parent_record":{"elementMapping":"{{triggerRecord}}","variableValue":"{{triggerRecord}}","elementMappingOrVariableValue":"{{triggerRecord}}"},"run_trigger":"org.mozilla.javascript.UniqueTag@5ccf10e5: NOT_FOUND"}</data>
@@ -2839,15 +3807,15 @@
         <identifier_type>playbook</identifier_type>
         <runner>PDTriggerRunner</runner>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-05 13:48:45</sys_created_on>
-        <sys_id>dc2df243938f4710ad88f738dd03d62c</sys_id>
+        <sys_created_on>2026-09-05 14:33:57</sys_created_on>
+        <sys_id>ea770fcf93cf4710ad88f738dd03d6a7</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-05 13:48:45</sys_updated_on>
-        <trigger display_value="">982df243938f4710ad88f738dd03d62b</trigger>
+        <sys_updated_on>2026-09-05 14:33:57</sys_updated_on>
+        <trigger display_value="">62770fcf93cf4710ad88f738dd03d6a7</trigger>
     </sys_trigger_runner_mapping>
-    <sys_json_chunk action="delete_multiple" query="document_id=dc2df243938f4710ad88f738dd03d62c"/>
-    <sys_flow_record_trigger action="delete_multiple" query="sys_id=982df243938f4710ad88f738dd03d62b^sys_idNOT IN982df243938f4710ad88f738dd03d62b"/>
+    <sys_json_chunk action="delete_multiple" query="document_id=ea770fcf93cf4710ad88f738dd03d6a7"/>
+    <sys_flow_record_trigger action="delete_multiple" query="sys_id=62770fcf93cf4710ad88f738dd03d6a7^sys_idNOT IN62770fcf93cf4710ad88f738dd03d6a7"/>
     <sys_flow_record_trigger action="INSERT_OR_UPDATE">
         <active>true</active>
         <condition table="x_gegis_ins_policy_clearance_case">submissionISNOTEMPTY<item endquery="false" field="submission" goto="false" newquery="false" operator="ISNOTEMPTY" or="false" value=""/>
@@ -2864,15 +3832,15 @@
         <run_when_user_setting>any</run_when_user_setting>
         <sys_class_name>sys_flow_record_trigger</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-09-05 13:48:45</sys_created_on>
+        <sys_created_on>2026-09-05 14:33:57</sys_created_on>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
-        <sys_id>982df243938f4710ad88f738dd03d62b</sys_id>
+        <sys_id>62770fcf93cf4710ad88f738dd03d6a7</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_overrides/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-05 13:48:45</sys_updated_on>
+        <sys_updated_on>2026-09-05 14:33:57</sys_updated_on>
         <table>x_gegis_ins_policy_clearance_case</table>
         <trigger_definition/>
     </sys_flow_record_trigger>
@@ -2905,7 +3873,7 @@
         <run_strategy>run_once</run_strategy>
         <run_strategy_on_process_definition>true</run_strategy_on_process_definition>
         <schema_version>3</schema_version>
-        <snapshot display_value="clearance_case_standard">142df243938f4710ad88f738dd03d63a</snapshot>
+        <snapshot display_value="clearance_case_standard">62770fcf93cf4710ad88f738dd03d6a8</snapshot>
         <start_non_blocking>true</start_non_blocking>
         <status>published</status>
         <sync_state>COMPLETE</sync_state>
@@ -2921,7 +3889,7 @@
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_pd_process_definition_d431a75b2f8a8b50fb1f2bba6fa4e39d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-05 13:48:45</sys_updated_on>
+        <sys_updated_on>2026-09-05 14:33:57</sys_updated_on>
         <view_type>DIAGRAM</view_type>
     </sys_pd_process_definition>
     <sys_translated_text action="delete_multiple" query="documentkey=d431a75b2f8a8b50fb1f2bba6fa4e39d"/>

@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_pd_process_definition">
+    <sys_pd_process_definition action="DELETE">
+        <access>public</access>
+        <active>true</active>
+        <allow_as_nested>true</allow_as_nested>
+        <copied_from/>
+        <copied_from_label/>
+        <description>Clearance Standalone</description>
+        <designer_state>{"diagram":{"hiddenElements":{"edges":{}}}}</designer_state>
+        <engine_major_version/>
+        <evaluate_variant_children_after/>
+        <execution_type>on_demand</execution_type>
+        <label>Clearance Standalone</label>
+        <launcher_description/>
+        <launcher_inputs/>
+        <launcher_record_form_view/>
+        <launcher_show_record_form>false</launcher_show_record_form>
+        <launcher_template_fields/>
+        <launcher_title/>
+        <name>clearance</name>
+        <now_assist_kb/>
+        <now_assist_prompt/>
+        <permission>{"VIEW":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}],"LANE_ADD_OPTIONAL_ACTIVITY":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}],"CANCEL":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}],"RESTART":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}],"LANE_RESTART":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}],"ACTIVITY_RESTART":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}],"LAUNCH":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}]}</permission>
+        <process_type display_value="Standard playbook">52c6d3eeff1be2102c2fffffffffff44</process_type>
+        <public_access>false</public_access>
+        <restartable>RESTARTABLE_TRUE</restartable>
+        <run_on_pad_engine>false</run_on_pad_engine>
+        <run_strategy>run_once</run_strategy>
+        <run_strategy_on_process_definition>true</run_strategy_on_process_definition>
+        <schema_version>3</schema_version>
+        <snapshot display_value="clearance">85e1cf4f938f4710ad88f738dd03d6cb</snapshot>
+        <start_non_blocking>true</start_non_blocking>
+        <status>published</status>
+        <sync_state>IN_PROGRESS</sync_state>
+        <synced_on/>
+        <sys_class_name>sys_pd_process_definition</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 16:45:15</sys_created_on>
+        <sys_id>85df04cdcf750b50ccf631ad5d851c22</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Clearance Standalone</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_pd_process_definition_85df04cdcf750b50ccf631ad5d851c22</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:31:47</sys_updated_on>
+        <view_type>DIAGRAM</view_type>
+    </sys_pd_process_definition>
+    <sys_translated_text action="DELETE" query="documentkey=85df04cdcf750b50ccf631ad5d851c22"/>
+    <sys_variable_value action="DELETE" query="document_key=85df04cdcf750b50ccf631ad5d851c22"/>
+    <sys_element_mapping action="DELETE" query="table=var__m_sys_pd_process_input_85df04cdcf750b50ccf631ad5d851c22^id=85df04cdcf750b50ccf631ad5d851c22"/>
+    <sys_pd_process_input action="DELETE" query="model=85df04cdcf750b50ccf631ad5d851c22^sys_idNOT IN09df04cdcf750b50ccf631ad5d851c54,7a2678a40f8e0f1017613fd300d1b210"/>
+    <sys_pd_process_input action="DELETE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.snc.pd.designer.elementmapping.PlaybookInputElementMapper</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label>Parent Record</column_label>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>parent_record</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="Reference">reference</internal_type>
+        <label>Parent Record</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Clearance Standalone">85df04cdcf750b50ccf631ad5d851c22</model>
+        <model_id>85df04cdcf750b50ccf631ad5d851c22</model_id>
+        <model_table/>
+        <name>var__m_sys_pd_process_input_85df04cdcf750b50ccf631ad5d851c22</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference display_value="" name="sys_playbook_execution">sys_playbook_execution</reference>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_pd_process_input</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 16:45:15</sys_created_on>
+        <sys_id>09df04cdcf750b50ccf631ad5d851c54</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Parent Record</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_pd_process_input_09df04cdcf750b50ccf631ad5d851c54</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-09 16:30:39</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_pd_process_input>
+    <sys_pd_process_input action="DELETE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.snc.pd.designer.elementmapping.PlaybookInputElementMapper</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label>Clearance Case</column_label>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>clearance_case</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="Reference">reference</internal_type>
+        <label>Clearance Case</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Clearance Standalone">85df04cdcf750b50ccf631ad5d851c22</model>
+        <model_id>85df04cdcf750b50ccf631ad5d851c22</model_id>
+        <model_table/>
+        <name>var__m_sys_pd_process_input_85df04cdcf750b50ccf631ad5d851c22</name>
+        <next_element/>
+        <order>100</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference display_value="" name="x_gegis_ins_policy_clearance_case">x_gegis_ins_policy_clearance_case</reference>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_pd_process_input</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-09 16:31:29</sys_created_on>
+        <sys_id>7a2678a40f8e0f1017613fd300d1b210</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Clearance Case</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_pd_process_input_7a2678a40f8e0f1017613fd300d1b210</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-09 16:33:14</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_pd_process_input>
+    <sys_pd_process_output action="DELETE" query="model=85df04cdcf750b50ccf631ad5d851c22"/>
+    <sys_pd_lane action="DELETE" query="process_definition=85df04cdcf750b50ccf631ad5d851c22^sys_idNOT INeaea1dd1c34e596cce04b51c2a26c78f"/>
+    <sys_pd_lane action="DELETE">
+        <active>true</active>
+        <condition_to_run/>
+        <description>Clearance </description>
+        <label>Clearance</label>
+        <lane_condition/>
+        <name>new_stage</name>
+        <order>1</order>
+        <permission>{}</permission>
+        <process_definition display_value="Clearance Standalone">85df04cdcf750b50ccf631ad5d851c22</process_definition>
+        <restart_rule>RUN_ONLY_ONCE</restart_rule>
+        <start_rule/>
+        <start_rule_name>immediate</start_rule_name>
+        <start_rule_vars/>
+        <starts_after_activities/>
+        <starts_after_branches/>
+        <starts_after_lanes/>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 16:45:36</sys_created_on>
+        <sys_id>eaea1dd1c34e596cce04b51c2a26c78f</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 16:45:57</sys_updated_on>
+        <visible_rule/>
+    </sys_pd_lane>
+    <sys_variable_value action="DELETE" query="document_key=eaea1dd1c34e596cce04b51c2a26c78f"/>
+    <sys_pd_timer_attributes action="DELETE" query="process_definition=85df04cdcf750b50ccf631ad5d851c22"/>
+    <sys_pd_activity action="DELETE" query="process_definition=85df04cdcf750b50ccf631ad5d851c22"/>
+    <sys_pd_process_variant action="DELETE" query="process_definition=85df04cdcf750b50ccf631ad5d851c22"/>
+    <sys_pd_snapshot action="DELETE" query="sys_id=85e1cf4f938f4710ad88f738dd03d6cb^sys_idNOT IN85e1cf4f938f4710ad88f738dd03d6cb"/>
+    <sys_pd_snapshot action="DELETE">
+        <access>public</access>
+        <derivatives>{"table":"sys_pd_snapshot","id":"85e1cf4f938f4710ad88f738dd03d6cb","name":"derivatives","type":"com.snc.pd.model.serialization.DerivativeFetcher"}</derivatives>
+        <name>clearance</name>
+        <process_definition>{"table":"sys_pd_snapshot","id":"85e1cf4f938f4710ad88f738dd03d6cb","name":"process_definition","type":"com.snc.pd.model.ProcessDefinition"}</process_definition>
+        <process_dependencies>{"table":"sys_pd_snapshot","id":"85e1cf4f938f4710ad88f738dd03d6cb","name":"process_dependencies","type":"com.snc.pd.model.dependency.InstructionBasedProcessDependenciesCollection"}</process_dependencies>
+        <process_plan>{"table":"sys_pd_snapshot","id":"85e1cf4f938f4710ad88f738dd03d6cb","name":"process_plan","type":"com.snc.process_flow.engine.ProcessPlan"}</process_plan>
+        <source display_value="Clearance Standalone">85df04cdcf750b50ccf631ad5d851c22</source>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:09:33</sys_created_on>
+        <sys_id>85e1cf4f938f4710ad88f738dd03d6cb</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:09:33</sys_updated_on>
+    </sys_pd_snapshot>
+    <sys_json_chunk action="DELETE" query="document_id=85e1cf4f938f4710ad88f738dd03d6cb"/>
+    <sys_pd_snapshot_chunk action="DELETE" query="document_id=85e1cf4f938f4710ad88f738dd03d6cb^sys_idNOT IN15e1cf4f938f4710ad88f738dd03d6cd,5de1cf4f938f4710ad88f738dd03d6cc,d9e1cf4f938f4710ad88f738dd03d6cd,dde1cf4f938f4710ad88f738dd03d6ce"/>
+    <sys_pd_snapshot_chunk action="DELETE">
+        <data>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</data>
+        <document_id display_value="clearance">85e1cf4f938f4710ad88f738dd03d6cb</document_id>
+        <field>derivatives</field>
+        <length>2116</length>
+        <position>0</position>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:09:33</sys_created_on>
+        <sys_id>15e1cf4f938f4710ad88f738dd03d6cd</sys_id>
+    </sys_pd_snapshot_chunk>
+    <sys_pd_snapshot_chunk action="DELETE">
+        <data>H4sIAAAAAAAA/+1XXY/aOhD9K8i6j/uQ7wTeUmB1kRCsIHBVlVXk2JPFusGJnIS9CPHfaycBwoWWbbVb9aFCWsjYM54553gmu0eMoh7ybBprFqEkdm0tsjVCYsfUMbWpZ+vEMNAD4ngDcidJAAvMCUhTgiNIpK1/tHXmBeYUJymvlznkqPdlX58BGLBOqU5MC+yuQwhoVqSiY8Mhrhefz+DwGuYFflFB5LcoUK+JQSjommvFutxvuboWxY4N2DatyHXBiewbMf6qIzwgTAq2ZcUupBAzzgqWctTjZZKcC7l2opATwbLLzRzeVo7aOaJHv1RQEMeHKn4oygSuLWGxy26Zt1hIOPeHByTg2p+knFZFhUUqF07pUsiAU+CEVWQ8K4tgWyzBaNiJWVKozJBMWZ7BMC/OWVewt9B7CwmH5ybvASR4N63QazJvl5ZuQQhGoVlKcMnJOpTo8yJ8XQMPT4w1IohxkoOsdM0SWu/Lj7GOW32iDpueI395lqElACcJaXqdvdGts/dc0+7aMdYc0qVW5NySkPL/QQHVLn/kcy2fuwT8dvJp8DpJyGoq0My6Ak3rGlL4LgEDO+ZtCR1j/KCMzm5/pHQtpbtE/HZSuhqZ6JIBxDYboAwXcK6Utado17CIS2LdxLFHo0g3QLfM2DLAM+So1ltTVGId5mW0YXmuuGgP7psSRE5kucTTdBLH+vVLgGe0Jv6Q0878FLvTruZCpwj9jErfsrfRsP4d+H5ex2i2mITTyfiz/NMfoluSRuh9BP0GPluCv7v7ruDR07zzLfY6/mLUGeNdWqqG86suxfMtIL9RwxV3/+s4QTo7knOH0QxEU79c3B8q4BoXHNUew3ngzwL/03gYBrPF8Exhk+NliBVajob/rBTtK5SnpSAgH1ZoMR/Owtl0PFyhh5XkvDJGmt01I9PWsPpgV9N06nhdsGzLoMTwViqfFRr7k2HoDwbh9CkYTSf+OPT7wWg5Cj6/7zl9X4Iyft+YDXwfAMiHRD4C+zHRx/5i0v/7HWMepBphi5NStrplrcq+uncCuB+fWk5WRgkjvuyfeX66nxv2IqQXDdLh0ngU6WbOcZav01Zngv+AlHW7q5uG/EVhg6t32roRgAhYUd2Tlmlw3fvrhfk6fZ0BkU37MRWbUyrH5fPSksHrpWsAmyyR+T4ySGh+uTbiWalu4/78b2lIcN5klWGhepWogiuTbCCZSBUYY9hC4rfHq+o5JK2KteSbg+1gYkaUepF8q7AxdW3HIqakALumai4l9/NFrnBuSsllPhu8BFH3A7PpVZOUf0pS8i/jL6hXiBIq33mhGHjZTfnT4IZZ5iCfwlQN1MNXRNf7PKIPAAA=</data>
+        <document_id display_value="clearance">85e1cf4f938f4710ad88f738dd03d6cb</document_id>
+        <field>process_definition</field>
+        <length>1356</length>
+        <position>0</position>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:09:33</sys_created_on>
+        <sys_id>5de1cf4f938f4710ad88f738dd03d6cc</sys_id>
+    </sys_pd_snapshot_chunk>
+    <sys_pd_snapshot_chunk action="DELETE">
+        <data>H4sIAAAAAAAA/5WSvW7DMAyE30Xo6EGU9WdvBbJ06NQxyEBRVGDAlQ3byRLk3Ssj2a1q0nD67nTkQ8zLRLyuJ545R8408Cr6h/gIuPJ+ueMyYN6+oujzbRwbMWLmT9qG+7AV7TfOu4qREWIEajWbzhKx1MEAKVSWnE+iP4tOaXKUoMXkYwigGHSbtGKvvAFI4vJsBOaSZpuWH97e6MNn/fnS1ATY8UOm6XfI1zebIoN0OkFRaAcyJGsYTauDc2yD2WN7E5PUFCk5I4ORRMm2gNFEv/OVKO4VGY+9CufQq3AkvDiqe3G8a01nEkpLXdTB7pxDTe04ptt2nf7X1zG3rq+af9b0VdN7TV/He/As5w95Mu7iUQMAAA==</data>
+        <document_id display_value="clearance">85e1cf4f938f4710ad88f738dd03d6cb</document_id>
+        <field>process_dependencies</field>
+        <length>376</length>
+        <position>0</position>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:09:33</sys_created_on>
+        <sys_id>d9e1cf4f938f4710ad88f738dd03d6cd</sys_id>
+    </sys_pd_snapshot_chunk>
+    <sys_pd_snapshot_chunk action="DELETE">
+        <data>H4sIAAAAAAAA/11SyW7bMBD9F551kCsvim+uHbcCYgewjfoQFMWIHFlsKZLgksYI8u8dyZIa+Ea82d7CdyYFW+qoVMI0NMiWjCsEB5ojS5ixni1ffiasVIb/off7R8J8gNA2nlfFqdh/Yx1ywb4T9UVqXIOFUioZrj/QeWk0W355SNM0YdKf0IdDJKQC5TFhDrlx4gyB1+j2UXSrbpSCbO6hV3A9Dxf1ip7MX33AhnXAWYb6YNRABpQyf7/LS31EHh2x6Wv9ZQvRozgg+JYgY7eDJ3NAHzsvCKnBbyDAMTiEZpxE54zbofckfGBGnY8tPDZ5DdbXJhRkMctnOOHVtHrI8mq6mKQg8rxaZLkQaSbmvGQtHYc6FJthoTANSF2MAXGSI/XlyI3Fe8xEx0fQOEkh9DbFluOvBgMI0vF57msb6tpEHXZgh4ICHzoZa4iXOoxieC2VWBsd8I0EjXHc4t7Bb+P+J00+mgDq2aKDQJB/fCP/A5KStP8tT5JC0+iGPRUFtSGOUhFrGrcdudO1Vcq2T89nNsgqxEqLttDrayd7S9g0K+ezOfCsFCIvJ2k6A7GYzac8w+kMFhktkaTAaVD7+99Oq8wr5SoFuQXWkqujn9ZvjTugNS58gumoRLF1prkhH/8ATlWC9E4DAAA=</data>
+        <document_id display_value="clearance">85e1cf4f938f4710ad88f738dd03d6cb</document_id>
+        <field>process_plan</field>
+        <length>660</length>
+        <position>0</position>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:09:33</sys_created_on>
+        <sys_id>dde1cf4f938f4710ad88f738dd03d6ce</sys_id>
+    </sys_pd_snapshot_chunk>
+    <sys_pd_snapshot_input action="DELETE" query="model=85e1cf4f938f4710ad88f738dd03d6cb^sys_idNOT INdde1cf4f938f4710ad88f738dd03d6d3,19e1038f938f4710ad88f738dd03d610"/>
+    <sys_pd_snapshot_input action="DELETE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.snc.pd.designer.elementmapping.PlaybookInputElementMapper</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label>Parent Record</column_label>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>parent_record</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="Reference">reference</internal_type>
+        <label>Parent Record</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="clearance">85e1cf4f938f4710ad88f738dd03d6cb</model>
+        <model_id>85e1cf4f938f4710ad88f738dd03d6cb</model_id>
+        <model_table/>
+        <name>var__m_sys_pd_snapshot_input_85e1cf4f938f4710ad88f738dd03d6cb</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference display_value="" name="sys_playbook_execution">sys_playbook_execution</reference>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_pd_snapshot_input</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:09:33</sys_created_on>
+        <sys_id>dde1cf4f938f4710ad88f738dd03d6d3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Parent Record</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_pd_snapshot_input_dde1cf4f938f4710ad88f738dd03d6d3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:09:33</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_pd_snapshot_input>
+    <sys_pd_snapshot_input action="DELETE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.snc.pd.designer.elementmapping.PlaybookInputElementMapper</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label>Clearance Case</column_label>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>clearance_case</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="Reference">reference</internal_type>
+        <label>Clearance Case</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="clearance">85e1cf4f938f4710ad88f738dd03d6cb</model>
+        <model_id>85e1cf4f938f4710ad88f738dd03d6cb</model_id>
+        <model_table/>
+        <name>var__m_sys_pd_snapshot_input_85e1cf4f938f4710ad88f738dd03d6cb</name>
+        <next_element/>
+        <order>100</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference display_value="" name="x_gegis_ins_policy_clearance_case">x_gegis_ins_policy_clearance_case</reference>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_pd_snapshot_input</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:09:34</sys_created_on>
+        <sys_id>19e1038f938f4710ad88f738dd03d610</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Clearance Case</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_pd_snapshot_input_19e1038f938f4710ad88f738dd03d610</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:09:34</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_pd_snapshot_input>
+    <sys_pd_snapshot_output action="DELETE" query="model=85e1cf4f938f4710ad88f738dd03d6cb"/>
+    <sys_flow_compiled_flow action="DELETE" query="sys_id=55e1cf4f7e8f4710b26de52fa086cdd0^sys_idNOT IN55e1cf4f7e8f4710b26de52fa086cdd0"/>
+    <sys_flow_compiled_flow action="DELETE">
+        <parent_snapshot_id/>
+        <signature/>
+        <snapshot_id>85e1cf4f938f4710ad88f738dd03d6cb</snapshot_id>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2026-09-05 14:09:33</sys_created_on>
+        <sys_id>55e1cf4f7e8f4710b26de52fa086cdd0</sys_id>
+    </sys_flow_compiled_flow>
+    <sys_flow_compiled_flow_chunk action="DELETE" query="document_id=55e1cf4f7e8f4710b26de52fa086cdd0^sys_idNOT IN51e1cf4f938f4710ad88f738dd03d6d3,dde1cf4f938f4710ad88f738dd03d6d1,95e1cf4f938f4710ad88f738dd03d6d1,19e1cf4f938f4710ad88f738dd03d6d2"/>
+    <sys_flow_compiled_flow_chunk action="DELETE">
+        <data>H4sIAAAAAAAA/zWPTWsCUQxF/0vWs5gyH5bZtYgg2ApV6DrzXkaDMRnePFuK+N+NWrc351xuzjCI/c4pIwt0Z8g2vouFw/ZvJOhgsVp/QwGWeMe6jG8ab4fJyUtxNzfB7mBd9W3TYqj6GF/7l7JsMM6atg4V1Q3OKi9hzZQU5ROPNyMIYUINBF5lP5QSR/rAcWTdQacnkQK8nCkukh2fyR6nOWbc5ETo4YAykXMo4tr/mAf5+Gtg5czm2585nvLeEsW1fpFPmFwoL1dv2T8sBwEAAA==</data>
+        <document_id display_value="Created 2026-09-05 07:09:33">55e1cf4f7e8f4710b26de52fa086cdd0</document_id>
+        <field>flow_config_param</field>
+        <length>284</length>
+        <position>0</position>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:09:33</sys_created_on>
+        <sys_id>51e1cf4f938f4710ad88f738dd03d6d3</sys_id>
+    </sys_flow_compiled_flow_chunk>
+    <sys_flow_compiled_flow_chunk action="DELETE">
+        <data>H4sIAAAAAAAA/+1YXW/aShD9L6v7iIi/DTyVkFxdpDSJIK1UVZW13h0T69q7lnfdBkX8987ahhAwt5DbKJXaFwSzM2dm5xxmDI8kyeS3ywxyEFqR0edHomRVMphyMiIsA1pSwYD0WvM1zaHz4ENaRwx8nlge4ywJfSv2LcaSwLUp9/nAt5njbPzHWUoxHyml1GgsaIkFzLePRJVlPaKXhUl4O76Ibmc3k8v53EAwWVs9Nw78gDI35nwQ25blUx76gcdc8Hwauuiap2IqlC4rplMpTI0WGunDjtFDK5SlLO9ouQC9zo6Ol8ba4V1CIUudisVUktEjeWcKbbszA8pvRLa8gIRWmb6pdFFphX49kgp8i/6rHpG1uXnPtz2NafWUe4K9FlVxqOD9Y0PjF0ylpv/MNRRklNBMASYsOZRY3vXZ2FRyr54OV71nvAv4FilNF3u87x+0vAMFanNuM9cDfxgwBpYXG8apE7BwkOzxvkGKjgjtUMdaOFv6uBpfX/5fcThd4nC9U8RhvN9YHJuCX1Ucf+FrqQ9KZOe4FQrjYFuhl9jIrBfaVpwEPlDf9eIwhCD2DwulwYuOAOiSy0l62xLVeHI3/Ti9+/QqwrKdU4RlvN9YWJuCX0NYIHikqjhPlUK86ODy+aFfK7Wh47GQJbZLkwGPY9sB23MTz4GBg8vI3p9Jh4CjI5B+Rc3ZbpfoHPcU0RnvNxbdpuDXnWbI/uFZtn3Yysuym0HkDJtBNAhdf+gn1ArYkHtx8B+TzAjtiPBfUVOO92dD7msK/dUSDfm4hqjJghbIPGDP62emtitYbSrSppLz5TN6zWXSp1LOl+9BqTr0kZzJwthoZnJ8TfWy7hvLqDK6YDLvK8H6Be/nkkPW34LpT/O80jTO4PZizPnNDs7W3c3FTHcGPULXp0brRox8IoWGB20Mzwn7G284gwRQrfUU/kqzythTgeVErAmLEBhvl7wIJtmFUYIW6l6eWEwpGfYzeiIgWuO0sKLB2G816qlh4pYuM0lPytpGGGrVuvdkhC3HWUTO2qImZtFkL6K0Ce1gMfzNWXzeWjNzqMLuHJ+qDdhhrl0jG/wZNE+6L+Guje0gb7hD3o9+WUclrB+4f0eSZ5vb/5QvqkACcTm9p8Vm2yzktqHewTjWdaXq6AjrWCAFinSJBQMQsMjgAemcyEro+n+IhTyn7N872WzNegecL5sPVzSux8Fq16s+2Fsbq+/KapS4yREAAA==</data>
+        <document_id display_value="Created 2026-09-05 07:09:33">55e1cf4f7e8f4710b26de52fa086cdd0</document_id>
+        <field>flow_structure</field>
+        <length>1240</length>
+        <position>0</position>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:09:33</sys_created_on>
+        <sys_id>dde1cf4f938f4710ad88f738dd03d6d1</sys_id>
+    </sys_flow_compiled_flow_chunk>
+    <sys_flow_compiled_flow_chunk action="DELETE">
+        <data>H4sIAAAAAAAA/+1b207bMBh+F19XUWzHScrVGGwT2sSmwraLaaocHyBamlSNA0OId5/dBsbagtMlTi+aO9rGp/871F9t7kGal2pRMZUWeQmOftyDNyyjpf4TsGLmlTnz5tybFVxk3rNHvbPZrFI0ycSX0wtFF+rs72dgBFIOjvwRoPr1TaruzvRLEBMu/YBxJiPiJ8RnTIYYUk54TCBDaFqafnTjOT8pciV+K9NMz0fdzcU5nQndx/usuJ0IKRYiZ0I/ekOzyryf5nqWU7ZqNtWjP4yA/K9u5Ho3ZU7n5XWx42QWBRNlOeVCpnlqijJ97KfuNl/1wTJBF1S3f1p9Wn6emwY0A0eSZqV4GP0HJqeCpVycm9VvAAN3BOZQIOmm8hfXRZXx47rAkyrfBACNQEYToYcBAU5CElKGE87jBPo+oTwiYcCwCAiNsPdEEC8Xt4YkV8JjXEA/CiSMYhlE0E9kSAQlOEiiSIQJeeLSPzDbWh0KzIsqf0Tnk1MU9EDN9VxPW+qVeTeophhXxXaafaepuix+iS3kwiNQzHXPk3cfzi4u303027ePT38Udw2IMDXPT5VpALqY7CVdXIktPhS4loFKZ2LRyRJMvTcXQByU1uIuk7/k3ZxP6LqgK0YPrvLi93leZVkrUowME+aZULVqnEHJi9ysURUVu3Y81HIMM5aRo+uxlpJfmvzbrGC/0vwKHGmZCEdG/JK3Ra6laDjj0Nri/q3t0tDkZXMbD8az1Xgcf4XW2jXgHl/RNHes3yWte9Yq9F1XcWm2jvd9ENYbv6/nLrd+bXInGiS83+AJcUumj1HAIiYhpjLmSQKRgAGWARIxigmEcnvytLU6FJy7Sp5WFPaTPGFgjZ7WmfcUPSFxLQTX2ROGDorbJnzCtlvehqwenGW39LkLK7pKn9Yxu0ufdiF2lz4bin4tfS6tt+8tbexajI7zJxz3b2+WAIrWD7QG8+kggTbWb0cJtBmxe5Yrgq6r2EcCRahBAnWu4tcSKMKDhPd89Nn20MeHq98M0Hj1m0EcYTImkvohG/MgCbcnUFurQ8G5qwRqRWE/CRQRawK1zrynBIraHtZZF+I6gaLIQXHbJFDUdtPbkNWDs+yWQHdhRVcJ1DpmdwnULsTuEmhD0e///BONXWvRcQDFfv/uZgmgeP3i3uA9HQTQxvLtKIA2I3bPcsVtryQ281vXV99wgwDqXMWvBVAcDBLebwDFz05+rDfS603CcFu6WZS01vNxb9fZNfeTusMtOIdruB0KLo3J/QyMjX9GeBWonyOgh6dVpg1uXqlvZnYatPuHp/c/V+qfDx7+AOny98dnMgAA</data>
+        <document_id display_value="Created 2026-09-05 07:09:33">55e1cf4f7e8f4710b26de52fa086cdd0</document_id>
+        <field>instructions</field>
+        <length>1332</length>
+        <position>0</position>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:09:33</sys_created_on>
+        <sys_id>95e1cf4f938f4710ad88f738dd03d6d1</sys_id>
+    </sys_flow_compiled_flow_chunk>
+    <sys_flow_compiled_flow_chunk action="DELETE">
+        <data>H4sIAAAAAAAA/6tWyswrLikqTS7JzM/zTAnJD0rNzS9L9U6tdEosSc5QsqqurQUAOtk80SQAAAA=</data>
+        <document_id display_value="Created 2026-09-05 07:09:33">55e1cf4f7e8f4710b26de52fa086cdd0</document_id>
+        <field>runtime_value_metadata</field>
+        <length>76</length>
+        <position>0</position>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:09:33</sys_created_on>
+        <sys_id>19e1cf4f938f4710ad88f738dd03d6d2</sys_id>
+    </sys_flow_compiled_flow_chunk>
+    <sys_pd_process_definition action="DELETE">
+        <access>public</access>
+        <active>true</active>
+        <allow_as_nested>true</allow_as_nested>
+        <copied_from/>
+        <copied_from_label/>
+        <description>Clearance Standalone</description>
+        <designer_state>{"diagram":{"hiddenElements":{"edges":{}}}}</designer_state>
+        <engine_major_version/>
+        <evaluate_variant_children_after/>
+        <execution_type>on_demand</execution_type>
+        <label>Clearance Standalone</label>
+        <launcher_description/>
+        <launcher_inputs/>
+        <launcher_record_form_view/>
+        <launcher_show_record_form>false</launcher_show_record_form>
+        <launcher_template_fields/>
+        <launcher_title/>
+        <name>clearance</name>
+        <now_assist_kb/>
+        <now_assist_prompt/>
+        <permission>{"VIEW":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}],"LANE_ADD_OPTIONAL_ACTIVITY":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}],"CANCEL":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}],"RESTART":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}],"LANE_RESTART":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}],"ACTIVITY_RESTART":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}],"LAUNCH":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}]}</permission>
+        <process_type display_value="Standard playbook">52c6d3eeff1be2102c2fffffffffff44</process_type>
+        <public_access>false</public_access>
+        <restartable>RESTARTABLE_TRUE</restartable>
+        <run_on_pad_engine>false</run_on_pad_engine>
+        <run_strategy>run_once</run_strategy>
+        <run_strategy_on_process_definition>true</run_strategy_on_process_definition>
+        <schema_version>3</schema_version>
+        <snapshot display_value="clearance">85e1cf4f938f4710ad88f738dd03d6cb</snapshot>
+        <start_non_blocking>true</start_non_blocking>
+        <status>published</status>
+        <sync_state>COMPLETE</sync_state>
+        <synced_on/>
+        <sys_class_name>sys_pd_process_definition</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 16:45:15</sys_created_on>
+        <sys_id>85df04cdcf750b50ccf631ad5d851c22</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Clearance Standalone</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_pd_process_definition_85df04cdcf750b50ccf631ad5d851c22</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:31:47</sys_updated_on>
+        <view_type>DIAGRAM</view_type>
+    </sys_pd_process_definition>
+    <sys_translated_text action="DELETE" query="documentkey=85df04cdcf750b50ccf631ad5d851c22"/>
+    <sys_variable_value action="DELETE" query="document_key=85df04cdcf750b50ccf631ad5d851c22"/>
+    <sys_element_mapping action="DELETE" query="table=var__m_sys_pd_process_input_85df04cdcf750b50ccf631ad5d851c22^id=85df04cdcf750b50ccf631ad5d851c22"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</application>
+        <file_path/>
+        <instance_id>27bc87902bdf2e54e83bf9f66e91bf33</instance_id>
+        <instance_name>dev354751</instance_name>
+        <name>sys_pd_process_definition_85df04cdcf750b50ccf631ad5d851c22</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_pd_process_definition"&gt;&lt;sys_pd_process_definition action="INSERT_OR_UPDATE"&gt;&lt;access&gt;public&lt;/access&gt;&lt;active&gt;true&lt;/active&gt;&lt;allow_as_nested&gt;true&lt;/allow_as_nested&gt;&lt;copied_from/&gt;&lt;copied_from_label/&gt;&lt;description&gt;Clearance Standalone&lt;/description&gt;&lt;designer_state&gt;{"diagram":{"hiddenElements":{"edges":{}}}}&lt;/designer_state&gt;&lt;engine_major_version/&gt;&lt;evaluate_variant_children_after/&gt;&lt;execution_type&gt;on_demand&lt;/execution_type&gt;&lt;label&gt;Clearance Standalone&lt;/label&gt;&lt;launcher_description/&gt;&lt;launcher_inputs/&gt;&lt;launcher_record_form_view/&gt;&lt;launcher_show_record_form&gt;false&lt;/launcher_show_record_form&gt;&lt;launcher_template_fields/&gt;&lt;launcher_title/&gt;&lt;name&gt;clearance&lt;/name&gt;&lt;now_assist_kb/&gt;&lt;now_assist_prompt/&gt;&lt;permission&gt;{"VIEW":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}],"LANE_ADD_OPTIONAL_ACTIVITY":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}],"CANCEL":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}],"RESTART":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}],"LANE_RESTART":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}],"ACTIVITY_RESTART":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}],"LAUNCH":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}]}&lt;/permission&gt;&lt;process_type display_value="Standard playbook"&gt;52c6d3eeff1be2102c2fffffffffff44&lt;/process_type&gt;&lt;public_access&gt;false&lt;/public_access&gt;&lt;restartable&gt;RESTARTABLE_TRUE&lt;/restartable&gt;&lt;run_on_pad_engine&gt;false&lt;/run_on_pad_engine&gt;&lt;run_strategy&gt;run_once&lt;/run_strategy&gt;&lt;run_strategy_on_process_definition&gt;true&lt;/run_strategy_on_process_definition&gt;&lt;schema_version&gt;3&lt;/schema_version&gt;&lt;snapshot display_value="clearance"&gt;85e1cf4f938f4710ad88f738dd03d6cb&lt;/snapshot&gt;&lt;start_non_blocking&gt;true&lt;/start_non_blocking&gt;&lt;status&gt;published&lt;/status&gt;&lt;sync_state&gt;IN_PROGRESS&lt;/sync_state&gt;&lt;synced_on/&gt;&lt;sys_class_name&gt;sys_pd_process_definition&lt;/sys_class_name&gt;&lt;sys_created_by&gt;Palakala.SurenderReddy&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-06-28 16:45:15&lt;/sys_created_on&gt;&lt;sys_id&gt;85df04cdcf750b50ccf631ad5d851c22&lt;/sys_id&gt;&lt;sys_mod_count&gt;4&lt;/sys_mod_count&gt;&lt;sys_name&gt;Clearance Standalone&lt;/sys_name&gt;&lt;sys_package display_value="Policy Suite" source="x_gegis_ins_policy"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_pd_process_definition_85df04cdcf750b50ccf631ad5d851c22&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-09-05 14:31:47&lt;/sys_updated_on&gt;&lt;view_type&gt;DIAGRAM&lt;/view_type&gt;&lt;/sys_pd_process_definition&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=85df04cdcf750b50ccf631ad5d851c22"/&gt;&lt;sys_variable_value action="delete_multiple" query="document_key=85df04cdcf750b50ccf631ad5d851c22"/&gt;&lt;sys_element_mapping action="delete_multiple" query="table=var__m_sys_pd_process_input_85df04cdcf750b50ccf631ad5d851c22^id=85df04cdcf750b50ccf631ad5d851c22"/&gt;&lt;sys_pd_process_input action="delete_multiple" query="model=85df04cdcf750b50ccf631ad5d851c22^sys_idNOT IN09df04cdcf750b50ccf631ad5d851c54,7a2678a40f8e0f1017613fd300d1b210"/&gt;&lt;sys_pd_process_input action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;array_denormalized&gt;false&lt;/array_denormalized&gt;&lt;attributes&gt;element_mapping_provider=com.snc.pd.designer.elementmapping.PlaybookInputElementMapper&lt;/attributes&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation&gt;&lt;![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]&gt;&lt;/calculation&gt;&lt;choice/&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;column_label&gt;Parent Record&lt;/column_label&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value/&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;parent_record&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;help/&gt;&lt;hint/&gt;&lt;internal_type display_value="Reference"&gt;reference&lt;/internal_type&gt;&lt;label&gt;Parent Record&lt;/label&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;32&lt;/max_length&gt;&lt;model display_value="Clearance Standalone"&gt;85df04cdcf750b50ccf631ad5d851c22&lt;/model&gt;&lt;model_id&gt;85df04cdcf750b50ccf631ad5d851c22&lt;/model_id&gt;&lt;model_table/&gt;&lt;name&gt;var__m_sys_pd_process_input_85df04cdcf750b50ccf631ad5d851c22&lt;/name&gt;&lt;next_element/&gt;&lt;order&gt;1&lt;/order&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference display_value="" name="sys_playbook_execution"&gt;sys_playbook_execution&lt;/reference&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;sizeclass/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_pd_process_input&lt;/sys_class_name&gt;&lt;sys_created_by&gt;Palakala.SurenderReddy&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-06-28 16:45:15&lt;/sys_created_on&gt;&lt;sys_id&gt;09df04cdcf750b50ccf631ad5d851c54&lt;/sys_id&gt;&lt;sys_mod_count&gt;2&lt;/sys_mod_count&gt;&lt;sys_name&gt;Parent Record&lt;/sys_name&gt;&lt;sys_package display_value="Policy Suite" source="x_gegis_ins_policy"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_pd_process_input_09df04cdcf750b50ccf631ad5d851c54&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-09 16:30:39&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type&gt;script&lt;/virtual_type&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_pd_process_input&gt;&lt;sys_pd_process_input action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;array_denormalized&gt;false&lt;/array_denormalized&gt;&lt;attributes&gt;element_mapping_provider=com.snc.pd.designer.elementmapping.PlaybookInputElementMapper&lt;/attributes&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation&gt;&lt;![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]&gt;&lt;/calculation&gt;&lt;choice/&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;column_label&gt;Clearance Case&lt;/column_label&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value/&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;clearance_case&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;help/&gt;&lt;hint/&gt;&lt;internal_type display_value="Reference"&gt;reference&lt;/internal_type&gt;&lt;label&gt;Clearance Case&lt;/label&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;32&lt;/max_length&gt;&lt;model display_value="Clearance Standalone"&gt;85df04cdcf750b50ccf631ad5d851c22&lt;/model&gt;&lt;model_id&gt;85df04cdcf750b50ccf631ad5d851c22&lt;/model_id&gt;&lt;model_table/&gt;&lt;name&gt;var__m_sys_pd_process_input_85df04cdcf750b50ccf631ad5d851c22&lt;/name&gt;&lt;next_element/&gt;&lt;order&gt;100&lt;/order&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference display_value="" name="x_gegis_ins_policy_clearance_case"&gt;x_gegis_ins_policy_clearance_case&lt;/reference&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;sizeclass/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_pd_process_input&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-07-09 16:31:29&lt;/sys_created_on&gt;&lt;sys_id&gt;7a2678a40f8e0f1017613fd300d1b210&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_name&gt;Clearance Case&lt;/sys_name&gt;&lt;sys_package display_value="Policy Suite" source="x_gegis_ins_policy"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_pd_process_input_7a2678a40f8e0f1017613fd300d1b210&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-07-09 16:33:14&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type&gt;script&lt;/virtual_type&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_pd_process_input&gt;&lt;sys_pd_process_output action="delete_multiple" query="model=85df04cdcf750b50ccf631ad5d851c22"/&gt;&lt;sys_pd_lane action="delete_multiple" query="process_definition=85df04cdcf750b50ccf631ad5d851c22^sys_idNOT INeaea1dd1c34e596cce04b51c2a26c78f"/&gt;&lt;sys_pd_lane action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;condition_to_run/&gt;&lt;description&gt;Clearance &lt;/description&gt;&lt;label&gt;Clearance&lt;/label&gt;&lt;lane_condition/&gt;&lt;name&gt;new_stage&lt;/name&gt;&lt;order&gt;1&lt;/order&gt;&lt;permission&gt;{}&lt;/permission&gt;&lt;process_definition display_value="Clearance Standalone"&gt;85df04cdcf750b50ccf631ad5d851c22&lt;/process_definition&gt;&lt;restart_rule&gt;RUN_ONLY_ONCE&lt;/restart_rule&gt;&lt;start_rule/&gt;&lt;start_rule_name&gt;immediate&lt;/start_rule_name&gt;&lt;start_rule_vars/&gt;&lt;starts_after_activities/&gt;&lt;starts_after_branches/&gt;&lt;starts_after_lanes/&gt;&lt;sys_created_by&gt;Palakala.SurenderReddy&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-06-28 16:45:36&lt;/sys_created_on&gt;&lt;sys_id&gt;eaea1dd1c34e596cce04b51c2a26c78f&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;Palakala.SurenderReddy&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-06-28 16:45:57&lt;/sys_updated_on&gt;&lt;visible_rule/&gt;&lt;/sys_pd_lane&gt;&lt;sys_variable_value action="delete_multiple" query="document_key=eaea1dd1c34e596cce04b51c2a26c78f"/&gt;&lt;sys_pd_timer_attributes action="delete_multiple" query="process_definition=85df04cdcf750b50ccf631ad5d851c22"/&gt;&lt;sys_pd_activity action="delete_multiple" query="process_definition=85df04cdcf750b50ccf631ad5d851c22"/&gt;&lt;sys_pd_process_variant action="delete_multiple" query="process_definition=85df04cdcf750b50ccf631ad5d851c22"/&gt;&lt;sys_pd_snapshot action="delete_multiple" query="sys_id=85e1cf4f938f4710ad88f738dd03d6cb^sys_idNOT IN85e1cf4f938f4710ad88f738dd03d6cb"/&gt;&lt;sys_pd_snapshot action="INSERT_OR_UPDATE"&gt;&lt;access&gt;public&lt;/access&gt;&lt;derivatives&gt;{"table":"sys_pd_snapshot","id":"85e1cf4f938f4710ad88f738dd03d6cb","name":"derivatives","type":"com.snc.pd.model.serialization.DerivativeFetcher"}&lt;/derivatives&gt;&lt;name&gt;clearance&lt;/name&gt;&lt;process_definition&gt;{"table":"sys_pd_snapshot","id":"85e1cf4f938f4710ad88f738dd03d6cb","name":"process_definition","type":"com.snc.pd.model.ProcessDefinition"}&lt;/process_definition&gt;&lt;process_dependencies&gt;{"table":"sys_pd_snapshot","id":"85e1cf4f938f4710ad88f738dd03d6cb","name":"process_dependencies","type":"com.snc.pd.model.dependency.InstructionBasedProcessDependenciesCollection"}&lt;/process_dependencies&gt;&lt;process_plan&gt;{"table":"sys_pd_snapshot","id":"85e1cf4f938f4710ad88f738dd03d6cb","name":"process_plan","type":"com.snc.process_flow.engine.ProcessPlan"}&lt;/process_plan&gt;&lt;source display_value="Clearance Standalone"&gt;85df04cdcf750b50ccf631ad5d851c22&lt;/source&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-05 14:09:33&lt;/sys_created_on&gt;&lt;sys_id&gt;85e1cf4f938f4710ad88f738dd03d6cb&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-09-05 14:09:33&lt;/sys_updated_on&gt;&lt;/sys_pd_snapshot&gt;&lt;sys_json_chunk action="delete_multiple" query="document_id=85e1cf4f938f4710ad88f738dd03d6cb"/&gt;&lt;sys_pd_snapshot_chunk action="delete_multiple" query="document_id=85e1cf4f938f4710ad88f738dd03d6cb^sys_idNOT IN15e1cf4f938f4710ad88f738dd03d6cd,5de1cf4f938f4710ad88f738dd03d6cc,d9e1cf4f938f4710ad88f738dd03d6cd,dde1cf4f938f4710ad88f738dd03d6ce"/&gt;&lt;sys_pd_snapshot_chunk action="INSERT_OR_UPDATE"&gt;&lt;data&gt;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&lt;/data&gt;&lt;document_id display_value="clearance"&gt;85e1cf4f938f4710ad88f738dd03d6cb&lt;/document_id&gt;&lt;field&gt;derivatives&lt;/field&gt;&lt;length&gt;2116&lt;/length&gt;&lt;position&gt;0&lt;/position&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-05 14:09:33&lt;/sys_created_on&gt;&lt;sys_id&gt;15e1cf4f938f4710ad88f738dd03d6cd&lt;/sys_id&gt;&lt;/sys_pd_snapshot_chunk&gt;&lt;sys_pd_snapshot_chunk action="INSERT_OR_UPDATE"&gt;&lt;data&gt;H4sIAAAAAAAA/+1XXY/aOhD9K8i6j/uQ7wTeUmB1kRCsIHBVlVXk2JPFusGJnIS9CPHfaycBwoWWbbVb9aFCWsjYM54553gmu0eMoh7ybBprFqEkdm0tsjVCYsfUMbWpZ+vEMNAD4ngDcidJAAvMCUhTgiNIpK1/tHXmBeYUJymvlznkqPdlX58BGLBOqU5MC+yuQwhoVqSiY8Mhrhefz+DwGuYFflFB5LcoUK+JQSjommvFutxvuboWxY4N2DatyHXBiewbMf6qIzwgTAq2ZcUupBAzzgqWctTjZZKcC7l2opATwbLLzRzeVo7aOaJHv1RQEMeHKn4oygSuLWGxy26Zt1hIOPeHByTg2p+knFZFhUUqF07pUsiAU+CEVWQ8K4tgWyzBaNiJWVKozJBMWZ7BMC/OWVewt9B7CwmH5ybvASR4N63QazJvl5ZuQQhGoVlKcMnJOpTo8yJ8XQMPT4w1IohxkoOsdM0SWu/Lj7GOW32iDpueI395lqElACcJaXqdvdGts/dc0+7aMdYc0qVW5NySkPL/QQHVLn/kcy2fuwT8dvJp8DpJyGoq0My6Ak3rGlL4LgEDO+ZtCR1j/KCMzm5/pHQtpbtE/HZSuhqZ6JIBxDYboAwXcK6Utado17CIS2LdxLFHo0g3QLfM2DLAM+So1ltTVGId5mW0YXmuuGgP7psSRE5kucTTdBLH+vVLgGe0Jv6Q0878FLvTruZCpwj9jErfsrfRsP4d+H5ex2i2mITTyfiz/NMfoluSRuh9BP0GPluCv7v7ruDR07zzLfY6/mLUGeNdWqqG86suxfMtIL9RwxV3/+s4QTo7knOH0QxEU79c3B8q4BoXHNUew3ngzwL/03gYBrPF8Exhk+NliBVajob/rBTtK5SnpSAgH1ZoMR/Owtl0PFyhh5XkvDJGmt01I9PWsPpgV9N06nhdsGzLoMTwViqfFRr7k2HoDwbh9CkYTSf+OPT7wWg5Cj6/7zl9X4Iyft+YDXwfAMiHRD4C+zHRx/5i0v/7HWMepBphi5NStrplrcq+uncCuB+fWk5WRgkjvuyfeX66nxv2IqQXDdLh0ngU6WbOcZav01Zngv+AlHW7q5uG/EVhg6t32roRgAhYUd2Tlmlw3fvrhfk6fZ0BkU37MRWbUyrH5fPSksHrpWsAmyyR+T4ySGh+uTbiWalu4/78b2lIcN5klWGhepWogiuTbCCZSBUYY9hC4rfHq+o5JK2KteSbg+1gYkaUepF8q7AxdW3HIqakALumai4l9/NFrnBuSsllPhu8BFH3A7PpVZOUf0pS8i/jL6hXiBIq33mhGHjZTfnT4IZZ5iCfwlQN1MNXRNf7PKIPAAA=&lt;/data&gt;&lt;document_id display_value="clearance"&gt;85e1cf4f938f4710ad88f738dd03d6cb&lt;/document_id&gt;&lt;field&gt;process_definition&lt;/field&gt;&lt;length&gt;1356&lt;/length&gt;&lt;position&gt;0&lt;/position&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-05 14:09:33&lt;/sys_created_on&gt;&lt;sys_id&gt;5de1cf4f938f4710ad88f738dd03d6cc&lt;/sys_id&gt;&lt;/sys_pd_snapshot_chunk&gt;&lt;sys_pd_snapshot_chunk action="INSERT_OR_UPDATE"&gt;&lt;data&gt;H4sIAAAAAAAA/5WSvW7DMAyE30Xo6EGU9WdvBbJ06NQxyEBRVGDAlQ3byRLk3Ssj2a1q0nD67nTkQ8zLRLyuJ545R8408Cr6h/gIuPJ+ueMyYN6+oujzbRwbMWLmT9qG+7AV7TfOu4qREWIEajWbzhKx1MEAKVSWnE+iP4tOaXKUoMXkYwigGHSbtGKvvAFI4vJsBOaSZpuWH97e6MNn/fnS1ATY8UOm6XfI1zebIoN0OkFRaAcyJGsYTauDc2yD2WN7E5PUFCk5I4ORRMm2gNFEv/OVKO4VGY+9CufQq3AkvDiqe3G8a01nEkpLXdTB7pxDTe04ptt2nf7X1zG3rq+af9b0VdN7TV/He/As5w95Mu7iUQMAAA==&lt;/data&gt;&lt;document_id display_value="clearance"&gt;85e1cf4f938f4710ad88f738dd03d6cb&lt;/document_id&gt;&lt;field&gt;process_dependencies&lt;/field&gt;&lt;length&gt;376&lt;/length&gt;&lt;position&gt;0&lt;/position&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-05 14:09:33&lt;/sys_created_on&gt;&lt;sys_id&gt;d9e1cf4f938f4710ad88f738dd03d6cd&lt;/sys_id&gt;&lt;/sys_pd_snapshot_chunk&gt;&lt;sys_pd_snapshot_chunk action="INSERT_OR_UPDATE"&gt;&lt;data&gt;H4sIAAAAAAAA/11SyW7bMBD9F551kCsvim+uHbcCYgewjfoQFMWIHFlsKZLgksYI8u8dyZIa+Ea82d7CdyYFW+qoVMI0NMiWjCsEB5ojS5ixni1ffiasVIb/off7R8J8gNA2nlfFqdh/Yx1ywb4T9UVqXIOFUioZrj/QeWk0W355SNM0YdKf0IdDJKQC5TFhDrlx4gyB1+j2UXSrbpSCbO6hV3A9Dxf1ip7MX33AhnXAWYb6YNRABpQyf7/LS31EHh2x6Wv9ZQvRozgg+JYgY7eDJ3NAHzsvCKnBbyDAMTiEZpxE54zbofckfGBGnY8tPDZ5DdbXJhRkMctnOOHVtHrI8mq6mKQg8rxaZLkQaSbmvGQtHYc6FJthoTANSF2MAXGSI/XlyI3Fe8xEx0fQOEkh9DbFluOvBgMI0vF57msb6tpEHXZgh4ICHzoZa4iXOoxieC2VWBsd8I0EjXHc4t7Bb+P+J00+mgDq2aKDQJB/fCP/A5KStP8tT5JC0+iGPRUFtSGOUhFrGrcdudO1Vcq2T89nNsgqxEqLttDrayd7S9g0K+ezOfCsFCIvJ2k6A7GYzac8w+kMFhktkaTAaVD7+99Oq8wr5SoFuQXWkqujn9ZvjTugNS58gumoRLF1prkhH/8ATlWC9E4DAAA=&lt;/data&gt;&lt;document_id display_value="clearance"&gt;85e1cf4f938f4710ad88f738dd03d6cb&lt;/document_id&gt;&lt;field&gt;process_plan&lt;/field&gt;&lt;length&gt;660&lt;/length&gt;&lt;position&gt;0&lt;/position&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-05 14:09:33&lt;/sys_created_on&gt;&lt;sys_id&gt;dde1cf4f938f4710ad88f738dd03d6ce&lt;/sys_id&gt;&lt;/sys_pd_snapshot_chunk&gt;&lt;sys_pd_snapshot_input action="delete_multiple" query="model=85e1cf4f938f4710ad88f738dd03d6cb^sys_idNOT INdde1cf4f938f4710ad88f738dd03d6d3,19e1038f938f4710ad88f738dd03d610"/&gt;&lt;sys_pd_snapshot_input action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;array_denormalized&gt;false&lt;/array_denormalized&gt;&lt;attributes&gt;element_mapping_provider=com.snc.pd.designer.elementmapping.PlaybookInputElementMapper&lt;/attributes&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation&gt;&lt;![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]&gt;&lt;/calculation&gt;&lt;choice/&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;column_label&gt;Parent Record&lt;/column_label&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value/&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;parent_record&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;help/&gt;&lt;hint/&gt;&lt;internal_type display_value="Reference"&gt;reference&lt;/internal_type&gt;&lt;label&gt;Parent Record&lt;/label&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;32&lt;/max_length&gt;&lt;model display_value="clearance"&gt;85e1cf4f938f4710ad88f738dd03d6cb&lt;/model&gt;&lt;model_id&gt;85e1cf4f938f4710ad88f738dd03d6cb&lt;/model_id&gt;&lt;model_table/&gt;&lt;name&gt;var__m_sys_pd_snapshot_input_85e1cf4f938f4710ad88f738dd03d6cb&lt;/name&gt;&lt;next_element/&gt;&lt;order&gt;1&lt;/order&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference display_value="" name="sys_playbook_execution"&gt;sys_playbook_execution&lt;/reference&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;sizeclass/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_pd_snapshot_input&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-05 14:09:33&lt;/sys_created_on&gt;&lt;sys_id&gt;dde1cf4f938f4710ad88f738dd03d6d3&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;Parent Record&lt;/sys_name&gt;&lt;sys_package display_value="Policy Suite" source="x_gegis_ins_policy"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_pd_snapshot_input_dde1cf4f938f4710ad88f738dd03d6d3&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-09-05 14:09:33&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type&gt;script&lt;/virtual_type&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_pd_snapshot_input&gt;&lt;sys_pd_snapshot_input action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;array&gt;false&lt;/array&gt;&lt;array_denormalized&gt;false&lt;/array_denormalized&gt;&lt;attributes&gt;element_mapping_provider=com.snc.pd.designer.elementmapping.PlaybookInputElementMapper&lt;/attributes&gt;&lt;audit&gt;false&lt;/audit&gt;&lt;calculation&gt;&lt;![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]&gt;&lt;/calculation&gt;&lt;choice/&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;column_label&gt;Clearance Case&lt;/column_label&gt;&lt;comments/&gt;&lt;create_roles/&gt;&lt;default_value/&gt;&lt;defaultsort/&gt;&lt;delete_roles/&gt;&lt;dependent/&gt;&lt;dependent_on_field/&gt;&lt;display&gt;false&lt;/display&gt;&lt;dynamic_creation&gt;false&lt;/dynamic_creation&gt;&lt;dynamic_creation_script/&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;element&gt;clearance_case&lt;/element&gt;&lt;element_reference&gt;false&lt;/element_reference&gt;&lt;foreign_database/&gt;&lt;formula/&gt;&lt;function_definition/&gt;&lt;function_field&gt;false&lt;/function_field&gt;&lt;help/&gt;&lt;hint/&gt;&lt;internal_type display_value="Reference"&gt;reference&lt;/internal_type&gt;&lt;label&gt;Clearance Case&lt;/label&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;max_length&gt;32&lt;/max_length&gt;&lt;model display_value="clearance"&gt;85e1cf4f938f4710ad88f738dd03d6cb&lt;/model&gt;&lt;model_id&gt;85e1cf4f938f4710ad88f738dd03d6cb&lt;/model_id&gt;&lt;model_table/&gt;&lt;name&gt;var__m_sys_pd_snapshot_input_85e1cf4f938f4710ad88f738dd03d6cb&lt;/name&gt;&lt;next_element/&gt;&lt;order&gt;100&lt;/order&gt;&lt;primary&gt;false&lt;/primary&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_only_option/&gt;&lt;read_roles/&gt;&lt;reference display_value="" name="x_gegis_ins_policy_clearance_case"&gt;x_gegis_ins_policy_clearance_case&lt;/reference&gt;&lt;reference_cascade_rule/&gt;&lt;reference_floats&gt;false&lt;/reference_floats&gt;&lt;reference_key/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;reference_type/&gt;&lt;sizeclass/&gt;&lt;spell_check&gt;false&lt;/spell_check&gt;&lt;staged&gt;false&lt;/staged&gt;&lt;sys_class_name&gt;sys_pd_snapshot_input&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-05 14:09:34&lt;/sys_created_on&gt;&lt;sys_id&gt;19e1038f938f4710ad88f738dd03d610&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;Clearance Case&lt;/sys_name&gt;&lt;sys_package display_value="Policy Suite" source="x_gegis_ins_policy"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_pd_snapshot_input_19e1038f938f4710ad88f738dd03d610&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-09-05 14:09:34&lt;/sys_updated_on&gt;&lt;table_reference&gt;false&lt;/table_reference&gt;&lt;text_index&gt;false&lt;/text_index&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dependent_field&gt;false&lt;/use_dependent_field&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;virtual&gt;false&lt;/virtual&gt;&lt;virtual_type&gt;script&lt;/virtual_type&gt;&lt;widget/&gt;&lt;write_roles/&gt;&lt;xml_view&gt;false&lt;/xml_view&gt;&lt;/sys_pd_snapshot_input&gt;&lt;sys_pd_snapshot_output action="delete_multiple" query="model=85e1cf4f938f4710ad88f738dd03d6cb"/&gt;&lt;sys_flow_compiled_flow action="delete_multiple" query="sys_id=55e1cf4f7e8f4710b26de52fa086cdd0^sys_idNOT IN55e1cf4f7e8f4710b26de52fa086cdd0"/&gt;&lt;sys_flow_compiled_flow action="INSERT_OR_UPDATE"&gt;&lt;parent_snapshot_id/&gt;&lt;signature/&gt;&lt;snapshot_id&gt;85e1cf4f938f4710ad88f738dd03d6cb&lt;/snapshot_id&gt;&lt;sys_created_by&gt;system&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-05 14:09:33&lt;/sys_created_on&gt;&lt;sys_id&gt;55e1cf4f7e8f4710b26de52fa086cdd0&lt;/sys_id&gt;&lt;/sys_flow_compiled_flow&gt;&lt;sys_flow_compiled_flow_chunk action="delete_multiple" query="document_id=55e1cf4f7e8f4710b26de52fa086cdd0^sys_idNOT IN51e1cf4f938f4710ad88f738dd03d6d3,dde1cf4f938f4710ad88f738dd03d6d1,95e1cf4f938f4710ad88f738dd03d6d1,19e1cf4f938f4710ad88f738dd03d6d2"/&gt;&lt;sys_flow_compiled_flow_chunk action="INSERT_OR_UPDATE"&gt;&lt;data&gt;H4sIAAAAAAAA/zWPTWsCUQxF/0vWs5gyH5bZtYgg2ApV6DrzXkaDMRnePFuK+N+NWrc351xuzjCI/c4pIwt0Z8g2vouFw/ZvJOhgsVp/QwGWeMe6jG8ab4fJyUtxNzfB7mBd9W3TYqj6GF/7l7JsMM6atg4V1Q3OKi9hzZQU5ROPNyMIYUINBF5lP5QSR/rAcWTdQacnkQK8nCkukh2fyR6nOWbc5ETo4YAykXMo4tr/mAf5+Gtg5czm2585nvLeEsW1fpFPmFwoL1dv2T8sBwEAAA==&lt;/data&gt;&lt;document_id display_value="Created 2026-09-05 07:09:33"&gt;55e1cf4f7e8f4710b26de52fa086cdd0&lt;/document_id&gt;&lt;field&gt;flow_config_param&lt;/field&gt;&lt;length&gt;284&lt;/length&gt;&lt;position&gt;0&lt;/position&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-05 14:09:33&lt;/sys_created_on&gt;&lt;sys_id&gt;51e1cf4f938f4710ad88f738dd03d6d3&lt;/sys_id&gt;&lt;/sys_flow_compiled_flow_chunk&gt;&lt;sys_flow_compiled_flow_chunk action="INSERT_OR_UPDATE"&gt;&lt;data&gt;H4sIAAAAAAAA/+1YXW/aShD9L6v7iIi/DTyVkFxdpDSJIK1UVZW13h0T69q7lnfdBkX8987ahhAwt5DbKJXaFwSzM2dm5xxmDI8kyeS3ywxyEFqR0edHomRVMphyMiIsA1pSwYD0WvM1zaHz4ENaRwx8nlge4ywJfSv2LcaSwLUp9/nAt5njbPzHWUoxHyml1GgsaIkFzLePRJVlPaKXhUl4O76Ibmc3k8v53EAwWVs9Nw78gDI35nwQ25blUx76gcdc8Hwauuiap2IqlC4rplMpTI0WGunDjtFDK5SlLO9ouQC9zo6Ol8ba4V1CIUudisVUktEjeWcKbbszA8pvRLa8gIRWmb6pdFFphX49kgp8i/6rHpG1uXnPtz2NafWUe4K9FlVxqOD9Y0PjF0ylpv/MNRRklNBMASYsOZRY3vXZ2FRyr54OV71nvAv4FilNF3u87x+0vAMFanNuM9cDfxgwBpYXG8apE7BwkOzxvkGKjgjtUMdaOFv6uBpfX/5fcThd4nC9U8RhvN9YHJuCX1Ucf+FrqQ9KZOe4FQrjYFuhl9jIrBfaVpwEPlDf9eIwhCD2DwulwYuOAOiSy0l62xLVeHI3/Ti9+/QqwrKdU4RlvN9YWJuCX0NYIHikqjhPlUK86ODy+aFfK7Wh47GQJbZLkwGPY9sB23MTz4GBg8vI3p9Jh4CjI5B+Rc3ZbpfoHPcU0RnvNxbdpuDXnWbI/uFZtn3Yysuym0HkDJtBNAhdf+gn1ArYkHtx8B+TzAjtiPBfUVOO92dD7msK/dUSDfm4hqjJghbIPGDP62emtitYbSrSppLz5TN6zWXSp1LOl+9BqTr0kZzJwthoZnJ8TfWy7hvLqDK6YDLvK8H6Be/nkkPW34LpT/O80jTO4PZizPnNDs7W3c3FTHcGPULXp0brRox8IoWGB20Mzwn7G284gwRQrfUU/kqzythTgeVErAmLEBhvl7wIJtmFUYIW6l6eWEwpGfYzeiIgWuO0sKLB2G816qlh4pYuM0lPytpGGGrVuvdkhC3HWUTO2qImZtFkL6K0Ce1gMfzNWXzeWjNzqMLuHJ+qDdhhrl0jG/wZNE+6L+Guje0gb7hD3o9+WUclrB+4f0eSZ5vb/5QvqkACcTm9p8Vm2yzktqHewTjWdaXq6AjrWCAFinSJBQMQsMjgAemcyEro+n+IhTyn7N872WzNegecL5sPVzSux8Fq16s+2Fsbq+/KapS4yREAAA==&lt;/data&gt;&lt;document_id display_value="Created 2026-09-05 07:09:33"&gt;55e1cf4f7e8f4710b26de52fa086cdd0&lt;/document_id&gt;&lt;field&gt;flow_structure&lt;/field&gt;&lt;length&gt;1240&lt;/length&gt;&lt;position&gt;0&lt;/position&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-05 14:09:33&lt;/sys_created_on&gt;&lt;sys_id&gt;dde1cf4f938f4710ad88f738dd03d6d1&lt;/sys_id&gt;&lt;/sys_flow_compiled_flow_chunk&gt;&lt;sys_flow_compiled_flow_chunk action="INSERT_OR_UPDATE"&gt;&lt;data&gt;H4sIAAAAAAAA/+1b207bMBh+F19XUWzHScrVGGwT2sSmwraLaaocHyBamlSNA0OId5/dBsbagtMlTi+aO9rGp/871F9t7kGal2pRMZUWeQmOftyDNyyjpf4TsGLmlTnz5tybFVxk3rNHvbPZrFI0ycSX0wtFF+rs72dgBFIOjvwRoPr1TaruzvRLEBMu/YBxJiPiJ8RnTIYYUk54TCBDaFqafnTjOT8pciV+K9NMz0fdzcU5nQndx/usuJ0IKRYiZ0I/ekOzyryf5nqWU7ZqNtWjP4yA/K9u5Ho3ZU7n5XWx42QWBRNlOeVCpnlqijJ97KfuNl/1wTJBF1S3f1p9Wn6emwY0A0eSZqV4GP0HJqeCpVycm9VvAAN3BOZQIOmm8hfXRZXx47rAkyrfBACNQEYToYcBAU5CElKGE87jBPo+oTwiYcCwCAiNsPdEEC8Xt4YkV8JjXEA/CiSMYhlE0E9kSAQlOEiiSIQJeeLSPzDbWh0KzIsqf0Tnk1MU9EDN9VxPW+qVeTeophhXxXaafaepuix+iS3kwiNQzHXPk3cfzi4u303027ePT38Udw2IMDXPT5VpALqY7CVdXIktPhS4loFKZ2LRyRJMvTcXQByU1uIuk7/k3ZxP6LqgK0YPrvLi93leZVkrUowME+aZULVqnEHJi9ysURUVu3Y81HIMM5aRo+uxlpJfmvzbrGC/0vwKHGmZCEdG/JK3Ra6laDjj0Nri/q3t0tDkZXMbD8az1Xgcf4XW2jXgHl/RNHes3yWte9Yq9F1XcWm2jvd9ENYbv6/nLrd+bXInGiS83+AJcUumj1HAIiYhpjLmSQKRgAGWARIxigmEcnvytLU6FJy7Sp5WFPaTPGFgjZ7WmfcUPSFxLQTX2ROGDorbJnzCtlvehqwenGW39LkLK7pKn9Yxu0ufdiF2lz4bin4tfS6tt+8tbexajI7zJxz3b2+WAIrWD7QG8+kggTbWb0cJtBmxe5Yrgq6r2EcCRahBAnWu4tcSKMKDhPd89Nn20MeHq98M0Hj1m0EcYTImkvohG/MgCbcnUFurQ8G5qwRqRWE/CRQRawK1zrynBIraHtZZF+I6gaLIQXHbJFDUdtPbkNWDs+yWQHdhRVcJ1DpmdwnULsTuEmhD0e///BONXWvRcQDFfv/uZgmgeP3i3uA9HQTQxvLtKIA2I3bPcsVtryQ281vXV99wgwDqXMWvBVAcDBLebwDFz05+rDfS603CcFu6WZS01vNxb9fZNfeTusMtOIdruB0KLo3J/QyMjX9GeBWonyOgh6dVpg1uXqlvZnYatPuHp/c/V+qfDx7+AOny98dnMgAA&lt;/data&gt;&lt;document_id display_value="Created 2026-09-05 07:09:33"&gt;55e1cf4f7e8f4710b26de52fa086cdd0&lt;/document_id&gt;&lt;field&gt;instructions&lt;/field&gt;&lt;length&gt;1332&lt;/length&gt;&lt;position&gt;0&lt;/position&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-05 14:09:33&lt;/sys_created_on&gt;&lt;sys_id&gt;95e1cf4f938f4710ad88f738dd03d6d1&lt;/sys_id&gt;&lt;/sys_flow_compiled_flow_chunk&gt;&lt;sys_flow_compiled_flow_chunk action="INSERT_OR_UPDATE"&gt;&lt;data&gt;H4sIAAAAAAAA/6tWyswrLikqTS7JzM/zTAnJD0rNzS9L9U6tdEosSc5QsqqurQUAOtk80SQAAAA=&lt;/data&gt;&lt;document_id display_value="Created 2026-09-05 07:09:33"&gt;55e1cf4f7e8f4710b26de52fa086cdd0&lt;/document_id&gt;&lt;field&gt;runtime_value_metadata&lt;/field&gt;&lt;length&gt;76&lt;/length&gt;&lt;position&gt;0&lt;/position&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-05 14:09:33&lt;/sys_created_on&gt;&lt;sys_id&gt;19e1cf4f938f4710ad88f738dd03d6d2&lt;/sys_id&gt;&lt;/sys_flow_compiled_flow_chunk&gt;&lt;sys_pd_process_definition action="INSERT_OR_UPDATE"&gt;&lt;access&gt;public&lt;/access&gt;&lt;active&gt;true&lt;/active&gt;&lt;allow_as_nested&gt;true&lt;/allow_as_nested&gt;&lt;copied_from/&gt;&lt;copied_from_label/&gt;&lt;description&gt;Clearance Standalone&lt;/description&gt;&lt;designer_state&gt;{"diagram":{"hiddenElements":{"edges":{}}}}&lt;/designer_state&gt;&lt;engine_major_version/&gt;&lt;evaluate_variant_children_after/&gt;&lt;execution_type&gt;on_demand&lt;/execution_type&gt;&lt;label&gt;Clearance Standalone&lt;/label&gt;&lt;launcher_description/&gt;&lt;launcher_inputs/&gt;&lt;launcher_record_form_view/&gt;&lt;launcher_show_record_form&gt;false&lt;/launcher_show_record_form&gt;&lt;launcher_template_fields/&gt;&lt;launcher_title/&gt;&lt;name&gt;clearance&lt;/name&gt;&lt;now_assist_kb/&gt;&lt;now_assist_prompt/&gt;&lt;permission&gt;{"VIEW":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}],"LANE_ADD_OPTIONAL_ACTIVITY":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}],"CANCEL":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}],"RESTART":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}],"LANE_RESTART":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}],"ACTIVITY_RESTART":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}],"LAUNCH":[{"source":"USER_ROLE","id":"b0593b350a0a0aa7001d689e4542dc28"}]}&lt;/permission&gt;&lt;process_type display_value="Standard playbook"&gt;52c6d3eeff1be2102c2fffffffffff44&lt;/process_type&gt;&lt;public_access&gt;false&lt;/public_access&gt;&lt;restartable&gt;RESTARTABLE_TRUE&lt;/restartable&gt;&lt;run_on_pad_engine&gt;false&lt;/run_on_pad_engine&gt;&lt;run_strategy&gt;run_once&lt;/run_strategy&gt;&lt;run_strategy_on_process_definition&gt;true&lt;/run_strategy_on_process_definition&gt;&lt;schema_version&gt;3&lt;/schema_version&gt;&lt;snapshot display_value="clearance"&gt;85e1cf4f938f4710ad88f738dd03d6cb&lt;/snapshot&gt;&lt;start_non_blocking&gt;true&lt;/start_non_blocking&gt;&lt;status&gt;published&lt;/status&gt;&lt;sync_state&gt;COMPLETE&lt;/sync_state&gt;&lt;synced_on/&gt;&lt;sys_class_name&gt;sys_pd_process_definition&lt;/sys_class_name&gt;&lt;sys_created_by&gt;Palakala.SurenderReddy&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-06-28 16:45:15&lt;/sys_created_on&gt;&lt;sys_id&gt;85df04cdcf750b50ccf631ad5d851c22&lt;/sys_id&gt;&lt;sys_mod_count&gt;4&lt;/sys_mod_count&gt;&lt;sys_name&gt;Clearance Standalone&lt;/sys_name&gt;&lt;sys_package display_value="Policy Suite" source="x_gegis_ins_policy"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Policy Suite"&gt;43b656ac3bdd8b1005ad7564c3e45a73&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_pd_process_definition_85df04cdcf750b50ccf631ad5d851c22&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-09-05 14:31:47&lt;/sys_updated_on&gt;&lt;view_type&gt;DIAGRAM&lt;/view_type&gt;&lt;/sys_pd_process_definition&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=85df04cdcf750b50ccf631ad5d851c22"/&gt;&lt;sys_variable_value action="delete_multiple" query="document_key=85df04cdcf750b50ccf631ad5d851c22"/&gt;&lt;sys_element_mapping action="delete_multiple" query="table=var__m_sys_pd_process_input_85df04cdcf750b50ccf631ad5d851c22^id=85df04cdcf750b50ccf631ad5d851c22"/&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>1791150597</payload_hash>
+        <record_name>Clearance Standalone</record_name>
+        <reverted_from/>
+        <source>ceffc4be93c38310ad88f738dd03d627</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2026-09-05 14:31:48</sys_created_on>
+        <sys_id>47f6034f93cf4710ad88f738dd03d661</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a071fb94f50000001</sys_recorded_at>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:31:48</sys_updated_on>
+        <type>Process Definition</type>
+        <update_guid>07f6034f4dcf4710bcb5c5717aa8eb60</update_guid>
+        <update_guid_history>07f6034f4dcf4710bcb5c5717aa8eb60:1791150597,71e1038f548f4710e7d99f8b270867c3:1405035823,40e1cf4f878f4710266893004b7b3d01:1729835905,eebc72cfd54f471024d2036ea624d691:2127128971,ddbcfe8fe24f4710f8137981ecf771c3:106354409,13c7b6030d4f47103da6797fb54954d1:-756690474,bcc7f2032b4f47104b268c31828757d6:-2011418174,6814f207f30f47106a0b9d502323aed1:904115387,02047207b40f4710737743d81d65a705:-1928422076,0959564ff7c747109a49ccdb6dfaef00:1055144474,3a49924fe0c74710dd4fe5740b574b73:-43260196,12e89acbe0c74710354f7fc7592447fa:-671859624,83b7968755c74710a06a9df179a06efc:207257904,d0345e0f4687471021442523b7453b98:-998715044,0907409fa2f6431065a8c6513f869cc0:0,4107409f01f643108c5059427b50bbbc:-1589168544</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 14:36:58</sys_created_on>
+        <sys_db_object display_value="" name="sys_pd_process_definition">sys_pd_process_definition</sys_db_object>
+        <sys_id>aba2e9273d9044409df36c36728b9100</sys_id>
+        <sys_metadata>85df04cdcf750b50ccf631ad5d851c22</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Clearance Standalone</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_scope_delete display_value="">00c1089b958e45ed83140febec97e3d1</sys_scope_delete>
+        <sys_update_name>sys_pd_process_definition_85df04cdcf750b50ccf631ad5d851c22</sys_update_name>
+        <sys_update_version display_value="sys_pd_process_definition_85df04cdcf750b50ccf631ad5d851c22">47f6034f93cf4710ad88f738dd03d661</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 14:36:58</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
