@@ -105,61 +105,26 @@
                             "value": "Version:"
                         },
                         "versions": {
-                            "type": "JSON_LITERAL",
-                            "value": [
-                                {
-                                    "created": "2026-07-10 09:42:17",
-                                    "current": true,
-                                    "documents": 6,
-                                    "id": "v4",
-                                    "label": "V4 – Latest",
-                                    "lowConfidence": 3,
-                                    "modified": 3,
-                                    "name": "Extract-V4",
-                                    "newFields": 8,
-                                    "totalFields": 27,
-                                    "triggeredBy": "E006 - Policy Renewal Endorsement"
+                            "transform": {
+                                "operands": {
+                                    "container": [
+                                        {
+                                            "binding": {
+                                                "address": [
+                                                    "experienceProperties",
+                                                    "u_extraction_versions",
+                                                    "value"
+                                                ],
+                                                "category": "props"
+                                            },
+                                            "type": "CONTEXT_BINDING"
+                                        }
+                                    ],
+                                    "type": "LIST_CONTAINER"
                                 },
-                                {
-                                    "created": "2026-06-28 16:14:33",
-                                    "current": false,
-                                    "documents": 5,
-                                    "id": "v3",
-                                    "label": "V3",
-                                    "lowConfidence": 2,
-                                    "modified": 2,
-                                    "name": "Extract-V3",
-                                    "newFields": 6,
-                                    "totalFields": 23,
-                                    "triggeredBy": "E005 - Additional Insured Endorsement Request"
-                                },
-                                {
-                                    "created": "2026-06-15 11:02:09",
-                                    "current": false,
-                                    "documents": 4,
-                                    "id": "v2",
-                                    "label": "V2",
-                                    "lowConfidence": 0,
-                                    "modified": 1,
-                                    "name": "Extract-V2",
-                                    "newFields": 3,
-                                    "totalFields": 19,
-                                    "triggeredBy": "E004 - Renewal Submission"
-                                },
-                                {
-                                    "created": "2026-06-02 08:30:45",
-                                    "current": false,
-                                    "documents": 3,
-                                    "id": "v1",
-                                    "label": "V1",
-                                    "lowConfidence": 0,
-                                    "modified": 0,
-                                    "name": "Extract-V1",
-                                    "newFields": 0,
-                                    "totalFields": 15,
-                                    "triggeredBy": "E003 - Initial Submission Intake"
-                                }
-                            ]
+                                "operator": "PARSE"
+                            },
+                            "type": "CLIENT_TRANSFORM"
                         }
                     },
                     "slot": "content",
@@ -510,9 +475,11 @@
                 "value": "0"
             },
             "description": {
+                "displayValue": "",
                 "elementData": {
                     "type": "html"
                 },
+                "label": "Description (DEPRECATED)",
                 "value": ""
             },
             "experience_status_record": {
@@ -533,6 +500,7 @@
                 "elementData": {
                     "type": "string"
                 },
+                "label": "Footer (DEPRECATED)",
                 "value": ""
             },
             "form_fields": {
@@ -560,18 +528,22 @@
                 "elementData": {
                     "type": "boolean"
                 },
-                "value": "0"
+                "label": "Is Automated (DEPRECATED)",
+                "value": "false"
             },
             "pending_description": {
+                "displayValue": "",
                 "elementData": {
                     "type": "html"
                 },
+                "label": "Pending State Description (DEPRECATED)",
                 "value": ""
             },
             "pending_title": {
                 "elementData": {
                     "type": "string"
                 },
+                "label": "Pending State Title (DEPRECATED)",
                 "value": ""
             },
             "record_fields": {
@@ -598,11 +570,19 @@
                 "elementData": {
                     "type": "string"
                 },
+                "label": "Tagline (DEPRECATED)",
                 "value": ""
             },
             "title": {
                 "elementData": {
                     "type": "string"
+                },
+                "value": ""
+            },
+            "u_extraction_versions": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "string_full_utf8"
                 },
                 "value": ""
             }
@@ -659,6 +639,9 @@
                     },
                     "description": {
                         "properties": {
+                            "displayValue": {
+                                "type": "string"
+                            },
                             "elementData": {
                                 "properties": {
                                     "type": {
@@ -805,6 +788,9 @@
                     },
                     "pending_description": {
                         "properties": {
+                            "displayValue": {
+                                "type": "string"
+                            },
                             "elementData": {
                                 "properties": {
                                     "type": {
@@ -951,6 +937,25 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "u_extraction_versions": {
+                        "properties": {
+                            "displayValue": {
+                                "type": "string"
+                            },
+                            "elementData": {
+                                "properties": {
+                                    "type": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "value": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
                     }
                 },
                 "type": "object"
@@ -958,156 +963,10 @@
             "translatable": false
         },
         "valueType": "object"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "ROTeeddUveeddaDEicjjWoDplEXRhtb",
-        "inherited": false,
-        "label": "Table",
-        "mandatory": false,
-        "name": "table",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "RdbghheehhreeddDEMeehhjjpsGyNeddhhrddff",
-        "inherited": false,
-        "label": "sysId",
-        "mandatory": false,
-        "name": "sysId",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "BffXskeehhLjjCEVSjjUeeBeefWKPUjjcc",
-        "inherited": false,
-        "label": "Query",
-        "mandatory": false,
-        "name": "query",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "caNffNvQHAkvGjjgEKjjEHpbakee",
-        "inherited": false,
-        "label": "views",
-        "mandatory": false,
-        "name": "views",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "ZiiHSjeehhSiCUDSjjVcMjjhgEWkVn",
-        "inherited": false,
-        "label": "activityLogs",
-        "mandatory": false,
-        "name": "activityLogs",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "eeoDiiofeehhSBaaaazjjffANaccBpbTqk",
-        "inherited": false,
-        "label": "extraParams",
-        "mandatory": false,
-        "name": "extraParams",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "LkchhLPHjCkrijjfwCliibKDiijjh",
-        "inherited": false,
-        "label": "fields",
-        "mandatory": false,
-        "name": "fields",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "jjfKbafQMAUgMjjWaaDeeeGxiKgu",
-        "inherited": false,
-        "label": "screen",
-        "mandatory": false,
-        "name": "screen",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "jccbnNPXQBkMPjjXeeECiizcggwrQ",
-        "inherited": false,
-        "label": "selectedTabIndex",
-        "mandatory": false,
-        "name": "selectedTabIndex",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "OYgjjIfaapAUTQjjeehheeHbbGHkhhkkU",
-        "inherited": false,
-        "label": "userPrefs",
-        "mandatory": false,
-        "name": "userPrefs",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
     }
 ]</props>
         <required_sys_props/>
-        <required_translations>[ {
-  "message" : "V1",
-  "code" : "",
-  "comment" : ""
-}, {
-  "message" : "V2",
-  "code" : "",
-  "comment" : ""
-}, {
-  "message" : "V3",
-  "code" : "",
-  "comment" : ""
-}, {
-  "message" : "V4 – Latest",
-  "code" : "",
-  "comment" : ""
-} ]</required_translations>
+        <required_translations>[ ]</required_translations>
         <root_component/>
         <root_component_config>{}</root_component_config>
         <root_component_definition/>
@@ -1119,14 +978,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-01 05:47:43</sys_created_on>
         <sys_id>2616d939333dc3147ef8f499ed5c7be1</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>22</sys_mod_count>
         <sys_name>PS Extract AUI</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_2616d939333dc3147ef8f499ed5c7be1</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-08-06 19:50:23</sys_updated_on>
+        <sys_updated_on>2026-09-05 11:26:58</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=2616d939333dc3147ef8f499ed5c7be1"/>
 </record_update>

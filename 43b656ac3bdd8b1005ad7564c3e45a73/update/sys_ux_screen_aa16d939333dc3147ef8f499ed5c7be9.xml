@@ -83,11 +83,23 @@
     "experienceProperties": {
         "type": "JSON_LITERAL",
         "value": {
+            "attachment_source": {
+                "displayValue": null,
+                "elementData": null,
+                "value": null
+            },
+            "attachments_read_only": {
+                "displayValue": null,
+                "elementData": null,
+                "value": null
+            },
             "description": {
+                "displayValue": "",
                 "elementData": {
                     "type": "html"
                 },
-                "value": "&lt;p&gt;A sample description for an activity&lt;/p&gt;"
+                "label": "Description (DEPRECATED)",
+                "value": ""
             },
             "experience_status_record": {
                 "displayValue": "",
@@ -107,7 +119,16 @@
                 "elementData": {
                     "type": "string"
                 },
-                "value": "A sample footer for an activity"
+                "label": "Footer (DEPRECATED)",
+                "value": ""
+            },
+            "form_fields": {
+                "elementData": null,
+                "value": null
+            },
+            "form_view": {
+                "elementData": null,
+                "value": null
             },
             "icon": {
                 "displayValue": "",
@@ -122,29 +143,280 @@
                 "elementData": {
                     "type": "boolean"
                 },
-                "value": "0"
+                "label": "Is Automated (DEPRECATED)",
+                "value": "false"
             },
             "pending_description": {
+                "displayValue": "",
                 "elementData": {
                     "type": "html"
                 },
+                "label": "Pending State Description (DEPRECATED)",
                 "value": ""
             },
             "pending_title": {
                 "elementData": {
                     "type": "string"
                 },
+                "label": "Pending State Title (DEPRECATED)",
                 "value": ""
+            },
+            "record_fields": {
+                "elementData": null,
+                "relatedProperties": [
+                    {
+                        "alternateModels": [],
+                        "choices": [],
+                        "description": null,
+                        "disabled": false,
+                        "expanded": true,
+                        "id": "43Cijhfn0DEIY96YLhsOIryii",
+                        "invalidPropName": false,
+                        "isComplex": true,
+                        "isCustomProperty": false,
+                        "name": "object",
+                        "order": 0,
+                        "properties": {
+                            "displayValue": {
+                                "alternateModels": [],
+                                "choices": [],
+                                "description": null,
+                                "disabled": false,
+                                "expanded": true,
+                                "id": "yaF1l473YCk43D43FYBFPdPI470z",
+                                "invalidPropName": false,
+                                "isCustomProperty": false,
+                                "name": "string",
+                                "order": 0,
+                                "required": false,
+                                "reusableModels": {},
+                                "reuseId": null,
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "selectedModelIndex": null,
+                                "translatable": false,
+                                "type": "string",
+                                "value": null
+                            },
+                            "elemendData": {
+                                "alternateModels": [],
+                                "choices": [],
+                                "description": null,
+                                "disabled": false,
+                                "expanded": true,
+                                "id": "O34347c47MBAUi143FsI8XiYefqP",
+                                "invalidPropName": false,
+                                "isComplex": false,
+                                "isCustomProperty": false,
+                                "name": "object",
+                                "order": 1,
+                                "properties": {
+                                    "reference": {
+                                        "alternateModels": [],
+                                        "choices": [],
+                                        "description": null,
+                                        "disabled": false,
+                                        "expanded": true,
+                                        "id": "wZuu43fQXBEEn9YIGmafb147aY",
+                                        "invalidPropName": false,
+                                        "isCustomProperty": false,
+                                        "name": "string",
+                                        "order": 0,
+                                        "required": false,
+                                        "reusableModels": {},
+                                        "reuseId": null,
+                                        "schema": {
+                                            "type": "string"
+                                        },
+                                        "selectedModelIndex": null,
+                                        "translatable": false,
+                                        "type": "string",
+                                        "value": null
+                                    },
+                                    "type": {
+                                        "alternateModels": [],
+                                        "choices": [],
+                                        "description": null,
+                                        "disabled": false,
+                                        "expanded": true,
+                                        "id": "luV2E47UeAkkZ9ZULCEuqATcM",
+                                        "invalidPropName": false,
+                                        "isCustomProperty": false,
+                                        "name": "string",
+                                        "order": 1,
+                                        "required": false,
+                                        "reusableModels": {},
+                                        "reuseId": null,
+                                        "schema": {
+                                            "type": "string"
+                                        },
+                                        "selectedModelIndex": null,
+                                        "translatable": false,
+                                        "type": "string",
+                                        "value": null
+                                    }
+                                },
+                                "rawJson": null,
+                                "required": false,
+                                "reusableModels": {},
+                                "reuseId": null,
+                                "schema": {
+                                    "properties": {
+                                        "reference": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "schemaName": null,
+                                "selectedModelIndex": null,
+                                "selectedValueModel": null,
+                                "translatable": false,
+                                "type": "object",
+                                "value": null,
+                                "valueModels": []
+                            },
+                            "label": {
+                                "alternateModels": [],
+                                "choices": [],
+                                "description": null,
+                                "disabled": false,
+                                "expanded": true,
+                                "id": "RHTfTfoGAkfe43DUIlIj5O7ak",
+                                "invalidPropName": false,
+                                "isCustomProperty": false,
+                                "name": "string",
+                                "order": 2,
+                                "required": false,
+                                "reusableModels": {},
+                                "reuseId": null,
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "selectedModelIndex": null,
+                                "translatable": false,
+                                "type": "string",
+                                "value": null
+                            },
+                            "name": {
+                                "alternateModels": [],
+                                "choices": [],
+                                "description": null,
+                                "disabled": false,
+                                "expanded": true,
+                                "id": "z9MQ47fFOD0mk9ocPZsi2rk470",
+                                "invalidPropName": false,
+                                "isCustomProperty": false,
+                                "name": "string",
+                                "order": 3,
+                                "required": false,
+                                "reusableModels": {},
+                                "reuseId": null,
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "selectedModelIndex": null,
+                                "translatable": false,
+                                "type": "string",
+                                "value": null
+                            },
+                            "value": {
+                                "alternateModels": [],
+                                "choices": [],
+                                "description": null,
+                                "disabled": false,
+                                "expanded": true,
+                                "id": "WyjpL47uSBUYI43OkJCBBliYrg",
+                                "invalidPropName": false,
+                                "isCustomProperty": false,
+                                "name": "string",
+                                "order": 4,
+                                "required": false,
+                                "reusableModels": {},
+                                "reuseId": null,
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "selectedModelIndex": null,
+                                "translatable": false,
+                                "type": "string",
+                                "value": null
+                            }
+                        },
+                        "rawJson": null,
+                        "required": false,
+                        "reusableModels": {},
+                        "reuseId": null,
+                        "schema": {
+                            "properties": {
+                                "displayValue": {
+                                    "type": "string"
+                                },
+                                "elemendData": {
+                                    "properties": {
+                                        "reference": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "label": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "value": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "schemaName": null,
+                        "selectedModelIndex": null,
+                        "selectedValueModel": null,
+                        "translatable": false,
+                        "type": "object",
+                        "value": null,
+                        "valueModels": []
+                    }
+                ],
+                "value": null
+            },
+            "show_checklist": {
+                "displayValue": null,
+                "elementData": null,
+                "value": null
+            },
+            "show_sla": {
+                "displayValue": null,
+                "elementData": null,
+                "value": null
             },
             "tagline": {
                 "elementData": {
                     "type": "string"
                 },
-                "value": "Sample Activity Tagline"
+                "label": "Tagline (DEPRECATED)",
+                "value": ""
             },
             "title": {
                 "elementData": {
                     "type": "string"
+                },
+                "value": ""
+            },
+            "u_extraction_versions": {
+                "displayValue": "Extractions List",
+                "elementData": {
+                    "type": "string_full_utf8"
                 },
                 "value": ""
             }
@@ -197,7 +469,31 @@
         <name>PS Extract AUI</name>
         <order>0</order>
         <parent_macroponent display_value="Playbook App Shell">64f1d8fbc3ca201098c960bc0eba8fe3</parent_macroponent>
-        <required_translations>[ ]</required_translations>
+        <required_translations>[ {
+  "message" : "Description (DEPRECATED)",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Footer (DEPRECATED)",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Is Automated (DEPRECATED)",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Pending State Description (DEPRECATED)",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Pending State Title (DEPRECATED)",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Tagline (DEPRECATED)",
+  "code" : "",
+  "comment" : ""
+} ]</required_translations>
         <rollback_screen/>
         <screen_condition/>
         <screen_type display_value="Global Activity UIs">89ddbb5ac3113010948404186e40dd1d</screen_type>
@@ -207,7 +503,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>aa16d939333dc3147ef8f499ed5c7be9</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>19</sys_mod_count>
         <sys_name>PS Extract AUI</sys_name>
         <sys_overrides/>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
@@ -215,7 +511,7 @@
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_screen_aa16d939333dc3147ef8f499ed5c7be9</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-10 18:21:44</sys_updated_on>
+        <sys_updated_on>2026-09-05 11:26:58</sys_updated_on>
     </sys_ux_screen>
     <sys_translated_text action="delete_multiple" query="documentkey=aa16d939333dc3147ef8f499ed5c7be9"/>
 </record_update>

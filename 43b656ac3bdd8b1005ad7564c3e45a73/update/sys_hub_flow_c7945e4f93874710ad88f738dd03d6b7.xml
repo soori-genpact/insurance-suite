@@ -1,0 +1,2121 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_hub_flow">
+    <sys_hub_flow action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <acls/>
+        <active>true</active>
+        <allow_high_security_roles>false</allow_high_security_roles>
+        <annotation/>
+        <attributes>browserActivatedIn=chrome,integrationActivatedIn=standalone,labelCacheCleanUpExecuted=true,timeFromCreateToActivate=1063000,viewActivatedIn=naturalLanguage</attributes>
+        <authored_on_release_version>29000</authored_on_release_version>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category/>
+        <copied_from>be9d8132930f8310ad88f738dd03d67a</copied_from>
+        <copied_from_name>Initiate Submission Activity Flo</copied_from_name>
+        <description>Initiate Submission Activity Flow to get Emails, Documents related to Submission</description>
+        <display_name_after_preview/>
+        <flow_priority>MEDIUM</flow_priority>
+        <generation_source/>
+        <internal_name>extraction_activity_flow</internal_name>
+        <label_cache>[{"name":"subflow.submission","label":"Input➛submission","reference":"x_gegis_ins_policy_submission","reference_display":"Submission","type":"reference","base_type":"reference","column_name":"","usedInstances":{"a8540e11-7d2b-4a4c-8c7c-ca1839025ae4":[null],"72995fbc-0553-4fe3-a8d2-e3457f78a639":["log_message"],"93fe4e81-bf50-4a43-947a-482d069f9a4e":["submission1"]},"attributes":{"uiType":"string","uiTypeLabel":"Reference","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"c3cadb5a-4d5c-46a4-bd1a-179427121399","sourceUiUniqueId":"","sourceType":"","sourceId":""}},{"name":"undefined","label":" - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition","usedInstances":{"54caad8b-c05e-4755-84a1-8e2b3deccf09":[null]},"attributes":{}},{"name":"subflow.activity","label":"Input➛Activity","reference":"","reference_display":"","type":"choice","base_type":"choice","column_name":"u_type","choices":[{"label":"-- None --","value":"","order":0.0},{"label":"Context Enrichment","value":"context_enrichment","order":1.0},{"label":"Duplicate Check","value":"duplicate_check","order":2.0},{"label":"Classification Failed","value":"classification_failed","order":3.0},{"label":"Submission Locked","value":"submission_locked","order":4.0},{"label":"Extraction Review","value":"extraction_review","order":5.0},{"label":"Referral","value":"referral","order":6.0},{"label":"Initiate Submission Request","value":"initiate_submission_request","order":7.0},{"label":"Extract","value":"extract","order":8.0},{"label":"Insured Verification","value":"insured_verification","order":9.0},{"label":"Check for Sanctions","value":"check_for_sanctions","order":10.0},{"label":"Confirm Data Review","value":"confirm_data_review","order":11.0},{"label":"Quality Assurance","value":"quality_assurance","order":12.0},{"label":"End Submission Clearance","value":"end_submission_clearance","order":13.0},{"label":"Initiate Risk Assessment","value":"initiate_risk_assessment","order":14.0},{"label":"Letter Of Authority","value":"letter_of_authority","order":15.0},{"label":"Underwriting Guidelines","value":"underwriting_guidelines","order":16.0},{"label":"Benchmarking","value":"benchmarking","order":17.0},{"label":"Survey Results","value":"survey_results","order":18.0},{"label":"Loss Prediction","value":"loss_prediction","order":19.0},{"label":"Bind Propensity","value":"bind_propensity","order":20.0},{"label":"Exposure Data","value":"exposure_data","order":21.0},{"label":"Fraud Detection","value":"fraud_detection","order":22.0},{"label":"Underwriter Narrative","value":"underwriter_narrative","order":23.0},{"label":"Risk Summary","value":"risk_summary","order":24.0},{"label":"Initiate Exposure Management","value":"initiate_exposure_management","order":25.0},{"label":"Geo Mapping","value":"geo_mapping","order":26.0},{"label":"Catastrophe Modelling","value":"catastrophe_modelling","order":27.0},{"label":"Capacity management","value":"capacity_management","order":28.0},{"label":"Concentration Analysis","value":"concentration_analysis","order":29.0},{"label":"Portfolio Optimization","value":"portfolio_optimization","order":30.0},{"label":"Exposure Management Summary","value":"exposure_management_summary","order":31.0},{"label":"Initiate Q\u0026B","value":"initiate_quote_and_bind","order":32.0},{"label":"Product Selection Details","value":"product_selection_details","order":33.0},{"label":"Quote Workspace","value":"quote_workspace","order":34.0},{"label":"Underwriting Decisions","value":"underwriting_decisions","order":35.0},{"label":"Broker Decision","value":"broker_decision","order":36.0},{"label":"Bind Details","value":"bind_details","order":37.0}],"usedInstances":{"93fe4e81-bf50-4a43-947a-482d069f9a4e":["activity"],"54caad8b-c05e-4755-84a1-8e2b3deccf09":[null,"conditions"]},"attributes":{"uiType":"choice","uiTypeLabel":"Choice","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"37fabe59-d496-4455-b82e-24a9d8bdf0ce","sourceUiUniqueId":"","sourceType":"","sourceId":""}},{"name":"subflow.module","label":"Input➛Module","reference":"","reference_display":"","type":"choice","base_type":"choice","column_name":"u_module","choices":[{"label":"-- None --","value":"","order":0.0},{"label":"Intake","value":"intake","order":1.0},{"label":"Clearance","value":"clearance","order":2.0},{"label":"Risk","value":"risk_assessment","order":3.0},{"label":"Exposure","value":"exposure_management","order":4.0},{"label":"Quote \u0026 Bind","value":"quote_and_bind","order":5.0}],"usedInstances":{"93fe4e81-bf50-4a43-947a-482d069f9a4e":["module1"],"54caad8b-c05e-4755-84a1-8e2b3deccf09":[null,"conditions"]},"attributes":{"uiType":"choice","uiTypeLabel":"Choice","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"ad5a4b42-391b-47ba-8b6c-2f13ecc4485d","sourceUiUniqueId":"","sourceType":"","sourceId":""}},{"name":"93fe4e81-bf50-4a43-947a-482d069f9a4e.task","label":"1 - Policy Suite  Playbook Activity Flow Task➛Task","reference":"x_gegis_ins_policy_case_task","reference_display":"Task","type":"reference","base_type":"reference","usedInstances":{"6cc8f203-3c23-43ed-94e0-c1b74c10ee58":["record"]},"attributes":{"uiType":"reference","uiTypeLabel":"Reference","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"1b96b9e2-3298-4624-9706-e40db66dc54e"}}]</label_cache>
+        <master_snapshot>8a0592cf93874710ad88f738dd03d68a</master_snapshot>
+        <master_snapshot_digest/>
+        <name>Extraction Activity Flow</name>
+        <natlang/>
+        <outputs/>
+        <pre_compiled>false</pre_compiled>
+        <remote_trigger_id/>
+        <run_as>user</run_as>
+        <run_with_roles/>
+        <sc_callable>false</sc_callable>
+        <show_draft_actions>false</show_draft_actions>
+        <show_triggered_flows>false</show_triggered_flows>
+        <status>published</status>
+        <substatus/>
+        <sys_class_name>sys_hub_flow</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:51:43</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>c7945e4f93874710ad88f738dd03d6b7</sys_id>
+        <sys_mod_count>13</sys_mod_count>
+        <sys_name>Extraction Activity Flow</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_hub_flow_c7945e4f93874710ad88f738dd03d6b7</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 11:09:32</sys_updated_on>
+        <type>subflow</type>
+        <updation_source/>
+        <version>2</version>
+        <version_record>cea81e8b93c74710ad88f738dd03d6b9</version_record>
+    </sys_hub_flow>
+    <sys_translated_text action="delete_multiple" query="documentkey=c7945e4f93874710ad88f738dd03d6b7"/>
+    <sys_variable_value action="delete_multiple" query="document_key=c7945e4f93874710ad88f738dd03d6b7"/>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_flow_output_c7945e4f93874710ad88f738dd03d6b7^id=c7945e4f93874710ad88f738dd03d6b7"/>
+    <sys_hub_flow_stage action="delete_multiple" query="flow=c7945e4f93874710ad88f738dd03d6b7"/>
+    <sys_flow_cat_variable_model action="delete_multiple" query="id=c7945e4f93874710ad88f738dd03d6b7^sys_idNOT IN8f945e4f93874710ad88f738dd03d6b8"/>
+    <sys_flow_cat_variable_model action="INSERT_OR_UPDATE">
+        <id>c7945e4f93874710ad88f738dd03d6b7</id>
+        <name>Extraction Activity Flow</name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:51:43</sys_created_on>
+        <sys_id>8f945e4f93874710ad88f738dd03d6b8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 10:51:43</sys_updated_on>
+    </sys_flow_cat_variable_model>
+    <sys_flow_cat_variable action="delete_multiple" query="flow_catalog_model=8f945e4f93874710ad88f738dd03d6b8"/>
+    <sys_hub_flow_input action="delete_multiple" query="model=c7945e4f93874710ad88f738dd03d6b7^sys_idNOT IN13945e4f93874710ad88f738dd03d6cd,1f945e4f93874710ad88f738dd03d6c3,5b945e4f93874710ad88f738dd03d6da"/>
+    <sys_hub_flow_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=choice,uiTypeLabel=Choice,uiUniqueId=ad5a4b42-391b-47ba-8b6c-2f13ecc4485d</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice>1</choice>
+        <choice_field>u_module</choice_field>
+        <choice_table>x_gegis_ins_policy_case_task</choice_table>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value>clearance</default_value>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>module</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="Choice">choice</internal_type>
+        <label>Module</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Extraction Activity Flow">c7945e4f93874710ad88f738dd03d6b7</model>
+        <model_id>c7945e4f93874710ad88f738dd03d6b7</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_input_c7945e4f93874710ad88f738dd03d6b7</name>
+        <next_element/>
+        <order>2</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:51:43</sys_created_on>
+        <sys_id>13945e4f93874710ad88f738dd03d6cd</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 11:09:26</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=13945e4f93874710ad88f738dd03d6cd"/>
+    <sys_hub_flow_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=reference,uiTypeLabel=Reference,uiUniqueId=c3cadb5a-4d5c-46a4-bd1a-179427121399</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table>x_gegis_ins_policy_submission</choice_table>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>submission</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="Reference">reference</internal_type>
+        <label>submission</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Extraction Activity Flow">c7945e4f93874710ad88f738dd03d6b7</model>
+        <model_id>c7945e4f93874710ad88f738dd03d6b7</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_input_c7945e4f93874710ad88f738dd03d6b7</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference display_value="" name="x_gegis_ins_policy_submission">x_gegis_ins_policy_submission</reference>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:51:43</sys_created_on>
+        <sys_id>1f945e4f93874710ad88f738dd03d6c3</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 10:51:43</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=1f945e4f93874710ad88f738dd03d6c3"/>
+    <sys_hub_flow_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=choice,uiTypeLabel=Choice,uiUniqueId=37fabe59-d496-4455-b82e-24a9d8bdf0ce</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice>1</choice>
+        <choice_field>u_type</choice_field>
+        <choice_table>x_gegis_ins_policy_case_task</choice_table>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>activity</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="Choice">choice</internal_type>
+        <label>Activity</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Extraction Activity Flow">c7945e4f93874710ad88f738dd03d6b7</model>
+        <model_id>c7945e4f93874710ad88f738dd03d6b7</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_input_c7945e4f93874710ad88f738dd03d6b7</name>
+        <next_element/>
+        <order>3</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:51:43</sys_created_on>
+        <sys_id>5b945e4f93874710ad88f738dd03d6da</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 10:51:44</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=5b945e4f93874710ad88f738dd03d6da"/>
+    <sys_hub_flow_output action="delete_multiple" query="model=c7945e4f93874710ad88f738dd03d6b7^sys_idNOT IN5ed49a8f93874710ad88f738dd03d698"/>
+    <sys_hub_flow_output action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string_full_utf8,uiTypeLabel=String (Full UTF-8),uiUniqueId=4b5f9c3d-14d1-4283-b59b-ed7a295feefd</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>versions</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_link/>
+        <internal_type display_value="">string_full_utf8</internal_type>
+        <label>versions</label>
+        <mandatory>false</mandatory>
+        <max_length>255</max_length>
+        <model display_value="Extraction Activity Flow">c7945e4f93874710ad88f738dd03d6b7</model>
+        <model_id>c7945e4f93874710ad88f738dd03d6b7</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_output_c7945e4f93874710ad88f738dd03d6b7</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_output</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:52:45</sys_created_on>
+        <sys_id>5ed49a8f93874710ad88f738dd03d698</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 10:53:31</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_output>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=5ed49a8f93874710ad88f738dd03d698"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=c7945e4f93874710ad88f738dd03d6b7"/>
+    <sys_hub_trigger_instance_v2 action="delete_multiple" query="flow=c7945e4f93874710ad88f738dd03d6b7"/>
+    <sys_hub_action_instance_v2 action="delete_multiple" query="flow=c7945e4f93874710ad88f738dd03d6b7^sys_idNOT INe7949e4f93874710ad88f738dd03d675,e7949e4f93874710ad88f738dd03d677"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Policy Suite  Playbook Activity Flow Task">4f93d97e930f8310ad88f738dd03d615</action_type>
+        <action_type_parent display_value="Policy Suite  Playbook Activity Flow Task">5d60ddb6930f8310ad88f738dd03d62f</action_type_parent>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot>4f93d97e930f8310ad88f738dd03d615</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Extraction Activity Flow">c7945e4f93874710ad88f738dd03d6b7</flow>
+        <generation_source/>
+        <order>1</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:51:44</sys_created_on>
+        <sys_id>e7949e4f93874710ad88f738dd03d675</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2026-09-05 11:19:40</sys_updated_on>
+        <ui_id>93fe4e81-bf50-4a43-947a-482d069f9a4e</ui_id>
+        <updation_source/>
+        <values>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</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=e7949e4f93874710ad88f738dd03d675"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Wait For Condition">89ce8a4187120010663ca1bb36cb0be3</action_type>
+        <action_type_parent display_value="Wait For Condition">8bb9a8160b10030085c083eb37673aec</action_type_parent>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot>89ce8a4187120010663ca1bb36cb0be3</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Extraction Activity Flow">c7945e4f93874710ad88f738dd03d6b7</flow>
+        <generation_source/>
+        <order>3</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:51:44</sys_created_on>
+        <sys_id>e7949e4f93874710ad88f738dd03d677</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2026-09-05 11:19:41</sys_updated_on>
+        <ui_id>6cc8f203-3c23-43ed-94e0-c1b74c10ee58</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+2X227jNhCGXyXQtenqQMlU7hZ2ggZIE8BxtxeLhTCihjZRWvLqkF03yLuXkuhIPsSbdJ0AAXqpEUn98898GunLgyUT69yiIUcG1GEjx7Vtxw4Cj4MTx17AYztGag2sFJaoV+bIszzR1/egqjrw8BB6Aikyh8TCtwkF6pGQjoBQ5iZ2EIoQKA5LKP5+fNT7ElmsFKw/m+06whdSJTmm1vmXrwNrBbl+Uom5df6wc+ulUhXEqPTS6UbrrvZyvaqvk4xXS0zLSG6C12bnxNw5u5roO3pTLccZWPijxDRBrUOAKnBgLSFNoMzytXVe5pUO5AjJbarWTysWMi3bPJfwo5D/6Ad7br1OoE6MGw+eLiPjTxsWEyjhTp/Myyp/siuTHIvWkgQFVKoc92PtgttVKbO03VJCrDa7M1Ut05vWEOvpgF45qkKLwFWdZ628TUvcLbLv043IS5k2jpgUVcZBPV1BWeYyrspazoNVydkhs9vwYbuFVLr8USM6KrIqb0yaXoxvp5Por0+z8e8X02h6cTebXo1nF/UOVNgcvYTVSqbzaJVn97JRqPNdDudKXwyFyr7rxAo5T4fAa3OGunQwvNTxSRP+DLmsH/qHPkZvrlX+mcpvFV41jSeE4zlBQBzH9gh14oCEDH1iow/Ud2ngB671OLCKdTFWUBSdx7q40beqtqh13HgbNeVp02w6tN7Mc7kqP2l592gcfRxsIPWPdj50jd47swP1RzTHuSwimRbRKlOSryMOutY1mftcztroK9n8ucINm7OmJQ8rNnjuxa77e89u2hsGTvc4nCbS0dm29QE4mf2B4DRp/TqdW15vw7nltu6ftkWN6ObU9yLQdVjIaOwRL6Y+oaEQhNmMEopgc99NRtTh/4HAn3J3fOKIrot5liayzqvocVeUUOLN7ezs6ob4A2fg7sN2aMlJp6LokTfuizwk3OC3F7s+dIDBzzvVbKS2/ZEAPNV03DJ7m78tu9+FM0xYEPs2IygYI9QbMRI6rkuCABLHoTwR9ttOOjs51s2i9zlayiVmVRkJBfMec/Y+Y5s31eu4eoGSDVcXafOiNIqelWjoirNMIaS7k02302+XRqlBi75ysh1j6wORdbLR1jm9M9f6Xr8LV5wD04MKSOhxJDSIOWGCC+Jh7AvPj1k8st9gfvHjPRzut2pS5dBUsSPqBH9uL9CxYWnSCXhemiGpqc1u/Hr/IIOT/z9Ov4TTnt07v3LdjbdiaqH3TWBd1F2hGd6nDB0Y+XH9dwaEuqFDIKQuCQMcIRUs8CB8A8qYc7S7xX4rF3yBSaXwtJS9QMeGsrtOwPPSDGVdo28DNu3FDWHByQhjex+DfJn2xR3irZfVh+RO3CHkfHEpUdX1NP9kz9DYL8s2iP3CvM90c13HS5ATJ9GfjtQNXMI8OiKjkMU21a0Xe3hC7r7+C+eJWSW8FAAA</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=e7949e4f93874710ad88f738dd03d677"/>
+    <sys_hub_sub_flow_instance_v2 action="delete_multiple" query="flow=c7945e4f93874710ad88f738dd03d6b7"/>
+    <sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=c7945e4f93874710ad88f738dd03d6b7^sys_idNOT IN63949e4f93874710ad88f738dd03d665"/>
+    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
+        <attributes/>
+        <block display_value="">f7bef5b293c3c310ad88f738dd03d613</block>
+        <comment/>
+        <connected_to/>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Extraction Activity Flow">c7945e4f93874710ad88f738dd03d6b7</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="Assign Subflow Outputs">df4e1945c3e232002841b63b12d3ae3e</logic_definition>
+        <order>2</order>
+        <outputs_assigned>versions</outputs_assigned>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:51:44</sys_created_on>
+        <sys_id>63949e4f93874710ad88f738dd03d665</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 11:09:26</sys_updated_on>
+        <ui_id>5bdc612b-fb7a-4e7f-9124-c1d7815cac71</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+2YzW7bOBCAX0XQaQtYhn5tSbf0x0CA7nbRpLnUgUGLlEOUIlWKdOINAuw77Bvuk3QoyYlNOW7SXu2TOEPODOcbckDfu0KrWqvmUpw1DV1xN/9671Ls5m5CcJyhtMyidBpPAx/hNC2nUYqxH+FJlrojl6OKwMw1kQ0VvAHJGjFtRF/ncs4d+N1vP8xv7haSIEXw3M1hEPrhxPOnXuA7fpbHYR5M5+7IWqClJFyZBUpqYmmxKHQF6sboJ5aS9m7W8cAqQ0vCOu1V7Pz/73/ORwirUcOJ4vad4CXFhBfELIisCZXAtKTdjmydSU/n5MOdkqhQ3tUwFE5uZ5Qw3G4htZRKKMSe1OHU1ku6WhFJ8NtN78j3J47n/C0YLTbOZwLWEXM+cCxkQ6o2kVsLD6OXM5p4YeoEkzyI8yg6xqhErDkKKXkO0tDsLqQDWptMeISMrTtAZuhhj4xdXDYZm/0hMgmQOcOYKjgsQOWcNxom7NIBYt91W4e/RilInCDI/TD3s9+iFD9HKTxK6YDWpuQfoRT8nNLQwx6lAYV9SkH2AkoxUNoenAu9rGhjLrdfJeKHjp/mkZ/HyW8RsXf2SCQ4SuSA9jVEbN0BIkMPe0RsCzYR+z44RCQCIuccjs0eERAp9I3sgDEf19CEMG1qhjZXp150lNypF5160akXnXrRq4mcetHLe1FxQxmGzMK76nrk1khC1IpIN7+3VGpTk0WbLmhZF+Car5w/Zpox58vlzEvfgK2XPsu2VnbeZcOXmvEHkqb1tCjB0UKr0iwXEpsAg5FL7hThmIDbribcCnGMlJCbRwnUGf7E2ZPghnIFdl0z+a6h/4CTMEnMxBJSCZw75eNw0XfrTlzcCFqQT7W5ljqJQkvWrykE0xX/q9uK6fOkRJqpbZ8HiW7AHqlN0CaKPqTy4kbcft46nFHe7q9XMlEg9jhCCvKx1NB/DSFNL5/NUqf7eBQYYe1NuqhQXZv1tRRr2jqHvVTjFYPBuIRTAEGbx/cYqhg2PoYco/EM5O9b8RWS1GThTzADi43vL5zC5XxuCiJeJmVWRNgLYhx4cZhG3jLJlh7BUxRmSUlIid2HNuOL79rstctdn6VFl2iY0BSS1uoMQliTPiEPUJiUm/8HuiJd95H0Q0wKaurp0sjOd+bhDRQcLXZFt0J+M1t9kj38ABWdLQ99EAAA</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
+    <sys_hub_pill_compound action="delete_multiple" query="attached_to=c7945e4f93874710ad88f738dd03d6b7"/>
+    <sys_hub_flow_variable action="delete_multiple" query="model=c7945e4f93874710ad88f738dd03d6b7"/>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>activity</element>
+        <help/>
+        <hint/>
+        <label>Activity</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_c7945e4f93874710ad88f738dd03d6b7</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:51:44</sys_created_on>
+        <sys_id>d3949e4f93874710ad88f738dd03d614</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 10:51:44</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>module</element>
+        <help/>
+        <hint/>
+        <label>Module</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_c7945e4f93874710ad88f738dd03d6b7</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:51:43</sys_created_on>
+        <sys_id>d7945e4f93874710ad88f738dd03d6d8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 10:51:43</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>submission</element>
+        <help/>
+        <hint/>
+        <label>submission</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_c7945e4f93874710ad88f738dd03d6b7</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:51:43</sys_created_on>
+        <sys_id>df945e4f93874710ad88f738dd03d6ca</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 10:51:43</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_input_c7945e4f93874710ad88f738dd03d6b7^sys_idNOT IN1f945e4f93874710ad88f738dd03d6cf,57945e4f93874710ad88f738dd03d6dd"/>
+    <sys_choice field="activity" table="var__m_sys_hub_flow_input_c7945e4f93874710ad88f738dd03d6b7">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>-- None --</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_c7945e4f93874710ad88f738dd03d6b7</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:51:44</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>57945e4f93874710ad88f738dd03d6dd</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 10:53:31</sys_updated_on>
+            <value/>
+        </sys_choice>
+    </sys_choice>
+    <sys_choice field="module" table="var__m_sys_hub_flow_input_c7945e4f93874710ad88f738dd03d6b7">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>module</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>-- None --</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_c7945e4f93874710ad88f738dd03d6b7</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:51:43</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>1f945e4f93874710ad88f738dd03d6cf</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 10:53:31</sys_updated_on>
+            <value/>
+        </sys_choice>
+    </sys_choice>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>versions</element>
+        <help/>
+        <hint/>
+        <label>versions</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_output_c7945e4f93874710ad88f738dd03d6b7</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:52:45</sys_created_on>
+        <sys_id>5ad49a8f93874710ad88f738dd03d69c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 10:52:45</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_output_c7945e4f93874710ad88f738dd03d6b7"/>
+    <sys_hub_flow_snapshot action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <acls/>
+        <active>true</active>
+        <allow_high_security_roles>false</allow_high_security_roles>
+        <annotation/>
+        <attributes>browserActivatedIn=chrome,integrationActivatedIn=standalone,labelCacheCleanUpExecuted=true,timeFromCreateToActivate=73564000,viewActivatedIn=naturalLanguage</attributes>
+        <authored_on_release_version>29000</authored_on_release_version>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category/>
+        <copied_from>be9d8132930f8310ad88f738dd03d67a</copied_from>
+        <copied_from_name/>
+        <description>Initiate Submission Activity Flow to get Emails, Documents related to Submission</description>
+        <flow_priority>MEDIUM</flow_priority>
+        <internal_name>extraction_activity_flow</internal_name>
+        <label_cache>[{"name":"subflow.submission","label":"Input➛submission","reference":"x_gegis_ins_policy_submission","reference_display":"Submission","type":"reference","base_type":"reference","column_name":"","usedInstances":{"a8540e11-7d2b-4a4c-8c7c-ca1839025ae4":[null],"72995fbc-0553-4fe3-a8d2-e3457f78a639":["log_message"],"93fe4e81-bf50-4a43-947a-482d069f9a4e":["submission1"]},"attributes":{"uiType":"string","uiTypeLabel":"Reference","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"c3cadb5a-4d5c-46a4-bd1a-179427121399","sourceUiUniqueId":"","sourceType":"","sourceId":""}},{"name":"undefined","label":" - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition - Wait For Condition","usedInstances":{"54caad8b-c05e-4755-84a1-8e2b3deccf09":[null]},"attributes":{}},{"name":"subflow.activity","label":"Input➛Activity","reference":"","reference_display":"","type":"choice","base_type":"choice","column_name":"u_type","choices":[{"label":"-- None --","value":"","order":0.0},{"label":"Context Enrichment","value":"context_enrichment","order":1.0},{"label":"Duplicate Check","value":"duplicate_check","order":2.0},{"label":"Classification Failed","value":"classification_failed","order":3.0},{"label":"Submission Locked","value":"submission_locked","order":4.0},{"label":"Extraction Review","value":"extraction_review","order":5.0},{"label":"Referral","value":"referral","order":6.0},{"label":"Initiate Submission Request","value":"initiate_submission_request","order":7.0},{"label":"Extract","value":"extract","order":8.0},{"label":"Insured Verification","value":"insured_verification","order":9.0},{"label":"Check for Sanctions","value":"check_for_sanctions","order":10.0},{"label":"Confirm Data Review","value":"confirm_data_review","order":11.0},{"label":"Quality Assurance","value":"quality_assurance","order":12.0},{"label":"End Submission Clearance","value":"end_submission_clearance","order":13.0},{"label":"Initiate Risk Assessment","value":"initiate_risk_assessment","order":14.0},{"label":"Letter Of Authority","value":"letter_of_authority","order":15.0},{"label":"Underwriting Guidelines","value":"underwriting_guidelines","order":16.0},{"label":"Benchmarking","value":"benchmarking","order":17.0},{"label":"Survey Results","value":"survey_results","order":18.0},{"label":"Loss Prediction","value":"loss_prediction","order":19.0},{"label":"Bind Propensity","value":"bind_propensity","order":20.0},{"label":"Exposure Data","value":"exposure_data","order":21.0},{"label":"Fraud Detection","value":"fraud_detection","order":22.0},{"label":"Underwriter Narrative","value":"underwriter_narrative","order":23.0},{"label":"Risk Summary","value":"risk_summary","order":24.0},{"label":"Initiate Exposure Management","value":"initiate_exposure_management","order":25.0},{"label":"Geo Mapping","value":"geo_mapping","order":26.0},{"label":"Catastrophe Modelling","value":"catastrophe_modelling","order":27.0},{"label":"Capacity management","value":"capacity_management","order":28.0},{"label":"Concentration Analysis","value":"concentration_analysis","order":29.0},{"label":"Portfolio Optimization","value":"portfolio_optimization","order":30.0},{"label":"Exposure Management Summary","value":"exposure_management_summary","order":31.0},{"label":"Initiate Q\u0026B","value":"initiate_quote_and_bind","order":32.0},{"label":"Product Selection Details","value":"product_selection_details","order":33.0},{"label":"Quote Workspace","value":"quote_workspace","order":34.0},{"label":"Underwriting Decisions","value":"underwriting_decisions","order":35.0},{"label":"Broker Decision","value":"broker_decision","order":36.0},{"label":"Bind Details","value":"bind_details","order":37.0}],"usedInstances":{"93fe4e81-bf50-4a43-947a-482d069f9a4e":["activity"],"54caad8b-c05e-4755-84a1-8e2b3deccf09":[null,"conditions"]},"attributes":{"uiType":"choice","uiTypeLabel":"Choice","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"37fabe59-d496-4455-b82e-24a9d8bdf0ce","sourceUiUniqueId":"","sourceType":"","sourceId":""}},{"name":"subflow.module","label":"Input➛Module","reference":"","reference_display":"","type":"choice","base_type":"choice","column_name":"u_module","choices":[{"label":"-- None --","value":"","order":0.0},{"label":"Intake","value":"intake","order":1.0},{"label":"Clearance","value":"clearance","order":2.0},{"label":"Risk","value":"risk_assessment","order":3.0},{"label":"Exposure","value":"exposure_management","order":4.0},{"label":"Quote \u0026 Bind","value":"quote_and_bind","order":5.0}],"usedInstances":{"93fe4e81-bf50-4a43-947a-482d069f9a4e":["module1"],"54caad8b-c05e-4755-84a1-8e2b3deccf09":[null,"conditions"]},"attributes":{"uiType":"choice","uiTypeLabel":"Choice","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"ad5a4b42-391b-47ba-8b6c-2f13ecc4485d","sourceUiUniqueId":"","sourceType":"","sourceId":""}},{"name":"93fe4e81-bf50-4a43-947a-482d069f9a4e.task","label":"1 - Policy Suite  Playbook Activity Flow Task➛Task","reference":"x_gegis_ins_policy_case_task","reference_display":"Task","type":"reference","base_type":"reference","usedInstances":{"6cc8f203-3c23-43ed-94e0-c1b74c10ee58":["record"]},"attributes":{"uiType":"reference","uiTypeLabel":"Reference","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"1b96b9e2-3298-4624-9706-e40db66dc54e"}}]</label_cache>
+        <master>true</master>
+        <name>Extraction Activity Flow</name>
+        <natlang/>
+        <outputs/>
+        <parent_flow display_value="Extraction Activity Flow">c7945e4f93874710ad88f738dd03d6b7</parent_flow>
+        <remote_trigger_id/>
+        <run_as>user</run_as>
+        <run_with_roles/>
+        <sc_callable>false</sc_callable>
+        <status>published</status>
+        <sys_class_name>sys_hub_flow_snapshot</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:53:33</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>8a0592cf93874710ad88f738dd03d68a</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 11:09:30</sys_updated_on>
+        <type>subflow</type>
+        <version>2</version>
+    </sys_hub_flow_snapshot>
+    <sys_translated_text action="delete_multiple" query="documentkey=8a0592cf93874710ad88f738dd03d68a"/>
+    <sys_variable_value action="delete_multiple" query="document_key=8a0592cf93874710ad88f738dd03d68a"/>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_flow_output_8a0592cf93874710ad88f738dd03d68a^id=8a0592cf93874710ad88f738dd03d68a"/>
+    <sys_hub_flow_stage action="delete_multiple" query="flow=8a0592cf93874710ad88f738dd03d68a"/>
+    <sys_flow_cat_variable_model action="delete_multiple" query="id=8a0592cf93874710ad88f738dd03d68a^sys_idNOT INc20592cf93874710ad88f738dd03d68c"/>
+    <sys_flow_cat_variable_model action="INSERT_OR_UPDATE">
+        <id>8a0592cf93874710ad88f738dd03d68a</id>
+        <name>Extraction Activity Flow</name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:53:33</sys_created_on>
+        <sys_id>c20592cf93874710ad88f738dd03d68c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 10:53:33</sys_updated_on>
+    </sys_flow_cat_variable_model>
+    <sys_flow_cat_variable action="delete_multiple" query="flow_catalog_model=c20592cf93874710ad88f738dd03d68c"/>
+    <sys_hub_flow_input action="delete_multiple" query="model=8a0592cf93874710ad88f738dd03d68a^sys_idNOT IN020592cf93874710ad88f738dd03d6a6,c60592cf93874710ad88f738dd03d6cd,ca0592cf93874710ad88f738dd03d68d"/>
+    <sys_hub_flow_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=choice,uiTypeLabel=Choice,uiUniqueId=ad5a4b42-391b-47ba-8b6c-2f13ecc4485d</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice>1</choice>
+        <choice_field>u_module</choice_field>
+        <choice_table>x_gegis_ins_policy_case_task</choice_table>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value>clearance</default_value>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>module</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="Choice">choice</internal_type>
+        <label>Module</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Extraction Activity Flow">8a0592cf93874710ad88f738dd03d68a</model>
+        <model_id>8a0592cf93874710ad88f738dd03d68a</model_id>
+        <model_table>sys_hub_flow_snapshot</model_table>
+        <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+        <next_element/>
+        <order>2</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:53:33</sys_created_on>
+        <sys_id>020592cf93874710ad88f738dd03d6a6</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=020592cf93874710ad88f738dd03d6a6"/>
+    <sys_hub_flow_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=choice,uiTypeLabel=Choice,uiUniqueId=37fabe59-d496-4455-b82e-24a9d8bdf0ce</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice>1</choice>
+        <choice_field>u_type</choice_field>
+        <choice_table>x_gegis_ins_policy_case_task</choice_table>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>activity</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="Choice">choice</internal_type>
+        <label>Activity</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Extraction Activity Flow">8a0592cf93874710ad88f738dd03d68a</model>
+        <model_id>8a0592cf93874710ad88f738dd03d68a</model_id>
+        <model_table>sys_hub_flow_snapshot</model_table>
+        <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+        <next_element/>
+        <order>3</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:53:33</sys_created_on>
+        <sys_id>c60592cf93874710ad88f738dd03d6cd</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 10:53:34</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=c60592cf93874710ad88f738dd03d6cd"/>
+    <sys_hub_flow_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=reference,uiTypeLabel=Reference,uiUniqueId=c3cadb5a-4d5c-46a4-bd1a-179427121399</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table>x_gegis_ins_policy_submission</choice_table>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>submission</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="Reference">reference</internal_type>
+        <label>submission</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Extraction Activity Flow">8a0592cf93874710ad88f738dd03d68a</model>
+        <model_id>8a0592cf93874710ad88f738dd03d68a</model_id>
+        <model_table>sys_hub_flow_snapshot</model_table>
+        <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference display_value="" name="x_gegis_ins_policy_submission">x_gegis_ins_policy_submission</reference>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:53:33</sys_created_on>
+        <sys_id>ca0592cf93874710ad88f738dd03d68d</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 10:53:33</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=ca0592cf93874710ad88f738dd03d68d"/>
+    <sys_hub_flow_output action="delete_multiple" query="model=8a0592cf93874710ad88f738dd03d68a^sys_idNOT IN1205d2cf93874710ad88f738dd03d617"/>
+    <sys_hub_flow_output action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string_full_utf8,uiTypeLabel=String (Full UTF-8),uiUniqueId=4b5f9c3d-14d1-4283-b59b-ed7a295feefd</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>versions</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_link/>
+        <internal_type display_value="">string_full_utf8</internal_type>
+        <label>versions</label>
+        <mandatory>false</mandatory>
+        <max_length>255</max_length>
+        <model display_value="Extraction Activity Flow">8a0592cf93874710ad88f738dd03d68a</model>
+        <model_id>8a0592cf93874710ad88f738dd03d68a</model_id>
+        <model_table>sys_hub_flow_snapshot</model_table>
+        <name>var__m_sys_hub_flow_output_8a0592cf93874710ad88f738dd03d68a</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_output</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+        <sys_id>1205d2cf93874710ad88f738dd03d617</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 10:53:34</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_output>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=1205d2cf93874710ad88f738dd03d617"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=8a0592cf93874710ad88f738dd03d68a"/>
+    <sys_hub_trigger_instance_v2 action="delete_multiple" query="flow=8a0592cf93874710ad88f738dd03d68a"/>
+    <sys_hub_action_instance_v2 action="delete_multiple" query="flow=8a0592cf93874710ad88f738dd03d68a^sys_idNOT IN5205d2cf93874710ad88f738dd03d62a,5a05d2cf93874710ad88f738dd03d62b"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Policy Suite  Playbook Activity Flow Task">4f93d97e930f8310ad88f738dd03d615</action_type>
+        <action_type_parent display_value="Policy Suite  Playbook Activity Flow Task">5d60ddb6930f8310ad88f738dd03d62f</action_type_parent>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot>4f93d97e930f8310ad88f738dd03d615</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Extraction Activity Flow">8a0592cf93874710ad88f738dd03d68a</flow>
+        <generation_source/>
+        <order>1</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+        <sys_id>5205d2cf93874710ad88f738dd03d62a</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 11:09:30</sys_updated_on>
+        <ui_id>93fe4e81-bf50-4a43-947a-482d069f9a4e</ui_id>
+        <updation_source/>
+        <values>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</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=5205d2cf93874710ad88f738dd03d62a"/>
+    <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
+        <action_type display_value="Wait For Condition">89ce8a4187120010663ca1bb36cb0be3</action_type>
+        <action_type_parent display_value="Wait For Condition">8bb9a8160b10030085c083eb37673aec</action_type_parent>
+        <attributes/>
+        <comment/>
+        <compiled_snapshot>89ce8a4187120010663ca1bb36cb0be3</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Extraction Activity Flow">8a0592cf93874710ad88f738dd03d68a</flow>
+        <generation_source/>
+        <order>3</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+        <sys_id>5a05d2cf93874710ad88f738dd03d62b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 10:53:34</sys_updated_on>
+        <ui_id>6cc8f203-3c23-43ed-94e0-c1b74c10ee58</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+2X227jNhCGXyXQtenqQMlU7hZ2ggZIE8BxtxeLhTCihjZRWvLqkF03yLuXkuhIPsSbdJ0AAXqpEUn98898GunLgyUT69yiIUcG1GEjx7Vtxw4Cj4MTx17AYztGag2sFJaoV+bIszzR1/egqjrw8BB6Aikyh8TCtwkF6pGQjoBQ5iZ2EIoQKA5LKP5+fNT7ElmsFKw/m+06whdSJTmm1vmXrwNrBbl+Uom5df6wc+ulUhXEqPTS6UbrrvZyvaqvk4xXS0zLSG6C12bnxNw5u5roO3pTLccZWPijxDRBrUOAKnBgLSFNoMzytXVe5pUO5AjJbarWTysWMi3bPJfwo5D/6Ad7br1OoE6MGw+eLiPjTxsWEyjhTp/Myyp/siuTHIvWkgQFVKoc92PtgttVKbO03VJCrDa7M1Ut05vWEOvpgF45qkKLwFWdZ628TUvcLbLv043IS5k2jpgUVcZBPV1BWeYyrspazoNVydkhs9vwYbuFVLr8USM6KrIqb0yaXoxvp5Por0+z8e8X02h6cTebXo1nF/UOVNgcvYTVSqbzaJVn97JRqPNdDudKXwyFyr7rxAo5T4fAa3OGunQwvNTxSRP+DLmsH/qHPkZvrlX+mcpvFV41jSeE4zlBQBzH9gh14oCEDH1iow/Ud2ngB671OLCKdTFWUBSdx7q40beqtqh13HgbNeVp02w6tN7Mc7kqP2l592gcfRxsIPWPdj50jd47swP1RzTHuSwimRbRKlOSryMOutY1mftcztroK9n8ucINm7OmJQ8rNnjuxa77e89u2hsGTvc4nCbS0dm29QE4mf2B4DRp/TqdW15vw7nltu6ftkWN6ObU9yLQdVjIaOwRL6Y+oaEQhNmMEopgc99NRtTh/4HAn3J3fOKIrot5liayzqvocVeUUOLN7ezs6ob4A2fg7sN2aMlJp6LokTfuizwk3OC3F7s+dIDBzzvVbKS2/ZEAPNV03DJ7m78tu9+FM0xYEPs2IygYI9QbMRI6rkuCABLHoTwR9ttOOjs51s2i9zlayiVmVRkJBfMec/Y+Y5s31eu4eoGSDVcXafOiNIqelWjoirNMIaS7k02302+XRqlBi75ysh1j6wORdbLR1jm9M9f6Xr8LV5wD04MKSOhxJDSIOWGCC+Jh7AvPj1k8st9gfvHjPRzut2pS5dBUsSPqBH9uL9CxYWnSCXhemiGpqc1u/Hr/IIOT/z9Ov4TTnt07v3LdjbdiaqH3TWBd1F2hGd6nDB0Y+XH9dwaEuqFDIKQuCQMcIRUs8CB8A8qYc7S7xX4rF3yBSaXwtJS9QMeGsrtOwPPSDGVdo28DNu3FDWHByQhjex+DfJn2xR3irZfVh+RO3CHkfHEpUdX1NP9kz9DYL8s2iP3CvM90c13HS5ATJ9GfjtQNXMI8OiKjkMU21a0Xe3hC7r7+C+eJWSW8FAAA</values>
+    </sys_hub_action_instance_v2>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=5a05d2cf93874710ad88f738dd03d62b"/>
+    <sys_hub_sub_flow_instance_v2 action="delete_multiple" query="flow=8a0592cf93874710ad88f738dd03d68a"/>
+    <sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=8a0592cf93874710ad88f738dd03d68a^sys_idNOT IN1e05d2cf93874710ad88f738dd03d627"/>
+    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
+        <attributes/>
+        <block display_value="">f7bef5b293c3c310ad88f738dd03d613</block>
+        <comment/>
+        <connected_to/>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Extraction Activity Flow">8a0592cf93874710ad88f738dd03d68a</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="Assign Subflow Outputs">df4e1945c3e232002841b63b12d3ae3e</logic_definition>
+        <order>2</order>
+        <outputs_assigned>versions</outputs_assigned>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+        <sys_id>1e05d2cf93874710ad88f738dd03d627</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 11:09:30</sys_updated_on>
+        <ui_id>5bdc612b-fb7a-4e7f-9124-c1d7815cac71</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+2Y227bOBCGX0XgVQtYho62rLtsWgMB0gOaNDd1YdAi5RChSJWknHiDAPsO+4b7JB1KsmNLjjdtb60raX4eZuYjOaYfkaxMWRl9Lc+0ZkuB0m+PiBGUopiSaIKTfBIm42jse5gkST4OE0K8kIwmCRoggQsKLVdUaSaFBssK88qavs3UTDjwPG5e7DNDmaLYUDJDKXwEXjByvbHre443SaMg9cczNOh0qJSiwtgORlW0oxKZVQXI2uqjjsjaaVZRb1SOF5Q36k3k/PfPv84luKVNv6G8P5ciZ4SKjNoOYadBIQnLWRNRV7PpaSZ5/2AUzox703dF0Pspo5zUISQd0UiD+bMcjLu6YsslVZT8tW4n8ryR4zqfJWfZ2vlCYXTMnfeCSKVpUSdyM8LT4PWMRm6QOP4o9aM0DI8xyjHXRyHFL0HqD7sL6YDaJRMcIdPVDpDpz7BHpru4umS67A+RiYHMGSHMwGYBKhdCV9Bglw4Q+1HV6/D3KPmx4/upF6Te5I8oRS9RCo5SOqB2KXlHKPn/T6k/wx6lHoV9Sv7kFZQioLTZOFfVomDaHm6/S8QLHC9JQy+N4j8i0o1sS8Q/SuSA+itEutoBIv0Z9oh0R+gS6Z4Hh4iEQORCwLbZIwImg+/oDhj78h2KEGG65Hh9c6pFR8mdatGpFp1q0akW/TKRUy16fS3KbhknkFm4V30foBIr8NpQhVK4ZQl4gc13ycQdlKle49fewuoc71/D+hczsy6tRUNMYjnPK87nlcmTVrlsh7iqZefNFHTn6/XUTd5CC6mI9dgfIPpgqCAUHGsWCSqwINhItd5aYOGRT4I/G24hzia8Aj9o9je4EcSxbZhDbgF8I24/5235bsz5O2wwuFVlBg6oTZoky6huskRojituzndtTYNPpT3cmi4GL/imt+RVIT42GULbATa/FsBSaXCCljZS63obR351K++/bLycMlEnpRW5zDDffmEDeVxUxvrziCp2/WLyG+14+imvz+N5gcvS9i+VXLF6coilGC45fAxz2EvgtL3CD2EvQOBDAIOHU7C/q803WDGbhQ8wDHS2c38VDI74C7vOokWcT7KQuH5EfDcKktBdxJOFS8kYB5M4pzQn6GmA9Fqfc6z1c/4A3PxHZaNvstnmbd6k3nbJFCvNGTi1om2KnuzyFvZ/hwbYqvVtyzRjduFeW9vFTjuyhpXNsl3TvVR3Nvhn29NP1eo35tUQAAA=</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
+    <sys_hub_pill_compound action="delete_multiple" query="attached_to=8a0592cf93874710ad88f738dd03d68a"/>
+    <sys_hub_flow_variable action="delete_multiple" query="model=8a0592cf93874710ad88f738dd03d68a"/>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>submission</element>
+        <help/>
+        <hint/>
+        <label>submission</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:53:33</sys_created_on>
+        <sys_id>0a0592cf93874710ad88f738dd03d6a1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 10:53:33</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>module</element>
+        <help/>
+        <hint/>
+        <label>Module</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:53:33</sys_created_on>
+        <sys_id>ce0592cf93874710ad88f738dd03d6c8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 10:53:33</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>activity</element>
+        <help/>
+        <hint/>
+        <label>Activity</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+        <sys_id>d205d2cf93874710ad88f738dd03d60e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 10:53:34</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a^sys_idNOT IN020592cf93874710ad88f738dd03d6d3,060592cf93874710ad88f738dd03d6d7,0a0592cf93874710ad88f738dd03d6dc,0e0592cf93874710ad88f738dd03d6be,120592cf93874710ad88f738dd03d6e7,120592cf93874710ad88f738dd03d6fc,160592cf93874710ad88f738dd03d6ec,1605d2cf93874710ad88f738dd03d601,1a0592cf93874710ad88f738dd03d6f1,1e0592cf93874710ad88f738dd03d6e1,1e0592cf93874710ad88f738dd03d6f6,420592cf93874710ad88f738dd03d6c0,4a0592cf93874710ad88f738dd03d6d8,4e0592cf93874710ad88f738dd03d6ba,4e0592cf93874710ad88f738dd03d6dd,520592cf93874710ad88f738dd03d6e3,520592cf93874710ad88f738dd03d6f8,560592cf93874710ad88f738dd03d6e8,560592cf93874710ad88f738dd03d6fd,5a0592cf93874710ad88f738dd03d6ed,5a05d2cf93874710ad88f738dd03d602,5e0592cf93874710ad88f738dd03d6f2,820592cf93874710ad88f738dd03d6bc,820592cf93874710ad88f738dd03d6df,8e0592cf93874710ad88f738dd03d6b7,8e0592cf93874710ad88f738dd03d6d9,920592cf93874710ad88f738dd03d6f4,960592cf93874710ad88f738dd03d6e4,960592cf93874710ad88f738dd03d6f9,9a0592cf93874710ad88f738dd03d6e9,9a0592cf93874710ad88f738dd03d6fe,9e0592cf93874710ad88f738dd03d6ee,9e05d2cf93874710ad88f738dd03d603,c20592cf93874710ad88f738dd03d6db,c60592cf93874710ad88f738dd03d6bd,ce0592cf93874710ad88f738dd03d6d5,d20592cf93874710ad88f738dd03d6f0,d205d2cf93874710ad88f738dd03d605,d60592cf93874710ad88f738dd03d6e0,d60592cf93874710ad88f738dd03d6f5,da0592cf93874710ad88f738dd03d6e5,da0592cf93874710ad88f738dd03d6fa,de0592cf93874710ad88f738dd03d6ea,de0592cf93874710ad88f738dd03d6ff"/>
+    <sys_choice field="activity" table="var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>-- None --</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:33</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>020592cf93874710ad88f738dd03d6d3</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value/>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Duplicate Check</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>3</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:33</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>060592cf93874710ad88f738dd03d6d7</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>duplicate_check</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Referral</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>7</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>0a0592cf93874710ad88f738dd03d6dc</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>referral</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Initiate Risk Assessment</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>15</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>120592cf93874710ad88f738dd03d6e7</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>initiate_risk_assessment</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Portfolio Optimization</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>31</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>120592cf93874710ad88f738dd03d6fc</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:30</sys_updated_on>
+            <value>portfolio_optimization</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Survey Results</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>19</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>160592cf93874710ad88f738dd03d6ec</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>survey_results</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Quote Workspace</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>35</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>1605d2cf93874710ad88f738dd03d601</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:30</sys_updated_on>
+            <value>quote_workspace</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Fraud Detection</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>23</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>1a0592cf93874710ad88f738dd03d6f1</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>fraud_detection</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Check for Sanctions</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>11</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>1e0592cf93874710ad88f738dd03d6e1</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>check_for_sanctions</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Geo Mapping</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>27</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>1e0592cf93874710ad88f738dd03d6f6</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>geo_mapping</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Classification Failed</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>4</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>4a0592cf93874710ad88f738dd03d6d8</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>classification_failed</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Initiate Submission Request</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>8</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>4e0592cf93874710ad88f738dd03d6dd</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>initiate_submission_request</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Confirm Data Review</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>12</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>520592cf93874710ad88f738dd03d6e3</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>confirm_data_review</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Catastrophe Modelling</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>28</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>520592cf93874710ad88f738dd03d6f8</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>catastrophe_modelling</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Letter Of Authority</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>16</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>560592cf93874710ad88f738dd03d6e8</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>letter_of_authority</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Exposure Management Summary</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>32</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>560592cf93874710ad88f738dd03d6fd</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:30</sys_updated_on>
+            <value>exposure_management_summary</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Loss Prediction</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>20</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>5a0592cf93874710ad88f738dd03d6ed</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>loss_prediction</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Underwriting Decisions</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>36</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>5a05d2cf93874710ad88f738dd03d602</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:30</sys_updated_on>
+            <value>underwriting_decisions</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Underwriter Narrative</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>24</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>5e0592cf93874710ad88f738dd03d6f2</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>underwriter_narrative</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Extract</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>9</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>820592cf93874710ad88f738dd03d6df</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>extract</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Submission Locked</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>5</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>8e0592cf93874710ad88f738dd03d6d9</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>submission_locked</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Risk Summary</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>25</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>920592cf93874710ad88f738dd03d6f4</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>risk_summary</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Quality Assurance</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>13</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>960592cf93874710ad88f738dd03d6e4</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>quality_assurance</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Capacity management</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>29</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>960592cf93874710ad88f738dd03d6f9</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:30</sys_updated_on>
+            <value>capacity_management</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Underwriting Guidelines</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>17</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>9a0592cf93874710ad88f738dd03d6e9</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>underwriting_guidelines</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Initiate Q&amp;B</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>33</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>9a0592cf93874710ad88f738dd03d6fe</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:30</sys_updated_on>
+            <value>initiate_quote_and_bind</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Bind Propensity</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>21</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>9e0592cf93874710ad88f738dd03d6ee</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>bind_propensity</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Broker Decision</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>37</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>9e05d2cf93874710ad88f738dd03d603</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:30</sys_updated_on>
+            <value>broker_decision</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Extraction Review</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>6</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>c20592cf93874710ad88f738dd03d6db</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>extraction_review</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Context Enrichment</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>2</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:33</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>ce0592cf93874710ad88f738dd03d6d5</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>context_enrichment</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Exposure Data</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>22</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>d20592cf93874710ad88f738dd03d6f0</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>exposure_data</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Bind Details</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>38</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>d205d2cf93874710ad88f738dd03d605</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:30</sys_updated_on>
+            <value>bind_details</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Insured Verification</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>10</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>d60592cf93874710ad88f738dd03d6e0</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>insured_verification</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Initiate Exposure Management</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>26</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>d60592cf93874710ad88f738dd03d6f5</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>initiate_exposure_management</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>End Submission Clearance</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>14</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>da0592cf93874710ad88f738dd03d6e5</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>end_submission_clearance</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Concentration Analysis</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>30</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>da0592cf93874710ad88f738dd03d6fa</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:30</sys_updated_on>
+            <value>concentration_analysis</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Benchmarking</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>18</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>de0592cf93874710ad88f738dd03d6ea</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>benchmarking</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>activity</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Product Selection Details</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>34</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>de0592cf93874710ad88f738dd03d6ff</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:30</sys_updated_on>
+            <value>product_selection_details</value>
+        </sys_choice>
+    </sys_choice>
+    <sys_choice field="module" table="var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>module</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Exposure</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>5</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:33</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>0e0592cf93874710ad88f738dd03d6be</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>exposure_management</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>module</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Quote &amp; Bind</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>6</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:33</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>420592cf93874710ad88f738dd03d6c0</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>quote_and_bind</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>module</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Intake</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>2</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:33</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>4e0592cf93874710ad88f738dd03d6ba</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>intake</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>module</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Clearance</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>3</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:33</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>820592cf93874710ad88f738dd03d6bc</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>clearance</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>module</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>-- None --</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:33</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>8e0592cf93874710ad88f738dd03d6b7</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value/>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>module</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Risk</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_8a0592cf93874710ad88f738dd03d68a</name>
+            <sequence>4</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-05 10:53:33</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>c60592cf93874710ad88f738dd03d6bd</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-05 11:09:29</sys_updated_on>
+            <value>risk_assessment</value>
+        </sys_choice>
+    </sys_choice>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>versions</element>
+        <help/>
+        <hint/>
+        <label>versions</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_output_8a0592cf93874710ad88f738dd03d68a</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:53:34</sys_created_on>
+        <sys_id>9a05d2cf93874710ad88f738dd03d61e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 10:53:34</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_output_8a0592cf93874710ad88f738dd03d68a"/>
+    <sys_hub_flow action="UPDATE">
+        <sys_id>c7945e4f93874710ad88f738dd03d6b7</sys_id>
+        <latest_snapshot>8a0592cf93874710ad88f738dd03d68a</latest_snapshot>
+        <compiler_build>glide-australia-02-11-2026__patch3-05-25-2026_06-12-2026_1106.zip</compiler_build>
+        <version_record/>
+    </sys_hub_flow>
+    <sys_flow_trigger_plan action="delete_multiple" query="plan_id=c7945e4f93874710ad88f738dd03d6b7"/>
+    <sys_flow_subflow_plan action="delete_multiple" query="plan_id=c7945e4f93874710ad88f738dd03d6b7^sys_idNOT INa205d2cf93874710ad88f738dd03d663"/>
+    <sys_flow_subflow_plan action="INSERT_OR_UPDATE">
+        <plan>{"@class":"com.snc.process_flow.engine.serialization.plan_data.ChunkingPlanData","chunk_data":{"table":"sys_flow_subflow_plan","id":"a205d2cf93874710ad88f738dd03d663","name":"plan","plan_signature":null},"plan_data":"CHUNKING_PLAN"}</plan>
+        <plan_id display_value="Extraction Activity Flow">c7945e4f93874710ad88f738dd03d6b7</plan_id>
+        <snapshot>ac0b16c3930b4710ad88f738dd03d608</snapshot>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:53:35</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>a205d2cf93874710ad88f738dd03d663</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_overrides/>
+        <sys_scope/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 11:09:31</sys_updated_on>
+    </sys_flow_subflow_plan>
+</record_update>
