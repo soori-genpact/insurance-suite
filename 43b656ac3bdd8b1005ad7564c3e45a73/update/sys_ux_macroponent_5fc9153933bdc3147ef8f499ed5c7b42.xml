@@ -478,6 +478,13 @@
         <props>[
     {
         "defaultValue": {
+            "associated_table": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "table_name"
+                },
+                "value": ""
+            },
             "attachment_source": {
                 "displayValue": "",
                 "elementData": {
@@ -610,6 +617,25 @@
             "choices": [],
             "schema": {
                 "properties": {
+                    "associated_table": {
+                        "properties": {
+                            "displayValue": {
+                                "type": "string"
+                            },
+                            "elementData": {
+                                "properties": {
+                                    "type": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "value": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
                     "attachment_source": {
                         "properties": {
                             "displayValue": {
@@ -1007,14 +1033,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-01 06:03:53</sys_created_on>
         <sys_id>5fc9153933bdc3147ef8f499ed5c7b42</sys_id>
-        <sys_mod_count>10</sys_mod_count>
+        <sys_mod_count>12</sys_mod_count>
         <sys_name>PS Check for Duplicates AUI</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_5fc9153933bdc3147ef8f499ed5c7b42</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-05 13:07:05</sys_updated_on>
+        <sys_updated_on>2026-09-05 13:23:04</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=5fc9153933bdc3147ef8f499ed5c7b42"/>
 </record_update>

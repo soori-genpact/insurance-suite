@@ -692,6 +692,13 @@
         <props>[
     {
         "defaultValue": {
+            "associated_table": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "table_name"
+                },
+                "value": ""
+            },
             "attachment_source": {
                 "displayValue": "",
                 "elementData": {
@@ -730,6 +737,7 @@
                 "elementData": {
                     "type": "string"
                 },
+                "label": "Footer (DEPRECATED)",
                 "value": ""
             },
             "form_fields": {
@@ -757,18 +765,22 @@
                 "elementData": {
                     "type": "boolean"
                 },
-                "value": "0"
+                "label": "Is Automated (DEPRECATED)",
+                "value": "false"
             },
             "pending_description": {
+                "displayValue": "",
                 "elementData": {
                     "type": "html"
                 },
+                "label": "Pending State Description (DEPRECATED)",
                 "value": ""
             },
             "pending_title": {
                 "elementData": {
                     "type": "string"
                 },
+                "label": "Pending State Title (DEPRECATED)",
                 "value": ""
             },
             "record_fields": {
@@ -795,6 +807,7 @@
                 "elementData": {
                     "type": "string"
                 },
+                "label": "Tagline (DEPRECATED)",
                 "value": ""
             },
             "title": {
@@ -816,6 +829,25 @@
             "choices": [],
             "schema": {
                 "properties": {
+                    "associated_table": {
+                        "properties": {
+                            "displayValue": {
+                                "type": "string"
+                            },
+                            "elementData": {
+                                "properties": {
+                                    "type": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "value": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
                     "attachment_source": {
                         "properties": {
                             "displayValue": {
@@ -1002,6 +1034,9 @@
                     },
                     "pending_description": {
                         "properties": {
+                            "displayValue": {
+                                "type": "string"
+                            },
                             "elementData": {
                                 "properties": {
                                     "type": {
@@ -1155,136 +1190,6 @@
             "translatable": false
         },
         "valueType": "object"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "ROTeeddUveeddaDEicjjWoDplEXRhtb",
-        "inherited": false,
-        "label": "Table",
-        "mandatory": false,
-        "name": "table",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "RdbghheehhreeddDEMeehhjjpsGyNeddhhrddff",
-        "inherited": false,
-        "label": "sysId",
-        "mandatory": false,
-        "name": "sysId",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "BffXskeehhLjjCEVSjjUeeBeefWKPUjjcc",
-        "inherited": false,
-        "label": "Query",
-        "mandatory": false,
-        "name": "query",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "caNffNvQHAkvGjjgEKjjEHpbakee",
-        "inherited": false,
-        "label": "views",
-        "mandatory": false,
-        "name": "views",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "ZiiHSjeehhSiCUDSjjVcMjjhgEWkVn",
-        "inherited": false,
-        "label": "activityLogs",
-        "mandatory": false,
-        "name": "activityLogs",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "eeoDiiofeehhSBaaaazjjffANaccBpbTqk",
-        "inherited": false,
-        "label": "extraParams",
-        "mandatory": false,
-        "name": "extraParams",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "LkchhLPHjCkrijjfwCliibKDiijjh",
-        "inherited": false,
-        "label": "fields",
-        "mandatory": false,
-        "name": "fields",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "jjfKbafQMAUgMjjWaaDeeeGxiKgu",
-        "inherited": false,
-        "label": "screen",
-        "mandatory": false,
-        "name": "screen",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "jccbnNPXQBkMPjjXeeECiizcggwrQ",
-        "inherited": false,
-        "label": "selectedTabIndex",
-        "mandatory": false,
-        "name": "selectedTabIndex",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
-    },
-    {
-        "description": "",
-        "fieldType": "string",
-        "id": "OYgjjIfaapAUTQjjeehheeHbbGHkhhkkU",
-        "inherited": false,
-        "label": "userPrefs",
-        "mandatory": false,
-        "name": "userPrefs",
-        "readOnly": false,
-        "selectable": false,
-        "typeMetadata": null,
-        "valueType": "string"
     }
 ]</props>
         <required_sys_props/>
@@ -1369,14 +1274,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-01 06:05:09</sys_created_on>
         <sys_id>791a553d33bdc3147ef8f499ed5c7bb1</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>15</sys_mod_count>
         <sys_name>PS Check for Sanctions AUI</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_791a553d33bdc3147ef8f499ed5c7bb1</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-08-06 19:50:26</sys_updated_on>
+        <sys_updated_on>2026-09-05 13:21:37</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=791a553d33bdc3147ef8f499ed5c7bb1"/>
 </record_update>
