@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_hub_action_type_definition">
+    <sys_hub_action_type_definition action="DELETE">
+        <access>public</access>
+        <acls/>
+        <action_status/>
+        <action_template/>
+        <active>true</active>
+        <annotation>Collect data for use later in the flow.</annotation>
+        <attributes>{labelCacheCleanUpExecuted=true}</attributes>
+        <authored_on_release_version>29000</authored_on_release_version>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category display_value="Flow Data">078ef9ef1b27001094630f28cc4bcbed</category>
+        <compiler_build/>
+        <copied_from>8d3e35ef1b27001094630f28cc4bcb2a</copied_from>
+        <copied_from_name>Create Flow Data</copied_from_name>
+        <description>&lt;p&gt;Creates a new flow data record. This may be used to capture inputs from the user during flow execution.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Inputs:&lt;/b&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Definition&lt;/strong&gt; - Flow Data Definition that defines the inputs to gather.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Assigned To&lt;/b&gt; - (Optional) User required to provide flow data inputs.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Automated&lt;/b&gt; - When checked, does not wait for flow data to be in a completed state.&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;&lt;b&gt;Outputs:&lt;/b&gt;&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;Record&lt;/b&gt; - Flow Data Record created.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Data&lt;/b&gt; - Data Definition inputs collected by Flow Data record&lt;/li&gt;&lt;/ul&gt;</description>
+        <flow_priority/>
+        <ih_action>false</ih_action>
+        <internal_name>copy_of_create_flow_data</internal_name>
+        <label_cache>[{"name":"{{action.definition}}","label":"action➛Definition","type":"action","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{}},{"name":"{{action.assigned_to}}","label":"action➛Assigned To","type":"action","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{}},{"name":"{{action.assignment_group}}","label":"action➛Assignment group","type":"action","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{}},{"name":"{{action.state}}","label":"action➛State","type":"action","ref":"","reference_display":"","base_type":"choice","parent_table_name":"","column_name":"state","choices":[],"attributes":{}},{"name":"{{step[2b0a6c3b-a9bd-47b1-92b0-70a555f672f0].vars}}","label":"step➛Get Flow Data values➛vars","type":"step","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{}},{"name":"{{step[d2dd1fed-bdde-4def-ab82-22fd2f6ab2d0].out_var}}","label":"step➛Script step➛out_var","type":"step","ref":"","reference_display":"","base_type":"json","parent_table_name":"","column_name":"","choices":null,"attributes":{"uiTypeLabel":"JSON","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiType":"json","uiUniqueId":"8ae6f530-6f36-4df6-b077-17a860c8e4b5"}},{"name":"{{step[5b800fd8-0909-44b0-856d-35c1f11d5e88].activity_context.context}}","label":"step➛Collect Activity Context step➛Activity Context➛Context","type":"step","ref":"sys_pd_context","reference_display":"Context","base_type":"reference","parent_table_name":"sys_pd_activity_context","column_name":"context","choices":null,"attributes":{}},{"name":"{{step[5b800fd8-0909-44b0-856d-35c1f11d5e88].activity_context.activity_id}}","label":"step➛Collect Activity Context step➛Activity Context➛Activity ID","type":"step","ref":"","reference_display":"Activity ID","base_type":"string","parent_table_name":"sys_pd_activity_context","column_name":"activity_id","choices":null,"attributes":{}},{"name":"{{step[5e9b3b79-2a66-4769-b288-8e13107fdd13].sys_flow_data_record}}","label":"step➛Script step➛Sys Flow Data Record","type":"step","ref":"sys_flow_data","reference_display":"Flow Data","base_type":"reference","parent_table_name":"","column_name":"","choices":null,"attributes":{"uiTypeLabel":"Reference","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiType":"reference","uiUniqueId":"0b74b842-f431-44b2-98f0-ed5488e7589e"}},{"name":"{{step[5e9b3b79-2a66-4769-b288-8e13107fdd13].sys_flow_data_record.sys_id}}","label":"step➛Script step➛Sys Flow Data Record➛Sys ID","type":"step","ref":"","reference_display":"Sys ID","base_type":"GUID","parent_table_name":"sys_flow_data","column_name":"sys_id","choices":null,"attributes":{}}]</label_cache>
+        <latest_snapshot/>
+        <master_snapshot/>
+        <master_snapshot_digest/>
+        <name>Copy of Create Flow Data</name>
+        <natlang/>
+        <outputs/>
+        <pre_compiled>false</pre_compiled>
+        <state>draft</state>
+        <sys_class_name>sys_hub_action_type_definition</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-04 11:13:59</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>271059b6930f8310ad88f738dd03d644</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Copy of Create Flow Data</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_hub_action_type_definition_271059b6930f8310ad88f738dd03d644</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-04 11:13:59</sys_updated_on>
+        <system_level>false</system_level>
+        <type/>
+    </sys_hub_action_type_definition>
+    <sys_translated_text action="DELETE" query="documentkey=271059b6930f8310ad88f738dd03d644"/>
+    <sys_variable_value action="DELETE" query="document_key=271059b6930f8310ad88f738dd03d644"/>
+    <sys_hub_step_instance action="DELETE" query="action=271059b6930f8310ad88f738dd03d644"/>
+    <sys_hub_action_input action="DELETE" query="model=271059b6930f8310ad88f738dd03d644"/>
+    <sys_hub_action_output action="DELETE" query="model=271059b6930f8310ad88f738dd03d644"/>
+    <sys_hub_pill_compound action="DELETE" query="attached_to=271059b6930f8310ad88f738dd03d644"/>
+    <sys_hub_action_status_metadata action="DELETE" query="action_type_id=271059b6930f8310ad88f738dd03d644"/>
+    <sys_choice action="DELETE" query="name=var__m_sys_hub_action_input_271059b6930f8310ad88f738dd03d644"/>
+    <sys_choice action="DELETE" query="name=var__m_sys_hub_action_output_271059b6930f8310ad88f738dd03d644"/>
+    <sys_hub_action_plan action="DELETE" query="action_id=271059b6930f8310ad88f738dd03d644"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</application>
+        <file_path/>
+        <instance_id>27bc87902bdf2e54e83bf9f66e91bf33</instance_id>
+        <instance_name>dev354751</instance_name>
+        <name>sys_hub_action_type_definition_271059b6930f8310ad88f738dd03d644</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_hub_action_type_definition"><sys_hub_action_type_definition action="INSERT_OR_UPDATE"><access>public</access><acls/><action_status/><action_template/><active>true</active><annotation>Collect data for use later in the flow.</annotation><attributes>{labelCacheCleanUpExecuted=true}</attributes><authored_on_release_version>29000</authored_on_release_version><callable_by_client_api>false</callable_by_client_api><category display_value="Flow Data">078ef9ef1b27001094630f28cc4bcbed</category><compiler_build/><copied_from>8d3e35ef1b27001094630f28cc4bcb2a</copied_from><copied_from_name>Create Flow Data</copied_from_name><description>&lt;p&gt;Creates a new flow data record. This may be used to capture inputs from the user during flow execution.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Inputs:&lt;/b&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Definition&lt;/strong&gt; - Flow Data Definition that defines the inputs to gather.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Assigned To&lt;/b&gt; - (Optional) User required to provide flow data inputs.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Automated&lt;/b&gt; - When checked, does not wait for flow data to be in a completed state.&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;&lt;b&gt;Outputs:&lt;/b&gt;&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;Record&lt;/b&gt; - Flow Data Record created.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Data&lt;/b&gt; - Data Definition inputs collected by Flow Data record&lt;/li&gt;&lt;/ul&gt;</description><flow_priority/><ih_action>false</ih_action><internal_name>copy_of_create_flow_data</internal_name><label_cache>[{"name":"{{action.definition}}","label":"action➛Definition","type":"action","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{}},{"name":"{{action.assigned_to}}","label":"action➛Assigned To","type":"action","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{}},{"name":"{{action.assignment_group}}","label":"action➛Assignment group","type":"action","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{}},{"name":"{{action.state}}","label":"action➛State","type":"action","ref":"","reference_display":"","base_type":"choice","parent_table_name":"","column_name":"state","choices":[],"attributes":{}},{"name":"{{step[2b0a6c3b-a9bd-47b1-92b0-70a555f672f0].vars}}","label":"step➛Get Flow Data values➛vars","type":"step","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{}},{"name":"{{step[d2dd1fed-bdde-4def-ab82-22fd2f6ab2d0].out_var}}","label":"step➛Script step➛out_var","type":"step","ref":"","reference_display":"","base_type":"json","parent_table_name":"","column_name":"","choices":null,"attributes":{"uiTypeLabel":"JSON","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiType":"json","uiUniqueId":"8ae6f530-6f36-4df6-b077-17a860c8e4b5"}},{"name":"{{step[5b800fd8-0909-44b0-856d-35c1f11d5e88].activity_context.context}}","label":"step➛Collect Activity Context step➛Activity Context➛Context","type":"step","ref":"sys_pd_context","reference_display":"Context","base_type":"reference","parent_table_name":"sys_pd_activity_context","column_name":"context","choices":null,"attributes":{}},{"name":"{{step[5b800fd8-0909-44b0-856d-35c1f11d5e88].activity_context.activity_id}}","label":"step➛Collect Activity Context step➛Activity Context➛Activity ID","type":"step","ref":"","reference_display":"Activity ID","base_type":"string","parent_table_name":"sys_pd_activity_context","column_name":"activity_id","choices":null,"attributes":{}},{"name":"{{step[5e9b3b79-2a66-4769-b288-8e13107fdd13].sys_flow_data_record}}","label":"step➛Script step➛Sys Flow Data Record","type":"step","ref":"sys_flow_data","reference_display":"Flow Data","base_type":"reference","parent_table_name":"","column_name":"","choices":null,"attributes":{"uiTypeLabel":"Reference","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiType":"reference","uiUniqueId":"0b74b842-f431-44b2-98f0-ed5488e7589e"}},{"name":"{{step[5e9b3b79-2a66-4769-b288-8e13107fdd13].sys_flow_data_record.sys_id}}","label":"step➛Script step➛Sys Flow Data Record➛Sys ID","type":"step","ref":"","reference_display":"Sys ID","base_type":"GUID","parent_table_name":"sys_flow_data","column_name":"sys_id","choices":null,"attributes":{}}]</label_cache><latest_snapshot/><master_snapshot/><master_snapshot_digest/><name>Copy of Create Flow Data</name><natlang/><outputs/><pre_compiled>false</pre_compiled><state>draft</state><sys_class_name>sys_hub_action_type_definition</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-04 11:13:59</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>271059b6930f8310ad88f738dd03d644</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Copy of Create Flow Data</sys_name><sys_overrides/><sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package><sys_policy/><sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope><sys_update_name>sys_hub_action_type_definition_271059b6930f8310ad88f738dd03d644</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-04 11:13:59</sys_updated_on><system_level>false</system_level><type/></sys_hub_action_type_definition><sys_translated_text action="delete_multiple" query="documentkey=271059b6930f8310ad88f738dd03d644"/><sys_variable_value action="delete_multiple" query="document_key=271059b6930f8310ad88f738dd03d644"/><sys_hub_step_instance action="delete_multiple" query="action=271059b6930f8310ad88f738dd03d644"/><sys_hub_action_input action="delete_multiple" query="model=271059b6930f8310ad88f738dd03d644"/><sys_hub_action_output action="delete_multiple" query="model=271059b6930f8310ad88f738dd03d644"/><sys_hub_pill_compound action="delete_multiple" query="attached_to=271059b6930f8310ad88f738dd03d644"/><sys_hub_action_status_metadata action="delete_multiple" query="action_type_id=271059b6930f8310ad88f738dd03d644"/><sys_choice action="delete_multiple" query="name=var__m_sys_hub_action_input_271059b6930f8310ad88f738dd03d644"/><sys_choice action="delete_multiple" query="name=var__m_sys_hub_action_output_271059b6930f8310ad88f738dd03d644"/><sys_hub_action_plan action="delete_multiple" query="action_id=271059b6930f8310ad88f738dd03d644"/></record_update>]]></payload>
+        <payload_hash>1043420246</payload_hash>
+        <record_name>Copy of Create Flow Data</record_name>
+        <reverted_from/>
+        <source>ceffc4be93c38310ad88f738dd03d627</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-04 11:13:59</sys_created_on>
+        <sys_id>a71059b6930f8310ad88f738dd03d663</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a06c2020200000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-04 11:13:59</sys_updated_on>
+        <type>Action Type</type>
+        <update_guid>671059b67a0f83104d709e4449479962</update_guid>
+        <update_guid_history>671059b67a0f83104d709e4449479962:1043420246</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-05 10:42:44</sys_created_on>
+        <sys_db_object display_value="" name="sys_hub_action_type_definition">sys_hub_action_type_definition</sys_db_object>
+        <sys_id>434324f40b8a439488cffb9239bff484</sys_id>
+        <sys_metadata>271059b6930f8310ad88f738dd03d644</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Copy of Create Flow Data</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_scope_delete display_value="">00c1089b958e45ed83140febec97e3d1</sys_scope_delete>
+        <sys_update_name>sys_hub_action_type_definition_271059b6930f8310ad88f738dd03d644</sys_update_name>
+        <sys_update_version display_value="sys_hub_action_type_definition_271059b6930f8310ad88f738dd03d644">a71059b6930f8310ad88f738dd03d663</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-05 10:42:44</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
