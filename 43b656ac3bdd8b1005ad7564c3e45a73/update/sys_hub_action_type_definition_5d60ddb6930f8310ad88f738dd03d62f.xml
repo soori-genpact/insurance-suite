@@ -31,7 +31,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>5d60ddb6930f8310ad88f738dd03d62f</sys_id>
-        <sys_mod_count>69</sys_mod_count>
+        <sys_mod_count>74</sys_mod_count>
         <sys_name>Policy Suite  Playbook Activity Flow Task</sys_name>
         <sys_overrides/>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
@@ -39,7 +39,7 @@
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_hub_action_type_definition_5d60ddb6930f8310ad88f738dd03d62f</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-05 10:44:19</sys_updated_on>
+        <sys_updated_on>2026-09-05 19:06:43</sys_updated_on>
         <system_level>false</system_level>
         <type/>
     </sys_hub_action_type_definition>
@@ -155,10 +155,10 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-05 06:10:36</sys_created_on>
         <sys_id>5d441547938f0710ad88f738dd03d688</sys_id>
-        <sys_mod_count>14</sys_mod_count>
+        <sys_mod_count>15</sys_mod_count>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-05 07:26:36</sys_updated_on>
+        <sys_updated_on>2026-09-05 19:06:32</sys_updated_on>
     </sys_hub_step_instance>
     <sys_variable_value action="delete_multiple" query="document_key=5d441547938f0710ad88f738dd03d688"/>
     <sys_variable_value action="INSERT_OR_UPDATE">
@@ -183,9 +183,9 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-05 06:10:37</sys_created_on>
         <sys_id>ad441547938f0710ad88f738dd03d6bb</sys_id>
-        <sys_mod_count>13</sys_mod_count>
+        <sys_mod_count>14</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-05 07:26:36</sys_updated_on>
+        <sys_updated_on>2026-09-05 19:06:32</sys_updated_on>
         <value>(function execute(inputs, outputs) {&#13;
 &#13;
     var gr = new GlideRecord('x_gegis_ins_policy_case_task');&#13;
@@ -196,9 +196,22 @@
     if (gr.next()) {&#13;
         outputs.taskrecord = gr;&#13;
     } else {&#13;
-   &#13;
+&#13;
         var newTask = new GlideRecord('x_gegis_ins_policy_case_task');&#13;
         newTask.initialize();&#13;
+&#13;
+        // ---- ONLY CHANGE ----&#13;
+        // Derive the sys_id from submission+module+activity so two playbook&#13;
+        // contexts racing on the same activity aim at the SAME row. The first&#13;
+        // insert wins; the second fails on the primary key instead of creating&#13;
+        // a duplicate. Legacy rows are unaffected - they are still found by the&#13;
+        // query above, which is untouched.&#13;
+        var _key = String(inputs.param_submission.sys_id) + '|' +&#13;
+                   String(inputs.param_module) + '|' +&#13;
+                   String(inputs.param_activity);&#13;
+        newTask.setNewGuidValue(new GlideDigest().getMD5Hex(_key).toLowerCase());&#13;
+        // ---------------------&#13;
+&#13;
         newTask.setValue('submission', inputs.param_submission.sys_id);&#13;
         newTask.setValue('u_module', inputs.param_module.toString());&#13;
         newTask.setValue('u_type', inputs.param_activity.toString());&#13;
@@ -216,10 +229,22 @@
         if (newSysId) {&#13;
            outputs.taskrecord = newTask;&#13;
         } else {&#13;
-            gs.warn('Failed to insert new Task record');&#13;
+            // Lost the race - the winner already holds this key. Re-read it&#13;
+            // with the same query so the output is never left unset.&#13;
+            var won = new GlideRecord('x_gegis_ins_policy_case_task');&#13;
+            won.addQuery('submission', inputs.param_submission);&#13;
+            won.addQuery('u_module', inputs.param_module);&#13;
+            won.addQuery('u_type', inputs.param_activity);&#13;
+            won.query();&#13;
+            if (won.next()) {&#13;
+                outputs.taskrecord = won;&#13;
+            } else {&#13;
+                gs.warn('Failed to insert new Task record');&#13;
+            }&#13;
         }&#13;
     }&#13;
-})(inputs, outputs);</value>
+})(inputs, outputs);&#13;
+</value>
         <variable display_value="Script">71aa7f6647032200b4fad7527c9a719b</variable>
     </sys_variable_value>
     <sys_element_mapping action="delete_multiple" query="id=5d441547938f0710ad88f738dd03d688"/>
@@ -639,14 +664,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-05 06:10:37</sys_created_on>
         <sys_id>9d441547938f0710ad88f738dd03d697</sys_id>
-        <sys_mod_count>24</sys_mod_count>
+        <sys_mod_count>26</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name/>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-05 10:44:15</sys_updated_on>
+        <sys_updated_on>2026-09-05 19:06:38</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -1602,14 +1627,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-04 11:18:14</sys_created_on>
         <sys_id>b911593a930f8310ad88f738dd03d625</sys_id>
-        <sys_mod_count>71</sys_mod_count>
+        <sys_mod_count>75</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name/>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-05 10:44:15</sys_updated_on>
+        <sys_updated_on>2026-09-05 19:06:38</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -2003,17 +2028,17 @@
     <sys_hub_action_plan action="INSERT_OR_UPDATE">
         <action_id display_value="Policy Suite  Playbook Activity Flow Task">5d60ddb6930f8310ad88f738dd03d62f</action_id>
         <plan>{"@class":"com.snc.process_flow.engine.serialization.plan_data.ChunkingPlanData","chunk_data":{"table":"sys_hub_action_plan","id":"e393d97e930f8310ad88f738dd03d6ea","name":"plan","plan_signature":null},"plan_data":"CHUNKING_PLAN"}</plan>
-        <snapshot>36e2d64b93874710ad88f738dd03d64e</snapshot>
+        <snapshot>0ae548db930b8710ad88f738dd03d699</snapshot>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-04 11:29:17</sys_created_on>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>e393d97e930f8310ad88f738dd03d6ea</sys_id>
-        <sys_mod_count>9</sys_mod_count>
+        <sys_mod_count>10</sys_mod_count>
         <sys_overrides/>
         <sys_scope/>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-05 10:44:19</sys_updated_on>
+        <sys_updated_on>2026-09-05 19:06:43</sys_updated_on>
     </sys_hub_action_plan>
     <sys_hub_action_type_snapshot action="INSERT_OR_UPDATE">
         <access>public</access>
@@ -2140,10 +2165,10 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-05 06:24:52</sys_created_on>
         <sys_id>1e87110f938f0710ad88f738dd03d649</sys_id>
-        <sys_mod_count>6</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-05 07:26:45</sys_updated_on>
+        <sys_updated_on>2026-09-05 19:06:43</sys_updated_on>
     </sys_hub_step_instance>
     <sys_variable_value action="delete_multiple" query="document_key=1e87110f938f0710ad88f738dd03d649"/>
     <sys_variable_value action="INSERT_OR_UPDATE">
@@ -2168,9 +2193,9 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-05 06:24:53</sys_created_on>
         <sys_id>aa87510f938f0710ad88f738dd03d607</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-05 07:26:45</sys_updated_on>
+        <sys_updated_on>2026-09-05 19:06:43</sys_updated_on>
         <value>(function execute(inputs, outputs) {&#13;
 &#13;
     var gr = new GlideRecord('x_gegis_ins_policy_case_task');&#13;
@@ -2181,9 +2206,22 @@
     if (gr.next()) {&#13;
         outputs.taskrecord = gr;&#13;
     } else {&#13;
-   &#13;
+&#13;
         var newTask = new GlideRecord('x_gegis_ins_policy_case_task');&#13;
         newTask.initialize();&#13;
+&#13;
+        // ---- ONLY CHANGE ----&#13;
+        // Derive the sys_id from submission+module+activity so two playbook&#13;
+        // contexts racing on the same activity aim at the SAME row. The first&#13;
+        // insert wins; the second fails on the primary key instead of creating&#13;
+        // a duplicate. Legacy rows are unaffected - they are still found by the&#13;
+        // query above, which is untouched.&#13;
+        var _key = String(inputs.param_submission.sys_id) + '|' +&#13;
+                   String(inputs.param_module) + '|' +&#13;
+                   String(inputs.param_activity);&#13;
+        newTask.setNewGuidValue(new GlideDigest().getMD5Hex(_key).toLowerCase());&#13;
+        // ---------------------&#13;
+&#13;
         newTask.setValue('submission', inputs.param_submission.sys_id);&#13;
         newTask.setValue('u_module', inputs.param_module.toString());&#13;
         newTask.setValue('u_type', inputs.param_activity.toString());&#13;
@@ -2201,10 +2239,22 @@
         if (newSysId) {&#13;
            outputs.taskrecord = newTask;&#13;
         } else {&#13;
-            gs.warn('Failed to insert new Task record');&#13;
+            // Lost the race - the winner already holds this key. Re-read it&#13;
+            // with the same query so the output is never left unset.&#13;
+            var won = new GlideRecord('x_gegis_ins_policy_case_task');&#13;
+            won.addQuery('submission', inputs.param_submission);&#13;
+            won.addQuery('u_module', inputs.param_module);&#13;
+            won.addQuery('u_type', inputs.param_activity);&#13;
+            won.query();&#13;
+            if (won.next()) {&#13;
+                outputs.taskrecord = won;&#13;
+            } else {&#13;
+                gs.warn('Failed to insert new Task record');&#13;
+            }&#13;
         }&#13;
     }&#13;
-})(inputs, outputs);</value>
+})(inputs, outputs);&#13;
+</value>
         <variable display_value="Script">71aa7f6647032200b4fad7527c9a719b</variable>
     </sys_variable_value>
     <sys_element_mapping action="delete_multiple" query="id=1e87110f938f0710ad88f738dd03d649"/>
@@ -3614,14 +3664,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-04 11:29:16</sys_created_on>
         <sys_id>9793d97e930f8310ad88f738dd03d6c9</sys_id>
-        <sys_mod_count>19</sys_mod_count>
+        <sys_mod_count>21</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name/>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-05 10:44:19</sys_updated_on>
+        <sys_updated_on>2026-09-05 19:06:43</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
