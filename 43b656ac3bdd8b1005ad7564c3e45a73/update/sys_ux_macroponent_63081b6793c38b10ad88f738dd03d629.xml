@@ -1,0 +1,2830 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_macroponent">
+    <sys_ux_macroponent action="INSERT_OR_UPDATE">
+        <associated_types/>
+        <bundles>[
+    {
+        "definitionId": "d6c0f4f531825510f8773d3775164e01",
+        "incomplete": true,
+        "instanceId": "_1",
+        "name": "Form 1",
+        "useByReference": false
+    }
+]</bundles>
+        <category>page</category>
+        <component_dependencies/>
+        <composition>[
+    {
+        "definition": {
+            "id": "d356d14b6e293a3020a244b63d278d8f",
+            "type": "MACROPONENT"
+        },
+        "elementId": "column_layout_1",
+        "elementLabel": "Column layout 1",
+        "eventMappings": [],
+        "isHidden": {
+            "type": "JSON_LITERAL",
+            "value": null
+        },
+        "overrides": {
+            "composition": [
+                {
+                    "definition": {
+                        "id": "d356d14b6e293a3020a244b63d278d8f",
+                        "type": "MACROPONENT"
+                    },
+                    "elementId": "__qFTIbbviisAEVLeeddMwBJnXcKALE__column_1",
+                    "elementLabel": "Column 1",
+                    "eventMappings": [],
+                    "isHidden": {
+                        "type": "JSON_LITERAL",
+                        "value": null
+                    },
+                    "overrides": {
+                        "composition": [
+                            {
+                                "definition": {
+                                    "id": "1cabd639409da6359dd8f4247d488a34",
+                                    "type": "MACROPONENT"
+                                },
+                                "elementId": "workspace_header_1",
+                                "elementLabel": "Workspace Header 1",
+                                "eventMappings": [
+                                    {
+                                        "eventMappingId": "qRhhfxvItCUaavjjdUPHHVZaDeeddii",
+                                        "isConfiguration": false,
+                                        "offRowStorageId": null,
+                                        "sourceEventApiName": "x_gegis_library.WORKSPACE_HEADER_RECORD_LOADED",
+                                        "sourceEventCorrelationId": null,
+                                        "sourceEventDefinition": {
+                                            "apiName": "x_gegis_library.WORKSPACE_HEADER_RECORD_LOADED",
+                                            "id": null,
+                                            "type": "UXEVENT"
+                                        },
+                                        "sourceEventSysId": null,
+                                        "targets": [
+                                            {
+                                                "broker": null,
+                                                "clientScript": {
+                                                    "payload": {
+                                                        "type": "JSON_LITERAL",
+                                                        "value": {}
+                                                    },
+                                                    "sysId": "99185b6793c38b10ad88f738dd03d6af"
+                                                },
+                                                "clientTransformScript": "",
+                                                "conditional": null,
+                                                "declarativeAction": null,
+                                                "event": null,
+                                                "operation": null,
+                                                "targetId": "QkbbkEeehhefDUJjjjdEKiirrChhJtD",
+                                                "type": "CLIENT_SCRIPT"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "isHidden": {
+                                    "type": "JSON_LITERAL",
+                                    "value": null
+                                },
+                                "preset": null,
+                                "propertyValues": {
+                                    "actionBarDisableWhen": {
+                                        "type": "JSON_LITERAL",
+                                        "value": ""
+                                    },
+                                    "actionBarHideWhen": {
+                                        "type": "JSON_LITERAL",
+                                        "value": ""
+                                    },
+                                    "actionBarLabel": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Record actions"
+                                    },
+                                    "actionBarPosition": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "inline-end"
+                                    },
+                                    "actionSize": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "md"
+                                    },
+                                    "actions": {
+                                        "type": "JSON_LITERAL",
+                                        "value": [
+                                            {
+                                                "icon": "arrow-up-right-fill",
+                                                "id": "refer",
+                                                "items": [
+                                                    {
+                                                        "id": "underwriter",
+                                                        "label": "Refer to underwriter"
+                                                    },
+                                                    {
+                                                        "disableWhen": "stateIN3,4,7",
+                                                        "id": "actuary",
+                                                        "label": "Refer to actuary"
+                                                    }
+                                                ],
+                                                "label": "Refer",
+                                                "pin": true,
+                                                "type": "split"
+                                            },
+                                            {
+                                                "hideWhen": "stateIN3,4,7",
+                                                "id": "decline",
+                                                "label": "Decline",
+                                                "variant": "primary"
+                                            },
+                                            {
+                                                "bare": true,
+                                                "disableWhen": "stateIN3,4,7",
+                                                "icon": "paperclip-fill",
+                                                "id": "attach",
+                                                "label": "Attach",
+                                                "tooltip": "Upload attachments for Extraction",
+                                                "type": "icon"
+                                            }
+                                        ]
+                                    },
+                                    "backgroundFade": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "none"
+                                    },
+                                    "backgroundImage": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "/x_gegis_ins_policy.Bag.svg"
+                                    },
+                                    "backgroundOpacity": {
+                                        "type": "JSON_LITERAL",
+                                        "value": 100
+                                    },
+                                    "backgroundPositionX": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "center"
+                                    },
+                                    "backgroundPositionY": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "center"
+                                    },
+                                    "backgroundRepeat": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "no-repeat"
+                                    },
+                                    "backgroundSize": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "contain"
+                                    },
+                                    "density": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "comfortable"
+                                    },
+                                    "disableActionBar": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "fallbackPrimaryValue": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Product Configuration"
+                                    },
+                                    "fields": {
+                                        "type": "JSON_LITERAL",
+                                        "value": ""
+                                    },
+                                    "headerImageIcon": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "bookmark-outline"
+                                    },
+                                    "headerImagePresence": {
+                                        "type": "JSON_LITERAL",
+                                        "value": ""
+                                    },
+                                    "headerImageSize": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "lg"
+                                    },
+                                    "headerImageSrc": {
+                                        "type": "JSON_LITERAL",
+                                        "value": ""
+                                    },
+                                    "headerImageTooltip": {
+                                        "type": "JSON_LITERAL",
+                                        "value": ""
+                                    },
+                                    "headerImageType": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "icon"
+                                    },
+                                    "headerImageUserName": {
+                                        "type": "JSON_LITERAL",
+                                        "value": ""
+                                    },
+                                    "headingLevel": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "2"
+                                    },
+                                    "headingVariant": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "header-primary"
+                                    },
+                                    "hideTags": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "initialPinnedItems": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "loadingLabel": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Loading record…"
+                                    },
+                                    "maxPinnedItems": {
+                                        "type": "JSON_LITERAL",
+                                        "value": 50
+                                    },
+                                    "maxVisibleActions": {
+                                        "type": "JSON_LITERAL",
+                                        "value": 3
+                                    },
+                                    "navigateOnPinnedClick": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "overflowIcon": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "ellipsis-v-outline"
+                                    },
+                                    "overflowTooltip": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "More actions"
+                                    },
+                                    "pinData": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "pinLabel": {
+                                        "type": "JSON_LITERAL",
+                                        "value": ""
+                                    },
+                                    "pinStorageKey": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "x_gegis_library.pinned_items"
+                                    },
+                                    "pinSublabel": {
+                                        "type": "JSON_LITERAL",
+                                        "value": ""
+                                    },
+                                    "pinTogglePosition": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "title"
+                                    },
+                                    "pinTooltip": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Pin this record"
+                                    },
+                                    "pinnedDrawerTitle": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Pinned items"
+                                    },
+                                    "pinnedEmptyText": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Nothing pinned yet. Use the pin icon in a record header to add one."
+                                    },
+                                    "pinnedListTooltip": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Pinned items"
+                                    },
+                                    "primaryValue": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "{number}"
+                                    },
+                                    "recordTags": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "recordUrlTemplate": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "/x/gegis/insurance-policy-suite/record/{table}/{sysId}"
+                                    },
+                                    "referenceHref": {
+                                        "type": "JSON_LITERAL",
+                                        "value": ""
+                                    },
+                                    "referenceOpensWindow": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "reloadToken": {
+                                        "type": "JSON_LITERAL",
+                                        "value": ""
+                                    },
+                                    "secondaryAlign": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "horizontal"
+                                    },
+                                    "secondaryItems": {
+                                        "type": "JSON_LITERAL",
+                                        "value": [
+                                            {
+                                                "colorMap": {
+                                                    "*": "gray",
+                                                    "1": "info",
+                                                    "2": "moderate",
+                                                    "3": "positive",
+                                                    "4": "critical",
+                                                    "7": "low"
+                                                },
+                                                "field": "state",
+                                                "label": "State",
+                                                "showIcon": true,
+                                                "type": "highlighted",
+                                                "value": "Open"
+                                            },
+                                            {
+                                                "colorMap": {
+                                                    "*": "gray",
+                                                    "1": "critical",
+                                                    "2": "high",
+                                                    "3": "warning",
+                                                    "4": "low",
+                                                    "5": "gray"
+                                                },
+                                                "field": "priority",
+                                                "label": "Priority",
+                                                "type": "highlighted",
+                                                "value": "3 - Moderate"
+                                            },
+                                            {
+                                                "field": "assigned_to",
+                                                "label": "Assigned to",
+                                                "type": "reference",
+                                                "value": "Anna Ramirez"
+                                            },
+                                            {
+                                                "field": "opened_at",
+                                                "label": "Opened",
+                                                "type": "simple",
+                                                "value": "02-08-2026 09:14:00"
+                                            }
+                                        ]
+                                    },
+                                    "secondaryMinWidth": {
+                                        "type": "JSON_LITERAL",
+                                        "value": ""
+                                    },
+                                    "secondarySize": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "sm"
+                                    },
+                                    "showActionBar": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "showDivider": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "showErrors": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "showPinToggle": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "showPinnedList": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "subHeadingValue": {
+                                        "type": "JSON_LITERAL",
+                                        "value": ""
+                                    },
+                                    "surface": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "plain"
+                                    },
+                                    "sysId": {
+                                        "binding": {
+                                            "address": [
+                                                "sysId"
+                                            ],
+                                            "category": "props"
+                                        },
+                                        "type": "CONTEXT_BINDING"
+                                    },
+                                    "table": {
+                                        "binding": {
+                                            "address": [
+                                                "table"
+                                            ],
+                                            "category": "props"
+                                        },
+                                        "type": "CONTEXT_BINDING"
+                                    },
+                                    "tagsDismissible": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "tagsField": {
+                                        "type": "JSON_LITERAL",
+                                        "value": ""
+                                    },
+                                    "tagsIcon": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "tag-fill"
+                                    },
+                                    "tagsSize": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "sm"
+                                    },
+                                    "truncateSecondary": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "truncateTitle": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "unpinTooltip": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Unpin this record"
+                                    },
+                                    "userSysId": {
+                                        "binding": {
+                                            "address": [
+                                                "user",
+                                                "sys_id"
+                                            ],
+                                            "category": "session"
+                                        },
+                                        "type": "CONTEXT_BINDING"
+                                    }
+                                },
+                                "slot": null,
+                                "styles": null
+                            }
+                        ],
+                        "layout": {
+                            "default": {
+                                "children": null,
+                                "items": [
+                                    {
+                                        "element_id": "workspace_header_1"
+                                    }
+                                ],
+                                "root": null,
+                                "styles": {
+                                    "align-items": "stretch",
+                                    "box-sizing": "border-box",
+                                    "flex-direction": "column",
+                                    "height": "100%",
+                                    "justify-content": "flex-start",
+                                    "overflow": "auto"
+                                },
+                                "type": "flex"
+                            },
+                            "disableAutoReflow": true,
+                            "version": "3.1.0"
+                        }
+                    },
+                    "preset": null,
+                    "propertyValues": {
+                        "hideEmptyStateUi": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "slotWrapperBehavior": {
+                            "type": "JSON_LITERAL",
+                            "value": "contents"
+                        }
+                    },
+                    "scratchPad": {
+                        "uib": {
+                            "layout": {
+                                "column": {
+                                    "columnNumber": 0,
+                                    "id": "default",
+                                    "styleConfig": {
+                                        "external": {},
+                                        "internal": {}
+                                    }
+                                },
+                                "type": "column"
+                            },
+                            "version": "1.0.0"
+                        }
+                    },
+                    "slot": null,
+                    "styles": {
+                        "default": {
+                            "display": "contents"
+                        }
+                    }
+                }
+            ],
+            "layout": {
+                "default": {
+                    "children": null,
+                    "isInline": null,
+                    "items": [
+                        {
+                            "element_id": "__qFTIbbviisAEVLeeddMwBJnXcKALE__column_1"
+                        }
+                    ],
+                    "root": null,
+                    "rules": null,
+                    "styles": {
+                        "box-sizing": "border-box",
+                        "display": "grid",
+                        "grid-auto-columns": "1fr",
+                        "grid-auto-rows": "1fr",
+                        "grid-template-columns": "100fr",
+                        "grid-template-rows": "1fr",
+                        "width": "auto"
+                    },
+                    "type": "grid"
+                },
+                "disableAutoReflow": true,
+                "queries": [
+                    {
+                        "layout": {
+                            "children": null,
+                            "isInline": null,
+                            "items": [],
+                            "root": null,
+                            "rules": null,
+                            "styles": {
+                                "grid-template-columns": "1fr",
+                                "height": "fit-content",
+                                "max-height": "max-content",
+                                "min-height": "min-content"
+                            },
+                            "type": "grid"
+                        },
+                        "query": {
+                            "max-width": 640
+                        }
+                    }
+                ],
+                "version": "3.1.0"
+            }
+        },
+        "preset": null,
+        "propertyValues": {
+            "hideEmptyStateUi": {
+                "type": "JSON_LITERAL",
+                "value": true
+            },
+            "slotWrapperBehavior": {
+                "type": "JSON_LITERAL",
+                "value": "contents"
+            }
+        },
+        "scratchPad": {
+            "uib": {
+                "layout": {
+                    "columnSection": {
+                        "breakpoints": [
+                            {
+                                "behavior": "stack",
+                                "max-width": 640,
+                                "styles": {
+                                    "grid-template-columns": "1fr",
+                                    "height": "fit-content",
+                                    "max-height": "max-content",
+                                    "min-height": "min-content"
+                                }
+                            }
+                        ],
+                        "children": [
+                            {
+                                "columnNumber": 1,
+                                "unit": "%",
+                                "width": 100
+                            }
+                        ],
+                        "id": "UIB_COLUMN_SECTION_SINGLE_COLUMN_SECTION",
+                        "styleConfig": {
+                            "external": {},
+                            "internal": {}
+                        }
+                    },
+                    "type": "columnSection"
+                },
+                "version": "1.0.0"
+            }
+        },
+        "slot": null,
+        "styles": {
+            "default": {
+                "display": "contents"
+            }
+        }
+    },
+    {
+        "definition": {
+            "id": "d356d14b6e293a3020a244b63d278d8f",
+            "type": "MACROPONENT"
+        },
+        "elementId": "column_layout_2",
+        "elementLabel": "Column layout 2",
+        "eventMappings": [],
+        "isHidden": {
+            "type": "JSON_LITERAL",
+            "value": null
+        },
+        "overrides": {
+            "composition": [
+                {
+                    "definition": {
+                        "id": "d356d14b6e293a3020a244b63d278d8f",
+                        "type": "MACROPONENT"
+                    },
+                    "elementId": "__uTxdteehheeddnAUecjjeeUChhdIaoZhhm__column_1",
+                    "elementLabel": "Column 1",
+                    "eventMappings": [],
+                    "isHidden": {
+                        "type": "JSON_LITERAL",
+                        "value": null
+                    },
+                    "overrides": {
+                        "composition": [
+                            {
+                                "definition": {
+                                    "id": "b324da974cef96f2db1d484cfeda4e3e",
+                                    "type": "MACROPONENT_VIEWPORT"
+                                },
+                                "elementId": "tabs_1",
+                                "elementLabel": "Tabs 1",
+                                "eventMappings": [],
+                                "extensionPoints": [],
+                                "isHidden": {
+                                    "type": "JSON_LITERAL",
+                                    "value": null
+                                },
+                                "items": [
+                                    {
+                                        "icon": {
+                                            "type": "JSON_LITERAL",
+                                            "value": "playbook-outline"
+                                        },
+                                        "id": "record_playbook",
+                                        "label": {
+                                            "type": "TRANSLATION_LITERAL",
+                                            "value": {
+                                                "code": null,
+                                                "comment": "",
+                                                "message": "Worktrack"
+                                            }
+                                        },
+                                        "order": 100,
+                                        "type": "local"
+                                    },
+                                    {
+                                        "icon": {
+                                            "type": "JSON_LITERAL",
+                                            "value": "book-open-outline"
+                                        },
+                                        "id": "history",
+                                        "label": {
+                                            "type": "TRANSLATION_LITERAL",
+                                            "value": {
+                                                "code": null,
+                                                "comment": "",
+                                                "message": "Details"
+                                            }
+                                        },
+                                        "order": 500,
+                                        "type": "local"
+                                    }
+                                ],
+                                "overrides": {
+                                    "composition": [
+                                        {
+                                            "definition": {
+                                                "id": "d356d14b6e293a3020a244b63d278d8f",
+                                                "type": "MACROPONENT"
+                                            },
+                                            "elementId": "record_playbook",
+                                            "elementLabel": "Worktrack",
+                                            "eventMappings": [],
+                                            "isHidden": {
+                                                "type": "JSON_LITERAL",
+                                                "value": null
+                                            },
+                                            "name": "Untitled Tab",
+                                            "overrides": {
+                                                "composition": [
+                                                    {
+                                                        "definition": {
+                                                            "id": "ed99051389038d7a6d57069eecc5a122",
+                                                            "type": "MACROPONENT"
+                                                        },
+                                                        "elementId": "playbook_1",
+                                                        "elementLabel": "Playbook 1",
+                                                        "eventMappings": [],
+                                                        "isHidden": {
+                                                            "type": "JSON_LITERAL",
+                                                            "value": null
+                                                        },
+                                                        "preset": null,
+                                                        "propertyValues": {
+                                                            "activityView": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "focused"
+                                                            },
+                                                            "compactMode": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
+                                                            "conversationId": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": null
+                                                            },
+                                                            "daClientActionContract": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": null
+                                                            },
+                                                            "enableFullWidthCards": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "hidePriorityIndicator": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
+                                                            "onlyShowSelectedPlaybook": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
+                                                            "parentSysId": {
+                                                                "binding": {
+                                                                    "address": [
+                                                                        "sysId"
+                                                                    ],
+                                                                    "category": "props"
+                                                                },
+                                                                "type": "CONTEXT_BINDING"
+                                                            },
+                                                            "parentTable": {
+                                                                "binding": {
+                                                                    "address": [
+                                                                        "table"
+                                                                    ],
+                                                                    "category": "props"
+                                                                },
+                                                                "type": "CONTEXT_BINDING"
+                                                            },
+                                                            "playbookExperienceId": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "98e09a560f2200102920c912d4767e1a"
+                                                            },
+                                                            "recordGeneratorQuery": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": null
+                                                            },
+                                                            "resolvedPlaybookContexts": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": null
+                                                            },
+                                                            "selectedActivityContextId": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "selectedLaneContextId": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "selectedPlaybookContextId": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "userId": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": null
+                                                            },
+                                                            "userSession": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": null
+                                                            }
+                                                        },
+                                                        "slot": null,
+                                                        "styles": {
+                                                            "default": {},
+                                                            "queries": [
+                                                                {
+                                                                    "queryId": "custom_ff_1",
+                                                                    "value": {
+                                                                        "height": "100vh"
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ],
+                                                "layout": {
+                                                    "default": {
+                                                        "children": null,
+                                                        "items": [
+                                                            {
+                                                                "element_id": "playbook_1"
+                                                            }
+                                                        ],
+                                                        "root": null,
+                                                        "rules": null,
+                                                        "styles": {
+                                                            "flex-direction": "column",
+                                                            "min-height": "300px",
+                                                            "width": "100%"
+                                                        },
+                                                        "templateId": "5832fd4d53c31010e6bcddeeff7b12db",
+                                                        "type": "flex"
+                                                    },
+                                                    "version": "3.1.0"
+                                                }
+                                            },
+                                            "preset": null,
+                                            "propertyValues": {
+                                                "ariaRegionHeadingLevel": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "1"
+                                                },
+                                                "ariaRegionName": {
+                                                    "type": "TRANSLATION_LITERAL",
+                                                    "value": {
+                                                        "code": null,
+                                                        "comment": "",
+                                                        "message": ""
+                                                    }
+                                                },
+                                                "ariaRole": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": ""
+                                                },
+                                                "hideEmptyStateUi": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                },
+                                                "includeAriaHeading": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": false
+                                                },
+                                                "slotWrapperBehavior": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "fullheight"
+                                                },
+                                                "type": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "section"
+                                                }
+                                            },
+                                            "slot": "record_playbook",
+                                            "styles": null
+                                        },
+                                        {
+                                            "definition": {
+                                                "id": "d356d14b6e293a3020a244b63d278d8f",
+                                                "type": "MACROPONENT"
+                                            },
+                                            "elementId": "history",
+                                            "elementLabel": "Details",
+                                            "eventMappings": [],
+                                            "isHidden": {
+                                                "type": "JSON_LITERAL",
+                                                "value": null
+                                            },
+                                            "name": "History",
+                                            "overrides": {
+                                                "composition": [
+                                                    {
+                                                        "definition": {
+                                                            "id": "d356d14b6e293a3020a244b63d278d8f",
+                                                            "type": "MACROPONENT"
+                                                        },
+                                                        "elementId": "column_layout_13",
+                                                        "elementLabel": "Column layout 13",
+                                                        "eventMappings": [],
+                                                        "isHidden": {
+                                                            "type": "JSON_LITERAL",
+                                                            "value": null
+                                                        },
+                                                        "overrides": {
+                                                            "composition": [
+                                                                {
+                                                                    "definition": {
+                                                                        "id": "d356d14b6e293a3020a244b63d278d8f",
+                                                                        "type": "MACROPONENT"
+                                                                    },
+                                                                    "elementId": "__xSThhzfTYCEHggjjZMMwzOmNYbbl__column_1",
+                                                                    "elementLabel": "Column 1",
+                                                                    "eventMappings": [],
+                                                                    "isHidden": {
+                                                                        "type": "JSON_LITERAL",
+                                                                        "value": null
+                                                                    },
+                                                                    "overrides": {
+                                                                        "composition": [
+                                                                            {
+                                                                                "definition": {
+                                                                                    "id": "6b1c25526d8f81f046095ea5e3109cf9",
+                                                                                    "type": "MACROPONENT"
+                                                                                },
+                                                                                "elementId": "shell_page_1",
+                                                                                "elementLabel": "Shell Page 1",
+                                                                                "eventMappings": [],
+                                                                                "isHidden": {
+                                                                                    "type": "JSON_LITERAL",
+                                                                                    "value": null
+                                                                                },
+                                                                                "overrides": {
+                                                                                    "composition": [
+                                                                                        {
+                                                                                            "definition": {
+                                                                                                "id": "a8cf7f754c92e56f047bd1697bcdcaaf",
+                                                                                                "type": "MACROPONENT"
+                                                                                            },
+                                                                                            "elementId": "json_form_1",
+                                                                                            "elementLabel": "JSON Form 1",
+                                                                                            "eventMappings": [],
+                                                                                            "isHidden": {
+                                                                                                "type": "JSON_LITERAL",
+                                                                                                "value": null
+                                                                                            },
+                                                                                            "preset": null,
+                                                                                            "propertyValues": {
+                                                                                                "config": {
+                                                                                                    "type": "JSON_LITERAL",
+                                                                                                    "value": {
+                                                                                                        "buttons": [
+                                                                                                            {
+                                                                                                                "action": "edit",
+                                                                                                                "label": "Edit",
+                                                                                                                "region": "header",
+                                                                                                                "variant": "secondary"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "action": "clone_mta",
+                                                                                                                "label": "Clone as MTA",
+                                                                                                                "region": "header",
+                                                                                                                "variant": "secondary"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "action": "decline",
+                                                                                                                "label": "Decline",
+                                                                                                                "region": "footer",
+                                                                                                                "variant": "secondary"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "action": "refer",
+                                                                                                                "label": "Refer",
+                                                                                                                "region": "footer",
+                                                                                                                "variant": "secondary"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "action": "request_info",
+                                                                                                                "label": "Request Info",
+                                                                                                                "region": "footer",
+                                                                                                                "variant": "secondary"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "action": "quote",
+                                                                                                                "label": "Generate Quote",
+                                                                                                                "region": "footer",
+                                                                                                                "variant": "primary"
+                                                                                                            }
+                                                                                                        ],
+                                                                                                        "columns": 3,
+                                                                                                        "fields": [
+                                                                                                            {
+                                                                                                                "disabled": true,
+                                                                                                                "field_name": "number",
+                                                                                                                "label": "Submission Number",
+                                                                                                                "name": "submissionNumber",
+                                                                                                                "type": "text",
+                                                                                                                "value": "SUB-2026-004871"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "choices": [
+                                                                                                                    {
+                                                                                                                        "label": "New Business",
+                                                                                                                        "value": "new"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "Renewal",
+                                                                                                                        "value": "renewal"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "MTA / Endorsement",
+                                                                                                                        "value": "mta"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "Cancellation",
+                                                                                                                        "value": "cancellation"
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                                "field_name": "transaction_type",
+                                                                                                                "label": "Transaction Type",
+                                                                                                                "name": "transactionType",
+                                                                                                                "type": "select",
+                                                                                                                "value": "renewal"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "field_name": "parent_policy",
+                                                                                                                "label": "Expiring / Parent Policy",
+                                                                                                                "name": "parentPolicy",
+                                                                                                                "placeholder": "Policy being renewed or amended",
+                                                                                                                "type": "text",
+                                                                                                                "value": "POL-PKG-2025-11842"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "field_name": "insured",
+                                                                                                                "infoAction": "preview",
+                                                                                                                "infoTooltip": "Preview insured",
+                                                                                                                "label": "Named Insured",
+                                                                                                                "name": "insured",
+                                                                                                                "placeholder": "Search accounts…",
+                                                                                                                "span": 2,
+                                                                                                                "table": "customer_account",
+                                                                                                                "type": "lookup",
+                                                                                                                "value": ""
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "choices": [
+                                                                                                                    {
+                                                                                                                        "label": "Add location",
+                                                                                                                        "value": "add_location"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "Delete location",
+                                                                                                                        "value": "delete_location"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "Add vehicle",
+                                                                                                                        "value": "add_vehicle"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "Delete vehicle",
+                                                                                                                        "value": "delete_vehicle"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "Change sum insured",
+                                                                                                                        "value": "change_si"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "Change deductible",
+                                                                                                                        "value": "change_deductible"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "Add coverage",
+                                                                                                                        "value": "add_coverage"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "Name / address change",
+                                                                                                                        "value": "name_change"
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                                "field_name": "mta_reason",
+                                                                                                                "label": "MTA Reason",
+                                                                                                                "name": "mtaReason",
+                                                                                                                "type": "select",
+                                                                                                                "value": ""
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "choices": [
+                                                                                                                    {
+                                                                                                                        "label": "Commercial Property",
+                                                                                                                        "value": "property"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "Commercial Auto",
+                                                                                                                        "value": "auto"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "Package (Property + Auto)",
+                                                                                                                        "value": "package"
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                                "field_name": "product",
+                                                                                                                "label": "Product",
+                                                                                                                "name": "product",
+                                                                                                                "type": "select",
+                                                                                                                "value": "package"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "field_name": "effective_date",
+                                                                                                                "label": "Effective Date",
+                                                                                                                "name": "effectiveDate",
+                                                                                                                "type": "text",
+                                                                                                                "value": "2026-09-01"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "field_name": "expiry_date",
+                                                                                                                "label": "Expiry Date",
+                                                                                                                "name": "expiryDate",
+                                                                                                                "type": "text",
+                                                                                                                "value": "2027-08-31"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "choices": [
+                                                                                                                    {
+                                                                                                                        "label": "6",
+                                                                                                                        "value": "6"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "12",
+                                                                                                                        "value": "12"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "18",
+                                                                                                                        "value": "18"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "24",
+                                                                                                                        "value": "24"
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                                "field_name": "term_months",
+                                                                                                                "label": "Term (months)",
+                                                                                                                "name": "termMonths",
+                                                                                                                "type": "select",
+                                                                                                                "value": "12"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "choices": [
+                                                                                                                    {
+                                                                                                                        "label": "USD",
+                                                                                                                        "value": "USD"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "AUD",
+                                                                                                                        "value": "AUD"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "GBP",
+                                                                                                                        "value": "GBP"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "EUR",
+                                                                                                                        "value": "EUR"
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                                "field_name": "currency",
+                                                                                                                "label": "Currency",
+                                                                                                                "name": "currency",
+                                                                                                                "type": "select",
+                                                                                                                "value": "USD"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "disabled": true,
+                                                                                                                "field_name": "rated_states",
+                                                                                                                "label": "Rated States",
+                                                                                                                "name": "ratedStates",
+                                                                                                                "type": "text",
+                                                                                                                "value": "IL, IN, OH, MI, WI, MO, KY, TN, PA"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "field_name": "tiv",
+                                                                                                                "label": "Total Insured Value",
+                                                                                                                "name": "tiv",
+                                                                                                                "type": "text",
+                                                                                                                "value": "412,600,000"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "field_name": "location_count",
+                                                                                                                "label": "Locations",
+                                                                                                                "name": "locationCount",
+                                                                                                                "type": "text",
+                                                                                                                "value": "28"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "field_name": "vehicle_count",
+                                                                                                                "label": "Power Units",
+                                                                                                                "name": "vehicleCount",
+                                                                                                                "type": "text",
+                                                                                                                "value": "142"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "disabled": true,
+                                                                                                                "field_name": "expiring_premium",
+                                                                                                                "label": "Expiring Premium",
+                                                                                                                "name": "expiringPremium",
+                                                                                                                "type": "text",
+                                                                                                                "value": "1,756,000"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "disabled": true,
+                                                                                                                "field_name": "technical_premium",
+                                                                                                                "label": "Technical Premium",
+                                                                                                                "name": "technicalPremium",
+                                                                                                                "type": "text",
+                                                                                                                "value": "1,980,000"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "field_name": "target_premium",
+                                                                                                                "label": "Target Premium",
+                                                                                                                "name": "targetPremium",
+                                                                                                                "type": "text",
+                                                                                                                "value": "1,840,000"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "field_name": "rate_change_pct",
+                                                                                                                "label": "Rate Change (%)",
+                                                                                                                "name": "rateChange",
+                                                                                                                "type": "text",
+                                                                                                                "value": "4.8"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "field_name": "commission_pct",
+                                                                                                                "label": "Commission (%)",
+                                                                                                                "name": "commissionPct",
+                                                                                                                "type": "text",
+                                                                                                                "value": "15"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "disabled": true,
+                                                                                                                "field_name": "loss_ratio_3yr",
+                                                                                                                "label": "Loss Ratio — 3 Year (%)",
+                                                                                                                "name": "lossRatio3yr",
+                                                                                                                "type": "text",
+                                                                                                                "value": "41.2"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "field_name": "broker",
+                                                                                                                "label": "Broker",
+                                                                                                                "name": "broker",
+                                                                                                                "placeholder": "Search brokers…",
+                                                                                                                "span": 2,
+                                                                                                                "table": "core_company",
+                                                                                                                "type": "lookup",
+                                                                                                                "value": ""
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "field_name": "broker_branch",
+                                                                                                                "label": "Broker Branch",
+                                                                                                                "name": "brokerBranch",
+                                                                                                                "type": "text",
+                                                                                                                "value": "Chicago, IL"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "field_name": "broker_contact",
+                                                                                                                "label": "Broker Contact",
+                                                                                                                "name": "brokerContact",
+                                                                                                                "type": "text",
+                                                                                                                "value": "Danielle Okafor — Account Executive"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "choices": [
+                                                                                                                    {
+                                                                                                                        "label": "Retail Broker",
+                                                                                                                        "value": "retail_broker"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "Wholesale / MGA",
+                                                                                                                        "value": "wholesale"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "Direct",
+                                                                                                                        "value": "direct"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "Binding Authority",
+                                                                                                                        "value": "binder"
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                                "field_name": "distribution_channel",
+                                                                                                                "label": "Distribution Channel",
+                                                                                                                "name": "distributionChannel",
+                                                                                                                "type": "select",
+                                                                                                                "value": "retail_broker"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "field_name": "underwriter",
+                                                                                                                "label": "Underwriter",
+                                                                                                                "name": "underwriter",
+                                                                                                                "placeholder": "Assign underwriter…",
+                                                                                                                "table": "sys_user",
+                                                                                                                "type": "lookup",
+                                                                                                                "value": ""
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "field_name": "uw_team",
+                                                                                                                "label": "Underwriting Team",
+                                                                                                                "name": "uwTeam",
+                                                                                                                "span": 2,
+                                                                                                                "type": "text",
+                                                                                                                "value": "Midwest — Transportation &amp; Logistics"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "disabled": true,
+                                                                                                                "field_name": "underwriting_year",
+                                                                                                                "label": "Underwriting Year",
+                                                                                                                "name": "underwritingYear",
+                                                                                                                "type": "text",
+                                                                                                                "value": "2026"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "choices": [
+                                                                                                                    {
+                                                                                                                        "label": "Target",
+                                                                                                                        "value": "target"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "Acceptable",
+                                                                                                                        "value": "acceptable"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "Restricted",
+                                                                                                                        "value": "restricted"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "Out of Appetite",
+                                                                                                                        "value": "out"
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                                "field_name": "appetite_tier",
+                                                                                                                "label": "Appetite Tier",
+                                                                                                                "name": "appetiteTier",
+                                                                                                                "type": "select",
+                                                                                                                "value": "target"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "choices": [
+                                                                                                                    {
+                                                                                                                        "label": "High",
+                                                                                                                        "value": "high"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "Medium",
+                                                                                                                        "value": "medium"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "Low",
+                                                                                                                        "value": "low"
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                                "field_name": "priority",
+                                                                                                                "label": "Priority",
+                                                                                                                "name": "priority",
+                                                                                                                "type": "select",
+                                                                                                                "value": "high"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "choices": [
+                                                                                                                    {
+                                                                                                                        "label": "Clear",
+                                                                                                                        "value": "clear"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "Duplicate Submission",
+                                                                                                                        "value": "duplicate"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "Broker Conflict",
+                                                                                                                        "value": "conflict"
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "label": "Blocked",
+                                                                                                                        "value": "blocked"
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                                "field_name": "clearance_result",
+                                                                                                                "label": "Clearance Result",
+                                                                                                                "name": "clearanceResult",
+                                                                                                                "type": "select",
+                                                                                                                "value": "clear"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "disabled": true,
+                                                                                                                "field_name": "received_date",
+                                                                                                                "label": "Received Date",
+                                                                                                                "name": "receivedDate",
+                                                                                                                "type": "text",
+                                                                                                                "value": "2026-07-27"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "field_name": "quote_due_date",
+                                                                                                                "label": "Quote Due Date",
+                                                                                                                "name": "quoteDueDate",
+                                                                                                                "type": "text",
+                                                                                                                "value": "2026-08-18"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "field_name": "bind_by_date",
+                                                                                                                "label": "Bind By Date",
+                                                                                                                "name": "bindByDate",
+                                                                                                                "type": "text",
+                                                                                                                "value": "2026-08-28"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "field_name": "cat_exposed",
+                                                                                                                "label": "CAT exposed (wind / flood / quake)",
+                                                                                                                "name": "catExposed",
+                                                                                                                "type": "checkbox",
+                                                                                                                "value": "true"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "field_name": "survey_required",
+                                                                                                                "label": "Risk survey required",
+                                                                                                                "name": "surveyRequired",
+                                                                                                                "type": "checkbox",
+                                                                                                                "value": "true"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "field_name": "referral_required",
+                                                                                                                "label": "Referral required",
+                                                                                                                "name": "referralRequired",
+                                                                                                                "type": "checkbox",
+                                                                                                                "value": "true"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "field_name": "subjectivities",
+                                                                                                                "label": "Subjectivities",
+                                                                                                                "name": "subjectivities",
+                                                                                                                "rows": 3,
+                                                                                                                "type": "textarea",
+                                                                                                                "value": "1. Updated SOV with 2026 replacement-cost valuations.\n2. Signed fleet driver-MVR policy.\n3. Sprinkler certification for Locations 04, 11, 19.",
+                                                                                                                "width": "full"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "field_name": "uw_notes",
+                                                                                                                "label": "Underwriter Notes",
+                                                                                                                "maxLength": 4000,
+                                                                                                                "name": "uwNotes",
+                                                                                                                "placeholder": "Rationale, referrals, pricing commentary…",
+                                                                                                                "rows": 3,
+                                                                                                                "type": "textarea",
+                                                                                                                "value": "Refrigerated warehousing + long-haul trucking. Property drives 71% of TIV; cold-storage refrigeration breakdown is the key peril. Auto frequency improved after 2025 telematics rollout.",
+                                                                                                                "width": "full"
+                                                                                                            }
+                                                                                                        ],
+                                                                                                        "header": "SUB-2026-004871 — Meridian Cold Chain Logistics, Inc.",
+                                                                                                        "sectionTitle": "Submission Details",
+                                                                                                        "status": {
+                                                                                                            "label": "In Underwriting",
+                                                                                                            "solid": false,
+                                                                                                            "tone": "info"
+                                                                                                        },
+                                                                                                        "subheader": "Commercial Property + Commercial Auto • Renewal • Broker: Aon Risk Services",
+                                                                                                        "table_name": "x_gegis_library_submission",
+                                                                                                        "version": "ver 1.2"
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "slot": "slot-1",
+                                                                                            "styles": {
+                                                                                                "default": {}
+                                                                                            }
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                "preset": null,
+                                                                                "propertyValues": {
+                                                                                    "activeBgColor": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": ""
+                                                                                    },
+                                                                                    "activeColor": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": ""
+                                                                                    },
+                                                                                    "activeSlotId": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": "1"
+                                                                                    },
+                                                                                    "conditionMode": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": "hide"
+                                                                                    },
+                                                                                    "contentBgColor": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": ""
+                                                                                    },
+                                                                                    "contentDisplay": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": "show-all"
+                                                                                    },
+                                                                                    "contentPadding": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": "16px"
+                                                                                    },
+                                                                                    "contextData": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": null
+                                                                                    },
+                                                                                    "defaultGroupState": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": "expanded"
+                                                                                    },
+                                                                                    "drawerBehavior": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": "auto-close"
+                                                                                    },
+                                                                                    "emitInitialSelection": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": false
+                                                                                    },
+                                                                                    "expandOnHover": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": false
+                                                                                    },
+                                                                                    "groupsCollapsible": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": false
+                                                                                    },
+                                                                                    "itemColor": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": ""
+                                                                                    },
+                                                                                    "itemFontSize": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": ""
+                                                                                    },
+                                                                                    "lockedSlots": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": null
+                                                                                    },
+                                                                                    "mobileBreakpoint": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": 768
+                                                                                    },
+                                                                                    "navBehavior": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": "fixed"
+                                                                                    },
+                                                                                    "navButtonPosition": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": "none"
+                                                                                    },
+                                                                                    "navCollapsedWidth": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": "56px"
+                                                                                    },
+                                                                                    "navPosition": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": "left"
+                                                                                    },
+                                                                                    "navVariant": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": "icon-text"
+                                                                                    },
+                                                                                    "navWidth": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": "250px"
+                                                                                    },
+                                                                                    "nextLabel": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": "Next"
+                                                                                    },
+                                                                                    "panelTitle": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": "Navigation"
+                                                                                    },
+                                                                                    "prevLabel": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": "Previous"
+                                                                                    },
+                                                                                    "railBgColor": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": ""
+                                                                                    },
+                                                                                    "railBreakpoint": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": 1024
+                                                                                    },
+                                                                                    "rememberActiveSlot": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": false
+                                                                                    },
+                                                                                    "shellHeight": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": "auto"
+                                                                                    },
+                                                                                    "showAllSlotsDesignTime": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": false
+                                                                                    },
+                                                                                    "showDiagnostics": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": true
+                                                                                    },
+                                                                                    "showNav": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": true
+                                                                                    },
+                                                                                    "showNavToggle": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": true
+                                                                                    },
+                                                                                    "showNextButton": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": false
+                                                                                    },
+                                                                                    "showPrevButton": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": false
+                                                                                    },
+                                                                                    "showSectionHeadings": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": false
+                                                                                    },
+                                                                                    "showSlotJumpButton": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": true
+                                                                                    },
+                                                                                    "showTitle": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": false
+                                                                                    },
+                                                                                    "slotCapacity": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": 10
+                                                                                    },
+                                                                                    "slots": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": [
+                                                                                            {
+                                                                                                "group": "Submission",
+                                                                                                "icon": "action-ai-sparkle-outline",
+                                                                                                "id": "1",
+                                                                                                "title": "Details"
+                                                                                            },
+                                                                                            {
+                                                                                                "group": "Submission",
+                                                                                                "icon": "shield-check-outline",
+                                                                                                "id": "2",
+                                                                                                "title": "Coverages"
+                                                                                            },
+                                                                                            {
+                                                                                                "group": "Submission",
+                                                                                                "icon": "arena-outline",
+                                                                                                "id": "3",
+                                                                                                "title": "Loss Record (5Y)"
+                                                                                            },
+                                                                                            {
+                                                                                                "group": "Submission",
+                                                                                                "icon": "regular-expression-outline",
+                                                                                                "id": "4",
+                                                                                                "title": "Top Risk"
+                                                                                            },
+                                                                                            {
+                                                                                                "group": "Insured",
+                                                                                                "icon": "user-tag-outline",
+                                                                                                "id": "5",
+                                                                                                "title": "Details"
+                                                                                            },
+                                                                                            {
+                                                                                                "group": "Insured",
+                                                                                                "icon": "script-check-outline",
+                                                                                                "id": "6",
+                                                                                                "title": "Existing Policies"
+                                                                                            },
+                                                                                            {
+                                                                                                "group": "Insured",
+                                                                                                "icon": "circle-exclamation-outline",
+                                                                                                "id": "7",
+                                                                                                "title": "Claims History"
+                                                                                            },
+                                                                                            {
+                                                                                                "group": "Broker",
+                                                                                                "icon": "user-verify-outline",
+                                                                                                "id": "8",
+                                                                                                "title": "Details"
+                                                                                            },
+                                                                                            {
+                                                                                                "group": "Broker",
+                                                                                                "icon": "official-verification-outline",
+                                                                                                "id": "9",
+                                                                                                "title": "Book of Business"
+                                                                                            },
+                                                                                            {
+                                                                                                "group": "Broker",
+                                                                                                "icon": "journal-pencil-outline",
+                                                                                                "id": "10",
+                                                                                                "title": "Related Submissions"
+                                                                                            }
+                                                                                        ]
+                                                                                    },
+                                                                                    "startCollapsed": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": true
+                                                                                    },
+                                                                                    "stickyTop": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": "0px"
+                                                                                    },
+                                                                                    "storageKey": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": ""
+                                                                                    }
+                                                                                },
+                                                                                "showNav": {
+                                                                                    "type": "JSON_LITERAL",
+                                                                                    "value": false
+                                                                                },
+                                                                                "slot": null,
+                                                                                "styles": {
+                                                                                    "default": {}
+                                                                                }
+                                                                            }
+                                                                        ],
+                                                                        "layout": {
+                                                                            "default": {
+                                                                                "children": null,
+                                                                                "items": [
+                                                                                    {
+                                                                                        "element_id": "shell_page_1"
+                                                                                    }
+                                                                                ],
+                                                                                "root": null,
+                                                                                "styles": {
+                                                                                    "align-items": "stretch",
+                                                                                    "box-sizing": "border-box",
+                                                                                    "flex-direction": "column",
+                                                                                    "height": "100%",
+                                                                                    "justify-content": "flex-start",
+                                                                                    "overflow": "auto"
+                                                                                },
+                                                                                "type": "flex"
+                                                                            },
+                                                                            "disableAutoReflow": true,
+                                                                            "version": "3.1.0"
+                                                                        }
+                                                                    },
+                                                                    "preset": null,
+                                                                    "propertyValues": {
+                                                                        "hideEmptyStateUi": {
+                                                                            "type": "JSON_LITERAL",
+                                                                            "value": true
+                                                                        },
+                                                                        "slotWrapperBehavior": {
+                                                                            "type": "JSON_LITERAL",
+                                                                            "value": "contents"
+                                                                        }
+                                                                    },
+                                                                    "scratchPad": {
+                                                                        "uib": {
+                                                                            "layout": {
+                                                                                "column": {
+                                                                                    "columnNumber": 0,
+                                                                                    "id": "default",
+                                                                                    "styleConfig": {
+                                                                                        "external": {},
+                                                                                        "internal": {}
+                                                                                    }
+                                                                                },
+                                                                                "type": "column"
+                                                                            },
+                                                                            "version": "1.0.0"
+                                                                        }
+                                                                    },
+                                                                    "slot": null,
+                                                                    "styles": {
+                                                                        "default": {
+                                                                            "display": "contents"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ],
+                                                            "layout": {
+                                                                "default": {
+                                                                    "children": null,
+                                                                    "isInline": null,
+                                                                    "items": [
+                                                                        {
+                                                                            "element_id": "__xSThhzfTYCEHggjjZMMwzOmNYbbl__column_1"
+                                                                        }
+                                                                    ],
+                                                                    "root": null,
+                                                                    "rules": null,
+                                                                    "styles": {
+                                                                        "box-sizing": "border-box",
+                                                                        "grid-template-columns": "100fr",
+                                                                        "grid-template-rows": "1fr",
+                                                                        "width": "auto"
+                                                                    },
+                                                                    "type": "grid"
+                                                                },
+                                                                "disableAutoReflow": true,
+                                                                "queries": [
+                                                                    {
+                                                                        "layout": {
+                                                                            "children": null,
+                                                                            "isInline": null,
+                                                                            "items": [],
+                                                                            "root": null,
+                                                                            "rules": null,
+                                                                            "styles": {
+                                                                                "grid-template-columns": "1fr",
+                                                                                "height": "fit-content",
+                                                                                "max-height": "max-content",
+                                                                                "min-height": "min-content"
+                                                                            },
+                                                                            "type": "grid"
+                                                                        },
+                                                                        "query": {
+                                                                            "max-width": 640
+                                                                        }
+                                                                    }
+                                                                ],
+                                                                "version": "3.1.0"
+                                                            }
+                                                        },
+                                                        "preset": null,
+                                                        "propertyValues": {
+                                                            "hideEmptyStateUi": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "slotWrapperBehavior": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "contents"
+                                                            }
+                                                        },
+                                                        "scratchPad": {
+                                                            "uib": {
+                                                                "layout": {
+                                                                    "columnSection": {
+                                                                        "breakpoints": [
+                                                                            {
+                                                                                "behavior": "stack",
+                                                                                "max-width": 640,
+                                                                                "styles": {
+                                                                                    "grid-template-columns": "1fr",
+                                                                                    "height": "fit-content",
+                                                                                    "max-height": "max-content",
+                                                                                    "min-height": "min-content"
+                                                                                }
+                                                                            }
+                                                                        ],
+                                                                        "children": [
+                                                                            {
+                                                                                "columnNumber": 1,
+                                                                                "unit": "%",
+                                                                                "width": 100
+                                                                            }
+                                                                        ],
+                                                                        "id": "UIB_COLUMN_SECTION_SINGLE_COLUMN_SECTION",
+                                                                        "styleConfig": {
+                                                                            "external": {},
+                                                                            "internal": {}
+                                                                        }
+                                                                    },
+                                                                    "type": "columnSection"
+                                                                },
+                                                                "version": "1.0.0"
+                                                            }
+                                                        },
+                                                        "slot": null,
+                                                        "styles": {
+                                                            "default": {
+                                                                "display": "contents"
+                                                            }
+                                                        }
+                                                    }
+                                                ],
+                                                "layout": {
+                                                    "default": {
+                                                        "children": null,
+                                                        "items": [
+                                                            {
+                                                                "element_id": "column_layout_13"
+                                                            }
+                                                        ],
+                                                        "root": null,
+                                                        "rules": null,
+                                                        "styles": {
+                                                            "flex-direction": "column",
+                                                            "min-height": "300px",
+                                                            "width": "100%"
+                                                        },
+                                                        "templateId": "5832fd4d53c31010e6bcddeeff7b12db",
+                                                        "type": "flex"
+                                                    },
+                                                    "version": "3.1.0"
+                                                }
+                                            },
+                                            "preset": null,
+                                            "propertyValues": {
+                                                "ariaRegionHeadingLevel": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "1"
+                                                },
+                                                "ariaRegionName": {
+                                                    "type": "TRANSLATION_LITERAL",
+                                                    "value": {
+                                                        "code": null,
+                                                        "comment": "",
+                                                        "message": ""
+                                                    }
+                                                },
+                                                "ariaRole": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": ""
+                                                },
+                                                "hideEmptyStateUi": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                },
+                                                "includeAriaHeading": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": false
+                                                },
+                                                "slotWrapperBehavior": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "fullheight"
+                                                },
+                                                "type": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "section"
+                                                }
+                                            },
+                                            "slot": "history",
+                                            "styles": null
+                                        }
+                                    ],
+                                    "layout": null
+                                },
+                                "preset": null,
+                                "propertyValues": {
+                                    "activeRoute": {
+                                        "icon": null,
+                                        "id": "history",
+                                        "label": {
+                                            "type": "TRANSLATION_LITERAL",
+                                            "value": {
+                                                "code": null,
+                                                "comment": "",
+                                                "message": "History"
+                                            }
+                                        },
+                                        "order": 500,
+                                        "type": "local"
+                                    },
+                                    "ariaLabel": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "Tab List"
+                                    },
+                                    "defaultRoute": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "dynamicTabData": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "enableCollapsing": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "fixedWidth": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "hideLabel": {
+                                        "type": "CLIENT_RESPONSIVE_QUERY",
+                                        "value": {
+                                            "default": {
+                                                "type": "JSON_LITERAL",
+                                                "value": false
+                                            },
+                                            "queries": [
+                                                {
+                                                    "queryId": "custom_ff_1",
+                                                    "value": {
+                                                        "type": "JSON_LITERAL",
+                                                        "value": false
+                                                    }
+                                                },
+                                                {
+                                                    "queryId": "custom_ff_2",
+                                                    "value": {
+                                                        "type": "JSON_LITERAL",
+                                                        "value": true
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "hidePadding": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "initiallyCollapsed": {
+                                        "type": "JSON_LITERAL",
+                                        "value": false
+                                    },
+                                    "items": {
+                                        "container": [],
+                                        "type": "LIST_CONTAINER"
+                                    },
+                                    "maxWidth": {
+                                        "type": "JSON_LITERAL",
+                                        "value": 240
+                                    },
+                                    "position": {
+                                        "type": "CLIENT_RESPONSIVE_QUERY",
+                                        "value": {
+                                            "default": {
+                                                "type": "JSON_LITERAL",
+                                                "value": "top"
+                                            },
+                                            "queries": [
+                                                {
+                                                    "queryId": "custom_ff_1",
+                                                    "value": {
+                                                        "type": "JSON_LITERAL",
+                                                        "value": "top"
+                                                    }
+                                                },
+                                                {
+                                                    "queryId": "custom_ff_2",
+                                                    "value": {
+                                                        "type": "JSON_LITERAL",
+                                                        "value": "top"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "selectedTab": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "selectedTabIndex": {
+                                        "type": "JSON_LITERAL",
+                                        "value": null
+                                    },
+                                    "showInlinePadding": {
+                                        "type": "JSON_LITERAL",
+                                        "value": true
+                                    },
+                                    "size": {
+                                        "type": "CLIENT_RESPONSIVE_QUERY",
+                                        "value": {
+                                            "default": {
+                                                "type": "JSON_LITERAL",
+                                                "value": "md"
+                                            },
+                                            "queries": [
+                                                {
+                                                    "queryId": "custom_ff_1",
+                                                    "value": {
+                                                        "type": "JSON_LITERAL",
+                                                        "value": "md"
+                                                    }
+                                                },
+                                                {
+                                                    "queryId": "custom_ff_2",
+                                                    "value": {
+                                                        "type": "JSON_LITERAL",
+                                                        "value": "md"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "spaceBetweenItems": {
+                                        "type": "JSON_LITERAL",
+                                        "value": "none"
+                                    },
+                                    "tabStyles": {
+                                        "type": "JSON_LITERAL",
+                                        "value": ".tabset-tabs{\n\n}\n.tabset-container{\n\n}"
+                                    },
+                                    "viewportConfiguration": {
+                                        "type": "JSON_LITERAL",
+                                        "value": {
+                                            "enableDataDrivenTabs": true,
+                                            "validation": {
+                                                "icon": {
+                                                    "required": false
+                                                },
+                                                "name": {
+                                                    "required": true
+                                                },
+                                                "order": {
+                                                    "required": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "slot": null,
+                                "styles": {
+                                    "default": {},
+                                    "queries": [
+                                        {
+                                            "queryId": "custom_ff_1",
+                                            "value": {
+                                                "height": "auto"
+                                            }
+                                        },
+                                        {
+                                            "queryId": "custom_ff_2",
+                                            "value": {}
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "layout": {
+                            "default": {
+                                "children": null,
+                                "items": [
+                                    {
+                                        "element_id": "tabs_1"
+                                    }
+                                ],
+                                "root": null,
+                                "styles": {
+                                    "align-items": "stretch",
+                                    "box-sizing": "border-box",
+                                    "flex-direction": "column",
+                                    "height": "100%",
+                                    "justify-content": "flex-start",
+                                    "overflow": "auto"
+                                },
+                                "type": "flex"
+                            },
+                            "disableAutoReflow": true,
+                            "version": "3.1.0"
+                        }
+                    },
+                    "preset": null,
+                    "propertyValues": {
+                        "hideEmptyStateUi": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "slotWrapperBehavior": {
+                            "type": "JSON_LITERAL",
+                            "value": "contents"
+                        }
+                    },
+                    "scratchPad": {
+                        "uib": {
+                            "layout": {
+                                "column": {
+                                    "columnNumber": 0,
+                                    "id": "default",
+                                    "styleConfig": {
+                                        "external": {},
+                                        "internal": {}
+                                    }
+                                },
+                                "type": "column"
+                            },
+                            "version": "1.0.0"
+                        }
+                    },
+                    "slot": null,
+                    "styles": {
+                        "default": {
+                            "display": "contents"
+                        }
+                    }
+                }
+            ],
+            "layout": {
+                "default": {
+                    "children": null,
+                    "isInline": null,
+                    "items": [
+                        {
+                            "element_id": "__uTxdteehheeddnAUecjjeeUChhdIaoZhhm__column_1"
+                        }
+                    ],
+                    "root": null,
+                    "rules": null,
+                    "styles": {
+                        "box-sizing": "border-box",
+                        "display": "grid",
+                        "grid-auto-columns": "1fr",
+                        "grid-auto-rows": "1fr",
+                        "grid-template-columns": "100fr",
+                        "grid-template-rows": "1fr",
+                        "padding-top": "var(--now-scalable-space--lg)",
+                        "width": "auto"
+                    },
+                    "type": "grid"
+                },
+                "disableAutoReflow": true,
+                "queries": [
+                    {
+                        "layout": {
+                            "children": null,
+                            "isInline": null,
+                            "items": [],
+                            "root": null,
+                            "rules": null,
+                            "styles": {
+                                "grid-template-columns": "1fr",
+                                "height": "fit-content",
+                                "max-height": "max-content",
+                                "min-height": "min-content"
+                            },
+                            "type": "grid"
+                        },
+                        "query": {
+                            "max-width": 640
+                        }
+                    }
+                ],
+                "version": "3.1.0"
+            }
+        },
+        "preset": null,
+        "propertyValues": {
+            "hideEmptyStateUi": {
+                "type": "JSON_LITERAL",
+                "value": true
+            },
+            "slotWrapperBehavior": {
+                "type": "JSON_LITERAL",
+                "value": "contents"
+            }
+        },
+        "scratchPad": {
+            "uib": {
+                "layout": {
+                    "columnSection": {
+                        "breakpoints": [
+                            {
+                                "behavior": "stack",
+                                "max-width": 640,
+                                "styles": {
+                                    "grid-template-columns": "1fr",
+                                    "height": "fit-content",
+                                    "max-height": "max-content",
+                                    "min-height": "min-content"
+                                }
+                            }
+                        ],
+                        "children": [
+                            {
+                                "columnNumber": 1,
+                                "unit": "%",
+                                "width": 100
+                            }
+                        ],
+                        "id": "UIB_COLUMN_SECTION_SINGLE_COLUMN_SECTION",
+                        "styleConfig": {
+                            "external": {},
+                            "internal": {}
+                        }
+                    },
+                    "type": "columnSection"
+                },
+                "version": "1.0.0"
+            }
+        },
+        "slot": null,
+        "styles": {
+            "default": {
+                "display": "contents"
+            }
+        }
+    }
+]</composition>
+        <da_relay_models/>
+        <data>[]</data>
+        <description/>
+        <disable_auto_reflow>false</disable_auto_reflow>
+        <dispatched_events/>
+        <ext_controller_dep/>
+        <extends display_value="Page Template">19be392623033300f4b4c50947bf65ba</extends>
+        <extension_point/>
+        <form_factors>{
+    "custom_ff_1": {
+        "max-width": 640,
+        "reference": "macroponent"
+    },
+    "custom_ff_2": {
+        "max-width": 320,
+        "reference": "macroponent"
+    }
+}</form_factors>
+        <handled_events/>
+        <interactions/>
+        <interfaces/>
+        <internal_event_mappings>{}</internal_event_mappings>
+        <keyboard_shortcuts>{}</keyboard_shortcuts>
+        <layout>{
+    "default": {
+        "children": null,
+        "items": [
+            {
+                "element_id": "column_layout_1"
+            },
+            {
+                "element_id": "column_layout_2"
+            }
+        ],
+        "root": null,
+        "rules": null,
+        "styles": {
+            "background": "linear-gradient(180deg, rgb(207,232,234) 0%, rgb(232,241,218) 100%)",
+            "display": "flex",
+            "flex-direction": "column",
+            "min-height": "calc(100vh - 130px)",
+            "padding": "var(--now-scalable-space--md)",
+            "padding-bottom": "var(--now-scalable-space--md)",
+            "padding-left": "var(--now-scalable-space--md)",
+            "padding-right": "var(--now-scalable-space--md)",
+            "padding-top": "var(--now-scalable-space--md)"
+        },
+        "templateId": "5832fd4d53c31010e6bcddeeff7b12db",
+        "type": "flex"
+    },
+    "queries": [
+        {
+            "layout": {
+                "items": [],
+                "styles": {
+                    "flex-direction": "column",
+                    "height": "auto",
+                    "min-width": null
+                },
+                "type": "flex"
+            },
+            "queryId": "custom_ff_1"
+        }
+    ],
+    "version": "3.1.0"
+}</layout>
+        <macroponent_dependencies/>
+        <name>Case SpecificTask</name>
+        <output_prop_mapping/>
+        <props>[
+    {
+        "defaultValue": "",
+        "description": null,
+        "disabled": false,
+        "fieldType": "string",
+        "label": "Table",
+        "mandatory": false,
+        "name": "table",
+        "readOnly": true,
+        "selectable": false,
+        "typeMetadata": null,
+        "valueType": "string"
+    },
+    {
+        "defaultValue": "",
+        "description": null,
+        "disabled": false,
+        "fieldType": "string",
+        "label": "sysId",
+        "mandatory": false,
+        "name": "sysId",
+        "readOnly": true,
+        "selectable": false,
+        "typeMetadata": null,
+        "valueType": "string"
+    },
+    {
+        "defaultValue": "",
+        "description": null,
+        "disabled": false,
+        "fieldType": "string",
+        "label": "Query",
+        "mandatory": false,
+        "name": "query",
+        "readOnly": true,
+        "selectable": false,
+        "typeMetadata": null,
+        "valueType": "string"
+    },
+    {
+        "defaultValue": "",
+        "description": null,
+        "disabled": false,
+        "fieldType": "string",
+        "label": "extraParams",
+        "mandatory": false,
+        "name": "extraParams",
+        "readOnly": true,
+        "selectable": false,
+        "typeMetadata": null,
+        "valueType": "string"
+    },
+    {
+        "defaultValue": "",
+        "description": null,
+        "disabled": false,
+        "fieldType": "string",
+        "label": "views",
+        "mandatory": false,
+        "name": "views",
+        "readOnly": true,
+        "selectable": false,
+        "typeMetadata": null,
+        "valueType": "string"
+    },
+    {
+        "defaultValue": "",
+        "description": null,
+        "disabled": false,
+        "fieldType": "string",
+        "label": "selectedTab",
+        "mandatory": false,
+        "name": "selectedTab",
+        "readOnly": true,
+        "selectable": false,
+        "typeMetadata": null,
+        "valueType": "string"
+    }
+]</props>
+        <required_sys_props/>
+        <required_translations>[ {
+  "message" : "12",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "18",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "24",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "6",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "AUD",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Acceptable",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Add coverage",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Add location",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Add vehicle",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Appetite Tier",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Assigned to",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Attach",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Bind By Date",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Binding Authority",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Blocked",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Broker",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Broker Branch",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Broker Conflict",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Broker Contact",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "CAT exposed (wind / flood / quake)",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Cancellation",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Change deductible",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Change sum insured",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Clear",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Clearance Result",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Clone as MTA",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Commercial Auto",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Commercial Property",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Commission (%)",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Currency",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Decline",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Delete location",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Delete vehicle",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Details",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Direct",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Distribution Channel",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Duplicate Submission",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "EUR",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Edit",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Effective Date",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Expiring / Parent Policy",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Expiring Premium",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Expiry Date",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "GBP",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Generate Quote",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "High",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "History",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "In Underwriting",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Locations",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Loss Ratio — 3 Year (%)",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Low",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "MTA / Endorsement",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "MTA Reason",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Medium",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Name / address change",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Named Insured",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "New Business",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Opened",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Out of Appetite",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Package (Property + Auto)",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Power Units",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Priority",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Product",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Quote Due Date",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Rate Change (%)",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Rated States",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Received Date",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Refer",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Refer to actuary",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Refer to underwriter",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Referral required",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Renewal",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Request Info",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Restricted",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Retail Broker",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Risk survey required",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "State",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Subjectivities",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Submission Number",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Target",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Target Premium",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Technical Premium",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Term (months)",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Total Insured Value",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Transaction Type",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "USD",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Underwriter",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Underwriter Notes",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Underwriting Team",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Underwriting Year",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Wholesale / MGA",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Worktrack",
+  "code" : "",
+  "comment" : ""
+} ]</required_translations>
+        <root_component/>
+        <root_component_config/>
+        <root_component_definition/>
+        <schema_version>1.0.0</schema_version>
+        <state_persistence_config/>
+        <state_properties>[]</state_properties>
+        <style_config>{}</style_config>
+        <sys_class_name>sys_ux_macroponent</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-07 05:03:21</sys_created_on>
+        <sys_id>63081b6793c38b10ad88f738dd03d629</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Case SpecificTask</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_ux_macroponent_63081b6793c38b10ad88f738dd03d629</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-07 05:06:22</sys_updated_on>
+    </sys_ux_macroponent>
+    <sys_translated_text action="delete_multiple" query="documentkey=63081b6793c38b10ad88f738dd03d629"/>
+</record_update>
