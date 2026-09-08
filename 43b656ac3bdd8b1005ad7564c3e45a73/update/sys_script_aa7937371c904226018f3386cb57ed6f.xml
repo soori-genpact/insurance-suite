@@ -12,7 +12,7 @@
         <change_fields>false</change_fields>
         <client_callable>false</client_callable>
         <collection>x_gegis_ins_policy_submission</collection>
-        <condition>current.request_kind == 'update' &amp;&amp; !current.version.changes() &amp;&amp; !current.is_locked</condition>
+        <condition>current.request_kind == 'update' &amp;&amp; !current.version.changes() &amp;&amp; !current.is_locked &amp;&amp; !current.playbook_clearance.changes() &amp;&amp; !current.playbook_risk.changes() &amp;&amp; !current.playbook_exposure.changes() &amp;&amp; !current.playbook_quote_and_bind.changes() &amp;&amp; !current.playbook_renewal.changes()</condition>
         <description>An update arrived for a submission already in flight: restart it in place or cut a new version, per submission_on_update on the resolved plan. Guarded so its own writes (version bump, locking the superseded row) cannot re-trigger it.</description>
         <execute_function>false</execute_function>
         <filter_condition/>

@@ -38,9 +38,9 @@ OrchestrationService.prototype = {
 
         // The submission-level playbook per module. These trigger on a
         // submission UPDATE with condition playbook_<module> is not empty, so
-        // they can never start themselves during kickoff: the stamp that
-        // satisfies their condition is written with setWorkflow(false) on
-        // purpose (see _stampSubmission). Orchestration therefore starts them
+        // they are started by the stamp _stampSubmission writes when each case
+        // is created - that write runs with rules on and is the trigger.
+        // Orchestration no longer needs to start them
         // explicitly, exactly as it starts the case-level ones.
         this.SUBMISSION_PLAYBOOK = {
             'clearance':           'x_gegis_ins_policy.submission_clearance_case_standard',
@@ -282,7 +282,8 @@ OrchestrationService.prototype = {
      * Write the new case number back onto the submission, so the submission
      * knows which case each module produced.
      *
-     * setWorkflow(false) is deliberate and is the ONLY safe option here. The
+     * Runs with rules ON: this write is what starts the submission-level
+     * playbook for the module. The
      * "Orchestration: submission updated" rule has no filter condition, so a
      * normal update() re-enters applyResubmit - and on a plan whose
      * submission_on_update is new_version that spawns an entire new submission
@@ -304,7 +305,11 @@ OrchestrationService.prototype = {
         }
 
         sub.setValue(col, caseNumber);
-        sub.setWorkflow(false);
+        // Rules ON. This update IS the submission-level playbook trigger
+        // (Record Update, playbook_&lt;module&gt; is not empty). Suppressing it
+        // meant those playbooks could never start anywhere. Re-entry into
+        // applyResubmit is prevented on the BR instead: "Orchestration:
+        // submission updated" now ignores a playbook_*-only change.
         sub.update();
         gs.info(this.LOG + sub.getValue('number') + '.' + col + ' = ' + caseNumber);
         return true;
@@ -315,10 +320,11 @@ OrchestrationService.prototype = {
      * on a full New Business journey. These run on the submission record and
      * are what its Worktrack tab renders.
      *
-     * They cannot start themselves: the trigger is Record Update on the
-     * submission with condition playbook_<module> is not empty, and the stamp
-     * that satisfies it is written with setWorkflow(false) on purpose so it
-     * does not re-enter applyResubmit (see _stampSubmission).
+     * They are started by the stamp _stampSubmission writes when each case
+     * is created: the trigger is Record Update on the submission with
+     * condition playbook_&lt;module&gt; is not empty, and that write runs with
+     * rules on. Re-entry into applyResubmit is prevented on the BR, which
+     * ignores a playbook_*-only change.
      */
     _startSubmissionPlaybooks: function (submissionId, groups) {
         var sub = new GlideRecord(Constants.TABLE.SUBMISSION);
