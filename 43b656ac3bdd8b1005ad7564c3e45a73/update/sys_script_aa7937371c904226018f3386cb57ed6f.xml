@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script">
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
     <sys_script action="INSERT_OR_UPDATE">
         <abort_action>false</abort_action>
         <access>package_private</access>
@@ -12,7 +12,7 @@
         <change_fields>false</change_fields>
         <client_callable>false</client_callable>
         <collection>x_gegis_ins_policy_submission</collection>
-        <condition>current.request_kind == 'update' &amp;&amp; !current.version.changes() &amp;&amp; !current.is_locked &amp;&amp; !current.playbook_clearance.changes() &amp;&amp; !current.playbook_risk.changes() &amp;&amp; !current.playbook_exposure.changes() &amp;&amp; !current.playbook_quote_and_bind.changes() &amp;&amp; !current.playbook_renewal.changes()</condition>
+        <condition/>
         <description>An update arrived for a submission already in flight: restart it in place or cut a new version, per submission_on_update on the resolved plan. Guarded so its own writes (version bump, locking the superseded row) cannot re-trigger it.</description>
         <execute_function>false</execute_function>
         <filter_condition/>
@@ -27,17 +27,33 @@
         <rest_service_text/>
         <rest_variables/>
         <role_conditions/>
-        <script>(function executeRule(current, previous /*null when async*/) {
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
 
-    new OrchestrationService().onUpdate(current.getUniqueValue());
+    // Condition moved here from the BR condition field to avoid 255-char truncation
+    if (
+        current.request_kind == 'update' &&
+        !current.version.changes() &&
+        !current.is_locked &&
+        !current.playbook_clearance.changes() &&
+        !current.playbook_risk.changes() &&
+        !current.playbook_exposure.changes() &&
+        !current.playbook_quote_and_bind.changes() &&
+        !current.playbook_renewal.changes()
+    ) {
+        new OrchestrationService().onUpdate(current.getUniqueValue());
+    }
 
-})(current, previous);</script>
+})(current, previous);
+]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-08-20 12:00:00</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
         <sys_id>aa7937371c904226018f3386cb57ed6f</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Orchestration: submission updated</sys_name>
+        <sys_overrides/>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
@@ -47,4 +63,5 @@
         <template/>
         <when>async</when>
     </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=aa7937371c904226018f3386cb57ed6f"/>
 </record_update>
