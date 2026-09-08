@@ -1,272 +1,134 @@
-# Policy Suite — Now SDK Auth & Deploy
+# Policy Suite
 
-Scope: `x_gegis_ins_policy` | SDK: `@servicenow/sdk` v4.6.x
+Scope: `x_gegis_ins_policy` | Company key: `gegis`
 
----
-
-## Prerequisites
-
-| Requirement     | Version                                                   |
-| --------------- | --------------------------------------------------------- |
-| Node.js         | 20+ (LTS)                                                 |
-| npm             | bundled with Node.js                                      |
-| Instance access | Admin or developer role on target PDI/enterprise instance |
+This repository is a **Studio source-control export** — update XML only. There
+are no Fluent sources and nothing to compile. The app is installed by importing
+this repo in Studio, not by an SDK build.
 
 ---
 
-## 1. Check Existing Credentials
+## Installing on a fresh PDI
 
-Before adding a new instance, verify what is already stored:
+Four steps. Steps 3 and 4 are the ones people miss: **installing the app gives
+you the schema only.** No records, no running playbooks.
 
-```bash
-npx now-sdk auth --list
-```
+### 1. Register the company key
 
-Sample output:
+The scope uses company key `gegis`. Every PDI needs it registered or the Studio
+import is blocked.
 
-```
-┌─────────────────┬────────────────────────────────────────────┬───────────┐
-│ Alias           │ URL                                        │ Default   │
-├─────────────────┼────────────────────────────────────────────┼───────────┤
-│ dev             │ https://dev12345.service-now.com           │ ✔         │
-│ uat             │ https://uat67890.service-now.com           │           │
-└─────────────────┴────────────────────────────────────────────┴───────────┘
-```
-
----
-
-## 2. Add an Instance
-
-### Basic Auth (PDI / Local Dev)
-
-```bash
-npx now-sdk auth --add https://<your-instance>.service-now.com --type basic
-```
-
-You will be prompted for:
-
-- **Alias** — a short label (e.g. `dev`, `uat`, `prod`)
-- **Username** — your ServiceNow username
-- **Password** — your ServiceNow password
-
-### OAuth (Enterprise Instance)
-
-```bash
-npx now-sdk auth --add https://<your-instance>.service-now.com --type oauth
-```
-
-Follow the browser-based OAuth flow when prompted.
-
-### Supply an Alias Inline (skip interactive prompt)
-
-```bash
-npx now-sdk auth --add https://<your-instance>.service-now.com --type basic --alias dev
-```
-
-> Credentials are stored in `.now-sdk/` — this folder is gitignored and never committed.
-
----
-
-## 3. Set a Default Instance
-
-```bash
-npx now-sdk auth --use dev
-```
-
-All subsequent `build` / `install` commands use the default unless overridden.
-
----
-
-## 4. Delete a Credential
-
-```bash
-npx now-sdk auth --delete <alias>
-```
-
----
-
-## 5. Build & Deploy Workflow
-
-### Step 1 — Build (compile & validate fluent)
-
-```bash
-npx now-sdk build
-```
-
-Validates all `.now.ts` files and reports type errors before anything is pushed.
-
-### Step 2 — Deploy (install to instance)
-
-```bash
-npx now-sdk install
-```
-
-Pushes compiled artifacts to the default instance. To target a specific instance:
-
-```bash
-npx now-sdk install --auth <alias>
-```
-
-### Full one-liner (build then deploy)
-
-```bash
-npx now-sdk build && npx now-sdk install
-```
-
----
-
-## 6. CI/CD — Non-Interactive Auth (no prompts)
-
-Set these environment variables instead of storing credentials locally:
-
-```bash
-SN_SDK_INSTANCE_URL=https://<your-instance>.service-now.com
-SN_SDK_USER=admin
-SN_SDK_USER_PWD=<password>
-```
-
-Environment variables take precedence over stored `.now-sdk/` credentials.
-
----
-
-## 7. Fetch Instance Type Definitions (IDE Autocomplete)
-
-After auth, pull table and API types from the connected instance:
-
-```bash
-npx now-sdk dependencies
-```
-
-Enables full TypeScript autocompletion for platform APIs and your custom tables.
-
----
-
-## Quick Reference
-
-| Command                                     | What It Does                                   |
-| ------------------------------------------- | ---------------------------------------------- |
-| `npx now-sdk auth --list`                   | Show all stored instance credentials           |
-| `npx now-sdk auth --add <url> --type basic` | Add basic-auth credentials for an instance     |
-| `npx now-sdk auth --add <url> --type oauth` | Add OAuth credentials for an instance          |
-| `npx now-sdk auth --use <alias>`            | Set default instance                           |
-| `npx now-sdk auth --delete <alias>`         | Remove stored credentials                      |
-| `npx now-sdk build`                         | Compile and validate all fluent source files   |
-| `npx now-sdk install`                       | Deploy built artifacts to the default instance |
-| `npx now-sdk install --auth <alias>`        | Deploy to a specific instance                  |
-| `npx now-sdk build && npx now-sdk install`  | Build then deploy in one step                  |
-| `npx now-sdk dependencies`                  | Fetch type definitions for IDE autocomplete    |
-
----
-
-## PDI Setup Guidelines
-
-Follow these steps **once per fresh PDI** before running any deploy or IDE sync.
-
-### Step 1 — Register the Company Key
-
-The scope `x_gegis_ins_policy` uses company key `gegis`. Every PDI must have this registered or the IDE sync and deploy will be blocked.
-
-Run this in **Scripts - Background** (`https://<pdi>.service-now.com/sys.scripts.do`):
-
-```javascript
-var gr = new GlideRecord("sys_properties");
-gr.addQuery("name", "sn_appauthor.all_company_keys");
-gr.query();
-if (gr.next()) {
-  var existing = gr.getValue("value");
-  if (existing.indexOf("gegis") === -1) {
-    gr.setValue("value", existing ? existing + ",gegis" : "gegis");
-    gr.update();
-    gs.info("Updated: " + gr.getValue("value"));
-  } else {
-    gs.info("gegis already present: " + existing);
-  }
-} else {
-  gr.initialize();
-  gr.setValue("name", "sn_appauthor.all_company_keys");
-  gr.setValue("value", "gegis");
-  gr.insert();
-  gs.info("Property created with value: gegis");
-}
-```
+**Scripts – Background** (`https://<pdi>.service-now.com/sys.scripts.do`):
 
 ```javascript
 var current = gs.getProperty("sn_appauthor.all_company_keys", "");
 if (current.split(",").indexOf("gegis") === -1) {
   gs.setProperty(
     "sn_appauthor.all_company_keys",
-    current ? current + ",gegis" : "gegis",
+    current ? current + ",gegis" : "gegis"
   );
+  gs.info("Registered: " + gs.getProperty("sn_appauthor.all_company_keys"));
+} else {
+  gs.info("gegis already registered");
 }
-gs.info(gs.getProperty("sn_appauthor.all_company_keys"));
 ```
 
-### Step 2 — Import from Source Control (Studio)
+### 2. Import from Source Control
 
-1. Open **Studio** on the PDI: `https://<pdi>.service-now.com/studio.do`
-2. Click **Import from Source Control**
+1. Open **Studio**: `https://<pdi>.service-now.com/studio.do`
+2. **Import from Source Control**
 3. Supply the git repo URL and credentials
-4. Studio will read `sn_source_control.properties` → find the app under `43b656ac3bdd8b1005ad7564c3e45a73/` → create the `sys_app` record on the instance automatically
+4. Studio reads `sn_source_control.properties`, finds the app under
+   `43b656ac3bdd8b1005ad7564c3e45a73/`, and creates the `sys_app` record
 
-> The repo already contains the required Studio manifest files (`sn_source_control.properties` and the `sys_app` XML). Do not re-create them.
+The repo already contains the Studio manifest (`sn_source_control.properties`
+and the `sys_app` XML). Do not re-create them.
 
-### Step 3 — Authenticate the SDK
+### 3. Load the demo data
 
-```bash
-now-sdk auth --add https://<pdi>.service-now.com --type basic --alias PDI
-now-sdk auth --use PDI
+**The app ships with no records.** A fresh install shows empty lists everywhere.
+
+Seed data and its loaders live outside this repo:
+
+```
+C:\SOORI\SNOW-WS\SCRIPTS\DEMODATA_XML_N_SCRIPT\
 ```
 
-### Step 4 — Build & Deploy
+Two options, documented in that folder's `README.md`:
 
-```bash
-now-sdk build && now-sdk deploy --auth PDI
-```
+| Folder | Result |
+| ------ | ------ |
+| `01_DATA_ONLY_NO_PLAYBOOKS/` | Records load, no playbooks start |
+| `02_DATA_PLUS_PLAYBOOKS/` | Records load and playbooks run |
 
-### PDI Setup Checklist
+### 4. Start the playbooks
 
-| #   | Step                           | Command / Location                           |
-| --- | ------------------------------ | -------------------------------------------- |
-| 1   | Register company key `gegis`   | Scripts - Background (script above)          |
-| 2   | Import app from source control | Studio → Import from Source Control          |
-| 3   | Add SDK auth credentials       | `now-sdk auth --add ... --alias PDI`         |
-| 4   | Build and deploy               | `now-sdk build && now-sdk deploy --auth PDI` |
+Only needed if you used folder `01`, or if the Worktrack tab looks empty after
+loading.
+
+The app has **two families** of record-driven playbooks and they start
+differently:
+
+| Family | Trigger | Starts when |
+| ------ | ------- | ----------- |
+| Case-level (`clearance_case_standard`, `risk_assessment_standard`, `exposure_case_standard`, `quote_bind_standard`) | insert of a case row | automatically, if the load used `GlideRecord.insert()` |
+| Submission-level (`submission_clearance_case_standard`, `submission_risk_case_standard`, `submission_exposure_case_standard`, `submission_quote`) | **update** of a submission | never during a load — run `fire_submission_playbooks.js` |
+
+A load that only inserts will never fire the submission-level family. That is
+the usual cause of a half-populated Worktrack tab.
+
+---
+
+## Install checklist
+
+| # | Step | Where |
+| - | ---- | ----- |
+| 1 | Register company key `gegis` | Scripts – Background |
+| 2 | Import app from source control | Studio |
+| 3 | Load demo data | `DEMODATA_XML_N_SCRIPT/` — pick folder `01` or `02` |
+| 4 | Start submission playbooks | `fire_submission_playbooks.js` (Global scope) |
+
+---
+
+## Notes
+
+**Background scripts run in Global.** `GlideSysAttachment` only returns content
+in Global, and `sys_choice` / `sys_dictionary` writes need it too — the app scope
+holds read-only privilege on those tables. Scripts that must run in the
+`x_gegis_ins_policy` scope say so in their header.
+
+**Case tasks are not seeded.** `x_gegis_ins_policy_case_task` rows are created at
+runtime by the playbook activities, through the `Policy Suite Playbook Activity
+Flow Task` flow action. They were removed from the seed XML — seeding them
+produced duplicate and orphaned rows.
+
+**Orchestration rules are application files.** The six `Orchestration: *`
+business rules can be deactivated during a bulk load, but doing so from a script
+writes to `sys_script` and lands in your current update set. Toggle them in the
+UI instead, and do not export the app mid-load.
 
 ---
 
 ## Troubleshooting
 
-### ERROR: Unable to install application as application was null
+### The app installed but every list is empty
 
-**Cause:** The `scopeId` in `now.config.json` is the `sys_id` of the `sys_app` record from the **original instance**. A fresh PDI has never had this app installed — it has no matching record, so the SDK receives null.
+Expected. Go to step 3 — the schema installs without records.
 
-**This is not a roles issue.** `admin` is the correct user.
+### Worktrack shows some playbooks but not others
 
-**Fix — first-time deploy to a new instance:**
+The submission-level family never started. Run `fire_submission_playbooks.js` in
+Global (step 4).
 
-1. On the target instance, create the app via **App Engine Studio → Create app**
-   - Name: `Policy Suite`
-   - Scope: `x_gegis_ins_policy`
+### Studio import is blocked / company key error
 
-2. Find the new app's `sys_id`:
+Step 1 was skipped, or the property was set on a different instance. The key is
+per-instance.
 
-   ```
-   https://<instance>.service-now.com/sys_app_list.do?sysparm_query=scope%3Dx_gegis_ins_policy
-   ```
+### Duplicate case tasks on a submission
 
-3. Update `now.config.json`:
-
-   ```json
-   {
-     "scope": "x_gegis_ins_policy",
-     "scopeId": "<new-sys_id-from-this-instance>",
-     "name": "Policy Suite"
-   }
-   ```
-
-4. Deploy again:
-   ```bash
-   now-sdk build && now-sdk deploy --auth <alias>
-   ```
-
-> `scopeId` is instance-specific. Each PDI or environment will have a different `sys_id` for the same scoped app. When switching target instances, always verify the `scopeId` matches that instance's `sys_app` record.
+Two playbook contexts raced on the same activity. The task-creating flow action
+now derives a deterministic `sys_id` from submission + module + activity, so the
+second insert collides on the primary key instead of creating a duplicate. If
+you still see duplicates, confirm that fix is present in the `Policy Suite
+Playbook Activity Flow Task` action's Script step.
