@@ -819,9 +819,9 @@ ModulePlanService.prototype = {
     },
 
     // reset_fields revert to their dictionary default on the copy, so a new
-    // version starts clean on lifecycle columns (clearance_status = pending,
+    // version starts clean on lifecycle columns (status, activity_status,
     // extraction_status = none, ...) while insured, broker, dates and policy
-    // carry over. Without this a v1 sanctions clear would survive onto v2's
+    // carry over. Without this a v1 outcome would survive onto v2's
     // changed exposure.
     _resetSet: function (rule) {
         var set = {};
