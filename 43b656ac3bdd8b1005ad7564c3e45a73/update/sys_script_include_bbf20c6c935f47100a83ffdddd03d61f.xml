@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.PlaybookActivityDataProvider</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>PlaybookActivityDataProvider</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var PlaybookActivityDataProvider = Class.create();
+PlaybookActivityDataProvider.prototype = {
+    initialize: function() {
+        this.P = 'x_gegis_ins_policy_';
+
+        // Absolute base for attachment links, e.g. https://dev354751.service-now.com
+        this.base = String(gs.getProperty('glide.servlet.uri') || '').replace(/\/+$/, '');
+
+        // ---------------------------------------------------------- switches
+        // The Documents contract's sys_id equals the value inside link, i.e. the
+        // ATTACHMENT. Flip to 'document' if the row must open the document record.
+        this.SYS_ID_IS = 'attachment'; // 'attachment' | 'document'
+
+        // Blank confidence/fields when a document has no extraction fields at
+        // all, not just when its state says it was never extracted.
+        this.BLANK_WHEN_NO_FIELDS = false;
+
+        // How recent an email must be to carry the "New" badge. There is no
+        // read/unread column on intake_case - this is a derivation.
+        this.NEW_WINDOW_DAYS = 3;
+
+        // ---------------------------------------------------------- vocabularies
+        // document.state -> the NEW / STALE badge on an email's attachment list.
+        this.STALE_STATES = {
+            old: true,
+            stale: true,
+            duplicate: true,
+            failed: true
+        };
+
+        // document.state values that mean extraction never ran.
+        this.NOT_EXTRACTED = {
+            'new': true,
+            pending: true,
+            failed: true
+        };
+
+        // intake_case.intent is a free-text column, so it has no choice labels.
+        this.INTENT_LABEL = {
+            'new': 'New-Submission',
+            'update': 'Update-Data',
+            'renewal': 'Renewal-Submission',
+            'mta': 'Endorsement',
+            'enquiry': 'Certificate-Request',
+            'claims': 'Claims-Inquiry',
+            'others': 'Other',
+            'ambiguous': 'Unclassified'
+        };
+
+        // intent_classification has NO backing column - derived. intent_summary
+        // holds the long descriptive sentence, not this short label.
+        this.CLASSIFICATION = {
+            'new': 'Submission',
+            'update': 'Submission',
+            'renewal': 'Renewal',
+            'mta': 'Endorsement Request',
+            'enquiry': 'Certificate Request',
+            'claims': 'Loss Run Request',
+            'others': 'Other',
+            'ambiguous': 'Unclassified'
+        };
+
+        this.TRIGGER_FALLBACK = 'Initial Submission Intake';
+    },
+
+    // ====================================================== Emails tab
+
+    getInbox: function(submissionSysId) {
+        var out = [];
+        if (!submissionSysId) {
+            return out;
+        }
+
+        var sub = new GlideRecord(this.P + 'submission');
+        if (!sub.get(submissionSysId)) {
+            return out;
+        }
+        var subType = String(sub.getValue('submission_type') || '');
+
+        // documents once, bucketed by intake case - 2 queries regardless of size
+        var byCase = {};
+        var d = new GlideRecord(this.P + 'document');
+        d.addQuery('submission', submissionSysId);
+        d.addNotNullQuery('intake_case');
+        d.orderBy('received_date');
+        d.query();
+        while (d.next()) {
+            var ic = String(d.getValue('intake_case'));
+            if (!byCase[ic]) {
+                byCase[ic] = [];
+            }
+            byCase[ic].push({
+                link: this._absLink(String(d.getValue('attachment_url') || '')),
+                name: String(d.getValue('document_name') || ''),
+                status: this.STALE_STATES[String(d.getValue('state') || '')] ? 'STALE' : 'NEW'
+            });
+        }
+
+        var cutoff = new GlideDateTime();
+        cutoff.addDaysLocalTime(-this.NEW_WINDOW_DAYS); // addDays is banned in scope
+
+        var gr = new GlideRecord(this.P + 'intake_case');
+        gr.addQuery('submission', submissionSysId);
+        gr.orderByDesc('received_on');
+        gr.query();
+
+        while (gr.next()) {
+            var atts = byCase[gr.getUniqueValue()] || [];
+            var intent = String(gr.getValue('intent') || '').toLowerCase();
+            var recv = String(gr.getValue('received_on') || '');
+
+            out.push({
+                subject: String(gr.getValue('subject') || ''),
+                sender: String(gr.getValue('from_email') || ''),
+                date: recv,
+                preview: String(gr.getValue('body_preview') || ''),
+                status: String(gr.getDisplayValue('status') || ''),
+                intent: this.INTENT_LABEL[intent] || this._titleise(intent),
+                intent_classification: this._classify(intent, subType),
+                isNew: this._isNew(recv, cutoff),
+                Attachments: atts.length,
+                attachhments: atts // spelling per the agreed contract
+            });
+        }
+        return out;
+    },
+
+    // ====================================================== Documents tab
+
+    getDocuments: function(submissionSysId) {
+        var out = [];
+        if (!submissionSysId) {
+            return out;
+        }
+
+        var gr = new GlideRecord(this.P + 'document');
+        gr.addQuery('submission', submissionSysId);
+        gr.orderByDesc('received_date');
+        gr.query();
+
+        while (gr.next()) {
+            var state = String(gr.getValue('state') || '');
+            var count = this._int(gr.getValue('field_count'));
+            var extracted = !this.NOT_EXTRACTED[state];
+            if (extracted && this.BLANK_WHEN_NO_FIELDS && !count) {
+                extracted = false;
+            }
+            var recv = String(gr.getValue('received_date') || '').split(' ');
+
+            out.push({
+                sys_id: (this.SYS_ID_IS === 'document') ?
+                    gr.getUniqueValue() : this._attSysId(gr),
+                fileName: String(gr.getValue('document_name') || ''),
+                link: this._absLink(String(gr.getValue('attachment_url') || '')),
+                date: recv[0] || '',
+                time: recv[1] || '',
+                status: String(gr.getDisplayValue('state') || ''),
+                confidence: extracted ? this._pct(gr.getValue('confidence')) : '',
+                fields: extracted ? count : null,
+                version: String(gr.getValue('version') || '').toUpperCase(),
+                sourceEmail: this._sourceEmail(gr)
+            });
+        }
+        return out;
+    },
+
+    // ====================================================== Extraction versions
+
+    getExtractionVersions: function(submissionSysId) {
+        var out = [];
+        if (!submissionSysId) {
+            return out;
+        }
+
+        var sub = new GlideRecord(this.P + 'submission');
+        if (!sub.get(submissionSysId)) {
+            return out;
+        }
+        var currentSysId = String(sub.getValue('current_extraction') || '');
+
+        var rows = [];
+        var gr = new GlideRecord(this.P + 'extraction');
+        gr.addQuery('submission', submissionSysId);
+        gr.orderByDesc('extracted_date');
+        gr.query();
+        while (gr.next()) {
+            rows.push({
+                sysId: gr.getUniqueValue(),
+                version: String(gr.getValue('version') || 'v1'),
+                created: String(gr.getValue('extracted_date') || ''),
+                documents: this._int(gr.getValue('document_count')) || 0,
+                totalFields: this._int(gr.getValue('total_fields')) || 0,
+                newFields: this._int(gr.getValue('new_fields')) || 0,
+                modified: this._int(gr.getValue('modified_fields')) || 0,
+                lowConfidence: this._int(gr.getValue('low_confidence_fields')) || 0,
+                triggeredBy: String(gr.getValue('triggered_by') || this.TRIGGER_FALLBACK)
+            });
+        }
+
+        for (var i = 0; i < rows.length; i++) {
+            var r = rows[i];
+            var upper = r.version.toUpperCase();
+            var isCurrent = currentSysId ? (r.sysId === currentSysId) : (i === 0);
+            out.push({
+                id: r.version,
+                sysId: r.sysId, // extraction sys_id - feeds getExtractedFields
+                name: 'Extract-' + upper,
+                label: isCurrent ? (upper + ' – Latest') : upper,
+                current: isCurrent,
+                created: r.created,
+                triggeredBy: r.triggeredBy,
+                documents: r.documents,
+                totalFields: r.totalFields,
+                newFields: r.newFields,
+                modified: r.modified,
+                lowConfidence: r.lowConfidence
+            });
+        }
+        return out;
+    },
+
+    // ====================================================== Extracted fields grid
+
+    getExtractedFields: function(extractionSysId) {
+        var out = [];
+        if (!extractionSysId) {
+            return out;
+        }
+
+        var gr = new GlideRecord(this.P + 'extraction_field');
+        gr.addQuery('extraction', extractionSysId);
+        gr.orderBy('section_order');
+        gr.orderBy('field_label');
+        gr.query();
+
+        while (gr.next()) {
+            out.push({
+                sys_id: gr.getUniqueValue(),
+                section: String(gr.getValue('section_label') || ''),
+                sectionOrder: this._int(gr.getValue('section_order')) || 0,
+                fieldName: String(gr.getValue('field_label') ||
+                    gr.getValue('target_column') || ''),
+                fieldValue: String(gr.getValue('final_value') ||
+                    gr.getValue('extracted_value') || ''),
+                confidence: this._pct(gr.getValue('confidence')),
+                reviewStatus: String(gr.getDisplayValue('review_status') || ''),
+                dataType: String(gr.getDisplayValue('data_type') || ''),
+                page: this._int(gr.getValue('page_number')),
+                boundingBox: String(gr.getValue('bounding_box') || ''),
+                entity: String(gr.entity.label || ''),
+                fileName: String(gr.document.document_name || ''),
+                link: this._absLink(String(gr.document.attachment_url || '')),
+                targetTable: String(gr.getValue('target_table') || ''),
+                targetColumn: String(gr.getValue('target_column') || '')
+            });
+        }
+        return out;
+    },
+
+    // ====================================================== version -> sys_id
+
+    /**
+     * Resolve an extraction sys_id without going through getExtractionVersions -
+     * useful for the current version, or when only a version id is to hand.
+     *
+     * @param {string} submissionSysId
+     * @param {string} [versionId] e.g. 'v3'. Omit for the current extraction.
+     * @return {string} extraction sys_id, or '' when there is none
+     */
+    resolveExtraction: function(submissionSysId, versionId) {
+        if (!submissionSysId) {
+            return '';
+        }
+
+        if (!versionId) {
+            var sub = new GlideRecord(this.P + 'submission');
+            if (sub.get(submissionSysId)) {
+                var cur = String(sub.getValue('current_extraction') || '');
+                if (cur) {
+                    return cur;
+                }
+            }
+        }
+
+        var gr = new GlideRecord(this.P + 'extraction');
+        gr.addQuery('submission', submissionSysId);
+        if (versionId) {
+            gr.addQuery('version', String(versionId).toLowerCase());
+        }
+        gr.orderByDesc('extracted_date');
+        gr.setLimit(1);
+        gr.query();
+        return gr.next() ? gr.getUniqueValue() : '';
+    },
+
+    /** Field grid for one version of a submission, by version id ('v3'). */
+    getExtractedFieldsByVersion: function(submissionSysId, versionId) {
+        return this.getExtractedFields(this.resolveExtraction(submissionSysId, versionId));
+    },
+
+    // ====================================================== everything at once
+
+    getSubmissionSummary: function(submissionSysId) {
+        var versions = this.getExtractionVersions(submissionSysId);
+        var current = this.resolveExtraction(submissionSysId);
+        return {
+            emails: this.getInbox(submissionSysId),
+            documents: this.getDocuments(submissionSysId),
+            versions: versions,
+            fields: current ? this.getExtractedFields(current) : []
+        };
+    },
+
+    // ====================================================== helpers
+
+    _absLink: function(relative) {
+        if (!relative) {
+            return '';
+        }
+        return (relative.indexOf('http') === 0) ? relative : this.base + relative;
+    },
+
+    _attSysId: function(gr) {
+        var m = String(gr.getValue('attachment_url') || '').match(/sys_id=([0-9a-f]{32})/);
+        return m ? m[1] : '';
+    },
+
+    /** 0.96 -> "96%" ; unparseable stays blank */
+    _pct: function(v) {
+        var f = parseFloat(v);
+        if (isNaN(f)) {
+            return '';
+        }
+        if (f <= 1) {
+            f = f * 100;
+        }
+        return Math.round(f) + '%';
+    },
+
+    _int: function(v) {
+        var n = parseInt(v, 10);
+        return isNaN(n) ? null : n;
+    },
+
+    _classify: function(intent, subType) {
+        if (this.CLASSIFICATION[intent]) {
+            return this.CLASSIFICATION[intent];
+        }
+        if (subType === 'renewal') {
+            return 'Renewal';
+        }
+        if (subType === 'endorsement') {
+            return 'Endorsement Request';
+        }
+        if (subType === 'cancellation') {
+            return 'Cancellation';
+        }
+        return 'Submission';
+    },
+
+    _isNew: function(receivedOn, cutoff) {
+        if (!receivedOn) {
+            return false;
+        }
+        return new GlideDateTime(receivedOn).compareTo(cutoff) > 0;
+    },
+
+    /** "EM0010012 - RE: SOV Property - Acme Manufacturing" */
+    _sourceEmail: function(gr) {
+        if (!String(gr.getValue('intake_case') || '')) {
+            return '';
+        }
+        var num = String(gr.intake_case.number || '');
+        var subj = String(gr.intake_case.subject || '');
+        if (!num) {
+            return subj;
+        }
+        return subj ? (num + ' - ' + subj) : num;
+    },
+
+    _titleise: function(v) {
+        if (!v) {
+            return '';
+        }
+        return v.replace(/_/g, '-').replace(/(^|-)([a-z])/g, function(m, sep, ch) {
+            return sep + ch.toUpperCase();
+        });
+    },
+
+    type: 'PlaybookActivityDataProvider'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-09 16:06:48</sys_created_on>
+        <sys_id>bbf20c6c935f47100a83ffdddd03d61f</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>PlaybookActivityDataProvider</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_bbf20c6c935f47100a83ffdddd03d61f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-09 16:08:14</sys_updated_on>
+    </sys_script_include>
+</record_update>
