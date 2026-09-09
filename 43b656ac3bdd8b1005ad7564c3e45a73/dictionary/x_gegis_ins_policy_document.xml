@@ -18,6 +18,10 @@
         <element label="Uploaded date" max_length="40" name="uploaded_date" type="glide_date_time"/>
         <element label="Submission" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
         <element label="Document name" max_length="200" name="document_name" type="string"/>
+        <element label="Attachment URL" max_length="1024" name="attachment_url" type="string"/>
+        <element label="Task" max_length="32" name="task" reference="task" type="reference"/>
+        <element label="Source table" max_length="80" name="source_table" type="table_name"/>
+        <element label="Source record" max_length="32" name="source_record" type="document_id"/>
         <element label="Page count" max_length="40" name="page_count" type="integer"/>
         <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
         <element label="Notes" max_length="2000" name="notes" type="string"/>
@@ -37,7 +41,6 @@
                 <element inactive_on_update="false" label="Old" sequence="70" value="old"/>
             </choice>
         </element>
-        <element label="Link" max_length="8000" name="doc_link" type="html"/>
         <element label="Version" max_length="20" name="version" type="string"/>
         <index name="index">
             <element name="intake_case"/>

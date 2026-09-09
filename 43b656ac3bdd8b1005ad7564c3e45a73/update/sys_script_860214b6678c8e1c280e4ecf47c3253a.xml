@@ -18,7 +18,7 @@
         <filter_condition/>
         <is_rest>false</is_rest>
         <message/>
-        <name>Document link maintenance</name>
+        <name>Document attachment URL backfill</name>
         <order>100</order>
         <priority>100</priority>
         <rest_method/>
@@ -29,14 +29,16 @@
         <role_conditions/>
         <script>(function executeRule(current, previous /*null when async*/) {
 
-    var url = String(current.url || '');
-    if (!url) {
-        current.doc_link = '';
+    // Backfill attachment_url from the free-text url when it is empty.
+    // Attachment-sourced rows already carry their /sys_attachment.do link
+    // (written by the global "attachment to document" rule) - never clobber it.
+    if (String(current.attachment_url || '')) {
         return;
     }
-    var name = String(current.document_name || '') || 'Document';
-    current.doc_link = '&lt;a href="' + url.replace(/"/g, '&amp;quot;') + '" target="_blank" rel="noopener"&gt;' +
-        GlideStringUtil.escapeHTML(name) + '&lt;/a&gt;';
+    var url = String(current.url || '');
+    if (url) {
+        current.attachment_url = url;
+    }
 
 })(current, previous);</script>
         <sys_class_name>sys_script</sys_class_name>
