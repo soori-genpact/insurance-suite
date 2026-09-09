@@ -91,8 +91,8 @@ IntakeService.prototype = {
         intake.container_name = body.container_name || '';
         intake.folder_path = body.folder_path || '';
         intake.received_on = new GlideDateTime();
-        // Inbound broker emails start at 'received'; direction defaults to inbound.
-        intake.status = 'received';
+        // Inbound broker emails start at 'new'; direction defaults to inbound.
+        intake.status = 'new';   // 'received' is not a valid intake_case.status choice
         var intakeId = intake.insert();
         // number is assigned by column default at insert; re-read to get it
         intake = new GlideRecord(this.INTAKE);
