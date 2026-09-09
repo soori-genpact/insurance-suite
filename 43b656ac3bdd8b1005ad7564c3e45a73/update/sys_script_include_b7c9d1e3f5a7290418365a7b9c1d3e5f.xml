@@ -80,6 +80,9 @@
         FAILED:      'failed',
         EXTRACTED:   'extracted',
         APPLIED:     'applied',
+        // shared by intake_case.status and document.state -- the inbound item
+        // has been through its processing pipeline
+        PROCESSED:   'processed',
         // shared by extraction.source and case_task.category
         CASE:        'case',
         // shared by case_task.category and case_task.u_type -- a referral is
@@ -300,7 +303,7 @@
             PORTFOLIO_OPTIMIZATION:       'portfolio_optimization',
             EXPOSURE_MANAGEMENT_SUMMARY:  'exposure_management_summary',
 
-            // Quote & Bind
+            // Quote &amp; Bind
             INITIATE_QUOTE_AND_BIND:    'initiate_quote_and_bind',
             PRODUCT_SELECTION_DETAILS:  'product_selection_details',
             QUOTE_WORKSPACE:            'quote_workspace',
@@ -418,6 +421,7 @@
             NEW:             SHARED.NEW,
             IN_PROGRESS:     SHARED.IN_PROGRESS,
             AWAITING_ACTION: 'awaiting_action',
+            PROCESSED:       SHARED.PROCESSED,
             COMPLETED:       'completed',
             DUPLICATE:       SHARED.DUPLICATE,
             REJECTED:        SHARED.REJECTED,

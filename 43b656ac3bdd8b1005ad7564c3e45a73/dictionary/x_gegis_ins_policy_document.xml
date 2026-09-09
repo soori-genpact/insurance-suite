@@ -5,13 +5,6 @@
         <element label="Confidentiality" max_length="40" name="confidentiality" type="string"/>
         <element label="File type" max_length="40" name="file_type" type="string"/>
         <element label="Attachment type" max_length="40" name="attachment_type" type="string"/>
-        <element choice="3" label="Status" max_length="40" name="status" type="choice">
-            <choice>
-                <element inactive_on_update="false" label="Draft" sequence="10" value="draft"/>
-                <element inactive_on_update="false" label="Superseded" sequence="30" value="superseded"/>
-                <element inactive_on_update="false" label="Final" sequence="20" value="final"/>
-            </choice>
-        </element>
         <element label="Intake case" max_length="32" name="intake_case" reference="x_gegis_ins_policy_intake_case" type="reference"/>
         <element label="Received date" max_length="40" name="received_date" type="glide_date_time"/>
         <element label="File size (KB)" max_length="40" name="file_size_kb" type="integer"/>
@@ -23,6 +16,7 @@
         <element label="Source table" max_length="80" name="source_table" type="table_name"/>
         <element label="Source record" max_length="32" name="source_record" type="document_id"/>
         <element label="Page count" max_length="40" name="page_count" type="integer"/>
+        <element label="Field count" max_length="40" name="field_count" type="integer"/>
         <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
         <element label="Notes" max_length="2000" name="notes" type="string"/>
         <element label="URL" max_length="1024" name="url" type="string"/>
