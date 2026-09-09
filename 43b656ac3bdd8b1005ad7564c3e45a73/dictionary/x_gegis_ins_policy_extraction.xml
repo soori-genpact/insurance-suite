@@ -30,7 +30,6 @@
             </choice>
         </element>
         <element label="Model version" max_length="50" name="model_version" type="string"/>
-        <element label="Document" mandatory="true" max_length="32" name="document" reference="x_gegis_ins_policy_document" type="reference"/>
         <element label="Merged into" max_length="32" name="merged_into" reference="x_gegis_ins_policy_extraction" type="reference"/>
         <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" display="true" label="Number" max_length="40" name="number" type="string"/>
         <element choice="3" label="Source" max_length="40" name="source" type="choice">
@@ -52,9 +51,12 @@
             </choice>
         </element>
         <element label="Version" max_length="20" name="version" type="string"/>
-        <index name="index">
-            <element name="document"/>
-        </index>
+        <element label="Triggered by" max_length="200" name="triggered_by" type="string"/>
+        <element label="Document count" max_length="40" name="document_count" type="integer"/>
+        <element label="Total fields" max_length="40" name="total_fields" type="integer"/>
+        <element label="New fields" max_length="40" name="new_fields" type="integer"/>
+        <element label="Modified fields" max_length="40" name="modified_fields" type="integer"/>
+        <element label="Low confidence fields" max_length="40" name="low_confidence_fields" type="integer"/>
         <index name="index2">
             <element name="merged_into"/>
         </index>

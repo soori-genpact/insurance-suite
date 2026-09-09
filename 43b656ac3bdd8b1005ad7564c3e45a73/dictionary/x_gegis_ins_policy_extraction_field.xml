@@ -31,11 +31,15 @@
         <element label="Final value" max_length="1000" name="final_value" type="string"/>
         <element label="Bounding box" max_length="100" name="bounding_box" type="string"/>
         <element label="Field path (OGNL)" mandatory="true" max_length="300" name="field_path" type="string"/>
+        <element label="Field label" max_length="100" name="field_label" type="string"/>
+        <element label="Section label" max_length="100" name="section_label" type="string"/>
+        <element label="Section order" max_length="40" name="section_order" type="integer"/>
         <element label="Confidence" max_length="40" name="confidence" type="decimal"/>
         <element label="Applied on" max_length="40" name="applied_on" type="glide_date_time"/>
         <element label="Target sys ID" max_length="40" name="target_sys_id" type="string"/>
         <element label="Extracted value" max_length="2000" name="extracted_value" type="string"/>
         <element label="Entity" max_length="32" name="entity" reference="x_gegis_ins_policy_extraction_entity" type="reference"/>
+        <element label="Document" max_length="32" name="document" reference="x_gegis_ins_policy_document" type="reference"/>
         <element label="Override reason" max_length="400" name="override_reason" type="string"/>
         <element label="Override value" max_length="1000" name="override_value" type="string"/>
         <element label="Reviewed by" max_length="32" name="reviewed_by" reference="sys_user" type="reference"/>

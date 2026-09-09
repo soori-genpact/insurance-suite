@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update>
-    <sys_dictionary action="INSERT_OR_UPDATE" element="document" table="x_gegis_ins_policy_extraction">
+    <sys_dictionary action="INSERT_OR_UPDATE" element="field_label" table="x_gegis_ins_policy_extraction_field">
         <active>true</active>
         <array>false</array>
         <attributes/>
         <audit>false</audit>
         <choice/>
-        <column_label>Document</column_label>
+        <column_label>Field label</column_label>
         <comments/>
         <create_roles/>
         <default_value/>
@@ -13,27 +13,27 @@
         <dependent/>
         <dependent_on_field/>
         <display>false</display>
-        <element>document</element>
+        <element>field_label</element>
         <element_reference>false</element_reference>
-        <internal_type display_value="Reference">reference</internal_type>
-        <mandatory>true</mandatory>
-        <max_length>32</max_length>
-        <name>x_gegis_ins_policy_extraction</name>
+        <internal_type display_value="String">string</internal_type>
+        <mandatory>false</mandatory>
+        <max_length>100</max_length>
+        <name>x_gegis_ins_policy_extraction_field</name>
         <primary>false</primary>
         <read_only>false</read_only>
         <read_roles/>
-        <reference display_value="" name="x_gegis_ins_policy_document">x_gegis_ins_policy_document</reference>
+        <reference/>
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
-        <sys_created_on>2026-06-28 12:00:00</sys_created_on>
-        <sys_id>285faada249dcca86af53cb4a06fc5ee</sys_id>
-        <sys_name>x_gegis_ins_policy_extraction</sys_name>
+        <sys_created_on>2026-09-09 12:00:00</sys_created_on>
+        <sys_id>4264eb06dca279d9a5559435db10b5c7</sys_id>
+        <sys_name>x_gegis_ins_policy_extraction_field</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
-        <sys_update_name>sys_dictionary_x_gegis_ins_policy_extraction_document</sys_update_name>
+        <sys_update_name>sys_dictionary_x_gegis_ins_policy_extraction_field_field_label</sys_update_name>
         <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-06-28 12:00:00</sys_updated_on>
+        <sys_updated_on>2026-09-09 12:00:00</sys_updated_on>
         <unique>false</unique>
         <virtual>false</virtual>
         <write_roles/>
