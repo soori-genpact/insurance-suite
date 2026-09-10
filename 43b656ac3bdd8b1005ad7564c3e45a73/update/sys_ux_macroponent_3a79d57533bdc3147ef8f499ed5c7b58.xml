@@ -178,6 +178,741 @@
                         "padding-bottom": "var(--now-scalable-space--xl)",
                         "padding-top": "var(--now-scalable-space--lg)"
                     }
+                },
+                {
+                    "definition": {
+                        "id": "51562c3df6f77b3f31ba9e2c613aa81e",
+                        "type": "MACROPONENT"
+                    },
+                    "elementId": "record_list_1",
+                    "elementLabel": "Record List 1",
+                    "eventMappings": [],
+                    "isHidden": {
+                        "type": "JSON_LITERAL",
+                        "value": null
+                    },
+                    "preset": null,
+                    "propertyValues": {
+                        "aggregationMode": {
+                            "type": "JSON_LITERAL",
+                            "value": "client"
+                        },
+                        "aggregations": {
+                            "type": "JSON_LITERAL",
+                            "value": {
+                                "items": [
+                                    {
+                                        "field": "premium",
+                                        "fn": "sum",
+                                        "format": "currency",
+                                        "label": "Total Premium"
+                                    },
+                                    {
+                                        "field": "premium",
+                                        "fn": "avg",
+                                        "format": "currency",
+                                        "label": "Avg Premium"
+                                    }
+                                ]
+                            }
+                        },
+                        "availableColumns": {
+                            "type": "JSON_LITERAL",
+                            "value": {
+                                "items": [
+                                    {
+                                        "align": "right",
+                                        "field": "name_score",
+                                        "label": "Name score",
+                                        "type": "number"
+                                    },
+                                    {
+                                        "align": "right",
+                                        "field": "address_score",
+                                        "label": "Address score",
+                                        "type": "number"
+                                    },
+                                    {
+                                        "field": "external_id",
+                                        "label": "External ID",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "field": "duns_number",
+                                        "label": "DUNS",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "field": "fei_number",
+                                        "label": "FEI / FEIN",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "field": "party",
+                                        "label": "Party",
+                                        "refTable": "x_gegis_ins_policy_party",
+                                        "type": "reference"
+                                    },
+                                    {
+                                        "align": "center",
+                                        "field": "party_created",
+                                        "label": "Party created",
+                                        "type": "boolean"
+                                    },
+                                    {
+                                        "field": "decision_reason",
+                                        "label": "Reason",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "field": "decided_by",
+                                        "label": "Decided by",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "field": "decided_on",
+                                        "label": "Decided on",
+                                        "type": "date"
+                                    },
+                                    {
+                                        "field": "search_run",
+                                        "label": "Search run",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "field": "searched_name",
+                                        "label": "Searched name",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "field": "searched_address",
+                                        "label": "Searched address",
+                                        "type": "text"
+                                    }
+                                ]
+                            }
+                        },
+                        "columns": {
+                            "type": "JSON_LITERAL",
+                            "value": {
+                                "items": [
+                                    {
+                                        "field": "name",
+                                        "label": "Insured Name",
+                                        "type": "text",
+                                        "width": 220
+                                    },
+                                    {
+                                        "field": "address",
+                                        "label": "Address",
+                                        "type": "text",
+                                        "width": 300
+                                    },
+                                    {
+                                        "field": "source",
+                                        "label": "Source",
+                                        "pillColors": {
+                                            "D&amp;B": "purple",
+                                            "GLEIF": "teal",
+                                            "Internal Party Registry": "info",
+                                            "LexisNexis": "teal",
+                                            "Manual Entry": "neutral",
+                                            "Middesk": "teal",
+                                            "Moody's Orbis": "teal",
+                                            "Other": "neutral",
+                                            "dnb": "purple",
+                                            "gleif": "teal",
+                                            "internal_registry": "info",
+                                            "lexisnexis": "teal",
+                                            "manual": "neutral",
+                                            "middesk": "teal",
+                                            "moodys_orbis": "teal",
+                                            "other": "neutral"
+                                        },
+                                        "type": "pill",
+                                        "width": 150
+                                    },
+                                    {
+                                        "field": "source_type",
+                                        "label": "Held In",
+                                        "pillColors": {
+                                            "External": "warning",
+                                            "Internal": "info",
+                                            "external": "warning",
+                                            "internal": "info"
+                                        },
+                                        "type": "pill",
+                                        "width": 110
+                                    },
+                                    {
+                                        "field": "match_type",
+                                        "label": "Match",
+                                        "pillColors": {
+                                            "Exact": "positive",
+                                            "Partial": "warning",
+                                            "Strong": "info",
+                                            "Weak": "neutral",
+                                            "exact": "positive",
+                                            "partial": "warning",
+                                            "strong": "info",
+                                            "weak": "neutral"
+                                        },
+                                        "type": "pill",
+                                        "width": 110
+                                    },
+                                    {
+                                        "align": "right",
+                                        "field": "match_score",
+                                        "label": "Score",
+                                        "type": "number",
+                                        "width": 90
+                                    },
+                                    {
+                                        "field": "decision",
+                                        "label": "Decision",
+                                        "pillColors": {
+                                            "Pending": "warning",
+                                            "Rejected": "critical",
+                                            "Selected": "positive",
+                                            "Superseded": "neutral",
+                                            "pending": "warning",
+                                            "rejected": "critical",
+                                            "selected": "positive",
+                                            "superseded": "neutral"
+                                        },
+                                        "type": "pill",
+                                        "width": 130
+                                    }
+                                ]
+                            }
+                        },
+                        "compactRows": {
+                            "type": "JSON_LITERAL",
+                            "value": false
+                        },
+                        "data": {
+                            "type": "JSON_LITERAL",
+                            "value": {
+                                "items": []
+                            }
+                        },
+                        "editSaveMode": {
+                            "type": "JSON_LITERAL",
+                            "value": "auto"
+                        },
+                        "emptyMessage": {
+                            "type": "JSON_LITERAL",
+                            "value": "No records found."
+                        },
+                        "enableColumnPersonalization": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "enableColumnReorder": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "enablePersonalizationStorage": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "enablePinStore": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "enableReferenceLinks": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "enableResize": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "enableRowClick": {
+                            "type": "JSON_LITERAL",
+                            "value": false
+                        },
+                        "enableSort": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "exportFileName": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "exportMode": {
+                            "type": "JSON_LITERAL",
+                            "value": "csv"
+                        },
+                        "fontSize": {
+                            "type": "JSON_LITERAL",
+                            "value": "1rem"
+                        },
+                        "grandTotalWhenFlat": {
+                            "type": "JSON_LITERAL",
+                            "value": false
+                        },
+                        "groupBy": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "groupPaging": {
+                            "type": "JSON_LITERAL",
+                            "value": "records"
+                        },
+                        "groupScope": {
+                            "type": "JSON_LITERAL",
+                            "value": "all"
+                        },
+                        "groupSort": {
+                            "type": "JSON_LITERAL",
+                            "value": {
+                                "items": []
+                            }
+                        },
+                        "headerColor": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "heading": {
+                            "type": "JSON_LITERAL",
+                            "value": "Matched Records"
+                        },
+                        "maxGroupDepth": {
+                            "type": "JSON_LITERAL",
+                            "value": 8
+                        },
+                        "maxGroupRows": {
+                            "type": "JSON_LITERAL",
+                            "value": 5000
+                        },
+                        "navigateReferenceOnClick": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "orderBy": {
+                            "type": "JSON_LITERAL",
+                            "value": "sequence"
+                        },
+                        "orderDescending": {
+                            "type": "JSON_LITERAL",
+                            "value": false
+                        },
+                        "pageSize": {
+                            "type": "JSON_LITERAL",
+                            "value": 20
+                        },
+                        "pageSizes": {
+                            "type": "JSON_LITERAL",
+                            "value": "10,20,50,100"
+                        },
+                        "personalizationKey": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "pinActionCode": {
+                            "type": "JSON_LITERAL",
+                            "value": "pin"
+                        },
+                        "pinPerUser": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "pinStorageKey": {
+                            "type": "JSON_LITERAL",
+                            "value": "x_gegis_library.pinned_items"
+                        },
+                        "query": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "recordUrlTemplate": {
+                            "type": "JSON_LITERAL",
+                            "value": "/record/{table}/{sysId}"
+                        },
+                        "referenceOpenIn": {
+                            "type": "JSON_LITERAL",
+                            "value": "same"
+                        },
+                        "roleBasedColumns": {
+                            "type": "JSON_LITERAL",
+                            "value": false
+                        },
+                        "rowIconSize": {
+                            "type": "JSON_LITERAL",
+                            "value": 18
+                        },
+                        "rowIconsEnd": {
+                            "type": "JSON_LITERAL",
+                            "value": {
+                                "items": [
+                                    {
+                                        "actionCode": "select",
+                                        "color": "positive",
+                                        "icon": "circle-check-outline",
+                                        "showWhen": {
+                                            "field": "decision",
+                                            "value": "pending"
+                                        },
+                                        "tooltip": "This is the insured"
+                                    },
+                                    {
+                                        "actionCode": "reject",
+                                        "color": "critical",
+                                        "icon": "circle-close-outline",
+                                        "showWhen": {
+                                            "field": "decision",
+                                            "value": "pending"
+                                        },
+                                        "tooltip": "Not the insured"
+                                    },
+                                    {
+                                        "actionCode": "reason",
+                                        "color": "secondary",
+                                        "icon": "circle-info-outline",
+                                        "showWhen": {
+                                            "field": "decision_reason",
+                                            "op": "notEmpty"
+                                        },
+                                        "tooltip": "Why this decision"
+                                    },
+                                    {
+                                        "actionCode": "openParty",
+                                        "color": "primary",
+                                        "icon": "eye-outline",
+                                        "showWhen": {
+                                            "field": "party",
+                                            "op": "notEmpty"
+                                        },
+                                        "tooltip": "Open party record"
+                                    }
+                                ]
+                            }
+                        },
+                        "rowIconsStart": {
+                            "type": "JSON_LITERAL",
+                            "value": {
+                                "items": [
+                                    {
+                                        "actionCode": "recommended",
+                                        "color": "warning",
+                                        "icon": "star-fill",
+                                        "tooltip": "Recommended match"
+                                    }
+                                ]
+                            }
+                        },
+                        "sampleRows": {
+                            "type": "JSON_LITERAL",
+                            "value": {
+                                "items": [
+                                    {
+                                        "account": {
+                                            "display_value": "Acme Corp",
+                                            "value": "Acme Corp"
+                                        },
+                                        "line_of_business": {
+                                            "display_value": "Property",
+                                            "value": "Property"
+                                        },
+                                        "number": {
+                                            "display_value": "SUB-0001",
+                                            "link": "/api/now/table/x_gegis_wum_submission/a1",
+                                            "value": "SUB-0001"
+                                        },
+                                        "premium": {
+                                            "display_value": "42000",
+                                            "value": "42000"
+                                        },
+                                        "stage": {
+                                            "display_value": "Data Capture",
+                                            "value": "Data Capture"
+                                        },
+                                        "sys_id": {
+                                            "display_value": "a1",
+                                            "value": "a1"
+                                        }
+                                    },
+                                    {
+                                        "account": {
+                                            "display_value": "Globex",
+                                            "value": "Globex"
+                                        },
+                                        "line_of_business": {
+                                            "display_value": "Property",
+                                            "value": "Property"
+                                        },
+                                        "number": {
+                                            "display_value": "SUB-0002",
+                                            "link": "/api/now/table/x_gegis_wum_submission/a2",
+                                            "value": "SUB-0002"
+                                        },
+                                        "premium": {
+                                            "display_value": "88000",
+                                            "value": "88000"
+                                        },
+                                        "stage": {
+                                            "display_value": "Underwriting",
+                                            "value": "Underwriting"
+                                        },
+                                        "sys_id": {
+                                            "display_value": "a2",
+                                            "value": "a2"
+                                        }
+                                    },
+                                    {
+                                        "account": {
+                                            "display_value": "Initech",
+                                            "value": "Initech"
+                                        },
+                                        "line_of_business": {
+                                            "display_value": "Property",
+                                            "value": "Property"
+                                        },
+                                        "number": {
+                                            "display_value": "SUB-0003",
+                                            "link": "/api/now/table/x_gegis_wum_submission/a3",
+                                            "value": "SUB-0003"
+                                        },
+                                        "premium": {
+                                            "display_value": "15500",
+                                            "value": "15500"
+                                        },
+                                        "stage": {
+                                            "display_value": "Data Capture",
+                                            "value": "Data Capture"
+                                        },
+                                        "sys_id": {
+                                            "display_value": "a3",
+                                            "value": "a3"
+                                        }
+                                    },
+                                    {
+                                        "account": {
+                                            "display_value": "Umbrella",
+                                            "value": "Umbrella"
+                                        },
+                                        "line_of_business": {
+                                            "display_value": "Casualty",
+                                            "value": "Casualty"
+                                        },
+                                        "number": {
+                                            "display_value": "SUB-0004",
+                                            "link": "/api/now/table/x_gegis_wum_submission/a4",
+                                            "value": "SUB-0004"
+                                        },
+                                        "premium": {
+                                            "display_value": "63000",
+                                            "value": "63000"
+                                        },
+                                        "stage": {
+                                            "display_value": "Referral",
+                                            "value": "Referral"
+                                        },
+                                        "sys_id": {
+                                            "display_value": "a4",
+                                            "value": "a4"
+                                        }
+                                    },
+                                    {
+                                        "account": {
+                                            "display_value": "Soylent",
+                                            "value": "Soylent"
+                                        },
+                                        "line_of_business": {
+                                            "display_value": "Casualty",
+                                            "value": "Casualty"
+                                        },
+                                        "number": {
+                                            "display_value": "SUB-0005",
+                                            "link": "/api/now/table/x_gegis_wum_submission/a5",
+                                            "value": "SUB-0005"
+                                        },
+                                        "premium": {
+                                            "display_value": "27500",
+                                            "value": "27500"
+                                        },
+                                        "stage": {
+                                            "display_value": "Underwriting",
+                                            "value": "Underwriting"
+                                        },
+                                        "sys_id": {
+                                            "display_value": "a5",
+                                            "value": "a5"
+                                        }
+                                    },
+                                    {
+                                        "account": {
+                                            "display_value": "Stark Ind",
+                                            "value": "Stark Ind"
+                                        },
+                                        "line_of_business": {
+                                            "display_value": "Cyber",
+                                            "value": "Cyber"
+                                        },
+                                        "number": {
+                                            "display_value": "SUB-0006",
+                                            "link": "/api/now/table/x_gegis_wum_submission/a6",
+                                            "value": "SUB-0006"
+                                        },
+                                        "premium": {
+                                            "display_value": "120000",
+                                            "value": "120000"
+                                        },
+                                        "stage": {
+                                            "display_value": "Data Capture",
+                                            "value": "Data Capture"
+                                        },
+                                        "sys_id": {
+                                            "display_value": "a6",
+                                            "value": "a6"
+                                        }
+                                    },
+                                    {
+                                        "account": {
+                                            "display_value": "Wayne Ent",
+                                            "value": "Wayne Ent"
+                                        },
+                                        "line_of_business": {
+                                            "display_value": "Cyber",
+                                            "value": "Cyber"
+                                        },
+                                        "number": {
+                                            "display_value": "SUB-0007",
+                                            "link": "/api/now/table/x_gegis_wum_submission/a7",
+                                            "value": "SUB-0007"
+                                        },
+                                        "premium": {
+                                            "display_value": "54000",
+                                            "value": "54000"
+                                        },
+                                        "stage": {
+                                            "display_value": "Referral",
+                                            "value": "Referral"
+                                        },
+                                        "sys_id": {
+                                            "display_value": "a7",
+                                            "value": "a7"
+                                        }
+                                    },
+                                    {
+                                        "account": {
+                                            "display_value": "Tyrell",
+                                            "value": "Tyrell"
+                                        },
+                                        "line_of_business": {
+                                            "display_value": "Property",
+                                            "value": "Property"
+                                        },
+                                        "number": {
+                                            "display_value": "SUB-0008",
+                                            "link": "/api/now/table/x_gegis_wum_submission/a8",
+                                            "value": "SUB-0008"
+                                        },
+                                        "premium": {
+                                            "display_value": "33000",
+                                            "value": "33000"
+                                        },
+                                        "stage": {
+                                            "display_value": "Referral",
+                                            "value": "Referral"
+                                        },
+                                        "sys_id": {
+                                            "display_value": "a8",
+                                            "value": "a8"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        "searchPlaceholder": {
+                            "type": "JSON_LITERAL",
+                            "value": "Search"
+                        },
+                        "selectionMode": {
+                            "type": "JSON_LITERAL",
+                            "value": "none"
+                        },
+                        "showCount": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "showExport": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "showFilter": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "showGrandTotal": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "showGroupControl": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "showLastRefreshed": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "showPageSizeControl": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "showRefresh": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "showSearch": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "showSortControl": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "stablePaging": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "stripedRows": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "subtotalPlacement": {
+                            "type": "JSON_LITERAL",
+                            "value": "header"
+                        },
+                        "surfaceColor": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "table": {
+                            "type": "JSON_LITERAL",
+                            "value": "x_gegis_ins_policy_party_match"
+                        },
+                        "toolbarButtons": {
+                            "type": "JSON_LITERAL",
+                            "value": {
+                                "items": []
+                            }
+                        },
+                        "userSysId": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "wrapColumnText": {
+                            "type": "JSON_LITERAL",
+                            "value": false
+                        }
+                    },
+                    "slot": "content",
+                    "styles": {
+                        "padding-bottom": "var(--now-scalable-space--lg)",
+                        "padding-top": "var(--now-scalable-space--lg)"
+                    }
                 }
             ],
             "layout": {}
@@ -1106,7 +1841,95 @@
     }
 ]</props>
         <required_sys_props/>
-        <required_translations>[ ]</required_translations>
+        <required_translations>[ {
+  "message" : "Address",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Address score",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Avg Premium",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "DUNS",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Decided by",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Decided on",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Decision",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "External ID",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "FEI / FEIN",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Held In",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Insured Name",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Match",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Name score",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Party",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Party created",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Reason",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Score",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Search run",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Searched address",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Searched name",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Source",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Total Premium",
+  "code" : "",
+  "comment" : ""
+} ]</required_translations>
         <root_component/>
         <root_component_config>{}</root_component_config>
         <root_component_definition/>
@@ -1155,14 +1978,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-01 06:02:29</sys_created_on>
         <sys_id>3a79d57533bdc3147ef8f499ed5c7b58</sys_id>
-        <sys_mod_count>37</sys_mod_count>
+        <sys_mod_count>40</sys_mod_count>
         <sys_name>PS Insured Verification AUI</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_3a79d57533bdc3147ef8f499ed5c7b58</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-10 18:59:23</sys_updated_on>
+        <sys_updated_on>2026-09-10 19:23:46</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=3a79d57533bdc3147ef8f499ed5c7b58"/>
 </record_update>
