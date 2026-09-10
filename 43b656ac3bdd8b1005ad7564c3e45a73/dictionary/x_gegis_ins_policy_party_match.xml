@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="3f7c1a52d4b84e0ab9c65d1e8f2a7c43" label="Party Match" max_length="40" name="x_gegis_ins_policy_party_match" type="collection">
+
+        <!-- ===== context: what we searched for and on whose behalf ===== -->
+        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element label="Clearance case" max_length="32" name="clearance_case" reference="x_gegis_ins_policy_clearance_case" type="reference"/>
+        <element label="Clearance check" max_length="32" name="clearance_check" reference="x_gegis_ins_policy_clearance_check" type="reference"/>
+        <element label="Extraction" max_length="32" name="extraction" reference="x_gegis_ins_policy_extraction" type="reference"/>
+        <element choice="3" default="primary_insured" label="Party role" mandatory="true" max_length="40" name="party_role" type="choice"/>
+        <element label="Search run" max_length="64" name="search_run" type="string"/>
+        <element label="Searched name" max_length="200" name="searched_name" type="string"/>
+        <element label="Searched address" max_length="400" name="searched_address" type="string"/>
+        <element label="Sequence" max_length="40" name="sequence" type="integer"/>
+
+        <!-- ===== the candidate itself ===== -->
+        <element display="true" label="Name" mandatory="true" max_length="200" name="name" type="string"/>
+        <element choice="3" default="company" label="Party type" max_length="40" name="party_type" type="choice"/>
+        <element label="Address" max_length="400" name="address" type="string"/>
+        <element label="Street" max_length="255" name="street" type="string"/>
+        <element label="City" max_length="100" name="city" type="string"/>
+        <element label="State / Province" max_length="40" name="state" type="string"/>
+        <element label="Zip / Postal code" max_length="40" name="zip" type="string"/>
+        <element label="Country" max_length="40" name="country" type="string"/>
+        <element label="Phone" max_length="40" name="phone" type="string"/>
+        <element label="Website" max_length="255" name="website" type="string"/>
+        <element label="FEI / FEIN" max_length="20" name="fei_number" type="string"/>
+        <element label="DUNS number" max_length="20" name="duns_number" type="string"/>
+        <element label="LEI" max_length="20" name="lei" type="string"/>
+        <element label="Industry code" max_length="20" name="industry_code" type="string"/>
+        <element label="SIC code" max_length="10" name="sic_code" type="string"/>
+
+        <!-- ===== provenance: internal registry hit or external provider hit ===== -->
+        <element choice="3" default="internal" label="Source type" mandatory="true" max_length="40" name="source_type" type="choice"/>
+        <element choice="3" label="Source" mandatory="true" max_length="40" name="source" type="choice"/>
+        <element label="External ID" max_length="100" name="external_id" type="string"/>
+        <element label="Party" max_length="32" name="party" reference="x_gegis_ins_policy_party" type="reference"/>
+        <element default="false" label="Party created" max_length="40" name="party_created" type="boolean"/>
+        <element label="Raw payload" max_length="4000" name="raw_payload" type="string"/>
+
+        <!-- ===== scoring ===== -->
+        <element label="Match score" max_length="40" name="match_score" type="decimal"/>
+        <element label="Name score" max_length="40" name="name_score" type="decimal"/>
+        <element label="Address score" max_length="40" name="address_score" type="decimal"/>
+        <element choice="3" label="Match type" max_length="40" name="match_type" type="choice"/>
+        <element default="false" label="Recommended" max_length="40" name="is_recommended" type="boolean"/>
+
+        <!-- ===== decision: replaces the true/false checkbox, auditable ===== -->
+        <element choice="3" default="pending" label="Decision" mandatory="true" max_length="40" name="decision" type="choice"/>
+        <element label="Decision reason" max_length="400" name="decision_reason" type="string"/>
+        <element label="Decided by" max_length="32" name="decided_by" reference="sys_user" type="reference"/>
+        <element label="Decided on" max_length="40" name="decided_on" type="glide_date_time"/>
+        <element default="false" label="Applied to submission" max_length="40" name="applied_to_submission" type="boolean"/>
+
+        <index name="index">
+            <element name="submission"/>
+        </index>
+        <index name="index2">
+            <element name="clearance_case"/>
+        </index>
+        <index name="index3">
+            <element name="clearance_check"/>
+        </index>
+        <index name="index4">
+            <element name="extraction"/>
+        </index>
+        <index name="index5">
+            <element name="party"/>
+        </index>
+        <index name="index6">
+            <element name="decided_by"/>
+        </index>
+    </element>
+</database>
