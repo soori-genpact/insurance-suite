@@ -14,7 +14,7 @@
         <category display_value="Interactive">708801831b0c1010affd0e55cc4bcb81</category>
         <description/>
         <enable_ai_agent>off</enable_ai_agent>
-        <experience_display_preferences>associated_table=standard;associated_record=standard;experience_status_table=standard;experience_status_record=standard;tagline=all;icon=advanced;title=all;description=all;footer=all;is_automated=standard;</experience_display_preferences>
+        <experience_display_preferences>associated_table=standard;associated_record=standard;experience_status_table=standard;experience_status_record=standard;tagline=all;icon=advanced;title=all;description=all;footer=all;is_automated=standard;u_party_name=all;u_party_address=all;u_party_match_eval_time=all;u_party_match_count=all;</experience_display_preferences>
         <input_display_preferences>message=all;wait=all;submission=all;module=all;activity=all;</input_display_preferences>
         <inputs/>
         <label>Insured Verification</label>
@@ -28,14 +28,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-06-28 16:05:58</sys_created_on>
         <sys_id>a9d6008dcfb10b50ccf631ad5d851c32</sys_id>
-        <sys_mod_count>12</sys_mod_count>
+        <sys_mod_count>14</sys_mod_count>
         <sys_name>Insured Verification</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_pd_activity_definition_a9d6008dcfb10b50ccf631ad5d851c32</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-05 12:21:07</sys_updated_on>
+        <sys_updated_on>2026-09-10 18:31:31</sys_updated_on>
         <system_level>true</system_level>
         <table>x_gegis_ins_policy_case_task</table>
         <type_vals/>
@@ -44,6 +44,20 @@
     </sys_pd_activity_definition>
     <sys_translated_text action="delete_multiple" query="documentkey=a9d6008dcfb10b50ccf631ad5d851c32"/>
     <sys_variable_value action="delete_multiple" query="document_key=a9d6008dcfb10b50ccf631ad5d851c32"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity_definition</document>
+        <document_key>a9d6008dcfb10b50ccf631ad5d851c32</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 18:31:31</sys_created_on>
+        <sys_id>13cd2db493534b100a83ffdddd03d6c5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 18:31:31</sys_updated_on>
+        <value>{{vl.Insured Verification Activity Flow.7aad8f97-45b1-4b85-b292-87ee3fa616e2./end.result1}}</value>
+        <variable display_value="Name">b5c525b893df0b100a83ffdddd03d647</variable>
+    </sys_variable_value>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>sys_pd_activity_definition</document>
         <document_key>a9d6008dcfb10b50ccf631ad5d851c32</document_key>
@@ -99,6 +113,34 @@
         <sys_updated_on>2026-09-05 11:54:24</sys_updated_on>
         <value>x_gegis_ins_policy_case_task</value>
         <variable display_value="Associated table">7d79157533bdc3147ef8f499ed5c7bde</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity_definition</document>
+        <document_key>a9d6008dcfb10b50ccf631ad5d851c32</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 18:31:31</sys_created_on>
+        <sys_id>53cd2db493534b100a83ffdddd03d6c4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 18:31:31</sys_updated_on>
+        <value>{{vl.Insured Verification Activity Flow.7aad8f97-45b1-4b85-b292-87ee3fa616e2./en</value>
+        <variable display_value="Evaluated Datetime">af16a13493134b100a83ffdddd03d6f7</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity_definition</document>
+        <document_key>a9d6008dcfb10b50ccf631ad5d851c32</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 18:31:31</sys_created_on>
+        <sys_id>57cd2db493534b100a83ffdddd03d6c5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 18:31:31</sys_updated_on>
+        <value>{{vl.Insured Verification Activity Flow.7aad8f97-45b1-4b85-b292-87ee3fa616e2./end.result2}}</value>
+        <variable display_value="Address">88f5e9f093134b100a83ffdddd03d616</variable>
     </sys_variable_value>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>sys_pd_activity_definition</document>
@@ -169,6 +211,20 @@
         <sys_updated_on>2026-09-05 11:46:59</sys_updated_on>
         <value>insured_verification</value>
         <variable display_value="Activity">e9cfd203934b4710ad88f738dd03d6ed</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_pd_activity_definition</document>
+        <document_key>a9d6008dcfb10b50ccf631ad5d851c32</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 18:31:31</sys_created_on>
+        <sys_id>9bcd2db493534b100a83ffdddd03d6c5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 18:31:31</sys_updated_on>
+        <value>{{vl.Insured Verification Activity Flow.7aad8f97-45b1-4b85-b292-87ee3fa616e2./end.result4}}</value>
+        <variable display_value="Message">6a46a93493134b100a83ffdddd03d641</variable>
     </sys_variable_value>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>sys_pd_activity_definition</document>
@@ -255,7 +311,6 @@
         <variable display_value="Associated Record">d41bbf34cffdc750ccf631ad5d851ca5</variable>
     </sys_variable_value>
     <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_flow_input_91cfd203934b4710ad88f738dd03d697^id=a9d6008dcfb10b50ccf631ad5d851c32"/>
-    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_flow_output_91cfd203934b4710ad88f738dd03d697^id=a9d6008dcfb10b50ccf631ad5d851c32"/>
     <sys_element_mapping action="delete_multiple" query="id=a9d6008dcfb10b50ccf631ad5d851c32"/>
     <sys_element_mapping action="INSERT_OR_UPDATE">
         <field>activity</field>
@@ -296,6 +351,18 @@
     <sys_element_mapping action="INSERT_OR_UPDATE">
         <field>associated_table</field>
         <id>a9d6008dcfb10b50ccf631ad5d851c32</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-07-07 05:40:36</sys_created_on>
+        <sys_id>f80ec8770f79871017613fd300d1b24f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-07-07 05:40:36</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_e179d17533bdc3147ef8f499ed5c7bbc</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>associated_table</field>
+        <id>a9d6008dcfb10b50ccf631ad5d851c32</id>
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-06-28 16:06:28</sys_created_on>
         <sys_id>30f6488dcfb10b50ccf631ad5d851cff</sys_id>
@@ -306,14 +373,14 @@
         <value/>
     </sys_element_mapping>
     <sys_element_mapping action="INSERT_OR_UPDATE">
-        <field>associated_table</field>
+        <field>description</field>
         <id>a9d6008dcfb10b50ccf631ad5d851c32</id>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-07 05:40:36</sys_created_on>
-        <sys_id>f80ec8770f79871017613fd300d1b24f</sys_id>
+        <sys_created_on>2026-07-08 08:23:42</sys_created_on>
+        <sys_id>77ec35800f0a4b1017613fd300d1b20f</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-07 05:40:36</sys_updated_on>
+        <sys_updated_on>2026-07-08 08:23:42</sys_updated_on>
         <table>var__m_sys_pd_activity_type_prop_e179d17533bdc3147ef8f499ed5c7bbc</table>
         <value/>
     </sys_element_mapping>
@@ -330,16 +397,16 @@
         <value>{{act.act_instance.description}}</value>
     </sys_element_mapping>
     <sys_element_mapping action="INSERT_OR_UPDATE">
-        <field>description</field>
+        <field>experience_status_record</field>
         <id>a9d6008dcfb10b50ccf631ad5d851c32</id>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2026-07-08 08:23:42</sys_created_on>
-        <sys_id>77ec35800f0a4b1017613fd300d1b20f</sys_id>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-06-28 16:05:58</sys_created_on>
+        <sys_id>6dd6408dcfb10b50ccf631ad5d851c0d</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-07-08 08:23:42</sys_updated_on>
-        <table>var__m_sys_pd_activity_type_prop_e179d17533bdc3147ef8f499ed5c7bbc</table>
-        <value/>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-06-28 16:05:58</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_7b0b3f34cffdc750ccf631ad5d851caf</table>
+        <value>{{vl.Playbook Manual Activity Flow./end.record}}</value>
     </sys_element_mapping>
     <sys_element_mapping action="INSERT_OR_UPDATE">
         <field>experience_status_record</field>
@@ -352,18 +419,6 @@
         <sys_updated_on>2026-09-05 11:54:24</sys_updated_on>
         <table>var__m_sys_pd_activity_type_prop_e179d17533bdc3147ef8f499ed5c7bbc</table>
         <value>{{vl.Insured Verification Activity Flow.93fe4e81-bf50-4a43-947a-482d069f9a4e./end.task}}</value>
-    </sys_element_mapping>
-    <sys_element_mapping action="INSERT_OR_UPDATE">
-        <field>experience_status_record</field>
-        <id>a9d6008dcfb10b50ccf631ad5d851c32</id>
-        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
-        <sys_created_on>2026-06-28 16:05:58</sys_created_on>
-        <sys_id>6dd6408dcfb10b50ccf631ad5d851c0d</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-06-28 16:05:58</sys_updated_on>
-        <table>var__m_sys_pd_activity_type_prop_7b0b3f34cffdc750ccf631ad5d851caf</table>
-        <value>{{vl.Playbook Manual Activity Flow./end.record}}</value>
     </sys_element_mapping>
     <sys_element_mapping action="INSERT_OR_UPDATE">
         <field>experience_status_table</field>
@@ -472,6 +527,54 @@
         <sys_updated_on>2026-06-28 16:05:58</sys_updated_on>
         <table>var__m_sys_pd_activity_type_prop_7b0b3f34cffdc750ccf631ad5d851caf</table>
         <value>{{act.act_instance.label}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>u_party_address</field>
+        <id>a9d6008dcfb10b50ccf631ad5d851c32</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 18:31:31</sys_created_on>
+        <sys_id>5bcd2db493534b100a83ffdddd03d6c3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 18:31:31</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_e179d17533bdc3147ef8f499ed5c7bbc</table>
+        <value>{{vl.Insured Verification Activity Flow.7aad8f97-45b1-4b85-b292-87ee3fa616e2./end.result2}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>u_party_match_count</field>
+        <id>a9d6008dcfb10b50ccf631ad5d851c32</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 18:31:31</sys_created_on>
+        <sys_id>9fcd2db493534b100a83ffdddd03d6c3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 18:31:31</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_e179d17533bdc3147ef8f499ed5c7bbc</table>
+        <value>{{vl.Insured Verification Activity Flow.7aad8f97-45b1-4b85-b292-87ee3fa616e2./end.result4}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>u_party_match_eval_time</field>
+        <id>a9d6008dcfb10b50ccf631ad5d851c32</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 18:31:31</sys_created_on>
+        <sys_id>dfcd2db493534b100a83ffdddd03d6c2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 18:31:31</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_e179d17533bdc3147ef8f499ed5c7bbc</table>
+        <value>{{vl.Insured Verification Activity Flow.7aad8f97-45b1-4b85-b292-87ee3fa616e2./end.result3}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>u_party_name</field>
+        <id>a9d6008dcfb10b50ccf631ad5d851c32</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-10 18:31:31</sys_created_on>
+        <sys_id>17cd2db493534b100a83ffdddd03d6c3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-10 18:31:31</sys_updated_on>
+        <table>var__m_sys_pd_activity_type_prop_e179d17533bdc3147ef8f499ed5c7bbc</table>
+        <value>{{vl.Insured Verification Activity Flow.7aad8f97-45b1-4b85-b292-87ee3fa616e2./end.result1}}</value>
     </sys_element_mapping>
     <sys_element_mapping action="INSERT_OR_UPDATE">
         <field>wait</field>

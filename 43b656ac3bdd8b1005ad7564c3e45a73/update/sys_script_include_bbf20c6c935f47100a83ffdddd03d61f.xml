@@ -397,6 +397,620 @@ PlaybookActivityDataProvider.prototype = {
             return sep + ch.toUpperCase();
         });
     },
+    // ====================================================== Insured Verification
+
+    /**
+     * DEMO SEEDER - fabricates a believable candidate set on
+     * x_gegis_ins_policy_party_match, so Insured Verification has something to
+     * render before the real matcher exists. Nothing here calls a provider.
+     *
+     * Candidates are derived from the submission's own insured_name /
+     * insured_address: internal ones are REAL party rows sharing a name token
+     * (party populated, so selecting one cannot duplicate the registry),
+     * external ones are legal-entity variants, the first sitting on the exact
+     * submitted address so the set has a defensible winner. Scores are computed
+     * from token overlap + address components, so match_score, match_type and
+     * is_recommended agree with what the row says.
+     *
+     * insured_name / insured_address are filled in when the demo submission has
+     * none - the activity is unusable without them.
+     *
+     * @param {string} submissionSysId  submission sys_id
+     * @return {Object} what was written, and why each row scored as it did
+     */
+    seedPartyMatches: function(submissionSysId) {
+        var sub = new GlideRecord(this.P + 'submission');
+        if (!sub.get(submissionSysId)) {
+            return {
+                error: 'submission ' + submissionSysId + ' not found'
+            };
+        }
+
+        var C = Constants.CHOICE;
+        var role = C.PARTY_MATCH_ROLE.PRIMARY_INSURED;
+        var out = {
+            submission: sub.getValue('number'),
+            candidates: []
+        };
+
+        // ---------------------------------------------------- search keys
+        var name = String(sub.getValue('insured_name') || '').trim();
+        var addr = String(sub.getValue('insured_address') || '').trim();
+
+        if (!name || !addr) {
+            if (!name) {
+                name = 'Cobalt';
+                sub.setValue('insured_name', name);
+            }
+            if (!addr) {
+                addr = 'DOOR 19, ST3, SSS, NY 20003';
+                sub.setValue('insured_address', addr);
+            }
+            sub.update(); // business rules stay ON
+            out.filledSubmission = true;
+        }
+        out.searchedName = name;
+        out.searchedAddress = addr;
+
+        var key = this._parseAddress(addr);
+
+        // ---------------------------------------------------- supersede the old set
+        var searchRun = 'SR-' + new GlideDate().getValue() + '-' +
+            String(new GlideDateTime().getNumericValue()).slice(-4);
+        out.searchRun = searchRun;
+
+        var old = new GlideRecord(this.P + 'party_match');
+        old.addQuery('submission', submissionSysId);
+        old.addQuery('party_role', role);
+        old.addQuery('decision', C.PARTY_MATCH_DECISION.PENDING);
+        old.query();
+        out.superseded = old.getRowCount();
+        while (old.next()) {
+            old.setValue('decision', C.PARTY_MATCH_DECISION.SUPERSEDED);
+            old.setValue('decision_reason', 'Replaced by search run ' + searchRun);
+            old.update();
+        }
+
+        // ---------------------------------------------------- build + score
+        var want = 2 + Math.floor(Math.random() * 9); // 2 to 10
+        var rows = this._internalCandidates(name, sub, 2)
+            .concat(this._externalCandidates(name, key, want))
+            .slice(0, want);
+
+        var T = C.PARTY_MATCH_TYPE;
+        var bestAt = -1,
+            best = -1;
+        for (var i = 0; i < rows.length; i++) {
+            var r = rows[i];
+            r.name_score = this._nameScore(name, r.name);
+            r.address_score = this._addrScore(key, r);
+            // name and address weigh equally: a same-brand record in another
+            // state is a genuine PARTIAL a human must rule on, and an exact
+            // address on its own is not an identity either
+            r.match_score = Math.round((r.name_score + r.address_score) * 50) / 100;
+            r.match_type = r.match_score >= 0.90 ? T.EXACT :
+                r.match_score >= 0.70 ? T.STRONG :
+                r.match_score >= 0.40 ? T.PARTIAL : T.WEAK;
+            if (r.match_score > best) {
+                best = r.match_score;
+                bestAt = i;
+            }
+        }
+
+        // ---------------------------------------------------- insert
+        var clearanceCase = new GlideRecord(this.P + 'clearance_case');
+        clearanceCase.addQuery('submission', submissionSysId);
+        clearanceCase.orderByDesc('sys_created_on');
+        clearanceCase.setLimit(1);
+        clearanceCase.query();
+
+        var fixed = {
+            submission: submissionSysId,
+            clearance_case: clearanceCase.next() ? clearanceCase.getUniqueValue() : '',
+            extraction: String(sub.getValue('current_extraction') || ''),
+            party_role: role,
+            search_run: searchRun,
+            searched_name: name,
+            searched_address: addr,
+            decision: C.PARTY_MATCH_DECISION.PENDING
+        };
+
+        for (var j = 0; j < rows.length; j++) {
+            var c = rows[j];
+            c.address = this._flatAddress(c);
+            c.sequence = (j + 1) * 10;
+            c.is_recommended = (j === bestAt);
+
+            var gr = new GlideRecord(this.P + 'party_match');
+            gr.initialize();
+            for (var f in fixed) {
+                if (fixed.hasOwnProperty(f)) {
+                    gr.setValue(f, fixed[f]);
+                }
+            }
+            for (var k in c) {
+                // `why` is commentary for the caller, not a column
+                if (c.hasOwnProperty(k) && k !== 'why' && gr.isValidField(k)) {
+                    gr.setValue(k, c[k]);
+                }
+            }
+            c.sysId = gr.insert();
+
+            out.candidates.push(c);
+        }
+
+        // one candidate and it is a solid hit - nothing for a human to weigh up,
+        // so record the decision rather than parking an obvious question
+        if (out.candidates.length === 1 && best >= 0.90) {
+            out.autoSelected = this.decidePartyMatch(
+                out.candidates[0].sysId,
+                C.PARTY_MATCH_DECISION.SELECTED,
+                'Single candidate at ' + Math.round(best * 100) + '% - no alternative to weigh up'
+            );
+        }
+
+        return out;
+    },
+
+    /**
+     * Record the decision on one candidate. Selecting a row rejects its
+     * siblings in the same search run - that is the point of a decision column
+     * over a checkbox: the losers carry a stated reason, which is not the same
+     * fact as never having been reviewed.
+     *
+     * An external winner has no party row yet, so one is created and stamped
+     * with the provider that found it; an internal winner reuses its own.
+     */
+    decidePartyMatch: function(matchSysId, decision, reason) {
+        var C = Constants.CHOICE;
+        var gr = new GlideRecord(this.P + 'party_match');
+        if (!gr.get(matchSysId)) {
+            return {
+                error: 'party_match ' + matchSysId + ' not found'
+            };
+        }
+
+        var now = new GlideDateTime();
+        var me = gs.getUserID();
+
+        gr.setValue('decision', decision || C.PARTY_MATCH_DECISION.SELECTED);
+        gr.setValue('decision_reason', reason || '');
+        gr.setValue('decided_by', me);
+        gr.setValue('decided_on', now);
+
+        var out = {
+            name: gr.getValue('name'),
+            decision: gr.getValue('decision')
+        };
+
+        if (out.decision !== C.PARTY_MATCH_DECISION.SELECTED) {
+            gr.update();
+            return out;
+        }
+
+        // external winner -> promote it into the party registry
+        var partyId = String(gr.getValue('party') || '');
+        if (!partyId) {
+            var p = new GlideRecord(this.P + 'party');
+            p.initialize();
+            var COPY = ['name', 'party_type', 'street', 'city', 'state', 'zip', 'country',
+                'phone', 'website', 'fei_number', 'industry_code', 'sic_code'
+            ];
+            for (var i = 0; i < COPY.length; i++) {
+                p.setValue(COPY[i], gr.getValue(COPY[i]));
+            }
+            p.setValue('status', C.PARTY_STATUS.ACTIVE);
+            p.setValue('verified', true);
+            p.setValue('verified_on', now);
+            // provider tokens are shared with party.verification_source on
+            // purpose, so this copies across unchanged
+            p.setValue('verification_source', gr.getValue('source'));
+            partyId = p.insert();
+
+            gr.setValue('party', partyId);
+            gr.setValue('party_created', true);
+            out.partyCreated = partyId;
+        }
+
+        // the submission's insured is now a resolved registry reference
+        var sub = new GlideRecord(this.P + 'submission');
+        if (gr.getValue('party_role') === C.PARTY_MATCH_ROLE.PRIMARY_INSURED &&
+            sub.get(gr.getValue('submission'))) {
+            sub.setValue('primary_insured', partyId);
+            sub.setValue('insured_name', gr.getValue('name'));
+            sub.setValue('insured_address', gr.getValue('address'));
+            sub.update();
+            gr.setValue('applied_to_submission', true);
+            out.appliedTo = sub.getValue('number');
+        }
+        gr.update();
+
+        // siblings in the same run are now decided facts, not open questions
+        var sib = new GlideRecord(this.P + 'party_match');
+        sib.addQuery('submission', gr.getValue('submission'));
+        sib.addQuery('party_role', gr.getValue('party_role'));
+        sib.addQuery('search_run', gr.getValue('search_run'));
+        sib.addQuery('sys_id', '!=', matchSysId);
+        sib.addQuery('decision', C.PARTY_MATCH_DECISION.PENDING);
+        sib.query();
+        out.rejected = sib.getRowCount();
+        while (sib.next()) {
+            sib.setValue('decision', C.PARTY_MATCH_DECISION.REJECTED);
+            sib.setValue('decision_reason', 'Not selected; ' + out.name +
+                ' confirmed as the matching record');
+            sib.setValue('decided_by', me);
+            sib.setValue('decided_on', now);
+            sib.update();
+        }
+
+        return out;
+    },
+
+    /** Record-list payload for the Insured Verification activity. */
+    getPartyMatches: function(submissionSysId) {
+        var C = Constants.CHOICE;
+        var out = {
+            name: '',
+            address: '',
+            asOf: '',
+            matchCount: '0',
+            matchMessage: '',
+            rows: []
+        };
+        var pending = 0;
+        var latest = null;
+
+        // nothing searched yet -> run the search now, so the activity never
+        // renders an empty list
+        var probe = new GlideAggregate(this.P + 'party_match');
+        probe.addQuery('submission', submissionSysId);
+        probe.addQuery('party_role', C.PARTY_MATCH_ROLE.PRIMARY_INSURED);
+        probe.addQuery('decision', '!=', C.PARTY_MATCH_DECISION.SUPERSEDED);
+        probe.addAggregate('COUNT');
+        probe.query();
+        if (!probe.next() || parseInt(probe.getAggregate('COUNT'), 10) === 0) {
+            this.seedPartyMatches(submissionSysId);
+        }
+
+        var gr = new GlideRecord(this.P + 'party_match');
+        gr.addQuery('submission', submissionSysId);
+        gr.addQuery('party_role', C.PARTY_MATCH_ROLE.PRIMARY_INSURED);
+        gr.addQuery('decision', '!=', C.PARTY_MATCH_DECISION.SUPERSEDED);
+        gr.orderBy('sequence');
+        gr.query();
+
+        while (gr.next()) {
+            // the searched keys are the same on every row of a run - the
+            // submission's insured as extracted, which is what the header shows
+            if (!out.name) {
+                out.name = gr.getValue('searched_name');
+                out.address = gr.getValue('searched_address');
+            }
+            if (gr.getValue('decision') === C.PARTY_MATCH_DECISION.PENDING) {
+                pending++;
+            }
+
+            var created = new GlideDateTime(gr.getValue('sys_created_on'));
+            if (!latest || created.compareTo(latest) > 0) {
+                latest = created;
+            }
+
+            out.rows.push({
+                /* ...unchanged row fields... */
+            });
+        }
+
+        // fall back to the submission itself when no search has run yet
+        if (!out.name) {
+            var sub = new GlideRecord(this.P + 'submission');
+            if (sub.get(submissionSysId)) {
+                out.name = sub.getValue('insured_name');
+                out.address = sub.getValue('insured_address');
+            }
+        }
+        if (latest) {
+            var MONTH = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+                'August', 'September', 'October', 'November', 'December'
+            ];
+            // getDisplayValueInternal is "yyyy-MM-dd HH:mm:ss" already converted
+            // to the session user's timezone - fixed shape, so it parses the same
+            // whatever date format the user has set
+            var parts = latest.getDisplayValueInternal().split(' ');
+            var d = parts[0].split('-');
+            var t = parts[1].split(':');
+            var h24 = parseInt(t[0], 10);
+            out.asOf = 'As of : ' + MONTH[parseInt(d[1], 10) - 1] + ' ' +
+                parseInt(d[2], 10) + ', ' + d[0] + ' at ' +
+                (h24 % 12 || 12) + ':' + t[1] + (h24 < 12 ? ' AM' : ' PM');
+        }
+
+
+
+
+        out.matchCount = String(pending);
+        out.matchMessage = pending ?
+            pending + (pending === 1 ? ' entity requires' : ' entities require') +
+            ' compliance review. Workflow cannot proceed until all matches are resolved.' :
+            'All matches resolved.';
+
+        return out;
+    },
+
+    /**
+     * Real party rows sharing a leading token with the insured name - the
+     * registry near-misses that make the activity worth a human's time.
+     */
+    _internalCandidates: function(name, sub, limit) {
+        var C = Constants.CHOICE;
+        var out = [];
+        var token = String(name).split(/[\s,]+/)[0];
+        if (token.length < 3) {
+            return out;
+        }
+
+        var gr = new GlideRecord(this.P + 'party');
+        gr.addQuery('name', 'STARTSWITH', token);
+        var brokerId = String(sub.getValue('broker') || '');
+        if (brokerId) {
+            gr.addQuery('sys_id', '!=', brokerId);
+        }
+        gr.orderBy('name');
+        gr.setLimit(limit);
+        gr.query();
+
+        while (gr.next()) {
+            out.push({
+                name: gr.getValue('name'),
+                party_type: gr.getValue('party_type') || C.PARTY_TYPE.COMPANY,
+                street: gr.getValue('street'),
+                city: gr.getValue('city'),
+                state: gr.getValue('state'),
+                zip: gr.getValue('zip'),
+                country: gr.getValue('country') || 'US',
+                phone: gr.getValue('phone'),
+                website: gr.getValue('website'),
+                fei_number: gr.getValue('fei_number'),
+                industry_code: gr.getValue('industry_code'),
+                sic_code: gr.getValue('sic_code'),
+                source_type: C.PARTY_MATCH_SOURCE_TYPE.INTERNAL,
+                source: C.PARTY_MATCH_SOURCE.INTERNAL_REGISTRY,
+                party: gr.getUniqueValue(),
+                why: 'Party registry row matched on name token "' + token + '"'
+            });
+        }
+        return out;
+    },
+
+    /**
+     * Legal-entity variants of the insured name, as a provider would return
+     * them. The FIRST sits on the exact submitted address so the set has a
+     * defensible winner; the rest are the same brand at other locations, which
+     * is what makes a human decision necessary.
+     */
+    _externalCandidates: function(name, key, want) {
+        var C = Constants.CHOICE;
+        var base = String(name).replace(/,?\s*(inc\.?|llc|ltd\.?|corp\.?|co\.?|plc|limited)$/i, '').trim();
+        var SUFFIX = ['Industries LLC', 'Inc.', 'Manufacturing Inc.', 'Holdings LLC',
+            'Group Inc.', 'Enterprises LLC', 'Technologies Inc.',
+            'Logistics LLC', 'Partners LP', 'Services Inc.',
+            'International Inc.', 'Trading Co.'
+        ];
+
+        var PROVIDER = [C.PARTY_MATCH_SOURCE.DNB, C.PARTY_MATCH_SOURCE.LEXISNEXIS,
+            C.PARTY_MATCH_SOURCE.GLEIF, C.PARTY_MATCH_SOURCE.MIDDESK,
+            C.PARTY_MATCH_SOURCE.MOODYS_ORBIS
+        ];
+        var ELSEWHERE = [
+            { street: '450 Industrial Parkway, Unit 7', city: 'Newark',      state: 'NJ', zip: '07102' },
+            { street: '1200 Lakeside Drive',            city: 'Chicago',     state: 'IL', zip: '60601' },
+            { street: '88 Harbor Street, Suite 410',    city: 'Boston',      state: 'MA', zip: '02110' },
+            { street: '3400 Commerce Way',              city: 'Atlanta',     state: 'GA', zip: '30303' },
+            { street: '1234 North Avenue, Building A',  city: 'San Jose',    state: 'CA', zip: '95031' },
+            { street: '77 Peachtree Center, Suite 900', city: 'Charlotte',   state: 'NC', zip: '28202' },
+            { street: '2020 Riverside Boulevard',       city: 'Dallas',      state: 'TX', zip: '75201' },
+            { street: '515 Warehouse Row, Dock 3',      city: 'Columbus',    state: 'OH', zip: '43215' },
+            { street: '960 Cascade Way, Floor 4',       city: 'Seattle',     state: 'WA', zip: '98104' },
+            { street: '31 Beacon Industrial Estate',    city: 'Philadelphia', state: 'PA', zip: '19106' }
+        ];
+        var SIC = [
+            ['3312', 'Steel works and blast furnaces'],
+            ['5051', 'Metals service centers and offices'],
+            ['3444', 'Sheet metal work'],
+            ['4225', 'General warehousing and storage']
+        ];
+
+        var out = [];
+        var spin = Math.floor(Math.random() * SUFFIX.length);
+        for (var i = 0; i < want; i++) {
+            var candName = (base + ' ' + SUFFIX[(spin + i) % SUFFIX.length]).trim();
+
+            var provider = PROVIDER[Math.floor(Math.random() * PROVIDER.length)];
+            var sic = SIC[Math.floor(Math.random() * SIC.length)];
+            var atSubmitted = (i === 0);
+            var where = atSubmitted ? key : ELSEWHERE[(spin + i) % ELSEWHERE.length];
+
+            var c = {
+                name: candName,
+                party_type: C.PARTY_TYPE.COMPANY,
+                street: where.street,
+                city: where.city,
+                state: where.state,
+                zip: where.zip,
+                country: 'US',
+                phone: '+1 ' + this._digits(3) + '-' + this._digits(3) + '-' + this._digits(4),
+                website: 'www.' + base.toLowerCase().replace(/[^a-z0-9]+/g, '') + '.com',
+                fei_number: this._digits(2) + '-' + this._digits(7),
+                industry_code: '33' + this._digits(2),
+                sic_code: sic[0],
+                source_type: C.PARTY_MATCH_SOURCE_TYPE.EXTERNAL,
+                source: provider,
+                why: atSubmitted ? 'Provider record on the exact submitted address' : 'Same trading name as the insured, different location'
+            };
+
+            if (provider === C.PARTY_MATCH_SOURCE.DNB) {
+                c.duns_number = this._digits(9);
+                c.external_id = 'DNB-' + c.duns_number;
+            } else if (provider === C.PARTY_MATCH_SOURCE.GLEIF) {
+                c.lei = this._digits(4) + '00' + this._digits(14);
+                c.external_id = 'LEI-' + c.lei;
+            } else {
+                c.external_id = provider.toUpperCase().slice(0, 3) + '-' + this._digits(8);
+            }
+
+            c.raw_payload = JSON.stringify({
+                provider: provider,
+                id: c.external_id,
+                name: candName.toUpperCase(),
+                address: {
+                    street: c.street,
+                    city: c.city,
+                    region: c.state,
+                    postal: c.zip,
+                    country: 'US'
+                },
+                sic: {
+                    code: c.sic_code,
+                    description: sic[1]
+                },
+                status: 'active'
+            });
+
+            out.push(c);
+        }
+        return out;
+    },
+
+    /** "DOOR 19, ST3, SSS, NY 20003" -> street / city / state / zip */
+    _parseAddress: function(addr) {
+        var parts = String(addr).split(',');
+        var keep = [];
+        for (var i = 0; i < parts.length; i++) {
+            if (parts[i].trim()) {
+                keep.push(parts[i].trim());
+            }
+        }
+
+        var out = {
+            street: '',
+            city: '',
+            state: '',
+            zip: ''
+        };
+        if (!keep.length) {
+            return out;
+        }
+
+        var tail = keep.pop();
+        var m = tail.match(/^([A-Za-z]{2})\s+([A-Za-z0-9\- ]+)$/);
+        if (m) {
+            out.state = m[1].toUpperCase();
+            out.zip = m[2].trim();
+        } else {
+            m = tail.match(/^(.*?)\s+(\d{5}(?:-\d{4})?)$/);
+            if (m) {
+                out.state = m[1].trim();
+                out.zip = m[2];
+            } else {
+                out.zip = tail;
+            }
+        }
+        if (keep.length) {
+            out.city = keep.pop();
+        }
+        out.street = keep.join(', ') || out.city;
+        return out;
+    },
+
+    _flatAddress: function(c) {
+        var bits = [];
+        if (c.street) {
+            bits.push(c.street);
+        }
+        if (c.city) {
+            bits.push(c.city);
+        }
+        var region = ((c.state || '') + ' ' + (c.zip || '')).trim();
+        if (region) {
+            bits.push(region);
+        }
+        return bits.join(', ');
+    },
+
+    /** token overlap, 0-1. "Cobalt" vs "Cobalt Industries LLC" scores high. */
+    _nameScore: function(a, b) {
+        var STOP = {
+            inc: 1,
+            llc: 1,
+            ltd: 1,
+            corp: 1,
+            co: 1,
+            the: 1,
+            and: 1,
+            limited: 1,
+            plc: 1
+        };
+
+        function toks(s) {
+            var raw = String(s || '').toLowerCase().replace(/[^a-z0-9 ]/g, ' ').split(/\s+/);
+            var keep = [];
+            for (var i = 0; i < raw.length; i++) {
+                if (raw[i] && !STOP[raw[i]]) {
+                    keep.push(raw[i]);
+                }
+            }
+            return keep;
+        }
+        var A = toks(a),
+            B = toks(b);
+        if (!A.length || !B.length) {
+            return 0;
+        }
+
+        var hit = 0;
+        for (var k = 0; k < A.length; k++) {
+            if (B.indexOf(A[k]) > -1) {
+                hit++;
+            }
+        }
+        // asymmetric on purpose: every searched token being present is a strong
+        // signal even when the candidate carries extra words
+        var score = (hit / A.length) * 0.75 + (hit / B.length) * 0.25;
+        return Math.round(Math.min(score, 1) * 100) / 100;
+    },
+
+    /** zip + state + city + street, weighted. Exact street on exact zip = 1. */
+    _addrScore: function(key, c) {
+        function eq(a, b) {
+            var x = String(a || '').trim().toLowerCase();
+            return x !== '' && x === String(b || '').trim().toLowerCase();
+        }
+        var s = 0;
+        if (eq(key.zip, c.zip)) {
+            s += 0.40;
+        }
+        if (eq(key.state, c.state)) {
+            s += 0.20;
+        }
+        if (eq(key.city, c.city)) {
+            s += 0.20;
+        }
+        if (eq(key.street, c.street)) {
+            s += 0.20;
+        } else if (this._nameScore(key.street, c.street) > 0.5) {
+            s += 0.10;
+        }
+        return Math.round(s * 100) / 100;
+    },
+
+    _digits: function(n) {
+        var s = '';
+        for (var i = 0; i < n; i++) {
+            s += Math.floor(Math.random() * 10);
+        }
+        return s;
+    },
+
+
 
     type: 'PlaybookActivityDataProvider'
 };]]></script>
@@ -404,13 +1018,13 @@ PlaybookActivityDataProvider.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-09 16:06:48</sys_created_on>
         <sys_id>bbf20c6c935f47100a83ffdddd03d61f</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>PlaybookActivityDataProvider</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_script_include_bbf20c6c935f47100a83ffdddd03d61f</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-09 16:08:14</sys_updated_on>
+        <sys_updated_on>2026-09-10 19:12:13</sys_updated_on>
     </sys_script_include>
 </record_update>

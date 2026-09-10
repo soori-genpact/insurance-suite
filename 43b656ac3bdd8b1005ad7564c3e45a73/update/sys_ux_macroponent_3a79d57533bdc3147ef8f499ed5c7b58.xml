@@ -93,16 +93,37 @@
                             "value": "AI Quick Assessment:"
                         },
                         "bodyText": {
-                            "type": "JSON_LITERAL",
-                            "value": "1 entity requires compliance review. Workflow cannot proceed until all matches are resolved."
+                            "binding": {
+                                "address": [
+                                    "experienceProperties",
+                                    "u_party_match_count",
+                                    "value"
+                                ],
+                                "category": "props"
+                            },
+                            "type": "CONTEXT_BINDING"
                         },
                         "detailLine1": {
-                            "type": "JSON_LITERAL",
-                            "value": "Cobalt Inc"
+                            "binding": {
+                                "address": [
+                                    "experienceProperties",
+                                    "u_party_name",
+                                    "value"
+                                ],
+                                "category": "props"
+                            },
+                            "type": "CONTEXT_BINDING"
                         },
                         "detailLine2": {
-                            "type": "JSON_LITERAL",
-                            "value": "Alt North Avenue, Suite 200, New York, NY 10001"
+                            "binding": {
+                                "address": [
+                                    "experienceProperties",
+                                    "u_party_address",
+                                    "value"
+                                ],
+                                "category": "props"
+                            },
+                            "type": "CONTEXT_BINDING"
                         },
                         "linkText": {
                             "type": "JSON_LITERAL",
@@ -133,8 +154,15 @@
                             "value": true
                         },
                         "subtitle": {
-                            "type": "JSON_LITERAL",
-                            "value": "As of : January 9, 2026 at 3:03 PM"
+                            "binding": {
+                                "address": [
+                                    "experienceProperties",
+                                    "u_party_match_eval_time",
+                                    "value"
+                                ],
+                                "category": "props"
+                            },
+                            "type": "CONTEXT_BINDING"
                         },
                         "title": {
                             "type": "JSON_LITERAL",
@@ -605,6 +633,34 @@
                 },
                 "label": "Title (DEPRECATED)",
                 "value": ""
+            },
+            "u_party_address": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "string"
+                },
+                "value": ""
+            },
+            "u_party_match_count": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "string"
+                },
+                "value": ""
+            },
+            "u_party_match_eval_time": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "string"
+                },
+                "value": ""
+            },
+            "u_party_name": {
+                "displayValue": "",
+                "elementData": {
+                    "type": "string"
+                },
+                "value": ""
             }
         },
         "description": "Collection of properties for the Activity UI based on the Experience Type",
@@ -976,6 +1032,70 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "u_party_address": {
+                        "properties": {
+                            "elementData": {
+                                "properties": {
+                                    "type": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "value": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "u_party_match_count": {
+                        "properties": {
+                            "elementData": {
+                                "properties": {
+                                    "type": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "value": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "u_party_match_eval_time": {
+                        "properties": {
+                            "elementData": {
+                                "properties": {
+                                    "type": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "value": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "u_party_name": {
+                        "properties": {
+                            "elementData": {
+                                "properties": {
+                                    "type": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "value": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
                     }
                 },
                 "type": "object"
@@ -1035,14 +1155,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-01 06:02:29</sys_created_on>
         <sys_id>3a79d57533bdc3147ef8f499ed5c7b58</sys_id>
-        <sys_mod_count>15</sys_mod_count>
+        <sys_mod_count>37</sys_mod_count>
         <sys_name>PS Insured Verification AUI</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_3a79d57533bdc3147ef8f499ed5c7b58</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-05 14:20:56</sys_updated_on>
+        <sys_updated_on>2026-09-10 18:59:23</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=3a79d57533bdc3147ef8f499ed5c7b58"/>
 </record_update>
