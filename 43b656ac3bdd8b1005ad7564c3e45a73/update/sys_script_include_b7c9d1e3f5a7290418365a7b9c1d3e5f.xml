@@ -96,9 +96,6 @@
         // shared by extraction.extraction_method and party_match.source -- a
         // human typed it in rather than a pipeline or a provider producing it
         MANUAL:      &#39;manual&#39;,
-        // shared by extraction.disposition and party_match.decision -- replaced
-        // by a newer record of the same kind, kept for audit
-        SUPERSEDED:  &#39;superseded&#39;,
         // renewal decision tokens - shared by uw_decision + system_decision, and
         // reused as module_plan.sub_type for renewals: &quot;how is this renewal
         // handled&quot; is one axis, so it stays one taxonomy rather than a parallel
@@ -162,7 +159,10 @@
         // submission.submission_type and loa_authority_limit.business_type
         NEW_BUSINESS:   &#39;new_business&#39;,
         RENEWAL:        &#39;renewal&#39;,
-        // loa_authority_grant.state and loa_authority_limit versioning language
+        // versioning language shared by loa_authority_grant.state,
+        // loa_authority_limit, quote_option_status, extraction.disposition,
+        // party_match.decision and party_sanction.compliance_status -- replaced
+        // by a newer record of the same kind, kept for audit
         SUPERSEDED:     &#39;superseded&#39;,
         REVOKED:        &#39;revoked&#39;,
         // loa_metric.comparison and loa_metric.aggregation -- &quot;the largest value&quot;
@@ -660,6 +660,90 @@
             PENDING:    SHARED.PENDING,
             SELECTED:   &#39;selected&#39;,
             REJECTED:   SHARED.REJECTED,
+            SUPERSEDED: SHARED.SUPERSEDED
+        },
+
+        // =================================================================
+        // x_gegis_ins_policy_party_sanction -- sanctions screening evidence.
+        // One row per screened subject per run: a no_hit row proves the subject
+        // was screened clean, a match row carries one entry the provider
+        // returned. The party-level verdict (hit count, True/False Hit,
+        // Open/Closed) is a ROLLUP over these rows, never a stored column.
+        // =================================================================
+
+        // party_sanction.subject_type -- WHO was screened. A submission_party
+        // row carries both an organization and (optionally) a contact, and the
+        // sanctions lists name individuals as well as entities, so the row has
+        // to say which legal person the provider was asked about.
+        SANCTION_SUBJECT_TYPE: {
+            ORGANIZATION: &#39;organization&#39;,
+            CONTACT:      &#39;contact&#39;
+        },
+
+        // party_sanction.provider -- which screening service answered. Kept
+        // separate from sanction_list: one provider screens many lists.
+        SANCTION_PROVIDER: {
+            DOW_JONES:  &#39;dow_jones&#39;,
+            REFINITIV:  &#39;refinitiv&#39;,
+            LEXISNEXIS: &#39;lexisnexis&#39;,
+            DNB:        &#39;dnb&#39;,
+            MANUAL:     SHARED.MANUAL
+        },
+
+        // party_sanction.request_status -- did the CALL succeed. Deliberately
+        // distinct from sanction_hit: a failed call is not a clean screen, and
+        // treating the two as one field is how an unscreened party slips
+        // through the gate looking like a no_hit.
+        SANCTION_REQUEST_STATUS: {
+            PENDING:   SHARED.PENDING,
+            COMPLETED: &#39;completed&#39;,
+            FAILED:    SHARED.FAILED
+        },
+
+        // party_sanction.sanction_hit -- the row&#39;s grain discriminator.
+        // no_hit rows have no match columns populated; match rows carry one
+        // returned entry each. Counts and aggregations must filter on `match`.
+        SANCTION_HIT: {
+            NO_HIT: &#39;no_hit&#39;,
+            MATCH:  &#39;match&#39;
+        },
+
+        // party_sanction.sanction_list -- which published list the entry came
+        // from. ofac_sdn is the Specially Designated Nationals list; the
+        // consolidated lists are the wider screening sets.
+        SANCTION_LIST: {
+            OFAC_SDN:          &#39;ofac_sdn&#39;,
+            OFAC_CONSOLIDATED: &#39;ofac_consolidated&#39;,
+            EU_CONSOLIDATED:   &#39;eu_consolidated&#39;,
+            UK_HMT:            &#39;uk_hmt&#39;,
+            UN_CONSOLIDATED:   &#39;un_consolidated&#39;,
+            OTHER:             SHARED.OTHER
+        },
+
+        // party_sanction.entity_type -- what the LISTED entry is, as published.
+        // Not the same axis as subject_type (who we screened): a company can
+        // match an individual entry through a director&#39;s name.
+        SANCTION_ENTITY_TYPE: {
+            INDIVIDUAL: &#39;individual&#39;,
+            ENTITY:     &#39;entity&#39;,
+            VESSEL:     &#39;vessel&#39;,
+            AIRCRAFT:   &#39;aircraft&#39;
+        },
+
+        // party_sanction.compliance_status -- the per-match human call, which
+        // is why it lives on the match and not on the party: one subject can
+        // match two entries, one genuinely them and one a namesake.
+        //
+        //   pending     returned by the provider, nobody has ruled on it yet
+        //   false_hit   reviewed and ruled a namesake - a DECIDED fact, not the
+        //               same as still-pending
+        //   true_hit    confirmed as this subject. Any one of these on a
+        //               submission blocks the gate
+        //   superseded  a later screening run replaced this result set
+        SANCTION_COMPLIANCE_STATUS: {
+            PENDING:    SHARED.PENDING,
+            FALSE_HIT:  &#39;false_hit&#39;,
+            TRUE_HIT:   &#39;true_hit&#39;,
             SUPERSEDED: SHARED.SUPERSEDED
         },
 
@@ -1415,6 +1499,6 @@
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_script_include_b7c9d1e3f5a7290418365a7b9c1d3e5f</sys_update_name>
         <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-09-10 12:00:00</sys_updated_on>
+        <sys_updated_on>2026-09-11 12:00:00</sys_updated_on>
     </sys_script_include>
 </record_update>
