@@ -84,9 +84,15 @@ OrchestrationService.prototype = {
         }
 
         // ONE playbook per case comes from that case table's own Record Create
-        // trigger - orchestration must not start a second one. What it does own
-        // is the submission-level set: one per module in the plan.
-        this._startSubmissionPlaybooks(submissionId, groups);
+        // trigger - orchestration must not start a second one.
+        //
+        // The SUBMISSION-level playbooks are not started here either: every
+        // _createCase above ran _stampSubmission, which writes playbook_&lt;module&gt;
+        // with rules ON, and that write IS their trigger (Record Update,
+        // playbook_&lt;module&gt; is not empty). Calling _startSubmissionPlaybooks
+        // here started a SECOND context for every module, so a New Business
+        // journey showed 8 playbooks instead of 4. That method is kept as a
+        // repair tool; it now refuses to double up.
 
         gs.info(this.LOG + 'kickoff for ' + submissionId + ' created ' + created.length
             + ' cases in ' + groups.length + ' run group(s)');
@@ -325,6 +331,11 @@ OrchestrationService.prototype = {
      * condition playbook_&lt;module&gt; is not empty, and that write runs with
      * rules on. Re-entry into applyResubmit is prevented on the BR, which
      * ignores a playbook_*-only change.
+     *
+     * So kickoff does NOT call this - the stamp has already done it. This is a
+     * REPAIR path only, for a submission whose stamp landed before the trigger
+     * existed. It skips any playbook that already has a context, so running it
+     * on a healthy submission is a no-op.
      */
     _startSubmissionPlaybooks: function (submissionId, groups) {
         var sub = new GlideRecord(Constants.TABLE.SUBMISSION);
@@ -339,6 +350,21 @@ OrchestrationService.prototype = {
                 if (!name || seen[name])
                     continue;
                 seen[name] = true;
+
+                // never start a second context for a playbook this submission
+                // already has - the stamp normally starts them all
+                var ctx = new GlideAggregate('sys_pd_context');
+                ctx.addQuery('table', Constants.TABLE.SUBMISSION);
+                ctx.addQuery('document_id', submissionId);
+                ctx.addQuery('playbook.name', name);
+                ctx.addAggregate('COUNT');
+                ctx.query();
+                if (ctx.next() && parseInt(ctx.getAggregate('COUNT'), 10) > 0) {
+                    gs.info(this.LOG + name + ' already running on '
+                        + sub.getValue('number') + ' - not started again');
+                    continue;
+                }
+
                 try {
                     var ctxId = sn_playbook.PlaybookExperience.triggerPlaybook(name, sub);
                     if (ctxId)
