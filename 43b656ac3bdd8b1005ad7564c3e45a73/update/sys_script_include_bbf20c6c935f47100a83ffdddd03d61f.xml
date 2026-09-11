@@ -708,24 +708,10 @@ PlaybookActivityDataProvider.prototype = {
                 out.address = sub.getValue('insured_address');
             }
         }
+
         if (latest) {
-            var MONTH = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
-                'August', 'September', 'October', 'November', 'December'
-            ];
-            // getDisplayValueInternal is "yyyy-MM-dd HH:mm:ss" already converted
-            // to the session user's timezone - fixed shape, so it parses the same
-            // whatever date format the user has set
-            var parts = latest.getDisplayValueInternal().split(' ');
-            var d = parts[0].split('-');
-            var t = parts[1].split(':');
-            var h24 = parseInt(t[0], 10);
-            out.asOf = 'As of : ' + MONTH[parseInt(d[1], 10) - 1] + ' ' +
-                parseInt(d[2], 10) + ', ' + d[0] + ' at ' +
-                (h24 % 12 || 12) + ':' + t[1] + (h24 < 12 ? ' AM' : ' PM');
+            out.asOf = this._asOf(latest);
         }
-
-
-
 
         out.matchCount = String(pending);
         out.matchMessage = pending ?
@@ -800,17 +786,66 @@ PlaybookActivityDataProvider.prototype = {
             C.PARTY_MATCH_SOURCE.GLEIF, C.PARTY_MATCH_SOURCE.MIDDESK,
             C.PARTY_MATCH_SOURCE.MOODYS_ORBIS
         ];
-        var ELSEWHERE = [
-            { street: '450 Industrial Parkway, Unit 7', city: 'Newark',      state: 'NJ', zip: '07102' },
-            { street: '1200 Lakeside Drive',            city: 'Chicago',     state: 'IL', zip: '60601' },
-            { street: '88 Harbor Street, Suite 410',    city: 'Boston',      state: 'MA', zip: '02110' },
-            { street: '3400 Commerce Way',              city: 'Atlanta',     state: 'GA', zip: '30303' },
-            { street: '1234 North Avenue, Building A',  city: 'San Jose',    state: 'CA', zip: '95031' },
-            { street: '77 Peachtree Center, Suite 900', city: 'Charlotte',   state: 'NC', zip: '28202' },
-            { street: '2020 Riverside Boulevard',       city: 'Dallas',      state: 'TX', zip: '75201' },
-            { street: '515 Warehouse Row, Dock 3',      city: 'Columbus',    state: 'OH', zip: '43215' },
-            { street: '960 Cascade Way, Floor 4',       city: 'Seattle',     state: 'WA', zip: '98104' },
-            { street: '31 Beacon Industrial Estate',    city: 'Philadelphia', state: 'PA', zip: '19106' }
+        var ELSEWHERE = [{
+                street: '450 Industrial Parkway, Unit 7',
+                city: 'Newark',
+                state: 'NJ',
+                zip: '07102'
+            },
+            {
+                street: '1200 Lakeside Drive',
+                city: 'Chicago',
+                state: 'IL',
+                zip: '60601'
+            },
+            {
+                street: '88 Harbor Street, Suite 410',
+                city: 'Boston',
+                state: 'MA',
+                zip: '02110'
+            },
+            {
+                street: '3400 Commerce Way',
+                city: 'Atlanta',
+                state: 'GA',
+                zip: '30303'
+            },
+            {
+                street: '1234 North Avenue, Building A',
+                city: 'San Jose',
+                state: 'CA',
+                zip: '95031'
+            },
+            {
+                street: '77 Peachtree Center, Suite 900',
+                city: 'Charlotte',
+                state: 'NC',
+                zip: '28202'
+            },
+            {
+                street: '2020 Riverside Boulevard',
+                city: 'Dallas',
+                state: 'TX',
+                zip: '75201'
+            },
+            {
+                street: '515 Warehouse Row, Dock 3',
+                city: 'Columbus',
+                state: 'OH',
+                zip: '43215'
+            },
+            {
+                street: '960 Cascade Way, Floor 4',
+                city: 'Seattle',
+                state: 'WA',
+                zip: '98104'
+            },
+            {
+                street: '31 Beacon Industrial Estate',
+                city: 'Philadelphia',
+                state: 'PA',
+                zip: '19106'
+            }
         ];
         var SIC = [
             ['3312', 'Steel works and blast furnaces'],
@@ -1009,6 +1044,177 @@ PlaybookActivityDataProvider.prototype = {
         }
         return s;
     },
+    /**
+     * Check for Duplicates - derived, never stored. Every row is an existing
+     * submission for the same insured, so there is nothing here to persist: the
+     * verdict lands on submission.duplicate_of / status and a clearance_check
+     * row (check_type = duplicate_submission), not on a table of its own.
+     *
+     * Query budget is fixed, NOT per row: 1 submission + 1 party + 1 duplicate
+     * list + 1 policy list + at most 2 number look-ups. Reference values are
+     * never dot-walked inside a while() - that is one query per row per field.
+     */
+    getDuplicateCheck: function (submissionSysId) {
+        var out = { count: '0', asOf: '', message: '', rows: [], policies: [] };
+
+        var sub = new GlideRecord(this.P + 'submission');
+        if (!sub.get(submissionSysId)) { return out; }
+
+        var partyId = String(sub.getValue('primary_insured') || '');
+        var name = String(sub.getValue('insured_name') || '');
+        var lob = String(sub.getValue('line_of_business') || '');
+        var subType = String(sub.getValue('submission_type') || '');
+        var effective = String(sub.getValue('target_effective_date') || '');
+        var key = this._parseAddress(String(sub.getValue('insured_address') || ''));
+
+        // every row in BOTH lists is for this same insured, so the party is read
+        // once here instead of dot-walked per row
+        var insured = { name: name, city: '', state: '', zip: '', address: '' };
+        if (partyId) {
+            var p = new GlideRecord(this.P + 'party');
+            if (p.get(partyId)) {
+                insured.name = p.getValue('name');
+                insured.city = p.getValue('city');
+                insured.state = p.getValue('state');
+                insured.zip = p.getValue('zip');
+                insured.address = this._flatAddress({
+                    street: p.getValue('street'), city: p.getValue('city'),
+                    state: p.getValue('state'), zip: p.getValue('zip')
+                });
+            }
+        }
+
+        var effMs = effective ? new GlideDateTime(effective + ' 00:00:00').getNumericValue() : 0;
+
+        var gr = new GlideRecord(this.P + 'submission');
+        if (partyId)   { gr.addQuery('primary_insured', partyId); }
+        else if (name) { gr.addQuery('insured_name', 'CONTAINS', name); }
+        else           { return out; }
+        gr.addQuery('sys_id', '!=', submissionSysId);
+        gr.orderByDesc('received_date');
+        gr.setLimit(50);
+        gr.query();
+
+        var dupeIds = [];
+        while (gr.next()) {
+            var rowAddr = String(gr.getValue('insured_address') || '');
+            var score = partyId ? 0.40
+                                : this._nameScore(name, gr.getValue('insured_name')) * 0.40;
+            if (lob && lob === gr.getValue('line_of_business')) { score += 0.20; }
+            score += this._addrScore(key, this._parseAddress(rowAddr)) * 0.20;
+            if (subType && subType === gr.getValue('submission_type')) { score += 0.10; }
+            var rowEff = String(gr.getValue('target_effective_date') || '');
+            if (effMs && rowEff &&
+                Math.abs(effMs - new GlideDateTime(rowEff + ' 00:00:00').getNumericValue())
+                <= 2592000000) { score += 0.10; }
+
+            var pct = Math.round(score * 100);
+            var dupeOf = String(gr.getValue('duplicate_of') || '');
+            if (dupeOf) { dupeIds.push(dupeOf); }
+
+            out.rows.push({
+                sys_id:     gr.getUniqueValue(),
+                number:     gr.getValue('number'),
+                match:      { value: pct, display_value: pct + '%' },
+                insured:    gr.getValue('insured_name'),
+                address:    rowAddr,
+                city:       insured.city,
+                addrState:  insured.state,
+                zip:        insured.zip,
+                lob:        gr.getDisplayValue('line_of_business'),
+                stage:      gr.getDisplayValue('stage'),
+                activity:   gr.getDisplayValue('activity_status'),
+                state:      gr.getDisplayValue('state'),
+                status:     gr.getDisplayValue('status'),
+                submissionType: gr.getDisplayValue('submission_type'),
+                subType:    gr.getDisplayValue('sub_type'),
+                broker:     gr.getValue('broker_name'),
+                underwriter: gr.getDisplayValue('underwriter'),
+                received:   gr.getDisplayValue('received_date'),
+                effective:  gr.getDisplayValue('target_effective_date'),
+                expiration: gr.getDisplayValue('target_expiration_date'),
+                premium:    gr.getValue('total_estimated_premium'),
+                dupeOfId:   dupeOf,
+                dupeOf:     ''
+            });
+        }
+
+        // Additional Insured Risk - in-force cover for the same insured.
+        var originIds = [];
+        if (partyId) {
+            var pol = new GlideRecord(this.P + 'policy');
+            pol.addQuery('insured', partyId);
+            pol.orderByDesc('effective_date');
+            pol.setLimit(50);
+            pol.query();
+            while (pol.next()) {
+                var origin = String(pol.getValue('originating_submission') || '');
+                if (origin) { originIds.push(origin); }
+                out.policies.push({
+                    sys_id:       pol.getUniqueValue(),
+                    policyNumber: pol.getValue('policy_number') || pol.getValue('number'),
+                    insured:      insured.name,
+                    address:      insured.address,
+                    lob:          pol.getDisplayValue('line_of_business'),
+                    status:       pol.getDisplayValue('status'),
+                    effective:    pol.getDisplayValue('effective_date'),
+                    expiry:       pol.getDisplayValue('expiry_date'),
+                    premium:      pol.getValue('total_premium'),
+                    originId:     origin,
+                    submission:   ''
+                });
+            }
+        }
+
+        // one query resolves every referenced submission number for both lists
+        var numbers = this._numbersBySysId(dupeIds.concat(originIds));
+        var i;
+        for (i = 0; i < out.rows.length; i++) {
+            out.rows[i].dupeOf = numbers[out.rows[i].dupeOfId] || '';
+        }
+        for (i = 0; i < out.policies.length; i++) {
+            var num = numbers[out.policies[i].originId] || '';
+            // link shape so the cell navigates to the SUBMISSION, not the policy
+            out.policies[i].submission = num
+                ? { value: num, display_value: num,
+                    link: '/api/now/table/' + this.P + 'submission/' + out.policies[i].originId }
+                : '';
+        }
+
+        out.count = String(out.rows.length);
+        out.asOf = this._asOf(new GlideDateTime());
+        out.message = out.rows.length
+            ? out.rows.length + ' potential duplicate' + (out.rows.length === 1 ? '' : 's') +
+              ' found.'
+            : 'No potential duplicates found for this insured.';
+
+        return out;
+    },
+
+    /** sys_id -> submission number, for a whole batch of ids in one query. */
+    _numbersBySysId: function (sysIds) {
+        var map = {};
+        if (!sysIds.length) { return map; }
+
+        var gr = new GlideRecord(this.P + 'submission');
+        gr.addQuery('sys_id', 'IN', sysIds.join(','));
+        gr.query();
+        while (gr.next()) { map[gr.getUniqueValue()] = gr.getValue('number'); }
+        return map;
+    },
+
+    /** GlideDateTime -> "As of : January 9, 2026 at 3:03 PM" in the user's timezone */
+    _asOf: function(gdt) {
+        var MONTH = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+            'August', 'September', 'October', 'November', 'December'
+        ];
+        var parts = gdt.getDisplayValueInternal().split(' ');
+        var d = parts[0].split('-');
+        var t = parts[1].split(':');
+        var h24 = parseInt(t[0], 10);
+        return 'As of : ' + MONTH[parseInt(d[1], 10) - 1] + ' ' + parseInt(d[2], 10) + ', ' +
+            d[0] + ' at ' + (h24 % 12 || 12) + ':' + t[1] + (h24 < 12 ? ' AM' : ' PM');
+    },
 
 
 
@@ -1018,13 +1224,13 @@ PlaybookActivityDataProvider.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-09 16:06:48</sys_created_on>
         <sys_id>bbf20c6c935f47100a83ffdddd03d61f</sys_id>
-        <sys_mod_count>7</sys_mod_count>
+        <sys_mod_count>12</sys_mod_count>
         <sys_name>PlaybookActivityDataProvider</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_script_include_bbf20c6c935f47100a83ffdddd03d61f</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-10 19:12:13</sys_updated_on>
+        <sys_updated_on>2026-09-11 09:22:59</sys_updated_on>
     </sys_script_include>
 </record_update>

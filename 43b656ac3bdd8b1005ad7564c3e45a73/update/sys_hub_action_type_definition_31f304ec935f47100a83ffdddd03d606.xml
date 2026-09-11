@@ -31,7 +31,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>31f304ec935f47100a83ffdddd03d606</sys_id>
-        <sys_mod_count>22</sys_mod_count>
+        <sys_mod_count>37</sys_mod_count>
         <sys_name>ActivityUIDataHelper</sys_name>
         <sys_overrides/>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
@@ -39,7 +39,7 @@
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_hub_action_type_definition_31f304ec935f47100a83ffdddd03d606</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-10 18:22:56</sys_updated_on>
+        <sys_updated_on>2026-09-11 08:29:54</sys_updated_on>
         <system_level>false</system_level>
         <type/>
     </sys_hub_action_type_definition>
@@ -176,10 +176,10 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-09 16:13:40</sys_created_on>
         <sys_id>8aa4c060939f47100a83ffdddd03d6ae</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>8</sys_mod_count>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-10 18:22:31</sys_updated_on>
+        <sys_updated_on>2026-09-11 08:29:45</sys_updated_on>
     </sys_hub_step_instance>
     <sys_variable_value action="delete_multiple" query="document_key=8aa4c060939f47100a83ffdddd03d6ae"/>
     <sys_variable_value action="INSERT_OR_UPDATE">
@@ -204,9 +204,9 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-09 16:13:40</sys_created_on>
         <sys_id>8ea4c060939f47100a83ffdddd03d6ca</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-10 18:22:31</sys_updated_on>
+        <sys_updated_on>2026-09-11 08:29:45</sys_updated_on>
         <value>(function execute(inputs, outputs) {&#13;
 &#13;
     var api = new PlaybookActivityDataProvider();&#13;
@@ -227,7 +227,6 @@
         outputs.result3 = ""; &#13;
         outputs.result4 = ""; &#13;
         outputs.result5 = ""; &#13;
-&#13;
     } else if (dataFor === 'mailsanddocs') {&#13;
         outputs.result1 = '[]';&#13;
         outputs.result2 = '[]';&#13;
@@ -236,7 +235,6 @@
         outputs.result3 = ""; &#13;
         outputs.result4 = ""; &#13;
         outputs.result5 = ""; &#13;
-&#13;
     } else if (dataFor === 'partycheck') {&#13;
         var partyMatch = api.getPartyMatches(subSysId);&#13;
         outputs.result1 = partyMatch.name;          &#13;
@@ -244,10 +242,13 @@
         outputs.result3 = partyMatch.asOf;          &#13;
         outputs.result4 = partyMatch.matchMessage;  &#13;
         outputs.result5 = "";  &#13;
-    }&#13;
-    &#13;
-    &#13;
-     else {&#13;
+    } else if (dataFor === 'duplicatecheck') {&#13;
+        var dup = api.getDuplicateCheck(subSysId);&#13;
+        outputs.result1 = dup.asOf;      // As of : January 9, 2026 at 3:03 PM&#13;
+        outputs.result2 = dup.message;   // 5 potential duplicates found. The system has identified...     &#13;
+        outputs.result3 = JSON.stringify(dup.rows);  &#13;
+        outputs.result4 = JSON.stringify(dup.policies);    &#13;
+    } else {&#13;
         gs.warn('[ActivityUIDataHelper] unknown param_data_for "' + dataFor +&#13;
                 '" - expected "extraction" or "mailsanddocs"');&#13;
     }&#13;
@@ -1428,14 +1429,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-09 16:10:59</sys_created_on>
         <sys_id>7604ccec935f47100a83ffdddd03d64e</sys_id>
-        <sys_mod_count>25</sys_mod_count>
+        <sys_mod_count>37</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name/>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-10 18:22:53</sys_updated_on>
+        <sys_updated_on>2026-09-11 08:29:50</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -2027,17 +2028,17 @@
     <sys_hub_action_plan action="INSERT_OR_UPDATE">
         <action_id display_value="ActivityUIDataHelper">31f304ec935f47100a83ffdddd03d606</action_id>
         <plan>{"@class":"com.snc.process_flow.engine.serialization.plan_data.ChunkingPlanData","chunk_data":{"table":"sys_hub_action_plan","id":"6e474ca4939f47100a83ffdddd03d682","name":"plan","plan_signature":null},"plan_data":"CHUNKING_PLAN"}</plan>
-        <snapshot>19dba97093534b100a83ffdddd03d644</snapshot>
+        <snapshot>40bd2841939b8b100a83ffdddd03d6dc</snapshot>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-09 16:25:10</sys_created_on>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>6e474ca4939f47100a83ffdddd03d682</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_overrides/>
         <sys_scope/>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-10 18:22:56</sys_updated_on>
+        <sys_updated_on>2026-09-11 08:29:54</sys_updated_on>
     </sys_hub_action_plan>
     <sys_hub_action_type_snapshot action="INSERT_OR_UPDATE">
         <access>public</access>
@@ -2212,10 +2213,10 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-09 16:25:09</sys_created_on>
         <sys_id>52470ca4939f47100a83ffdddd03d6ce</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-10 18:22:55</sys_updated_on>
+        <sys_updated_on>2026-09-11 08:29:53</sys_updated_on>
     </sys_hub_step_instance>
     <sys_variable_value action="delete_multiple" query="document_key=52470ca4939f47100a83ffdddd03d6ce"/>
     <sys_variable_value action="INSERT_OR_UPDATE">
@@ -2240,9 +2241,9 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-09 16:25:09</sys_created_on>
         <sys_id>5e474ca4939f47100a83ffdddd03d614</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-10 18:22:55</sys_updated_on>
+        <sys_updated_on>2026-09-11 08:29:53</sys_updated_on>
         <value>(function execute(inputs, outputs) {&#13;
 &#13;
     var api = new PlaybookActivityDataProvider();&#13;
@@ -2263,7 +2264,6 @@
         outputs.result3 = ""; &#13;
         outputs.result4 = ""; &#13;
         outputs.result5 = ""; &#13;
-&#13;
     } else if (dataFor === 'mailsanddocs') {&#13;
         outputs.result1 = '[]';&#13;
         outputs.result2 = '[]';&#13;
@@ -2272,7 +2272,6 @@
         outputs.result3 = ""; &#13;
         outputs.result4 = ""; &#13;
         outputs.result5 = ""; &#13;
-&#13;
     } else if (dataFor === 'partycheck') {&#13;
         var partyMatch = api.getPartyMatches(subSysId);&#13;
         outputs.result1 = partyMatch.name;          &#13;
@@ -2280,10 +2279,13 @@
         outputs.result3 = partyMatch.asOf;          &#13;
         outputs.result4 = partyMatch.matchMessage;  &#13;
         outputs.result5 = "";  &#13;
-    }&#13;
-    &#13;
-    &#13;
-     else {&#13;
+    } else if (dataFor === 'duplicatecheck') {&#13;
+        var dup = api.getDuplicateCheck(subSysId);&#13;
+        outputs.result1 = dup.asOf;      // As of : January 9, 2026 at 3:03 PM&#13;
+        outputs.result2 = dup.message;   // 5 potential duplicates found. The system has identified...     &#13;
+        outputs.result3 = JSON.stringify(dup.rows);  &#13;
+        outputs.result4 = JSON.stringify(dup.policies);    &#13;
+    } else {&#13;
         gs.warn('[ActivityUIDataHelper] unknown param_data_for "' + dataFor +&#13;
                 '" - expected "extraction" or "mailsanddocs"');&#13;
     }&#13;
@@ -3464,14 +3466,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-09 16:25:09</sys_created_on>
         <sys_id>5a474ca4939f47100a83ffdddd03d633</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>9</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name/>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-10 18:22:56</sys_updated_on>
+        <sys_updated_on>2026-09-11 08:29:53</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
