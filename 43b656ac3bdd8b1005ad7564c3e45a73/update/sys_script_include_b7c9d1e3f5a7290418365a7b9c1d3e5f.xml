@@ -9,9 +9,9 @@
         <mobile_callable>false</mobile_callable>
         <name>Constants</name>
         <sandbox_callable>false</sandbox_callable>
-        <script>var Constants = (function () {
+        <script><![CDATA[var Constants = (function () {
 
-    var SCOPE = &#39;x_gegis_ins_policy&#39;;
+    var SCOPE = 'x_gegis_ins_policy';
 
     // ---------------------------------------------------------------------
     // System property names - the ONLY place these strings are written.
@@ -20,34 +20,34 @@
         // Auto-approve extraction payloads per pipeline intent.
         // true  = auto-accept extracted fields + auto-close the HITL task
         // false = leave fields needs_review + keep the HITL task open
-        AUTO_APPROVE_NEW:    SCOPE + &#39;.extraction.auto_approve.new&#39;,
-        AUTO_APPROVE_UPDATE: SCOPE + &#39;.extraction.auto_approve.update&#39;,
+        AUTO_APPROVE_NEW:    SCOPE + '.extraction.auto_approve.new',
+        AUTO_APPROVE_UPDATE: SCOPE + '.extraction.auto_approve.update',
 
         // License + staged execution plan (JSON) for module orchestration:
-        // clearance, exposure, risk, quote &amp; bind.
+        // clearance, exposure, risk, quote & bind.
         //
         // The LICENCE half of this property (instance_id, expires_at,
         // licensed_modules) is authoritative and is issued, not configured.
         // The execution.stages half is now only a FALLBACK - the live execution
         // plan lives in x_gegis_ins_policy_module_plan, which a business user
         // edits. Licence always outranks the plan.
-        MODULE_EXECUTION_CONFIG: SCOPE + &#39;.module_execution_config&#39;
+        MODULE_EXECUTION_CONFIG: SCOPE + '.module_execution_config'
     };
 
     // ---------------------------------------------------------------------
     // Config tables read by OrchestrationService / ModulePlanService.
     // ---------------------------------------------------------------------
     var TABLE = {
-        MODULE_PLAN:       SCOPE + &#39;_module_plan&#39;,
-        MODULE:            SCOPE + &#39;_module&#39;,
-        VERSION_COPY_RULE: SCOPE + &#39;_version_copy_rule&#39;,
-        SUBMISSION:        SCOPE + &#39;_submission&#39;
+        MODULE_PLAN:       SCOPE + '_module_plan',
+        MODULE:            SCOPE + '_module',
+        VERSION_COPY_RULE: SCOPE + '_version_copy_rule',
+        SUBMISSION:        SCOPE + '_submission'
     };
 
     // Fail-safe defaults, mirrored from the property defaults.
     var DEFAULT = {};
-    DEFAULT[PROP.AUTO_APPROVE_NEW]    = &#39;true&#39;;
-    DEFAULT[PROP.AUTO_APPROVE_UPDATE] = &#39;false&#39;;
+    DEFAULT[PROP.AUTO_APPROVE_NEW]    = 'true';
+    DEFAULT[PROP.AUTO_APPROVE_UPDATE] = 'false';
 
     // =====================================================================
     // CUSTOM CHOICE VALUES  --  GOLDEN RULE
@@ -59,176 +59,176 @@
     // not generated); this catalog is the source of truth for the VALUES.
     //
     // Same value used in more than one place:
-    //   1. Same LABEL, different meaning per context  -&gt; give each its own
-    //      value, namespaced by its stage prefix (e.g. &quot;Extract&quot; becomes
-    //      ACTIVITY.CLEARANCE.EXTRACT = &#39;clearance_extract&#39; vs
-    //      ACTIVITY.EXPOSURE.EXTRACT = &#39;exposure_extract&#39;). Values stay unique.
-    //   2. Same VALUE legitimately shared across fields (e.g. &#39;declined&#39;,
-    //      &#39;cancelled&#39;, &#39;closed&#39; on both state and status) -&gt; define the token
+    //   1. Same LABEL, different meaning per context  -> give each its own
+    //      value, namespaced by its stage prefix (e.g. "Extract" becomes
+    //      ACTIVITY.CLEARANCE.EXTRACT = 'clearance_extract' vs
+    //      ACTIVITY.EXPOSURE.EXTRACT = 'exposure_extract'). Values stay unique.
+    //   2. Same VALUE legitimately shared across fields (e.g. 'declined',
+    //      'cancelled', 'closed' on both state and status) -> define the token
     //      ONCE in SHARED and reference it. Never re-type the literal.
     // =====================================================================
 
     // Value tokens that appear on more than one field. Defined once here.
     var SHARED = {
-        NEW:         &#39;new&#39;,
-        IN_PROGRESS: &#39;in_progress&#39;,
-        ON_HOLD:     &#39;on_hold&#39;,
-        // shared by extraction.extraction_status and the case tables&#39; u_status
-        PENDING:     &#39;pending&#39;,
-        DUPLICATE:   &#39;duplicate&#39;,
-        REJECTED:    &#39;rejected&#39;,
-        FAILED:      &#39;failed&#39;,
-        EXTRACTED:   &#39;extracted&#39;,
-        APPLIED:     &#39;applied&#39;,
+        NEW:         'new',
+        IN_PROGRESS: 'in_progress',
+        ON_HOLD:     'on_hold',
+        // shared by extraction.extraction_status and the case tables' u_status
+        PENDING:     'pending',
+        DUPLICATE:   'duplicate',
+        REJECTED:    'rejected',
+        FAILED:      'failed',
+        EXTRACTED:   'extracted',
+        APPLIED:     'applied',
         // shared by intake_case.status and document.state -- the inbound item
         // has been through its processing pipeline
-        PROCESSED:   &#39;processed&#39;,
+        PROCESSED:   'processed',
         // shared by extraction.source and case_task.category
-        CASE:        &#39;case&#39;,
+        CASE:        'case',
         // shared by case_task.category and case_task.u_type -- a referral is
         // both a category of task and a kind of hand-off
-        REFERRAL:    &#39;referral&#39;,
-        DECLINED:    &#39;declined&#39;,
-        CANCELLED:   &#39;cancelled&#39;,
-        CLOSED:      &#39;closed&#39;,
+        REFERRAL:    'referral',
+        DECLINED:    'declined',
+        CANCELLED:   'cancelled',
+        CLOSED:      'closed',
         // shared by case_task.category and party.verification_source
-        OTHER:       &#39;other&#39;,
+        OTHER:       'other',
         // shared by extraction.extraction_method and party_match.source -- a
         // human typed it in rather than a pipeline or a provider producing it
-        MANUAL:      &#39;manual&#39;,
+        MANUAL:      'manual',
         // shared by extraction.disposition and party_match.decision -- replaced
         // by a newer record of the same kind, kept for audit
-        SUPERSEDED:  &#39;superseded&#39;,
+        SUPERSEDED:  'superseded',
         // renewal decision tokens - shared by uw_decision + system_decision, and
-        // reused as module_plan.sub_type for renewals: &quot;how is this renewal
-        // handled&quot; is one axis, so it stays one taxonomy rather than a parallel
+        // reused as module_plan.sub_type for renewals: "how is this renewal
+        // handled" is one axis, so it stays one taxonomy rather than a parallel
         // full_uw/auto_approve list that would drift from these.
-        FULL_RE_UNDERWRITING: &#39;full_re_underwriting&#39;,
-        AUTO_RENEW:           &#39;auto_renew&#39;,
-        DO_NOT_RENEW:         &#39;do_not_renew&#39;,
+        FULL_RE_UNDERWRITING: 'full_re_underwriting',
+        AUTO_RENEW:           'auto_renew',
+        DO_NOT_RENEW:         'do_not_renew',
         // restart mode - shared by module_plan.restart_* (per module) and
         // module_plan.submission_on_update (the submission record itself).
         // Override reuses the record; new_version replaces it, same number, v+1.
-        OVERRIDE:             &#39;override&#39;,
-        NEW_VERSION:          &#39;new_version&#39;,
+        OVERRIDE:             'override',
+        NEW_VERSION:          'new_version',
         // shared by party.status and policy.status
-        ACTIVE:      &#39;active&#39;,
+        ACTIVE:      'active',
         // shared by submission.status and policy.status
-        BOUND:       &#39;bound&#39;,
+        BOUND:       'bound',
         // shared by policy.status and quote.status
-        EXPIRED:     &#39;expired&#39;,
+        EXPIRED:     'expired',
         // shared by submission.status and quote.status
-        DRAFT:       &#39;draft&#39;,
+        DRAFT:       'draft',
         // shared by extraction.extraction_status and quote.status
-        ACCEPTED:    &#39;accepted&#39;,
+        ACCEPTED:    'accepted',
         // shared by quote.status and bind.status -- the quote is issued to the
         // broker, the bound policy is issued to the insured
-        ISSUED:      &#39;issued&#39;,
+        ISSUED:      'issued',
         // shared by catalog_status and quote_option_status -- a definition and a
-        // priced option are both &quot;retired with no replacement&quot;, which is a
+        // priced option are both "retired with no replacement", which is a
         // different fact from superseded (replaced by a newer one)
-        ARCHIVED:    &#39;archived&#39;,
+        ARCHIVED:    'archived',
         // ---- product catalog / rating tokens that span more than one column ----
         // coverage.coverage_selection, major_exclusion.choice_value,
         // exposure_peril.expiring_status
-        EXCLUDED:       &#39;excluded&#39;,
+        EXCLUDED:       'excluded',
         // major_exclusion.choice_value and exposure_peril.expiring_status
-        INCLUDED:       &#39;included&#39;,
+        INCLUDED:       'included',
         // coverage_term.term_type and policy_coverage_term.term_type
-        LIMIT:          &#39;limit&#39;,
-        DEDUCTIBLE:     &#39;deductible&#39;,
+        LIMIT:          'limit',
+        DEDUCTIBLE:     'deductible',
         // coverage.deductible_type, coverage_term.term_type,
         // coverage_term.data_type, rate_table.rate_type
-        PERCENTAGE:     &#39;percentage&#39;,
+        PERCENTAGE:     'percentage',
         // coverage.deductible_type and rate_table.rate_type
-        FLAT:           &#39;flat&#39;,
+        FLAT:           'flat',
         // coverage.deductible_type and coverage.limit_type
-        PER_OCCURRENCE: &#39;per_occurrence&#39;,
-        PER_LOCATION:   &#39;per_location&#39;,
+        PER_OCCURRENCE: 'per_occurrence',
+        PER_LOCATION:   'per_location',
         // coverage.deductible_type and policy_coverage_term.term_type
-        WAITING_PERIOD: &#39;waiting_period&#39;,
+        WAITING_PERIOD: 'waiting_period',
         // coverage_term.term_type and coverage_term.data_type
-        DURATION:       &#39;duration&#39;,
+        DURATION:       'duration',
         // rate_table_entry.zone and rate_table_entry.engine_cc -- WILDCARD, not a
         // real zone or band: the rate applies regardless of that dimension
-        ANY:            &#39;any&#39;,
+        ANY:            'any',
         // rate_table_entry.vehicle_type and vehicle.vehicle_use
-        COMMERCIAL:     &#39;commercial&#39;,
+        COMMERCIAL:     'commercial',
         // ---- LOA tokens that span more than one column ----------------------
         // loa_authority_limit.class_of_business and .business_type -- WILDCARD,
         // meaning the limit applies regardless of that dimension. Distinct from
         // ANY above only by which columns carry it; same intent.
-        ALL:            &#39;all&#39;,
+        ALL:            'all',
         // submission.submission_type and loa_authority_limit.business_type
-        NEW_BUSINESS:   &#39;new_business&#39;,
-        RENEWAL:        &#39;renewal&#39;,
+        NEW_BUSINESS:   'new_business',
+        RENEWAL:        'renewal',
         // loa_authority_grant.state and loa_authority_limit versioning language
-        SUPERSEDED:     &#39;superseded&#39;,
-        REVOKED:        &#39;revoked&#39;,
-        // loa_metric.comparison and loa_metric.aggregation -- &quot;the largest value&quot;
-        // in one case, &quot;breach above the limit&quot; in the other. Same token, and the
+        SUPERSEDED:     'superseded',
+        REVOKED:        'revoked',
+        // loa_metric.comparison and loa_metric.aggregation -- "the largest value"
+        // in one case, "breach above the limit" in the other. Same token, and the
         // column it sits on says which question is being asked.
-        MAX:            &#39;max&#39;,
+        MAX:            'max',
         // loa_metric.value_type and loa_metric.aggregation
-        COUNT:          &#39;count&#39;,
+        COUNT:          'count',
         // loa_metric.aggregation -- read the source field directly, do not roll up
-        NONE:           &#39;none&#39;
+        NONE:           'none'
     };
 
     // submission.stage -- also the prefix namespace for activity_status values.
     var STAGE = {
-        CLEARANCE:           &#39;clearance&#39;,
-        RISK_ASSESSMENT:     &#39;risk_assessment&#39;,
-        EXPOSURE_MANAGEMENT: &#39;exposure_management&#39;,
-        QUOTE_AND_BIND:      &#39;quote_and_bind&#39;
+        CLEARANCE:           'clearance',
+        RISK_ASSESSMENT:     'risk_assessment',
+        EXPOSURE_MANAGEMENT: 'exposure_management',
+        QUOTE_AND_BIND:      'quote_and_bind'
     };
 
     // activity_status, grouped per stage. Each token defined ONCE here.
-    // A case table&#39;s activity_status = its own group. The submission&#39;s
+    // A case table's activity_status = its own group. The submission's
     // activity_status = the union of all four (see CHOICE.ACTIVITY.all()).
     var ACTIVITY = {
         CLEARANCE: {
-            INITIATE_SUBMISSION_REQUEST: &#39;clearance_initiate_submission_request&#39;,
-            EXTRACT:                     &#39;clearance_extract&#39;,
-            INSURED_VERIFICATION:        &#39;clearance_insured_verification&#39;,
-            CHECK_FOR_DUPLICATES:        &#39;clearance_check_for_duplicates&#39;,
-            CHECK_FOR_SANCTIONS:         &#39;clearance_check_for_sanctions&#39;,
-            CONFIRM_DATA_REVIEW:         &#39;clearance_confirm_data_review&#39;,
-            QUALITY_ASSURANCE:           &#39;clearance_quality_assurance&#39;,
-            END_SUBMISSION_CLEARANCE:    &#39;clearance_end_submission_clearance&#39;
+            INITIATE_SUBMISSION_REQUEST: 'clearance_initiate_submission_request',
+            EXTRACT:                     'clearance_extract',
+            INSURED_VERIFICATION:        'clearance_insured_verification',
+            CHECK_FOR_DUPLICATES:        'clearance_check_for_duplicates',
+            CHECK_FOR_SANCTIONS:         'clearance_check_for_sanctions',
+            CONFIRM_DATA_REVIEW:         'clearance_confirm_data_review',
+            QUALITY_ASSURANCE:           'clearance_quality_assurance',
+            END_SUBMISSION_CLEARANCE:    'clearance_end_submission_clearance'
         },
         RISK: {
-            INITIATE_RISK_ASSESSMENT: &#39;risk_initiate_risk_assessment&#39;,
-            LETTER_OF_AUTHORITY:      &#39;risk_letter_of_authority&#39;,
-            UNDERWRITING_GUIDELINES:  &#39;risk_underwriting_guidelines&#39;,
-            BENCHMARKING:             &#39;risk_benchmarking&#39;,
-            SURVEY_RESULTS:           &#39;risk_survey_results&#39;,
-            LOSS_PREDICTION:          &#39;risk_loss_prediction&#39;,
-            BIND_PROPENSITY:          &#39;risk_bind_propensity&#39;,
-            EXPOSURE_DATA:            &#39;risk_exposure_data&#39;,
-            FRAUD_DETECTION:          &#39;risk_fraud_detection&#39;,
-            UNDERWRITER_NARRATIVE:    &#39;risk_underwriter_narrative&#39;,
-            RISK_SUMMARY:             &#39;risk_risk_summary&#39;
+            INITIATE_RISK_ASSESSMENT: 'risk_initiate_risk_assessment',
+            LETTER_OF_AUTHORITY:      'risk_letter_of_authority',
+            UNDERWRITING_GUIDELINES:  'risk_underwriting_guidelines',
+            BENCHMARKING:             'risk_benchmarking',
+            SURVEY_RESULTS:           'risk_survey_results',
+            LOSS_PREDICTION:          'risk_loss_prediction',
+            BIND_PROPENSITY:          'risk_bind_propensity',
+            EXPOSURE_DATA:            'risk_exposure_data',
+            FRAUD_DETECTION:          'risk_fraud_detection',
+            UNDERWRITER_NARRATIVE:    'risk_underwriter_narrative',
+            RISK_SUMMARY:             'risk_risk_summary'
         },
         EXPOSURE: {
-            INITIATE_EXPOSURE:          &#39;exposure_initiate_exposure&#39;,
-            EXTRACT:                    &#39;exposure_extract&#39;,
-            GEO_MAPPING:                &#39;exposure_geo_mapping&#39;,
-            CATASTROPHE_MODELLING:      &#39;exposure_catastrophe_modelling&#39;,
-            CAPACITY_MANAGEMENT:        &#39;exposure_capacity_management&#39;,
-            CONCENTRATION_ANALYSIS:     &#39;exposure_concentration_analysis&#39;,
-            PORTFOLIO_OPTIMIZATION:     &#39;exposure_portfolio_optimization&#39;,
-            EXPOSURE_MANAGEMENT_SUMMARY:&#39;exposure_management_summary&#39;
+            INITIATE_EXPOSURE:          'exposure_initiate_exposure',
+            EXTRACT:                    'exposure_extract',
+            GEO_MAPPING:                'exposure_geo_mapping',
+            CATASTROPHE_MODELLING:      'exposure_catastrophe_modelling',
+            CAPACITY_MANAGEMENT:        'exposure_capacity_management',
+            CONCENTRATION_ANALYSIS:     'exposure_concentration_analysis',
+            PORTFOLIO_OPTIMIZATION:     'exposure_portfolio_optimization',
+            EXPOSURE_MANAGEMENT_SUMMARY:'exposure_management_summary'
         },
         QUOTEBIND: {
-            INITIATE_QUOTE_AND_BIND:   &#39;quotebind_initiate_quote_and_bind&#39;,
-            EXTRACT:                   &#39;quotebind_extract&#39;,
-            PRODUCT_SELECTION_DETAILS: &#39;quotebind_product_selection_details&#39;,
-            QUOTE_WORKSPACE:           &#39;quotebind_quote_workspace&#39;,
-            UNDERWRITER_DECISION:      &#39;quotebind_underwriter_decision&#39;,
-            BROKER_DECISION:           &#39;quotebind_broker_decision&#39;,
-            SANCTIONS:                 &#39;quotebind_sanctions&#39;,
-            BIND_DETAILS:              &#39;quotebind_bind_details&#39;
+            INITIATE_QUOTE_AND_BIND:   'quotebind_initiate_quote_and_bind',
+            EXTRACT:                   'quotebind_extract',
+            PRODUCT_SELECTION_DETAILS: 'quotebind_product_selection_details',
+            QUOTE_WORKSPACE:           'quotebind_quote_workspace',
+            UNDERWRITER_DECISION:      'quotebind_underwriter_decision',
+            BROKER_DECISION:           'quotebind_broker_decision',
+            SANCTIONS:                 'quotebind_sanctions',
+            BIND_DETAILS:              'quotebind_bind_details'
         }
     };
 
@@ -245,17 +245,17 @@
         ACTIVITY: ACTIVITY,
 
         PRIORITY: {
-            CRITICAL: &#39;critical&#39;,
-            HIGH:     &#39;high&#39;,
-            MEDIUM:   &#39;medium&#39;,
-            LOW:      &#39;low&#39;
+            CRITICAL: 'critical',
+            HIGH:     'high',
+            MEDIUM:   'medium',
+            LOW:      'low'
         },
 
         // x_gegis_ins_policy_case_task.category -- what kind of task this is.
-        // Listed in the instance&#39;s choice sequence order (10/15/20/25/30).
+        // Listed in the instance's choice sequence order (10/15/20/25/30).
         CATEGORY: {
-            HITL:       &#39;hitl&#39;,
-            EXTRACTION: &#39;extraction&#39;,
+            HITL:       'hitl',
+            EXTRACTION: 'extraction',
             REFERRAL:   SHARED.REFERRAL,
             CASE:       SHARED.CASE,
             OTHER:      SHARED.OTHER
@@ -265,67 +265,67 @@
         // trigger that raised it. Orthogonal to CATEGORY, which is what kind of
         // task it is. The original 6 (10-60) are generic HITL/exception triggers,
         // not tied to a specific playbook step. From 70 on, one value per real
-        // Activity Definition - every activity&#39;s flow stamps its own task with
+        // Activity Definition - every activity's flow stamps its own task with
         // its own type. GetCaseRecords is excluded (workaround activity, no UI,
         // never creates a task). CHECK_FOR_DUPLICATES reuses DUPLICATE_CHECK
         // rather than adding a near-duplicate value.
         U_TYPE: {
-            CONTEXT_ENRICHMENT:    &#39;context_enrichment&#39;,
-            DUPLICATE_CHECK:       &#39;duplicate_check&#39;,
-            CLASSIFICATION_FAILED: &#39;classification_failed&#39;,
-            SUBMISSION_LOCKED:     &#39;submission_locked&#39;,
-            EXTRACTION_REVIEW:     &#39;extraction_review&#39;,
+            CONTEXT_ENRICHMENT:    'context_enrichment',
+            DUPLICATE_CHECK:       'duplicate_check',
+            CLASSIFICATION_FAILED: 'classification_failed',
+            SUBMISSION_LOCKED:     'submission_locked',
+            EXTRACTION_REVIEW:     'extraction_review',
             REFERRAL:              SHARED.REFERRAL,
 
             // Clearance
-            INITIATE_SUBMISSION_REQUEST: &#39;initiate_submission_request&#39;,
-            EXTRACT:                     &#39;extract&#39;,
-            INSURED_VERIFICATION:        &#39;insured_verification&#39;,
-            CHECK_FOR_SANCTIONS:         &#39;check_for_sanctions&#39;,
-            CHECK_FOR_DUPLICATES:        &#39;duplicate_check&#39;,
-            CONFIRM_DATA_REVIEW:         &#39;confirm_data_review&#39;,
-            QUALITY_ASSURANCE:           &#39;quality_assurance&#39;,
-            END_SUBMISSION_CLEARANCE:    &#39;end_submission_clearance&#39;,
+            INITIATE_SUBMISSION_REQUEST: 'initiate_submission_request',
+            EXTRACT:                     'extract',
+            INSURED_VERIFICATION:        'insured_verification',
+            CHECK_FOR_SANCTIONS:         'check_for_sanctions',
+            CHECK_FOR_DUPLICATES:        'duplicate_check',
+            CONFIRM_DATA_REVIEW:         'confirm_data_review',
+            QUALITY_ASSURANCE:           'quality_assurance',
+            END_SUBMISSION_CLEARANCE:    'end_submission_clearance',
 
             // Risk
-            INITIATE_RISK_ASSESSMENT: &#39;initiate_risk_assessment&#39;,
-            LETTER_OF_AUTHORITY:      &#39;letter_of_authority&#39;,
-            UNDERWRITING_GUIDELINES:  &#39;underwriting_guidelines&#39;,
-            BENCHMARKING:             &#39;benchmarking&#39;,
-            SURVEY_RESULTS:           &#39;survey_results&#39;,
-            LOSS_PREDICTION:          &#39;loss_prediction&#39;,
-            BIND_PROPENSITY:          &#39;bind_propensity&#39;,
-            EXPOSURE_DATA:            &#39;exposure_data&#39;,
-            FRAUD_DETECTION:          &#39;fraud_detection&#39;,
-            UNDERWRITER_NARRATIVE:    &#39;underwriter_narrative&#39;,
-            RISK_SUMMARY:             &#39;risk_summary&#39;,
+            INITIATE_RISK_ASSESSMENT: 'initiate_risk_assessment',
+            LETTER_OF_AUTHORITY:      'letter_of_authority',
+            UNDERWRITING_GUIDELINES:  'underwriting_guidelines',
+            BENCHMARKING:             'benchmarking',
+            SURVEY_RESULTS:           'survey_results',
+            LOSS_PREDICTION:          'loss_prediction',
+            BIND_PROPENSITY:          'bind_propensity',
+            EXPOSURE_DATA:            'exposure_data',
+            FRAUD_DETECTION:          'fraud_detection',
+            UNDERWRITER_NARRATIVE:    'underwriter_narrative',
+            RISK_SUMMARY:             'risk_summary',
 
             // Exposure
-            INITIATE_EXPOSURE_MANAGEMENT: &#39;initiate_exposure_management&#39;,
-            GEO_MAPPING:                  &#39;geo_mapping&#39;,
-            CATASTROPHE_MODELLING:        &#39;catastrophe_modelling&#39;,
-            CAPACITY_MANAGEMENT:          &#39;capacity_management&#39;,
-            CONCENTRATION_ANALYSIS:       &#39;concentration_analysis&#39;,
-            PORTFOLIO_OPTIMIZATION:       &#39;portfolio_optimization&#39;,
-            EXPOSURE_MANAGEMENT_SUMMARY:  &#39;exposure_management_summary&#39;,
+            INITIATE_EXPOSURE_MANAGEMENT: 'initiate_exposure_management',
+            GEO_MAPPING:                  'geo_mapping',
+            CATASTROPHE_MODELLING:        'catastrophe_modelling',
+            CAPACITY_MANAGEMENT:          'capacity_management',
+            CONCENTRATION_ANALYSIS:       'concentration_analysis',
+            PORTFOLIO_OPTIMIZATION:       'portfolio_optimization',
+            EXPOSURE_MANAGEMENT_SUMMARY:  'exposure_management_summary',
 
-            // Quote &amp; Bind
-            INITIATE_QUOTE_AND_BIND:    &#39;initiate_quote_and_bind&#39;,
-            PRODUCT_SELECTION_DETAILS:  &#39;product_selection_details&#39;,
-            QUOTE_WORKSPACE:            &#39;quote_workspace&#39;,
-            UNDERWRITING_DECISIONS:     &#39;underwriting_decisions&#39;,
-            BROKER_DECISION:            &#39;broker_decision&#39;,
-            BIND_DETAILS:               &#39;bind_details&#39;
+            // Quote & Bind
+            INITIATE_QUOTE_AND_BIND:    'initiate_quote_and_bind',
+            PRODUCT_SELECTION_DETAILS:  'product_selection_details',
+            QUOTE_WORKSPACE:            'quote_workspace',
+            UNDERWRITING_DECISIONS:     'underwriting_decisions',
+            BROKER_DECISION:            'broker_decision',
+            BIND_DETAILS:               'bind_details'
         },
 
         // x_gegis_ins_policy_case_task.u_module -- WHICH module/stage raised the
         // task. Reuses the STAGE tokens (clearance/risk_assessment/
         // exposure_management/quote_and_bind) so this never drifts from
-        // module_plan&#39;s own vocabulary, plus INTAKE for tasks raised against an
+        // module_plan's own vocabulary, plus INTAKE for tasks raised against an
         // Intake Case before any module case exists (e.g. duplicate/sanctions
         // checks at intake time).
         CASE_TASK_MODULE: {
-            INTAKE:              &#39;intake&#39;,
+            INTAKE:              'intake',
             CLEARANCE:           STAGE.CLEARANCE,
             RISK_ASSESSMENT:     STAGE.RISK_ASSESSMENT,
             EXPOSURE_MANAGEMENT: STAGE.EXPOSURE_MANAGEMENT,
@@ -345,15 +345,15 @@
         // submission.status  (shares declined/cancelled/closed with STATE)
         STATUS: {
             DRAFT:            SHARED.DRAFT,
-            UNDER_REVIEW:     &#39;under_review&#39;,
-            PENDING_APPROVAL: &#39;pending_approval&#39;,
-            MISSING_DATA:     &#39;missing_data&#39;,
-            APPROVED:         &#39;approved&#39;,
+            UNDER_REVIEW:     'under_review',
+            PENDING_APPROVAL: 'pending_approval',
+            MISSING_DATA:     'missing_data',
+            APPROVED:         'approved',
             DECLINED:         SHARED.DECLINED,
             REJECTED:         SHARED.REJECTED,
             DUPLICATE:        SHARED.DUPLICATE,
-            RENEWAL_DUE:      &#39;renewal_due&#39;,
-            RENEWED:          &#39;renewed&#39;,
+            RENEWAL_DUE:      'renewal_due',
+            RENEWED:          'renewed',
             BOUND:            SHARED.BOUND,
             CANCELLED:        SHARED.CANCELLED,
             CLOSED:           SHARED.CLOSED
@@ -366,14 +366,14 @@
         POLICY_STATUS: {
             ACTIVE:      SHARED.ACTIVE,
             BOUND:       SHARED.BOUND,
-            IN_FORCE:    &#39;in_force&#39;,
+            IN_FORCE:    'in_force',
             CANCELLED:   SHARED.CANCELLED,
             EXPIRED:     SHARED.EXPIRED,
-            NON_RENEWED: &#39;non_renewed&#39;
+            NON_RENEWED: 'non_renewed'
         },
 
         // x_gegis_ins_policy_quote.status -- lifecycle of the quote document.
-        // issued = sent to the broker; accepted/declined are the broker&#39;s answer.
+        // issued = sent to the broker; accepted/declined are the broker's answer.
         QUOTE_STATUS: {
             DRAFT:    SHARED.DRAFT,
             ISSUED:   SHARED.ISSUED,
@@ -401,13 +401,13 @@
         // reported on, but it is a share OF the premium, not an addition TO it --
         // seeding it as a breakup row would double-count the total.
         PREMIUM_COMPONENT: {
-            WRITTEN_PREMIUM: &#39;written_premium&#39;,
-            ENDORSEMENT:     &#39;endorsement&#39;,
-            SURCHARGES:      &#39;surcharges&#39;,
-            FEES:            &#39;fees&#39;,
-            TRIA:            &#39;tria&#39;,
-            TAXES:           &#39;taxes&#39;,
-            COMMISSION:      &#39;commission&#39;
+            WRITTEN_PREMIUM: 'written_premium',
+            ENDORSEMENT:     'endorsement',
+            SURCHARGES:      'surcharges',
+            FEES:            'fees',
+            TRIA:            'tria',
+            TAXES:           'taxes',
+            COMMISSION:      'commission'
         },
 
         // x_gegis_ins_policy_bind.status -- what happened to the BIND, not to
@@ -426,44 +426,44 @@
         INTAKE_STATUS: {
             NEW:             SHARED.NEW,
             IN_PROGRESS:     SHARED.IN_PROGRESS,
-            AWAITING_ACTION: &#39;awaiting_action&#39;,
+            AWAITING_ACTION: 'awaiting_action',
             PROCESSED:       SHARED.PROCESSED,
-            COMPLETED:       &#39;completed&#39;,
+            COMPLETED:       'completed',
             DUPLICATE:       SHARED.DUPLICATE,
             REJECTED:        SHARED.REJECTED,
             CANCELLED:       SHARED.CANCELLED,
             FAILED:          SHARED.FAILED,
-            READY_TO_SEND:   &#39;ready_to_send&#39;,
-            SENT:            &#39;sent&#39;,
-            ACKNOWLEDGED:    &#39;acknowledged&#39;
+            READY_TO_SEND:   'ready_to_send',
+            SENT:            'sent',
+            ACKNOWLEDGED:    'acknowledged'
         },
 
         // u_status on ALL FOUR module case tables -- clearance_case, risk_case,
         // exposure_case and quote_and_bind_case share one status list: how far
-        // that module&#39;s work has got. Distinct from activity_status (WHICH step
+        // that module's work has got. Distinct from activity_status (WHICH step
         // the case is on) and from the base task `state` (the task lifecycle).
         U_STATUS: {
             PENDING:     SHARED.PENDING,
             IN_PROGRESS: SHARED.IN_PROGRESS,
-            COMPLETE:    &#39;complete&#39;,
-            BLOCKED:     &#39;blocked&#39;,
+            COMPLETE:    'complete',
+            BLOCKED:     'blocked',
             DECLINED:    SHARED.DECLINED
         },
 
         // x_gegis_ins_policy_intake_case.direction
         DIRECTION: {
-            INBOUND:  &#39;inbound&#39;,
-            OUTBOUND: &#39;outbound&#39;
+            INBOUND:  'inbound',
+            OUTBOUND: 'outbound'
         },
 
         // x_gegis_ins_policy_extraction.extraction_status -- consumer / HITL
         // status: what the end user is doing with the extracted data.
         EXTRACTION_STATUS: {
-            STARTED:        &#39;started&#39;,
+            STARTED:        'started',
             PENDING:        SHARED.PENDING,
             EXTRACTED:      SHARED.EXTRACTED,
-            PENDING_REVIEW: &#39;pending_review&#39;,
-            REVIEWED:       &#39;reviewed&#39;,
+            PENDING_REVIEW: 'pending_review',
+            REVIEWED:       'reviewed',
             APPLIED:        SHARED.APPLIED,
             ACCEPTED:       SHARED.ACCEPTED,
             REJECTED:       SHARED.REJECTED,
@@ -473,11 +473,11 @@
         // x_gegis_ins_policy_extraction.extraction_method -- the technique /
         // engine that produced the extraction (AI provenance for HITL).
         EXTRACTION_METHOD: {
-            OCR:            &#39;ocr&#39;,
-            AZURE_DI:       &#39;azure_di&#39;,
-            AZ_CU:          &#39;az_cu&#39;,
-            LLM_EXTRACTION: &#39;llm_extraction&#39;,
-            HYBRID:         &#39;hybrid&#39;,
+            OCR:            'ocr',
+            AZURE_DI:       'azure_di',
+            AZ_CU:          'az_cu',
+            LLM_EXTRACTION: 'llm_extraction',
+            HYBRID:         'hybrid',
             MANUAL:         SHARED.MANUAL
         },
 
@@ -486,28 +486,28 @@
         DISPOSITION: {
             EXTRACTED:  SHARED.EXTRACTED,
             APPLIED:    SHARED.APPLIED,
-            MERGED:     &#39;merged&#39;,
+            MERGED:     'merged',
             SUPERSEDED: SHARED.SUPERSEDED
         },
 
         // x_gegis_ins_policy_extraction.source -- origination channel of the
         // extracted document/data (feeds submission.source_channel).
         SOURCE: {
-            EMAIL:  &#39;email&#39;,
-            FILE:   &#39;file&#39;,
+            EMAIL:  'email',
+            FILE:   'file',
             CASE:   SHARED.CASE,
-            API:    &#39;api&#39;,
-            PORTAL: &#39;portal&#39;
+            API:    'api',
+            PORTAL: 'portal'
         },
 
         // x_gegis_ins_policy_party.party_type -- an organisation or an individual.
-        // Values were originally UPPERCASE (&#39;COMPANY&#39;/&#39;PERSON&#39;); converted to
+        // Values were originally UPPERCASE ('COMPANY'/'PERSON'); converted to
         // lower_snake_case by add_party_type_choices.js so party_type matches
         // every other custom choice in the app. The dictionary default moved
-        // from &#39;COMPANY&#39; to &#39;company&#39; at the same time.
+        // from 'COMPANY' to 'company' at the same time.
         PARTY_TYPE: {
-            COMPANY: &#39;company&#39;,
-            PERSON:  &#39;person&#39;
+            COMPANY: 'company',
+            PERSON:  'person'
         },
 
         // x_gegis_ins_policy_party.status -- lifecycle of the party registry
@@ -515,8 +515,8 @@
         // appears on. A prospect has been captured but not yet transacted with.
         PARTY_STATUS: {
             ACTIVE:   SHARED.ACTIVE,
-            INACTIVE: &#39;inactive&#39;,
-            PROSPECT: &#39;prospect&#39;
+            INACTIVE: 'inactive',
+            PROSPECT: 'prospect'
         },
 
         // x_gegis_ins_policy_submission_party.role -- WHAT a party is on the deal.
@@ -526,23 +526,23 @@
         //
         // DELIBERATELY NON-OVERLAPPING with its two sibling columns:
         //   interest_type            holds the KIND of financial interest, so
-        //                            &#39;mortgagee&#39; / &#39;loss_payee&#39; / &#39;lienholder&#39; are
+        //                            'mortgagee' / 'loss_payee' / 'lienholder' are
         //                            NOT roles - use role = interest_holder and put
         //                            the kind in interest_type.
         //   relationship_to_primary  holds the corporate relationship, so
-        //                            &#39;parent&#39; / &#39;subsidiary&#39; / &#39;affiliate&#39; are NOT
+        //                            'parent' / 'subsidiary' / 'affiliate' are NOT
         //                            roles either.
         // One fact, one column.
         SUBMISSION_PARTY_ROLE: {
-            PRIMARY_INSURED:    &#39;primary_insured&#39;,
-            CO_APPLICANT:       &#39;co_applicant&#39;,
-            SECONDARY_INSURED:  &#39;secondary_insured&#39;,
-            ADDITIONAL_INSURED: &#39;additional_insured&#39;,
-            INTEREST_HOLDER:    &#39;interest_holder&#39;,
-            BROKER:             &#39;broker&#39;,
-            PRODUCER:           &#39;producer&#39;,
-            PREMIUM_PAYER:      &#39;premium_payer&#39;,
-            THIRD_PARTY:        &#39;third_party&#39;
+            PRIMARY_INSURED:    'primary_insured',
+            CO_APPLICANT:       'co_applicant',
+            SECONDARY_INSURED:  'secondary_insured',
+            ADDITIONAL_INSURED: 'additional_insured',
+            INTEREST_HOLDER:    'interest_holder',
+            BROKER:             'broker',
+            PRODUCER:           'producer',
+            PREMIUM_PAYER:      'premium_payer',
+            THIRD_PARTY:        'third_party'
         },
 
         // x_gegis_ins_policy_submission_party.interest_type -- the KIND of
@@ -562,24 +562,24 @@
         //                      and no notice obligation. Not the same as
         //                      ROLE.ADDITIONAL_INSURED, who actually has cover.
         //   additional_interest catch-all for any other recorded interest, so
-        //                      nobody invents new values. No &#39;other&#39; on purpose.
+        //                      nobody invents new values. No 'other' on purpose.
         INTEREST_TYPE: {
-            MORTGAGEE:           &#39;mortgagee&#39;,
-            LOSS_PAYEE:          &#39;loss_payee&#39;,
-            LIENHOLDER:          &#39;lienholder&#39;,
-            CERTIFICATE_HOLDER:  &#39;certificate_holder&#39;,
-            ADDITIONAL_INTEREST: &#39;additional_interest&#39;
+            MORTGAGEE:           'mortgagee',
+            LOSS_PAYEE:          'loss_payee',
+            LIENHOLDER:          'lienholder',
+            CERTIFICATE_HOLDER:  'certificate_holder',
+            ADDITIONAL_INTEREST: 'additional_interest'
         },
 
         // x_gegis_ins_policy_party.verification_source -- which external business
         // registry / data provider was used to verify this party. GLEIF is the
         // free LEI registry; the rest are commercial.
         VERIFICATION_SOURCE: {
-            DNB:          &#39;dnb&#39;,
-            GLEIF:        &#39;gleif&#39;,
-            LEXISNEXIS:   &#39;lexisnexis&#39;,
-            MOODYS_ORBIS: &#39;moodys_orbis&#39;,
-            MIDDESK:      &#39;middesk&#39;,
+            DNB:          'dnb',
+            GLEIF:        'gleif',
+            LEXISNEXIS:   'lexisnexis',
+            MOODYS_ORBIS: 'moodys_orbis',
+            MIDDESK:      'middesk',
             OTHER:        SHARED.OTHER
         },
 
@@ -595,15 +595,15 @@
         // row becomes a submission_party / submission.primary_insured once
         // selected, so a second role list would drift from the first.
         PARTY_MATCH_ROLE: {
-            PRIMARY_INSURED:    &#39;primary_insured&#39;,
-            CO_APPLICANT:       &#39;co_applicant&#39;,
-            SECONDARY_INSURED:  &#39;secondary_insured&#39;,
-            ADDITIONAL_INSURED: &#39;additional_insured&#39;,
-            INTEREST_HOLDER:    &#39;interest_holder&#39;,
-            BROKER:             &#39;broker&#39;,
-            PRODUCER:           &#39;producer&#39;,
-            PREMIUM_PAYER:      &#39;premium_payer&#39;,
-            THIRD_PARTY:        &#39;third_party&#39;
+            PRIMARY_INSURED:    'primary_insured',
+            CO_APPLICANT:       'co_applicant',
+            SECONDARY_INSURED:  'secondary_insured',
+            ADDITIONAL_INSURED: 'additional_insured',
+            INTEREST_HOLDER:    'interest_holder',
+            BROKER:             'broker',
+            PRODUCER:           'producer',
+            PREMIUM_PAYER:      'premium_payer',
+            THIRD_PARTY:        'third_party'
         },
 
         // party_match.source_type -- WHERE the candidate lives today. internal
@@ -612,22 +612,22 @@
         // party_created = true. This is the axis that decides whether selection
         // writes to the registry.
         PARTY_MATCH_SOURCE_TYPE: {
-            INTERNAL: &#39;internal&#39;,
-            EXTERNAL: &#39;external&#39;
+            INTERNAL: 'internal',
+            EXTERNAL: 'external'
         },
 
         // party_match.source -- WHICH system produced the candidate. Kept
-        // separate from source_type because &#39;external&#39; alone does not tell you
+        // separate from source_type because 'external' alone does not tell you
         // who to re-query or how to read external_id. The provider tokens
         // mirror VERIFICATION_SOURCE so a selected external match can stamp
         // party.verification_source with the same value, unchanged.
         PARTY_MATCH_SOURCE: {
-            INTERNAL_REGISTRY: &#39;internal_registry&#39;,
-            DNB:               &#39;dnb&#39;,
-            GLEIF:             &#39;gleif&#39;,
-            LEXISNEXIS:        &#39;lexisnexis&#39;,
-            MOODYS_ORBIS:      &#39;moodys_orbis&#39;,
-            MIDDESK:           &#39;middesk&#39;,
+            INTERNAL_REGISTRY: 'internal_registry',
+            DNB:               'dnb',
+            GLEIF:             'gleif',
+            LEXISNEXIS:        'lexisnexis',
+            MOODYS_ORBIS:      'moodys_orbis',
+            MIDDESK:           'middesk',
             MANUAL:            SHARED.MANUAL,
             OTHER:             SHARED.OTHER
         },
@@ -637,14 +637,14 @@
         // matcher put it in, so the list can group and colour rows without
         // every caller re-deciding the thresholds.
         PARTY_MATCH_TYPE: {
-            EXACT:   &#39;exact&#39;,
-            STRONG:  &#39;strong&#39;,
-            PARTIAL: &#39;partial&#39;,
-            WEAK:    &#39;weak&#39;
+            EXACT:   'exact',
+            STRONG:  'strong',
+            PARTIAL: 'partial',
+            WEAK:    'weak'
         },
 
         // party_match.decision -- the auditable ACTION, replacing the boolean
-        // &quot;select&quot; checkbox the earlier design used. A checkbox cannot say who
+        // "select" checkbox the earlier design used. A checkbox cannot say who
         // chose, when, or why the other candidates were passed over; decision +
         // decided_by / decided_on / decision_reason can.
         //
@@ -658,12 +658,12 @@
         //               the earlier list stays reconstructable
         PARTY_MATCH_DECISION: {
             PENDING:    SHARED.PENDING,
-            SELECTED:   &#39;selected&#39;,
+            SELECTED:   'selected',
             REJECTED:   SHARED.REJECTED,
             SUPERSEDED: SHARED.SUPERSEDED
         },
 
-        // x_gegis_ins_policy_renewal_case.uw_decision -- underwriter&#39;s renewal
+        // x_gegis_ins_policy_renewal_case.uw_decision -- underwriter's renewal
         // decision (human). Same value set as system_decision (see SHARED).
         UW_DECISION: {
             FULL_RE_UNDERWRITING: SHARED.FULL_RE_UNDERWRITING,
@@ -682,17 +682,17 @@
         // x_gegis_ins_policy_renewal_case.notification_mode -- how the renewal
         // reminder is delivered.
         NOTIFICATION_MODE: {
-            EMAIL:  &#39;email&#39;,
-            SMS:    &#39;sms&#39;,
-            OTHERS: &#39;others&#39;
+            EMAIL:  'email',
+            SMS:    'sms',
+            OTHERS: 'others'
         },
 
         SUBMISSION_TYPE: {
             NEW_BUSINESS:  SHARED.NEW_BUSINESS,
             RENEWAL:       SHARED.RENEWAL,
-            ENDORSEMENT:   &#39;endorsement&#39;,
-            CANCELLATION:  &#39;cancellation&#39;,
-            REINSTATEMENT: &#39;reinstatement&#39;
+            ENDORSEMENT:   'endorsement',
+            CANCELLATION:  'cancellation',
+            REINSTATEMENT: 'reinstatement'
         },
 
         // line_of_business on policy, product, quote_option, existing_policy,
@@ -707,45 +707,45 @@
         //
         // NOT the same list as submission_line / extraction_mapping, which carry
         // a broker-facing taxonomy (general_liability, inland_marine, umbrella,
-        // plus an &#39;all&#39; sentinel on the mapping table). Those stay separate on
+        // plus an 'all' sentinel on the mapping table). Those stay separate on
         // purpose - merging them is a data-model decision, not a cleanup.
         LINE_OF_BUSINESS: {
-            PROPERTY:        &#39;property&#39;,
-            AUTO:            &#39;auto&#39;,
-            MOTOR:           &#39;motor&#39;,
-            WORKERS_COMP:    &#39;workers_comp&#39;,
-            GENERAL:         &#39;general&#39;,
-            CASUALTY:        &#39;casualty&#39;,
-            MARINE:          &#39;marine&#39;,
-            ENERGY:          &#39;energy&#39;,
-            FINANCIAL_LINES: &#39;financial_lines&#39;,
-            CONSTRUCTION:    &#39;construction&#39;,
-            AVIATION:        &#39;aviation&#39;,
-            CYBER:           &#39;cyber&#39;,
-            SPECIALTY:       &#39;specialty&#39;
+            PROPERTY:        'property',
+            AUTO:            'auto',
+            MOTOR:           'motor',
+            WORKERS_COMP:    'workers_comp',
+            GENERAL:         'general',
+            CASUALTY:        'casualty',
+            MARINE:          'marine',
+            ENERGY:          'energy',
+            FINANCIAL_LINES: 'financial_lines',
+            CONSTRUCTION:    'construction',
+            AVIATION:        'aviation',
+            CYBER:           'cyber',
+            SPECIALTY:       'specialty'
         },
 
         // currency on policy, quote, submission and exposure_item. ISO 4217
         // alpha-3, stored lower_snake_case like every other choice; the LABEL is
         // the uppercase code. Column is max_length 3.
         CURRENCY: {
-            USD: &#39;usd&#39;,
-            GBP: &#39;gbp&#39;,
-            EUR: &#39;eur&#39;,
-            CAD: &#39;cad&#39;,
-            AUD: &#39;aud&#39;,
-            JPY: &#39;jpy&#39;,
-            CHF: &#39;chf&#39;
+            USD: 'usd',
+            GBP: 'gbp',
+            EUR: 'eur',
+            CAD: 'cad',
+            AUD: 'aud',
+            JPY: 'jpy',
+            CHF: 'chf'
         },
 
         // x_gegis_ins_policy_policy.territory -- underwriting territory the risk
         // sits in. GLOBAL is a real selection (worldwide cover), not a wildcard.
         TERRITORY: {
-            US:     &#39;us&#39;,
-            UK:     &#39;uk&#39;,
-            EU:     &#39;eu&#39;,
-            APAC:   &#39;apac&#39;,
-            GLOBAL: &#39;global&#39;
+            US:     'us',
+            UK:     'uk',
+            EU:     'eu',
+            APAC:   'apac',
+            GLOBAL: 'global'
         },
 
         // =================================================================
@@ -758,25 +758,25 @@
         // still referenced by policies already written on it.
         CATALOG_STATUS: {
             DRAFT:     SHARED.DRAFT,
-            PUBLISHED: &#39;published&#39;,
+            PUBLISHED: 'published',
             ARCHIVED:  SHARED.ARCHIVED
         },
 
         // coverage.coverage_selection and coverage_category.coverage_selection --
         // whether the coverage must be taken on this product.
         COVERAGE_SELECTION: {
-            REQUIRED: &#39;required&#39;,
-            OPTIONAL: &#39;optional&#39;,
+            REQUIRED: 'required',
+            OPTIONAL: 'optional',
             EXCLUDED: SHARED.EXCLUDED
         },
 
         // coverage.cause_of_loss_form -- breadth of perils on a property form,
         // narrowest to widest. SPECIAL is open-perils (all but what is excluded).
         CAUSE_OF_LOSS_FORM: {
-            BASIC:        &#39;basic&#39;,
-            BROAD:        &#39;broad&#39;,
-            SPECIAL:      &#39;special&#39;,
-            NAMED_PERILS: &#39;named_perils&#39;
+            BASIC:        'basic',
+            BROAD:        'broad',
+            SPECIAL:      'special',
+            NAMED_PERILS: 'named_perils'
         },
 
         // coverage.deductible_type -- how the deductible is expressed and what it
@@ -793,17 +793,17 @@
         LIMIT_TYPE: {
             PER_OCCURRENCE:        SHARED.PER_OCCURRENCE,
             PER_LOCATION:          SHARED.PER_LOCATION,
-            AGGREGATE:             &#39;aggregate&#39;,
-            PER_ITEM:              &#39;per_item&#39;,
-            COMBINED_SINGLE_LIMIT: &#39;combined_single_limit&#39;
+            AGGREGATE:             'aggregate',
+            PER_ITEM:              'per_item',
+            COMBINED_SINGLE_LIMIT: 'combined_single_limit'
         },
 
         // coverage.valuation_basis -- how a loss is valued at settlement.
         VALUATION_BASIS: {
-            RCV:                    &#39;rcv&#39;,
-            ACV:                    &#39;acv&#39;,
-            AGREED_VALUE:           &#39;agreed_value&#39;,
-            FUNCTIONAL_REPLACEMENT: &#39;functional_replacement&#39;
+            RCV:                    'rcv',
+            ACV:                    'acv',
+            AGREED_VALUE:           'agreed_value',
+            FUNCTIONAL_REPLACEMENT: 'functional_replacement'
         },
 
         // coverage_term.term_type -- the PRODUCT CATALOG side. Prices and shapes
@@ -814,9 +814,9 @@
             LIMIT:      SHARED.LIMIT,
             DEDUCTIBLE: SHARED.DEDUCTIBLE,
             DURATION:   SHARED.DURATION,
-            PREMIUM:    &#39;premium&#39;,
+            PREMIUM:    'premium',
             PERCENTAGE: SHARED.PERCENTAGE,
-            FEE:        &#39;fee&#39;
+            FEE:        'fee'
         },
 
         // policy_coverage_term.term_type -- the ISSUED POLICY side. Records the
@@ -824,20 +824,20 @@
         POLICY_TERM_TYPE: {
             LIMIT:          SHARED.LIMIT,
             DEDUCTIBLE:     SHARED.DEDUCTIBLE,
-            SUBLIMIT:       &#39;sublimit&#39;,
+            SUBLIMIT:       'sublimit',
             WAITING_PERIOD: SHARED.WAITING_PERIOD,
-            COINSURANCE:    &#39;coinsurance&#39;
+            COINSURANCE:    'coinsurance'
         },
 
-        // coverage_term.data_type -- how a term&#39;s VALUE is stored and rendered.
+        // coverage_term.data_type -- how a term's VALUE is stored and rendered.
         // CURRENCY here is a DATA TYPE, not a currency code; it is deliberately
         // not shared with CHOICE.CURRENCY, which holds usd/gbp/...
         TERM_DATA_TYPE: {
-            CURRENCY:   &#39;currency&#39;,
+            CURRENCY:   'currency',
             PERCENTAGE: SHARED.PERCENTAGE,
-            INTEGER:    &#39;integer&#39;,
-            TEXT:       &#39;text&#39;,
-            DATE:       &#39;date&#39;,
+            INTEGER:    'integer',
+            TEXT:       'text',
+            DATE:       'date',
             DURATION:   SHARED.DURATION
         },
 
@@ -852,11 +852,11 @@
         // major_exclusion.exclusion_type -- the market-standard major exclusions
         // an underwriter must positively address on every submission.
         EXCLUSION_TYPE: {
-            AFFIRMATIVE_CYBER:         &#39;affirmative_cyber&#39;,
-            NUCLEAR:                   &#39;nuclear&#39;,
-            RADIOACTIVE_CONTAMINATION: &#39;radioactive_contamination&#39;,
-            WAR_CIVIL_WAR:             &#39;war_civil_war&#39;,
-            COMMUNICABLE_DISEASE:      &#39;communicable_disease&#39;,
+            AFFIRMATIVE_CYBER:         'affirmative_cyber',
+            NUCLEAR:                   'nuclear',
+            RADIOACTIVE_CONTAMINATION: 'radioactive_contamination',
+            WAR_CIVIL_WAR:             'war_civil_war',
+            COMMUNICABLE_DISEASE:      'communicable_disease',
             OTHER:                     SHARED.OTHER
         },
 
@@ -865,7 +865,7 @@
         EXCLUSION_TREATMENT: {
             INCLUDED:    SHARED.INCLUDED,
             EXCLUDED:    SHARED.EXCLUDED,
-            SUB_LIMITED: &#39;sub_limited&#39;
+            SUB_LIMITED: 'sub_limited'
         },
 
         // exclusion.clause_type -- what KIND of clause a row in the exclusion
@@ -876,11 +876,11 @@
         //
         // NOT a duplicate of EXCLUSION_TYPE, which names the market-standard
         // exclusion FAMILY (cyber / nuclear / war / ...). Two columns, two
-        // questions: clause_type asks &quot;is this a carve-out or an obligation?&quot;,
-        // exclusion_type asks &quot;which standard clause is it?&quot;.
+        // questions: clause_type asks "is this a carve-out or an obligation?",
+        // exclusion_type asks "which standard clause is it?".
         CLAUSE_TYPE: {
-            EXCLUSION: &#39;exclusion&#39;,
-            CONDITION: &#39;condition&#39;
+            EXCLUSION: 'exclusion',
+            CONDITION: 'condition'
         },
 
         // =================================================================
@@ -889,31 +889,31 @@
 
         // rate_table.rate_type -- the unit a rate is quoted in.
         RATE_TYPE: {
-            PER_MILLE:  &#39;per_mille&#39;,
+            PER_MILLE:  'per_mille',
             PERCENTAGE: SHARED.PERCENTAGE,
             FLAT:       SHARED.FLAT
         },
 
         // rate_factor.factor_type -- direction the factor moves premium.
         FACTOR_TYPE: {
-            DISCOUNT:   &#39;discount&#39;,
-            LOADING:    &#39;loading&#39;,
-            MULTIPLIER: &#39;multiplier&#39;
+            DISCOUNT:   'discount',
+            LOADING:    'loading',
+            MULTIPLIER: 'multiplier'
         },
 
         // rate_factor.applies_to -- level the factor bites at.
         FACTOR_APPLIES_TO: {
-            POLICY:   &#39;policy&#39;,
-            RISK:     &#39;risk&#39;,
-            COVERAGE: &#39;coverage&#39;
+            POLICY:   'policy',
+            RISK:     'risk',
+            COVERAGE: 'coverage'
         },
 
         // rate_table_entry.zone -- motor rating territory. ANY is a WILDCARD row
         // meaning the rate applies regardless of zone, not a real zone.
         ZONE: {
-            METRO: &#39;metro&#39;,
-            URBAN: &#39;urban&#39;,
-            RURAL: &#39;rural&#39;,
+            METRO: 'metro',
+            URBAN: 'urban',
+            RURAL: 'rural',
             ANY:   SHARED.ANY
         },
 
@@ -922,18 +922,18 @@
         // vehicle (private_passenger, light_truck, ...). Same column name, two
         // different questions: how it rates vs what it is.
         RATING_VEHICLE_TYPE: {
-            PRIVATE_CAR: &#39;private_car&#39;,
-            TWO_WHEELER: &#39;two_wheeler&#39;,
+            PRIVATE_CAR: 'private_car',
+            TWO_WHEELER: 'two_wheeler',
             COMMERCIAL:  SHARED.COMMERCIAL,
-            TAXI:        &#39;taxi&#39;
+            TAXI:        'taxi'
         },
 
         // rate_table_entry.engine_cc -- motor rating band. ANY is the same
         // wildcard as ZONE.ANY.
         ENGINE_CC: {
-            UPTO_350CC:   &#39;upto_350cc&#39;,
-            UPTO_1500CC:  &#39;upto_1500cc&#39;,
-            ABOVE_1500CC: &#39;above_1500cc&#39;,
+            UPTO_350CC:   'upto_350cc',
+            UPTO_1500CC:  'upto_1500cc',
+            ABOVE_1500CC: 'above_1500cc',
             ANY:          SHARED.ANY
         },
 
@@ -944,71 +944,71 @@
         // =================================================================
 
         // ISO construction class. ALSO location.construction_type, which used to
-        // carry &#39;masonry_non_comb&#39; where the rating tables carry &#39;masonry&#39; - that
+        // carry 'masonry_non_comb' where the rating tables carry 'masonry' - that
         // mismatch broke the join and is retired by
         // add_product_rating_choices.js.
         CONSTRUCTION: {
-            FIRE_RESISTIVE:          &#39;fire_resistive&#39;,
-            MODIFIED_FIRE_RESISTIVE: &#39;modified_fire_resistive&#39;,
-            MASONRY:                 &#39;masonry&#39;,
-            JOISTED_MASONRY:         &#39;joisted_masonry&#39;,
-            NON_COMBUSTIBLE:         &#39;non_combustible&#39;,
-            FRAME:                   &#39;frame&#39;
+            FIRE_RESISTIVE:          'fire_resistive',
+            MODIFIED_FIRE_RESISTIVE: 'modified_fire_resistive',
+            MASONRY:                 'masonry',
+            JOISTED_MASONRY:         'joisted_masonry',
+            NON_COMBUSTIBLE:         'non_combustible',
+            FRAME:                   'frame'
         },
 
         OCCUPANCY: {
-            RETAIL_MALL:   &#39;retail_mall&#39;,
-            WAREHOUSE:     &#39;warehouse&#39;,
-            OFFICE:        &#39;office&#39;,
-            IT_OFFICE:     &#39;it_office&#39;,
-            MANUFACTURING: &#39;manufacturing&#39;,
-            RESTAURANT:    &#39;restaurant&#39;,
-            HEALTHCARE:    &#39;healthcare&#39;,
-            EDUCATION:     &#39;education&#39;,
-            HOSPITALITY:   &#39;hospitality&#39;
+            RETAIL_MALL:   'retail_mall',
+            WAREHOUSE:     'warehouse',
+            OFFICE:        'office',
+            IT_OFFICE:     'it_office',
+            MANUFACTURING: 'manufacturing',
+            RESTAURANT:    'restaurant',
+            HEALTHCARE:    'healthcare',
+            EDUCATION:     'education',
+            HOSPITALITY:   'hospitality'
         },
 
         PROTECTION: {
-            SPRINKLERED:       &#39;sprinklered&#39;,
-            NO_SPRINKLER:      &#39;no_sprinkler&#39;,
-            PARTIAL_SPRINKLER: &#39;partial_sprinkler&#39;,
-            FIRE_ALARM_ONLY:   &#39;fire_alarm_only&#39;,
-            FULL_SUPPRESSION:  &#39;full_suppression&#39;
+            SPRINKLERED:       'sprinklered',
+            NO_SPRINKLER:      'no_sprinkler',
+            PARTIAL_SPRINKLER: 'partial_sprinkler',
+            FIRE_ALARM_ONLY:   'fire_alarm_only',
+            FULL_SUPPRESSION:  'full_suppression'
         },
 
         // policy_risk.exposure / quote_risk.exposure -- the surroundings of the
         // risk. Named RISK_EXPOSURE here so it is never confused with the
         // exposure-management module or with exposure_item.
         RISK_EXPOSURE: {
-            URBAN_LOW:       &#39;urban_low&#39;,
-            SUBURBAN_MEDIUM: &#39;suburban_medium&#39;,
-            INDUSTRIAL_HIGH: &#39;industrial_high&#39;,
-            RURAL_LOW:       &#39;rural_low&#39;,
-            COASTAL:         &#39;coastal&#39;,
-            FLOOD_ZONE:      &#39;flood_zone&#39;
+            URBAN_LOW:       'urban_low',
+            SUBURBAN_MEDIUM: 'suburban_medium',
+            INDUSTRIAL_HIGH: 'industrial_high',
+            RURAL_LOW:       'rural_low',
+            COASTAL:         'coastal',
+            FLOOD_ZONE:      'flood_zone'
         },
 
         // policy_risk.risk_type / quote_risk.risk_type -- what the risk line
         // actually covers.
         RISK_TYPE: {
-            BUILDING:              &#39;building&#39;,
-            CONTENTS:              &#39;contents&#39;,
-            BUSINESS_INTERRUPTION: &#39;business_interruption&#39;,
-            VEHICLE:               &#39;vehicle&#39;,
-            EQUIPMENT:             &#39;equipment&#39;
+            BUILDING:              'building',
+            CONTENTS:              'contents',
+            BUSINESS_INTERRUPTION: 'business_interruption',
+            VEHICLE:               'vehicle',
+            EQUIPMENT:             'equipment'
         },
 
         // policy_transaction.status -- the lifecycle of a single ENDORSEMENT or
         // other mid-term change, not of the policy. A voided transaction was
         // reversed after completion; a rejected one never took effect at all.
-        // The policy&#39;s own lifecycle is POLICY_STATUS.
+        // The policy's own lifecycle is POLICY_STATUS.
         TRANSACTION_STATUS: {
             DRAFT:            SHARED.DRAFT,
-            PENDING_APPROVAL: &#39;pending_approval&#39;,
-            APPROVED:         &#39;approved&#39;,
-            COMPLETED:        &#39;completed&#39;,
+            PENDING_APPROVAL: 'pending_approval',
+            APPROVED:         'approved',
+            COMPLETED:        'completed',
             REJECTED:         SHARED.REJECTED,
-            VOIDED:           &#39;voided&#39;
+            VOIDED:           'voided'
         },
 
         // =================================================================
@@ -1020,29 +1020,29 @@
         // not the limits themselves.
         //
         // Two things are reused rather than redefined and must stay that way:
-        //   line_of_business -&gt; CHOICE.LINE_OF_BUSINESS  (above)
-        //   currency         -&gt; CHOICE.CURRENCY          (above)
+        //   line_of_business -> CHOICE.LINE_OF_BUSINESS  (above)
+        //   currency         -> CHOICE.CURRENCY          (above)
         // A second LOA-only LOB list is exactly the GL / GENERAL_LIABILITY drift
         // this model exists to remove.
         // =================================================================
 
         // loa_authority_tier.code is a STRING with a unique index, not a choice -
         // adding Tier 6 must be one row, not an edit in five places. The known
-        // codes are named here so scripts and seeds never type &#39;tier_3&#39; raw.
+        // codes are named here so scripts and seeds never type 'tier_3' raw.
         LOA_TIER: {
-            TIER_1: &#39;tier_1&#39;,
-            TIER_2: &#39;tier_2&#39;,
-            TIER_3: &#39;tier_3&#39;,
-            TIER_4: &#39;tier_4&#39;,
-            TIER_5: &#39;tier_5&#39;
+            TIER_1: 'tier_1',
+            TIER_2: 'tier_2',
+            TIER_3: 'tier_3',
+            TIER_4: 'tier_4',
+            TIER_5: 'tier_5'
         },
 
         // loa_metric.value_type -- which of limit_amount / limit_count /
         // limit_percent a limit row on this metric is expected to populate.
         LOA_METRIC_VALUE_TYPE: {
-            AMOUNT:  &#39;amount&#39;,
+            AMOUNT:  'amount',
             COUNT:   SHARED.COUNT,
-            PERCENT: &#39;percent&#39;
+            PERCENT: 'percent'
         },
 
         // loa_metric.comparison -- the DIRECTION of a breach, held as data instead
@@ -1051,7 +1051,7 @@
         // the limit, and getting that backwards silently authorises bad risk.
         LOA_METRIC_COMPARISON: {
             MAX: SHARED.MAX,
-            MIN: &#39;min&#39;
+            MIN: 'min'
         },
 
         // loa_metric.source_anchor -- WHAT the source rows hang off, and therefore
@@ -1060,18 +1060,18 @@
         //   quote_option     readable only once a quote exists
         // Per-occurrence limits and deductibles are QUOTE attributes: at
         // submission stage there is nothing to check, and the honest answer is
-        // not_applicable, not &quot;within authority&quot;. Without this the resolver has
-        // to guess from the source table&#39;s shape.
+        // not_applicable, not "within authority". Without this the resolver has
+        // to guess from the source table's shape.
         LOA_METRIC_SOURCE_ANCHOR: {
-            SUBMISSION_LINE: &#39;submission_line&#39;,
-            QUOTE_OPTION:    &#39;quote_option&#39;
+            SUBMISSION_LINE: 'submission_line',
+            QUOTE_OPTION:    'quote_option'
         },
 
         // loa_metric.aggregation -- how child rows roll up into one exposure
         // figure. Child rows are found by the anchor reference above.
         LOA_METRIC_AGGREGATION: {
             NONE:  SHARED.NONE,
-            SUM:   &#39;sum&#39;,
+            SUM:   'sum',
             MAX:   SHARED.MAX,
             COUNT: SHARED.COUNT
         },
@@ -1080,51 +1080,51 @@
         // exposure_peril.peril, which carries an older uncatalogued list; see the
         // note at the bottom of this block.
         PERIL: {
-            WIND:      &#39;wind&#39;,
-            QUAKE:     &#39;quake&#39;,
-            FLOOD:     &#39;flood&#39;,
-            HAIL:      &#39;hail&#39;,
-            WILDFIRE:  &#39;wildfire&#39;,
-            TERRORISM: &#39;terrorism&#39;,
-            ALL_OTHER: &#39;all_other&#39;
+            WIND:      'wind',
+            QUAKE:     'quake',
+            FLOOD:     'flood',
+            HAIL:      'hail',
+            WILDFIRE:  'wildfire',
+            TERRORISM: 'terrorism',
+            ALL_OTHER: 'all_other'
         },
 
         // loa_jurisdiction.region -- grouping over jurisdictions, so a whole
         // region can be granted in one action and reported on as one.
         LOA_REGION: {
-            US_WEST:    &#39;us_west&#39;,
-            US_EAST:    &#39;us_east&#39;,
-            US_CENTRAL: &#39;us_central&#39;,
-            US_SOUTH:   &#39;us_south&#39;,
-            NON_US:     &#39;non_us&#39;
+            US_WEST:    'us_west',
+            US_EAST:    'us_east',
+            US_CENTRAL: 'us_central',
+            US_SOUTH:   'us_south',
+            NON_US:     'non_us'
         },
 
         // loa_authority_limit.operator -- how exposure is compared with the limit.
         LOA_OPERATOR: {
-            LTE: &#39;lte&#39;,
-            GTE: &#39;gte&#39;,
-            EQ:  &#39;eq&#39;
+            LTE: 'lte',
+            GTE: 'gte',
+            EQ:  'eq'
         },
 
         // loa_authority_limit.class_of_business -- occupancy class the limit is cut
         // by. ALL is a WILDCARD row (applies regardless of class), not a real class.
         CLASS_OF_BUSINESS: {
             ALL:           SHARED.ALL,
-            OFFICE:        &#39;office&#39;,
-            RETAIL:        &#39;retail&#39;,
-            MANUFACTURING: &#39;manufacturing&#39;,
-            WAREHOUSE:     &#39;warehouse&#39;,
-            PETROCHEMICAL: &#39;petrochemical&#39;,
-            HOSPITALITY:   &#39;hospitality&#39;,
-            HEALTHCARE:    &#39;healthcare&#39;,
-            EDUCATION:     &#39;education&#39;,
-            MUNICIPAL:     &#39;municipal&#39;,
-            HABITATIONAL:  &#39;habitational&#39;
+            OFFICE:        'office',
+            RETAIL:        'retail',
+            MANUFACTURING: 'manufacturing',
+            WAREHOUSE:     'warehouse',
+            PETROCHEMICAL: 'petrochemical',
+            HOSPITALITY:   'hospitality',
+            HEALTHCARE:    'healthcare',
+            EDUCATION:     'education',
+            MUNICIPAL:     'municipal',
+            HABITATIONAL:  'habitational'
         },
 
         // loa_authority_limit.business_type -- new business vs renewal authority.
         // Same tokens as SUBMISSION_TYPE plus the ALL wildcard; deliberately a
-        // separate group because it also answers &quot;or both&quot;, which a submission
+        // separate group because it also answers "or both", which a submission
         // type never does.
         LOA_BUSINESS_TYPE: {
             ALL:          SHARED.ALL,
@@ -1136,17 +1136,17 @@
         // once inside the limit. QUOTE_ONLY is the carve-out that lets a class be
         // quoted at a tier but never bound there.
         LOA_BIND_AUTHORITY: {
-            QUOTE_AND_BIND: &#39;quote_and_bind&#39;,
-            QUOTE_ONLY:     &#39;quote_only&#39;,
-            REFER_ONLY:     &#39;refer_only&#39;
+            QUOTE_AND_BIND: 'quote_and_bind',
+            QUOTE_ONLY:     'quote_only',
+            REFER_ONLY:     'refer_only'
         },
 
         // loa_authority_grant.grantee_type -- ROLE is the standing grant and needs
         // no maintenance when a person joins, moves or leaves. USER is the named
         // exception, normally a delegation.
         LOA_GRANTEE_TYPE: {
-            ROLE: &#39;role&#39;,
-            USER: &#39;user&#39;
+            ROLE: 'role',
+            USER: 'user'
         },
 
         // loa_authority_grant.state -- the ONLY lifecycle field on a grant. There
@@ -1164,12 +1164,12 @@
         // exists. Evaluations are never updated in place; a change writes a new
         // version and deactivates the last.
         LOA_EVALUATION_TRIGGER: {
-            INITIAL_EVALUATION:  &#39;initial_evaluation&#39;,
-            INTAKE_CHANGE:       &#39;intake_change&#39;,
-            EXPOSURE_CHANGE:     &#39;exposure_change&#39;,
-            GRANT_CHANGE:        &#39;grant_change&#39;,
-            QUOTE_CHANGE:        &#39;quote_change&#39;,
-            MANUAL_REEVALUATION: &#39;manual_reevaluation&#39;
+            INITIAL_EVALUATION:  'initial_evaluation',
+            INTAKE_CHANGE:       'intake_change',
+            EXPOSURE_CHANGE:     'exposure_change',
+            GRANT_CHANGE:        'grant_change',
+            QUOTE_CHANGE:        'quote_change',
+            MANUAL_REEVALUATION: 'manual_reevaluation'
         },
 
         // loa_evaluation.evaluation_status -- the decision. NO_AUTHORITY means no
@@ -1178,27 +1178,27 @@
         // their limit, no_authority means they have no limit on this LOB.
         LOA_EVALUATION_STATUS: {
             PENDING:                           SHARED.PENDING,
-            AUTHORIZED:                        &#39;authorized&#39;,
-            BREACH:                            &#39;breach&#39;,
-            // &#39;referred&#39; (the decision), NOT SHARED.REFERRAL (&#39;referral&#39;, the
+            AUTHORIZED:                        'authorized',
+            BREACH:                            'breach',
+            // 'referred' (the decision), NOT SHARED.REFERRAL ('referral', the
             // case_task category). Two different words for two different things.
-            REFERRED:                          &#39;referred&#39;,
-            REFERRED_APPROVED:                 &#39;referred_approved&#39;,
-            REFERRED_APPROVED_WITH_CONDITIONS: &#39;referred_approved_with_conditions&#39;,
-            REFERRED_REJECTED:                 &#39;referred_rejected&#39;,
-            REFERRED_REJECTED_ALTERNATE_TERMS: &#39;referred_rejected_alternate_terms&#39;,
+            REFERRED:                          'referred',
+            REFERRED_APPROVED:                 'referred_approved',
+            REFERRED_APPROVED_WITH_CONDITIONS: 'referred_approved_with_conditions',
+            REFERRED_REJECTED:                 'referred_rejected',
+            REFERRED_REJECTED_ALTERNATE_TERMS: 'referred_rejected_alternate_terms',
             DECLINED:                          SHARED.DECLINED,
-            NO_AUTHORITY:                      &#39;no_authority&#39;
+            NO_AUTHORITY:                      'no_authority'
         },
 
         // loa_evaluation_line.result -- the per-metric outcome. NO_LIMIT means the
         // tier has no limit row for that metric, which is NOT the same as being
         // within one; reporting it as WITHIN would hide a gap in the grid.
         LOA_LINE_RESULT: {
-            WITHIN:         &#39;within&#39;,
-            BREACH:         &#39;breach&#39;,
-            NOT_APPLICABLE: &#39;not_applicable&#39;,
-            NO_LIMIT:       &#39;no_limit&#39;
+            WITHIN:         'within',
+            BREACH:         'breach',
+            NOT_APPLICABLE: 'not_applicable',
+            NO_LIMIT:       'no_limit'
         },
 
         // OPEN ITEM: exposure_peril.peril carries an uncatalogued list that predates
@@ -1224,7 +1224,7 @@
         // module_plan.request_kind - is this the first request or a revision?
         REQUEST_KIND: {
             NEW:    SHARED.NEW,
-            UPDATE: &#39;update&#39;
+            UPDATE: 'update'
         },
 
         // module_plan.sub_type / submission.sub_type. Optional everywhere:
@@ -1235,24 +1235,24 @@
         // non-material one does not.
         SUB_TYPE: {
             FULL_UW:      SHARED.FULL_RE_UNDERWRITING,
-            FAST_TRACK:   &#39;fast_track&#39;,
+            FAST_TRACK:   'fast_track',
             AUTO_APPROVE: SHARED.AUTO_RENEW,
-            MATERIAL:     &#39;material&#39;,
-            NON_MATERIAL: &#39;non_material&#39;
+            MATERIAL:     'material',
+            NON_MATERIAL: 'non_material'
         },
 
         // module_plan.config_mode. In ADVANCED mode every order and restart
         // column on the row is ignored and advanced_script decides.
         CONFIG_MODE: {
-            SIMPLE:   &#39;simple&#39;,
-            ADVANCED: &#39;advanced&#39;
+            SIMPLE:   'simple',
+            ADVANCED: 'advanced'
         },
 
         // module_plan.restart_clearance / _risk / _exposure / _quote_and_bind.
         // Applies only when submission_on_update = override; on a new
         // submission version the cases are created fresh by the plan.
         RESTART_MODE: {
-            NONE:        &#39;none&#39;,
+            NONE:        'none',
             OVERRIDE:    SHARED.OVERRIDE,
             NEW_VERSION: SHARED.NEW_VERSION
         },
@@ -1269,16 +1269,16 @@
         // table with an explicit COPY rule travels, so a child table nobody
         // catalogued cannot ride along on its copied parent.
         COPY_ACTION: {
-            COPY:   &#39;copy&#39;,
-            MOVE:   &#39;move&#39;,
-            CANCEL: &#39;cancel&#39;,
-            SKIP:   &#39;skip&#39;
+            COPY:   'copy',
+            MOVE:   'move',
+            CANCEL: 'cancel',
+            SKIP:   'skip'
         },
 
         // module_plan.line_of_business carries the LINE_OF_BUSINESS values
         // above PLUS this wildcard, matching the sentinel already used by
         // extraction_mapping.line_of_business.
-        LOB_ALL: &#39;all&#39;
+        LOB_ALL: 'all'
     };
 
     // Collect the value strings of a choice group as an array (for IN queries,
@@ -1286,7 +1286,7 @@
     function values(map) {
         var out = [];
         for (var k in map) {
-            if (map.hasOwnProperty(k) &amp;&amp; typeof map[k] === &#39;string&#39;)
+            if (map.hasOwnProperty(k) && typeof map[k] === 'string')
                 out.push(map[k]);
         }
         return out;
@@ -1297,28 +1297,28 @@
     // DEFAULT for that property (or a safe empty/false) is used.
     // ---------------------------------------------------------------------
     function getString(name, dflt) {
-        var d = (dflt !== undefined) ? dflt : (DEFAULT[name] !== undefined ? DEFAULT[name] : &#39;&#39;);
+        var d = (dflt !== undefined) ? dflt : (DEFAULT[name] !== undefined ? DEFAULT[name] : '');
         return gs.getProperty(name, d);
     }
 
     function getBool(name, dflt) {
-        var d = (dflt !== undefined) ? (dflt ? &#39;true&#39; : &#39;false&#39;)
-                                     : (DEFAULT[name] !== undefined ? DEFAULT[name] : &#39;false&#39;);
-        return getString(name, d) === &#39;true&#39;;
+        var d = (dflt !== undefined) ? (dflt ? 'true' : 'false')
+                                     : (DEFAULT[name] !== undefined ? DEFAULT[name] : 'false');
+        return getString(name, d) === 'true';
     }
 
     // Parse a JSON-valued property. Returns the parsed object, or dflt
     // (default {}) when the property is empty or not valid JSON.
     function getJson(name, dflt) {
         var fallback = (dflt !== undefined) ? dflt : {};
-        var raw = getString(name, &#39;&#39;);
+        var raw = getString(name, '');
         if (!raw)
             return fallback;
         try {
             var parsed = JSON.parse(raw);
-            return (parsed &amp;&amp; typeof parsed === &#39;object&#39;) ? parsed : fallback;
+            return (parsed && typeof parsed === 'object') ? parsed : fallback;
         } catch (e) {
-            gs.warn(&#39;[Constants] property &#39; + name + &#39; is not valid JSON: &#39; + e.message);
+            gs.warn('[Constants] property ' + name + ' is not valid JSON: ' + e.message);
             return fallback;
         }
     }
@@ -1326,10 +1326,10 @@
     // ---------------------------------------------------------------------
     // Domain helpers.
     // ---------------------------------------------------------------------
-    // intent: &#39;new&#39; (POST /submission) | &#39;update&#39; (PUT /submission/{number}).
-    // Returns true when that intent&#39;s extraction should be auto-approved.
+    // intent: 'new' (POST /submission) | 'update' (PUT /submission/{number}).
+    // Returns true when that intent's extraction should be auto-approved.
     function isAutoApprove(intent) {
-        return (String(intent) === &#39;update&#39;)
+        return (String(intent) === 'update')
             ? getBool(PROP.AUTO_APPROVE_UPDATE)
             : getBool(PROP.AUTO_APPROVE_NEW);
     }
@@ -1347,17 +1347,17 @@
     function getLicence() {
         var cfg = getModuleExecutionConfig();
         return {
-            instance_id:      cfg.instance_id || &#39;&#39;,
-            customer_name:    cfg.customer_name || &#39;&#39;,
-            license_version:  cfg.license_version || &#39;&#39;,
-            expires_at:       cfg.expires_at || &#39;&#39;,
+            instance_id:      cfg.instance_id || '',
+            customer_name:    cfg.customer_name || '',
+            license_version:  cfg.license_version || '',
+            expires_at:       cfg.expires_at || '',
             licensed_modules: cfg.licensed_modules || []
         };
     }
 
-    // ISO-8601 (&#39;2027-03-10T00:00:00Z&#39;) to the format GlideDateTime parses.
+    // ISO-8601 ('2027-03-10T00:00:00Z') to the format GlideDateTime parses.
     function isoToGlide(iso) {
-        return String(iso || &#39;&#39;).replace(&#39;T&#39;, &#39; &#39;).replace(&#39;Z&#39;, &#39;&#39;).split(&#39;.&#39;)[0];
+        return String(iso || '').replace('T', ' ').replace('Z', '').split('.')[0];
     }
 
     // No expires_at at all is treated as EXPIRED, not as perpetual - a missing
@@ -1365,23 +1365,23 @@
     function isLicenceValid() {
         var expires = isoToGlide(getLicence().expires_at);
         if (!expires) {
-            gs.error(&#39;[Constants] licence has no expires_at - treating as expired&#39;);
+            gs.error('[Constants] licence has no expires_at - treating as expired');
             return false;
         }
-        return new GlideDateTime().compareTo(new GlideDateTime(expires)) &lt; 0;
+        return new GlideDateTime().compareTo(new GlideDateTime(expires)) < 0;
     }
 
     // licenceCode is the UPPERCASE code carried in licensed_modules
     // (SUBMISSION_CLEARANCE, EXPOSURE_MANAGEMENT, ...). Callers resolve a
-    // module&#39;s licence code from the module registry, not from a hard-coded map.
+    // module's licence code from the module registry, not from a hard-coded map.
     function isModuleLicensed(licenceCode) {
         if (!isLicenceValid())
             return false;
-        var wanted = String(licenceCode || &#39;&#39;).trim().toUpperCase();
+        var wanted = String(licenceCode || '').trim().toUpperCase();
         if (!wanted)
             return false;
         var licensed = getLicence().licensed_modules;
-        for (var i = 0; i &lt; licensed.length; i++) {
+        for (var i = 0; i < licensed.length; i++) {
             if (String(licensed[i]).trim().toUpperCase() === wanted)
                 return true;
         }
@@ -1403,7 +1403,7 @@
         isLicenceValid: isLicenceValid,
         isModuleLicensed: isModuleLicensed
     };
-})();</script>
+})();]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-12 10:00:00</sys_created_on>

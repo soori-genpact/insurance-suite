@@ -1,58 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="8c2e4f71a9d3487eb05c1f6d2a73e9b4" label="Party Sanction" max_length="40" name="x_gegis_ins_policy_party_sanction" type="collection">
-
-        <!-- ===== context: which submission, and which party was screened ===== -->
-        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
-        <element label="Submission party" mandatory="true" max_length="32" name="submission_party" reference="x_gegis_ins_policy_submission_party" type="reference"/>
-        <element choice="3" default="organization" label="Subject type" mandatory="true" max_length="40" name="subject_type" type="choice"/>
-        <element label="Party" max_length="32" name="party" reference="x_gegis_ins_policy_party" type="reference"/>
-        <element label="Contact" max_length="32" name="contact" reference="x_gegis_ins_policy_contact" type="reference"/>
-
-        <!-- ===== snapshots: what was actually sent to the provider ===== -->
-        <element display="true" label="Screened name" mandatory="true" max_length="200" name="screened_name" type="string"/>
-        <element label="Screened role" max_length="40" name="screened_role" type="string"/>
-        <element label="Screened address" max_length="400" name="screened_address" type="string"/>
-
-        <!-- ===== the screening call ===== -->
-        <element label="Screening run" max_length="64" name="screening_run" type="string"/>
-        <element label="Screened on" max_length="40" name="screened_on" type="glide_date_time"/>
-        <element choice="3" label="Provider" max_length="40" name="provider" type="choice"/>
-        <element choice="3" default="pending" label="Request status" mandatory="true" max_length="40" name="request_status" type="choice"/>
-
-        <!-- ===== the result: no_hit rows prove a clean screen, match rows carry the hit ===== -->
-        <element choice="3" default="no_hit" label="Sanction hit" mandatory="true" max_length="40" name="sanction_hit" type="choice"/>
-        <element choice="3" label="Sanction list" max_length="40" name="sanction_list" type="choice"/>
-        <element label="Matched name" max_length="200" name="matched_name" type="string"/>
-        <element label="Match score" max_length="40" name="match_score" type="decimal"/>
-        <element choice="3" label="Entity type" max_length="40" name="entity_type" type="choice"/>
-        <element label="Program" max_length="100" name="program" type="string"/>
-        <element label="Country" max_length="40" name="country" type="string"/>
-        <element label="Date of birth" max_length="40" name="date_of_birth" type="glide_date"/>
-        <element label="Matched address" max_length="400" name="matched_address" type="string"/>
-        <element label="External ID" max_length="100" name="external_id" type="string"/>
-        <element label="Raw payload" max_length="4000" name="raw_payload" type="string"/>
-
-        <!-- ===== per-match disposition; the party-level verdict is a rollup, not a column ===== -->
-        <element choice="3" default="pending" label="Compliance status" mandatory="true" max_length="40" name="compliance_status" type="choice"/>
-        <element label="Decision reason" max_length="400" name="decision_reason" type="string"/>
-        <element label="Decided by" max_length="32" name="decided_by" reference="sys_user" type="reference"/>
-        <element label="Decided on" max_length="40" name="decided_on" type="glide_date_time"/>
+        <element choice="3" label="Sanction list" max_length="40" name="sanction_list" type="choice">
+            <choice/>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="Country" max_length="40" name="country" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Raw payload" max_length="4000" name="raw_payload" type="string"/>
         <element label="Sequence" max_length="40" name="sequence" type="integer"/>
-
+        <element attributes="encode_utf8=false" label="Contact" max_length="32" name="contact" reference="x_gegis_ins_policy_contact" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Screened on" max_length="40" name="screened_on" type="glide_date_time"/>
+        <element attributes="encode_utf8=false" label="Party" max_length="32" name="party" reference="x_gegis_ins_policy_party" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Screening run" max_length="64" name="screening_run" type="string"/>
+        <element choice="3" default="pending" label="Compliance status" mandatory="true" max_length="40" name="compliance_status" type="choice">
+            <choice/>
+        </element>
+        <element label="Match score" max_length="38" name="match_score" type="decimal"/>
+        <element attributes="edge_encryption_enabled=true" label="Matched name" max_length="200" name="matched_name" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Date of birth" max_length="40" name="date_of_birth" type="glide_date"/>
+        <element attributes="encode_utf8=false" label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" display="true" label="Screened name" mandatory="true" max_length="200" name="screened_name" type="string"/>
+        <element choice="3" label="Provider" max_length="40" name="provider" type="choice">
+            <choice/>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="Matched address" max_length="400" name="matched_address" type="string"/>
+        <element attributes="encode_utf8=false" label="Decided by" max_length="32" name="decided_by" reference="sys_user" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Decision reason" max_length="400" name="decision_reason" type="string"/>
+        <element choice="3" label="Entity type" max_length="40" name="entity_type" type="choice">
+            <choice/>
+        </element>
+        <element attributes="encode_utf8=false" label="Submission party" mandatory="true" max_length="32" name="submission_party" reference="x_gegis_ins_policy_submission_party" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Screened role" max_length="40" name="screened_role" type="string"/>
+        <element choice="3" default="pending" label="Request status" mandatory="true" max_length="40" name="request_status" type="choice">
+            <choice/>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="Program" max_length="100" name="program" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="External ID" max_length="100" name="external_id" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Decided on" max_length="40" name="decided_on" type="glide_date_time"/>
+        <element choice="3" default="organization" label="Subject type" mandatory="true" max_length="40" name="subject_type" type="choice">
+            <choice/>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="Screened address" max_length="400" name="screened_address" type="string"/>
+        <element choice="3" default="no_hit" label="Sanction hit" mandatory="true" max_length="40" name="sanction_hit" type="choice">
+            <choice/>
+        </element>
         <index name="index">
-            <element name="submission"/>
+            <element name="contact"/>
         </index>
         <index name="index2">
-            <element name="submission_party"/>
+            <element name="decided_by"/>
         </index>
         <index name="index3">
             <element name="party"/>
         </index>
         <index name="index4">
-            <element name="contact"/>
+            <element name="submission"/>
         </index>
         <index name="index5">
-            <element name="decided_by"/>
+            <element name="submission_party"/>
         </index>
     </element>
 </database>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="02d3651116fdff598f37332c3978854f" label="Version Copy Rule" max_length="40" name="x_gegis_ins_policy_version_copy_rule" type="collection">
+        <element label="Parent field" max_length="100" name="parent_field" type="string"/>
+        <element choice="3" default="copy" label="Action" max_length="40" name="action" type="choice">
+            <choice/>
+        </element>
+        <element default="true" label="Copy attachments" max_length="40" name="copy_attachments" type="boolean"/>
+        <element display="true" label="Table name" max_length="100" name="table_name" type="string"/>
+        <element default="100" label="Order" max_length="40" name="order" type="integer"/>
+        <element label="Description" max_length="500" name="description" type="string"/>
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Reset fields" max_length="1000" name="reset_fields" type="string"/>
+    </element>
+</database>
