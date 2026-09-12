@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="e2e58dd4c3f28b10fac6fc0d0501316d" label="Quote Option Coverage Exclusion" max_length="40" name="x_gegis_ins_policy_quote_option_coverage_exclusion" type="collection">
-        <element label="Quote option coverage" mandatory="true" max_length="32" name="quote_option_coverage" reference="x_gegis_ins_policy_quote_option_coverage" type="reference"/>
         <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
-        <element label="Display order" max_length="40" name="display_order" type="integer"/>
-        <element display="true" label="Name" max_length="200" name="name" type="string"/>
-        <element label="Sub-limit" max_length="40" name="sub_limit" type="decimal"/>
         <element label="Product coverage exclusion" mandatory="true" max_length="32" name="product_coverage_exclusion" reference="x_gegis_ins_policy_product_coverage_exclusion" type="reference"/>
+        <element label="Display order" max_length="40" name="display_order" type="integer"/>
         <element default="true" label="Included" max_length="40" name="included" type="boolean"/>
+        <element display="true" label="Name" max_length="200" name="name" type="string"/>
+        <element label="Quote option coverage" mandatory="true" max_length="32" name="quote_option_coverage" reference="x_gegis_ins_policy_quote_option_coverage" type="reference"/>
+        <element label="Sub-limit" max_length="40" name="sub_limit" type="decimal"/>
         <index name="index">
             <element name="product_coverage_exclusion"/>
         </index>

@@ -1,24 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="d4a91f3c62b845e7ba50c9d17e86f204" label="Extraction Field Audit" max_length="40" name="x_gegis_ins_policy_extraction_field_audit" type="collection">
-
-        <!-- which revision of this field the row records - 1 is the value as extracted -->
-        <element display="true" label="Version" mandatory="true" max_length="40" name="version" type="integer"/>
-        <!-- sys_id of the extraction_field row whose value changed -->
-        <element label="Extraction field" mandatory="true" max_length="32" name="extraction_field" type="string"/>
-        <!-- value before the change, truncated to 100 chars; empty on version 1 -->
-        <element label="Old value" max_length="100" name="old_value" type="string"/>
-        <!-- value after the change -->
-        <element label="New value" max_length="100" name="new_value" type="string"/>
-        <!-- sys_id of the user who made the change -->
-        <element label="Changed by" max_length="32" name="changed_by" type="string"/>
-        <!-- when the change was made -->
-        <element label="Changed on" max_length="40" name="changed_on" type="glide_date_time"/>
-
+        <element hint="Value after the change" label="New value" max_length="100" name="new_value" type="string"/>
+        <element hint="When the change was made" label="Changed on" max_length="40" name="changed_on" type="glide_date_time"/>
+        <element hint="Sys_id of the user who made the change" label="Changed by" max_length="32" name="changed_by" type="string"/>
+        <element display="true" hint="Which revision of this field the row records - 1 is the value as extracted" label="Version" mandatory="true" max_length="40" name="version" type="integer"/>
+        <element hint="Sys_id of the extraction_field row whose value changed" label="Extraction field" mandatory="true" max_length="32" name="extraction_field" type="string"/>
+        <element hint="Value before the change, truncated to 100 chars; empty on version 1" label="Old value" max_length="100" name="old_value" type="string"/>
         <index name="index">
-            <element name="extraction_field"/>
+            <element name="changed_by"/>
         </index>
         <index name="index2">
-            <element name="changed_by"/>
+            <element name="extraction_field"/>
         </index>
     </element>
 </database>

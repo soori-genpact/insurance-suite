@@ -9,7 +9,7 @@
         <mobile_callable>false</mobile_callable>
         <name>ModulePlanService</name>
         <sandbox_callable>false</sandbox_callable>
-        <script>var ModulePlanService = Class.create();
+        <script><![CDATA[var ModulePlanService = Class.create();
 ModulePlanService.prototype = {
 
     initialize: function () {
@@ -64,7 +64,7 @@ ModulePlanService.prototype = {
         if (!wanted)
             return null;
         var mods = this._modules();
-        for (var i = 0; i &lt; mods.length; i++) {
+        for (var i = 0; i < mods.length; i++) {
             // Accept the registry code OR the licence code, so existing flows
             // that pass SUBMISSION_CLEARANCE keep working alongside 'clearance'.
             // Exact match only - the old indexOf() matching meant a stray 'E'
@@ -78,7 +78,7 @@ ModulePlanService.prototype = {
     _codes: function () {
         var mods = this._modules();
         var out = [];
-        for (var i = 0; i &lt; mods.length; i++)
+        for (var i = 0; i < mods.length; i++)
             out.push(mods[i].code);
         return out;
     },
@@ -122,7 +122,7 @@ ModulePlanService.prototype = {
                 score += 10;   // blank sub_type matches any
             }
 
-            if (planLob &amp;&amp; planLob !== Constants.CHOICE.LOB_ALL) {
+            if (planLob && planLob !== Constants.CHOICE.LOB_ALL) {
                 if (planLob !== wantedLob)
                     continue;
                 score += 2;
@@ -130,7 +130,7 @@ ModulePlanService.prototype = {
                 score += 1;    // 'all' or blank matches any LOB
             }
 
-            if (score &gt; bestScore) {
+            if (score > bestScore) {
                 bestScore = score;
                 bestId = gr.getUniqueValue();
             }
@@ -173,7 +173,7 @@ ModulePlanService.prototype = {
     _fromColumns: function (plan) {
         var out = [];
         var mods = this._modules();
-        for (var i = 0; i &lt; mods.length; i++) {
+        for (var i = 0; i < mods.length; i++) {
             var m = mods[i];
             if (!m.orderField)
                 continue;
@@ -185,11 +185,11 @@ ModulePlanService.prototype = {
             }
 
             var order = parseInt(plan.getValue(m.orderField), 10);
-            if (isNaN(order) || order &lt;= 0)
+            if (isNaN(order) || order <= 0)
                 continue;    // 0 (or empty) = do not create this module
 
             var restart = Constants.CHOICE.RESTART_MODE.NONE;
-            if (m.restartField &amp;&amp; plan.isValidField(m.restartField))
+            if (m.restartField && plan.isValidField(m.restartField))
                 restart = String(plan.getValue(m.restartField) || restart);
 
             out.push({ module: m.code, order: order, restart: restart });
@@ -202,7 +202,7 @@ ModulePlanService.prototype = {
     // activates nothing at all.
     _licenceFilter: function (list) {
         var out = [];
-        for (var i = 0; i &lt; list.length; i++) {
+        for (var i = 0; i < list.length; i++) {
             var m = this._moduleByCode(list[i].module);
             if (!m) {
                 gs.error(this.LOG + 'unknown module in plan: ' + list[i].module);
@@ -258,7 +258,7 @@ ModulePlanService.prototype = {
 
         var allowed = Constants.values(Constants.CHOICE.RESTART_MODE);
 
-        for (var i = 0; i &lt; answer.length; i++) {
+        for (var i = 0; i < answer.length; i++) {
             var row = answer[i];
             if (!row || !row.module) {
                 gs.error(this.LOG + 'advanced script entry ' + i + ' has no module - dropped');
@@ -271,7 +271,7 @@ ModulePlanService.prototype = {
                 continue;
             }
             var order = parseInt(row.order, 10);
-            if (isNaN(order) || order &lt;= 0)
+            if (isNaN(order) || order <= 0)
                 continue;   // 0 from a script means the same as 0 in a column
 
             var restart = String(row.restart || Constants.CHOICE.RESTART_MODE.NONE);
@@ -301,7 +301,7 @@ ModulePlanService.prototype = {
         var list = plan ? this.normalize(plan, submission) : this._legacyList();
 
         var byOrder = {};
-        for (var i = 0; i &lt; list.length; i++) {
+        for (var i = 0; i < list.length; i++) {
             var key = String(list[i].order);
             if (!byOrder[key])
                 byOrder[key] = [];
@@ -316,7 +316,7 @@ ModulePlanService.prototype = {
         orders.sort(function (a, b) { return a - b; });
 
         var groups = [];
-        for (var j = 0; j &lt; orders.length; j++) {
+        for (var j = 0; j < orders.length; j++) {
             groups.push({
                 order: orders[j],
                 modules: byOrder[String(orders[j])]
@@ -330,10 +330,10 @@ ModulePlanService.prototype = {
     _legacyList: function () {
         var out = [];
         var cfg = Constants.getModuleExecutionConfig();
-        var stages = (cfg.execution &amp;&amp; cfg.execution.stages) || [];
-        for (var i = 0; i &lt; stages.length; i++) {
+        var stages = (cfg.execution && cfg.execution.stages) || [];
+        for (var i = 0; i < stages.length; i++) {
             var codes = stages[i].modules || [];
-            for (var j = 0; j &lt; codes.length; j++) {
+            for (var j = 0; j < codes.length; j++) {
                 var m = this._moduleByCode(codes[j]);
                 if (m) {
                     out.push({
@@ -361,8 +361,8 @@ ModulePlanService.prototype = {
         }
 
         var idx = -1;
-        for (var i = 0; i &lt; groups.length &amp;&amp; idx === -1; i++) {
-            for (var j = 0; j &lt; groups[i].modules.length; j++) {
+        for (var i = 0; i < groups.length && idx === -1; i++) {
+            for (var j = 0; j < groups[i].modules.length; j++) {
                 if (groups[i].modules[j].module === done.code) {
                     idx = i;
                     break;
@@ -377,7 +377,7 @@ ModulePlanService.prototype = {
 
         // Every parallel sibling in this group must be finished first.
         var siblings = groups[idx].modules;
-        for (var s = 0; s &lt; siblings.length; s++) {
+        for (var s = 0; s < siblings.length; s++) {
             if (!this._isDone(siblings[s].module, submissionId))
                 return [];
         }
@@ -413,7 +413,7 @@ ModulePlanService.prototype = {
     progress: function (submissionId) {
         var out = {};
         var mods = this._modules();
-        for (var i = 0; i &lt; mods.length; i++) {
+        for (var i = 0; i < mods.length; i++) {
             var m = mods[i];
             var row = {
                 exists: false,
@@ -461,7 +461,7 @@ ModulePlanService.prototype = {
     // =================================================================
     // UPDATE HANDLING
     // =================================================================
-    // Returns { mode: 'override'|'new_version', submission: &lt;sys_id&gt; }.
+    // Returns { mode: 'override'|'new_version', submission: <sys_id> }.
     applyResubmit: function (submissionId) {
         var submission = this._submission(submissionId);
         if (!submission)
@@ -491,11 +491,11 @@ ModulePlanService.prototype = {
         var list = this.normalize(plan, submission);
 
         var included = {};
-        for (var i = 0; i &lt; list.length; i++)
+        for (var i = 0; i < list.length; i++)
             included[list[i].module] = list[i];
 
         var mods = this._modules();
-        for (var j = 0; j &lt; mods.length; j++) {
+        for (var j = 0; j < mods.length; j++) {
             var m = mods[j];
             var entry = included[m.code];
             var kase = m.table ? this.latestCase(m.table, submissionId) : null;
@@ -503,7 +503,7 @@ ModulePlanService.prototype = {
             // order 0: the plan says this module is no longer part of the
             // journey, so an in-flight case is cancelled - record AND playbook.
             if (!entry) {
-                if (kase &amp;&amp; String(kase.getValue('state')) !== this.STATE.cancelled)
+                if (kase && String(kase.getValue('state')) !== this.STATE.cancelled)
                     this.cancelCase(kase, m, 'Module removed by the module plan on update');
                 continue;
             }
@@ -611,7 +611,7 @@ ModulePlanService.prototype = {
         }
 
         var refs = this._referrersOf(table);
-        for (var i = 0; i &lt; refs.length; i++) {
+        for (var i = 0; i < refs.length; i++) {
             var gr = new GlideRecord(refs[i].table);
             if (!gr.isValid())
                 continue;
@@ -636,7 +636,7 @@ ModulePlanService.prototype = {
         while (d.next()) {
             var owner = String(d.getValue('name') || '');
             var field = String(d.getValue('element') || '');
-            if (owner &amp;&amp; field &amp;&amp; owner !== table)
+            if (owner && field && owner !== table)
                 out.push({ table: owner, field: field });
         }
         return out;
@@ -671,7 +671,7 @@ ModulePlanService.prototype = {
             return '';
         }
 
-        // oldSysId -&gt; newSysId, so grandchildren re-parent onto the copy of
+        // oldSysId -> newSysId, so grandchildren re-parent onto the copy of
         // their own parent rather than onto the submission.
         var idMap = {};
         idMap[oldId] = newId;
@@ -679,7 +679,7 @@ ModulePlanService.prototype = {
         if (!subRule || subRule.copyAttachments)
             this._copyAttachments(Constants.TABLE.SUBMISSION, oldId, newId);
 
-        for (var i = 0; i &lt; rules.length; i++) {
+        for (var i = 0; i < rules.length; i++) {
             var rule = rules[i];
             if (rule.table === Constants.TABLE.SUBMISSION)
                 continue;
@@ -695,7 +695,7 @@ ModulePlanService.prototype = {
         submission.update();
 
         gs.info(this.LOG + 'submission ' + submission.getValue('number')
-            + ' superseded: ' + oldId + ' -&gt; ' + newId + ' (version ' + version + ')');
+            + ' superseded: ' + oldId + ' -> ' + newId + ' (version ' + version + ')');
         return newId;
     },
 
@@ -770,19 +770,19 @@ ModulePlanService.prototype = {
         }
 
         gs.info(this.LOG + rule.table + ': ' + rule.action
-            + ' -&gt; copied ' + copied + ', moved ' + moved + ', cancelled ' + cancelled);
+            + ' -> copied ' + copied + ', moved ' + moved + ', cancelled ' + cancelled);
     },
 
     // Re-point every field on an existing row whose value names a record that
     // has been copied or moved in this pass, except the one already handled.
     _rewire: function (gr, table, idMap, exceptField) {
         var cols = this._columnsOf(table);
-        for (var i = 0; i &lt; cols.length; i++) {
+        for (var i = 0; i < cols.length; i++) {
             var col = cols[i];
             if (col === exceptField || !gr.isValidField(col))
                 continue;
             var val = gr.getValue(col);
-            if (val &amp;&amp; idMap[val])
+            if (val && idMap[val])
                 gr.setValue(col, idMap[val]);
         }
     },
@@ -811,7 +811,7 @@ ModulePlanService.prototype = {
     },
 
     _ruleFor: function (rules, table) {
-        for (var i = 0; i &lt; rules.length; i++) {
+        for (var i = 0; i < rules.length; i++) {
             if (rules[i].table === table)
                 return rules[i];
         }
@@ -828,7 +828,7 @@ ModulePlanService.prototype = {
         if (!rule || !rule.resetFields)
             return set;
         var parts = rule.resetFields.split(',');
-        for (var i = 0; i &lt; parts.length; i++) {
+        for (var i = 0; i < parts.length; i++) {
             var f = parts[i].trim();
             if (f)
                 set[f] = true;
@@ -855,7 +855,7 @@ ModulePlanService.prototype = {
 
         var map = idMap || {};
         var cols = this._columnsOf(table);
-        for (var i = 0; i &lt; cols.length; i++) {
+        for (var i = 0; i < cols.length; i++) {
             var col = cols[i];
             if (skip[col] || resetSet[col])
                 continue;
@@ -875,7 +875,7 @@ ModulePlanService.prototype = {
         var seen = {};
         var current = table;
 
-        while (current &amp;&amp; !seen[current]) {
+        while (current && !seen[current]) {
             seen[current] = true;
 
             var d = new GlideRecord('sys_dictionary');
@@ -885,7 +885,7 @@ ModulePlanService.prototype = {
             while (d.next()) {
                 var el = String(d.getValue('element') || '');
                 var type = String(d.getValue('internal_type') || '');
-                if (el &amp;&amp; type !== 'collection' &amp;&amp; out.indexOf(el) === -1)
+                if (el && type !== 'collection' && out.indexOf(el) === -1)
                     out.push(el);
             }
 
@@ -913,7 +913,7 @@ ModulePlanService.prototype = {
             var copied = new GlideSysAttachment().copy(table, oldId, table, newId);
             if (copied)
                 gs.info(this.LOG + 'copied attachments for ' + table + ' ' + oldId
-                    + ' -&gt; ' + newId);
+                    + ' -> ' + newId);
         } catch (e) {
             gs.error(this.LOG + 'attachment copy failed for ' + table + ' ' + oldId
                 + ': ' + e.message);
@@ -933,9 +933,9 @@ ModulePlanService.prototype = {
             var res = sn_playbook.PlaybookExperience
                 .cancelPlaybooksByParentRecord(kase, reason || 'Cancelled by the module plan');
 
-            var contexts = (res &amp;&amp; res.canceledPlaybookContext) || [];
-            for (var i = 0; i &lt; contexts.length; i++) {
-                var state = contexts[i].state &amp;&amp; contexts[i].state.value;
+            var contexts = (res && res.canceledPlaybookContext) || [];
+            for (var i = 0; i < contexts.length; i++) {
+                var state = contexts[i].state && contexts[i].state.value;
                 if (String(state) === 'PENDING_CANCEL')
                     this._forceCancel(contexts[i].sys_id, reason);
                 this._logPlaybookErrors(contexts[i]);
@@ -943,8 +943,8 @@ ModulePlanService.prototype = {
 
             // Not every playbook can be stopped - some started activities
             // refuse. Never report a case clean when its playbook did not stop.
-            var skipped = (res &amp;&amp; res.skippedPlaybookContext) || [];
-            for (var s = 0; s &lt; skipped.length; s++) {
+            var skipped = (res && res.skippedPlaybookContext) || [];
+            for (var s = 0; s < skipped.length; s++) {
                 gs.warn(this.LOG + 'playbook ' + skipped[s].title
                     + ' could NOT be cancelled on case ' + kase.getUniqueValue());
                 this._logPlaybookErrors(skipped[s]);
@@ -964,8 +964,8 @@ ModulePlanService.prototype = {
                 return;
             var res = sn_playbook.PlaybookExperience.cancelPlaybook(
                 ctx, reason || 'Cancelled by the module plan', undefined, true);
-            var list = (res &amp;&amp; res.canceledPlaybookContext) || [];
-            for (var i = 0; i &lt; list.length; i++)
+            var list = (res && res.canceledPlaybookContext) || [];
+            for (var i = 0; i < list.length; i++)
                 this._logPlaybookErrors(list[i]);
         } catch (e) {
             gs.error(this.LOG + 'force cancel failed for playbook context '
@@ -974,8 +974,8 @@ ModulePlanService.prototype = {
     },
 
     _logPlaybookErrors: function (ctx) {
-        var errors = (ctx &amp;&amp; ctx.errors) || [];
-        for (var i = 0; i &lt; errors.length; i++) {
+        var errors = (ctx && ctx.errors) || [];
+        for (var i = 0; i < errors.length; i++) {
             gs.error(this.LOG + 'playbook ' + (ctx.title || ctx.sys_id)
                 + ': ' + errors[i].type + ' - ' + errors[i].message);
         }
@@ -993,8 +993,8 @@ ModulePlanService.prototype = {
                 return;
             }
 
-            for (var i = 0; i &lt; running.length; i++) {
-                var state = String((running[i].state &amp;&amp; running[i].state.value) || '');
+            for (var i = 0; i < running.length; i++) {
+                var state = String((running[i].state && running[i].state.value) || '');
                 var ctx = new GlideRecord('sys_pd_context');
                 if (!ctx.get(running[i].sys_id))
                     continue;
@@ -1057,7 +1057,7 @@ ModulePlanService.prototype = {
     },
 
     type: 'ModulePlanService'
-};</script>
+};]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-08-20 12:00:00</sys_created_on>

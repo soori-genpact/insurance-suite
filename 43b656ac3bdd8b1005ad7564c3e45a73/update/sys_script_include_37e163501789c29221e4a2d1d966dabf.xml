@@ -9,7 +9,7 @@
         <mobile_callable>false</mobile_callable>
         <name>MergeEngine</name>
         <sandbox_callable>false</sandbox_callable>
-        <script>var MergeEngine = Class.create();
+        <script><![CDATA[var MergeEngine = Class.create();
 MergeEngine.prototype = {
     initialize: function() {
         this.FIELD = 'x_gegis_ins_policy_extraction_field';
@@ -55,7 +55,7 @@ MergeEngine.prototype = {
                 row.classification = 'new';
             else
                 row.classification = 'conflict';
-            row.suggested = row.classification === 'conflict' &amp;&amp; row.is_protected ?
+            row.suggested = row.classification === 'conflict' && row.is_protected ?
                 'keep_existing' : (row.classification === 'unchanged' ? 'accept' : 'take_new');
             this._presetDecision(f, row);
             rows.push(row);
@@ -70,7 +70,7 @@ MergeEngine.prototype = {
     applyMerge: function(newExtractionGr) {
         var applied = this.applier.apply(newExtractionGr);
         var prev = new GlideRecord('x_gegis_ins_policy_extraction');
-        if (newExtractionGr.supersedes &amp;&amp; prev.get(String(newExtractionGr.supersedes))) {
+        if (newExtractionGr.supersedes && prev.get(String(newExtractionGr.supersedes))) {
             prev.disposition = 'superseded';
             prev.merged_into = newExtractionGr.getUniqueValue();
             prev.update();
@@ -111,7 +111,7 @@ MergeEngine.prototype = {
 
     _currentValue: function(fieldGr, submissionId) {
         var targetId = String(fieldGr.target_sys_id);
-        if (!targetId &amp;&amp; String(fieldGr.target_table) === 'x_gegis_ins_policy_submission')
+        if (!targetId && String(fieldGr.target_table) === 'x_gegis_ins_policy_submission')
             targetId = submissionId;
         if (!targetId)
             return '';
@@ -141,7 +141,7 @@ MergeEngine.prototype = {
     },
 
     type: 'MergeEngine'
-};</script>
+};]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-11 12:00:00</sys_created_on>
