@@ -13,6 +13,10 @@
         <element label="Changed by" max_length="32" name="changed_by" type="string"/>
         <!-- when the change was made -->
         <element label="Changed on" max_length="40" name="changed_on" type="glide_date_time"/>
+        <!-- which column changed - manual_value or override_value -->
+        <element label="Changed field" max_length="40" name="changed_field" type="string"/>
+        <!-- why the override was made; only an override carries one, plain manual entry does not -->
+        <element label="Override reason" max_length="400" name="reason" type="string"/>
 
         <index name="index">
             <element name="extraction_field"/>

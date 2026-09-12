@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_gegis_ins_policy_extraction_field</collection>
+        <condition/>
+        <description>Stamps version on an extraction field (1 on insert, +1 on each manual_value change) and writes the matching Extraction Field Audit row.</description>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Extraction field value audit</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script>(function executeRule(current, previous /*null when async*/) {
+
+    var AUDIT = 'x_gegis_ins_policy_extraction_field_audit';
+    var COL = 'manual_value';
+    var MAX = 100;                       // audit old_value / new_value width
+
+    var isNew = current.isNewRecord();
+    var newValue = String(current.getValue(COL) || '');
+    var oldValue = isNew ? '' : String(previous.getValue(COL) || '');
+
+    // only a real change to manual_value is a revision - editing review_status,
+    // confidence or anything else must not burn a version number
+    if (isNew ? !newValue : (newValue === oldValue))
+        return;
+
+    // version is stamped in this same write - no second update(), so no
+    // recursion back into this rule
+    var version = isNew ? 1 : (parseInt(previous.getValue('version'), 10) || 1) + 1;
+    current.setValue('version', version);
+
+    var audit = new GlideRecord(AUDIT);
+    if (!audit.isValid()) {
+        gs.error('[extraction_field] ' + AUDIT + ' is missing - ' + COL
+            + ' change on ' + current.getUniqueValue() + ' was NOT audited');
+        return;
+    }
+
+    audit.initialize();
+    audit.setValue('version', version);
+    // sys_id is assigned before a before-insert rule runs, so this is the id the
+    // row is about to be saved under
+    audit.setValue('extraction_field', current.getUniqueValue());
+    audit.setValue('changed_field', COL);
+    audit.setValue('old_value', oldValue.substring(0, MAX));
+    audit.setValue('new_value', newValue.substring(0, MAX));
+    audit.setValue('changed_by', gs.getUserID());
+    audit.setValue('changed_on', new GlideDateTime());
+    audit.insert();
+
+})(current, previous);</script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-09-13 12:00:00</sys_created_on>
+        <sys_id>b34fea33420e4e674985898ad8685b10</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Extraction field value audit</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_b34fea33420e4e674985898ad8685b10</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-09-13 12:00:00</sys_updated_on>
+        <template/>
+        <when>before</when>
+    </sys_script>
+</record_update>

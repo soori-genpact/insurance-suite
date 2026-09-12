@@ -28,6 +28,8 @@
             </choice>
         </element>
         <element label="Page number" max_length="40" name="page_number" type="integer"/>
+        <element default="1" label="Version" max_length="40" name="version" type="integer"/>
+        <element label="Manual value" max_length="100" name="manual_value" type="string"/>
         <element label="Final value" max_length="1000" name="final_value" type="string"/>
         <element label="Bounding box" max_length="100" name="bounding_box" type="string"/>
         <element label="Field path (OGNL)" mandatory="true" max_length="300" name="field_path" type="string"/>

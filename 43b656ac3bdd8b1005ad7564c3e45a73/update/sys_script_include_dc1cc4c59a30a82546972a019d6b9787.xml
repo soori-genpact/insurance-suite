@@ -59,11 +59,23 @@ ExtractionApplier.prototype = {
         return applied;
     },
 
-    /** The agreed truth for a field: override wins, then mapped, then raw. */
+    /**
+     * The agreed truth for a field. First one present wins:
+     *
+     *   override_value  a privileged correction - outranks everything, and is
+     *                   the only one that carries an override_reason
+     *   manual_value    an ordinary human entry
+     *   mapped_value    the AI's normalised form ("NY" -> "New York"), which is
+     *                   what should reach the target column, not the raw text
+     *   extracted_value the raw text as read off the document
+     */
     getFinalValue: function(fieldGr) {
         var override = String(fieldGr.override_value);
         if (override)
             return override;
+        var manual = String(fieldGr.manual_value);
+        if (manual)
+            return manual;
         var mapped = String(fieldGr.mapped_value);
         return mapped ? mapped : String(fieldGr.extracted_value);
     },
