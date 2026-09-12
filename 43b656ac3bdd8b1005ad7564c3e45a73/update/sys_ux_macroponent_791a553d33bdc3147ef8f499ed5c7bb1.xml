@@ -147,16 +147,17 @@
                     },
                     "slot": "content",
                     "styles": {
+                        "padding-bottom": "var(--now-scalable-space--xl)",
                         "padding-top": "var(--now-scalable-space--lg)"
                     }
                 },
                 {
                     "definition": {
-                        "id": "8e3c91bf74e1881c6607c345c52e2ac3",
+                        "id": "423c213c411209218cba64cb1738b5f0",
                         "type": "MACROPONENT"
                     },
-                    "elementId": "json_data_table_1",
-                    "elementLabel": "JSON Data Table 1",
+                    "elementId": "table_crud_panel_1",
+                    "elementLabel": "Table CRUD Panel 1",
                     "eventMappings": [],
                     "isHidden": {
                         "type": "JSON_LITERAL",
@@ -164,206 +165,388 @@
                     },
                     "preset": null,
                     "propertyValues": {
-                        "enableRowClick": {
-                            "type": "JSON_LITERAL",
-                            "value": false
-                        },
-                        "referenceColor": {
-                            "type": "JSON_LITERAL",
-                            "value": ""
-                        },
-                        "showSectionHeaders": {
+                        "attachmentAllowDelete": {
                             "type": "JSON_LITERAL",
                             "value": true
                         },
-                        "stripedRows": {
+                        "attachmentAllowUpload": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "attachmentLimit": {
+                            "type": "JSON_LITERAL",
+                            "value": 50
+                        },
+                        "attachmentLinkField": {
+                            "type": "JSON_LITERAL",
+                            "value": "attachment_url"
+                        },
+                        "attachmentNameField": {
+                            "type": "JSON_LITERAL",
+                            "value": "document_name"
+                        },
+                        "attachmentParentField": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "attachmentQuery": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "attachmentSizeField": {
+                            "type": "JSON_LITERAL",
+                            "value": "file_size_kb"
+                        },
+                        "attachmentSizeUnit": {
+                            "type": "JSON_LITERAL",
+                            "value": "kb"
+                        },
+                        "attachmentSource": {
+                            "type": "JSON_LITERAL",
+                            "value": "table"
+                        },
+                        "attachmentSourceTableField": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "attachmentTable": {
+                            "type": "JSON_LITERAL",
+                            "value": "x_gegis_ins_policy_document"
+                        },
+                        "borderColor": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "canCreate": {
                             "type": "JSON_LITERAL",
                             "value": false
                         },
-                        "tableJson": {
+                        "canDelete": {
+                            "type": "JSON_LITERAL",
+                            "value": false
+                        },
+                        "canEdit": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "columns": {
                             "type": "JSON_LITERAL",
                             "value": {
-                                "columns": [
+                                "items": [
                                     {
-                                        "key": "recordId",
-                                        "label": "RECORD ID",
-                                        "table": "x_gegis_library_screening_record",
-                                        "type": "reference",
-                                        "width": "150px"
+                                        "field": "screened_name",
+                                        "label": "Screened Name"
                                     },
                                     {
-                                        "key": "alertId",
-                                        "label": "ALERT ID",
-                                        "type": "text",
-                                        "width": "140px"
+                                        "field": "provider",
+                                        "label": "Provider"
                                     },
                                     {
-                                        "key": "entityName",
-                                        "label": "ENTITY NAME",
-                                        "type": "text",
-                                        "width": "200px"
+                                        "field": "sanction_list",
+                                        "label": "Sanction List"
                                     },
                                     {
-                                        "key": "screeningResult",
-                                        "label": "SCREENING RESULT",
-                                        "type": "pill",
-                                        "width": "140px"
+                                        "field": "sanction_hit",
+                                        "label": "Match Status",
+                                        "pillColors": {
+                                            "match": "critical",
+                                            "no_hit": "positive"
+                                        },
+                                        "type": "pill"
                                     },
                                     {
-                                        "key": "complianceStatus",
-                                        "label": "COMPLIANCE STATUS",
-                                        "type": "pill",
-                                        "width": "140px"
+                                        "field": "match_score",
+                                        "label": "Score",
+                                        "type": "number"
                                     },
                                     {
-                                        "key": "reviewState",
-                                        "label": "REVIEW STATE",
-                                        "type": "pill",
-                                        "width": "120px"
+                                        "field": "compliance_status",
+                                        "label": "Disposition",
+                                        "pillColors": {
+                                            "false_hit": "positive",
+                                            "pending": "warning",
+                                            "superseded": "neutral",
+                                            "true_hit": "critical"
+                                        },
+                                        "type": "pill"
                                     },
                                     {
-                                        "key": "lastUpdate",
-                                        "label": "LAST UPDATE",
-                                        "type": "text",
-                                        "width": "1fr"
-                                    },
-                                    {
-                                        "key": "expand",
-                                        "label": "",
-                                        "type": "action",
-                                        "width": "48px"
-                                    }
-                                ],
-                                "rows": [
-                                    {
-                                        "alertId": "ALR-2024-0101",
-                                        "complianceStatus": {
-                                            "type": "text",
-                                            "value": "-"
-                                        },
-                                        "entityName": "TechGlobal Industries",
-                                        "expand": {
-                                            "buttons": [
-                                                {
-                                                    "actionKey": "expand",
-                                                    "icon": "chevron-right-outline",
-                                                    "iconOnly": true,
-                                                    "label": "Expand"
-                                                }
-                                            ]
-                                        },
-                                        "id": "rec-101",
-                                        "lastUpdate": "2026-02-12 14:22:18",
-                                        "recordId": "REC-101",
-                                        "reviewState": {
-                                            "type": "text",
-                                            "value": "-"
-                                        },
-                                        "screeningResult": {
-                                            "value": "No Hit",
-                                            "variant": "neutral"
-                                        },
-                                        "sysId": ""
-                                    },
-                                    {
-                                        "alertId": "ALR-2024-0102",
-                                        "complianceStatus": {
-                                            "value": "False Hit",
-                                            "variant": "included"
-                                        },
-                                        "entityName": "International Risk Solutions",
-                                        "expand": {
-                                            "buttons": [
-                                                {
-                                                    "actionKey": "expand",
-                                                    "icon": "chevron-right-outline",
-                                                    "iconOnly": true,
-                                                    "label": "Expand"
-                                                }
-                                            ]
-                                        },
-                                        "id": "rec-102",
-                                        "lastUpdate": "2026-02-12 14:22:18",
-                                        "recordId": "REC-102",
-                                        "reviewState": {
-                                            "value": "Closed",
-                                            "variant": "neutral"
-                                        },
-                                        "screeningResult": {
-                                            "value": "Match",
-                                            "variant": "medium"
-                                        },
-                                        "sysId": ""
-                                    },
-                                    {
-                                        "alertId": "ALR-2024-0103",
-                                        "complianceStatus": {
-                                            "value": "False Hit",
-                                            "variant": "included"
-                                        },
-                                        "entityName": "Michael Anderson",
-                                        "expand": {
-                                            "buttons": [
-                                                {
-                                                    "actionKey": "expand",
-                                                    "icon": "chevron-right-outline",
-                                                    "iconOnly": true,
-                                                    "label": "Expand"
-                                                }
-                                            ]
-                                        },
-                                        "id": "rec-103",
-                                        "lastUpdate": "2026-02-12 14:22:18",
-                                        "recordId": "REC-103",
-                                        "reviewState": {
-                                            "value": "Open",
-                                            "variant": "info"
-                                        },
-                                        "screeningResult": {
-                                            "value": "Match",
-                                            "variant": "medium"
-                                        },
-                                        "sysId": ""
-                                    },
-                                    {
-                                        "alertId": "ALR-2024-0104",
-                                        "complianceStatus": {
-                                            "type": "text",
-                                            "value": "-"
-                                        },
-                                        "entityName": "Nordic Reinsurance Group",
-                                        "expand": {
-                                            "buttons": [
-                                                {
-                                                    "actionKey": "expand",
-                                                    "icon": "chevron-right-outline",
-                                                    "iconOnly": true,
-                                                    "label": "Expand"
-                                                }
-                                            ]
-                                        },
-                                        "id": "rec-104",
-                                        "lastUpdate": "2026-02-12 14:22:18",
-                                        "recordId": "REC-104",
-                                        "reviewState": {
-                                            "type": "text",
-                                            "value": "-"
-                                        },
-                                        "screeningResult": {
-                                            "value": "No Hit",
-                                            "variant": "neutral"
-                                        },
-                                        "sysId": ""
+                                        "field": "screened_on",
+                                        "label": "Screened on"
                                     }
                                 ]
                             }
+                        },
+                        "displayTitle": {
+                            "type": "JSON_LITERAL",
+                            "value": "Sanctions"
+                        },
+                        "editIcon": {
+                            "type": "JSON_LITERAL",
+                            "value": "chevron-right-outline"
+                        },
+                        "editTooltip": {
+                            "type": "JSON_LITERAL",
+                            "value": "Open"
+                        },
+                        "enableResize": {
+                            "type": "JSON_LITERAL",
+                            "value": false
+                        },
+                        "enableSort": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "filterEnabled": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "fixedQuery": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "formApplyUiPolicy": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "formBooleanControl": {
+                            "type": "JSON_LITERAL",
+                            "value": "toggle"
+                        },
+                        "formColumns": {
+                            "type": "JSON_LITERAL",
+                            "value": 1
+                        },
+                        "formConfig": {
+                            "type": "JSON_LITERAL",
+                            "value": {
+                                "sections": [
+                                    {
+                                        "columns": 1,
+                                        "fields": [
+                                            {
+                                                "control": "pills",
+                                                "field": "compliance_status",
+                                                "label": "Compliance",
+                                                "pillStyle": "status",
+                                                "pillTones": {
+                                                    "false_hit": "positive",
+                                                    "pending": "warning",
+                                                    "superseded": "neutral",
+                                                    "true_hit": "critical"
+                                                }
+                                            },
+                                            {
+                                                "field": "decision_reason",
+                                                "label": "Decision comments",
+                                                "mandatoryWhen": "compliance_status!=pending",
+                                                "rows": 4
+                                            },
+                                            {
+                                                "field": "decided_by",
+                                                "readOnly": true,
+                                                "visibleWhen": "compliance_status!=pending^compliance_statusISNOTEMPTY"
+                                            },
+                                            {
+                                                "field": "decided_on",
+                                                "readOnly": true,
+                                                "visibleWhen": "compliance_status!=pending^compliance_statusISNOTEMPTY"
+                                            }
+                                        ],
+                                        "title": "Decision",
+                                        "visibleWhen": "sanction_hit=match"
+                                    },
+                                    {
+                                        "columns": 1,
+                                        "fields": [
+                                            {
+                                                "control": "pills",
+                                                "field": "sanction_hit",
+                                                "label": "Hit",
+                                                "pillStyle": "status",
+                                                "pillTones": {
+                                                    "match": "critical",
+                                                    "no_hit": "positive"
+                                                },
+                                                "readOnly": true
+                                            },
+                                            {
+                                                "field": "sanction_list",
+                                                "readOnly": true
+                                            },
+                                            {
+                                                "field": "provider",
+                                                "readOnly": true
+                                            },
+                                            {
+                                                "field": "match_score",
+                                                "readOnly": true
+                                            },
+                                            {
+                                                "field": "matched_name",
+                                                "readOnly": true
+                                            },
+                                            {
+                                                "field": "matched_address",
+                                                "readOnly": true
+                                            }
+                                        ],
+                                        "title": "Match"
+                                    },
+                                    {
+                                        "columns": 1,
+                                        "fields": [
+                                            {
+                                                "field": "screened_name",
+                                                "readOnly": true
+                                            },
+                                            {
+                                                "field": "screened_role",
+                                                "readOnly": true
+                                            },
+                                            {
+                                                "field": "subject_type",
+                                                "readOnly": true
+                                            },
+                                            {
+                                                "field": "entity_type",
+                                                "readOnly": true
+                                            },
+                                            {
+                                                "field": "date_of_birth",
+                                                "readOnly": true
+                                            },
+                                            {
+                                                "field": "screened_address",
+                                                "readOnly": true
+                                            },
+                                            {
+                                                "field": "country",
+                                                "readOnly": true
+                                            }
+                                        ],
+                                        "title": "Screened subject"
+                                    }
+                                ]
+                            }
+                        },
+                        "formDefaultValues": {
+                            "type": "JSON_LITERAL",
+                            "value": {}
+                        },
+                        "formEngine": {
+                            "type": "JSON_LITERAL",
+                            "value": "dynamic-form-v2"
+                        },
+                        "formFieldConfig": {
+                            "type": "JSON_LITERAL",
+                            "value": {}
+                        },
+                        "formHideSystemFields": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "formSaveLabel": {
+                            "type": "JSON_LITERAL",
+                            "value": "Save"
+                        },
+                        "formShowUiActions": {
+                            "type": "JSON_LITERAL",
+                            "value": false
+                        },
+                        "formView": {
+                            "type": "JSON_LITERAL",
+                            "value": "Default view"
+                        },
+                        "groupBy": {
+                            "type": "JSON_LITERAL",
+                            "value": "screened_name"
+                        },
+                        "groupScope": {
+                            "type": "JSON_LITERAL",
+                            "value": "all"
+                        },
+                        "groupsCollapsed": {
+                            "type": "JSON_LITERAL",
+                            "value": false
+                        },
+                        "headerColor": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "maxGroupRows": {
+                            "type": "JSON_LITERAL",
+                            "value": 500
+                        },
+                        "orderBy": {
+                            "type": "JSON_LITERAL",
+                            "value": "compliance_status"
+                        },
+                        "orderDescending": {
+                            "type": "JSON_LITERAL",
+                            "value": false
+                        },
+                        "pageSize": {
+                            "type": "JSON_LITERAL",
+                            "value": 10
+                        },
+                        "panelMode": {
+                            "type": "JSON_LITERAL",
+                            "value": "overlay"
+                        },
+                        "panelTabs": {
+                            "type": "JSON_LITERAL",
+                            "value": {
+                                "items": [
+                                    {
+                                        "icon": "document-outline",
+                                        "id": "details",
+                                        "label": "Details",
+                                        "type": "form"
+                                    },
+                                    {
+                                        "id": "docs",
+                                        "label": "Documents",
+                                        "type": "attachments"
+                                    }
+                                ]
+                            }
+                        },
+                        "panelTitle": {
+                            "type": "JSON_LITERAL",
+                            "value": "Sanction"
+                        },
+                        "panelWidth": {
+                            "type": "JSON_LITERAL",
+                            "value": 440
+                        },
+                        "searchFields": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "showBorder": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "statusField": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "stripedRows": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "subtitle": {
+                            "type": "JSON_LITERAL",
+                            "value": "Screening results — review and decide"
+                        },
+                        "tableName": {
+                            "type": "JSON_LITERAL",
+                            "value": "x_gegis_ins_policy_party_sanction"
                         }
                     },
                     "slot": "content",
-                    "styles": {
-                        "padding-bottom": "var(--now-scalable-space--xl)",
-                        "padding-top": "var(--now-scalable-space--3xl)"
-                    }
+                    "styles": null
                 }
             ],
             "layout": {}
@@ -1194,35 +1377,51 @@
 ]</props>
         <required_sys_props/>
         <required_translations>[ {
-  "message" : "ALERT ID",
+  "message" : "Compliance",
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "COMPLIANCE STATUS",
+  "message" : "Decision comments",
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "ENTITY NAME",
+  "message" : "Details",
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "Expand",
+  "message" : "Disposition",
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "LAST UPDATE",
+  "message" : "Documents",
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "RECORD ID",
+  "message" : "Hit",
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "REVIEW STATE",
+  "message" : "Match Status",
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "SCREENING RESULT",
+  "message" : "Provider",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Sanction List",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Score",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Screened Name",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Screened on",
   "code" : "",
   "comment" : ""
 } ]</required_translations>
@@ -1274,14 +1473,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-01 06:05:09</sys_created_on>
         <sys_id>791a553d33bdc3147ef8f499ed5c7bb1</sys_id>
-        <sys_mod_count>15</sys_mod_count>
+        <sys_mod_count>23</sys_mod_count>
         <sys_name>PS Check for Sanctions AUI</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_791a553d33bdc3147ef8f499ed5c7bb1</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-05 13:21:37</sys_updated_on>
+        <sys_updated_on>2026-09-12 18:07:10</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=791a553d33bdc3147ef8f499ed5c7bb1"/>
 </record_update>
