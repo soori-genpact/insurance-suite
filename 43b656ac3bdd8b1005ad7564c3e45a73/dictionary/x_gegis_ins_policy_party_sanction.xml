@@ -17,7 +17,7 @@
         <element attributes="edge_encryption_enabled=true" label="Screened on" max_length="40" name="screened_on" type="glide_date_time"/>
         <element attributes="encode_utf8=false" label="Party" max_length="32" name="party" reference="x_gegis_ins_policy_party" type="reference"/>
         <element attributes="edge_encryption_enabled=true" label="Screening run" max_length="64" name="screening_run" type="string"/>
-        <element choice="3" default="pending" label="Compliance status" mandatory="true" max_length="40" name="compliance_status" type="choice">
+        <element choice="3" label="Compliance status" max_length="40" name="compliance_status" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Pending" sequence="10" value="pending"/>
                 <element inactive_on_update="false" label="False Hit" sequence="20" value="false_hit"/>
