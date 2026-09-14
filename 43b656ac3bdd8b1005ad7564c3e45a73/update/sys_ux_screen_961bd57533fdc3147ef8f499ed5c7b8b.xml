@@ -91,10 +91,12 @@
                 "value": ""
             },
             "description": {
+                "displayValue": "",
                 "elementData": {
                     "type": "html"
                 },
-                "value": "&lt;p&gt;A sample description for an activity&lt;/p&gt;"
+                "label": "Description (DEPRECATED)",
+                "value": ""
             },
             "experience_status_record": {
                 "displayValue": "",
@@ -123,6 +125,7 @@
                     "reference": "st_sys_design_system_icon",
                     "type": "reference"
                 },
+                "label": "Icon (DEPRECATED)",
                 "value": ""
             },
             "is_automated": {
@@ -134,9 +137,11 @@
                 "value": "false"
             },
             "pending_description": {
+                "displayValue": "",
                 "elementData": {
                     "type": "html"
                 },
+                "label": "Pending State Description (DEPRECATED)",
                 "value": ""
             },
             "pending_title": {
@@ -154,6 +159,14 @@
                 "value": ""
             },
             "title": {
+                "elementData": {
+                    "type": "string"
+                },
+                "label": "Title (DEPRECATED)",
+                "value": ""
+            },
+            "u_submission": {
+                "displayValue": "",
                 "elementData": {
                     "type": "string"
                 },
@@ -209,11 +222,23 @@
         <order>0</order>
         <parent_macroponent display_value="Playbook App Shell">64f1d8fbc3ca201098c960bc0eba8fe3</parent_macroponent>
         <required_translations>[ {
+  "message" : "Description (DEPRECATED)",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "Footer (DEPRECATED)",
   "code" : "",
   "comment" : ""
 }, {
+  "message" : "Icon (DEPRECATED)",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "Is Automated (DEPRECATED)",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Pending State Description (DEPRECATED)",
   "code" : "",
   "comment" : ""
 }, {
@@ -222,6 +247,10 @@
   "comment" : ""
 }, {
   "message" : "Tagline (DEPRECATED)",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Title (DEPRECATED)",
   "code" : "",
   "comment" : ""
 } ]</required_translations>
@@ -234,7 +263,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>961bd57533fdc3147ef8f499ed5c7b8b</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>14</sys_mod_count>
         <sys_name>PS End Submission Clearance AUI</sys_name>
         <sys_overrides/>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
@@ -242,7 +271,7 @@
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_screen_961bd57533fdc3147ef8f499ed5c7b8b</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-05 14:28:57</sys_updated_on>
+        <sys_updated_on>2026-09-14 12:04:00</sys_updated_on>
     </sys_ux_screen>
     <sys_translated_text action="delete_multiple" query="documentkey=961bd57533fdc3147ef8f499ed5c7b8b"/>
 </record_update>
