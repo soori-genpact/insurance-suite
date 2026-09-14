@@ -153,6 +153,47 @@
                 },
                 {
                     "definition": {
+                        "id": "4335ba6dca80378f7ba7a67cd6667bec",
+                        "type": "MACROPONENT"
+                    },
+                    "elementId": "stylized_text_1",
+                    "elementLabel": "Stylized text 1",
+                    "eventMappings": [],
+                    "isHidden": {
+                        "type": "JSON_LITERAL",
+                        "value": null
+                    },
+                    "preset": null,
+                    "propertyValues": {
+                        "configAria": {
+                            "container": {},
+                            "type": "MAP_CONTAINER"
+                        },
+                        "css": {
+                            "type": "JSON_LITERAL",
+                            "value": "* { }"
+                        },
+                        "tag": {
+                            "type": "JSON_LITERAL",
+                            "value": "h1"
+                        },
+                        "text": {
+                            "binding": {
+                                "address": [
+                                    "experienceProperties",
+                                    "u_submission",
+                                    "value"
+                                ],
+                                "category": "props"
+                            },
+                            "type": "CONTEXT_BINDING"
+                        }
+                    },
+                    "slot": "content",
+                    "styles": null
+                },
+                {
+                    "definition": {
                         "id": "423c213c411209218cba64cb1738b5f0",
                         "type": "MACROPONENT"
                     },
@@ -306,8 +347,30 @@
                             "value": true
                         },
                         "fixedQuery": {
-                            "type": "JSON_LITERAL",
-                            "value": ""
+                            "transform": {
+                                "operands": {
+                                    "container": [
+                                        {
+                                            "type": "JSON_LITERAL",
+                                            "value": "submission.sys_id="
+                                        },
+                                        {
+                                            "binding": {
+                                                "address": [
+                                                    "experienceProperties",
+                                                    "u_submission",
+                                                    "value"
+                                                ],
+                                                "category": "props"
+                                            },
+                                            "type": "CONTEXT_BINDING"
+                                        }
+                                    ],
+                                    "type": "LIST_CONTAINER"
+                                },
+                                "operator": "CONCAT"
+                            },
+                            "type": "CLIENT_TRANSFORM"
                         },
                         "formApplyUiPolicy": {
                             "type": "JSON_LITERAL",
@@ -905,11 +968,9 @@
                 "value": "0"
             },
             "description": {
-                "displayValue": "",
                 "elementData": {
                     "type": "html"
                 },
-                "label": "Description (DEPRECATED)",
                 "value": ""
             },
             "experience_status_record": {
@@ -951,7 +1012,6 @@
                     "reference": "st_sys_design_system_icon",
                     "type": "reference"
                 },
-                "label": "Icon (DEPRECATED)",
                 "value": ""
             },
             "is_automated": {
@@ -1008,21 +1068,6 @@
                 "elementData": {
                     "type": "string"
                 },
-                "label": "Title (DEPRECATED)",
-                "value": ""
-            },
-            "u_submission": {
-                "displayValue": "",
-                "elementData": {
-                    "type": "string"
-                },
-                "value": ""
-            },
-            "u_submissionid": {
-                "elementData": {
-                    "type": "string"
-                },
-                "label": "Submission (DEPRECATED)",
                 "value": ""
             }
         },
@@ -1097,9 +1142,6 @@
                     },
                     "description": {
                         "properties": {
-                            "displayValue": {
-                                "type": "string"
-                            },
                             "elementData": {
                                 "properties": {
                                     "type": {
@@ -1395,38 +1437,6 @@
                             }
                         },
                         "type": "object"
-                    },
-                    "u_submission": {
-                        "properties": {
-                            "elementData": {
-                                "properties": {
-                                    "type": {
-                                        "type": "string"
-                                    }
-                                },
-                                "type": "object"
-                            },
-                            "value": {
-                                "type": "string"
-                            }
-                        },
-                        "type": "object"
-                    },
-                    "u_submissionid": {
-                        "properties": {
-                            "elementData": {
-                                "properties": {
-                                    "type": {
-                                        "type": "string"
-                                    }
-                                },
-                                "type": "object"
-                            },
-                            "value": {
-                                "type": "string"
-                            }
-                        },
-                        "type": "object"
                     }
                 },
                 "type": "object"
@@ -1534,14 +1544,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-01 06:05:09</sys_created_on>
         <sys_id>791a553d33bdc3147ef8f499ed5c7bb1</sys_id>
-        <sys_mod_count>35</sys_mod_count>
+        <sys_mod_count>41</sys_mod_count>
         <sys_name>PS Check for Sanctions AUI</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_791a553d33bdc3147ef8f499ed5c7bb1</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-14 11:49:58</sys_updated_on>
+        <sys_updated_on>2026-09-14 13:15:55</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=791a553d33bdc3147ef8f499ed5c7bb1"/>
 </record_update>

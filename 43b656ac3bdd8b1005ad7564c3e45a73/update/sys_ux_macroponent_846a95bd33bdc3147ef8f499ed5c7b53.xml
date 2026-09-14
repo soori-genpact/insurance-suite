@@ -76,30 +76,187 @@
             "composition": [
                 {
                     "definition": {
-                        "id": "2d56f06d55f46bbd4e79b5e624beb940",
+                        "id": "e675bb1c895cb69d27632108b0409269",
                         "type": "MACROPONENT"
                     },
-                    "elementId": "rich_text_1",
-                    "elementLabel": "Description",
+                    "elementId": "nested_grid_1",
+                    "elementLabel": "Nested Grid 1",
                     "eventMappings": [],
-                    "isHero": false,
                     "isHidden": {
                         "type": "JSON_LITERAL",
-                        "value": ""
+                        "value": null
                     },
-                    "isNonDestructive": false,
-                    "overrides": null,
-                    "preset": {
-                        "controllerElementId": "playbook_activity_ui_controller",
-                        "disabledEventTargetIds": [],
-                        "id": "86a2dd4299dfe03b5fc42804d508b498"
+                    "preset": null,
+                    "propertyValues": {
+                        "childColumns": {
+                            "type": "JSON_LITERAL",
+                            "value": {
+                                "items": [
+                                    {
+                                        "align": "center",
+                                        "field": "version",
+                                        "label": "Version",
+                                        "type": "badge",
+                                        "width": "78px"
+                                    },
+                                    {
+                                        "field": "changed_by",
+                                        "label": "Changed by"
+                                    },
+                                    {
+                                        "field": "old_value",
+                                        "label": "Previous value"
+                                    },
+                                    {
+                                        "field": "new_value",
+                                        "label": "Value"
+                                    },
+                                    {
+                                        "field": "reason",
+                                        "hint": "—",
+                                        "label": "Reason"
+                                    },
+                                    {
+                                        "align": "right",
+                                        "field": "changed_on",
+                                        "label": "When"
+                                    }
+                                ]
+                            }
+                        },
+                        "childEmptyMessage": {
+                            "type": "JSON_LITERAL",
+                            "value": "No history for this row."
+                        },
+                        "childKeyField": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "childLimit": {
+                            "type": "JSON_LITERAL",
+                            "value": 50
+                        },
+                        "childNote": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "childQuery": {
+                            "type": "JSON_LITERAL",
+                            "value": "extraction_field={sysId}^ORDERBYDESCversion"
+                        },
+                        "childSurfaceColor": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "childTable": {
+                            "type": "JSON_LITERAL",
+                            "value": "x_gegis_ins_policy_extraction_field_audit"
+                        },
+                        "columns": {
+                            "type": "JSON_LITERAL",
+                            "value": {
+                                "items": [
+                                    {
+                                        "field": "field_label",
+                                        "label": "Field name"
+                                    },
+                                    {
+                                        "field": "extracted_value",
+                                        "hint": "not found",
+                                        "label": "Extracted value"
+                                    },
+                                    {
+                                        "field": "confidence",
+                                        "label": "Confidence",
+                                        "type": "confidence"
+                                    },
+                                    {
+                                        "field": "final_value",
+                                        "label": "Current value"
+                                    },
+                                    {
+                                        "field": "review_status",
+                                        "label": "Status",
+                                        "type": "badge"
+                                    }
+                                ]
+                            }
+                        },
+                        "emptyMessage": {
+                            "type": "JSON_LITERAL",
+                            "value": "No records found."
+                        },
+                        "enableExpand": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "fontSize": {
+                            "type": "JSON_LITERAL",
+                            "value": "1rem"
+                        },
+                        "headerColor": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "heading": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "orderBy": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "orderDescending": {
+                            "type": "JSON_LITERAL",
+                            "value": false
+                        },
+                        "pageSize": {
+                            "type": "JSON_LITERAL",
+                            "value": 20
+                        },
+                        "query": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "restoreColumnLabel": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "restoreLabel": {
+                            "type": "JSON_LITERAL",
+                            "value": "Restore"
+                        },
+                        "showBorder": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "showRefresh": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "showRestore": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "stripedRows": {
+                            "type": "JSON_LITERAL",
+                            "value": true
+                        },
+                        "subheading": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "surfaceColor": {
+                            "type": "JSON_LITERAL",
+                            "value": ""
+                        },
+                        "tableName": {
+                            "type": "JSON_LITERAL",
+                            "value": "x_gegis_ins_policy_extraction_field"
+                        }
                     },
-                    "propertyValues": {},
                     "slot": "content",
-                    "styles": {
-                        "padding-bottom": "var(--now-static-space--lg)",
-                        "padding-top": "var(--now-scalable-space--lg)"
-                    }
+                    "styles": null
                 }
             ],
             "layout": {}
@@ -959,7 +1116,51 @@
     }
 ]</props>
         <required_sys_props/>
-        <required_translations>[ ]</required_translations>
+        <required_translations>[ {
+  "message" : "Changed by",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Confidence",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Current value",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Extracted value",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Field name",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Previous value",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Reason",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Status",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Value",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Version",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "When",
+  "code" : "",
+  "comment" : ""
+} ]</required_translations>
         <root_component/>
         <root_component_config>{}</root_component_config>
         <root_component_definition/>
@@ -1008,14 +1209,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-01 06:06:24</sys_created_on>
         <sys_id>846a95bd33bdc3147ef8f499ed5c7b53</sys_id>
-        <sys_mod_count>15</sys_mod_count>
+        <sys_mod_count>20</sys_mod_count>
         <sys_name>PS Confirm Data Review AUI</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_846a95bd33bdc3147ef8f499ed5c7b53</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-14 11:51:06</sys_updated_on>
+        <sys_updated_on>2026-09-14 14:40:44</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=846a95bd33bdc3147ef8f499ed5c7b53"/>
 </record_update>
