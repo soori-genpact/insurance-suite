@@ -39,12 +39,18 @@
 
     // only a real change to manual_value is a revision - editing review_status,
     // confidence or anything else must not burn a version number
-    if (isNew ? !newValue : (newValue === oldValue))
+    if (newValue === oldValue)
         return;
 
-    // version is stamped in this same write - no second update(), so no
-    // recursion back into this rule
-    var version = isNew ? 1 : (parseInt(previous.getValue('version'), 10) || 1) + 1;
+    // version counts MANUAL revisions, so the first manual value is 1 - not 2.
+    // The field's own version column defaults to 1 before anything is typed, so
+    // reading previous.version and adding one would start the audit at 2 and no
+    // row would ever carry version 1.
+    var version = oldValue
+        ? (parseInt(previous.getValue('version'), 10) || 1) + 1
+        : 1;
+
+    // stamped in this same write - no second update(), so no recursion
     current.setValue('version', version);
 
     var audit = new GlideRecord(AUDIT);
@@ -62,7 +68,9 @@
     audit.setValue('changed_field', COL);
     audit.setValue('old_value', oldValue.substring(0, MAX));
     audit.setValue('new_value', newValue.substring(0, MAX));
-    audit.setValue('changed_by', gs.getUserID());
+    // the NAME, not the sys_id: changed_by is a plain string, and an audit row
+    // has to stay readable after the user is renamed or deactivated
+    audit.setValue('changed_by', gs.getUserDisplayName());
     audit.setValue('changed_on', new GlideDateTime());
     audit.insert();
 
