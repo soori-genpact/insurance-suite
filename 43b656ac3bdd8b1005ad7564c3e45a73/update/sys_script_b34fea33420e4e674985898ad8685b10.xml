@@ -3,7 +3,7 @@
         <abort_action>false</abort_action>
         <access>package_private</access>
         <action_delete>false</action_delete>
-        <action_insert>true</action_insert>
+        <action_insert>false</action_insert>
         <action_query>false</action_query>
         <action_update>true</action_update>
         <active>true</active>
@@ -33,9 +33,15 @@
     var COL = 'manual_value';
     var MAX = 100;                       // audit old_value / new_value width
 
-    var isNew = current.isNewRecord();
+    // INSERT is not a revision. A row arriving with a manual_value already set
+    // is a data load, and its history (if any) arrives with it - writing a row
+    // here would duplicate the version 1 that came from the file. The audit
+    // records what a human changes AFTER the field exists.
+    if (current.isNewRecord())
+        return;
+
     var newValue = String(current.getValue(COL) || '');
-    var oldValue = isNew ? '' : String(previous.getValue(COL) || '');
+    var oldValue = String(previous.getValue(COL) || '');
 
     // only a real change to manual_value is a revision - editing review_status,
     // confidence or anything else must not burn a version number
@@ -62,8 +68,6 @@
 
     audit.initialize();
     audit.setValue('version', version);
-    // sys_id is assigned before a before-insert rule runs, so this is the id the
-    // row is about to be saved under
     audit.setValue('extraction_field', current.getUniqueValue());
     audit.setValue('changed_field', COL);
     audit.setValue('old_value', oldValue.substring(0, MAX));
@@ -72,7 +76,16 @@
     // has to stay readable after the user is renamed or deactivated
     audit.setValue('changed_by', gs.getUserDisplayName());
     audit.setValue('changed_on', new GlideDateTime());
-    audit.insert();
+
+    // insert() returns null when an ACL, a data policy or a mandatory column
+    // blocks the write. Unchecked, the field change would still go through and
+    // the revision would be lost in silence - the one failure an audit trail
+    // cannot be allowed to have.
+    if (!audit.insert()) {
+        gs.error('[extraction_field] audit row REFUSED for ' + current.getUniqueValue()
+            + ' v' + version + ' ("' + oldValue + '" -&gt; "' + newValue
+            + '") - check ACLs on ' + AUDIT);
+    }
 
 })(current, previous);</script>
         <sys_class_name>sys_script</sys_class_name>

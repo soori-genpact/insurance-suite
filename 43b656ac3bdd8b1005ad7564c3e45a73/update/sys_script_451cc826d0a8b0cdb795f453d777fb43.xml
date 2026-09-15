@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_gegis_ins_policy_extraction_field</collection>
+        <condition/>
+        <description>Resolves final_value from override_value -&gt; manual_value -&gt; mapped_value -&gt; extracted_value on every write, using ExtractionApplier.getFinalValue as the single definition of the chain.</description>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Extraction field final value</name>
+        <order>200</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script>(function executeRule(current, previous /*null when async*/) {
+
+    // final_value is the resolved truth for this field:
+    //   override_value -&gt; manual_value -&gt; mapped_value -&gt; extracted_value
+    //
+    // The chain is NOT re-implemented here. ExtractionApplier.getFinalValue is
+    // the single definition of it; copying those four lines into a rule is
+    // exactly how the list column and the applier drift apart, and the drift is
+    // silent - the grid shows one value while a different one is written to the
+    // system of record.
+    //
+    // Runs BEFORE the write, so the column is correct in the same transaction
+    // as the edit that caused it. No second update(), no recursion, and no
+    // async gap in which a reader could see the old value.
+    //
+    // Insert included on purpose: a row loaded from the seed file, created by
+    // ExtractionMapper or posted through the API all resolve the same way.
+    var resolved = new ExtractionApplier().getFinalValue(current);
+
+    // final_value is 1000 chars, extracted_value and mapped_value are 2000 -
+    // truncate rather than let a long value fail the write
+    current.setValue('final_value', String(resolved || '').substring(0, 1000));
+
+})(current, previous);</script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-09-15 12:00:00</sys_created_on>
+        <sys_id>451cc826d0a8b0cdb795f453d777fb43</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Extraction field final value</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_451cc826d0a8b0cdb795f453d777fb43</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-09-15 12:00:00</sys_updated_on>
+        <template/>
+        <when>before</when>
+    </sys_script>
+</record_update>
