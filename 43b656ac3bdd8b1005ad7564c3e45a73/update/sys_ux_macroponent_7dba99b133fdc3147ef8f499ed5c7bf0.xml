@@ -125,20 +125,39 @@
                                         "field": "field_label",
                                         "label": "Field name",
                                         "type": "text",
-                                        "width": 260
+                                        "width": "220px"
                                     },
                                     {
                                         "field": "extracted_value",
-                                        "label": "Value",
+                                        "label": "Extracted",
                                         "type": "text",
-                                        "width": 260
+                                        "width": "220px"
+                                    },
+                                    {
+                                        "field": "manual_value",
+                                        "label": "Modified To",
+                                        "type": "text",
+                                        "width": "220px"
                                     },
                                     {
                                         "editable": true,
                                         "field": "override_value",
                                         "label": "Override",
                                         "type": "text",
-                                        "width": 280
+                                        "width": "240px"
+                                    },
+                                    {
+                                        "editable": true,
+                                        "field": "override_reason",
+                                        "label": "Reason",
+                                        "type": "text",
+                                        "width": "240px"
+                                    },
+                                    {
+                                        "field": "final_value",
+                                        "label": "Final value",
+                                        "type": "text",
+                                        "width": "220px"
                                     }
                                 ]
                             }
@@ -1505,7 +1524,19 @@
   "code" : "",
   "comment" : ""
 }, {
+  "message" : "Extracted",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "Field name",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Final value",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Modified To",
   "code" : "",
   "comment" : ""
 }, {
@@ -1513,11 +1544,11 @@
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "Total Premium",
+  "message" : "Reason",
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "Value",
+  "message" : "Total Premium",
   "code" : "",
   "comment" : ""
 } ]</required_translations>
@@ -1569,14 +1600,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-01 06:07:53</sys_created_on>
         <sys_id>7dba99b133fdc3147ef8f499ed5c7bf0</sys_id>
-        <sys_mod_count>18</sys_mod_count>
+        <sys_mod_count>21</sys_mod_count>
         <sys_name>PS Quality Assurance  AUI</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_7dba99b133fdc3147ef8f499ed5c7bf0</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-15 04:29:57</sys_updated_on>
+        <sys_updated_on>2026-09-15 07:32:10</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=7dba99b133fdc3147ef8f499ed5c7bf0"/>
 </record_update>
