@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties">
     <sys_properties action="INSERT_OR_UPDATE">
         <choices/>
-        <default_value/>
         <description>License and staged execution plan for pre-binding module orchestration (clearance, exposure, risk, quote &amp; bind)</description>
         <ignore_cache>false</ignore_cache>
         <is_private>false</is_private>
@@ -24,4 +23,5 @@
         <value>{"instance_id": "genpactpoc", "customer_name": "GENPACT", "license_version": "1.0", "issued_at": "2026-03-10T00:00:00Z", "expires_at": "2027-03-10T00:00:00Z", "licensed_modules": ["SUBMISSION_CLEARANCE", "EXPOSURE_MANAGEMENT", "RISK_ASSESSMENT", "QUOTE_AND_BIND"], "execution": {"mode": "staged", "initial_modules": {"stage": 0, "modules": ["SUBMISSION_CLEARANCE", "EXPOSURE_MANAGEMENT", "RISK_ASSESSMENT", "QUOTE_AND_BIND"]}, "stages": [{"stage": 1, "modules": ["SUBMISSION_CLEARANCE"]}, {"stage": 2, "modules": ["EXPOSURE_MANAGEMENT", "RISK_ASSESSMENT"]}, {"stage": 3, "modules": ["QUOTE_AND_BIND"]}]}}</value>
         <write_roles/>
     </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=dab75a0ab6fa1fccadab58d5c9939f1a"/>
 </record_update>

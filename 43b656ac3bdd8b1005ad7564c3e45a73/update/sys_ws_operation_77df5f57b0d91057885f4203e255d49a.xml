@@ -3,17 +3,17 @@
         <active>true</active>
         <consumes>application/json,application/xml,text/xml</consumes>
         <consumes_customized>false</consumes_customized>
-        <default_operation_uri>/api/x_gegis_ins_policy/v1/intake/{caseId}</default_operation_uri>
+        <default_operation_uri/>
         <enforce_acl/>
         <http_method>GET</http_method>
         <name>Get Intake Case</name>
-        <operation_script>(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+        <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
     var result = new x_gegis_ins_policy.IntakeService().read(request.pathParams.caseId);
     var status = result._status || 200;
     delete result._status;
     response.setStatus(status);
     response.setBody(result);
-})(request, response);</operation_script>
+})(request, response);]]></operation_script>
         <operation_uri>/api/x_gegis_ins_policy/v1/intake/{caseId}</operation_uri>
         <produces>application/json,application/xml,text/xml</produces>
         <produces_customized>false</produces_customized>
@@ -23,6 +23,7 @@
         <requires_authentication>true</requires_authentication>
         <requires_snc_internal_role>true</requires_snc_internal_role>
         <short_description>Read an intake case with its documents and HITL tasks</short_description>
+        <support_trailing_slash>false</support_trailing_slash>
         <sys_class_name>sys_ws_operation</sys_class_name>
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-11 12:00:00</sys_created_on>
