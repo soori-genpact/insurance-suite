@@ -3,11 +3,11 @@
         <active>true</active>
         <consumes>application/json,application/xml,text/xml</consumes>
         <consumes_customized>false</consumes_customized>
-        <default_operation_uri>/api/x_gegis_ins_policy/v1/submission/{number}</default_operation_uri>
+        <default_operation_uri/>
         <enforce_acl/>
         <http_method>PUT</http_method>
         <name>Update Submission</name>
-        <operation_script>(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+        <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
     var body;
     try { body = request.body ? request.body.data : {}; } catch (e) { body = {}; }
     var result = new x_gegis_ins_policy.SubmissionApiService().update(request.pathParams.number, body);
@@ -19,7 +19,7 @@
     }
     response.setStatus(status);
     response.setBody(result);
-})(request, response);</operation_script>
+})(request, response);]]></operation_script>
         <operation_uri>/api/x_gegis_ins_policy/v1/submission/{number}</operation_uri>
         <produces>application/json,application/xml,text/xml</produces>
         <produces_customized>false</produces_customized>
@@ -28,7 +28,8 @@
         <requires_acl_authorization>false</requires_acl_authorization>
         <requires_authentication>true</requires_authentication>
         <requires_snc_internal_role>true</requires_snc_internal_role>
-        <short_description>Merge a new extraction version into an existing submission (INTENT_UPDATE_SUBMISSION)</short_description>
+        <short_description>Merge a new extraction version into an existing submission (INTENT_UPDATE_SUBMIS</short_description>
+        <support_trailing_slash>false</support_trailing_slash>
         <sys_class_name>sys_ws_operation</sys_class_name>
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-11 12:00:00</sys_created_on>

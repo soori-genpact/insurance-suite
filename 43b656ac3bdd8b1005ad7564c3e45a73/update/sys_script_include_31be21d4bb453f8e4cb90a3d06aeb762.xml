@@ -9,7 +9,7 @@
         <mobile_callable>false</mobile_callable>
         <name>ExtractionMapper</name>
         <sandbox_callable>false</sandbox_callable>
-        <script>var ExtractionMapper = Class.create();
+        <script><![CDATA[var ExtractionMapper = Class.create();
 ExtractionMapper.prototype = {
     initialize: function() {
         this.MAPPING = 'x_gegis_ins_policy_extraction_mapping';
@@ -29,7 +29,7 @@ ExtractionMapper.prototype = {
     mapPayload: function(extractionGr, payload) {
         var created = 0;
         var entityCache = {};
-        var lob = payload &amp;&amp; payload.line_of_business ? String(payload.line_of_business) : 'all';
+        var lob = payload && payload.line_of_business ? String(payload.line_of_business) : 'all';
 
         var m = new GlideRecord(this.MAPPING);
         m.addActiveQuery();
@@ -38,7 +38,7 @@ ExtractionMapper.prototype = {
         m.query();
         while (m.next()) {
             var hits = this._resolvePath(payload, String(m.field_path));
-            for (var i = 0; i &lt; hits.length; i++) {
+            for (var i = 0; i < hits.length; i++) {
                 var hit = hits[i];
                 if (hit.value === undefined || hit.value === null || hit.value === '')
                     continue;
@@ -68,7 +68,7 @@ ExtractionMapper.prototype = {
         if (!arr || !arr.length)
             return [];
         var out = [];
-        for (var i = 0; i &lt; arr.length; i++) {
+        for (var i = 0; i < arr.length; i++) {
             var v2 = tail ? this._walk(arr[i], tail) : arr[i];
             if (v2 !== undefined)
                 out.push({ value: v2, index: i, path: head + '[' + i + '].' + tail });
@@ -81,7 +81,7 @@ ExtractionMapper.prototype = {
             return obj;
         var parts = path.split('.');
         var cur = obj;
-        for (var i = 0; i &lt; parts.length; i++) {
+        for (var i = 0; i < parts.length; i++) {
             if (cur === null || cur === undefined)
                 return undefined;
             cur = cur[parts[i]];
@@ -101,8 +101,8 @@ ExtractionMapper.prototype = {
         e.initialize();
         e.extraction = extractionGr.getUniqueValue();
         e.entity_type = entityType;
-        e.entity_index = hit.index &lt; 0 ? 0 : hit.index;
-        e.label = entityType + (hit.index &gt;= 0 ? ' ' + (hit.index + 1) : '');
+        e.entity_index = hit.index < 0 ? 0 : hit.index;
+        e.label = entityType + (hit.index >= 0 ? ' ' + (hit.index + 1) : '');
         e.match_status = 'new';
         e.disposition = 'pending';
         cache[key] = e.insert();
@@ -112,7 +112,7 @@ ExtractionMapper.prototype = {
     _createField: function(extractionGr, mapping, hit, entityId) {
         var raw = hit.value;
         var value = raw, confidence = '', page = '', bbox = '';
-        if (raw !== null &amp;&amp; typeof raw === 'object') {
+        if (raw !== null && typeof raw === 'object') {
             value = raw.value;
             confidence = raw.confidence !== undefined ? raw.confidence : '';
             page = raw.page !== undefined ? raw.page : '';
@@ -136,7 +136,7 @@ ExtractionMapper.prototype = {
     },
 
     type: 'ExtractionMapper'
-};</script>
+};]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-11 12:00:00</sys_created_on>
