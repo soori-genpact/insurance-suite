@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.CaseTaskDescriptionBuilder</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Fills short_description, due_date, assignment_group and assigned_to on Case-category case_task records from the x_gegis_ins_policy.case_task_type_config property. Only sets fields that are still empty.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>CaseTaskDescriptionBuilder</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var CaseTaskDescriptionBuilder = Class.create();
+CaseTaskDescriptionBuilder.prototype = {
+    initialize: function() {},
+
+    CONFIG_PROPERTY: 'x_gegis_ins_policy.case_task_type_config',
+    TOKEN_PATTERN: /\{([a-zA-Z0-9_]+)\}/g,
+
+    /**
+     * @param taskGr GlideRecord x_gegis_ins_policy_case_task, not yet inserted/updated
+     */
+    apply: function(taskGr) {
+        var config = this._getConfig(taskGr.getValue('u_type'));
+        if (!config)
+            return;
+
+        var tokens = this._buildTokens(taskGr);
+
+        if (!taskGr.getValue('short_description') && config.desc_template)
+            taskGr.setValue('short_description', this._resolve(config.desc_template, tokens));
+
+        if (!taskGr.getValue('due_date') && config.due_days) {
+            var due = new GlideDateTime();
+            due.addDaysUTC(parseInt(config.due_days, 10));
+            taskGr.setValue('due_date', due);
+        }
+
+        if (!taskGr.getValue('assignment_group') && config.assignment_group) {
+            var group = this._lookupGroup(config.assignment_group);
+            if (group)
+                taskGr.setValue('assignment_group', group);
+        }
+
+        if (!taskGr.getValue('assigned_to') && config.assigned_to) {
+            var user = this._lookupUser(config.assigned_to);
+            if (user)
+                taskGr.setValue('assigned_to', user);
+        }
+    },
+
+    _getConfig: function(uType) {
+        var raw = gs.getProperty(this.CONFIG_PROPERTY, '{}');
+        var map;
+        try {
+            map = JSON.parse(raw);
+        } catch (e) {
+            gs.error('CaseTaskDescriptionBuilder: malformed JSON in property ' + this.CONFIG_PROPERTY + ' - ' + e.message);
+            return null;
+        }
+        return (uType && map[uType]) || map['default'] || null;
+    },
+
+    _buildTokens: function(taskGr) {
+        var tokens = {
+            lob: '',
+            insured: '',
+            broker: '',
+            tiv: '',
+            submission_number: ''
+        };
+
+        var subId = taskGr.getValue('submission');
+        if (!subId)
+            return tokens;
+
+        var sub = new GlideRecord('x_gegis_ins_policy_submission');
+        if (!sub.get(subId))
+            return tokens;
+
+        tokens.submission_number = sub.getValue('number') || '';
+        tokens.insured = sub.getValue('insured_name') || sub.getDisplayValue('primary_insured') || '';
+        tokens.broker = sub.getValue('broker_name') || sub.getDisplayValue('broker') || '';
+        tokens.lob = sub.getDisplayValue('line_of_business') || '';
+        tokens.tiv = this._sumInsuredValue(subId);
+
+        return tokens;
+    },
+
+    _sumInsuredValue: function(subId) {
+        var ga = new GlideAggregate('x_gegis_ins_policy_submission_line');
+        ga.addQuery('submission', subId);
+        ga.addAggregate('SUM', 'total_insured_value');
+        ga.query();
+        if (ga.next()) {
+            var sum = ga.getAggregate('SUM', 'total_insured_value');
+            if (sum)
+                return parseFloat(sum).toLocaleString('en-US');
+        }
+        return '';
+    },
+
+    // leftover tokens (no submission, missing field) resolve to '' - trims the
+    // orphaned ", " / ". " that would otherwise remain in the sentence.
+    _resolve: function(template, tokens) {
+        var text = template.replace(this.TOKEN_PATTERN, function(match, key) {
+            var value = tokens[key];
+            return value ? value : '';
+        });
+        return text.replace(/\(\s*\)/g, '').replace(/\s{2,}/g, ' ').replace(/\s+([,.])/g, '$1').replace(/^[,.\s]+/, '').trim();
+    },
+
+    _lookupGroup: function(name) {
+        var gr = new GlideRecord('sys_user_group');
+        gr.addQuery('name', name);
+        gr.setLimit(1);
+        gr.query();
+        return gr.next() ? gr.getUniqueValue() : '';
+    },
+
+    _lookupUser: function(userName) {
+        var gr = new GlideRecord('sys_user');
+        gr.addQuery('user_name', userName);
+        gr.setLimit(1);
+        gr.query();
+        return gr.next() ? gr.getUniqueValue() : '';
+    },
+
+    type: 'CaseTaskDescriptionBuilder'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-09-16 12:00:00</sys_created_on>
+        <sys_id>9e4dd1bafc540e7d2496453472bae3e0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>CaseTaskDescriptionBuilder</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_9e4dd1bafc540e7d2496453472bae3e0</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-09-16 12:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>
