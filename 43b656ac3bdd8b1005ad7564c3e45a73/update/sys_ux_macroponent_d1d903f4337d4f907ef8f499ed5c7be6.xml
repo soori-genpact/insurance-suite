@@ -3029,7 +3029,7 @@
                                                                             "label": "Task#",
                                                                             "refTable": "x_gegis_ins_policy_case_task",
                                                                             "type": "reference",
-                                                                            "width": "150px"
+                                                                            "width": "170px"
                                                                         },
                                                                         {
                                                                             "field": "submission",
@@ -3039,19 +3039,27 @@
                                                                             "type": "reference"
                                                                         },
                                                                         {
-                                                                            "field": "category",
-                                                                            "label": "Type",
-                                                                            "type": "text"
+                                                                            "field": "u_type",
+                                                                            "label": "Task Type",
+                                                                            "type": "text",
+                                                                            "width": "180px"
                                                                         },
                                                                         {
                                                                             "field": "state",
-                                                                            "label": "state",
+                                                                            "label": "State",
                                                                             "type": "pill"
                                                                         },
                                                                         {
                                                                             "field": "priority",
                                                                             "label": "Priority",
-                                                                            "type": "pill"
+                                                                            "pillColors": {
+                                                                                "1 - Critical": "critical",
+                                                                                "2 - High": "warning",
+                                                                                "3 - Moderate": "info",
+                                                                                "4 - Low": "positive"
+                                                                            },
+                                                                            "type": "pill",
+                                                                            "width": "120px"
                                                                         },
                                                                         {
                                                                             "field": "due_date",
@@ -3067,9 +3075,18 @@
                                                                             "field": "assignment_group",
                                                                             "label": "Group",
                                                                             "type": "text"
+                                                                        },
+                                                                        {
+                                                                            "field": "short_description",
+                                                                            "label": "Description",
+                                                                            "type": "text"
                                                                         }
                                                                     ]
                                                                 }
+                                                            },
+                                                            "compactRows": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
                                                             },
                                                             "data": {
                                                                 "type": "JSON_LITERAL",
@@ -3514,6 +3531,10 @@
                                                             },
                                                             "userSysId": {
                                                                 "type": "JSON_LITERAL"
+                                                            },
+                                                            "wrapColumnText": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
                                                             }
                                                         },
                                                         "slot": null,
@@ -4061,6 +4082,10 @@
   "code" : "",
   "comment" : ""
 }, {
+  "message" : "Task Type",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "Task#",
   "code" : "",
   "comment" : ""
@@ -4070,10 +4095,6 @@
   "comment" : ""
 }, {
   "message" : "Type",
-  "code" : "",
-  "comment" : ""
-}, {
-  "message" : "state",
   "code" : "",
   "comment" : ""
 } ]</required_translations>
@@ -4146,14 +4167,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-06-28 11:39:26</sys_created_on>
         <sys_id>d1d903f4337d4f907ef8f499ed5c7be6</sys_id>
-        <sys_mod_count>161</sys_mod_count>
+        <sys_mod_count>163</sys_mod_count>
         <sys_name>Dashboard default</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_d1d903f4337d4f907ef8f499ed5c7be6</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-16 11:47:20</sys_updated_on>
+        <sys_updated_on>2026-09-16 13:45:49</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=d1d903f4337d4f907ef8f499ed5c7be6"/>
 </record_update>
