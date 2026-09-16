@@ -13,7 +13,7 @@
         <client_callable>false</client_callable>
         <collection>x_gegis_ins_policy_case_task</collection>
         <condition/>
-        <description>For Case-category case tasks, fills short_description, due_date, assignment_group and assigned_to from x_gegis_ins_policy.case_task_type_config when those fields are still empty. Keyed by u_type; falls back to the "default" entry.</description>
+        <description>For Case-category case tasks, fills short_description, priority, due_date, assignment_group and assigned_to from x_gegis_ins_policy.case_task_type_config when those fields are still empty. Keyed by u_type; falls back to the "default" entry.</description>
         <execute_function>false</execute_function>
         <filter_condition table="x_gegis_ins_policy_case_task">category=case^EQ</filter_condition>
         <is_rest>false</is_rest>

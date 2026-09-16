@@ -5,7 +5,7 @@
         <api_name>x_gegis_ins_policy.CaseTaskDescriptionBuilder</api_name>
         <caller_access/>
         <client_callable>false</client_callable>
-        <description>Fills short_description, due_date, assignment_group and assigned_to on Case-category case_task records from the x_gegis_ins_policy.case_task_type_config property. Only sets fields that are still empty.</description>
+        <description>Fills short_description, priority, due_date, assignment_group and assigned_to on Case-category case_task records from the x_gegis_ins_policy.case_task_type_config property. Only sets fields that are still empty.</description>
         <mobile_callable>false</mobile_callable>
         <name>CaseTaskDescriptionBuilder</name>
         <sandbox_callable>false</sandbox_callable>
@@ -29,9 +29,12 @@ CaseTaskDescriptionBuilder.prototype = {
         if (!taskGr.getValue('short_description') && config.desc_template)
             taskGr.setValue('short_description', this._resolve(config.desc_template, tokens));
 
-        if (!taskGr.getValue('due_date') && config.due_days) {
+        if (!taskGr.getValue('priority') && config.priority)
+            taskGr.setValue('priority', config.priority);
+
+        if (!taskGr.getValue('due_date') && config.due_hours) {
             var due = new GlideDateTime();
-            due.addDaysUTC(parseInt(config.due_days, 10));
+            due.addSeconds(parseFloat(config.due_hours) * 3600);
             taskGr.setValue('due_date', due);
         }
 
