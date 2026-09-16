@@ -824,8 +824,13 @@
                 "value": ""
             },
             "fixedFilter": {
-                "type": "JSON_LITERAL",
-                "value": ""
+                "binding": {
+                    "address": [
+                        "query"
+                    ],
+                    "category": "props"
+                },
+                "type": "CONTEXT_BINDING"
             },
             "fuzzyCounts": {
                 "binding": {
@@ -942,7 +947,34 @@
         <macroponent_dependencies/>
         <name>simple-list default</name>
         <output_prop_mapping/>
-        <props>[]</props>
+        <props>[
+    {
+        "description": "",
+        "fieldType": "string",
+        "id": "SMeeddbhhvOZAaaVnjjffcLfKHCdPbbb",
+        "inherited": false,
+        "label": "Table",
+        "mandatory": false,
+        "name": "table",
+        "readOnly": false,
+        "selectable": false,
+        "typeMetadata": null,
+        "valueType": "string"
+    },
+    {
+        "description": "",
+        "fieldType": "string",
+        "id": "ShhjOeePccMDErRjjyQEnUgtVoZi",
+        "inherited": false,
+        "label": "query",
+        "mandatory": false,
+        "name": "query",
+        "readOnly": false,
+        "selectable": false,
+        "typeMetadata": null,
+        "valueType": "string"
+    }
+]</props>
         <required_sys_props/>
         <required_translations>[ ]</required_translations>
         <root_component/>
@@ -956,14 +988,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-06-28 11:35:13</sys_created_on>
         <sys_id>efd84b30337d4f907ef8f499ed5c7bfb</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>simple-list default</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_efd84b30337d4f907ef8f499ed5c7bfb</sys_update_name>
-        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-06-28 11:35:14</sys_updated_on>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-16 04:15:16</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=efd84b30337d4f907ef8f499ed5c7bfb"/>
 </record_update>

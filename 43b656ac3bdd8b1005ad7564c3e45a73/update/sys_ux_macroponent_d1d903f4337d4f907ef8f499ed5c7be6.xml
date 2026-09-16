@@ -41,15 +41,46 @@
         ],
         "isHidden": null,
         "overrides": null,
-        "preset": {
-            "controllerElementId": "list_controller",
-            "disabledEventTargetIds": [],
-            "id": "431df4d94fc3e404af2a7a1604dd08d6"
-        },
+        "preset": null,
         "propertyValues": {
+            "bare": {
+                "type": "JSON_LITERAL",
+                "value": true
+            },
+            "contents": {
+                "type": "JSON_LITERAL",
+                "value": {
+                    "fields": {},
+                    "route": ""
+                }
+            },
             "disableDismiss": {
                 "type": "JSON_LITERAL",
                 "value": false
+            },
+            "displayOptions": {
+                "type": "JSON_LITERAL",
+                "value": {}
+            },
+            "enableResizable": {
+                "type": "JSON_LITERAL",
+                "value": false
+            },
+            "resizableMaxHeight": {
+                "type": "JSON_LITERAL",
+                "value": null
+            },
+            "resizableMaxWidth": {
+                "type": "JSON_LITERAL",
+                "value": null
+            },
+            "resizableMinHeight": {
+                "type": "JSON_LITERAL",
+                "value": 133
+            },
+            "resizableMinWidth": {
+                "type": "JSON_LITERAL",
+                "value": 420
             },
             "size": {
                 "type": "JSON_LITERAL",
@@ -82,15 +113,46 @@
         ],
         "isHidden": null,
         "overrides": null,
-        "preset": {
-            "controllerElementId": "task_list_controller",
-            "disabledEventTargetIds": [],
-            "id": "431df4d94fc3e404af2a7a1604dd08d6"
-        },
+        "preset": null,
         "propertyValues": {
+            "bare": {
+                "type": "JSON_LITERAL",
+                "value": true
+            },
+            "contents": {
+                "type": "JSON_LITERAL",
+                "value": {
+                    "fields": {},
+                    "route": ""
+                }
+            },
             "disableDismiss": {
                 "type": "JSON_LITERAL",
                 "value": false
+            },
+            "displayOptions": {
+                "type": "JSON_LITERAL",
+                "value": {}
+            },
+            "enableResizable": {
+                "type": "JSON_LITERAL",
+                "value": false
+            },
+            "resizableMaxHeight": {
+                "type": "JSON_LITERAL",
+                "value": null
+            },
+            "resizableMaxWidth": {
+                "type": "JSON_LITERAL",
+                "value": null
+            },
+            "resizableMinHeight": {
+                "type": "JSON_LITERAL",
+                "value": 133
+            },
+            "resizableMinWidth": {
+                "type": "JSON_LITERAL",
+                "value": 420
             },
             "size": {
                 "type": "JSON_LITERAL",
@@ -624,7 +686,47 @@
                                                         },
                                                         "elementId": "my_open_items",
                                                         "elementLabel": "my open items",
-                                                        "eventMappings": [],
+                                                        "eventMappings": [
+                                                            {
+                                                                "eventMappingId": "tbbbiibPvffBaaeeddxjjbbkKcnumEjjZo",
+                                                                "isConfiguration": false,
+                                                                "offRowStorageId": null,
+                                                                "sourceEventApiName": "x_gegis_library.SCORE_CLICKED",
+                                                                "sourceEventCorrelationId": null,
+                                                                "sourceEventDefinition": {
+                                                                    "apiName": "x_gegis_library.SCORE_CLICKED",
+                                                                    "id": null,
+                                                                    "type": "UXEVENT"
+                                                                },
+                                                                "sourceEventSysId": null,
+                                                                "targets": [
+                                                                    {
+                                                                        "broker": null,
+                                                                        "clientScript": null,
+                                                                        "clientTransformScript": "javascript(/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\treturn {\n\t\tpropName: \"mytaskfilter\",\n\t\tvalue: event.payload.query\n\t};\n})",
+                                                                        "conditional": null,
+                                                                        "declarativeAction": null,
+                                                                        "event": {
+                                                                            "apiName": "sn_uxf.MACROPONENT_STATE_UPDATE_REQUESTED",
+                                                                            "payload": {
+                                                                                "script": {
+                                                                                    "apiVersion": "1.0.0",
+                                                                                    "controllerElementId": null,
+                                                                                    "inlineScript": "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\treturn {\n\t\tpropName: \"mytaskfilter\",\n\t\tvalue: event.payload.query\n\t};\n}",
+                                                                                    "scriptSysId": null,
+                                                                                    "target": null
+                                                                                },
+                                                                                "type": "CLIENT_TRANSFORM_SCRIPT"
+                                                                            },
+                                                                            "sysId": "32408b42ff7a10109046e490703bf176"
+                                                                        },
+                                                                        "operation": null,
+                                                                        "targetId": "UiiEddFvffSCUsgeeddEQJYJggVbbgBhh",
+                                                                        "type": "EVENT"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ],
                                                         "isHidden": {
                                                             "type": "JSON_LITERAL",
                                                             "value": null
@@ -645,11 +747,11 @@
                                                             },
                                                             "clickAction": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": "emit"
+                                                                "value": "emit_filter"
                                                             },
                                                             "formatNumber": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": true
+                                                                "value": false
                                                             },
                                                             "header": {
                                                                 "type": "JSON_LITERAL",
@@ -669,23 +771,31 @@
                                                             },
                                                             "query": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": ""
+                                                                "value": "assigned_toDYNAMIC90d1921e5f510100a9ad2572f2b477fe^stateIN-5,1,2^EQ"
                                                             },
                                                             "refreshSeconds": {
                                                                 "type": "JSON_LITERAL",
                                                                 "value": 60
                                                             },
+                                                            "showIcon": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
                                                             "table": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": ""
+                                                                "value": "x_gegis_ins_policy_case_task"
                                                             },
                                                             "value": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": "5"
+                                                                "value": ""
                                                             },
                                                             "valueColor": {
                                                                 "type": "JSON_LITERAL",
                                                                 "value": "#0F6E56"
+                                                            },
+                                                            "workspaceUrlTemplate": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "/x/gegis/insurance-policy-suite/simplelist/{tableName}/params/query/{query}"
                                                             }
                                                         },
                                                         "slot": null,
@@ -776,7 +886,47 @@
                                                         },
                                                         "elementId": "my_sla_at_risk",
                                                         "elementLabel": "my sla at risk",
-                                                        "eventMappings": [],
+                                                        "eventMappings": [
+                                                            {
+                                                                "eventMappingId": "hhdeeCdfiaaDaaeeddujjvAPaaqNNQwey",
+                                                                "isConfiguration": false,
+                                                                "offRowStorageId": null,
+                                                                "sourceEventApiName": "x_gegis_library.SCORE_CLICKED",
+                                                                "sourceEventCorrelationId": null,
+                                                                "sourceEventDefinition": {
+                                                                    "apiName": "x_gegis_library.SCORE_CLICKED",
+                                                                    "id": null,
+                                                                    "type": "UXEVENT"
+                                                                },
+                                                                "sourceEventSysId": null,
+                                                                "targets": [
+                                                                    {
+                                                                        "broker": null,
+                                                                        "clientScript": null,
+                                                                        "clientTransformScript": "javascript(/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\treturn {\n\t\tpropName: \"mytaskfilter\",\n\t\tvalue: event.payload.query\n\t};\n})",
+                                                                        "conditional": null,
+                                                                        "declarativeAction": null,
+                                                                        "event": {
+                                                                            "apiName": "sn_uxf.MACROPONENT_STATE_UPDATE_REQUESTED",
+                                                                            "payload": {
+                                                                                "script": {
+                                                                                    "apiVersion": "1.0.0",
+                                                                                    "controllerElementId": null,
+                                                                                    "inlineScript": "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\treturn {\n\t\tpropName: \"mytaskfilter\",\n\t\tvalue: event.payload.query\n\t};\n}",
+                                                                                    "scriptSysId": null,
+                                                                                    "target": null
+                                                                                },
+                                                                                "type": "CLIENT_TRANSFORM_SCRIPT"
+                                                                            },
+                                                                            "sysId": "32408b42ff7a10109046e490703bf176"
+                                                                        },
+                                                                        "operation": null,
+                                                                        "targetId": "VddnuzPLeeCkeeddpjjYULahjfoqdj",
+                                                                        "type": "EVENT"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ],
                                                         "isHidden": {
                                                             "type": "JSON_LITERAL",
                                                             "value": null
@@ -797,7 +947,7 @@
                                                             },
                                                             "clickAction": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": "emit"
+                                                                "value": "emit_filter"
                                                             },
                                                             "formatNumber": {
                                                                 "type": "JSON_LITERAL",
@@ -821,7 +971,7 @@
                                                             },
                                                             "query": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": ""
+                                                                "value": "assigned_toDYNAMIC90d1921e5f510100a9ad2572f2b477fe^active=true^due_date&gt;javascript:new GlideDateTime().getDisplayValue()^due_dateRELATIVELE@minute@ahead@30^EQ"
                                                             },
                                                             "refreshSeconds": {
                                                                 "type": "JSON_LITERAL",
@@ -829,15 +979,19 @@
                                                             },
                                                             "table": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": ""
+                                                                "value": "x_gegis_ins_policy_case_task"
                                                             },
                                                             "value": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": "4"
+                                                                "value": ""
                                                             },
                                                             "valueColor": {
                                                                 "type": "JSON_LITERAL",
                                                                 "value": "#8A5B12"
+                                                            },
+                                                            "workspaceUrlTemplate": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "/x/gegis/insurance-policy-suite/simplelist/{tableName}/params/query/{query}"
                                                             }
                                                         },
                                                         "slot": null,
@@ -928,7 +1082,47 @@
                                                         },
                                                         "elementId": "my_sla_breached",
                                                         "elementLabel": "my sla breached",
-                                                        "eventMappings": [],
+                                                        "eventMappings": [
+                                                            {
+                                                                "eventMappingId": "bbeehheeddotPYsAURTeeddBoDJbpeeddtdiL",
+                                                                "isConfiguration": false,
+                                                                "offRowStorageId": null,
+                                                                "sourceEventApiName": "x_gegis_library.SCORE_CLICKED",
+                                                                "sourceEventCorrelationId": null,
+                                                                "sourceEventDefinition": {
+                                                                    "apiName": "x_gegis_library.SCORE_CLICKED",
+                                                                    "id": null,
+                                                                    "type": "UXEVENT"
+                                                                },
+                                                                "sourceEventSysId": null,
+                                                                "targets": [
+                                                                    {
+                                                                        "broker": null,
+                                                                        "clientScript": null,
+                                                                        "clientTransformScript": "javascript(/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\treturn {\n\t\tpropName: \"mytaskfilter\",\n\t\tvalue: event.payload.query\n\t};\n})",
+                                                                        "conditional": null,
+                                                                        "declarativeAction": null,
+                                                                        "event": {
+                                                                            "apiName": "sn_uxf.MACROPONENT_STATE_UPDATE_REQUESTED",
+                                                                            "payload": {
+                                                                                "script": {
+                                                                                    "apiVersion": "1.0.0",
+                                                                                    "controllerElementId": null,
+                                                                                    "inlineScript": "/**\n* @param {params} params\n* @param {api} params.api\n* @param {any} params.event\n*/\nfunction evaluateEvent({api, event}) {\n\treturn {\n\t\tpropName: \"mytaskfilter\",\n\t\tvalue: event.payload.query\n\t};\n}",
+                                                                                    "scriptSysId": null,
+                                                                                    "target": null
+                                                                                },
+                                                                                "type": "CLIENT_TRANSFORM_SCRIPT"
+                                                                            },
+                                                                            "sysId": "32408b42ff7a10109046e490703bf176"
+                                                                        },
+                                                                        "operation": null,
+                                                                        "targetId": "CggeeaaJPFuBUeebjjiisHQGVaOMeeq",
+                                                                        "type": "EVENT"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ],
                                                         "isHidden": {
                                                             "type": "JSON_LITERAL",
                                                             "value": null
@@ -949,7 +1143,7 @@
                                                             },
                                                             "clickAction": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": "emit"
+                                                                "value": "emit_filter"
                                                             },
                                                             "formatNumber": {
                                                                 "type": "JSON_LITERAL",
@@ -973,7 +1167,7 @@
                                                             },
                                                             "query": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": ""
+                                                                "value": "assigned_toDYNAMIC90d1921e5f510100a9ad2572f2b477fe^active=true^due_dateISNOTEMPTY^due_date&lt;javascript:new GlideDateTime().getDisplayValue()^EQ"
                                                             },
                                                             "refreshSeconds": {
                                                                 "type": "JSON_LITERAL",
@@ -981,7 +1175,7 @@
                                                             },
                                                             "table": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": ""
+                                                                "value": "x_gegis_ins_policy_case_task"
                                                             },
                                                             "value": {
                                                                 "type": "JSON_LITERAL",
@@ -990,6 +1184,10 @@
                                                             "valueColor": {
                                                                 "type": "JSON_LITERAL",
                                                                 "value": "#f7656a"
+                                                            },
+                                                            "workspaceUrlTemplate": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "/x/gegis/insurance-policy-suite/simplelist/{tableName}/params/query/{query}"
                                                             }
                                                         },
                                                         "slot": null,
@@ -1409,8 +1607,12 @@
                                                                 "value": "x_gegis_library.pinned_items"
                                                             },
                                                             "query": {
-                                                                "type": "JSON_LITERAL",
-                                                                "value": "assigned_toDYNAMIC90d1921e5f510100a9ad2572f2b477fe"
+                                                                "binding": {
+                                                                    "address": [
+                                                                        "mytaskfilter"
+                                                                    ]
+                                                                },
+                                                                "type": "STATE_BINDING"
                                                             },
                                                             "recordUrlTemplate": {
                                                                 "type": "JSON_LITERAL",
@@ -2030,7 +2232,54 @@
                                                         },
                                                         "elementId": "single_score_chart_1",
                                                         "elementLabel": "Single Score Chart 1",
-                                                        "eventMappings": [],
+                                                        "eventMappings": [
+                                                            {
+                                                                "eventMappingId": "unHOSvZKBUYeeddjjbIFoguhhlcczJ",
+                                                                "isConfiguration": false,
+                                                                "offRowStorageId": null,
+                                                                "sourceEventApiName": "x_gegis_library.SCORE_CLICKED",
+                                                                "sourceEventCorrelationId": null,
+                                                                "sourceEventDefinition": {
+                                                                    "apiName": "x_gegis_library.SCORE_CLICKED",
+                                                                    "id": null,
+                                                                    "type": "UXEVENT"
+                                                                },
+                                                                "sourceEventSysId": null,
+                                                                "targets": [
+                                                                    {
+                                                                        "broker": null,
+                                                                        "clientScript": null,
+                                                                        "clientTransformScript": "",
+                                                                        "conditional": null,
+                                                                        "declarativeAction": null,
+                                                                        "event": {
+                                                                            "apiName": "sn_uxf.MACROPONENT_STATE_UPDATE_REQUESTED",
+                                                                            "payload": {
+                                                                                "container": {
+                                                                                    "propName": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": "teamfilter"
+                                                                                    },
+                                                                                    "value": {
+                                                                                        "binding": {
+                                                                                            "address": [
+                                                                                                "query"
+                                                                                            ]
+                                                                                        },
+                                                                                        "type": "EVENT_PAYLOAD_BINDING"
+                                                                                    }
+                                                                                },
+                                                                                "type": "MAP_CONTAINER"
+                                                                            },
+                                                                            "sysId": "32408b42ff7a10109046e490703bf176"
+                                                                        },
+                                                                        "operation": null,
+                                                                        "targetId": "AnqxbeehheehhIAUPceeddNQDlmbbJwxKB",
+                                                                        "type": "EVENT"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ],
                                                         "isHidden": {
                                                             "type": "JSON_LITERAL",
                                                             "value": null
@@ -2051,11 +2300,11 @@
                                                             },
                                                             "clickAction": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": "emit"
+                                                                "value": "emit_filter"
                                                             },
                                                             "formatNumber": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": true
+                                                                "value": false
                                                             },
                                                             "header": {
                                                                 "type": "JSON_LITERAL",
@@ -2075,7 +2324,7 @@
                                                             },
                                                             "query": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": ""
+                                                                "value": "assignment_groupDYNAMICd6435e965f510100a9ad2572f2b47744^stateIN-5,1,2^EQ"
                                                             },
                                                             "refreshSeconds": {
                                                                 "type": "JSON_LITERAL",
@@ -2083,15 +2332,19 @@
                                                             },
                                                             "table": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": ""
+                                                                "value": "x_gegis_ins_policy_case_task"
                                                             },
                                                             "value": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": "36"
+                                                                "value": ""
                                                             },
                                                             "valueColor": {
                                                                 "type": "JSON_LITERAL",
                                                                 "value": "#0F6E56"
+                                                            },
+                                                            "workspaceUrlTemplate": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "/x/gegis/insurance-policy-suite/simplelist/{tableName}/params/query/{query}"
                                                             }
                                                         },
                                                         "slot": null,
@@ -2182,7 +2435,54 @@
                                                         },
                                                         "elementId": "single_score_chart_2",
                                                         "elementLabel": "Single Score Chart 2",
-                                                        "eventMappings": [],
+                                                        "eventMappings": [
+                                                            {
+                                                                "eventMappingId": "bAGmHfpyBaaKueeddHwIulhFdBtO",
+                                                                "isConfiguration": false,
+                                                                "offRowStorageId": null,
+                                                                "sourceEventApiName": "x_gegis_library.SCORE_CLICKED",
+                                                                "sourceEventCorrelationId": null,
+                                                                "sourceEventDefinition": {
+                                                                    "apiName": "x_gegis_library.SCORE_CLICKED",
+                                                                    "id": null,
+                                                                    "type": "UXEVENT"
+                                                                },
+                                                                "sourceEventSysId": null,
+                                                                "targets": [
+                                                                    {
+                                                                        "broker": null,
+                                                                        "clientScript": null,
+                                                                        "clientTransformScript": "",
+                                                                        "conditional": null,
+                                                                        "declarativeAction": null,
+                                                                        "event": {
+                                                                            "apiName": "sn_uxf.MACROPONENT_STATE_UPDATE_REQUESTED",
+                                                                            "payload": {
+                                                                                "container": {
+                                                                                    "propName": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": "teamfilter"
+                                                                                    },
+                                                                                    "value": {
+                                                                                        "binding": {
+                                                                                            "address": [
+                                                                                                "query"
+                                                                                            ]
+                                                                                        },
+                                                                                        "type": "EVENT_PAYLOAD_BINDING"
+                                                                                    }
+                                                                                },
+                                                                                "type": "MAP_CONTAINER"
+                                                                            },
+                                                                            "sysId": "32408b42ff7a10109046e490703bf176"
+                                                                        },
+                                                                        "operation": null,
+                                                                        "targetId": "AwSyggfjNDkeeQjjaaYGMDffSdqUo",
+                                                                        "type": "EVENT"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ],
                                                         "isHidden": {
                                                             "type": "JSON_LITERAL",
                                                             "value": null
@@ -2203,7 +2503,7 @@
                                                             },
                                                             "clickAction": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": "emit"
+                                                                "value": "emit_filter"
                                                             },
                                                             "formatNumber": {
                                                                 "type": "JSON_LITERAL",
@@ -2227,7 +2527,7 @@
                                                             },
                                                             "query": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": ""
+                                                                "value": "assignment_groupDYNAMICd6435e965f510100a9ad2572f2b47744^stateIN-5,1,2^due_date&gt;javascript:new GlideDateTime().getDisplayValue()^due_dateRELATIVELE@minute@ahead@30^EQ"
                                                             },
                                                             "refreshSeconds": {
                                                                 "type": "JSON_LITERAL",
@@ -2235,7 +2535,7 @@
                                                             },
                                                             "table": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": ""
+                                                                "value": "x_gegis_ins_policy_case_task"
                                                             },
                                                             "value": {
                                                                 "type": "JSON_LITERAL",
@@ -2244,6 +2544,10 @@
                                                             "valueColor": {
                                                                 "type": "JSON_LITERAL",
                                                                 "value": "#8A5B12"
+                                                            },
+                                                            "workspaceUrlTemplate": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "/x/gegis/insurance-policy-suite/simplelist/{tableName}/params/query/{query}"
                                                             }
                                                         },
                                                         "slot": null,
@@ -2334,7 +2638,54 @@
                                                         },
                                                         "elementId": "single_score_chart_3",
                                                         "elementLabel": "Single Score Chart 3",
-                                                        "eventMappings": [],
+                                                        "eventMappings": [
+                                                            {
+                                                                "eventMappingId": "ggCuwgfpFBaaNVjjXIFrddggiiJIggq",
+                                                                "isConfiguration": false,
+                                                                "offRowStorageId": null,
+                                                                "sourceEventApiName": "x_gegis_library.SCORE_CLICKED",
+                                                                "sourceEventCorrelationId": null,
+                                                                "sourceEventDefinition": {
+                                                                    "apiName": "x_gegis_library.SCORE_CLICKED",
+                                                                    "id": null,
+                                                                    "type": "UXEVENT"
+                                                                },
+                                                                "sourceEventSysId": null,
+                                                                "targets": [
+                                                                    {
+                                                                        "broker": null,
+                                                                        "clientScript": null,
+                                                                        "clientTransformScript": "",
+                                                                        "conditional": null,
+                                                                        "declarativeAction": null,
+                                                                        "event": {
+                                                                            "apiName": "sn_uxf.MACROPONENT_STATE_UPDATE_REQUESTED",
+                                                                            "payload": {
+                                                                                "container": {
+                                                                                    "propName": {
+                                                                                        "type": "JSON_LITERAL",
+                                                                                        "value": "teamfilter"
+                                                                                    },
+                                                                                    "value": {
+                                                                                        "binding": {
+                                                                                            "address": [
+                                                                                                "query"
+                                                                                            ]
+                                                                                        },
+                                                                                        "type": "EVENT_PAYLOAD_BINDING"
+                                                                                    }
+                                                                                },
+                                                                                "type": "MAP_CONTAINER"
+                                                                            },
+                                                                            "sysId": "32408b42ff7a10109046e490703bf176"
+                                                                        },
+                                                                        "operation": null,
+                                                                        "targetId": "ewFnAfrtBaaQVjjlEKXZuhhvNKX",
+                                                                        "type": "EVENT"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ],
                                                         "isHidden": {
                                                             "type": "JSON_LITERAL",
                                                             "value": null
@@ -2355,7 +2706,7 @@
                                                             },
                                                             "clickAction": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": "emit"
+                                                                "value": "emit_filter"
                                                             },
                                                             "formatNumber": {
                                                                 "type": "JSON_LITERAL",
@@ -2379,7 +2730,7 @@
                                                             },
                                                             "query": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": ""
+                                                                "value": "assignment_groupDYNAMICd6435e965f510100a9ad2572f2b47744^stateIN-5,1,2^due_dateISNOTEMPTY^due_date&lt;javascript:new GlideDateTime().getDisplayValue()^EQ"
                                                             },
                                                             "refreshSeconds": {
                                                                 "type": "JSON_LITERAL",
@@ -2387,7 +2738,7 @@
                                                             },
                                                             "table": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": ""
+                                                                "value": "x_gegis_ins_policy_case_task"
                                                             },
                                                             "value": {
                                                                 "type": "JSON_LITERAL",
@@ -2396,6 +2747,10 @@
                                                             "valueColor": {
                                                                 "type": "JSON_LITERAL",
                                                                 "value": "#f7656a"
+                                                            },
+                                                            "workspaceUrlTemplate": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "/x/gegis/insurance-policy-suite/simplelist/{tableName}/params/query/{query}"
                                                             }
                                                         },
                                                         "slot": null,
@@ -2813,8 +3168,12 @@
                                                                 "value": false
                                                             },
                                                             "query": {
-                                                                "type": "JSON_LITERAL",
-                                                                "value": "assignment_groupDYNAMICd6435e965f510100a9ad2572f2b47744"
+                                                                "binding": {
+                                                                    "address": [
+                                                                        "teamfilter"
+                                                                    ]
+                                                                },
+                                                                "type": "STATE_BINDING"
                                                             },
                                                             "recordUrlTemplate": {
                                                                 "type": "JSON_LITERAL",
@@ -3551,924 +3910,7 @@
     }
 ]</composition>
         <da_relay_models/>
-        <data>[
-    {
-        "bundleLinks": [
-            {
-                "bundleInstanceId": "_1",
-                "elementType": "controller",
-                "originalElementId": "list_controller"
-            }
-        ],
-        "definition": {
-            "id": "5865e308432021105571609dc7b8f23b",
-            "type": "CONTROLLER"
-        },
-        "dependencies": {},
-        "elementId": "task_list_controller",
-        "elementLabel": "Task List Controller",
-        "eventMappings": [
-            {
-                "eventMappingId": "clkubblwubaaccgffddbhhplggtlhhiiay",
-                "isConfiguration": false,
-                "offRowStorageId": null,
-                "sourceEventApiName": "sn_now_list_common.LIST_CTRL#ADD_NOTIFICATIONS_REQUESTED",
-                "sourceEventCorrelationId": null,
-                "sourceEventDefinition": {
-                    "apiName": "sn_now_list_common.LIST_CTRL#ADD_NOTIFICATIONS_REQUESTED",
-                    "id": null,
-                    "type": "UXEVENT"
-                },
-                "sourceEventSysId": null,
-                "targets": [
-                    {
-                        "broker": null,
-                        "bundleLinks": [
-                            {
-                                "bundleInstanceId": "_1",
-                                "elementType": "eventMappingTarget"
-                            }
-                        ],
-                        "clientScript": null,
-                        "conditional": null,
-                        "declarativeAction": null,
-                        "event": {
-                            "apiName": "sn_uxf_page.NOW_UXF_PAGE#ADD_NOTIFICATIONS",
-                            "payload": {
-                                "container": {
-                                    "items": {
-                                        "binding": {
-                                            "address": [
-                                                "items"
-                                            ]
-                                        },
-                                        "type": "EVENT_PAYLOAD_BINDING"
-                                    }
-                                },
-                                "type": "MAP_CONTAINER"
-                            },
-                            "sysId": null
-                        },
-                        "operation": null,
-                        "targetId": "clkubblwucaaccgggddbhhpvtfmthffdd",
-                        "type": "EVENT"
-                    }
-                ]
-            },
-            {
-                "eventMappingId": "clkwayluyaacchzddbhhqwnbbmqowii",
-                "isConfiguration": false,
-                "offRowStorageId": null,
-                "sourceEventApiName": "sn_now_list_common.LIST_CTRL#CLEAR_NOTIFICATIONS_REQUESTED",
-                "sourceEventCorrelationId": null,
-                "sourceEventDefinition": {
-                    "apiName": "sn_now_list_common.LIST_CTRL#CLEAR_NOTIFICATIONS_REQUESTED",
-                    "id": null,
-                    "type": "UXEVENT"
-                },
-                "sourceEventSysId": null,
-                "targets": [
-                    {
-                        "broker": null,
-                        "bundleLinks": [
-                            {
-                                "bundleInstanceId": "_1",
-                                "elementType": "eventMappingTarget"
-                            }
-                        ],
-                        "clientScript": null,
-                        "conditional": null,
-                        "declarativeAction": null,
-                        "event": {
-                            "apiName": "sn_uxf_page.NOW_UXF_PAGE#CLEAR_NOTIFICATIONS",
-                            "payload": {}
-                        },
-                        "operation": null,
-                        "targetId": "clkwayluyaacciaaddbhhqggntpcgpbb",
-                        "type": "EVENT"
-                    }
-                ]
-            },
-            {
-                "eventMappingId": "clmtghpyffaabbcjjddbhhvbbqzjjoywp",
-                "isConfiguration": false,
-                "offRowStorageId": null,
-                "sourceEventApiName": "sn_now_list_common.LIST_CTRL#REFERENCE_LINK_CLICKED",
-                "sourceEventCorrelationId": null,
-                "sourceEventDefinition": {
-                    "apiName": "sn_now_list_common.LIST_CTRL#REFERENCE_LINK_CLICKED",
-                    "id": null,
-                    "type": "UXEVENT"
-                },
-                "sourceEventSysId": null,
-                "targets": [
-                    {
-                        "broker": null,
-                        "bundleLinks": [
-                            {
-                                "bundleInstanceId": "_1",
-                                "elementType": "eventMappingTarget"
-                            }
-                        ],
-                        "clientScript": null,
-                        "conditional": null,
-                        "declarativeAction": null,
-                        "event": null,
-                        "operation": {
-                            "dataBrokerId": "5865e308432021105571609dc7b8f23b",
-                            "operationName": "LIST_CTRL#NAV_ITEM_SELECTED",
-                            "parentResourceId": "task_list_controller",
-                            "payload": {
-                                "container": {
-                                    "isFirstNonRef": {
-                                        "binding": {
-                                            "address": [
-                                                "isFirstNonRef"
-                                            ]
-                                        },
-                                        "type": "EVENT_PAYLOAD_BINDING"
-                                    },
-                                    "nativeEvent": {
-                                        "binding": {
-                                            "address": [
-                                                "nativeEvent"
-                                            ]
-                                        },
-                                        "type": "EVENT_PAYLOAD_BINDING"
-                                    },
-                                    "route": {
-                                        "type": "JSON_LITERAL",
-                                        "value": "record"
-                                    },
-                                    "row": {
-                                        "binding": {
-                                            "address": [
-                                                "row"
-                                            ]
-                                        },
-                                        "type": "EVENT_PAYLOAD_BINDING"
-                                    },
-                                    "sys_id": {
-                                        "binding": {
-                                            "address": [
-                                                "sys_id"
-                                            ]
-                                        },
-                                        "type": "EVENT_PAYLOAD_BINDING"
-                                    },
-                                    "table": {
-                                        "binding": {
-                                            "address": [
-                                                "table"
-                                            ]
-                                        },
-                                        "type": "EVENT_PAYLOAD_BINDING"
-                                    }
-                                },
-                                "type": "MAP_CONTAINER"
-                            }
-                        },
-                        "targetId": "clmtghpyggaabbcaddbhhvmkgiijjjjddl",
-                        "type": "DATABROKER_OP"
-                    }
-                ]
-            },
-            {
-                "eventMappingId": "clnbbnjjoffiiaaccnpddbhhsffirbbcmbbf",
-                "isConfiguration": false,
-                "offRowStorageId": null,
-                "sourceEventApiName": "sn_now_list_common.LIST_CTRL#CREATE_NEW_RECORD",
-                "sourceEventCorrelationId": null,
-                "sourceEventDefinition": {
-                    "apiName": "sn_now_list_common.LIST_CTRL#CREATE_NEW_RECORD",
-                    "id": null,
-                    "type": "UXEVENT"
-                },
-                "sourceEventSysId": null,
-                "targets": [
-                    {
-                        "broker": null,
-                        "bundleLinks": [
-                            {
-                                "bundleInstanceId": "_1",
-                                "elementType": "eventMappingTarget"
-                            }
-                        ],
-                        "clientScript": null,
-                        "conditional": null,
-                        "declarativeAction": null,
-                        "event": null,
-                        "operation": {
-                            "dataBrokerId": "5865e308432021105571609dc7b8f23b",
-                            "operationName": "LIST_CTRL#NAV_ITEM_SELECTED",
-                            "parentResourceId": "task_list_controller",
-                            "payload": {
-                                "container": {
-                                    "external": {
-                                        "binding": {
-                                            "address": [
-                                                "external"
-                                            ]
-                                        },
-                                        "type": "EVENT_PAYLOAD_BINDING"
-                                    },
-                                    "fields": {
-                                        "binding": {
-                                            "address": [
-                                                "fields"
-                                            ]
-                                        },
-                                        "type": "EVENT_PAYLOAD_BINDING"
-                                    },
-                                    "multiInstField": "sysId",
-                                    "params": {
-                                        "binding": {
-                                            "address": [
-                                                "params"
-                                            ]
-                                        },
-                                        "type": "EVENT_PAYLOAD_BINDING"
-                                    },
-                                    "passiveNavigation": {
-                                        "binding": {
-                                            "address": [
-                                                "passiveNavigation"
-                                            ]
-                                        },
-                                        "type": "EVENT_PAYLOAD_BINDING"
-                                    },
-                                    "redirect": {
-                                        "binding": {
-                                            "address": [
-                                                "redirect"
-                                            ]
-                                        },
-                                        "type": "EVENT_PAYLOAD_BINDING"
-                                    },
-                                    "route": {
-                                        "binding": {
-                                            "address": [
-                                                "route"
-                                            ]
-                                        },
-                                        "type": "EVENT_PAYLOAD_BINDING"
-                                    },
-                                    "title": {
-                                        "binding": {
-                                            "address": [
-                                                "title"
-                                            ]
-                                        },
-                                        "type": "EVENT_PAYLOAD_BINDING"
-                                    }
-                                },
-                                "type": "MAP_CONTAINER"
-                            }
-                        },
-                        "targetId": "clnbbnjjoffiiaaccnqddbhhscehheaddve",
-                        "type": "DATABROKER_OP"
-                    }
-                ]
-            }
-        ],
-        "inputValues": {
-            "actionConfigId": {
-                "binding": {
-                    "address": [
-                        "actionConfigId"
-                    ],
-                    "category": "app"
-                },
-                "type": "CONTEXT_BINDING"
-            },
-            "allRecordsSelected": {
-                "type": "JSON_LITERAL",
-                "value": false
-            },
-            "appId": {
-                "binding": {
-                    "address": [
-                        "appId"
-                    ],
-                    "category": "app"
-                },
-                "type": "CONTEXT_BINDING"
-            },
-            "columnLimit": {
-                "type": "JSON_LITERAL",
-                "value": 0
-            },
-            "columnPreferenceKey": {
-                "type": "JSON_LITERAL",
-                "value": ""
-            },
-            "columns": {
-                "type": "JSON_LITERAL",
-                "value": null
-            },
-            "currentPage": {
-                "type": "JSON_LITERAL",
-                "value": 0
-            },
-            "enableCellFiltering": {
-                "type": "JSON_LITERAL",
-                "value": true
-            },
-            "enableColumnCalculations": {
-                "type": "JSON_LITERAL",
-                "value": true
-            },
-            "enableColumnFiltering": {
-                "type": "JSON_LITERAL",
-                "value": true
-            },
-            "enableColumnGrouping": {
-                "type": "JSON_LITERAL",
-                "value": true
-            },
-            "enableColumnSorting": {
-                "type": "JSON_LITERAL",
-                "value": true
-            },
-            "enableDeclarativeActions": {
-                "type": "JSON_LITERAL",
-                "value": true
-            },
-            "enableDotWalk": {
-                "type": "JSON_LITERAL",
-                "value": true
-            },
-            "enableInfiniteScroll": {
-                "type": "JSON_LITERAL",
-                "value": false
-            },
-            "enableLiveList": {
-                "type": "JSON_LITERAL",
-                "value": false
-            },
-            "enableQuickEdit": {
-                "type": "JSON_LITERAL",
-                "value": true
-            },
-            "enableQuickFormNavigation": {
-                "type": "JSON_LITERAL",
-                "value": true
-            },
-            "enableReferenceLinks": {
-                "type": "JSON_LITERAL",
-                "value": true
-            },
-            "enableRelatedHierarchy": {
-                "type": "JSON_LITERAL",
-                "value": false
-            },
-            "enforceViewRulesForQuickForm": {
-                "type": "JSON_LITERAL",
-                "value": true
-            },
-            "fetchHighlightedValues": {
-                "type": "JSON_LITERAL",
-                "value": true
-            },
-            "filter": {
-                "type": "JSON_LITERAL",
-                "value": "ORDERBYDESCsys_created_on"
-            },
-            "fixedFilter": {
-                "type": "JSON_LITERAL",
-                "value": null
-            },
-            "fuzzyCounts": {
-                "binding": {
-                    "address": [
-                        "fuzzyCount"
-                    ],
-                    "category": "app"
-                },
-                "type": "CONTEXT_BINDING"
-            },
-            "groupBy": {
-                "type": "JSON_LITERAL",
-                "value": null
-            },
-            "highlightedValueConfigId": {
-                "binding": {
-                    "address": [
-                        "highlightedValueConfigId"
-                    ],
-                    "category": "app"
-                },
-                "type": "CONTEXT_BINDING"
-            },
-            "listControllerId": {
-                "type": "JSON_LITERAL",
-                "value": "qtwXu47QVCkjF9tEM3GTAzNzS"
-            },
-            "listId": {
-                "type": "JSON_LITERAL",
-                "value": ""
-            },
-            "listType": {
-                "type": "JSON_LITERAL",
-                "value": "default"
-            },
-            "liveUpdates": {
-                "type": "JSON_LITERAL",
-                "value": "off"
-            },
-            "nestBy": {
-                "type": "JSON_LITERAL",
-                "value": null
-            },
-            "onlyEnableSelectionWhenRequiredByActions": {
-                "type": "JSON_LITERAL",
-                "value": true
-            },
-            "pageSysId": {
-                "binding": {
-                    "address": [
-                        "nowMacroponentSysId"
-                    ],
-                    "category": "props"
-                },
-                "type": "CONTEXT_BINDING"
-            },
-            "recordCountLimit": {
-                "type": "JSON_LITERAL",
-                "value": 20
-            },
-            "rowLimit": {
-                "type": "JSON_LITERAL",
-                "value": 10
-            },
-            "table": {
-                "type": "JSON_LITERAL",
-                "value": "x_gegis_ins_policy_case_task"
-            },
-            "view": {
-                "type": "JSON_LITERAL",
-                "value": ""
-            }
-        },
-        "readEvaluationMode": "EAGER"
-    },
-    {
-        "bundleLinks": [
-            {
-                "bundleInstanceId": "_2",
-                "elementType": "controller",
-                "originalElementId": "list_controller"
-            }
-        ],
-        "definition": {
-            "id": "5865e308432021105571609dc7b8f23b",
-            "type": "CONTROLLER"
-        },
-        "dependencies": {},
-        "elementId": "list_controller",
-        "elementLabel": "List Controller",
-        "eventMappings": [
-            {
-                "eventMappingId": "clkubblwubaaccgffddbhhplggtlhhiiay",
-                "isConfiguration": false,
-                "offRowStorageId": null,
-                "sourceEventApiName": "sn_now_list_common.LIST_CTRL#ADD_NOTIFICATIONS_REQUESTED",
-                "sourceEventCorrelationId": null,
-                "sourceEventDefinition": {
-                    "apiName": "sn_now_list_common.LIST_CTRL#ADD_NOTIFICATIONS_REQUESTED",
-                    "id": null,
-                    "type": "UXEVENT"
-                },
-                "sourceEventSysId": null,
-                "targets": [
-                    {
-                        "broker": null,
-                        "bundleLinks": [
-                            {
-                                "bundleInstanceId": "_2",
-                                "elementType": "eventMappingTarget"
-                            }
-                        ],
-                        "clientScript": null,
-                        "conditional": null,
-                        "declarativeAction": null,
-                        "event": {
-                            "apiName": "sn_uxf_page.NOW_UXF_PAGE#ADD_NOTIFICATIONS",
-                            "payload": {
-                                "container": {
-                                    "items": {
-                                        "binding": {
-                                            "address": [
-                                                "items"
-                                            ]
-                                        },
-                                        "type": "EVENT_PAYLOAD_BINDING"
-                                    }
-                                },
-                                "type": "MAP_CONTAINER"
-                            },
-                            "sysId": null
-                        },
-                        "operation": null,
-                        "targetId": "clkubblwucaaccgggddbhhpvtfmthffdd",
-                        "type": "EVENT"
-                    }
-                ]
-            },
-            {
-                "eventMappingId": "clkwayluyaacchzddbhhqwnbbmqowii",
-                "isConfiguration": false,
-                "offRowStorageId": null,
-                "sourceEventApiName": "sn_now_list_common.LIST_CTRL#CLEAR_NOTIFICATIONS_REQUESTED",
-                "sourceEventCorrelationId": null,
-                "sourceEventDefinition": {
-                    "apiName": "sn_now_list_common.LIST_CTRL#CLEAR_NOTIFICATIONS_REQUESTED",
-                    "id": null,
-                    "type": "UXEVENT"
-                },
-                "sourceEventSysId": null,
-                "targets": [
-                    {
-                        "broker": null,
-                        "bundleLinks": [
-                            {
-                                "bundleInstanceId": "_2",
-                                "elementType": "eventMappingTarget"
-                            }
-                        ],
-                        "clientScript": null,
-                        "conditional": null,
-                        "declarativeAction": null,
-                        "event": {
-                            "apiName": "sn_uxf_page.NOW_UXF_PAGE#CLEAR_NOTIFICATIONS",
-                            "payload": {}
-                        },
-                        "operation": null,
-                        "targetId": "clkwayluyaacciaaddbhhqggntpcgpbb",
-                        "type": "EVENT"
-                    }
-                ]
-            },
-            {
-                "eventMappingId": "clmtghpyffaabbcjjddbhhvbbqzjjoywp",
-                "isConfiguration": false,
-                "offRowStorageId": null,
-                "sourceEventApiName": "sn_now_list_common.LIST_CTRL#REFERENCE_LINK_CLICKED",
-                "sourceEventCorrelationId": null,
-                "sourceEventDefinition": {
-                    "apiName": "sn_now_list_common.LIST_CTRL#REFERENCE_LINK_CLICKED",
-                    "id": null,
-                    "type": "UXEVENT"
-                },
-                "sourceEventSysId": null,
-                "targets": [
-                    {
-                        "broker": null,
-                        "bundleLinks": [
-                            {
-                                "bundleInstanceId": "_2",
-                                "elementType": "eventMappingTarget"
-                            }
-                        ],
-                        "clientScript": null,
-                        "conditional": null,
-                        "declarativeAction": null,
-                        "event": null,
-                        "operation": {
-                            "dataBrokerId": "5865e308432021105571609dc7b8f23b",
-                            "operationName": "LIST_CTRL#NAV_ITEM_SELECTED",
-                            "parentResourceId": "list_controller",
-                            "payload": {
-                                "container": {
-                                    "isFirstNonRef": {
-                                        "binding": {
-                                            "address": [
-                                                "isFirstNonRef"
-                                            ]
-                                        },
-                                        "type": "EVENT_PAYLOAD_BINDING"
-                                    },
-                                    "nativeEvent": {
-                                        "binding": {
-                                            "address": [
-                                                "nativeEvent"
-                                            ]
-                                        },
-                                        "type": "EVENT_PAYLOAD_BINDING"
-                                    },
-                                    "route": {
-                                        "type": "JSON_LITERAL",
-                                        "value": "record"
-                                    },
-                                    "row": {
-                                        "binding": {
-                                            "address": [
-                                                "row"
-                                            ]
-                                        },
-                                        "type": "EVENT_PAYLOAD_BINDING"
-                                    },
-                                    "sys_id": {
-                                        "binding": {
-                                            "address": [
-                                                "sys_id"
-                                            ]
-                                        },
-                                        "type": "EVENT_PAYLOAD_BINDING"
-                                    },
-                                    "table": {
-                                        "binding": {
-                                            "address": [
-                                                "table"
-                                            ]
-                                        },
-                                        "type": "EVENT_PAYLOAD_BINDING"
-                                    }
-                                },
-                                "type": "MAP_CONTAINER"
-                            }
-                        },
-                        "targetId": "clmtghpyggaabbcaddbhhvmkgiijjjjddl",
-                        "type": "DATABROKER_OP"
-                    }
-                ]
-            },
-            {
-                "eventMappingId": "clnbbnjjoffiiaaccnpddbhhsffirbbcmbbf",
-                "isConfiguration": false,
-                "offRowStorageId": null,
-                "sourceEventApiName": "sn_now_list_common.LIST_CTRL#CREATE_NEW_RECORD",
-                "sourceEventCorrelationId": null,
-                "sourceEventDefinition": {
-                    "apiName": "sn_now_list_common.LIST_CTRL#CREATE_NEW_RECORD",
-                    "id": null,
-                    "type": "UXEVENT"
-                },
-                "sourceEventSysId": null,
-                "targets": [
-                    {
-                        "broker": null,
-                        "bundleLinks": [
-                            {
-                                "bundleInstanceId": "_2",
-                                "elementType": "eventMappingTarget"
-                            }
-                        ],
-                        "clientScript": null,
-                        "conditional": null,
-                        "declarativeAction": null,
-                        "event": null,
-                        "operation": {
-                            "dataBrokerId": "5865e308432021105571609dc7b8f23b",
-                            "operationName": "LIST_CTRL#NAV_ITEM_SELECTED",
-                            "parentResourceId": "list_controller",
-                            "payload": {
-                                "container": {
-                                    "external": {
-                                        "binding": {
-                                            "address": [
-                                                "external"
-                                            ]
-                                        },
-                                        "type": "EVENT_PAYLOAD_BINDING"
-                                    },
-                                    "fields": {
-                                        "binding": {
-                                            "address": [
-                                                "fields"
-                                            ]
-                                        },
-                                        "type": "EVENT_PAYLOAD_BINDING"
-                                    },
-                                    "multiInstField": "sysId",
-                                    "params": {
-                                        "binding": {
-                                            "address": [
-                                                "params"
-                                            ]
-                                        },
-                                        "type": "EVENT_PAYLOAD_BINDING"
-                                    },
-                                    "passiveNavigation": {
-                                        "binding": {
-                                            "address": [
-                                                "passiveNavigation"
-                                            ]
-                                        },
-                                        "type": "EVENT_PAYLOAD_BINDING"
-                                    },
-                                    "redirect": {
-                                        "binding": {
-                                            "address": [
-                                                "redirect"
-                                            ]
-                                        },
-                                        "type": "EVENT_PAYLOAD_BINDING"
-                                    },
-                                    "route": {
-                                        "binding": {
-                                            "address": [
-                                                "route"
-                                            ]
-                                        },
-                                        "type": "EVENT_PAYLOAD_BINDING"
-                                    },
-                                    "title": {
-                                        "binding": {
-                                            "address": [
-                                                "title"
-                                            ]
-                                        },
-                                        "type": "EVENT_PAYLOAD_BINDING"
-                                    }
-                                },
-                                "type": "MAP_CONTAINER"
-                            }
-                        },
-                        "targetId": "clnbbnjjoffiiaaccnqddbhhscehheaddve",
-                        "type": "DATABROKER_OP"
-                    }
-                ]
-            }
-        ],
-        "inputValues": {
-            "actionConfigId": {
-                "binding": {
-                    "address": [
-                        "actionConfigId"
-                    ],
-                    "category": "app"
-                },
-                "type": "CONTEXT_BINDING"
-            },
-            "allRecordsSelected": {
-                "type": "JSON_LITERAL",
-                "value": false
-            },
-            "appId": {
-                "binding": {
-                    "address": [
-                        "appId"
-                    ],
-                    "category": "app"
-                },
-                "type": "CONTEXT_BINDING"
-            },
-            "columnLimit": {
-                "type": "JSON_LITERAL",
-                "value": 0
-            },
-            "columnPreferenceKey": {
-                "type": "JSON_LITERAL",
-                "value": ""
-            },
-            "columns": {
-                "type": "JSON_LITERAL",
-                "value": ""
-            },
-            "currentPage": {
-                "type": "JSON_LITERAL",
-                "value": 0
-            },
-            "enableCellFiltering": {
-                "type": "JSON_LITERAL",
-                "value": true
-            },
-            "enableColumnCalculations": {
-                "type": "JSON_LITERAL",
-                "value": true
-            },
-            "enableColumnFiltering": {
-                "type": "JSON_LITERAL",
-                "value": true
-            },
-            "enableColumnGrouping": {
-                "type": "JSON_LITERAL",
-                "value": true
-            },
-            "enableColumnSorting": {
-                "type": "JSON_LITERAL",
-                "value": true
-            },
-            "enableDeclarativeActions": {
-                "type": "JSON_LITERAL",
-                "value": true
-            },
-            "enableDotWalk": {
-                "type": "JSON_LITERAL",
-                "value": true
-            },
-            "enableInfiniteScroll": {
-                "type": "JSON_LITERAL",
-                "value": false
-            },
-            "enableLiveList": {
-                "type": "JSON_LITERAL",
-                "value": false
-            },
-            "enableQuickEdit": {
-                "type": "JSON_LITERAL",
-                "value": true
-            },
-            "enableQuickFormNavigation": {
-                "type": "JSON_LITERAL",
-                "value": true
-            },
-            "enableReferenceLinks": {
-                "type": "JSON_LITERAL",
-                "value": true
-            },
-            "enableRelatedHierarchy": {
-                "type": "JSON_LITERAL",
-                "value": false
-            },
-            "enforceViewRulesForQuickForm": {
-                "type": "JSON_LITERAL",
-                "value": true
-            },
-            "fetchHighlightedValues": {
-                "type": "JSON_LITERAL",
-                "value": true
-            },
-            "filter": {
-                "type": "JSON_LITERAL",
-                "value": ""
-            },
-            "fixedFilter": {
-                "type": "JSON_LITERAL",
-                "value": ""
-            },
-            "fuzzyCounts": {
-                "binding": {
-                    "address": [
-                        "fuzzyCount"
-                    ],
-                    "category": "app"
-                },
-                "type": "CONTEXT_BINDING"
-            },
-            "groupBy": {
-                "type": "JSON_LITERAL",
-                "value": ""
-            },
-            "highlightedValueConfigId": {
-                "binding": {
-                    "address": [
-                        "highlightedValueConfigId"
-                    ],
-                    "category": "app"
-                },
-                "type": "CONTEXT_BINDING"
-            },
-            "listControllerId": {
-                "type": "JSON_LITERAL",
-                "value": "7T5z5PbtBUw479vEAFiOF7Z8G"
-            },
-            "listId": {
-                "type": "JSON_LITERAL",
-                "value": ""
-            },
-            "listType": {
-                "type": "JSON_LITERAL",
-                "value": "default"
-            },
-            "liveUpdates": {
-                "type": "JSON_LITERAL",
-                "value": "off"
-            },
-            "onlyEnableSelectionWhenRequiredByActions": {
-                "type": "JSON_LITERAL",
-                "value": true
-            },
-            "pageSysId": {
-                "binding": {
-                    "address": [
-                        "nowMacroponentSysId"
-                    ],
-                    "category": "props"
-                },
-                "type": "CONTEXT_BINDING"
-            },
-            "recordCountLimit": {
-                "type": "JSON_LITERAL",
-                "value": 20
-            },
-            "rowLimit": {
-                "type": "JSON_LITERAL",
-                "value": 5
-            },
-            "table": {
-                "type": "JSON_LITERAL",
-                "value": "task"
-            },
-            "view": {
-                "type": "JSON_LITERAL",
-                "value": ""
-            }
-        },
-        "readEvaluationMode": "EAGER"
-    }
-]</data>
+        <data>[]</data>
         <description/>
         <disable_auto_reflow>false</disable_auto_reflow>
         <dispatched_events/>
@@ -4628,6 +4070,30 @@
         "name": "greeting",
         "shape": "",
         "valueType": "string"
+    },
+    {
+        "description": null,
+        "fieldType": "string",
+        "initialValue": {
+            "type": "JSON_LITERAL",
+            "value": "assigned_toDYNAMIC90d1921e5f510100a9ad2572f2b477fe^stateIN-5,1,2^EQ"
+        },
+        "label": "newClientStateParam1",
+        "name": "mytaskfilter",
+        "shape": "",
+        "valueType": "string"
+    },
+    {
+        "description": null,
+        "fieldType": "string",
+        "initialValue": {
+            "type": "JSON_LITERAL",
+            "value": "assignment_groupDYNAMICd6435e965f510100a9ad2572f2b47744^stateIN-5,1,2^EQ"
+        },
+        "label": "newClientStateParam1",
+        "name": "teamfilter",
+        "shape": "",
+        "valueType": "string"
     }
 ]</state_properties>
         <style_config>{
@@ -4656,14 +4122,14 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-06-28 11:39:26</sys_created_on>
         <sys_id>d1d903f4337d4f907ef8f499ed5c7be6</sys_id>
-        <sys_mod_count>106</sys_mod_count>
+        <sys_mod_count>158</sys_mod_count>
         <sys_name>Dashboard default</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_d1d903f4337d4f907ef8f499ed5c7be6</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-15 17:44:13</sys_updated_on>
+        <sys_updated_on>2026-09-16 06:07:19</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=d1d903f4337d4f907ef8f499ed5c7be6"/>
 </record_update>
