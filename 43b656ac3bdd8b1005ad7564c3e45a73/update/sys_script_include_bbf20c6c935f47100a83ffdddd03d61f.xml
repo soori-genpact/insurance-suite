@@ -31,14 +31,6 @@ PlaybookActivityDataProvider.prototype = {
         this.NEW_WINDOW_DAYS = 3;
 
         // ---------------------------------------------------------- vocabularies
-        // document.state -> the NEW / STALE badge on an email's attachment list.
-        this.STALE_STATES = {
-            old: true,
-            stale: true,
-            duplicate: true,
-            failed: true
-        };
-
         // document.state values that mean extraction never ran.
         this.NOT_EXTRACTED = {
             'new': true,
@@ -103,7 +95,9 @@ PlaybookActivityDataProvider.prototype = {
             byCase[ic].push({
                 link: this._absLink(String(d.getValue('attachment_url') || '')),
                 name: String(d.getValue('document_name') || ''),
-                status: this.STALE_STATES[String(d.getValue('state') || '')] ? 'STALE' : 'NEW'
+                // same source field and label as the Documents tab (getDocuments) -
+                // no collapsing to a coarse NEW/STALE badge, so the two views agree
+                status: String(d.getDisplayValue('state') || '')
             });
         }
 
@@ -1224,13 +1218,13 @@ PlaybookActivityDataProvider.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-09 16:06:48</sys_created_on>
         <sys_id>bbf20c6c935f47100a83ffdddd03d61f</sys_id>
-        <sys_mod_count>12</sys_mod_count>
+        <sys_mod_count>13</sys_mod_count>
         <sys_name>PlaybookActivityDataProvider</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_script_include_bbf20c6c935f47100a83ffdddd03d61f</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-11 09:22:59</sys_updated_on>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-09-17 12:00:00</sys_updated_on>
     </sys_script_include>
 </record_update>
