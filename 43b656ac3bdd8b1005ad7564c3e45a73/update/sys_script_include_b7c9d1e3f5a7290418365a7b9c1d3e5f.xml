@@ -23,15 +23,14 @@
         AUTO_APPROVE_NEW:    SCOPE + &#39;.extraction.auto_approve.new&#39;,
         AUTO_APPROVE_UPDATE: SCOPE + &#39;.extraction.auto_approve.update&#39;,
 
-        // License + staged execution plan (JSON) for module orchestration:
-        // clearance, exposure, risk, quote &amp; bind.
-        //
-        // The LICENCE half of this property (instance_id, expires_at,
-        // licensed_modules) is authoritative and is issued, not configured.
-        // The execution.stages half is now only a FALLBACK - the live execution
-        // plan lives in x_gegis_ins_policy_module_plan, which a business user
-        // edits. Licence always outranks the plan.
-        MODULE_EXECUTION_CONFIG: SCOPE + &#39;.module_execution_config&#39;
+        // Day-one safety net ONLY: the staged module order ModulePlanService
+        // falls back to when no x_gegis_ins_policy_module_plan row matches a
+        // submission. Licence/version data lives in x_gegis_ins_policy_licence,
+        // not here - licence always outranks both this and the plan.
+        MODULE_EXECUTION_FALLBACK_STAGES: SCOPE + &#39;.module_execution_fallback_stages&#39;,
+
+        // Recipients for LicenceUsageService&#39;s daily seat-usage report / overage alert.
+        LICENCE_NOTIFY_EMAIL: SCOPE + &#39;.licence_notify_email&#39;
     };
 
     // ---------------------------------------------------------------------
@@ -41,7 +40,9 @@
         MODULE_PLAN:       SCOPE + &#39;_module_plan&#39;,
         MODULE:            SCOPE + &#39;_module&#39;,
         VERSION_COPY_RULE: SCOPE + &#39;_version_copy_rule&#39;,
-        SUBMISSION:        SCOPE + &#39;_submission&#39;
+        SUBMISSION:        SCOPE + &#39;_submission&#39;,
+        LICENCE:           SCOPE + &#39;_licence&#39;,
+        LICENCE_MODULE:    SCOPE + &#39;_licence_module&#39;
     };
 
     // Fail-safe defaults, mirrored from the property defaults.
@@ -1418,24 +1419,51 @@
             : getBool(PROP.AUTO_APPROVE_NEW);
     }
 
-    // Parsed license + staged execution plan. Empty object if unset/invalid.
-    function getModuleExecutionConfig() {
-        return getJson(PROP.MODULE_EXECUTION_CONFIG, {});
+    // Day-one safety net stages only - see MODULE_EXECUTION_FALLBACK_STAGES.
+    // Empty array if unset/invalid.
+    function getFallbackStages() {
+        return getJson(PROP.MODULE_EXECUTION_FALLBACK_STAGES, {}).stages || [];
     }
 
     // ---------------------------------------------------------------------
     // Licence. Issued, not configured - it outranks the module plan, so a
     // module the customer has not licensed can never be activated no matter
     // how the plan (or an advanced script) is written.
+    // Lives in x_gegis_ins_policy_licence (single active row) + one
+    // x_gegis_ins_policy_licence_module row per licensed module.
     // ---------------------------------------------------------------------
     function getLicence() {
-        var cfg = getModuleExecutionConfig();
+        var empty = {
+            instance_id: &#39;&#39;, customer_name: &#39;&#39;, license_version: &#39;&#39;,
+            expires_at: &#39;&#39;, licensed_modules: [], licensed_user_count: 0
+        };
+
+        var lic = new GlideRecord(TABLE.LICENCE);
+        lic.addQuery(&#39;active&#39;, true);
+        lic.orderByDesc(&#39;sys_created_on&#39;);
+        lic.setLimit(1);
+        lic.query();
+        if (!lic.next())
+            return empty;
+
+        var licenseId = lic.getUniqueValue();
+        var modules = [];
+        var lm = new GlideRecord(TABLE.LICENCE_MODULE);
+        lm.addQuery(&#39;licence&#39;, licenseId);
+        lm.query();
+        while (lm.next()) {
+            var code = String(lm.getValue(&#39;module.licence_code&#39;) || &#39;&#39;).trim();
+            if (code)
+                modules.push(code);
+        }
+
         return {
-            instance_id:      cfg.instance_id || &#39;&#39;,
-            customer_name:    cfg.customer_name || &#39;&#39;,
-            license_version:  cfg.license_version || &#39;&#39;,
-            expires_at:       cfg.expires_at || &#39;&#39;,
-            licensed_modules: cfg.licensed_modules || []
+            instance_id:         String(lic.getValue(&#39;instance_id&#39;) || &#39;&#39;),
+            customer_name:       String(lic.getValue(&#39;customer_name&#39;) || &#39;&#39;),
+            license_version:     String(lic.getValue(&#39;license_version&#39;) || &#39;&#39;),
+            expires_at:          String(lic.getValue(&#39;expires_at&#39;) || &#39;&#39;),
+            licensed_modules:    modules,
+            licensed_user_count: parseInt(lic.getValue(&#39;licensed_user_count&#39;), 10) || 0
         };
     }
 
@@ -1482,7 +1510,7 @@
         getBool: getBool,
         getJson: getJson,
         isAutoApprove: isAutoApprove,
-        getModuleExecutionConfig: getModuleExecutionConfig,
+        getFallbackStages: getFallbackStages,
         getLicence: getLicence,
         isLicenceValid: isLicenceValid,
         isModuleLicensed: isModuleLicensed
@@ -1492,13 +1520,13 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-12 10:00:00</sys_created_on>
         <sys_id>b7c9d1e3f5a7290418365a7b9c1d3e5f</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>Constants</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_script_include_b7c9d1e3f5a7290418365a7b9c1d3e5f</sys_update_name>
         <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-09-11 12:00:00</sys_updated_on>
+        <sys_updated_on>2026-09-17 12:00:00</sys_updated_on>
     </sys_script_include>
 </record_update>

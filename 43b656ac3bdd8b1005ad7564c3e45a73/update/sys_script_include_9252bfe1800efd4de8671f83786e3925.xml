@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.LicenceUsageService</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Counts distinct ACTIVE users holding any x_gegis_ins_policy.* role (a user with several of our roles counts once - seat-based licensing, not role-based) and compares it against x_gegis_ins_policy_licence.licensed_user_count. Sends a daily usage report, and a separate overage alert the moment the count exceeds the licensed seats, to x_gegis_ins_policy.licence_notify_email. Run daily by the "Policy Suite - Daily Licence Usage Report" scheduled job.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>LicenceUsageService</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var LicenceUsageService = Class.create();
+LicenceUsageService.prototype = {
+
+    initialize: function () {
+        this.LOG = '[LicenceUsage] ';
+    },
+
+    // Every role this app defines, scoped by name prefix so a 5th module's
+    // role is picked up automatically - nothing here is hard-coded per role.
+    _appRoleIds: function () {
+        var ids = [];
+        var gr = new GlideRecord('sys_user_role');
+        gr.addQuery('name', 'STARTSWITH', Constants.SCOPE + '.');
+        gr.query();
+        while (gr.next())
+            ids.push(gr.getUniqueValue());
+        return ids;
+    },
+
+    // Seat count: distinct ACTIVE users holding at least one app role. A user
+    // with clearance + underwriter both still counts as exactly one seat.
+    countLicensedUsers: function () {
+        var roleIds = this._appRoleIds();
+        if (!roleIds.length)
+            return 0;
+
+        var seen = {};
+        var gr = new GlideRecord('sys_user_has_role');
+        gr.addQuery('role', 'IN', roleIds.join(','));
+        gr.addQuery('user.active', true);
+        gr.query();
+        while (gr.next())
+            seen[gr.getValue('user')] = true;
+
+        var count = 0;
+        for (var key in seen) {
+            if (seen.hasOwnProperty(key))
+                count++;
+        }
+        return count;
+    },
+
+    // Comma/semicolon-separated recipients from x_gegis_ins_policy.licence_notify_email.
+    _recipients: function () {
+        var raw = Constants.getString(Constants.PROP.LICENCE_NOTIFY_EMAIL, '');
+        var out = [];
+        var parts = raw.split(/[,;]/);
+        for (var i = 0; i &lt; parts.length; i++) {
+            var addr = parts[i].trim();
+            if (addr)
+                out.push(addr);
+        }
+        return out;
+    },
+
+    _sendMail: function (subject, body) {
+        var recipients = this._recipients();
+        if (!recipients.length) {
+            gs.warn(this.LOG + 'no recipients configured on x_gegis_ins_policy.licence_notify_email - '
+                + subject + ' not sent (body follows)\n' + body);
+            return false;
+        }
+
+        try {
+            var email = new GlideEmailOutbound();
+            email.setSubject(subject);
+            email.setBody(body);
+            for (var i = 0; i &lt; recipients.length; i++)
+                email.addAddress('to', recipients[i]);
+            email.save();
+            return true;
+        } catch (e) {
+            gs.error(this.LOG + 'failed to send "' + subject + '": ' + e.message);
+            return false;
+        }
+    },
+
+    // Always sent once a day: the count, the limit, and how many features
+    // (licensed modules) are active - a simple usage snapshot for the customer.
+    _sendDailyReport: function (count, licence) {
+        var subject = '[Policy Suite] Daily licence usage: ' + count + ' / '
+            + licence.licensed_user_count + ' users';
+        var body = 'Instance:            ' + licence.instance_id + '\n'
+            + 'Customer:            ' + licence.customer_name + '\n'
+            + 'Licence version:     ' + licence.license_version + '\n'
+            + 'Licence expires:     ' + licence.expires_at + '\n'
+            + 'Licensed users:      ' + licence.licensed_user_count + '\n'
+            + 'Active users today:  ' + count + '\n'
+            + 'Licensed modules:    ' + licence.licensed_modules.join(', ') + '\n';
+        this._sendMail(subject, body);
+    },
+
+    // Fired only on the day the count first crosses the line - _sendDailyReport
+    // already carries the numbers every day, this is the "act now" alert.
+    _sendOverageAlert: function (count, licence) {
+        var subject = '[Policy Suite] ALERT: licensed user count exceeded ('
+            + count + ' / ' + licence.licensed_user_count + ')';
+        var body = 'Customer ' + licence.customer_name + ' (instance ' + licence.instance_id
+            + ') has ' + count + ' active users holding a Policy Suite role, '
+            + 'exceeding the licensed seat count of ' + licence.licensed_user_count + '.\n\n'
+            + 'A user is counted once no matter how many Policy Suite roles they hold '
+            + '(seat-based, not role-based).\n';
+        this._sendMail(subject, body);
+    },
+
+    // Entry point for the scheduled job. Always reports; alerts additionally
+    // when over the licensed seat count.
+    runDaily: function () {
+        var licence = Constants.getLicence();
+        var count = this.countLicensedUsers();
+
+        this._sendDailyReport(count, licence);
+
+        if (licence.licensed_user_count &gt; 0 &amp;&amp; count &gt; licence.licensed_user_count) {
+            gs.error(this.LOG + 'seat count ' + count + ' exceeds licensed '
+                + licence.licensed_user_count + ' for ' + licence.customer_name);
+            this._sendOverageAlert(count, licence);
+        }
+
+        return { count: count, licensedUserCount: licence.licensed_user_count };
+    },
+
+    type: 'LicenceUsageService'
+};</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-09-17 12:00:00</sys_created_on>
+        <sys_id>9252bfe1800efd4de8671f83786e3925</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>LicenceUsageService</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_9252bfe1800efd4de8671f83786e3925</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-09-17 12:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>
