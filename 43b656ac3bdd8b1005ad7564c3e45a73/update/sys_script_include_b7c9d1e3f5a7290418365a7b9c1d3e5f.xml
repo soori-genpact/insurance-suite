@@ -1347,6 +1347,26 @@
         // comment above for why a second LOB list would be exactly the drift
         // that comment warns against.
 
+        // uw_guideline_version.decision -- the underwriter&#39;s decision on a
+        // single evaluated version of the Underwriting Guidelines score.
+        UW_GUIDELINE_DECISION: {
+            APPROVE: &#39;approve&#39;,
+            REFER:   &#39;refer&#39;,
+            DECLINE: &#39;decline&#39;
+        },
+
+        // uw_criterion.result -- Pass/Fail/Manual Review outcome for a single
+        // evaluated criterion line under a uw_rule_group. uw_guideline_version
+        // .risk_level deliberately has NO new constant here: it REUSES
+        // Constants.CHOICE.UW_RISK_LEVEL verbatim (same low/medium/high
+        // values as uw_score_threshold.risk_level), same reasoning as the
+        // lob reuse above.
+        UW_CRITERION_RESULT: {
+            PASS:          &#39;pass&#39;,
+            FAIL:          &#39;fail&#39;,
+            MANUAL_REVIEW: &#39;manual_review&#39;
+        },
+
         // =================================================================
         // MODULE EXECUTION PLAN  --  x_gegis_ins_policy_module_plan
         // -----------------------------------------------------------------
