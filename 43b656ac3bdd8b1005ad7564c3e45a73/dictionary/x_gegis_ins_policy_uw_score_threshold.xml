@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="cbb17d6541e70a13ead5a8d0cb639d26" label="UW Score Threshold" max_length="40" name="x_gegis_ins_policy_uw_score_threshold" type="collection">
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Max Score" mandatory="true" max_length="15" name="max_score" type="decimal"/>
+        <element label="Min Score" mandatory="true" max_length="15" name="min_score" type="decimal"/>
+        <element choice="1" label="Action Label" mandatory="true" max_length="40" name="action_label" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Cannot Proceed" sequence="30" value="cannot_proceed"/>
+                <element inactive_on_update="false" label="Auto-Approve Eligible" sequence="10" value="auto_approve_eligible"/>
+                <element inactive_on_update="false" label="Review Required" sequence="20" value="review_required"/>
+            </choice>
+        </element>
+        <element choice="1" label="Risk Level" mandatory="true" max_length="40" name="risk_level" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Medium" sequence="20" value="medium"/>
+                <element inactive_on_update="false" label="Low" sequence="10" value="low"/>
+                <element inactive_on_update="false" label="High" sequence="30" value="high"/>
+            </choice>
+        </element>
+        <element label="Sequence" mandatory="true" max_length="40" name="sequence" type="integer"/>
+    </element>
+</database>
