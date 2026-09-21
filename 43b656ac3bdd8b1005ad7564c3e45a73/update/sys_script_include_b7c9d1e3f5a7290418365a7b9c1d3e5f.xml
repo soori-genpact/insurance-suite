@@ -1337,6 +1337,16 @@
             ENDORSEMENT:           &#39;endorsement&#39;
         },
 
+        // uw_rule_group_definition.lob (x_gegis_ins_policy_uw_rule_group_definition)
+        // and its child uw_criterion_definition -- the master rule/criteria
+        // catalog that uw_score_threshold / uw_trigger_reason above feed into.
+        // lob deliberately has NO new constant here: it REUSES
+        // Constants.CHOICE.LINE_OF_BUSINESS verbatim (same 13 values, same
+        // taxonomy as loa_evaluation.line_of_business) rather than cataloguing
+        // a second LOB list under a UW_-prefixed name - see the LINE_OF_BUSINESS
+        // comment above for why a second LOB list would be exactly the drift
+        // that comment warns against.
+
         // =================================================================
         // MODULE EXECUTION PLAN  --  x_gegis_ins_policy_module_plan
         // -----------------------------------------------------------------

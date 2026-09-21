@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="4e2dfad81a60b91c39aa107b2219b28d" label="UW Criterion Definition" max_length="40" name="x_gegis_ins_policy_uw_criterion_definition" type="collection">
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Clause Reference" max_length="40" name="clause_reference" type="string"/>
+        <element label="Label" mandatory="true" max_length="255" name="label" type="string"/>
+        <element label="Rule Group Definition" mandatory="true" max_length="32" name="rule_group_definition" reference="x_gegis_ins_policy_uw_rule_group_definition" type="reference"/>
+        <element label="Sequence" mandatory="true" max_length="40" name="sequence" type="integer"/>
+    </element>
+</database>
