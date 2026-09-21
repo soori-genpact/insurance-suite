@@ -21,6 +21,18 @@ UWTriggerReasonResolver.prototype = {
         // bucketed under PROPERTY_COUNT_CHANGE as the closest "risk profile
         // changed" code, until the catalog grows a dedicated one. This map is
         // the single place that bucketing happens.
+        //
+        // KNOWN GAP (flagged, not silently patched): the LOA caller's
+        // allow-list is now ['total_insured_value', 'line_of_business',
+        // 'cat_exposure', 'property_count', 'territory'] - real
+        // x_gegis_ins_policy_submission_line columns, not proxies. A change to
+        // property_count lands on PROPERTY_COUNT_CHANGE correctly by name, but
+        // a change to cat_exposure or territory ALSO lands on
+        // PROPERTY_COUNT_CHANGE here for lack of a dedicated code - there is
+        // no CAT_EXPOSURE_CHANGE or TERRITORY_CHANGE in the catalog. Adding
+        // those is a config data change (Constants.CHOICE.UW_TRIGGER_REASON_CODE
+        // entry + uw_trigger_reason seed row + paired delete), intentionally
+        // not done here without that being called out explicitly.
         var C = x_gegis_ins_policy.Constants.CHOICE.UW_TRIGGER_REASON_CODE;
         this._TIV_FIELD = 'total_insured_value';
         this._CODE = C;

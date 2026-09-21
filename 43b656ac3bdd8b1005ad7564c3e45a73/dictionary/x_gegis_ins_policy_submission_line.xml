@@ -16,6 +16,18 @@
         <element label="Estimated premium" max_length="40" name="estimated_premium" type="decimal"/>
         <element label="Expiration date" max_length="40" name="expiration_date" type="glide_date"/>
         <element label="Total insured value" max_length="40" name="total_insured_value" type="decimal"/>
+        <element label="CAT exposure" max_length="40" name="cat_exposure" type="decimal"/>
+        <element label="Property count" max_length="40" name="property_count" type="integer"/>
+        <element choice="3" label="Territory" max_length="40" name="territory" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="All" sequence="5" value="all"/>
+                <element inactive_on_update="false" label="US" sequence="10" value="us"/>
+                <element inactive_on_update="false" label="UK" sequence="20" value="uk"/>
+                <element inactive_on_update="false" label="EU" sequence="30" value="eu"/>
+                <element inactive_on_update="false" label="APAC" sequence="40" value="apac"/>
+                <element inactive_on_update="false" label="Global" sequence="50" value="global"/>
+            </choice>
+        </element>
         <element choice="3" label="Line of business" mandatory="true" max_length="40" name="line_of_business" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Workers Comp" sequence="40" value="workers_comp"/>

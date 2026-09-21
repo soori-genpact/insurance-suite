@@ -38,14 +38,18 @@
     if (!isNewlyApplied && !justConfirmed)
         return;
 
-    // LOA allow-list: TIV, LOB, and the closest proxies this schema actually has
-    // for "CAT exposure" (exposure_item.flood / .earthquake booleans) and
-    // "territory" (location.state) - x_gegis_ins_policy_exposure_item and
-    // x_gegis_ins_policy_location have no dedicated cat_exposure/territory
-    // columns. ASSUMPTION, documented once here: all of these except
-    // total_insured_value are bucketed under property_count_change by
-    // UWTriggerReasonResolver until the catalog grows dedicated codes.
-    var LOA_ALLOW_LIST = ['total_insured_value', 'line_of_business', 'state', 'flood', 'earthquake'];
+    // LOA allow-list: TIV, LOB, and the dedicated headline-figure columns on
+    // submission_line itself - cat_exposure, property_count, territory. These
+    // replaced the earlier flood/earthquake/state proxies (exposure_item
+    // booleans and location.state) once submission_line got its own columns
+    // for the figures the LOA screen actually shows (CAT Exposure / TIV /
+    // Property Count / Territory). ASSUMPTION, documented once here: the
+    // trigger_reason catalog still only has TIV_CHANGE and
+    // PROPERTY_COUNT_CHANGE as "a relevant field changed" codes - a change to
+    // cat_exposure or territory is bucketed under PROPERTY_COUNT_CHANGE (the
+    // closest "risk profile changed" code) by UWTriggerReasonResolver until
+    // the catalog grows codes dedicated to those two fields.
+    var LOA_ALLOW_LIST = ['total_insured_value', 'line_of_business', 'cat_exposure', 'property_count', 'territory'];
 
     var submissionId = String(current.getValue('submission'));
     if (!submissionId) {

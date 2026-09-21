@@ -63,6 +63,7 @@
         <element label="Message" max_length="1000" name="message" type="string"/>
         <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
         <element label="Decided by" max_length="32" name="decided_by" reference="sys_user" type="reference"/>
+        <element label="Evaluated underwriter" max_length="32" name="evaluated_underwriter" reference="sys_user" type="reference"/>
         <index name="index">
             <element name="authority_tier"/>
         </index>

@@ -106,6 +106,14 @@ LOAEvaluationVersionService.prototype = {
         gr.setValue('active', true);
         gr.setValue('evaluation_trigger', evaluationTrigger);
         gr.setValue('evaluated_on', new GlideDateTime());
+        // Snapshot WHO was being evaluated at this version, independent of
+        // matched_grant (only populated on a match, never on a breach) and
+        // independent of submission_line.underwriter (would drift if the
+        // line is later reassigned - this historical version must keep
+        // pointing at the underwriter who was actually checked).
+        var underwriterId = line.getValue('underwriter');
+        if (underwriterId)
+            gr.setValue('evaluated_underwriter', underwriterId);
         if (previousStatus)
             gr.setValue('previous_evaluation_status', previousStatus);
         // evaluation_status keeps its dictionary default ('pending'). authority_tier,
