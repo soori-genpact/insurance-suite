@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_gegis_ins_policy_extraction</collection>
+        <condition/>
+        <description>Thin adapter: when an extraction's disposition transitions to Applied (confirmed), gather the LOA allow-list snapshot diff against the superseded extraction (if any) and delegate to UWTriggerReasonResolver + LOAEvaluationVersionService to create the next loa_evaluation header for every submission_line on the submission. Same table/condition shape as "UW Guideline trigger on extraction confirmed" but kept as a SEPARATE rule on purpose (single-condition/single-action) - it feeds a different consumer with a different allow-list.</description>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>LOA trigger on extraction confirmed</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+    var Constants = x_gegis_ins_policy.Constants;
+    var APPLIED = Constants.CHOICE.DISPOSITION.APPLIED;
+
+    var isNewlyApplied = current.operation() == 'insert' && String(current.getValue('disposition')) == APPLIED;
+    var justConfirmed = current.operation() == 'update' && previous &&
+        String(previous.getValue('disposition')) != APPLIED && String(current.getValue('disposition')) == APPLIED;
+    if (!isNewlyApplied && !justConfirmed)
+        return;
+
+    // LOA allow-list: TIV, LOB, and the closest proxies this schema actually has
+    // for "CAT exposure" (exposure_item.flood / .earthquake booleans) and
+    // "territory" (location.state) - x_gegis_ins_policy_exposure_item and
+    // x_gegis_ins_policy_location have no dedicated cat_exposure/territory
+    // columns. ASSUMPTION, documented once here: all of these except
+    // total_insured_value are bucketed under property_count_change by
+    // UWTriggerReasonResolver until the catalog grows dedicated codes.
+    var LOA_ALLOW_LIST = ['total_insured_value', 'line_of_business', 'state', 'flood', 'earthquake'];
+
+    var submissionId = String(current.getValue('submission'));
+    if (!submissionId) {
+        gs.error('[LOA trigger on extraction confirmed] extraction ' + current.getUniqueValue() +
+            ' has no submission - cannot resolve its submission_line(s), skipped');
+        return;
+    }
+
+    var submissionGr = new GlideRecord('x_gegis_ins_policy_submission');
+    var submissionType = submissionGr.get(submissionId) ? String(submissionGr.getValue('submission_type')) : '';
+
+    var newSnapshot = _buildSnapshot(current.getUniqueValue(), LOA_ALLOW_LIST);
+    var priorExtractionId = String(current.getValue('supersedes'));
+    var oldSnapshot = priorExtractionId ? _buildSnapshot(priorExtractionId, LOA_ALLOW_LIST) : {};
+
+    var changedFields = new UWFieldSnapshotDiff().diff(oldSnapshot, newSnapshot, LOA_ALLOW_LIST);
+
+    // isFirstEver is deliberately NEVER derived from extraction.supersedes for
+    // LOA: LOA's "first ever" anchor is the underwriter's first assignment (see
+    // "LOA trigger on first underwriter assignment"), not the first extraction.
+    // A first-ever extraction that carries no TIV/renewal/endorsement/property
+    // signal simply raises no LOA version here.
+    var triggerReasonId = new UWTriggerReasonResolver().resolve({
+        consumer: 'loa',
+        changedFields: changedFields,
+        isRenewal: submissionType == Constants.CHOICE.SUBMISSION_TYPE.RENEWAL,
+        isEndorsement: submissionType == Constants.CHOICE.SUBMISSION_TYPE.ENDORSEMENT
+    });
+    if (!triggerReasonId)
+        return; // resolver already gs.error'd with full context, or nothing LOA-relevant changed
+
+    var versionService = new LOAEvaluationVersionService();
+    var lines = new GlideRecord('x_gegis_ins_policy_submission_line');
+    lines.addQuery('submission', submissionId);
+    lines.query();
+    var created = 0;
+    while (lines.next()) {
+        if (versionService.createNextVersion(lines.getUniqueValue(), triggerReasonId))
+            created++;
+    }
+    if (!created)
+        gs.error('[LOA trigger on extraction confirmed] no submission_line rows found for submission ' +
+            submissionId + ' - no loa_evaluation created for extraction ' + current.getUniqueValue());
+
+    function _buildSnapshot(extractionId, allowList) {
+        var snapshot = {};
+        var field = new GlideRecord('x_gegis_ins_policy_extraction_field');
+        field.addQuery('extraction', extractionId);
+        field.addQuery('target_column', 'IN', allowList.join(','));
+        field.query();
+        while (field.next())
+            snapshot[String(field.getValue('target_column'))] = String(field.getValue('final_value'));
+        return snapshot;
+    }
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-09-21 12:00:00</sys_created_on>
+        <sys_id>822866ff651c91979a1d6fbeb37571fa</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>LOA trigger on extraction confirmed</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_822866ff651c91979a1d6fbeb37571fa</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-09-21 12:00:00</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+</record_update>

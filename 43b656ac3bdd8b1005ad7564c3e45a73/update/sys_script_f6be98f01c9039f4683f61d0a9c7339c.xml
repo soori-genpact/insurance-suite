@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>false</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_gegis_ins_policy_submission_line</collection>
+        <condition>current.underwriter.changes()</condition>
+        <description>Thin adapter: when submission_line.underwriter is set for the FIRST time (was empty), delegate to UWTriggerReasonResolver (loa, isFirstEver) + LOAEvaluationVersionService to create the next loa_evaluation header. submission_line.underwriter is the canonical "underwriter assigned to this submission line" field (indexed for that purpose) - NOT x_gegis_ins_policy_case_task.assigned_to, which is a generic task-assignment field reused across HITL/referral/extraction task categories.</description>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>LOA trigger on first underwriter assignment</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+    if (String(previous.getValue('underwriter')))
+        return; // already had an underwriter - that is a reassignment, handled by "LOA trigger on underwriter reassignment"
+
+    var triggerReasonId = new UWTriggerReasonResolver().resolve({
+        consumer: 'loa',
+        isFirstEver: true
+    });
+    if (!triggerReasonId) {
+        gs.error('[LOA trigger on first underwriter assignment] no trigger_reason resolved for submission_line ' +
+            current.getUniqueValue() + ' - loa_evaluation NOT created');
+        return;
+    }
+
+    new LOAEvaluationVersionService().createNextVersion(current.getUniqueValue(), triggerReasonId);
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-09-21 12:00:00</sys_created_on>
+        <sys_id>f6be98f01c9039f4683f61d0a9c7339c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>LOA trigger on first underwriter assignment</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_f6be98f01c9039f4683f61d0a9c7339c</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-09-21 12:00:00</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+</record_update>

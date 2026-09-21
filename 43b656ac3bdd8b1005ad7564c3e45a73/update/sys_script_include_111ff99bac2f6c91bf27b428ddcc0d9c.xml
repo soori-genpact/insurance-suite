@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.LOAEvaluationVersionService</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Owns the x_gegis_ins_policy_loa_evaluation lifecycle only: creates the next evaluation header row for a submission_line, copying LOA's OWN pre-existing versioning convention (version integer + active boolean, NOT the is_latest boolean UWGuidelineVersionService uses for the newer table) rather than forcing the newer shape onto it. Translates a shared uw_trigger_reason code onto loa_evaluation's own local evaluation_trigger choice list (see the CODE_TO_EVALUATION_TRIGGER comment). Does not populate the evaluation RESULT columns (authority_tier, is_authorized, checks_count, breach_count, decision, decided_by/on) - a future evaluation flow's job.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>LOAEvaluationVersionService</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var LOAEvaluationVersionService = Class.create();
+LOAEvaluationVersionService.prototype = {
+    initialize: function() {
+        this.TABLE = 'x_gegis_ins_policy_loa_evaluation';
+        this.LINE_TABLE = 'x_gegis_ins_policy_submission_line';
+
+        // loa_evaluation.evaluation_trigger is ITS OWN pre-existing local choice
+        // (initial_evaluation/grant_change/manual_reevaluation/exposure_change/
+        // quote_change/intake_change) - a different, older taxonomy than the new
+        // x_gegis_ins_policy_uw_trigger_reason.code catalog UWTriggerReasonResolver
+        // resolves against. The constraints forbid touching existing fields/choices,
+        // so rather than adding a trigger_reason reference column to this table,
+        // this map translates the shared code onto the closest existing
+        // evaluation_trigger value. ASSUMPTION, documented here as the single place
+        // it happens: initial_assignment/underwriter_reassigned/manual_correction
+        // have no exact equivalent in the old list, so they map to the nearest
+        // fit (initial_evaluation / manual_reevaluation / manual_reevaluation).
+        var C = x_gegis_ins_policy.Constants.CHOICE.UW_TRIGGER_REASON_CODE;
+        var map = {};
+        map[C.INITIAL_SUBMISSION]     = 'initial_evaluation';
+        map[C.TIV_CHANGE]             = 'exposure_change';
+        map[C.PROPERTY_COUNT_CHANGE]  = 'exposure_change';
+        map[C.RENEWAL]                = 'intake_change';
+        map[C.ENDORSEMENT]            = 'intake_change';
+        map[C.INITIAL_ASSIGNMENT]     = 'initial_evaluation';
+        map[C.UNDERWRITER_REASSIGNED] = 'manual_reevaluation';
+        map[C.MANUAL_CORRECTION]      = 'manual_reevaluation';
+        this.CODE_TO_EVALUATION_TRIGGER = map;
+    },
+
+    /**
+     * Create the next loa_evaluation header row for a submission_line.
+     *
+     *   1. Look up the current active=true row for this submission_line (there
+     *      is at most one) to get its version number and evaluation_status.
+     *   2. Insert version = (that version + 1), or 1 if none exists yet, with
+     *      active = true.
+     *   3. Flip the previous active row to false, in the SAME call.
+     *
+     * Result columns (authority_tier, is_authorized, checks_count, breach_count,
+     * decision, decided_by/on, ...) are intentionally left untouched - HOOK POINT
+     * for the future evaluation flow, which reads the row this method just
+     * created (active=true for the submission_line) and populates them.
+     *
+     * @param submissionLineId sys_id of x_gegis_ins_policy_submission_line (required)
+     * @param triggerReasonId sys_id of x_gegis_ins_policy_uw_trigger_reason,
+     *        e.g. from UWTriggerReasonResolver.resolve() (required)
+     * @return sys_id of the newly inserted row, or '' when the call was refused
+     */
+    createNextVersion: function(submissionLineId, triggerReasonId) {
+        if (!submissionLineId || !triggerReasonId) {
+            gs.error('[LOAEvaluationVersionService] createNextVersion refused - submissionLineId=' +
+                submissionLineId + ' triggerReasonId=' + triggerReasonId +
+                ' (both are required; a header row with a null/broken trigger_reason is not created)');
+            return '';
+        }
+
+        var line = new GlideRecord(this.LINE_TABLE);
+        if (!line.get(submissionLineId)) {
+            gs.error('[LOAEvaluationVersionService] submission_line ' + submissionLineId + ' not found');
+            return '';
+        }
+
+        var reason = new GlideRecord('x_gegis_ins_policy_uw_trigger_reason');
+        if (!reason.get(triggerReasonId)) {
+            gs.error('[LOAEvaluationVersionService] uw_trigger_reason ' + triggerReasonId + ' not found');
+            return '';
+        }
+        var evaluationTrigger = this.CODE_TO_EVALUATION_TRIGGER[String(reason.getValue('code'))];
+        if (!evaluationTrigger) {
+            gs.error('[LOAEvaluationVersionService] no evaluation_trigger mapping for code=' +
+                reason.getValue('code') + ' - defaulting to manual_reevaluation, update the map');
+            evaluationTrigger = 'manual_reevaluation';
+        }
+
+        var nextVersion = 1;
+        var previousStatus = '';
+        var prev = new GlideRecord(this.TABLE);
+        prev.addQuery('submission_line', submissionLineId);
+        prev.addQuery('active', true);
+        prev.query();
+        if (prev.next()) {
+            nextVersion = (parseInt(prev.getValue('version'), 10) || 1) + 1;
+            previousStatus = String(prev.getValue('evaluation_status'));
+            prev.setValue('active', false);
+            prev.update();
+        }
+
+        var gr = new GlideRecord(this.TABLE);
+        gr.initialize();
+        gr.setValue('submission', line.getValue('submission'));
+        gr.setValue('submission_line', submissionLineId);
+        gr.setValue('line_of_business', line.getValue('line_of_business'));
+        gr.setValue('version', nextVersion);
+        gr.setValue('active', true);
+        gr.setValue('evaluation_trigger', evaluationTrigger);
+        gr.setValue('evaluated_on', new GlideDateTime());
+        if (previousStatus)
+            gr.setValue('previous_evaluation_status', previousStatus);
+        // evaluation_status keeps its dictionary default ('pending'). authority_tier,
+        // is_authorized, checks_count, breach_count, decision*, decided_by/on: HOOK
+        // POINT for the future evaluation flow. Left untouched here on purpose.
+
+        var newId = gr.insert();
+        if (!newId) {
+            gs.error('[LOAEvaluationVersionService] insert REFUSED for submission_line=' +
+                submissionLineId + ' v' + nextVersion + ' trigger_reason=' + triggerReasonId +
+                ' - check ACLs/mandatory fields on ' + this.TABLE);
+            return '';
+        }
+        return newId;
+    },
+
+    type: 'LOAEvaluationVersionService'
+};</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-09-21 12:00:00</sys_created_on>
+        <sys_id>111ff99bac2f6c91bf27b428ddcc0d9c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>LOAEvaluationVersionService</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_111ff99bac2f6c91bf27b428ddcc0d9c</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-09-21 12:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>

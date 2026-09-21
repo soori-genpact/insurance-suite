@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>false</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_gegis_ins_policy_extraction_field_audit</collection>
+        <condition/>
+        <description>Thin adapter: when a NEW audit row lands for a field on an extraction that is ALREADY Applied (confirmed), and the corrected column is on the GUIDELINE allow-list, delegate to UWTriggerReasonResolver (isManualCorrection) + UWGuidelineVersionService to create the next uw_guideline_version. Manual corrections made BEFORE confirmation are covered by "UW Guideline trigger on extraction confirmed" instead - this rule only fires for edits AFTER confirmation.</description>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>UW Guideline trigger on manual correction</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+    var Constants = x_gegis_ins_policy.Constants;
+    var APPLIED = Constants.CHOICE.DISPOSITION.APPLIED;
+
+    // Same allow-list as "UW Guideline trigger on extraction confirmed" - see
+    // that rule's header comment for the bucketing assumption.
+    var GUIDELINE_ALLOW_LIST = ['total_insured_value', 'line_of_business', 'construction_type'];
+
+    var changedField = String(current.getValue('changed_field'));
+    if (GUIDELINE_ALLOW_LIST.indexOf(changedField) == -1)
+        return; // not a guideline-relevant column - nothing to re-score
+
+    // extraction_field is a plain string column carrying the extraction_field
+    // sys_id (not a declared reference on this table) - resolve it manually.
+    var fieldGr = new GlideRecord('x_gegis_ins_policy_extraction_field');
+    if (!fieldGr.get(String(current.getValue('extraction_field'))))
+        return;
+
+    var extractionGr = new GlideRecord('x_gegis_ins_policy_extraction');
+    if (!extractionGr.get(String(fieldGr.getValue('extraction'))))
+        return;
+    if (String(extractionGr.getValue('disposition')) != APPLIED)
+        return; // not confirmed yet - "UW Guideline trigger on extraction confirmed" will fire when it is
+
+    var oldSnapshot = {}, newSnapshot = {};
+    oldSnapshot[changedField] = String(current.getValue('old_value'));
+    newSnapshot[changedField] = String(current.getValue('new_value'));
+
+    var changedFields = new UWFieldSnapshotDiff().diff(oldSnapshot, newSnapshot, GUIDELINE_ALLOW_LIST);
+    if (!changedFields.length)
+        return; // old_value === new_value - nothing actually changed
+
+    var triggerReasonId = new UWTriggerReasonResolver().resolve({
+        consumer: 'uw_guideline',
+        changedFields: changedFields,
+        isManualCorrection: true
+    });
+    if (!triggerReasonId)
+        return; // resolver already gs.error'd with full context
+
+    var submissionId = String(extractionGr.getValue('submission'));
+    var versionService = new UWGuidelineVersionService();
+    var lines = new GlideRecord('x_gegis_ins_policy_submission_line');
+    lines.addQuery('submission', submissionId);
+    lines.query();
+    var created = 0;
+    while (lines.next()) {
+        if (versionService.createNextVersion(lines.getUniqueValue(), extractionGr.getUniqueValue(), triggerReasonId))
+            created++;
+    }
+    if (!created)
+        gs.error('[UW Guideline trigger on manual correction] no submission_line rows found for submission ' +
+            submissionId + ' - no uw_guideline_version created for audit ' + current.getUniqueValue());
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-09-21 12:00:00</sys_created_on>
+        <sys_id>39dcea0832c8acea654f04e7cfb48ef3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>UW Guideline trigger on manual correction</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_39dcea0832c8acea654f04e7cfb48ef3</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-09-21 12:00:00</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+</record_update>

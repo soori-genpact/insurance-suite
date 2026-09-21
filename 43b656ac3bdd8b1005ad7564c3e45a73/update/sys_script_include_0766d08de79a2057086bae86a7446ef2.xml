@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.UWGuidelineVersionService</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Owns the x_gegis_ins_policy_uw_guideline_version lifecycle only: creates the next version header row for a submission_line (version = current max + 1, is_latest flipped). Does not decide WHY a version is created (UWTriggerReasonResolver's job) and does not populate rule_group/criterion child rows or score/risk_level/decision (a future scoring flow's job - see the HOOK POINT comment in createNextVersion). createNextVersion is deliberately public/callable so a future "Recalculate" UI Action can call it directly - there is no DB event for a button click.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>UWGuidelineVersionService</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var UWGuidelineVersionService = Class.create();
+UWGuidelineVersionService.prototype = {
+    initialize: function() {
+        this.TABLE = 'x_gegis_ins_policy_uw_guideline_version';
+    },
+
+    /**
+     * Create the next uw_guideline_version header row for a submission_line.
+     *
+     *   1. Look up the current is_latest=true row for this submission_line
+     *      (there is at most one) to get its version number.
+     *   2. Insert version = (that version + 1), or 1 if none exists yet.
+     *   3. Flip the previous is_latest row to false, in the SAME call, so a
+     *      caller never observes two is_latest=true rows for one submission_line.
+     *
+     * HOOK POINT: score / risk_level / total_rules / passed_rules / failed_rules /
+     * decision / decided_by / decided_on and the rule_group/criterion child rows
+     * are intentionally left untouched. A future scoring flow reads the row this
+     * method just created (is_latest=true for the submission_line) and populates
+     * those columns and children - do not fake that logic here.
+     *
+     * Public on purpose: a future "Recalculate" UI Action on the guideline
+     * version list/form calls this directly, since a button click has no DB
+     * event a business rule could front.
+     *
+     * @param submissionLineId sys_id of x_gegis_ins_policy_submission_line (required)
+     * @param extractionId sys_id of x_gegis_ins_policy_extraction, or '' when this
+     *        version was not raised by an extraction event (optional)
+     * @param triggerReasonId sys_id of x_gegis_ins_policy_uw_trigger_reason,
+     *        e.g. from UWTriggerReasonResolver.resolve() (required)
+     * @return sys_id of the newly inserted row, or '' when the call was refused
+     *         (missing required argument or the insert itself failed)
+     */
+    createNextVersion: function(submissionLineId, extractionId, triggerReasonId) {
+        if (!submissionLineId || !triggerReasonId) {
+            gs.error('[UWGuidelineVersionService] createNextVersion refused - submissionLineId=' +
+                submissionLineId + ' triggerReasonId=' + triggerReasonId +
+                ' (both are required; a header row with a null/broken trigger_reason is not created)');
+            return '';
+        }
+
+        var nextVersion = 1;
+        var prev = new GlideRecord(this.TABLE);
+        prev.addQuery('submission_line', submissionLineId);
+        prev.addQuery('is_latest', true);
+        prev.query();
+        if (prev.next()) {
+            nextVersion = (parseInt(prev.getValue('version'), 10) || 1) + 1;
+            prev.setValue('is_latest', false);
+            prev.update();
+        }
+
+        var gr = new GlideRecord(this.TABLE);
+        gr.initialize();
+        gr.setValue('submission_line', submissionLineId);
+        if (extractionId)
+            gr.setValue('extraction', extractionId);
+        gr.setValue('trigger_reason', triggerReasonId);
+        gr.setValue('version', nextVersion);
+        gr.setValue('is_latest', true);
+
+        // insert() returns null when an ACL/data policy/mandatory column blocks
+        // the write - unchecked, the caller would believe a version exists when
+        // it does not.
+        var newId = gr.insert();
+        if (!newId) {
+            gs.error('[UWGuidelineVersionService] insert REFUSED for submission_line=' +
+                submissionLineId + ' v' + nextVersion + ' trigger_reason=' + triggerReasonId +
+                ' - check ACLs/mandatory fields on ' + this.TABLE);
+            return '';
+        }
+        return newId;
+    },
+
+    type: 'UWGuidelineVersionService'
+};</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-09-21 12:00:00</sys_created_on>
+        <sys_id>0766d08de79a2057086bae86a7446ef2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>UWGuidelineVersionService</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_0766d08de79a2057086bae86a7446ef2</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-09-21 12:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>

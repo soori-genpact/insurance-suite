@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.UWFieldSnapshotDiff</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Pure utility - given an old and a new plain-object snapshot of field values and an allow-listed field name list, returns which allow-listed fields actually differ. No GlideRecord calls, no knowledge of any specific table; callers (business rules, other script includes) build the snapshots from whichever table is relevant to them.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>UWFieldSnapshotDiff</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var UWFieldSnapshotDiff = Class.create();
+UWFieldSnapshotDiff.prototype = {
+    initialize: function() {},
+
+    /**
+     * Compare two plain-object snapshots and report which allow-listed fields
+     * changed. Values are compared as strings so a number/boolean/GlideRecord
+     * getValue() result and a hand-built string both compare consistently;
+     * missing keys on either side are treated as ''.
+     *
+     * @param oldSnapshot plain object {fieldName: value}, e.g. {total_insured_value: '1000000'}
+     * @param newSnapshot plain object {fieldName: value}, same shape as oldSnapshot
+     * @param allowList array of field names to consider - fields outside this
+     *        list are ignored even if they differ between the two snapshots
+     * @return array of field names (subset of allowList) whose value differs
+     */
+    diff: function(oldSnapshot, newSnapshot, allowList) {
+        oldSnapshot = oldSnapshot || {};
+        newSnapshot = newSnapshot || {};
+        allowList = allowList || [];
+
+        var changed = [];
+        for (var i = 0; i &lt; allowList.length; i++) {
+            var field = allowList[i];
+            var oldValue = this._asString(oldSnapshot[field]);
+            var newValue = this._asString(newSnapshot[field]);
+            if (oldValue !== newValue)
+                changed.push(field);
+        }
+        return changed;
+    },
+
+    /** true if diff() would report at least one changed allow-listed field. */
+    hasChange: function(oldSnapshot, newSnapshot, allowList) {
+        return this.diff(oldSnapshot, newSnapshot, allowList).length &gt; 0;
+    },
+
+    _asString: function(value) {
+        return (value === null || value === undefined) ? '' : String(value);
+    },
+
+    type: 'UWFieldSnapshotDiff'
+};</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-09-21 12:00:00</sys_created_on>
+        <sys_id>d177fcec9a9386e176cfb3a89fd20986</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>UWFieldSnapshotDiff</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_d177fcec9a9386e176cfb3a89fd20986</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-09-21 12:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>

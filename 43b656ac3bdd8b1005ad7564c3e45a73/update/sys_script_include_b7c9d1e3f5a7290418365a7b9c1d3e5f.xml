@@ -1334,7 +1334,13 @@
             TIV_CHANGE:            &#39;tiv_change&#39;,
             PROPERTY_COUNT_CHANGE: &#39;property_count_change&#39;,
             RENEWAL:               SHARED.RENEWAL,
-            ENDORSEMENT:           &#39;endorsement&#39;
+            ENDORSEMENT:           &#39;endorsement&#39;,
+            // Trigger layer (UWTriggerReasonResolver / business rules 4-6):
+            // applies_to=loa for the two underwriter-assignment codes, both for
+            // the manual-correction code - see the seed script comment for why.
+            INITIAL_ASSIGNMENT:     &#39;initial_assignment&#39;,
+            UNDERWRITER_REASSIGNED: &#39;underwriter_reassigned&#39;,
+            MANUAL_CORRECTION:      &#39;manual_correction&#39;
         },
 
         // uw_rule_group_definition.lob (x_gegis_ins_policy_uw_rule_group_definition)

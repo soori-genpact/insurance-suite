@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.UWTriggerReasonResolver</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Resolves WHICH x_gegis_ins_policy_uw_trigger_reason row justifies re-opening LOA evaluation or UW Guidelines scoring, given a small context object (consumer + the changed-field list from UWFieldSnapshotDiff + first-ever/renewal/endorsement/manual-correction flags). Depends only on that context shape - no direct GlideRecord reads of extraction/submission_line/loa_evaluation; callers gather the flags from whichever table they own.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>UWTriggerReasonResolver</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var UWTriggerReasonResolver = Class.create();
+UWTriggerReasonResolver.prototype = {
+    initialize: function() {
+        this.TABLE = 'x_gegis_ins_policy_uw_trigger_reason';
+
+        // ASSUMPTION: the trigger_reason catalog only has TIV_CHANGE and
+        // PROPERTY_COUNT_CHANGE as "a relevant field changed" codes today (see
+        // Constants.CHOICE.UW_TRIGGER_REASON_CODE). Any allow-listed field a
+        // caller reports as changed that is not the TIV field itself is
+        // bucketed under PROPERTY_COUNT_CHANGE as the closest "risk profile
+        // changed" code, until the catalog grows a dedicated one. This map is
+        // the single place that bucketing happens.
+        var C = x_gegis_ins_policy.Constants.CHOICE.UW_TRIGGER_REASON_CODE;
+        this._TIV_FIELD = 'total_insured_value';
+        this._CODE = C;
+    },
+
+    /**
+     * @param context {
+     *   consumer: 'loa' | 'uw_guideline'                 (required)
+     *   changedFields: array of field names, e.g. the return of
+     *                  UWFieldSnapshotDiff.diff()          (optional, default [])
+     *   isFirstEver: boolean - no prior version/evaluation exists yet (optional)
+     *   isReassignment: boolean - LOA underwriter changed from one value to a
+     *                  DIFFERENT value, i.e. not isFirstEver (optional)
+     *   isRenewal: boolean - submission.submission_type == 'renewal' (optional)
+     *   isEndorsement: boolean - submission.submission_type == 'endorsement' (optional)
+     *   isManualCorrection: boolean - a human corrected an already-confirmed
+     *                  extraction field (optional)
+     * }
+     * @return sys_id of the matching, active x_gegis_ins_policy_uw_trigger_reason
+     *         row (code + applies_to IN [context.consumer, 'both']), or '' when
+     *         nothing resolves - callers must NOT create a header row in that case
+     */
+    resolve: function(context) {
+        context = context || {};
+        var code = this._resolveCode(context);
+        if (!code) {
+            gs.error('[UWTriggerReasonResolver] no trigger_reason code resolved for consumer=' +
+                context.consumer + ' changedFields=' + JSON.stringify(context.changedFields || []) +
+                ' flags={isFirstEver:' + !!context.isFirstEver + ', isReassignment:' + !!context.isReassignment +
+                ', isRenewal:' + !!context.isRenewal + ', isEndorsement:' + !!context.isEndorsement +
+                ', isManualCorrection:' + !!context.isManualCorrection + '}');
+            return '';
+        }
+
+        var gr = new GlideRecord(this.TABLE);
+        gr.addQuery('code', code);
+        gr.addQuery('applies_to', 'IN', [context.consumer, 'both'].join(','));
+        gr.addQuery('active', true);
+        gr.query();
+        if (!gr.next()) {
+            gs.error('[UWTriggerReasonResolver] resolved code=' + code + ' but found no active ' +
+                this.TABLE + ' row with applies_to IN [' + context.consumer + ',both] - check the seed');
+            return '';
+        }
+        return gr.getUniqueValue();
+    },
+
+    /** Priority ladder - first matching rule wins. See method doc for context shape. */
+    _resolveCode: function(context) {
+        var C = this._CODE;
+
+        if (context.isManualCorrection)
+            return C.MANUAL_CORRECTION;
+
+        if (context.consumer === 'loa' &amp;&amp; context.isFirstEver)
+            return C.INITIAL_ASSIGNMENT;
+
+        if (context.consumer === 'loa' &amp;&amp; context.isReassignment)
+            return C.UNDERWRITER_REASSIGNED;
+
+        if (context.isRenewal)
+            return C.RENEWAL;
+
+        if (context.isEndorsement)
+            return C.ENDORSEMENT;
+
+        // uw_guideline first-ever (no prior version) - LOA first-ever is handled
+        // above as INITIAL_ASSIGNMENT since LOA versions off underwriter
+        // assignment, not off the submission itself.
+        if (context.isFirstEver)
+            return C.INITIAL_SUBMISSION;
+
+        var changed = context.changedFields || [];
+        if (changed.indexOf(this._TIV_FIELD) &gt; -1)
+            return C.TIV_CHANGE;
+        if (changed.length &gt; 0)
+            return C.PROPERTY_COUNT_CHANGE;
+
+        return null;
+    },
+
+    type: 'UWTriggerReasonResolver'
+};</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-09-21 12:00:00</sys_created_on>
+        <sys_id>0c3992b19ce4a6b3a9d821a01756dffd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>UWTriggerReasonResolver</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_0c3992b19ce4a6b3a9d821a01756dffd</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-09-21 12:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>
