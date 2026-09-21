@@ -9,7 +9,7 @@
         <mobile_callable>false</mobile_callable>
         <name>UWGuidelineVersionService</name>
         <sandbox_callable>false</sandbox_callable>
-        <script>var UWGuidelineVersionService = Class.create();
+        <script><![CDATA[var UWGuidelineVersionService = Class.create();
 UWGuidelineVersionService.prototype = {
     initialize: function() {
         this.TABLE = 'x_gegis_ins_policy_uw_guideline_version';
@@ -83,8 +83,215 @@ UWGuidelineVersionService.prototype = {
         return newId;
     },
 
+    // =====================================================================
+    // READ-ONLY RETRIEVERS - added for the playbook activities that render
+    // the UW Guidelines panel. Pure reads: no insert/update, so they cannot
+    // break createNextVersion above.
+    //
+    // Convention followed: this app's other playbook-facing data retrievers
+    // (PlaybookActivityDataProvider.getExtractionVersions/getDocuments,
+    // SubmissionApiService.read) resolve a caller-facing NUMBER to its
+    // sys_id(s) first via addQuery('number', ...), then walk child tables
+    // with plain GlideRecord queries, and return a plain object of
+    // camelCase keys (no {success,data,message} envelope exists anywhere
+    // else in this app for a multi-record retriever - SubmissionApiService's
+    // {_status, success, ...} shape is specific to its REST controller
+    // role). These two methods copy that same shape: {success, message,
+    // lines:[...]}, camelCase throughout, display values resolved
+    // alongside their raw codes (mirrors LOAEvaluationVersionService's own
+    // trigger_reason -> code/label translation above).
+    //
+    // submissionNumber -> submission_line(s): x_gegis_ins_policy_submission
+    // _line.submission is a plain reference FK (many lines per submission -
+    // see sys_dictionary_x_gegis_ins_policy_submission_line_submission),
+    // and uw_guideline_version keys off submission_line, NOT submission
+    // directly. So a submission with more than one LOB/line legitimately
+    // has more than one independent version history. Rather than guessing
+    // which line the caller wants, both methods return every line, each
+    // carrying its own version(s) - grouped by line, never flattened or
+    // silently defaulted to "the first line".
+    // =====================================================================
+
+    /**
+     * Full uw_guideline_version history (every version, not just latest)
+     * for every submission_line under a submission, for the version
+     * dropdown. Each version is fully nested with its uw_rule_group and
+     * uw_criterion children, per the "All Guidelines Criteria" mockup.
+     *
+     * @param submissionNumber x_gegis_ins_policy_submission.number
+     * @return {success, message, lines:[{submissionLineId, lineOfBusiness,
+     *          versions:[{sysId, version, isLatest, score, riskLevel,
+     *          riskLevelCode, totalRules, passedRules, failedRules,
+     *          decision, decisionCode, decidedBy, decidedOn,
+     *          triggerReason:{code,label}, createdOn,
+     *          ruleGroups:[{sysId, definitionLabel, pointsPossible,
+     *          pointsEarned, sequence, criteria:[{sysId, definitionLabel,
+     *          result, resultCode, reason, sourceDocument, sourcePage,
+     *          sourceSection, extractedText}]}]}]}]}
+     */
+    getGuidelineVersionsForSubmission: function(submissionNumber) {
+        if (!submissionNumber)
+            return { success: false, message: 'submissionNumber is required', lines: [] };
+
+        var lineIds = this._resolveSubmissionLines(submissionNumber);
+        if (!lineIds.length)
+            return { success: false, message: 'No submission_line found for submission ' + submissionNumber, lines: [] };
+
+        var lines = [];
+        for (var i = 0; i < lineIds.length; i++)
+            lines.push(this._buildLineVersions(lineIds[i], false));
+
+        return { success: true, message: '', lines: lines };
+    },
+
+    /**
+     * Convenience wrapper most callers actually want (mockup defaults to
+     * "V3 Latest"): same shape as getGuidelineVersionsForSubmission, but
+     * each line carries only its is_latest=true row, as `latestVersion`
+     * (singular), instead of the full `versions` array.
+     *
+     * @param submissionNumber x_gegis_ins_policy_submission.number
+     * @return {success, message, lines:[{submissionLineId, lineOfBusiness,
+     *          latestVersion:{...same shape as one entry in versions[]...}|null}]}
+     */
+    getLatestGuidelineVersionForSubmission: function(submissionNumber) {
+        if (!submissionNumber)
+            return { success: false, message: 'submissionNumber is required', lines: [] };
+
+        var lineIds = this._resolveSubmissionLines(submissionNumber);
+        if (!lineIds.length)
+            return { success: false, message: 'No submission_line found for submission ' + submissionNumber, lines: [] };
+
+        var lines = [];
+        for (var i = 0; i < lineIds.length; i++)
+            lines.push(this._buildLineVersions(lineIds[i], true));
+
+        return { success: true, message: '', lines: lines };
+    },
+
+    /** submission NUMBER -> every submission_line sys_id under it. */
+    _resolveSubmissionLines: function(submissionNumber) {
+        var ids = [];
+        var sub = new GlideRecord('x_gegis_ins_policy_submission');
+        sub.addQuery('number', String(submissionNumber));
+        sub.setLimit(1);
+        sub.query();
+        if (!sub.next())
+            return ids;
+
+        var line = new GlideRecord('x_gegis_ins_policy_submission_line');
+        line.addQuery('submission', sub.getUniqueValue());
+        line.query();
+        while (line.next())
+            ids.push(line.getUniqueValue());
+        return ids;
+    },
+
+    /**
+     * One submission_line's guideline-version history (or just its latest
+     * row, when latestOnly is true), each fully nested with its
+     * uw_rule_group/uw_criterion children.
+     */
+    _buildLineVersions: function(submissionLineId, latestOnly) {
+        var line = new GlideRecord('x_gegis_ins_policy_submission_line');
+        line.get(submissionLineId);
+
+        var out = {
+            submissionLineId: submissionLineId,
+            lineOfBusiness: line.isValidRecord() ? String(line.getDisplayValue('line_of_business')) : ''
+        };
+
+        var gr = new GlideRecord(this.TABLE);
+        gr.addQuery('submission_line', submissionLineId);
+        if (latestOnly)
+            gr.addQuery('is_latest', true);
+        gr.orderByDesc('version');
+        gr.query();
+
+        if (latestOnly) {
+            out.latestVersion = gr.next() ? this._buildVersion(gr) : null;
+        } else {
+            var versions = [];
+            while (gr.next())
+                versions.push(this._buildVersion(gr));
+            out.versions = versions;
+        }
+        return out;
+    },
+
+    /** One uw_guideline_version row, nested with rule_group/criterion children. */
+    _buildVersion: function(gr) {
+        var version = {
+            sysId: gr.getUniqueValue(),
+            version: parseInt(gr.getValue('version'), 10) || 0,
+            isLatest: String(gr.getValue('is_latest')) === 'true',
+            score: gr.getValue('score'),
+            riskLevel: gr.getDisplayValue('risk_level'),
+            riskLevelCode: String(gr.getValue('risk_level') || ''),
+            totalRules: parseInt(gr.getValue('total_rules'), 10) || 0,
+            passedRules: parseInt(gr.getValue('passed_rules'), 10) || 0,
+            failedRules: parseInt(gr.getValue('failed_rules'), 10) || 0,
+            decision: gr.getDisplayValue('decision'),
+            decisionCode: String(gr.getValue('decision') || ''),
+            decidedBy: gr.getDisplayValue('decided_by'),
+            decidedOn: String(gr.getValue('decided_on') || ''),
+            triggerReason: { code: '', label: '' },
+            createdOn: String(gr.getValue('sys_created_on') || ''),
+            ruleGroups: []
+        };
+
+        var reasonId = String(gr.getValue('trigger_reason') || '');
+        if (reasonId) {
+            var reason = new GlideRecord('x_gegis_ins_policy_uw_trigger_reason');
+            if (reason.get(reasonId))
+                version.triggerReason = {
+                    code: String(reason.getValue('code') || ''),
+                    label: String(reason.getValue('label') || '')
+                };
+        }
+
+        var rg = new GlideRecord('x_gegis_ins_policy_uw_rule_group');
+        rg.addQuery('guideline_version', gr.getUniqueValue());
+        rg.orderBy('sequence');
+        rg.query();
+        while (rg.next())
+            version.ruleGroups.push(this._buildRuleGroup(rg));
+
+        return version;
+    },
+
+    /** One uw_rule_group row, nested with its uw_criterion children. */
+    _buildRuleGroup: function(rg) {
+        var group = {
+            sysId: rg.getUniqueValue(),
+            definitionLabel: String(rg.getDisplayValue('definition') || ''),
+            pointsPossible: rg.getValue('points_possible'),
+            pointsEarned: rg.getValue('points_earned'),
+            sequence: parseInt(rg.getValue('sequence'), 10) || 0,
+            criteria: []
+        };
+
+        var c = new GlideRecord('x_gegis_ins_policy_uw_criterion');
+        c.addQuery('rule_group', rg.getUniqueValue());
+        c.orderBy('sequence');
+        c.query();
+        while (c.next())
+            group.criteria.push({
+                sysId: c.getUniqueValue(),
+                definitionLabel: String(c.getDisplayValue('definition') || ''),
+                result: c.getDisplayValue('result'),
+                resultCode: String(c.getValue('result') || ''),
+                reason: String(c.getValue('reason') || ''),
+                sourceDocument: String(c.getDisplayValue('source_document') || ''),
+                sourcePage: String(c.getValue('source_page') || ''),
+                sourceSection: String(c.getValue('source_section') || ''),
+                extractedText: String(c.getValue('extracted_text') || '')
+            });
+        return group;
+    },
+
     type: 'UWGuidelineVersionService'
-};</script>
+};]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-09-21 12:00:00</sys_created_on>

@@ -224,6 +224,58 @@ PlaybookActivityDataProvider.prototype = {
         return out;
     },
 
+    // ====================================================== LOA / UW Guidelines (delegate wrappers)
+
+    /**
+     * Thin delegate to LOAEvaluationVersionService.getLatestLoaEvaluationForSubmission.
+     *
+     * Same caller-facing param convention as getExtractionVersions above -
+     * submission SYS_ID, not number. LOAEvaluationVersionService works off the
+     * submission NUMBER, so that one extra GlideRecord lookup is resolved here
+     * (via _submissionNumber), not pushed onto the flow author. The result is
+     * returned exactly as the underlying service produced it - not reshaped.
+     *
+     * @param {string} submissionSysId
+     * @return {Object} LOAEvaluationVersionService.getLatestLoaEvaluationForSubmission's
+     *         {success, message, lines:[...]} shape, unchanged
+     */
+    getLOAVersions: function(submissionSysId) {
+        var number = this._submissionNumber(submissionSysId);
+        if (!number) {
+            return { success: false, message: 'submission ' + submissionSysId + ' not found', lines: [] };
+        }
+        return new LOAEvaluationVersionService().getLatestLoaEvaluationForSubmission(number);
+    },
+
+    /**
+     * Thin delegate to UWGuidelineVersionService.getLatestGuidelineVersionForSubmission.
+     *
+     * Same caller-facing param convention as getExtractionVersions above -
+     * submission SYS_ID, not number; the sys_id -> number resolution happens
+     * here (via _submissionNumber). The result is returned exactly as the
+     * underlying service produced it - not reshaped.
+     *
+     * @param {string} submissionSysId
+     * @return {Object} UWGuidelineVersionService.getLatestGuidelineVersionForSubmission's
+     *         {success, message, lines:[...]} shape, unchanged
+     */
+    getUWGuidelineVersions: function(submissionSysId) {
+        var number = this._submissionNumber(submissionSysId);
+        if (!number) {
+            return { success: false, message: 'submission ' + submissionSysId + ' not found', lines: [] };
+        }
+        return new UWGuidelineVersionService().getLatestGuidelineVersionForSubmission(number);
+    },
+
+    /** submission sys_id -> its number column; '' when not found. */
+    _submissionNumber: function(submissionSysId) {
+        if (!submissionSysId) {
+            return '';
+        }
+        var sub = new GlideRecord(this.P + 'submission');
+        return sub.get(submissionSysId) ? String(sub.getValue('number') || '') : '';
+    },
+
     // ====================================================== Extracted fields grid
 
     getExtractedFields: function(extractionSysId) {
@@ -1218,13 +1270,13 @@ PlaybookActivityDataProvider.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-09 16:06:48</sys_created_on>
         <sys_id>bbf20c6c935f47100a83ffdddd03d61f</sys_id>
-        <sys_mod_count>13</sys_mod_count>
+        <sys_mod_count>14</sys_mod_count>
         <sys_name>PlaybookActivityDataProvider</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_script_include_bbf20c6c935f47100a83ffdddd03d61f</sys_update_name>
         <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-09-17 12:00:00</sys_updated_on>
+        <sys_updated_on>2026-09-21 12:00:00</sys_updated_on>
     </sys_script_include>
 </record_update>

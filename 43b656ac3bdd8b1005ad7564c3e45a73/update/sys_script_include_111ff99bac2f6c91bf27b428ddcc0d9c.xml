@@ -9,7 +9,7 @@
         <mobile_callable>false</mobile_callable>
         <name>LOAEvaluationVersionService</name>
         <sandbox_callable>false</sandbox_callable>
-        <script>var LOAEvaluationVersionService = Class.create();
+        <script><![CDATA[var LOAEvaluationVersionService = Class.create();
 LOAEvaluationVersionService.prototype = {
     initialize: function() {
         this.TABLE = 'x_gegis_ins_policy_loa_evaluation';
@@ -130,8 +130,196 @@ LOAEvaluationVersionService.prototype = {
         return newId;
     },
 
+    // =====================================================================
+    // READ-ONLY RETRIEVERS - added for the playbook activities that render
+    // the Letter of Authority panel. Pure reads: no insert/update, so they
+    // cannot break createNextVersion above.
+    //
+    // Same convention as UWGuidelineVersionService's own retrievers (see the
+    // long comment there for why): resolve the caller-facing submission
+    // NUMBER to sys_id(s) first, walk children by addQuery, return a plain
+    // {success, message, lines:[...]} object of camelCase keys - this app
+    // has no {success,data,message} envelope standard for a multi-record
+    // retriever to match, so both script includes deliberately use the same
+    // documented shape rather than inventing two different ones.
+    //
+    // submissionNumber -> submission_line(s): loa_evaluation.submission_line
+    // is its own column (see x_gegis_ins_policy_loa_evaluation_submission_
+    // _line), and a submission can carry more than one LOB/line (submission
+    // _line.submission FK). So, exactly as for UW Guidelines, both methods
+    // return every line grouped separately rather than guessing which one
+    // line the caller wants.
+    //
+    // "Latest" here means active=true, NOT is_latest - loa_evaluation uses
+    // its own pre-existing version+active shape (see the class description
+    // and createNextVersion above), so getLatestLoaEvaluationForSubmission
+    // reads active=true rather than an is_latest column that does not exist
+    // on this table.
+    // =====================================================================
+
+    /**
+     * Full loa_evaluation history (every version, not just active) for
+     * every submission_line under a submission, for the version dropdown.
+     * Each version is fully nested with its loa_evaluation_line children,
+     * per the "Why this submission exceeds authority" mockup.
+     *
+     * @param submissionNumber x_gegis_ins_policy_submission.number
+     * @return {success, message, lines:[{submissionLineId, lineOfBusiness,
+     *          versions:[{sysId, number, version, isActive,
+     *          evaluationStatus, evaluationStatusCode, evaluationTrigger,
+     *          evaluationTriggerCode, evaluatedOn, evaluatedUnderwriter,
+     *          authorityTier, authorityTierCode, isAuthorized,
+     *          requiresReferral, referredToTier, message, checksCount,
+     *          breachCount, maxUtilisationPercent, decidedBy, decidedOn,
+     *          decisionNotes, createdOn,
+     *          evaluationLines:[{sysId, metricLabel, exposureAmount,
+     *          exposureCount, limitAmountSnapshot, limitCountSnapshot,
+     *          utilisationPercent, result, resultCode, breachAmount,
+     *          breachReason, currency}]}]}]}
+     */
+    getLoaEvaluationsForSubmission: function(submissionNumber) {
+        if (!submissionNumber)
+            return { success: false, message: 'submissionNumber is required', lines: [] };
+
+        var lineIds = this._resolveSubmissionLines(submissionNumber);
+        if (!lineIds.length)
+            return { success: false, message: 'No submission_line found for submission ' + submissionNumber, lines: [] };
+
+        var lines = [];
+        for (var i = 0; i < lineIds.length; i++)
+            lines.push(this._buildLineEvaluations(lineIds[i], false));
+
+        return { success: true, message: '', lines: lines };
+    },
+
+    /**
+     * Convenience wrapper most callers actually want: same shape as
+     * getLoaEvaluationsForSubmission, but each line carries only its
+     * active=true evaluation, as `latestVersion` (singular), instead of the
+     * full `versions` array.
+     *
+     * @param submissionNumber x_gegis_ins_policy_submission.number
+     * @return {success, message, lines:[{submissionLineId, lineOfBusiness,
+     *          latestVersion:{...same shape as one entry in versions[]...}|null}]}
+     */
+    getLatestLoaEvaluationForSubmission: function(submissionNumber) {
+        if (!submissionNumber)
+            return { success: false, message: 'submissionNumber is required', lines: [] };
+
+        var lineIds = this._resolveSubmissionLines(submissionNumber);
+        if (!lineIds.length)
+            return { success: false, message: 'No submission_line found for submission ' + submissionNumber, lines: [] };
+
+        var lines = [];
+        for (var i = 0; i < lineIds.length; i++)
+            lines.push(this._buildLineEvaluations(lineIds[i], true));
+
+        return { success: true, message: '', lines: lines };
+    },
+
+    /** submission NUMBER -> every submission_line sys_id under it. */
+    _resolveSubmissionLines: function(submissionNumber) {
+        var ids = [];
+        var sub = new GlideRecord('x_gegis_ins_policy_submission');
+        sub.addQuery('number', String(submissionNumber));
+        sub.setLimit(1);
+        sub.query();
+        if (!sub.next())
+            return ids;
+
+        var line = new GlideRecord(this.LINE_TABLE);
+        line.addQuery('submission', sub.getUniqueValue());
+        line.query();
+        while (line.next())
+            ids.push(line.getUniqueValue());
+        return ids;
+    },
+
+    /**
+     * One submission_line's loa_evaluation history (or just its active row,
+     * when latestOnly is true), each fully nested with its
+     * loa_evaluation_line children.
+     */
+    _buildLineEvaluations: function(submissionLineId, latestOnly) {
+        var line = new GlideRecord(this.LINE_TABLE);
+        line.get(submissionLineId);
+
+        var out = {
+            submissionLineId: submissionLineId,
+            lineOfBusiness: line.isValidRecord() ? String(line.getDisplayValue('line_of_business')) : ''
+        };
+
+        var gr = new GlideRecord(this.TABLE);
+        gr.addQuery('submission_line', submissionLineId);
+        if (latestOnly)
+            gr.addQuery('active', true);
+        gr.orderByDesc('version');
+        gr.query();
+
+        if (latestOnly) {
+            out.latestVersion = gr.next() ? this._buildEvaluation(gr) : null;
+        } else {
+            var versions = [];
+            while (gr.next())
+                versions.push(this._buildEvaluation(gr));
+            out.versions = versions;
+        }
+        return out;
+    },
+
+    /** One loa_evaluation row, nested with its loa_evaluation_line children. */
+    _buildEvaluation: function(gr) {
+        var evaluation = {
+            sysId: gr.getUniqueValue(),
+            number: String(gr.getValue('number') || ''),
+            version: parseInt(gr.getValue('version'), 10) || 0,
+            isActive: String(gr.getValue('active')) === 'true',
+            evaluationStatus: gr.getDisplayValue('evaluation_status'),
+            evaluationStatusCode: String(gr.getValue('evaluation_status') || ''),
+            evaluationTrigger: gr.getDisplayValue('evaluation_trigger'),
+            evaluationTriggerCode: String(gr.getValue('evaluation_trigger') || ''),
+            evaluatedOn: String(gr.getValue('evaluated_on') || ''),
+            evaluatedUnderwriter: gr.getDisplayValue('evaluated_underwriter'),
+            authorityTier: gr.getDisplayValue('authority_tier'),
+            authorityTierCode: String(gr.getValue('authority_tier_code') || ''),
+            isAuthorized: String(gr.getValue('is_authorized')) === 'true',
+            requiresReferral: String(gr.getValue('requires_referral')) === 'true',
+            referredToTier: gr.getDisplayValue('referred_to_tier'),
+            message: String(gr.getValue('message') || ''),
+            checksCount: parseInt(gr.getValue('checks_count'), 10) || 0,
+            breachCount: parseInt(gr.getValue('breach_count'), 10) || 0,
+            maxUtilisationPercent: gr.getValue('max_utilisation_percent'),
+            decidedBy: gr.getDisplayValue('decided_by'),
+            decidedOn: String(gr.getValue('decided_on') || ''),
+            decisionNotes: String(gr.getValue('decision_notes') || ''),
+            createdOn: String(gr.getValue('sys_created_on') || ''),
+            evaluationLines: []
+        };
+
+        var l = new GlideRecord('x_gegis_ins_policy_loa_evaluation_line');
+        l.addQuery('evaluation', gr.getUniqueValue());
+        l.orderBy('sequence');
+        l.query();
+        while (l.next())
+            evaluation.evaluationLines.push({
+                sysId: l.getUniqueValue(),
+                metricLabel: String(l.getDisplayValue('metric') || ''),
+                exposureAmount: l.getValue('exposure_amount'),
+                exposureCount: parseInt(l.getValue('exposure_count'), 10) || 0,
+                limitAmountSnapshot: l.getValue('limit_amount_snapshot'),
+                limitCountSnapshot: parseInt(l.getValue('limit_count_snapshot'), 10) || 0,
+                utilisationPercent: l.getValue('utilisation_percent'),
+                result: l.getDisplayValue('result'),
+                resultCode: String(l.getValue('result') || ''),
+                breachAmount: l.getValue('breach_amount'),
+                breachReason: String(l.getValue('breach_reason') || ''),
+                currency: String(l.getValue('currency') || '')
+            });
+        return evaluation;
+    },
+
     type: 'LOAEvaluationVersionService'
-};</script>
+};]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-09-21 12:00:00</sys_created_on>
