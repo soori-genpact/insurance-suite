@@ -1292,6 +1292,52 @@
         // taken deliberately.
 
         // =================================================================
+        // UNDERWRITING GUIDELINES SCORING  (x_gegis_ins_policy_uw_score_threshold
+        // and x_gegis_ins_policy_uw_trigger_reason)
+        // -----------------------------------------------------------------
+        // Deliberately DATA-driven, same shape as the LOA tables above: the
+        // score bands and the trigger catalogue are rows, not columns, so a
+        // new band or a new trigger is one row, never a code change.
+        // =================================================================
+
+        // uw_score_threshold.risk_level -- the qualitative band a computed
+        // score (Total Pass Rule / Total Rule x 10) lands in.
+        UW_RISK_LEVEL: {
+            LOW:    &#39;low&#39;,
+            MEDIUM: &#39;medium&#39;,
+            HIGH:   &#39;high&#39;
+        },
+
+        // uw_score_threshold.action_label -- what the underwriter is told to
+        // do once the score lands in that band.
+        UW_ACTION_LABEL: {
+            AUTO_APPROVE_ELIGIBLE: &#39;auto_approve_eligible&#39;,
+            REVIEW_REQUIRED:       &#39;review_required&#39;,
+            CANNOT_PROCEED:        &#39;cannot_proceed&#39;
+        },
+
+        // uw_trigger_reason.applies_to -- whether a trigger reason is
+        // relevant to Letter of Authority evaluation, Underwriting Guidelines
+        // re-scoring, or both.
+        UW_TRIGGER_APPLIES_TO: {
+            LOA:          &#39;loa&#39;,
+            UW_GUIDELINE: &#39;uw_guideline&#39;,
+            BOTH:         &#39;both&#39;
+        },
+
+        // uw_trigger_reason.code is a STRING with no choice list, not a
+        // choice column - same shape as loa_authority_tier.code above, so a
+        // new trigger is one row, not an edit in five places. The known codes
+        // are named here so scripts and seeds never type &#39;tiv_change&#39; raw.
+        UW_TRIGGER_REASON_CODE: {
+            INITIAL_SUBMISSION:    &#39;initial_submission&#39;,
+            TIV_CHANGE:            &#39;tiv_change&#39;,
+            PROPERTY_COUNT_CHANGE: &#39;property_count_change&#39;,
+            RENEWAL:               SHARED.RENEWAL,
+            ENDORSEMENT:           &#39;endorsement&#39;
+        },
+
+        // =================================================================
         // MODULE EXECUTION PLAN  --  x_gegis_ins_policy_module_plan
         // -----------------------------------------------------------------
         // The plan is a flat matrix: one row per situation, one order column
@@ -1520,13 +1566,13 @@
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-12 10:00:00</sys_created_on>
         <sys_id>b7c9d1e3f5a7290418365a7b9c1d3e5f</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name>Constants</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_script_include_b7c9d1e3f5a7290418365a7b9c1d3e5f</sys_update_name>
         <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-09-17 12:00:00</sys_updated_on>
+        <sys_updated_on>2026-09-21 12:00:00</sys_updated_on>
     </sys_script_include>
 </record_update>
