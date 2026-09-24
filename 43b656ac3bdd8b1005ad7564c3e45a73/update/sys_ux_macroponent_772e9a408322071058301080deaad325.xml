@@ -8629,6 +8629,726 @@
                                                                 "value": {
                                                                     "items": [
                                                                         {
+                                                                            "field": "sys_id",
+                                                                            "fn": "count",
+                                                                            "label": "Count"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            },
+                                                            "availableColumns": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": {
+                                                                    "items": [
+                                                                        {
+                                                                            "field": "sys_created_on",
+                                                                            "label": "Created",
+                                                                            "type": "date",
+                                                                            "width": "160px"
+                                                                        },
+                                                                        {
+                                                                            "field": "sys_created_by",
+                                                                            "label": "Created by",
+                                                                            "type": "text",
+                                                                            "width": "140px"
+                                                                        },
+                                                                        {
+                                                                            "field": "sys_updated_on",
+                                                                            "label": "Updated",
+                                                                            "type": "date",
+                                                                            "width": "160px"
+                                                                        },
+                                                                        {
+                                                                            "field": "sys_updated_by",
+                                                                            "label": "Updated by",
+                                                                            "type": "text",
+                                                                            "width": "140px"
+                                                                        },
+                                                                        {
+                                                                            "field": "extracted_value",
+                                                                            "label": "Extracted value",
+                                                                            "width": "180px"
+                                                                        },
+                                                                        {
+                                                                            "field": "mapped_value",
+                                                                            "label": "Mapped value",
+                                                                            "width": "180px"
+                                                                        },
+                                                                        {
+                                                                            "field": "applied_by",
+                                                                            "label": "Applied by",
+                                                                            "type": "reference",
+                                                                            "width": "150px"
+                                                                        },
+                                                                        {
+                                                                            "field": "applied_on",
+                                                                            "label": "Applied on",
+                                                                            "type": "date",
+                                                                            "width": "160px"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            },
+                                                            "columns": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": {
+                                                                    "items": [
+                                                                        {
+                                                                            "field": "document",
+                                                                            "label": "Document",
+                                                                            "type": "reference",
+                                                                            "width": "150px"
+                                                                        },
+                                                                        {
+                                                                            "field": "section_label",
+                                                                            "label": "Section",
+                                                                            "minWidth": 120
+                                                                        },
+                                                                        {
+                                                                            "field": "field_label",
+                                                                            "label": "Field",
+                                                                            "minWidth": 160
+                                                                        },
+                                                                        {
+                                                                            "field": "final_value",
+                                                                            "label": "Value",
+                                                                            "minWidth": 160
+                                                                        },
+                                                                        {
+                                                                            "field": "review_status",
+                                                                            "label": "Review status",
+                                                                            "pillColors": {
+                                                                                "accepted": "positive",
+                                                                                "applied": "positive",
+                                                                                "auto_accepted": "positive",
+                                                                                "corrected": "info",
+                                                                                "needs_review": "warning",
+                                                                                "rejected": "critical"
+                                                                            },
+                                                                            "type": "pill",
+                                                                            "width": "140px"
+                                                                        },
+                                                                        {
+                                                                            "align": "right",
+                                                                            "field": "confidence",
+                                                                            "label": "Confidence",
+                                                                            "type": "number",
+                                                                            "width": "110px"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            },
+                                                            "compactRows": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
+                                                            "data": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": {
+                                                                    "items": []
+                                                                }
+                                                            },
+                                                            "editSaveMode": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "auto"
+                                                            },
+                                                            "emptyMessage": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "No records found."
+                                                            },
+                                                            "enableColumnPersonalization": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "enableColumnReorder": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "enablePersonalizationStorage": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "enablePinStore": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "enableReferenceLinks": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "enableResize": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "enableRowClick": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
+                                                            "enableSort": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "exportFileName": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "exportMode": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "csv"
+                                                            },
+                                                            "fontSize": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "1rem"
+                                                            },
+                                                            "grandTotalWhenFlat": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
+                                                            "groupBy": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "section_label"
+                                                            },
+                                                            "groupPaging": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "records"
+                                                            },
+                                                            "groupScope": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "all"
+                                                            },
+                                                            "groupSort": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": {
+                                                                    "items": []
+                                                                }
+                                                            },
+                                                            "headerColor": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "heading": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "Missing Data"
+                                                            },
+                                                            "maxGroupDepth": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": 8
+                                                            },
+                                                            "maxGroupRows": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": 5000
+                                                            },
+                                                            "navigateReferenceOnClick": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "orderBy": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "orderDescending": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
+                                                            "pageSize": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": 20
+                                                            },
+                                                            "pageSizes": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "10,20,50,100"
+                                                            },
+                                                            "personalizationKey": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "pinActionCode": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "pin"
+                                                            },
+                                                            "pinPerUser": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "pinStorageKey": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "x_gegis_library.pinned_items"
+                                                            },
+                                                            "query": {
+                                                                "transform": {
+                                                                    "operands": {
+                                                                        "container": [
+                                                                            {
+                                                                                "type": "JSON_LITERAL",
+                                                                                "value": "extraction.submission="
+                                                                            },
+                                                                            {
+                                                                                "binding": {
+                                                                                    "address": [
+                                                                                        "submissionSysId"
+                                                                                    ]
+                                                                                },
+                                                                                "type": "STATE_BINDING"
+                                                                            }
+                                                                        ],
+                                                                        "type": "LIST_CONTAINER"
+                                                                    },
+                                                                    "operator": "CONCAT"
+                                                                },
+                                                                "type": "CLIENT_TRANSFORM"
+                                                            },
+                                                            "recordUrlTemplate": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "/record/{table}/{sysId}"
+                                                            },
+                                                            "referenceOpenIn": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "same"
+                                                            },
+                                                            "roleBasedColumns": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
+                                                            "rowIconSize": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": 18
+                                                            },
+                                                            "rowIconsEnd": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": {
+                                                                    "items": []
+                                                                }
+                                                            },
+                                                            "rowIconsStart": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": {
+                                                                    "items": []
+                                                                }
+                                                            },
+                                                            "sampleRows": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": {
+                                                                    "items": [
+                                                                        {
+                                                                            "account": {
+                                                                                "display_value": "Acme Corp",
+                                                                                "value": "Acme Corp"
+                                                                            },
+                                                                            "line_of_business": {
+                                                                                "display_value": "Property",
+                                                                                "value": "Property"
+                                                                            },
+                                                                            "number": {
+                                                                                "display_value": "SUB-0001",
+                                                                                "link": "/api/now/table/x_gegis_wum_submission/a1",
+                                                                                "value": "SUB-0001"
+                                                                            },
+                                                                            "premium": {
+                                                                                "display_value": "42000",
+                                                                                "value": "42000"
+                                                                            },
+                                                                            "stage": {
+                                                                                "display_value": "Data Capture",
+                                                                                "value": "Data Capture"
+                                                                            },
+                                                                            "sys_id": {
+                                                                                "display_value": "a1",
+                                                                                "value": "a1"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "account": {
+                                                                                "display_value": "Globex",
+                                                                                "value": "Globex"
+                                                                            },
+                                                                            "line_of_business": {
+                                                                                "display_value": "Property",
+                                                                                "value": "Property"
+                                                                            },
+                                                                            "number": {
+                                                                                "display_value": "SUB-0002",
+                                                                                "link": "/api/now/table/x_gegis_wum_submission/a2",
+                                                                                "value": "SUB-0002"
+                                                                            },
+                                                                            "premium": {
+                                                                                "display_value": "88000",
+                                                                                "value": "88000"
+                                                                            },
+                                                                            "stage": {
+                                                                                "display_value": "Underwriting",
+                                                                                "value": "Underwriting"
+                                                                            },
+                                                                            "sys_id": {
+                                                                                "display_value": "a2",
+                                                                                "value": "a2"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "account": {
+                                                                                "display_value": "Initech",
+                                                                                "value": "Initech"
+                                                                            },
+                                                                            "line_of_business": {
+                                                                                "display_value": "Property",
+                                                                                "value": "Property"
+                                                                            },
+                                                                            "number": {
+                                                                                "display_value": "SUB-0003",
+                                                                                "link": "/api/now/table/x_gegis_wum_submission/a3",
+                                                                                "value": "SUB-0003"
+                                                                            },
+                                                                            "premium": {
+                                                                                "display_value": "15500",
+                                                                                "value": "15500"
+                                                                            },
+                                                                            "stage": {
+                                                                                "display_value": "Data Capture",
+                                                                                "value": "Data Capture"
+                                                                            },
+                                                                            "sys_id": {
+                                                                                "display_value": "a3",
+                                                                                "value": "a3"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "account": {
+                                                                                "display_value": "Umbrella",
+                                                                                "value": "Umbrella"
+                                                                            },
+                                                                            "line_of_business": {
+                                                                                "display_value": "Casualty",
+                                                                                "value": "Casualty"
+                                                                            },
+                                                                            "number": {
+                                                                                "display_value": "SUB-0004",
+                                                                                "link": "/api/now/table/x_gegis_wum_submission/a4",
+                                                                                "value": "SUB-0004"
+                                                                            },
+                                                                            "premium": {
+                                                                                "display_value": "63000",
+                                                                                "value": "63000"
+                                                                            },
+                                                                            "stage": {
+                                                                                "display_value": "Referral",
+                                                                                "value": "Referral"
+                                                                            },
+                                                                            "sys_id": {
+                                                                                "display_value": "a4",
+                                                                                "value": "a4"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "account": {
+                                                                                "display_value": "Soylent",
+                                                                                "value": "Soylent"
+                                                                            },
+                                                                            "line_of_business": {
+                                                                                "display_value": "Casualty",
+                                                                                "value": "Casualty"
+                                                                            },
+                                                                            "number": {
+                                                                                "display_value": "SUB-0005",
+                                                                                "link": "/api/now/table/x_gegis_wum_submission/a5",
+                                                                                "value": "SUB-0005"
+                                                                            },
+                                                                            "premium": {
+                                                                                "display_value": "27500",
+                                                                                "value": "27500"
+                                                                            },
+                                                                            "stage": {
+                                                                                "display_value": "Underwriting",
+                                                                                "value": "Underwriting"
+                                                                            },
+                                                                            "sys_id": {
+                                                                                "display_value": "a5",
+                                                                                "value": "a5"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "account": {
+                                                                                "display_value": "Stark Ind",
+                                                                                "value": "Stark Ind"
+                                                                            },
+                                                                            "line_of_business": {
+                                                                                "display_value": "Cyber",
+                                                                                "value": "Cyber"
+                                                                            },
+                                                                            "number": {
+                                                                                "display_value": "SUB-0006",
+                                                                                "link": "/api/now/table/x_gegis_wum_submission/a6",
+                                                                                "value": "SUB-0006"
+                                                                            },
+                                                                            "premium": {
+                                                                                "display_value": "120000",
+                                                                                "value": "120000"
+                                                                            },
+                                                                            "stage": {
+                                                                                "display_value": "Data Capture",
+                                                                                "value": "Data Capture"
+                                                                            },
+                                                                            "sys_id": {
+                                                                                "display_value": "a6",
+                                                                                "value": "a6"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "account": {
+                                                                                "display_value": "Wayne Ent",
+                                                                                "value": "Wayne Ent"
+                                                                            },
+                                                                            "line_of_business": {
+                                                                                "display_value": "Cyber",
+                                                                                "value": "Cyber"
+                                                                            },
+                                                                            "number": {
+                                                                                "display_value": "SUB-0007",
+                                                                                "link": "/api/now/table/x_gegis_wum_submission/a7",
+                                                                                "value": "SUB-0007"
+                                                                            },
+                                                                            "premium": {
+                                                                                "display_value": "54000",
+                                                                                "value": "54000"
+                                                                            },
+                                                                            "stage": {
+                                                                                "display_value": "Referral",
+                                                                                "value": "Referral"
+                                                                            },
+                                                                            "sys_id": {
+                                                                                "display_value": "a7",
+                                                                                "value": "a7"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "account": {
+                                                                                "display_value": "Tyrell",
+                                                                                "value": "Tyrell"
+                                                                            },
+                                                                            "line_of_business": {
+                                                                                "display_value": "Property",
+                                                                                "value": "Property"
+                                                                            },
+                                                                            "number": {
+                                                                                "display_value": "SUB-0008",
+                                                                                "link": "/api/now/table/x_gegis_wum_submission/a8",
+                                                                                "value": "SUB-0008"
+                                                                            },
+                                                                            "premium": {
+                                                                                "display_value": "33000",
+                                                                                "value": "33000"
+                                                                            },
+                                                                            "stage": {
+                                                                                "display_value": "Referral",
+                                                                                "value": "Referral"
+                                                                            },
+                                                                            "sys_id": {
+                                                                                "display_value": "a8",
+                                                                                "value": "a8"
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            },
+                                                            "searchPlaceholder": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "Search"
+                                                            },
+                                                            "selectionMode": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "none"
+                                                            },
+                                                            "showCount": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "showExport": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
+                                                            "showFilter": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "showGrandTotal": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "showGroupControl": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "showLastRefreshed": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
+                                                            "showPageSizeControl": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "showRefresh": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            },
+                                                            "showSearch": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "showSortControl": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "stablePaging": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "stripedRows": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
+                                                            },
+                                                            "subtotalPlacement": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "header"
+                                                            },
+                                                            "surfaceColor": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "table": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "x_gegis_ins_policy_extraction_field"
+                                                            },
+                                                            "toolbarButtons": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": {
+                                                                    "items": [
+                                                                        {
+                                                                            "eventCode": "audit",
+                                                                            "label": "Audit",
+                                                                            "selectionRequired": false,
+                                                                            "variant": "primary"
+                                                                        },
+                                                                        {
+                                                                            "eventCode": "email",
+                                                                            "label": "Email",
+                                                                            "selectionRequired": false,
+                                                                            "variant": "secondary"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            },
+                                                            "userSysId": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
+                                                            },
+                                                            "wrapColumnText": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": false
+                                                            }
+                                                        },
+                                                        "slot": null,
+                                                        "styles": {
+                                                            "default": {
+                                                                "padding-top": "var(--now-scalable-space--lg)"
+                                                            }
+                                                        }
+                                                    }
+                                                ],
+                                                "layout": {
+                                                    "default": {
+                                                        "children": null,
+                                                        "items": [
+                                                            {
+                                                                "element_id": "record_list_8"
+                                                            }
+                                                        ],
+                                                        "root": null,
+                                                        "rules": null,
+                                                        "styles": {
+                                                            "flex-direction": "column",
+                                                            "min-height": "300px",
+                                                            "width": "100%"
+                                                        },
+                                                        "templateId": "5832fd4d53c31010e6bcddeeff7b12db",
+                                                        "type": "flex"
+                                                    },
+                                                    "version": "3.1.0"
+                                                }
+                                            },
+                                            "preset": null,
+                                            "propertyValues": {
+                                                "ariaRegionHeadingLevel": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "1"
+                                                },
+                                                "ariaRegionName": {
+                                                    "type": "TRANSLATION_LITERAL",
+                                                    "value": {
+                                                        "code": null,
+                                                        "comment": "",
+                                                        "message": ""
+                                                    }
+                                                },
+                                                "ariaRole": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": ""
+                                                },
+                                                "hideEmptyStateUi": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": true
+                                                },
+                                                "includeAriaHeading": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": false
+                                                },
+                                                "slotWrapperBehavior": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "fullheight"
+                                                },
+                                                "type": {
+                                                    "type": "JSON_LITERAL",
+                                                    "value": "section"
+                                                }
+                                            },
+                                            "slot": "tab_missing_data",
+                                            "styles": null
+                                        },
+                                        {
+                                            "definition": {
+                                                "id": "d356d14b6e293a3020a244b63d278d8f",
+                                                "type": "MACROPONENT"
+                                            },
+                                            "elementId": "tab_task",
+                                            "elementLabel": "Task(s)",
+                                            "eventMappings": [],
+                                            "isHidden": {
+                                                "type": "JSON_LITERAL",
+                                                "value": null
+                                            },
+                                            "name": "Task",
+                                            "overrides": {
+                                                "composition": [
+                                                    {
+                                                        "definition": {
+                                                            "id": "51562c3df6f77b3f31ba9e2c613aa81e",
+                                                            "type": "MACROPONENT"
+                                                        },
+                                                        "elementId": "record_list_9",
+                                                        "elementLabel": "Record List 9",
+                                                        "eventMappings": [],
+                                                        "isHidden": {
+                                                            "type": "JSON_LITERAL",
+                                                            "value": null
+                                                        },
+                                                        "preset": null,
+                                                        "propertyValues": {
+                                                            "aggregationMode": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": "client"
+                                                            },
+                                                            "aggregations": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": {
+                                                                    "items": [
+                                                                        {
                                                                             "field": "premium",
                                                                             "fn": "sum",
                                                                             "format": "currency",
@@ -8670,6 +9390,21 @@
                                                                             "label": "Updated by",
                                                                             "type": "text",
                                                                             "width": "140px"
+                                                                        },
+                                                                        {
+                                                                            "field": "intake_case",
+                                                                            "label": "Intake case",
+                                                                            "type": "reference"
+                                                                        },
+                                                                        {
+                                                                            "field": "extraction",
+                                                                            "label": "Extraction",
+                                                                            "type": "reference"
+                                                                        },
+                                                                        {
+                                                                            "field": "loa_evaluation",
+                                                                            "label": "LOA evaluation",
+                                                                            "type": "reference"
                                                                         }
                                                                     ]
                                                                 }
@@ -8680,35 +9415,114 @@
                                                                     "items": [
                                                                         {
                                                                             "field": "number",
-                                                                            "label": "Submission",
-                                                                            "refTable": "x_gegis_wum_submission",
+                                                                            "label": "Task",
                                                                             "type": "reference",
-                                                                            "width": "150px"
+                                                                            "width": "140px"
                                                                         },
                                                                         {
-                                                                            "field": "account",
-                                                                            "label": "Insured",
-                                                                            "minWidth": 160,
-                                                                            "type": "text"
+                                                                            "field": "short_description",
+                                                                            "label": "Description",
+                                                                            "minWidth": 200
                                                                         },
                                                                         {
-                                                                            "field": "line_of_business",
-                                                                            "label": "LOB",
-                                                                            "type": "text",
-                                                                            "width": "130px"
-                                                                        },
-                                                                        {
-                                                                            "field": "stage",
-                                                                            "label": "Stage",
+                                                                            "field": "u_module",
+                                                                            "label": "Module",
+                                                                            "pillColors": {
+                                                                                "clearance": "warning",
+                                                                                "exposure_management": "purple",
+                                                                                "intake": "info",
+                                                                                "quote_and_bind": "positive",
+                                                                                "risk_assessment": "critical"
+                                                                            },
                                                                             "type": "pill",
                                                                             "width": "130px"
                                                                         },
                                                                         {
-                                                                            "align": "right",
-                                                                            "field": "premium",
-                                                                            "label": "Premium",
-                                                                            "type": "number",
+                                                                            "field": "category",
+                                                                            "label": "Category",
+                                                                            "pillColors": {
+                                                                                "case": "neutral",
+                                                                                "extraction": "info",
+                                                                                "hitl": "warning",
+                                                                                "other": "neutral",
+                                                                                "referral": "critical"
+                                                                            },
+                                                                            "type": "pill",
                                                                             "width": "120px"
+                                                                        },
+                                                                        {
+                                                                            "field": "u_type",
+                                                                            "label": "Type",
+                                                                            "minWidth": 160
+                                                                        },
+                                                                        {
+                                                                            "choices": [
+                                                                                {
+                                                                                    "label": "Pending",
+                                                                                    "value": "-5"
+                                                                                },
+                                                                                {
+                                                                                    "label": "Open",
+                                                                                    "value": "1"
+                                                                                },
+                                                                                {
+                                                                                    "label": "Work in Progress",
+                                                                                    "value": "2"
+                                                                                },
+                                                                                {
+                                                                                    "label": "Closed Complete",
+                                                                                    "value": "3"
+                                                                                },
+                                                                                {
+                                                                                    "label": "Closed Incomplete",
+                                                                                    "value": "4"
+                                                                                },
+                                                                                {
+                                                                                    "label": "Closed Skipped",
+                                                                                    "value": "7"
+                                                                                },
+                                                                                {
+                                                                                    "label": "Auto Accepted",
+                                                                                    "value": "8"
+                                                                                },
+                                                                                {
+                                                                                    "label": "Accepted",
+                                                                                    "value": "9"
+                                                                                },
+                                                                                {
+                                                                                    "label": "Rejected",
+                                                                                    "value": "10"
+                                                                                }
+                                                                            ],
+                                                                            "editable": true,
+                                                                            "editor": "choice",
+                                                                            "field": "state",
+                                                                            "label": "State",
+                                                                            "pillColors": {
+                                                                                "-5": "neutral",
+                                                                                "1": "info",
+                                                                                "10": "critical",
+                                                                                "2": "warning",
+                                                                                "3": "positive",
+                                                                                "4": "critical",
+                                                                                "7": "neutral",
+                                                                                "8": "positive",
+                                                                                "9": "positive"
+                                                                            },
+                                                                            "type": "pill",
+                                                                            "width": "150px"
+                                                                        },
+                                                                        {
+                                                                            "field": "priority",
+                                                                            "label": "Priority",
+                                                                            "type": "pill",
+                                                                            "width": "110px"
+                                                                        },
+                                                                        {
+                                                                            "field": "assigned_to",
+                                                                            "label": "Assigned to",
+                                                                            "type": "reference",
+                                                                            "width": "150px"
                                                                         }
                                                                     ]
                                                                 }
@@ -8803,7 +9617,11 @@
                                                             },
                                                             "heading": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": "Active Transactions"
+                                                                "value": "Case Tasks"
+                                                            },
+                                                            "hoverRows": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": true
                                                             },
                                                             "maxGroupDepth": {
                                                                 "type": "JSON_LITERAL",
@@ -8819,11 +9637,11 @@
                                                             },
                                                             "orderBy": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": ""
+                                                                "value": "sys_created_on"
                                                             },
                                                             "orderDescending": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": false
+                                                                "value": true
                                                             },
                                                             "pageSize": {
                                                                 "type": "JSON_LITERAL",
@@ -8850,8 +9668,27 @@
                                                                 "value": "x_gegis_library.pinned_items"
                                                             },
                                                             "query": {
-                                                                "type": "JSON_LITERAL",
-                                                                "value": ""
+                                                                "transform": {
+                                                                    "operands": {
+                                                                        "container": [
+                                                                            {
+                                                                                "type": "JSON_LITERAL",
+                                                                                "value": "submission="
+                                                                            },
+                                                                            {
+                                                                                "binding": {
+                                                                                    "address": [
+                                                                                        "submissionSysId"
+                                                                                    ]
+                                                                                },
+                                                                                "type": "STATE_BINDING"
+                                                                            }
+                                                                        ],
+                                                                        "type": "LIST_CONTAINER"
+                                                                    },
+                                                                    "operator": "CONCAT"
+                                                                },
+                                                                "type": "CLIENT_TRANSFORM"
                                                             },
                                                             "recordUrlTemplate": {
                                                                 "type": "JSON_LITERAL",
@@ -8872,13 +9709,7 @@
                                                             "rowIconsEnd": {
                                                                 "type": "JSON_LITERAL",
                                                                 "value": {
-                                                                    "items": [
-                                                                        {
-                                                                            "actionCode": "pin",
-                                                                            "icon": "thumbtack-fill",
-                                                                            "tooltip": "Pin"
-                                                                        }
-                                                                    ]
+                                                                    "items": []
                                                                 }
                                                             },
                                                             "rowIconsStart": {
@@ -8886,6 +9717,10 @@
                                                                 "value": {
                                                                     "items": []
                                                                 }
+                                                            },
+                                                            "rowTintColor": {
+                                                                "type": "JSON_LITERAL",
+                                                                "value": ""
                                                             },
                                                             "sampleRows": {
                                                                 "type": "JSON_LITERAL",
@@ -9164,7 +9999,7 @@
                                                             },
                                                             "stripedRows": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": true
+                                                                "value": false
                                                             },
                                                             "subtotalPlacement": {
                                                                 "type": "JSON_LITERAL",
@@ -9176,25 +10011,12 @@
                                                             },
                                                             "table": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": "x_gegis_ins_policy_extraction_field"
+                                                                "value": "x_gegis_ins_policy_case_task"
                                                             },
                                                             "toolbarButtons": {
                                                                 "type": "JSON_LITERAL",
                                                                 "value": {
-                                                                    "items": [
-                                                                        {
-                                                                            "eventCode": "audit",
-                                                                            "label": "Audit",
-                                                                            "selectionRequired": false,
-                                                                            "variant": "primary"
-                                                                        },
-                                                                        {
-                                                                            "eventCode": "email",
-                                                                            "label": "Email",
-                                                                            "selectionRequired": false,
-                                                                            "variant": "secondary"
-                                                                        }
-                                                                    ]
+                                                                    "items": []
                                                                 }
                                                             },
                                                             "userSysId": {
@@ -9207,7 +10029,11 @@
                                                             }
                                                         },
                                                         "slot": null,
-                                                        "styles": null
+                                                        "styles": {
+                                                            "default": {
+                                                                "padding-top": "var(--now-scalable-space--lg)"
+                                                            }
+                                                        }
                                                     }
                                                 ],
                                                 "layout": {
@@ -9215,7 +10041,7 @@
                                                         "children": null,
                                                         "items": [
                                                             {
-                                                                "element_id": "record_list_8"
+                                                                "element_id": "record_list_9"
                                                             }
                                                         ],
                                                         "root": null,
@@ -9228,77 +10054,7 @@
                                                         "templateId": "5832fd4d53c31010e6bcddeeff7b12db",
                                                         "type": "flex"
                                                     },
-                                                    "version": "3.0.0"
-                                                }
-                                            },
-                                            "preset": null,
-                                            "propertyValues": {
-                                                "ariaRegionHeadingLevel": {
-                                                    "type": "JSON_LITERAL",
-                                                    "value": "1"
-                                                },
-                                                "ariaRegionName": {
-                                                    "type": "TRANSLATION_LITERAL",
-                                                    "value": {
-                                                        "code": null,
-                                                        "comment": "",
-                                                        "message": ""
-                                                    }
-                                                },
-                                                "ariaRole": {
-                                                    "type": "JSON_LITERAL",
-                                                    "value": ""
-                                                },
-                                                "hideEmptyStateUi": {
-                                                    "type": "JSON_LITERAL",
-                                                    "value": true
-                                                },
-                                                "includeAriaHeading": {
-                                                    "type": "JSON_LITERAL",
-                                                    "value": false
-                                                },
-                                                "slotWrapperBehavior": {
-                                                    "type": "JSON_LITERAL",
-                                                    "value": "fullheight"
-                                                },
-                                                "type": {
-                                                    "type": "JSON_LITERAL",
-                                                    "value": "section"
-                                                }
-                                            },
-                                            "slot": "tab_missing_data",
-                                            "styles": null
-                                        },
-                                        {
-                                            "definition": {
-                                                "id": "d356d14b6e293a3020a244b63d278d8f",
-                                                "type": "MACROPONENT"
-                                            },
-                                            "elementId": "tab_task",
-                                            "elementLabel": "Task(s)",
-                                            "eventMappings": [],
-                                            "isHidden": {
-                                                "type": "JSON_LITERAL",
-                                                "value": null
-                                            },
-                                            "name": "Task",
-                                            "overrides": {
-                                                "composition": [],
-                                                "layout": {
-                                                    "default": {
-                                                        "children": null,
-                                                        "items": [],
-                                                        "root": null,
-                                                        "rules": null,
-                                                        "styles": {
-                                                            "flex-direction": "column",
-                                                            "min-height": "300px",
-                                                            "width": "100%"
-                                                        },
-                                                        "templateId": "5832fd4d53c31010e6bcddeeff7b12db",
-                                                        "type": "flex"
-                                                    },
-                                                    "version": "3.0.0"
+                                                    "version": "3.1.0"
                                                 }
                                             },
                                             "preset": null,
@@ -9863,6 +10619,10 @@
   "code" : "",
   "comment" : ""
 }, {
+  "message" : "Accepted",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "Account",
   "code" : "",
   "comment" : ""
@@ -9947,6 +10707,14 @@
   "code" : "",
   "comment" : ""
 }, {
+  "message" : "Applied by",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Applied on",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "Appointed Lines",
   "code" : "",
   "comment" : ""
@@ -9964,6 +10732,10 @@
   "comment" : ""
 }, {
   "message" : "Audit",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Auto Accepted",
   "code" : "",
   "comment" : ""
 }, {
@@ -10059,6 +10831,10 @@
   "code" : "",
   "comment" : ""
 }, {
+  "message" : "Category",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "Change deductible",
   "code" : "",
   "comment" : ""
@@ -10103,6 +10879,18 @@
   "code" : "",
   "comment" : ""
 }, {
+  "message" : "Closed Complete",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Closed Incomplete",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Closed Skipped",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "Commercial Auto",
   "code" : "",
   "comment" : ""
@@ -10135,11 +10923,19 @@
   "code" : "",
   "comment" : ""
 }, {
+  "message" : "Confidence",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "Construction",
   "code" : "",
   "comment" : ""
 }, {
   "message" : "Contingent / Profit Commission",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Count",
   "code" : "",
   "comment" : ""
 }, {
@@ -10199,6 +10995,10 @@
   "code" : "",
   "comment" : ""
 }, {
+  "message" : "Description",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "Description of Operations",
   "code" : "",
   "comment" : ""
@@ -10212,6 +11012,10 @@
   "comment" : ""
 }, {
   "message" : "Distribution Channel",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Document",
   "code" : "",
   "comment" : ""
 }, {
@@ -10299,11 +11103,23 @@
   "code" : "",
   "comment" : ""
 }, {
+  "message" : "Extracted value",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Extraction",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "FEIN",
   "code" : "",
   "comment" : ""
 }, {
   "message" : "FMCSA CSA — Unsafe Driving Percentile",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Field",
   "code" : "",
   "comment" : ""
 }, {
@@ -10395,6 +11211,10 @@
   "code" : "",
   "comment" : ""
 }, {
+  "message" : "Intake case",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "Joint Venture",
   "code" : "",
   "comment" : ""
@@ -10403,7 +11223,7 @@
   "code" : "",
   "comment" : ""
 }, {
-  "message" : "LOB",
+  "message" : "LOA evaluation",
   "code" : "",
   "comment" : ""
 }, {
@@ -10511,6 +11331,10 @@
   "code" : "",
   "comment" : ""
 }, {
+  "message" : "Mapped value",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "Medium",
   "code" : "",
   "comment" : ""
@@ -10524,6 +11348,10 @@
   "comment" : ""
 }, {
   "message" : "Missing Data",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Module",
   "code" : "",
   "comment" : ""
 }, {
@@ -10595,6 +11423,10 @@
   "code" : "",
   "comment" : ""
 }, {
+  "message" : "Open",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "Open Complaints",
   "code" : "",
   "comment" : ""
@@ -10636,6 +11468,10 @@
   "comment" : ""
 }, {
   "message" : "Payment Terms",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Pending",
   "code" : "",
   "comment" : ""
 }, {
@@ -10795,6 +11631,10 @@
   "code" : "",
   "comment" : ""
 }, {
+  "message" : "Rejected",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "Relationship Manager",
   "code" : "",
   "comment" : ""
@@ -10843,6 +11683,10 @@
   "code" : "",
   "comment" : ""
 }, {
+  "message" : "Review status",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "Risk survey required",
   "code" : "",
   "comment" : ""
@@ -10860,6 +11704,10 @@
   "comment" : ""
 }, {
   "message" : "Save changes",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Section",
   "code" : "",
   "comment" : ""
 }, {
@@ -11063,6 +11911,10 @@
   "code" : "",
   "comment" : ""
 }, {
+  "message" : "Value",
+  "code" : "",
+  "comment" : ""
+}, {
   "message" : "View Book of Business",
   "code" : "",
   "comment" : ""
@@ -11088,6 +11940,10 @@
   "comment" : ""
 }, {
   "message" : "Wholesale Broker",
+  "code" : "",
+  "comment" : ""
+}, {
+  "message" : "Work in Progress",
   "code" : "",
   "comment" : ""
 }, {
@@ -11124,20 +11980,45 @@
         <root_component_definition/>
         <schema_version>1.0.0</schema_version>
         <state_persistence_config/>
-        <state_properties>[]</state_properties>
+        <state_properties>[
+    {
+        "description": null,
+        "fieldType": "string",
+        "initialValue": {
+            "type": "JSON_LITERAL",
+            "value": null
+        },
+        "label": "newClientStateParam1",
+        "name": "newClientStateParam1",
+        "shape": "",
+        "valueType": "string"
+    },
+    {
+        "description": null,
+        "fieldType": "string",
+        "initialValue": {
+            "type": "JSON_LITERAL",
+            "value": "-1"
+        },
+        "label": "newClientStateParam2",
+        "name": "submissionSysId",
+        "shape": "",
+        "valueType": "string"
+    }
+]</state_properties>
         <style_config>{}</style_config>
         <sys_class_name>sys_ux_macroponent</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-08-02 07:20:22</sys_created_on>
         <sys_id>772e9a408322071058301080deaad325</sys_id>
-        <sys_mod_count>126</sys_mod_count>
+        <sys_mod_count>133</sys_mod_count>
         <sys_name>playbook</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_772e9a408322071058301080deaad325</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-23 04:52:00</sys_updated_on>
+        <sys_updated_on>2026-09-24 17:34:59</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=772e9a408322071058301080deaad325"/>
 </record_update>
