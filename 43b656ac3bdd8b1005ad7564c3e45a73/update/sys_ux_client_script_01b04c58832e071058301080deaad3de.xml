@@ -21,6 +21,13 @@ function handler({
 }) {
     const record = event.payload; // or api.data.<your_data_resource>.data, depending on setup
     const title = record.record.number.value || record.short_description; // whatever field you want
+
+    const submissionSysId = record.table === 'x_gegis_ins_policy_submission'
+        ? record.sysId
+        : (record.record.submission && record.record.submission.value) || -1;
+
+    api.setState('submissionSysId', submissionSysId);
+
     helpers.screen.updateStatus({
         title: title
     });

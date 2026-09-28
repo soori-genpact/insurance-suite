@@ -8629,16 +8629,9 @@
                                                                 "value": {
                                                                     "items": [
                                                                         {
-                                                                            "field": "premium",
-                                                                            "fn": "sum",
-                                                                            "format": "currency",
-                                                                            "label": "Total Premium"
-                                                                        },
-                                                                        {
-                                                                            "field": "premium",
-                                                                            "fn": "avg",
-                                                                            "format": "currency",
-                                                                            "label": "Avg Premium"
+                                                                            "field": "sys_id",
+                                                                            "fn": "count",
+                                                                            "label": "Count"
                                                                         }
                                                                     ]
                                                                 }
@@ -8648,28 +8641,34 @@
                                                                 "value": {
                                                                     "items": [
                                                                         {
+                                                                            "field": "extracted_value",
+                                                                            "label": "Extracted value",
+                                                                            "type": "text",
+                                                                            "width": "180px"
+                                                                        },
+                                                                        {
+                                                                            "field": "applied_by",
+                                                                            "label": "Applied by",
+                                                                            "type": "reference",
+                                                                            "width": "150px"
+                                                                        },
+                                                                        {
+                                                                            "field": "applied_on",
+                                                                            "label": "Applied on",
+                                                                            "type": "date",
+                                                                            "width": "160px"
+                                                                        },
+                                                                        {
                                                                             "field": "sys_created_on",
                                                                             "label": "Created",
                                                                             "type": "date",
                                                                             "width": "160px"
                                                                         },
                                                                         {
-                                                                            "field": "sys_created_by",
-                                                                            "label": "Created by",
-                                                                            "type": "text",
-                                                                            "width": "140px"
-                                                                        },
-                                                                        {
                                                                             "field": "sys_updated_on",
                                                                             "label": "Updated",
                                                                             "type": "date",
                                                                             "width": "160px"
-                                                                        },
-                                                                        {
-                                                                            "field": "sys_updated_by",
-                                                                            "label": "Updated by",
-                                                                            "type": "text",
-                                                                            "width": "140px"
                                                                         }
                                                                     ]
                                                                 }
@@ -8679,36 +8678,49 @@
                                                                 "value": {
                                                                     "items": [
                                                                         {
-                                                                            "field": "number",
-                                                                            "label": "Submission",
-                                                                            "refTable": "x_gegis_wum_submission",
+                                                                            "field": "document",
+                                                                            "label": "Document",
                                                                             "type": "reference",
                                                                             "width": "150px"
                                                                         },
                                                                         {
-                                                                            "field": "account",
-                                                                            "label": "Insured",
+                                                                            "field": "section_label",
+                                                                            "label": "Section",
+                                                                            "minWidth": 120,
+                                                                            "type": "text"
+                                                                        },
+                                                                        {
+                                                                            "field": "field_label",
+                                                                            "label": "Field",
                                                                             "minWidth": 160,
                                                                             "type": "text"
                                                                         },
                                                                         {
-                                                                            "field": "line_of_business",
-                                                                            "label": "LOB",
-                                                                            "type": "text",
-                                                                            "width": "130px"
+                                                                            "field": "final_value",
+                                                                            "label": "Value",
+                                                                            "minWidth": 160,
+                                                                            "type": "text"
                                                                         },
                                                                         {
-                                                                            "field": "stage",
-                                                                            "label": "Stage",
+                                                                            "field": "review_status",
+                                                                            "label": "Review status",
                                                                             "type": "pill",
-                                                                            "width": "130px"
+                                                                            "width": "140px",
+                                                                            "pillColors": {
+                                                                                "needs_review": "warning",
+                                                                                "rejected": "critical",
+                                                                                "accepted": "positive",
+                                                                                "auto_accepted": "positive",
+                                                                                "corrected": "info",
+                                                                                "applied": "positive"
+                                                                            }
                                                                         },
                                                                         {
                                                                             "align": "right",
-                                                                            "field": "premium",
-                                                                            "label": "Premium",
+                                                                            "field": "confidence",
+                                                                            "label": "Confidence",
                                                                             "type": "number",
-                                                                            "width": "120px"
+                                                                            "width": "110px"
                                                                         }
                                                                     ]
                                                                 }
@@ -8803,7 +8815,7 @@
                                                             },
                                                             "heading": {
                                                                 "type": "JSON_LITERAL",
-                                                                "value": "Active Transactions"
+                                                                "value": "Missing Data"
                                                             },
                                                             "maxGroupDepth": {
                                                                 "type": "JSON_LITERAL",
@@ -8850,8 +8862,28 @@
                                                                 "value": "x_gegis_library.pinned_items"
                                                             },
                                                             "query": {
-                                                                "type": "JSON_LITERAL",
-                                                                "value": ""
+                                                                "transform": {
+                                                                    "operands": {
+                                                                        "container": [
+                                                                            {
+                                                                                "type": "JSON_LITERAL",
+                                                                                "value": "document.task="
+                                                                            },
+                                                                            {
+                                                                                "binding": {
+                                                                                    "address": [
+                                                                                        "sysId"
+                                                                                    ],
+                                                                                    "category": "props"
+                                                                                },
+                                                                                "type": "CONTEXT_BINDING"
+                                                                            }
+                                                                        ],
+                                                                        "type": "LIST_CONTAINER"
+                                                                    },
+                                                                    "operator": "CONCAT"
+                                                                },
+                                                                "type": "CLIENT_TRANSFORM"
                                                             },
                                                             "recordUrlTemplate": {
                                                                 "type": "JSON_LITERAL",
