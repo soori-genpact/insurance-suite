@@ -40,7 +40,40 @@
                                 },
                                 "elementId": "policy_header",
                                 "elementLabel": "Policy Header",
-                                "eventMappings": [],
+                                "eventMappings": [
+                                    {
+                                        "eventMappingId": "ddnfjjggvOuDEHeejjusIPBLhhddqli",
+                                        "isConfiguration": false,
+                                        "offRowStorageId": null,
+                                        "sourceEventApiName": "x_gegis_library.WORKSPACE_HEADER_RECORD_LOADED",
+                                        "sourceEventCorrelationId": null,
+                                        "sourceEventDefinition": {
+                                            "apiName": "x_gegis_library.WORKSPACE_HEADER_RECORD_LOADED",
+                                            "id": null,
+                                            "type": "UXEVENT"
+                                        },
+                                        "sourceEventSysId": null,
+                                        "targets": [
+                                            {
+                                                "broker": null,
+                                                "clientScript": {
+                                                    "payload": {
+                                                        "type": "JSON_LITERAL",
+                                                        "value": {}
+                                                    },
+                                                    "sysId": "360edd1d832f8310c31199c0deaad3f9"
+                                                },
+                                                "clientTransformScript": "",
+                                                "conditional": null,
+                                                "declarativeAction": null,
+                                                "event": null,
+                                                "operation": null,
+                                                "targetId": "xaZohheehhneAEmNjjzMHhMKnwiisL",
+                                                "type": "CLIENT_SCRIPT"
+                                            }
+                                        ]
+                                    }
+                                ],
                                 "isHidden": {
                                     "type": "JSON_LITERAL",
                                     "value": null
@@ -3596,14 +3629,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-08-12 13:13:02</sys_created_on>
         <sys_id>8fce4f9bc3e2c310fac6fc0d050131fe</sys_id>
-        <sys_mod_count>33</sys_mod_count>
+        <sys_mod_count>34</sys_mod_count>
         <sys_name>Policy</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_ux_macroponent_8fce4f9bc3e2c310fac6fc0d050131fe</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-08-12 16:08:15</sys_updated_on>
+        <sys_updated_on>2026-09-24 17:47:33</sys_updated_on>
     </sys_ux_macroponent>
     <sys_translated_text action="delete_multiple" query="documentkey=8fce4f9bc3e2c310fac6fc0d050131fe"/>
 </record_update>
