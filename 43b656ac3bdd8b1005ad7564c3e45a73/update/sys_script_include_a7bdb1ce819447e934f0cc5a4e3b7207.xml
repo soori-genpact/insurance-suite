@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.AcordRenderer</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Renders a canonical aggregate (AggregateSerializer output) as ACORD-aligned XML: InsuredOrPrincipal, Producer, CommlPolicy, Location, CommlCoverage with Limit/Deductible and LimitAppliesToCd. Codes translate through value_map acord_* schemes; unknown codes are emitted as-is.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>AcordRenderer</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var AcordRenderer = Class.create();
+
+// value_map schemes used for ACORD code lists (internal token -&gt; ACORD code)
+AcordRenderer.SCHEME = {
+    LOB: &#39;acord_lob_code&#39;,
+    LIMIT: &#39;acord_limit_applies_to&#39;,
+    DEDUCTIBLE: &#39;acord_deductible_applies_to&#39;,
+    ROLE: &#39;acord_party_role&#39;
+};
+
+AcordRenderer.prototype = {
+
+    initialize: function () {
+        this.values = new ValueMapper();
+    },
+
+    // type: aggregate key; doc: AggregateSerializer output. Returns ACORD-aligned XML.
+    render: function (type, doc) {
+        var d = doc &amp;&amp; doc.data ? doc.data : {};
+        var x = [];
+        x.push(&#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#39;);
+        x.push(&#39;&lt;ACORD&gt;&#39;);
+        x.push(&#39;&lt;InsuranceSvcRq&gt;&#39;);
+        x.push(this._t(&#39;RqUID&#39;, gs.generateGUID()));
+        x.push(&#39;&lt;PolicySyncRq&gt;&#39;);
+        x.push(this._t(&#39;TransactionRequestDt&#39;, String(doc.generated_on || &#39;&#39;).substring(0, 10)));
+        x.push(this._t(&#39;CurCd&#39;, this._cur(d.currency)));
+        if (type === &#39;policy_version&#39; || type === &#39;policy&#39;)
+            this._policy(x, type === &#39;policy&#39; ? this._currentVersion(d) || d : d, type === &#39;policy&#39; ? d : null);
+        else if (type === &#39;quote&#39;)
+            this._quote(x, d);
+        else if (type === &#39;submission&#39;)
+            this._submission(x, d);
+        else
+            this._product(x, d);
+        x.push(&#39;&lt;/PolicySyncRq&gt;&#39;);
+        x.push(&#39;&lt;/InsuranceSvcRq&gt;&#39;);
+        x.push(&#39;&lt;/ACORD&gt;&#39;);
+        return x.join(&#39;\n&#39;);
+    },
+
+    _policy: function (x, v, header) {
+        var parties = v.parties || [];
+        this._parties(x, parties, &#39;party_role&#39;, &#39;account&#39;);
+        x.push(&#39;&lt;CommlPolicy&gt;&#39;);
+        x.push(this._t(&#39;PolicyNumber&#39;, header ? header.policy_number : (v.policy ? v.policy.display : &#39;&#39;)));
+        x.push(this._t(&#39;LOBCd&#39;, this._lob(v.business_line)));
+        x.push(&#39;&lt;ContractTerm&gt;&#39; + this._t(&#39;EffectiveDt&#39;, v.transaction_effective_date) + &#39;&lt;/ContractTerm&gt;&#39;);
+        x.push(&#39;&lt;CurrentTermAmt&gt;&#39; + this._t(&#39;Amt&#39;, v.total_premium) + &#39;&lt;/CurrentTermAmt&gt;&#39;);
+        x.push(this._t(&#39;PolicyStatusCd&#39;, v.status));
+        x.push(&#39;&lt;/CommlPolicy&gt;&#39;);
+        var risks = v.risks || [];
+        for (var i = 0; i &lt; risks.length; i++) {
+            x.push(&#39;&lt;Location id=&quot;L&#39; + (i + 1) + &#39;&quot;&gt;&#39;);
+            x.push(this._t(&#39;ItemIdInfo&#39;, risks[i].insurable_object ? risks[i].insurable_object.display : risks[i].name));
+            x.push(this._t(&#39;ConstructionCd&#39;, risks[i].construction));
+            x.push(&#39;&lt;TotalInsurableValueAmt&gt;&#39; + this._t(&#39;Amt&#39;, risks[i].sum_insured) + &#39;&lt;/TotalInsurableValueAmt&gt;&#39;);
+            x.push(&#39;&lt;/Location&gt;&#39;);
+        }
+        this._coverages(x, v.coverages || [], &#39;terms&#39;, &#39;selected_value&#39;, &#39;coverage&#39;);
+    },
+
+    _quote: function (x, q) {
+        x.push(&#39;&lt;CommlPolicy&gt;&#39;);
+        x.push(this._t(&#39;QuoteInfo&#39;, q.quote_number));
+        x.push(&#39;&lt;ContractTerm&gt;&#39; + this._t(&#39;EffectiveDt&#39;, q.effective_date) + this._t(&#39;ExpirationDt&#39;, q.expiration_date) + &#39;&lt;/ContractTerm&gt;&#39;);
+        x.push(&#39;&lt;/CommlPolicy&gt;&#39;);
+        var opts = q.options || [];
+        for (var i = 0; i &lt; opts.length; i++) {
+            x.push(&#39;&lt;QuoteOption id=&quot;O&#39; + (i + 1) + &#39;&quot;&gt;&#39;);
+            x.push(this._t(&#39;OptionName&#39;, opts[i].name));
+            var lines = opts[i].lines || [];
+            for (var j = 0; j &lt; lines.length; j++) {
+                x.push(&#39;&lt;LineOfBusiness&gt;&#39; + this._t(&#39;LOBCd&#39;, this._lob(lines[j].business_line)) +
+                    &#39;&lt;FullTermAmt&gt;&#39; + this._t(&#39;Amt&#39;, lines[j].commercial_premium) + &#39;&lt;/FullTermAmt&gt;&lt;/LineOfBusiness&gt;&#39;);
+            }
+            this._coverages(x, opts[i].coverages || [], &#39;terms&#39;, &#39;term_value&#39;, &#39;coverage&#39;);
+            x.push(&#39;&lt;/QuoteOption&gt;&#39;);
+        }
+    },
+
+    _submission: function (x, s) {
+        this._parties(x, s.parties || [], &#39;role&#39;, &#39;organization&#39;);
+        x.push(&#39;&lt;CommlPolicy&gt;&#39;);
+        x.push(this._t(&#39;LOBCd&#39;, this._lob(s.business_line)));
+        x.push(&#39;&lt;ContractTerm&gt;&#39; + this._t(&#39;EffectiveDt&#39;, s.target_effective_date) + this._t(&#39;ExpirationDt&#39;, s.target_expiration_date) + &#39;&lt;/ContractTerm&gt;&#39;);
+        x.push(&#39;&lt;/CommlPolicy&gt;&#39;);
+        var lines = s.lines || [];
+        for (var i = 0; i &lt; lines.length; i++) {
+            x.push(&#39;&lt;LineOfBusiness&gt;&#39; + this._t(&#39;LOBCd&#39;, this._lob(lines[i].business_line)));
+            this._coverages(x, lines[i].coverages || [], &#39;terms&#39;, &#39;requested_value&#39;, &#39;coverage&#39;);
+            x.push(&#39;&lt;/LineOfBusiness&gt;&#39;);
+        }
+    },
+
+    _product: function (x, p) {
+        x.push(&#39;&lt;ProductInfo&gt;&#39; + this._t(&#39;ProductCd&#39;, p.product_code) + this._t(&#39;ProductDesc&#39;, p.product_name) +
+            this._t(&#39;LOBCd&#39;, this._lob(p.business_line)) + &#39;&lt;/ProductInfo&gt;&#39;);
+    },
+
+    _parties: function (x, parties, roleField, refField) {
+        for (var i = 0; i &lt; parties.length; i++) {
+            var p = parties[i];
+            var role = String(p[roleField] || &#39;&#39;);
+            var name = p[refField] ? p[refField].display : (p.name || &#39;&#39;);
+            var tagName = (role === &#39;broker&#39; || role === &#39;producer&#39;) ? &#39;Producer&#39; : &#39;InsuredOrPrincipal&#39;;
+            x.push(&#39;&lt;&#39; + tagName + &#39;&gt;&lt;GeneralPartyInfo&gt;&lt;NameInfo&gt;&lt;CommlName&gt;&#39; + this._t(&#39;CommercialName&#39;, name) +
+                &#39;&lt;/CommlName&gt;&lt;/NameInfo&gt;&lt;/GeneralPartyInfo&gt;&#39; +
+                (tagName === &#39;InsuredOrPrincipal&#39; ? &#39;&lt;InsuredOrPrincipalInfo&gt;&#39; + this._t(&#39;InsuredOrPrincipalRoleCd&#39;, this.values.map(AcordRenderer.SCHEME.ROLE, role, false, true)) + &#39;&lt;/InsuredOrPrincipalInfo&gt;&#39; : &#39;&#39;) +
+                &#39;&lt;/&#39; + tagName + &#39;&gt;&#39;);
+        }
+    },
+
+    // Coverage with limits / deductibles at any level; scope rides in ItemIdInfo / StateProvCd.
+    _coverages: function (x, coverages, termsKey, valueField, covField) {
+        for (var i = 0; i &lt; coverages.length; i++) {
+            var c = coverages[i];
+            x.push(&#39;&lt;CommlCoverage&gt;&#39;);
+            x.push(this._t(&#39;CoverageCd&#39;, c[covField] ? c[covField].display : c.name));
+            x.push(this._t(&#39;CoverageDesc&#39;, c.name || c.requested_name));
+            if (c.insurable_object)
+                x.push(this._t(&#39;ItemIdRef&#39;, c.insurable_object.display));
+            var terms = c[termsKey] || [];
+            for (var j = 0; j &lt; terms.length; j++) {
+                var t = terms[j];
+                var amount = t[valueField] !== undefined ? t[valueField] : (t.selected_value !== undefined ? t.selected_value : t.term_value);
+                var type = String(t.term_type || &#39;&#39;);
+                var tag = type === &#39;deductible&#39; || type === &#39;retention&#39; ? &#39;Deductible&#39; : &#39;Limit&#39;;
+                x.push(&#39;&lt;&#39; + tag + &#39;&gt;&#39; + (amount !== undefined ? &#39;&lt;FormatCurrencyAmt&gt;&#39; + this._t(&#39;Amt&#39;, amount) + &#39;&lt;/FormatCurrencyAmt&gt;&#39; : &#39;&#39;) +
+                    (t.percentage !== undefined ? this._t(&#39;FormatPct&#39;, t.percentage) : &#39;&#39;) +
+                    this._t(tag === &#39;Limit&#39; ? &#39;LimitAppliesToCd&#39; : &#39;DeductibleAppliesToCd&#39;,
+                        this.values.map(tag === &#39;Limit&#39; ? AcordRenderer.SCHEME.LIMIT : AcordRenderer.SCHEME.DEDUCTIBLE, t.limit_basis || type, false, true)) +
+                    (t.jurisdiction ? this._t(&#39;StateProvCd&#39;, t.jurisdiction.display) : &#39;&#39;) +
+                    (t.cause_of_loss ? this._t(&#39;CauseOfLossCd&#39;, t.cause_of_loss.display) : &#39;&#39;) +
+                    &#39;&lt;/&#39; + tag + &#39;&gt;&#39;);
+            }
+            x.push(&#39;&lt;/CommlCoverage&gt;&#39;);
+        }
+    },
+
+    _currentVersion: function (policyDoc) {
+        var terms = policyDoc.terms || [];
+        for (var i = terms.length - 1; i &gt;= 0; i--) {
+            var vs = terms[i].versions || [];
+            for (var j = vs.length - 1; j &gt;= 0; j--)
+                if (vs[j].is_current) return vs[j];
+        }
+        return null;
+    },
+
+    _lob: function (ref) {
+        if (!ref)
+            return &#39;&#39;;
+        var gr = new GlideRecord(Constants.TABLE.LINE_OF_BUSINESS);
+        if (!gr.get(ref.sys_id || ref))
+            return &#39;&#39;;
+        return String(gr.getValue(&#39;acord_lob_code&#39;) || gr.getValue(&#39;code&#39;));
+    },
+
+    _cur: function (c) {
+        return c ? String(c).toUpperCase() : &#39;&#39;;
+    },
+
+    _t: function (tag, v) {
+        if (v === undefined || v === null || v === &#39;&#39;)
+            return &#39;&#39;;
+        if (typeof v === &#39;object&#39;)
+            v = v.display !== undefined ? v.display : JSON.stringify(v);
+        return &#39;&lt;&#39; + tag + &#39;&gt;&#39; + String(v).replace(/&amp;/g, &#39;&amp;amp;&#39;).replace(/&lt;/g, &#39;&amp;lt;&#39;).replace(/&gt;/g, &#39;&amp;gt;&#39;) + &#39;&lt;/&#39; + tag + &#39;&gt;&#39;;
+    },
+
+    type: &#39;AcordRenderer&#39;
+};
+</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-10-05 22:00:00</sys_created_on>
+        <sys_id>a7bdb1ce819447e934f0cc5a4e3b7207</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>AcordRenderer</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_a7bdb1ce819447e934f0cc5a4e3b7207</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-10-05 22:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>

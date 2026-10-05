@@ -12,8 +12,7 @@
                 <element inactive_on_update="false" label="CAD" sequence="40" value="cad"/>
             </choice>
         </element>
-        <element label="Originating submission" max_length="32" name="originating_submission" reference="x_gegis_ins_policy_submission" type="reference"/>
-        <element label="Originating Q&amp;B" max_length="32" name="originating_qnb_case" reference="x_gegis_ins_policy_quote_and_bind_case" type="reference"/>
+        <element label="Originating submission" max_length="32" name="originating_submission" reference="x_gegis_ins_policy_submission" type="reference"/>
         <element label="Insured" mandatory="true" max_length="32" name="insured" reference="x_gegis_ins_policy_party" type="reference"/>
         <element choice="3" label="Status" mandatory="true" max_length="40" name="status" type="choice">
             <choice>
@@ -39,8 +38,7 @@
         <element label="Broker" max_length="32" name="broker" reference="x_gegis_ins_policy_party" type="reference"/>
         <element label="Renewed from" max_length="32" name="renewed_from" reference="x_gegis_ins_policy_policy" type="reference"/>
         <element label="Policy number" mandatory="true" max_length="40" name="policy_number" type="string"/>
-        <element label="Expiry date" mandatory="true" max_length="40" name="expiry_date" type="glide_date"/>
-        <element label="Quote" max_length="32" name="quote" reference="x_gegis_ins_policy_quote" type="reference"/>
+        <element label="Expiry date" mandatory="true" max_length="40" name="expiry_date" type="glide_date"/>
         <element label="Product" max_length="32" name="product" reference="x_gegis_ins_policy_product" type="reference"/>
         <element choice="3" label="Line of business" max_length="40" name="line_of_business" type="choice">
             <choice>
@@ -66,8 +64,7 @@
         <index name="index2">
             <element name="insured"/>
         </index>
-        <index name="index3">
-            <element name="originating_qnb_case"/>
+        <index name="index3">
         </index>
         <index name="index4">
             <element name="originating_submission"/>
@@ -75,8 +72,7 @@
         <index name="index5">
             <element name="product"/>
         </index>
-        <index name="index6">
-            <element name="quote"/>
+        <index name="index6">
         </index>
         <index name="index7">
             <element name="quote_option"/>

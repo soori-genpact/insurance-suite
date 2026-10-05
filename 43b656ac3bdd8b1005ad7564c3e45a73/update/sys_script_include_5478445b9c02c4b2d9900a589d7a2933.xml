@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.ReferenceSync</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Single source of truth for reference columns: keeps business_line (line_of_business master) and the legacy line_of_business / lob / territory choices in step through value_map, derives business_line from the product, and guards external-PAS projections against interactive edits. Called by the V2 reference-sync and protect-projection business rules.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>ReferenceSync</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var ReferenceSync = Class.create();
+
+// Per table: legacy LOB choice column, product reference that drives the line,
+// legacy territory column, and the wildcard value that means &quot;any line&quot;.
+ReferenceSync.CONFIG = {
+    submission: { lob: &#39;line_of_business&#39; },
+    submission_line: { lob: &#39;line_of_business&#39;, product: &#39;product&#39;, territory: &#39;territory&#39; },
+    product: { lob: &#39;line_of_business&#39; },
+    policy: { lob: &#39;line_of_business&#39;, product: &#39;product&#39;, territory: &#39;territory&#39; },
+    quote_option: { lob: &#39;line_of_business&#39;, product: &#39;product&#39; },
+    quote_option_line: { product: &#39;product&#39; },
+    policy_version: { product: &#39;product&#39; },
+    existing_policy: { lob: &#39;line_of_business&#39; },
+    exposure_item: { lob: &#39;line_of_business&#39; },
+    extraction_mapping: { lob: &#39;line_of_business&#39;, wildcard: &#39;all&#39; },
+    module_plan: { lob: &#39;line_of_business&#39;, wildcard: &#39;all&#39; },
+    rate_table: { lob: &#39;line_of_business&#39; },
+    rate_factor: { lob: &#39;line_of_business&#39; },
+    renewal_case: { lob: &#39;line_of_business&#39; },
+    loa_authority_limit: { lob: &#39;line_of_business&#39;, wildcard: &#39;all&#39; },
+    loa_authority_grant: { lob: &#39;line_of_business&#39;, wildcard: &#39;all&#39; },
+    loa_evaluation: { lob: &#39;line_of_business&#39; },
+    loa_metric: { lob: &#39;line_of_business&#39;, wildcard: &#39;all&#39; },
+    uw_rule_group_definition: { lob: &#39;lob&#39; }
+};
+ReferenceSync.LOB_SCHEME = &#39;legacy_lob&#39;;
+ReferenceSync.TERRITORY_SCHEME = &#39;legacy_territory&#39;;
+ReferenceSync.INTEGRATION_ROLE = &#39;x_gegis_ins_policy.integration_user&#39;;
+
+ReferenceSync.prototype = {
+
+    initialize: function () {
+        this.values = new ValueMapper();
+    },
+
+    // Called from the before insert/update business rules.
+    apply: function (current) {
+        var short = current.getTableName().replace(Constants.SCOPE + &#39;_&#39;, &#39;&#39;);
+        var cfg = ReferenceSync.CONFIG[short];
+        if (!cfg)
+            return;
+        // 1. the product decides the business line (a product is filed for one line)
+        if (cfg.product &amp;&amp; current.getValue(cfg.product) &amp;&amp; (current[cfg.product].changes() || current.business_line.nil())) {
+            var fromProduct = this._productLine(current.getValue(cfg.product));
+            if (fromProduct)
+                current.setValue(&#39;business_line&#39;, fromProduct);
+        }
+        // 2. master &lt;-&gt; legacy choice
+        if (cfg.lob)
+            this._syncPair(current, &#39;business_line&#39;, cfg.lob, ReferenceSync.LOB_SCHEME, Constants.TABLE.LINE_OF_BUSINESS, cfg.wildcard);
+        // 3. jurisdiction &lt;-&gt; legacy territory
+        if (cfg.territory)
+            this._syncPair(current, &#39;jurisdiction&#39;, cfg.territory, ReferenceSync.TERRITORY_SCHEME, Constants.TABLE.JURISDICTION, &#39;&#39;);
+    },
+
+    // External-PAS projections are read-only for people; integrations and system jobs may write.
+    guardProjection: function (current) {
+        if (current.getValue(&#39;system_of_record&#39;) !== Constants.CHOICE.SYSTEM_OF_RECORD.EXTERNAL)
+            return;
+        if (current.system_of_record.changes())
+            return;   // switching the system of record itself is allowed
+        if (!gs.isInteractive() || gs.hasRole(ReferenceSync.INTEGRATION_ROLE))
+            return;
+        current.setAbortAction(true);
+        gs.addErrorMessage(gs.getMessage(&#39;This record is a read-only projection of the external policy administration system. Change it there; the next sync updates Policy Suite.&#39;));
+    },
+
+    // master = reference to a table with a code column; legacy = choice holding the old token.
+    _syncPair: function (current, masterField, legacyField, scheme, masterTable, wildcard) {
+        if (!current.isValidField(masterField) || !current.isValidField(legacyField))
+            return;
+        var masterChanged = current[masterField].changes() &amp;&amp; !current[masterField].nil();
+        var legacyValue = String(current.getValue(legacyField) || &#39;&#39;);
+        if (masterChanged) {
+            var legacy = this._legacyFor(current, legacyField, scheme, this._code(masterTable, current.getValue(masterField)));
+            if (legacy &amp;&amp; legacy !== legacyValue)
+                current.setValue(legacyField, legacy);
+            return;
+        }
+        if (!legacyValue || legacyValue === wildcard)
+            return;
+        if (current[legacyField].changes() || current[masterField].nil()) {
+            var code = this.values.map(scheme, legacyValue, false, false);
+            var masterId = code ? this._byCode(masterTable, code) : &#39;&#39;;
+            if (masterId)
+                current.setValue(masterField, masterId);
+        }
+    },
+
+    // Pick the legacy token for a master code that is actually a choice on this column.
+    _legacyFor: function (current, legacyField, scheme, code) {
+        if (!code)
+            return &#39;&#39;;
+        var candidates = this.values.sources(scheme, code);
+        var allowed = current[legacyField].getChoices ? current[legacyField].getChoices() : null;
+        var list = [];
+        if (allowed) {
+            for (var i = 0; i &lt; allowed.length; i++)
+                list.push(String(allowed[i]));
+        }
+        if (list.indexOf(code) &gt; -1 || (!list.length &amp;&amp; candidates.indexOf(code) &gt; -1))
+            return code;
+        for (var j = 0; j &lt; candidates.length; j++) {
+            if (!list.length || list.indexOf(candidates[j]) &gt; -1)
+                return candidates[j];
+        }
+        return &#39;&#39;;
+    },
+
+    _productLine: function (productId) {
+        var p = new GlideRecord(Constants.TABLE.PRODUCT);
+        return p.get(productId) ? String(p.getValue(&#39;business_line&#39;) || &#39;&#39;) : &#39;&#39;;
+    },
+
+    _code: function (table, id) {
+        var gr = new GlideRecord(table);
+        return id &amp;&amp; gr.get(id) ? String(gr.getValue(&#39;code&#39;) || &#39;&#39;) : &#39;&#39;;
+    },
+
+    _byCode: function (table, code) {
+        var gr = new GlideRecord(table);
+        gr.addQuery(&#39;code&#39;, code);
+        gr.setLimit(1);
+        gr.query();
+        return gr.next() ? gr.getUniqueValue() : &#39;&#39;;
+    },
+
+    type: &#39;ReferenceSync&#39;
+};
+</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-10-05 22:00:00</sys_created_on>
+        <sys_id>5478445b9c02c4b2d9900a589d7a2933</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ReferenceSync</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_5478445b9c02c4b2d9900a589d7a2933</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-10-05 22:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>

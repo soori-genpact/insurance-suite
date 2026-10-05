@@ -69,6 +69,7 @@
         UNDERLYING_POLICY: SCOPE + &#39;_underlying_policy&#39;,
         SUBMISSION_RISK: SCOPE + &#39;_submission_risk&#39;,
         SUBMISSION_COVERAGE: SCOPE + &#39;_submission_coverage&#39;,
+        SUBMISSION_COVERAGE_TERM: SCOPE + &#39;_submission_coverage_term&#39;,
         CHANGE_SET: SCOPE + &#39;_change_set&#39;,
         CHANGE_ITEM: SCOPE + &#39;_change_item&#39;,
         QUOTE_OPTION_LINE: SCOPE + &#39;_quote_option_line&#39;,
@@ -79,6 +80,7 @@
         POLICY_VERSION: SCOPE + &#39;_policy_version&#39;,
         POLICY_FORM: SCOPE + &#39;_policy_form&#39;,
         CLAIM: SCOPE + &#39;_claim&#39;,
+        PRODUCT_ELIGIBILITY: SCOPE + &#39;_product_eligibility&#39;,
         RENEWAL_RULE: SCOPE + &#39;_renewal_rule&#39;,
         POLICY: SCOPE + &#39;_policy&#39;,
         POLICY_PARTY: SCOPE + &#39;_policy_party&#39;,
@@ -101,7 +103,27 @@
         RENEWAL_CASE: SCOPE + &#39;_renewal_case&#39;,
         EXTRACTION_FIELD: SCOPE + &#39;_extraction_field&#39;,
         CAUSE_OF_LOSS: SCOPE + &#39;_cause_of_loss&#39;,
-        COVERAGE: SCOPE + &#39;_coverage&#39;
+        COVERAGE: SCOPE + &#39;_coverage&#39;,
+        QUOTE_AND_BIND_CASE: SCOPE + &#39;_quote_and_bind_case&#39;,
+        DOCUMENT: SCOPE + &#39;_document&#39;,
+        COVERAGE_TERM: SCOPE + &#39;_coverage_term&#39;,
+        PRODUCT_COVERAGE_TERM: SCOPE + &#39;_product_coverage_term&#39;,
+        EXPOSURE_ITEM: SCOPE + &#39;_exposure_item&#39;,
+        LOSS_RECORD: SCOPE + &#39;_loss_record&#39;,
+        EXISTING_POLICY: SCOPE + &#39;_existing_policy&#39;,
+        EXTRACTION_MAPPING: SCOPE + &#39;_extraction_mapping&#39;,
+        UW_RULE_GROUP_DEFINITION: SCOPE + &#39;_uw_rule_group_definition&#39;,
+        RATE_TABLE: SCOPE + &#39;_rate_table&#39;,
+        RATE_FACTOR: SCOPE + &#39;_rate_factor&#39;,
+        LOA_AUTHORITY_LIMIT: SCOPE + &#39;_loa_authority_limit&#39;,
+        LOA_AUTHORITY_GRANT: SCOPE + &#39;_loa_authority_grant&#39;,
+        LOA_EVALUATION: SCOPE + &#39;_loa_evaluation&#39;,
+        LOA_METRIC: SCOPE + &#39;_loa_metric&#39;,
+        LOA_JURISDICTION: SCOPE + &#39;_loa_jurisdiction&#39;,
+        VALUE_MAP: SCOPE + &#39;_value_map&#39;,
+        QUOTE_OPTION_COVERAGE_PERIL: SCOPE + &#39;_quote_option_coverage_peril&#39;,
+        QUOTE_OPTION_COVERAGE_EXCLUSION: SCOPE + &#39;_quote_option_coverage_exclusion&#39;,
+        LOSS_SUMMARY: SCOPE + &#39;_loss_summary&#39;
     };
 
     // Fail-safe defaults, mirrored from the property defaults.
@@ -234,9 +256,35 @@
         // loa_metric.aggregation -- read the source field directly, do not roll up
         NONE:           &#39;none&#39;,
         // ---- DATA MODEL V2: tokens shared by the new lifecycle / integration groups
+        PROPERTY: &#39;property&#39;,
+        CASUALTY: &#39;casualty&#39;,
+        MOTOR: &#39;motor&#39;,
+        SPECIALTY: &#39;specialty&#39;,
+        FINANCIAL_LINES: &#39;financial_lines&#39;,
+        CLAIMS: &#39;claims&#39;,
         INTERNAL: &#39;internal&#39;,
+        SUBMISSION: &#39;submission&#39;,
+        PARTY: &#39;party&#39;,
+        POLICY: &#39;policy&#39;,
+        BOTH: &#39;both&#39;,
+        INTEGER: &#39;integer&#39;,
+        DATE: &#39;date&#39;,
+        CONDITIONAL: &#39;conditional&#39;,
         APPROVED: &#39;approved&#39;,
         WITHDRAWN: &#39;withdrawn&#39;,
+        ENDORSEMENT: &#39;endorsement&#39;,
+        NCCI: &#39;ncci&#39;,
+        CARRIER: &#39;carrier&#39;,
+        OPTIONAL: &#39;optional&#39;,
+        LOCATION: &#39;location&#39;,
+        BUILDING: &#39;building&#39;,
+        VEHICLE: &#39;vehicle&#39;,
+        DRIVER: &#39;driver&#39;,
+        CLASS_EXPOSURE: &#39;class_exposure&#39;,
+        SCHEDULED_EQUIPMENT: &#39;scheduled_equipment&#39;,
+        CYBER_PROFILE: &#39;cyber_profile&#39;,
+        UNDERLYING_POLICY: &#39;underlying_policy&#39;,
+        LOCAL: &#39;local&#39;,
         EXTERNAL: &#39;external&#39;,
         MATERIAL: &#39;material&#39;,
         NON_MATERIAL: &#39;non_material&#39;,
@@ -245,10 +293,12 @@
         IN_FORCE: &#39;in_force&#39;,
         NON_RENEWED: &#39;non_renewed&#39;,
         RENEWED: &#39;renewed&#39;,
-        ENDORSEMENT: &#39;endorsement&#39;,
         CANCELLATION: &#39;cancellation&#39;,
         REINSTATEMENT: &#39;reinstatement&#39;,
         REWRITE: &#39;rewrite&#39;,
+        DECLINE: &#39;decline&#39;,
+        REFER: &#39;refer&#39;,
+        SUBMISSION_LINE: &#39;submission_line&#39;,
         REFERRED: &#39;referred&#39;,
         QUOTED: &#39;quoted&#39;,
         NOT_TAKEN_UP: &#39;not_taken_up&#39;
@@ -887,19 +937,19 @@
         // plus an &#39;all&#39; sentinel on the mapping table). Those stay separate on
         // purpose - merging them is a data-model decision, not a cleanup.
         LINE_OF_BUSINESS: {
-            PROPERTY:        &#39;property&#39;,
+            PROPERTY:        SHARED.PROPERTY,
             AUTO:            &#39;auto&#39;,
-            MOTOR:           &#39;motor&#39;,
+            MOTOR:           SHARED.MOTOR,
             WORKERS_COMP:    &#39;workers_comp&#39;,
             GENERAL:         &#39;general&#39;,
-            CASUALTY:        &#39;casualty&#39;,
+            CASUALTY:        SHARED.CASUALTY,
             MARINE:          &#39;marine&#39;,
             ENERGY:          &#39;energy&#39;,
-            FINANCIAL_LINES: &#39;financial_lines&#39;,
+            FINANCIAL_LINES: SHARED.FINANCIAL_LINES,
             CONSTRUCTION:    &#39;construction&#39;,
             AVIATION:        &#39;aviation&#39;,
             CYBER:           &#39;cyber&#39;,
-            SPECIALTY:       &#39;specialty&#39;
+            SPECIALTY:       SHARED.SPECIALTY
         },
 
         // currency on policy, quote, submission and exposure_item. ISO 4217
@@ -943,7 +993,7 @@
         // whether the coverage must be taken on this product.
         COVERAGE_SELECTION: {
             REQUIRED: &#39;required&#39;,
-            OPTIONAL: &#39;optional&#39;,
+            OPTIONAL: SHARED.OPTIONAL,
             EXCLUDED: SHARED.EXCLUDED
         },
 
@@ -972,7 +1022,13 @@
             PER_LOCATION:          SHARED.PER_LOCATION,
             AGGREGATE:             &#39;aggregate&#39;,
             PER_ITEM:              &#39;per_item&#39;,
-            COMBINED_SINGLE_LIMIT: &#39;combined_single_limit&#39;
+            COMBINED_SINGLE_LIMIT: &#39;combined_single_limit&#39;,
+            PER_VEHICLE: &#39;per_vehicle&#39;,
+            PER_ACCIDENT: &#39;per_accident&#39;,
+            PER_CLAIM: &#39;per_claim&#39;,
+            PER_BUILDING: &#39;per_building&#39;,
+            PER_PERSON: &#39;per_person&#39;,
+            EACH_EMPLOYEE: &#39;each_employee&#39; /* v2 */
         },
 
         // coverage.valuation_basis -- how a loss is valued at settlement.
@@ -1003,7 +1059,8 @@
             DEDUCTIBLE:     SHARED.DEDUCTIBLE,
             SUBLIMIT:       &#39;sublimit&#39;,
             WAITING_PERIOD: SHARED.WAITING_PERIOD,
-            COINSURANCE:    &#39;coinsurance&#39;
+            COINSURANCE:    &#39;coinsurance&#39;,
+            RETENTION: &#39;retention&#39; /* v2 */
         },
 
         // coverage_term.data_type -- how a term&#39;s VALUE is stored and rendered.
@@ -1012,9 +1069,9 @@
         TERM_DATA_TYPE: {
             CURRENCY:   &#39;currency&#39;,
             PERCENTAGE: SHARED.PERCENTAGE,
-            INTEGER:    &#39;integer&#39;,
+            INTEGER:    SHARED.INTEGER,
             TEXT:       &#39;text&#39;,
-            DATE:       &#39;date&#39;,
+            DATE:       SHARED.DATE,
             DURATION:   SHARED.DURATION
         },
 
@@ -1080,7 +1137,7 @@
 
         // rate_factor.applies_to -- level the factor bites at.
         FACTOR_APPLIES_TO: {
-            POLICY:   &#39;policy&#39;,
+            POLICY:   SHARED.POLICY,
             RISK:     &#39;risk&#39;,
             COVERAGE: &#39;coverage&#39;
         },
@@ -1168,10 +1225,10 @@
         // policy_risk.risk_type / quote_risk.risk_type -- what the risk line
         // actually covers.
         RISK_TYPE: {
-            BUILDING:              &#39;building&#39;,
+            BUILDING:              SHARED.BUILDING,
             CONTENTS:              &#39;contents&#39;,
             BUSINESS_INTERRUPTION: &#39;business_interruption&#39;,
-            VEHICLE:               &#39;vehicle&#39;,
+            VEHICLE:               SHARED.VEHICLE,
             EQUIPMENT:             &#39;equipment&#39;
         },
 
@@ -1240,7 +1297,7 @@
         // not_applicable, not &quot;within authority&quot;. Without this the resolver has
         // to guess from the source table&#39;s shape.
         LOA_METRIC_SOURCE_ANCHOR: {
-            SUBMISSION_LINE: &#39;submission_line&#39;,
+            SUBMISSION_LINE: SHARED.SUBMISSION_LINE,
             QUOTE_OPTION:    &#39;quote_option&#39;
         },
 
@@ -1414,7 +1471,7 @@
         UW_TRIGGER_APPLIES_TO: {
             LOA:          &#39;loa&#39;,
             UW_GUIDELINE: &#39;uw_guideline&#39;,
-            BOTH:         &#39;both&#39;
+            BOTH:         SHARED.BOTH
         },
 
         // uw_trigger_reason.code is a STRING with no choice list, not a
@@ -1449,8 +1506,8 @@
         // single evaluated version of the Underwriting Guidelines score.
         UW_GUIDELINE_DECISION: {
             APPROVE: &#39;approve&#39;,
-            REFER:   &#39;refer&#39;,
-            DECLINE: &#39;decline&#39;
+            REFER:   SHARED.REFER,
+            DECLINE: SHARED.DECLINE
         },
 
         // uw_criterion.result -- Pass/Fail/Manual Review outcome for a single
@@ -1539,12 +1596,12 @@
         // Blueprint: SCRIPTS\DOCS\DATA_MODEL_BLUEPRINT.md
         // =================================================================
         LINE_GROUP: {
-            PROPERTY: &#39;property&#39;,
-            CASUALTY: &#39;casualty&#39;,
-            MOTOR: &#39;motor&#39;,
+            PROPERTY: SHARED.PROPERTY,
+            CASUALTY: SHARED.CASUALTY,
+            MOTOR: SHARED.MOTOR,
             MARINE_ENERGY_AVIATION: &#39;marine_energy_aviation&#39;,
-            SPECIALTY: &#39;specialty&#39;,
-            FINANCIAL_LINES: &#39;financial_lines&#39;
+            SPECIALTY: SHARED.SPECIALTY,
+            FINANCIAL_LINES: SHARED.FINANCIAL_LINES
         },
 
         JURISDICTION_TYPE: {
@@ -1556,7 +1613,7 @@
         INTEGRATION_SYSTEM_TYPE: {
             POLICY_ADMIN: &#39;policy_admin&#39;,
             CRM: &#39;crm&#39;,
-            CLAIMS: &#39;claims&#39;,
+            CLAIMS: SHARED.CLAIMS,
             RATING_ENGINE: &#39;rating_engine&#39;,
             AI_EXTRACTION: &#39;ai_extraction&#39;,
             DATA_PROVIDER: &#39;data_provider&#39;,
@@ -1581,13 +1638,13 @@
         },
 
         INTEGRATION_AGGREGATE: {
-            SUBMISSION: &#39;submission&#39;,
-            PARTY: &#39;party&#39;,
+            SUBMISSION: SHARED.SUBMISSION,
+            PARTY: SHARED.PARTY,
             PRODUCT: &#39;product&#39;,
             QUOTE: &#39;quote&#39;,
-            POLICY: &#39;policy&#39;,
+            POLICY: SHARED.POLICY,
             RATING: &#39;rating&#39;,
-            CLAIMS: &#39;claims&#39;,
+            CLAIMS: SHARED.CLAIMS,
             SANCTIONS: &#39;sanctions&#39;,
             GEOCODE: &#39;geocode&#39;,
             DOCUMENT: &#39;document&#39;
@@ -1619,15 +1676,15 @@
         SCHEMA_ROLE: {
             SOURCE: &#39;source&#39;,
             TARGET: &#39;target&#39;,
-            BOTH: &#39;both&#39;
+            BOTH: SHARED.BOTH
         },
 
         NODE_DATA_TYPE: {
             STRING: &#39;string&#39;,
-            INTEGER: &#39;integer&#39;,
+            INTEGER: SHARED.INTEGER,
             DECIMAL: &#39;decimal&#39;,
             BOOLEAN: &#39;boolean&#39;,
-            DATE: &#39;date&#39;,
+            DATE: SHARED.DATE,
             DATETIME: &#39;datetime&#39;,
             OBJECT: &#39;object&#39;,
             ARRAY: &#39;array&#39;,
@@ -1652,7 +1709,7 @@
             DATE_FORMAT: &#39;date_format&#39;,
             NUMBER_FORMAT: &#39;number_format&#39;,
             CURRENCY_CONVERT: &#39;currency_convert&#39;,
-            CONDITIONAL: &#39;conditional&#39;,
+            CONDITIONAL: SHARED.CONDITIONAL,
             SCRIPT: &#39;script&#39;
         },
 
@@ -1688,7 +1745,7 @@
 
         FORM_TYPE: {
             POLICY_FORM: &#39;policy_form&#39;,
-            ENDORSEMENT: &#39;endorsement&#39;,
+            ENDORSEMENT: SHARED.ENDORSEMENT,
             DECLARATIONS: &#39;declarations&#39;,
             APPLICATION: &#39;application&#39;,
             NOTICE: &#39;notice&#39;,
@@ -1699,25 +1756,25 @@
             ISO: &#39;iso&#39;,
             AAIS: &#39;aais&#39;,
             ACORD: &#39;acord&#39;,
-            NCCI: &#39;ncci&#39;,
-            CARRIER: &#39;carrier&#39;
+            NCCI: SHARED.NCCI,
+            CARRIER: SHARED.CARRIER
         },
 
         FORM_ATTACHMENT_RULE: {
             MANDATORY: &#39;mandatory&#39;,
-            CONDITIONAL: &#39;conditional&#39;,
-            OPTIONAL: &#39;optional&#39;
+            CONDITIONAL: SHARED.CONDITIONAL,
+            OPTIONAL: SHARED.OPTIONAL
         },
 
         OBJECT_TYPE: {
-            LOCATION: &#39;location&#39;,
-            BUILDING: &#39;building&#39;,
-            VEHICLE: &#39;vehicle&#39;,
-            DRIVER: &#39;driver&#39;,
-            CLASS_EXPOSURE: &#39;class_exposure&#39;,
-            SCHEDULED_EQUIPMENT: &#39;scheduled_equipment&#39;,
-            CYBER_PROFILE: &#39;cyber_profile&#39;,
-            UNDERLYING_POLICY: &#39;underlying_policy&#39;
+            LOCATION: SHARED.LOCATION,
+            BUILDING: SHARED.BUILDING,
+            VEHICLE: SHARED.VEHICLE,
+            DRIVER: SHARED.DRIVER,
+            CLASS_EXPOSURE: SHARED.CLASS_EXPOSURE,
+            SCHEDULED_EQUIPMENT: SHARED.SCHEDULED_EQUIPMENT,
+            CYBER_PROFILE: SHARED.CYBER_PROFILE,
+            UNDERLYING_POLICY: SHARED.UNDERLYING_POLICY
         },
 
         OBJECT_STATUS: {
@@ -1727,7 +1784,7 @@
 
         ALARM_TYPE: {
             NONE: SHARED.NONE,
-            LOCAL: &#39;local&#39;,
+            LOCAL: SHARED.LOCAL,
             CENTRAL_STATION: &#39;central_station&#39;
         },
 
@@ -1741,10 +1798,10 @@
 
         CLASS_SCHEME: {
             ISO_GL: &#39;iso_gl&#39;,
-            NCCI: &#39;ncci&#39;,
+            NCCI: SHARED.NCCI,
             NAICS: &#39;naics&#39;,
             SIC: &#39;sic&#39;,
-            CARRIER: &#39;carrier&#39;
+            CARRIER: SHARED.CARRIER
         },
 
         PREMIUM_BASIS: {
@@ -1850,7 +1907,7 @@
         },
 
         SYSTEM_OF_RECORD: {
-            LOCAL: &#39;local&#39;,
+            LOCAL: SHARED.LOCAL,
             EXTERNAL: SHARED.EXTERNAL
         },
 
@@ -1868,6 +1925,52 @@
             CLOSED: SHARED.CLOSED,
             REOPENED: &#39;reopened&#39;,
             DENIED: &#39;denied&#39;
+        },
+
+        COVERAGE_SCOPE: {
+            POLICY: SHARED.POLICY,
+            LINE: &#39;line&#39;,
+            JURISDICTION: &#39;jurisdiction&#39;,
+            INSURABLE_OBJECT: &#39;insurable_object&#39;
+        },
+
+        BROKER_DECISION: {
+            PENDING: SHARED.PENDING,
+            ACCEPTED: SHARED.ACCEPTED,
+            DECLINED: SHARED.DECLINED,
+            COUNTER_OFFER: &#39;counter_offer&#39;,
+            NO_RESPONSE: &#39;no_response&#39;
+        },
+
+        ELIGIBILITY_RULE_TYPE: {
+            APPETITE: &#39;appetite&#39;,
+            ELIGIBILITY: &#39;eligibility&#39;,
+            REFERRAL: SHARED.REFERRAL
+        },
+
+        ELIGIBILITY_OUTCOME: {
+            DECLINE: SHARED.DECLINE,
+            REFER: SHARED.REFER,
+            WARN: &#39;warn&#39;
+        },
+
+        EXTRACTION_ENTITY_TYPE: {
+            SUBMISSION: SHARED.SUBMISSION,
+            SUBMISSION_LINE: SHARED.SUBMISSION_LINE,
+            PARTY: SHARED.PARTY,
+            LOCATION: SHARED.LOCATION,
+            VEHICLE: SHARED.VEHICLE,
+            LOSS_RECORD: &#39;loss_record&#39;,
+            EXISTING_POLICY: &#39;existing_policy&#39;,
+            BUILDING: SHARED.BUILDING,
+            DRIVER: SHARED.DRIVER,
+            CLASS_EXPOSURE: SHARED.CLASS_EXPOSURE,
+            SCHEDULED_EQUIPMENT: SHARED.SCHEDULED_EQUIPMENT,
+            CYBER_PROFILE: SHARED.CYBER_PROFILE,
+            UNDERLYING_POLICY: SHARED.UNDERLYING_POLICY,
+            WC_EXPOSURE: &#39;wc_exposure&#39;,
+            EXPOSURE_ITEM: &#39;exposure_item&#39;,
+            SUBMISSION_COVERAGE: &#39;submission_coverage&#39;
         },
 
         // module_plan.line_of_business carries the LINE_OF_BUSINESS values

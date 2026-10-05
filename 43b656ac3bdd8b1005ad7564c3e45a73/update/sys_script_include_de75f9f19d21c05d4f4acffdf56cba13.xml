@@ -28,6 +28,18 @@ ValueMapper.prototype = {
         return passthrough ? key : &#39;&#39;;
     },
 
+    // Every source value that maps to target (many legacy values can share one target).
+    sources: function (scheme, target) {
+        var t = this._load(scheme);
+        var want = String(target == null ? &#39;&#39; : target).trim().toLowerCase();
+        var out = [];
+        for (var k in t.forward) {
+            if (t.forward.hasOwnProperty(k) &amp;&amp; String(t.forward[k]).toLowerCase() === want)
+                out.push(t.original[k]);
+        }
+        return out;
+    },
+
     has: function (scheme, value) {
         return this._load(scheme).forward[String(value).trim().toLowerCase()] !== undefined;
     },
@@ -35,7 +47,7 @@ ValueMapper.prototype = {
     _load: function (scheme) {
         if (this._cache[scheme])
             return this._cache[scheme];
-        var t = { forward: {}, reverse: {} };
+        var t = { forward: {}, reverse: {}, original: {} };
         var gr = new GlideRecord(Constants.TABLE.VALUE_MAP);
         gr.addQuery(&#39;scheme&#39;, scheme);
         gr.addQuery(&#39;active&#39;, true);
@@ -44,6 +56,7 @@ ValueMapper.prototype = {
             var src = String(gr.getValue(&#39;source_value&#39;) || &#39;&#39;);
             var tgt = String(gr.getValue(&#39;target_value&#39;) || &#39;&#39;);
             t.forward[src.toLowerCase()] = tgt;
+            t.original[src.toLowerCase()] = src;
             if (t.reverse[tgt.toLowerCase()] === undefined)
                 t.reverse[tgt.toLowerCase()] = src;
         }

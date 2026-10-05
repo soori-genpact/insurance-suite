@@ -10,37 +10,129 @@
         <name>ExtractionMapper</name>
         <sandbox_callable>false</sandbox_callable>
         <script>var ExtractionMapper = Class.create();
+
+// The published mapping that turns the AI payload into staging rows (see
+// x_gegis_ins_policy_mapping). The legacy extraction_mapping table is used only
+// when that mapping is not active - kept so an instance without the V2 seed still runs.
+ExtractionMapper.MAPPING_CODE = &#39;AI_TO_SUBMISSION&#39;;
+
 ExtractionMapper.prototype = {
     initialize: function() {
-        this.MAPPING = 'x_gegis_ins_policy_extraction_mapping';
-        this.ENTITY = 'x_gegis_ins_policy_extraction_entity';
-        this.FIELD = 'x_gegis_ins_policy_extraction_field';
+        this.MAPPING = &#39;x_gegis_ins_policy_extraction_mapping&#39;;
+        this.ENTITY = &#39;x_gegis_ins_policy_extraction_entity&#39;;
+        this.FIELD = &#39;x_gegis_ins_policy_extraction_field&#39;;
+        this.P = &#39;x_gegis_ins_policy_&#39;;
     },
 
     /**
      * Shred a parsed AI payload into staging rows for one extraction version.
      * Leaf values may be scalars or objects of the form
-     * { value: ..., confidence: 0.93, page: 2, bbox: 'x,y,w,h' }.
+     * { value: ..., confidence: 0.93, page: 2, bbox: &#39;x,y,w,h&#39; }.
      *
      * @param extractionGr GlideRecord x_gegis_ins_policy_extraction (inserted)
      * @param payload Object parsed raw JSON from the AI service
      * @return Number of extraction_field rows created
      */
     mapPayload: function(extractionGr, payload) {
+        var mappingId = this._activeMapping();
+        if (mappingId)
+            return this._mapWithRules(extractionGr, payload, mappingId);
+        return this._mapLegacy(extractionGr, payload);
+    },
+
+    // ---------------------------------------------------------------- V2: mapping rules
+    _activeMapping: function() {
+        var m = new GlideRecord(Constants.TABLE.MAPPING);
+        if (!m.isValid())
+            return &#39;&#39;;
+        m.addQuery(&#39;code&#39;, ExtractionMapper.MAPPING_CODE);
+        m.addQuery(&#39;active&#39;, true);
+        m.addQuery(&#39;status&#39;, Constants.CHOICE.CATALOG_STATUS.PUBLISHED);
+        m.orderByDesc(&#39;version&#39;);
+        m.setLimit(1);
+        m.query();
+        return m.next() ? m.getUniqueValue() : &#39;&#39;;
+    },
+
+    _mapWithRules: function(extractionGr, payload, mappingId) {
+        var result = new MappingEngine().transform(mappingId, payload || {});
+        for (var e = 0; e &lt; result.errors.length; e++)
+            gs.warn(&#39;[ExtractionMapper] &#39; + result.errors[e]);
         var created = 0;
         var entityCache = {};
-        var lob = payload &amp;&amp; payload.line_of_business ? String(payload.line_of_business) : 'all';
+        for (var i = 0; i &lt; result.rows.length; i++) {
+            var row = result.rows[i];
+            if (!row.target_table || !row.target_column)
+                continue;
+            if ((row.raw === &#39;&#39; || row.raw === undefined) &amp;&amp; (row.value === &#39;&#39; || row.value === undefined))
+                continue;
+            var entityType = row.target_table.indexOf(this.P) === 0 ? row.target_table.substring(this.P.length) : row.target_table;
+            var entityId = entityType === &#39;submission&#39; ? &#39;&#39; :
+                this._entity(extractionGr, entityType, row.context_index, entityCache);
+            var f = new GlideRecord(this.FIELD);
+            f.initialize();
+            f.extraction = extractionGr.getUniqueValue();
+            f.entity = entityId;
+            f.field_path = row.source_ref || row.target_path;
+            f.extracted_value = row.raw !== &#39;&#39; ? String(row.raw) : String(row.value);
+            f.mapped_value = String(row.value);
+            f.confidence = row.confidence;
+            f.page_number = row.page;
+            f.bounding_box = row.bbox;
+            f.target_table = row.target_table;
+            f.target_column = row.target_column;
+            f.data_type = this._dataType(row.transform);
+            f.mapping_rule = row.rule;
+            f.review_status = &#39;needs_review&#39;;
+            f.insert();
+            created++;
+        }
+        return created;
+    },
+
+    _entity: function(extractionGr, entityType, index, cache) {
+        var key = entityType + &#39;:&#39; + index;
+        if (cache[key])
+            return cache[key];
+        var e = new GlideRecord(this.ENTITY);
+        e.initialize();
+        e.extraction = extractionGr.getUniqueValue();
+        e.entity_type = entityType;
+        e.entity_index = index;
+        e.label = entityType.replace(/_/g, &#39; &#39;) + &#39; &#39; + (index + 1);
+        e.match_status = &#39;new&#39;;
+        e.disposition = &#39;pending&#39;;
+        cache[key] = e.insert();
+        return cache[key];
+    },
+
+    _dataType: function(transform) {
+        var T = Constants.CHOICE.MAPPING_TRANSFORM;
+        if (transform === T.NUMBER_FORMAT || transform === T.CURRENCY_CONVERT)
+            return &#39;decimal&#39;;
+        if (transform === T.DATE_FORMAT)
+            return &#39;date&#39;;
+        if (transform === T.VALUE_MAP || transform === T.LOOKUP)
+            return &#39;choice&#39;;
+        return &#39;string&#39;;
+    },
+
+    // ---------------------------------------------------------------- legacy: extraction_mapping
+    _mapLegacy: function(extractionGr, payload) {
+        var created = 0;
+        var entityCache = {};
+        var lob = payload &amp;&amp; payload.line_of_business ? String(payload.line_of_business) : &#39;all&#39;;
 
         var m = new GlideRecord(this.MAPPING);
         m.addActiveQuery();
-        m.addQuery('line_of_business', 'IN', 'all,' + lob);
-        m.orderBy('order');
+        m.addQuery(&#39;line_of_business&#39;, &#39;IN&#39;, &#39;all,&#39; + lob);
+        m.orderBy(&#39;order&#39;);
         m.query();
         while (m.next()) {
             var hits = this._resolvePath(payload, String(m.field_path));
             for (var i = 0; i &lt; hits.length; i++) {
                 var hit = hits[i];
-                if (hit.value === undefined || hit.value === null || hit.value === '')
+                if (hit.value === undefined || hit.value === null || hit.value === &#39;&#39;)
                     continue;
                 var entityId = this._ensureEntity(extractionGr, m, hit, entityCache);
                 this._createField(extractionGr, m, hit, entityId);
@@ -52,18 +144,18 @@ ExtractionMapper.prototype = {
 
     /**
      * Resolve a mapping path against the payload. Supports dot paths and one
-     * repeating segment, e.g. 'insured.name' or 'locations[*].street'.
+     * repeating segment, e.g. &#39;insured.name&#39; or &#39;locations[*].street&#39;.
      * Returns [{ value, index, path }] where index is the repeating-group
      * ordinal (-1 for non-repeating paths).
      */
     _resolvePath: function(payload, path) {
-        var star = path.indexOf('[*]');
+        var star = path.indexOf(&#39;[*]&#39;);
         if (star === -1) {
             var v = this._walk(payload, path);
             return v === undefined ? [] : [{ value: v, index: -1, path: path }];
         }
         var head = path.substring(0, star);
-        var tail = path.substring(star + 4); // skip '[*].'
+        var tail = path.substring(star + 4); // skip &#39;[*].&#39;
         var arr = this._walk(payload, head);
         if (!arr || !arr.length)
             return [];
@@ -71,7 +163,7 @@ ExtractionMapper.prototype = {
         for (var i = 0; i &lt; arr.length; i++) {
             var v2 = tail ? this._walk(arr[i], tail) : arr[i];
             if (v2 !== undefined)
-                out.push({ value: v2, index: i, path: head + '[' + i + '].' + tail });
+                out.push({ value: v2, index: i, path: head + &#39;[&#39; + i + &#39;].&#39; + tail });
         }
         return out;
     },
@@ -79,7 +171,7 @@ ExtractionMapper.prototype = {
     _walk: function(obj, path) {
         if (!path)
             return obj;
-        var parts = path.split('.');
+        var parts = path.split(&#39;.&#39;);
         var cur = obj;
         for (var i = 0; i &lt; parts.length; i++) {
             if (cur === null || cur === undefined)
@@ -92,9 +184,9 @@ ExtractionMapper.prototype = {
     /** Create (or reuse) the extraction_entity row for a repeating group. */
     _ensureEntity: function(extractionGr, mapping, hit, cache) {
         var entityType = String(mapping.entity_type);
-        if (!entityType || entityType === 'submission')
-            return '';
-        var key = entityType + ':' + hit.index;
+        if (!entityType || entityType === &#39;submission&#39;)
+            return &#39;&#39;;
+        var key = entityType + &#39;:&#39; + hit.index;
         if (cache[key])
             return cache[key];
         var e = new GlideRecord(this.ENTITY);
@@ -102,21 +194,21 @@ ExtractionMapper.prototype = {
         e.extraction = extractionGr.getUniqueValue();
         e.entity_type = entityType;
         e.entity_index = hit.index &lt; 0 ? 0 : hit.index;
-        e.label = entityType + (hit.index &gt;= 0 ? ' ' + (hit.index + 1) : '');
-        e.match_status = 'new';
-        e.disposition = 'pending';
+        e.label = entityType + (hit.index &gt;= 0 ? &#39; &#39; + (hit.index + 1) : &#39;&#39;);
+        e.match_status = &#39;new&#39;;
+        e.disposition = &#39;pending&#39;;
         cache[key] = e.insert();
         return cache[key];
     },
 
     _createField: function(extractionGr, mapping, hit, entityId) {
         var raw = hit.value;
-        var value = raw, confidence = '', page = '', bbox = '';
-        if (raw !== null &amp;&amp; typeof raw === 'object') {
+        var value = raw, confidence = &#39;&#39;, page = &#39;&#39;, bbox = &#39;&#39;;
+        if (raw !== null &amp;&amp; typeof raw === &#39;object&#39;) {
             value = raw.value;
-            confidence = raw.confidence !== undefined ? raw.confidence : '';
-            page = raw.page !== undefined ? raw.page : '';
-            bbox = raw.bbox || '';
+            confidence = raw.confidence !== undefined ? raw.confidence : &#39;&#39;;
+            page = raw.page !== undefined ? raw.page : &#39;&#39;;
+            bbox = raw.bbox || &#39;&#39;;
         }
         var f = new GlideRecord(this.FIELD);
         f.initialize();
@@ -131,12 +223,13 @@ ExtractionMapper.prototype = {
         f.target_table = String(mapping.target_table);
         f.target_column = String(mapping.target_column);
         f.data_type = String(mapping.data_type);
-        f.review_status = 'needs_review';
+        f.review_status = &#39;needs_review&#39;;
         f.insert();
     },
 
-    type: 'ExtractionMapper'
-};</script>
+    type: &#39;ExtractionMapper&#39;
+};
+</script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>Palakala.SurenderReddy</sys_created_by>
         <sys_created_on>2026-07-11 12:00:00</sys_created_on>
@@ -148,6 +241,6 @@ ExtractionMapper.prototype = {
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_script_include_31be21d4bb453f8e4cb90a3d06aeb762</sys_update_name>
         <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-07-11 12:00:00</sys_updated_on>
+        <sys_updated_on>2026-10-05 22:00:00</sys_updated_on>
     </sys_script_include>
 </record_update>

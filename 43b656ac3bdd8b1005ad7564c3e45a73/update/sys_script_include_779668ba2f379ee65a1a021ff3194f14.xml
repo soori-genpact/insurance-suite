@@ -11,17 +11,9 @@
         <sandbox_callable>false</sandbox_callable>
         <script>var PolicyLifecycleService = Class.create();
 
-// submission_party.role -&gt; policy_party.party_role (one ACORD-aligned vocabulary).
-PolicyLifecycleService.ROLE_MAP = {
-    primary_insured: &#39;named_insured&#39;,
-    co_applicant: &#39;named_insured&#39;,
-    secondary_insured: &#39;additional_insured&#39;,
-    additional_insured: &#39;additional_insured&#39;,
-    interest_holder: &#39;loss_payee&#39;,
-    broker: &#39;broker&#39;,
-    producer: &#39;broker&#39;,
-    premium_payer: &#39;policyholder&#39;
-};
+// Party roles are ONE vocabulary on submission_party.role and policy_party.party_role;
+// roles that do not belong on an issued policy are not carried.
+PolicyLifecycleService.SKIP_ROLES = [&#39;third_party&#39;];
 
 PolicyLifecycleService.prototype = {
 
@@ -48,7 +40,6 @@ PolicyLifecycleService.prototype = {
         policy.setValue(&#39;insured_name&#39;, quote.insured.getDisplayValue());
         policy.setValue(&#39;product&#39;, qo.getValue(&#39;product&#39;) || quote.getValue(&#39;product&#39;));
         policy.setValue(&#39;business_line&#39;, this._businessLine(qo));
-        policy.setValue(&#39;quote&#39;, quote.getUniqueValue());
         policy.setValue(&#39;quote_option&#39;, qo.getUniqueValue());
         policy.setValue(&#39;originating_submission&#39;, submissionId);
         policy.setValue(&#39;currency&#39;, quote.getValue(&#39;currency&#39;));
@@ -260,6 +251,8 @@ PolicyLifecycleService.prototype = {
             pr.setValue(&#39;sum_insured&#39;, this._riskValue(qo.getUniqueValue(), qr.getUniqueValue()));
             riskMap[qr.getUniqueValue()] = pr.insert();
         }
+        // coverages at policy / line / jurisdiction / object level, keeping parent-child nesting
+        var covMap = {}, parentOf = {};
         var qc = new GlideRecord(this.T.QUOTE_OPTION_COVERAGE);
         qc.addQuery(&#39;quote_option&#39;, qo.getUniqueValue());
         qc.addQuery(&#39;selected&#39;, true);
@@ -273,18 +266,21 @@ PolicyLifecycleService.prototype = {
             pc.setValue(&#39;name&#39;, qc.getValue(&#39;name&#39;));
             pc.setValue(&#39;coverage_premium&#39;, qc.getValue(&#39;premium&#39;));
             pc.setValue(&#39;policy_risk&#39;, riskMap[qc.getValue(&#39;quote_risk&#39;)] || &#39;&#39;);
+            pc.setValue(&#39;scope_level&#39;, qc.getValue(&#39;scope_level&#39;) || (qc.getValue(&#39;quote_risk&#39;) ? this.C.COVERAGE_SCOPE.INSURABLE_OBJECT : this.C.COVERAGE_SCOPE.LINE));
+            pc.setValue(&#39;jurisdiction&#39;, qc.getValue(&#39;jurisdiction&#39;));
+            pc.setValue(&#39;insurable_object&#39;, qc.getValue(&#39;insurable_object&#39;) || qc.quote_risk.insurable_object.toString());
             pc.setValue(&#39;status&#39;, this.C.POLICY_COVERAGE_STATUS.ACTIVE);
             var pcId = pc.insert();
-            this._termRow(policyId, versionId, pcId, &#39;Limit&#39;, this.C.POLICY_TERM_TYPE.LIMIT, qc.getValue(&#39;limit&#39;));
-            this._termRow(policyId, versionId, pcId, &#39;Deductible&#39;, this.C.POLICY_TERM_TYPE.DEDUCTIBLE, qc.getValue(&#39;deductible&#39;));
-            var qt = new GlideRecord(this.T.QUOTE_OPTION_COVERAGE_TERM);
-            qt.addQuery(&#39;quote_option_coverage&#39;, qc.getUniqueValue());
-            qt.query();
-            while (qt.next()) {
-                var termType = String(qt.coverage_term.term_type || &#39;&#39;);
-                if (termType === this.C.POLICY_TERM_TYPE.LIMIT || termType === this.C.POLICY_TERM_TYPE.DEDUCTIBLE)
-                    continue;   // already carried by the limit / deductible rows above
-                this._termRow(policyId, versionId, pcId, qt.getValue(&#39;name&#39;), this.C.POLICY_TERM_TYPE.SUBLIMIT, qt.getValue(&#39;term_value&#39;));
+            covMap[qc.getUniqueValue()] = pcId;
+            if (qc.getValue(&#39;parent_coverage&#39;))
+                parentOf[pcId] = qc.getValue(&#39;parent_coverage&#39;);
+            this._termsFromQuote(versionId, pcId, qc);
+        }
+        for (var child in parentOf) {
+            var fix = new GlideRecord(this.T.POLICY_COVERAGE);
+            if (parentOf.hasOwnProperty(child) &amp;&amp; fix.get(child)) {
+                fix.setValue(&#39;parent_coverage&#39;, covMap[parentOf[child]] || &#39;&#39;);
+                fix.update();
             }
         }
         if (submissionId)
@@ -304,7 +300,51 @@ PolicyLifecycleService.prototype = {
         }
     },
 
-    _termRow: function (policyId, versionId, policyCoverageId, name, type, value) {
+    // Terms: explicit quote terms win (any level, basis, peril, %, min/max, nesting);
+    // the option-coverage limit / deductible columns are carried only when no explicit term of that type exists.
+    _termsFromQuote: function (versionId, policyCoverageId, qc) {
+        var termMap = {}, parentOf = {}, has = {};
+        var qt = new GlideRecord(this.T.QUOTE_OPTION_COVERAGE_TERM);
+        qt.addQuery(&#39;quote_option_coverage&#39;, qc.getUniqueValue());
+        qt.orderBy(&#39;display_order&#39;);
+        qt.query();
+        while (qt.next()) {
+            var type = String(qt.getValue(&#39;term_type&#39;) || qt.coverage_term.term_type || this.C.POLICY_TERM_TYPE.SUBLIMIT);
+            if (type === &#39;percentage&#39;) type = this.C.POLICY_TERM_TYPE.COINSURANCE;
+            if (type === &#39;duration&#39;) type = this.C.POLICY_TERM_TYPE.WAITING_PERIOD;
+            has[type] = true;
+            var t = new GlideRecord(this.T.POLICY_COVERAGE_TERM);
+            t.initialize();
+            t.setValue(&#39;policy_coverage&#39;, policyCoverageId);
+            t.setValue(&#39;policy_version&#39;, versionId);
+            t.setValue(&#39;coverage_term&#39;, qt.getValue(&#39;coverage_term&#39;));
+            t.setValue(&#39;term_name&#39;, qt.getValue(&#39;name&#39;) || String(qt.coverage_term.term_name));
+            t.setValue(&#39;term_type&#39;, type);
+            t.setValue(&#39;selected_value&#39;, qt.getValue(&#39;term_value&#39;));
+            t.setValue(&#39;selected_label&#39;, String(qt.coverage_term_option.option_label || qt.getValue(&#39;term_value&#39;) || &#39;&#39;));
+            var f = [&#39;limit_basis&#39;, &#39;scope_level&#39;, &#39;jurisdiction&#39;, &#39;insurable_object&#39;, &#39;cause_of_loss&#39;, &#39;percentage&#39;, &#39;minimum_amount&#39;, &#39;maximum_amount&#39;, &#39;currency&#39;];
+            for (var i = 0; i &lt; f.length; i++)
+                t.setValue(f[i], qt.getValue(f[i]));
+            var tid = t.insert();
+            termMap[qt.getUniqueValue()] = tid;
+            if (qt.getValue(&#39;parent_term&#39;))
+                parentOf[tid] = qt.getValue(&#39;parent_term&#39;);
+        }
+        for (var child in parentOf) {
+            var fix = new GlideRecord(this.T.POLICY_COVERAGE_TERM);
+            if (parentOf.hasOwnProperty(child) &amp;&amp; fix.get(child)) {
+                fix.setValue(&#39;parent_term&#39;, termMap[parentOf[child]] || &#39;&#39;);
+                fix.update();
+            }
+        }
+        var scope = qc.getValue(&#39;scope_level&#39;) || this.C.COVERAGE_SCOPE.LINE;
+        if (!has[this.C.POLICY_TERM_TYPE.LIMIT])
+            this._termRow(versionId, policyCoverageId, &#39;Limit&#39;, this.C.POLICY_TERM_TYPE.LIMIT, qc.getValue(&#39;limit&#39;), scope, qc.getValue(&#39;insurable_object&#39;));
+        if (!has[this.C.POLICY_TERM_TYPE.DEDUCTIBLE])
+            this._termRow(versionId, policyCoverageId, &#39;Deductible&#39;, this.C.POLICY_TERM_TYPE.DEDUCTIBLE, qc.getValue(&#39;deductible&#39;), scope, qc.getValue(&#39;insurable_object&#39;));
+    },
+
+    _termRow: function (versionId, policyCoverageId, name, type, value, scope, objectId) {
         if (value === null || value === undefined || value === &#39;&#39;)
             return;
         var t = new GlideRecord(this.T.POLICY_COVERAGE_TERM);
@@ -313,6 +353,8 @@ PolicyLifecycleService.prototype = {
         t.setValue(&#39;policy_version&#39;, versionId);
         t.setValue(&#39;term_name&#39;, name);
         t.setValue(&#39;term_type&#39;, type);
+        t.setValue(&#39;scope_level&#39;, scope || this.C.COVERAGE_SCOPE.LINE);
+        t.setValue(&#39;insurable_object&#39;, objectId || &#39;&#39;);
         t.setValue(&#39;selected_value&#39;, value);
         t.setValue(&#39;selected_label&#39;, String(value));
         t.insert();
@@ -323,8 +365,8 @@ PolicyLifecycleService.prototype = {
         sp.addQuery(&#39;submission&#39;, submissionId);
         sp.query();
         while (sp.next()) {
-            var role = PolicyLifecycleService.ROLE_MAP[sp.getValue(&#39;role&#39;)];
-            if (!role || !sp.getValue(&#39;organization&#39;))
+            var role = String(sp.getValue(&#39;role&#39;) || &#39;&#39;);
+            if (!role || PolicyLifecycleService.SKIP_ROLES.indexOf(role) &gt; -1 || !sp.getValue(&#39;organization&#39;))
                 continue;
             var pp = new GlideRecord(this.T.POLICY_PARTY);
             pp.initialize();
@@ -333,7 +375,9 @@ PolicyLifecycleService.prototype = {
             pp.setValue(&#39;account&#39;, sp.getValue(&#39;organization&#39;));
             pp.setValue(&#39;name&#39;, sp.organization.getDisplayValue());
             pp.setValue(&#39;party_role&#39;, role);
-            pp.setValue(&#39;is_primary&#39;, sp.getValue(&#39;role&#39;) === &#39;primary_insured&#39;);
+            pp.setValue(&#39;interest_type&#39;, sp.getValue(&#39;interest_type&#39;));
+            pp.setValue(&#39;is_primary&#39;, String(sp.getValue(&#39;is_primary&#39;)) === &#39;1&#39; || String(sp.getValue(&#39;is_primary&#39;)) === &#39;true&#39; ||
+                role === this.C.SUBMISSION_PARTY_ROLE.PRIMARY_INSURED);
             pp.insert();
         }
     },
@@ -386,8 +430,11 @@ PolicyLifecycleService.prototype = {
             }
         }
         copy(this.T.POLICY_RISK, null, function (o, n) { riskMap[o] = n; });
+        var termMap = {};
         copy(this.T.POLICY_COVERAGE, function (s, d) { d.setValue(&#39;policy_risk&#39;, riskMap[s.getValue(&#39;policy_risk&#39;)] || &#39;&#39;); }, function (o, n) { covMap[o] = n; });
-        copy(this.T.POLICY_COVERAGE_TERM, function (s, d) { d.setValue(&#39;policy_coverage&#39;, covMap[s.getValue(&#39;policy_coverage&#39;)] || &#39;&#39;); });
+        copy(this.T.POLICY_COVERAGE_TERM, function (s, d) { d.setValue(&#39;policy_coverage&#39;, covMap[s.getValue(&#39;policy_coverage&#39;)] || &#39;&#39;); }, function (o, n) { termMap[o] = n; });
+        this._repoint(this.T.POLICY_COVERAGE, toVersionId, &#39;parent_coverage&#39;, covMap);
+        this._repoint(this.T.POLICY_COVERAGE_TERM, toVersionId, &#39;parent_term&#39;, termMap);
         copy(this.T.POLICY_PARTY);
         copy(this.T.POLICY_FORM);
         copy(this.T.COMMISSION);
@@ -395,6 +442,20 @@ PolicyLifecycleService.prototype = {
     },
 
     // ------------------------------------------------------------- helpers
+    // after a clone, self-references still point at the source version&#39;s rows
+    _repoint: function (table, versionId, field, idMap) {
+        var gr = new GlideRecord(table);
+        gr.addQuery(&#39;policy_version&#39;, versionId);
+        gr.addNotNullQuery(field);
+        gr.query();
+        while (gr.next()) {
+            if (idMap[gr.getValue(field)]) {
+                gr.setValue(field, idMap[gr.getValue(field)]);
+                gr.update();
+            }
+        }
+    },
+
     _current: function (policyId) {
         var term = this.policies.getCurrentTerm(policyId);
         var version = this.policies.getCurrentVersion(policyId);

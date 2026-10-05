@@ -88,12 +88,18 @@ MappingEngine.prototype = {
                 result.errors.push(rule.getValue(&#39;target_path&#39;) + &#39;: mandatory value missing (context &#39; + i + &#39;)&#39;);
                 continue;
             }
+            var srcPath = String(rule.getValue(&#39;source_path&#39;) || &#39;&#39;);
+            var env = this._envelope(ctx, source, srcPath);
             result.rows.push({
                 rule: rule.getUniqueValue(),
                 target_path: String(rule.getValue(&#39;target_path&#39;)),
                 target_table: String(rule.getValue(&#39;target_table&#39;) || &#39;&#39;),
                 target_column: String(rule.getValue(&#39;target_column&#39;) || &#39;&#39;),
+                transform: String(rule.getValue(&#39;transform&#39;) || &#39;&#39;),
                 value: value,
+                raw: env.value === undefined || env.value === null ? &#39;&#39; : String(env.value),
+                confidence: env.confidence, page: env.page, bbox: env.bbox,
+                source_ref: !srcPath ? &#39;&#39; : (ctxPath &amp;&amp; srcPath.indexOf(&#39;$.&#39;) !== 0 ? ctxPath.replace(/\[\]$/, &#39;&#39;) + &#39;[&#39; + i + &#39;].&#39; + srcPath : srcPath.replace(/^\$\./, &#39;&#39;)),
                 context_index: ctxPath ? i : 0
             });
         }
@@ -145,12 +151,29 @@ MappingEngine.prototype = {
     },
 
     // &#39;$.&#39; prefix = from the payload root; otherwise relative to the context item.
+    // AI leaves may be envelopes { value, confidence, page, bbox } - the value is unwrapped.
     _read: function (ctx, root, p) {
+        var v = this._readRaw(ctx, root, p);
+        return this._isEnvelope(v) ? v.value : v;
+    },
+
+    _readRaw: function (ctx, root, p) {
         if (!p)
             return undefined;
         if (p.indexOf(&#39;$.&#39;) === 0)
             return this._resolve(root, p.substring(2));
         return this._resolve(ctx, p);
+    },
+
+    _envelope: function (ctx, root, p) {
+        var v = this._readRaw(ctx, root, p);
+        if (this._isEnvelope(v))
+            return { value: v.value, confidence: v.confidence === undefined ? &#39;&#39; : v.confidence, page: v.page === undefined ? &#39;&#39; : v.page, bbox: v.bbox || &#39;&#39; };
+        return { value: v, confidence: &#39;&#39;, page: &#39;&#39;, bbox: &#39;&#39; };
+    },
+
+    _isEnvelope: function (v) {
+        return v !== null &amp;&amp; typeof v === &#39;object&#39; &amp;&amp; !Array.isArray(v) &amp;&amp; v.hasOwnProperty(&#39;value&#39;);
     },
 
     // Dotted path with [] for arrays: &#39;locations[].address.city&#39; returns an array.

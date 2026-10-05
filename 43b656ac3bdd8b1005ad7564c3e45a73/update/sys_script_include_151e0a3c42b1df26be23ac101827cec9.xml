@@ -21,10 +21,14 @@ AggregateSerializer.TREES = {
         table: &#39;SUBMISSION&#39;,
         children: [
             { table: &#39;SUBMISSION_LINE&#39;, parent: &#39;submission&#39;, as: &#39;lines&#39;, children: [
-                { table: &#39;SUBMISSION_RISK&#39;, parent: &#39;submission_line&#39;, as: &#39;risks&#39; },
-                { table: &#39;SUBMISSION_COVERAGE&#39;, parent: &#39;submission_line&#39;, as: &#39;coverages&#39; }
+                { table: &#39;SUBMISSION_COVERAGE&#39;, parent: &#39;submission_line&#39;, as: &#39;coverages&#39;, children: [
+                    { table: &#39;SUBMISSION_COVERAGE_TERM&#39;, parent: &#39;submission_coverage&#39;, as: &#39;terms&#39; }
+                ] }
             ] },
+            { table: &#39;SUBMISSION_RISK&#39;, parent: &#39;submission&#39;, as: &#39;risks&#39; },
             { table: &#39;SUBMISSION_PARTY&#39;, parent: &#39;submission&#39;, as: &#39;parties&#39; },
+            { table: &#39;LOSS_RECORD&#39;, parent: &#39;submission&#39;, as: &#39;losses&#39; },
+            { table: &#39;EXISTING_POLICY&#39;, parent: &#39;submission&#39;, as: &#39;existing_policies&#39; },
             { table: &#39;CHANGE_SET&#39;, parent: &#39;submission&#39;, as: &#39;change_sets&#39;, children: [
                 { table: &#39;CHANGE_ITEM&#39;, parent: &#39;change_set&#39;, as: &#39;items&#39; }
             ] }
@@ -39,7 +43,9 @@ AggregateSerializer.TREES = {
                     { table: &#39;COMMISSION&#39;, parent: &#39;quote_option_line&#39;, as: &#39;commissions&#39; }
                 ] },
                 { table: &#39;QUOTE_OPTION_COVERAGE&#39;, parent: &#39;quote_option&#39;, as: &#39;coverages&#39;, children: [
-                    { table: &#39;QUOTE_OPTION_COVERAGE_TERM&#39;, parent: &#39;quote_option_coverage&#39;, as: &#39;terms&#39; }
+                    { table: &#39;QUOTE_OPTION_COVERAGE_TERM&#39;, parent: &#39;quote_option_coverage&#39;, as: &#39;terms&#39; },
+                    { table: &#39;QUOTE_OPTION_COVERAGE_PERIL&#39;, parent: &#39;quote_option_coverage&#39;, as: &#39;perils&#39; },
+                    { table: &#39;QUOTE_OPTION_COVERAGE_EXCLUSION&#39;, parent: &#39;quote_option_coverage&#39;, as: &#39;exclusions&#39; }
                 ] },
                 { table: &#39;QUOTE_TAX_FEE&#39;, parent: &#39;quote_option&#39;, as: &#39;taxes_fees&#39; },
                 { table: &#39;SUBJECTIVITY&#39;, parent: &#39;quote_option&#39;, as: &#39;subjectivities&#39; }
@@ -71,8 +77,11 @@ AggregateSerializer.TREES = {
     product: {
         table: &#39;PRODUCT&#39;,
         children: [
-            { table: &#39;PRODUCT_COVERAGE&#39;, parent: &#39;product&#39;, as: &#39;coverages&#39; },
+            { table: &#39;PRODUCT_COVERAGE&#39;, parent: &#39;product&#39;, as: &#39;coverages&#39;, children: [
+                { table: &#39;PRODUCT_COVERAGE_TERM&#39;, parent: &#39;product_coverage&#39;, as: &#39;terms&#39; }
+            ] },
             { table: &#39;PRODUCT_FORM&#39;, parent: &#39;product&#39;, as: &#39;forms&#39; },
+            { table: &#39;PRODUCT_ELIGIBILITY&#39;, parent: &#39;product&#39;, as: &#39;eligibility&#39; },
             { table: &#39;PRODUCT_JURISDICTION&#39;, parent: &#39;product&#39;, as: &#39;jurisdictions&#39; }
         ]
     }
@@ -143,6 +152,8 @@ AggregateSerializer.prototype = {
                 out[name] = parseFloat(v);
             else if (type === &#39;glide_date_time&#39;)
                 out[name] = String(v).replace(&#39; &#39;, &#39;T&#39;) + &#39;Z&#39;;
+            else if (name === &#39;currency&#39;)
+                out[name] = String(v).toUpperCase();    // ISO 4217 at the boundary; stored as a lower_snake_case token
             else
                 out[name] = String(v);
         }

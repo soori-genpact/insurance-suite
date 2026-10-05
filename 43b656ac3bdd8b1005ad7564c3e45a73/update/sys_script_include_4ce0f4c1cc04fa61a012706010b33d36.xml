@@ -88,27 +88,66 @@ ChangeSetService.prototype = {
         return this._diff(base, cur, function (k, label) { return &#39;risks[&#39; + label + &#39;].declared_value&#39;; });
     },
 
-    // Bound coverage limits vs requested limits, keyed by master coverage.
+    // Bound terms vs requested terms - limits, deductibles, sublimits, retentions at
+    // policy / line / jurisdiction / object level - keyed by coverage + term type +
+    // basis + object + jurisdiction + peril, so a changed deductible on one vehicle or
+    // a new flood sublimit on one location is its own change item.
     _coverageItems: function (baseline, submissionId) {
         var base = {}, cur = {};
         var pc = new GlideRecord(this.T.POLICY_COVERAGE_TERM);
         pc.addQuery(&#39;policy_version&#39;, baseline);
-        pc.addQuery(&#39;term_type&#39;, this.C.POLICY_TERM_TYPE.LIMIT);
         pc.query();
         while (pc.next()) {
-            var k = pc.policy_coverage.coverage.toString();
-            if (!k) continue;
-            base[k] = { label: pc.policy_coverage.coverage.getDisplayValue(), value: (base[k] ? base[k].value : 0) + (parseFloat(pc.getValue(&#39;selected_value&#39;)) || 0), id: pc.getValue(&#39;policy_coverage&#39;), table: this.T.POLICY_COVERAGE };
+            var cov = pc.policy_coverage.coverage.toString();
+            if (!cov) continue;
+            var k = this._termKey(cov, pc.getValue(&#39;term_type&#39;), pc.getValue(&#39;limit_basis&#39;),
+                pc.getValue(&#39;insurable_object&#39;) || pc.policy_coverage.insurable_object.toString(), pc.getValue(&#39;jurisdiction&#39;), pc.getValue(&#39;cause_of_loss&#39;));
+            base[k] = { label: this._termLabel(pc.policy_coverage.coverage.getDisplayValue(), pc.getValue(&#39;term_type&#39;), pc.getValue(&#39;limit_basis&#39;), pc.insurable_object.getDisplayValue() || pc.policy_coverage.insurable_object.getDisplayValue()),
+                value: this._amount(pc.getValue(&#39;selected_value&#39;), pc.getValue(&#39;percentage&#39;)), id: pc.getValue(&#39;policy_coverage&#39;), table: this.T.POLICY_COVERAGE };
         }
+        var st = new GlideRecord(this.T.SUBMISSION_COVERAGE_TERM);
+        st.addQuery(&#39;submission_coverage.submission&#39;, submissionId);
+        st.query();
+        var covered = {};
+        while (st.next()) {
+            var cov2 = st.submission_coverage.coverage.toString();
+            if (!cov2) continue;
+            covered[st.getValue(&#39;submission_coverage&#39;)] = true;
+            var k2 = this._termKey(cov2, st.getValue(&#39;term_type&#39;), st.getValue(&#39;limit_basis&#39;),
+                st.getValue(&#39;insurable_object&#39;) || st.submission_coverage.insurable_object.toString(), st.getValue(&#39;jurisdiction&#39;), st.getValue(&#39;cause_of_loss&#39;));
+            cur[k2] = { label: this._termLabel(st.submission_coverage.coverage.getDisplayValue(), st.getValue(&#39;term_type&#39;), st.getValue(&#39;limit_basis&#39;), st.insurable_object.getDisplayValue() || st.submission_coverage.insurable_object.getDisplayValue()),
+                value: this._amount(st.getValue(&#39;requested_value&#39;), st.getValue(&#39;percentage&#39;)), id: st.getValue(&#39;submission_coverage&#39;), table: this.T.SUBMISSION_COVERAGE };
+        }
+        // requested coverages without explicit terms: their limit / deductible columns
         var sc = new GlideRecord(this.T.SUBMISSION_COVERAGE);
         sc.addQuery(&#39;submission&#39;, submissionId);
         sc.query();
         while (sc.next()) {
-            var k2 = sc.getValue(&#39;coverage&#39;);
-            if (!k2) continue;
-            cur[k2] = { label: sc.coverage.getDisplayValue(), value: (cur[k2] ? cur[k2].value : 0) + (parseFloat(sc.getValue(&#39;requested_limit&#39;)) || 0), id: sc.getUniqueValue(), table: this.T.SUBMISSION_COVERAGE };
+            if (covered[sc.getUniqueValue()] || !sc.getValue(&#39;coverage&#39;)) continue;
+            var pairs = [[this.C.POLICY_TERM_TYPE.LIMIT, &#39;requested_limit&#39;, sc.getValue(&#39;limit_basis&#39;)], [this.C.POLICY_TERM_TYPE.DEDUCTIBLE, &#39;requested_deductible&#39;, &#39;&#39;]];
+            for (var i = 0; i &lt; pairs.length; i++) {
+                if (sc.getValue(pairs[i][1]) === null || sc.getValue(pairs[i][1]) === &#39;&#39;) continue;
+                var k3 = this._termKey(sc.getValue(&#39;coverage&#39;), pairs[i][0], pairs[i][2], sc.getValue(&#39;insurable_object&#39;), sc.getValue(&#39;jurisdiction&#39;), &#39;&#39;);
+                cur[k3] = { label: this._termLabel(sc.coverage.getDisplayValue(), pairs[i][0], pairs[i][2], sc.insurable_object.getDisplayValue()),
+                    value: parseFloat(sc.getValue(pairs[i][1])) || 0, id: sc.getUniqueValue(), table: this.T.SUBMISSION_COVERAGE };
+            }
         }
-        return this._diff(base, cur, function (k, label) { return &#39;coverages[&#39; + label + &#39;].limit.amount&#39;; });
+        return this._diff(base, cur, function (k, label) { return &#39;coverages[&#39; + label + &#39;].amount&#39;; });
+    },
+
+    _termKey: function (coverage, type, basis, object, jurisdiction, peril) {
+        return [coverage, type || &#39;&#39;, basis || &#39;&#39;, object || &#39;&#39;, jurisdiction || &#39;&#39;, peril || &#39;&#39;].join(&#39;|&#39;);
+    },
+
+    _termLabel: function (coverage, type, basis, objectLabel) {
+        return coverage + &#39; / &#39; + (type || &#39;term&#39;) + (basis ? &#39; &#39; + basis : &#39;&#39;) + (objectLabel ? &#39; @ &#39; + objectLabel : &#39;&#39;);
+    },
+
+    // percentage terms (e.g. 2% wind deductible) compare on the percentage
+    _amount: function (value, pct) {
+        if (pct !== null &amp;&amp; pct !== undefined &amp;&amp; pct !== &#39;&#39;)
+            return parseFloat(pct) || 0;
+        return parseFloat(value) || 0;
     },
 
     _diff: function (base, cur, pathFn) {

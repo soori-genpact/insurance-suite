@@ -11,7 +11,7 @@
             </choice>
         </element>
         <element label="Exposure summary" max_length="400" name="exposure_summary" type="string"/>
-        <element label="Currency" max_length="3" name="currency" type="string"/>
+        <element choice="1" label="Currency" max_length="40" name="currency" type="choice"/>
         <element label="Underwriter" max_length="32" name="underwriter" reference="sys_user" type="reference"/>
         <element label="Estimated premium" max_length="40" name="estimated_premium" type="decimal"/>
         <element label="Expiration date" max_length="40" name="expiration_date" type="glide_date"/>

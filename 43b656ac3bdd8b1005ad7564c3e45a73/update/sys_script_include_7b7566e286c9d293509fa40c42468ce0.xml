@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.AggregateApiService</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Backs the Policy Suite Data API v2: canonical aggregates (JSON or ACORD-aligned XML), policy version as of a date, the published schema contract, mapping simulation and the idempotent integration inbox. Proper REST semantics: 200/201 + Location/400/404, no double wrapping.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>AggregateApiService</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var AggregateApiService = Class.create();
+
+// aggregate -&gt; [table key, lookup columns tried after sys_id]
+AggregateApiService.LOOKUP = {
+    submission: [&#39;SUBMISSION&#39;, [&#39;number&#39;, &#39;external_id&#39;]],
+    quote: [&#39;QUOTE&#39;, [&#39;number&#39;, &#39;quote_number&#39;]],
+    policy: [&#39;POLICY&#39;, [&#39;policy_number&#39;, &#39;number&#39;, &#39;external_ref&#39;]],
+    policy_version: [&#39;POLICY_VERSION&#39;, [&#39;number&#39;, &#39;external_ref&#39;]],
+    product: [&#39;PRODUCT&#39;, [&#39;product_code&#39;]]
+};
+
+AggregateApiService.prototype = {
+
+    initialize: function () {
+        this.serializer = new AggregateSerializer();
+    },
+
+    // GET /aggregate/{type}/{id}[?format=acord]
+    getAggregate: function (request) {
+        var type = String(request.pathParams.type || &#39;&#39;);
+        if (!AggregateApiService.LOOKUP[type])
+            return this._error(400, &#39;ERRORV2-001&#39;, &#39;Unknown aggregate &quot;&#39; + type + &#39;&quot;. Use one of: &#39; + Object.keys(AggregateApiService.LOOKUP).join(&#39;, &#39;));
+        var sysId = this._resolve(type, String(request.pathParams.id || &#39;&#39;));
+        if (!sysId)
+            return this._error(404, &#39;ERRORV2-404&#39;, type + &#39; &#39; + request.pathParams.id + &#39; not found&#39;);
+        var doc = this.serializer.serialize(type, sysId);
+        if (this._param(request, &#39;format&#39;) === &#39;acord&#39;)
+            return { _status: 200, _raw: new AcordRenderer().render(type, doc), _contentType: &#39;application/xml&#39; };
+        doc._status = 200;
+        return doc;
+    },
+
+    // GET /policy/{number}/version[?as_of=yyyy-mm-dd]
+    getPolicyVersion: function (request) {
+        var provider = new IntegrationRegistry().getProvider(&#39;policy&#39;);
+        var number = String(request.pathParams.number || &#39;&#39;);
+        var policy = provider.getPolicy ? provider.getPolicy(number) : null;
+        if (!policy)
+            return this._error(404, &#39;ERRORV2-404&#39;, &#39;Policy &#39; + number + &#39; not found&#39;);
+        var asOf = this._param(request, &#39;as_of&#39;);
+        if (asOf &amp;&amp; !/^\d{4}-\d{2}-\d{2}$/.test(asOf))
+            return this._error(400, &#39;ERRORV2-002&#39;, &#39;as_of must be yyyy-mm-dd&#39;);
+        var version = provider.getCurrentVersion(policy.getUniqueValue(), asOf || &#39;&#39;);
+        if (!version)
+            return this._error(404, &#39;ERRORV2-404&#39;, &#39;No version of &#39; + number + (asOf ? &#39; in force on &#39; + asOf : &#39;&#39;));
+        var doc = this.serializer.serialize(&#39;policy_version&#39;, version.getUniqueValue());
+        doc._status = 200;
+        return doc;
+    },
+
+    // GET /schema/{code} - the contract published to the AI pipeline and integrators
+    getSchema: function (request) {
+        var code = String(request.pathParams.code || &#39;&#39;);
+        var sd = new GlideRecord(Constants.TABLE.SCHEMA_DEFINITION);
+        sd.addQuery(&#39;code&#39;, code);
+        sd.addQuery(&#39;status&#39;, Constants.CHOICE.CATALOG_STATUS.PUBLISHED);
+        sd.orderByDesc(&#39;version&#39;);
+        sd.setLimit(1);
+        sd.query();
+        if (!sd.next())
+            return this._error(404, &#39;ERRORV2-404&#39;, &#39;No published schema &#39; + code);
+        var nodes = [];
+        var n = new GlideRecord(Constants.TABLE.SCHEMA_NODE);
+        n.addQuery(&#39;schema_definition&#39;, sd.getUniqueValue());
+        n.orderBy(&#39;display_order&#39;);
+        n.query();
+        while (n.next()) {
+            nodes.push({ path: String(n.path), name: String(n.name), data_type: String(n.data_type), cardinality: String(n.cardinality),
+                repeating: String(n.is_repeating) === &#39;true&#39;, table: String(n.table_name || &#39;&#39;), column: String(n.column_name || &#39;&#39;),
+                sample: String(n.sample_value || &#39;&#39;), description: String(n.description || &#39;&#39;) });
+        }
+        return { _status: 200, code: code, version: String(sd.version), format: String(sd.format), role: String(sd.schema_role),
+            description: String(sd.description || &#39;&#39;), nodes: nodes };
+    },
+
+    // POST /mapping/{code}/transform - simulation, never writes
+    transform: function (request) {
+        var body = request.body ? request.body.data : null;
+        if (!body || typeof body !== &#39;object&#39;)
+            return this._error(400, &#39;ERRORV2-003&#39;, &#39;Request body must be the source JSON document&#39;);
+        var res = new MappingEngine().transform(String(request.pathParams.code || &#39;&#39;), body);
+        if (!res.mapping)
+            return this._error(404, &#39;ERRORV2-404&#39;, res.errors.join(&#39;; &#39;));
+        return { _status: 200, mapping: res.mapping, rows: res.rows, errors: res.errors };
+    },
+
+    // POST /event - inbox. Body: { event_type, correlation_id, aggregate?, system?, table?, record?, payload }
+    receiveEvent: function (request) {
+        var b = request.body ? request.body.data : null;
+        if (!b || !b.event_type)
+            return this._error(400, &#39;ERRORV2-004&#39;, &#39;event_type is mandatory&#39;);
+        if (!b.correlation_id)
+            return this._error(400, &#39;ERRORV2-005&#39;, &#39;correlation_id is mandatory&#39;);
+        var systemId = &#39;&#39;;
+        if (b.system) {
+            var s = new GlideRecord(Constants.TABLE.INTEGRATION_SYSTEM);
+            s.addQuery(&#39;code&#39;, String(b.system));
+            s.setLimit(1);
+            s.query();
+            if (!s.next())
+                return this._error(400, &#39;ERRORV2-006&#39;, &#39;Unknown integration system &#39; + b.system);
+            systemId = s.getUniqueValue();
+        }
+        var res = new IntegrationEventPublisher().receive({
+            eventType: String(b.event_type), aggregate: b.aggregate ? String(b.aggregate) : &#39;&#39;, table: b.table ? String(b.table) : &#39;&#39;,
+            sysId: b.record ? String(b.record) : &#39;&#39;, system: systemId, correlationId: String(b.correlation_id), payload: b.payload === undefined ? {} : b.payload
+        });
+        var ev = new GlideRecord(Constants.TABLE.INTEGRATION_EVENT);
+        ev.get(res.sys_id);
+        return {
+            _status: res.duplicate ? 200 : 201,
+            _location: &#39;/api/now/table/&#39; + Constants.TABLE.INTEGRATION_EVENT + &#39;/&#39; + res.sys_id,
+            sys_id: res.sys_id, number: String(ev.number), status: String(ev.status), duplicate: res.duplicate
+        };
+    },
+
+    _resolve: function (type, id) {
+        var cfg = AggregateApiService.LOOKUP[type];
+        var table = Constants.TABLE[cfg[0]];
+        var gr = new GlideRecord(table);
+        if (/^[0-9a-f]{32}$/.test(id) &amp;&amp; gr.get(id))
+            return gr.getUniqueValue();
+        for (var i = 0; i &lt; cfg[1].length; i++) {
+            var q = new GlideRecord(table);
+            q.addQuery(cfg[1][i], id);
+            if (type === &#39;product&#39;)
+                q.orderByDesc(&#39;version&#39;);
+            q.setLimit(1);
+            q.query();
+            if (q.next())
+                return q.getUniqueValue();
+        }
+        return &#39;&#39;;
+    },
+
+    _param: function (request, name) {
+        var v = request.queryParams ? request.queryParams[name] : null;
+        if (v &amp;&amp; v.length !== undefined &amp;&amp; typeof v !== &#39;string&#39;)
+            v = v[0];
+        return v ? String(v) : &#39;&#39;;
+    },
+
+    _error: function (status, code, message) {
+        return { _status: status, error: { code: code, message: message } };
+    },
+
+    type: &#39;AggregateApiService&#39;
+};
+</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-10-05 22:00:00</sys_created_on>
+        <sys_id>7b7566e286c9d293509fa40c42468ce0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>AggregateApiService</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_7b7566e286c9d293509fa40c42468ce0</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-10-05 22:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>

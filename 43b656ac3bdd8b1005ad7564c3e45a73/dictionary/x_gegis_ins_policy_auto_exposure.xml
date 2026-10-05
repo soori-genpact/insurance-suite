@@ -5,8 +5,7 @@
         <element label="Per occurrence deductible" max_length="40" name="per_occurrence_deductible" type="decimal"/>
         <element label="Collision deductible" max_length="40" name="collision_deductible" type="decimal"/>
         <element label="Full glass coverage" max_length="40" name="full_glass_coverage" type="boolean"/>
-        <element label="Submission line" max_length="32" name="submission_line" reference="x_gegis_ins_policy_submission_line" type="reference"/>
-        <element label="Exposure case" max_length="32" name="exposure_case" reference="x_gegis_ins_policy_exposure_case" type="reference"/>
+        <element label="Submission line" max_length="32" name="submission_line" reference="x_gegis_ins_policy_submission_line" type="reference"/>
         <element choice="3" label="Deductible applies to" max_length="40" name="perils_deductible_applies_to" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Per Vehicle" sequence="10" value="per_vehicle"/>
@@ -47,8 +46,7 @@
         <element label="UM/BI statutory" max_length="40" name="um_bi_statutory" type="boolean"/>
         <element label="BI occurrence limit" max_length="40" name="bodily_injury_occurrence_limit" type="decimal"/>
         <element label="Override premium" max_length="40" name="override_premium" type="decimal"/>
-        <index name="index">
-            <element name="exposure_case"/>
+        <index name="index">
         </index>
         <index name="index2">
             <element name="submission_line"/>

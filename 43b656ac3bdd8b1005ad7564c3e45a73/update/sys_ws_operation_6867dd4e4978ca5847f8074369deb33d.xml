@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri>/api/x_gegis_ins_policy/v2/mapping/{code}/transform</default_operation_uri>
+        <enforce_acl/>
+        <http_method>POST</http_method>
+        <name>Transform with mapping</name>
+        <operation_script>(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+    var result = new x_gegis_ins_policy.AggregateApiService().transform(request);
+    var status = result._status || 200;
+    delete result._status;
+    if (result._location) {
+        response.setHeader(&#39;Location&#39;, result._location);
+        delete result._location;
+    }
+    response.setStatus(status);
+    if (result._raw !== undefined) {
+        response.setContentType(result._contentType || &#39;application/xml&#39;);
+        response.getStreamWriter().writeString(result._raw);
+        return;
+    }
+    response.setBody(result);
+})(request, response);</operation_script>
+        <operation_uri>/api/x_gegis_ins_policy/v2/mapping/{code}/transform</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/mapping/{code}/transform</relative_path>
+        <request_example/>
+        <requires_acl_authorization>false</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>true</requires_snc_internal_role>
+        <short_description>Runs MappingEngine on the request body and returns target rows (no writes)</short_description>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-10-05 22:00:00</sys_created_on>
+        <sys_id>6867dd4e4978ca5847f8074369deb33d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Transform with mapping</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_ws_operation_6867dd4e4978ca5847f8074369deb33d</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-10-05 22:00:00</sys_updated_on>
+        <web_service_definition display_value="Policy Suite Data API v2">9b8250234bbc0bb71a8a2f9ad98d40a5</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>

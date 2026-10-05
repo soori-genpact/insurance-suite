@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="d1be27e3652cc8aede12603281f6a25c" label="Clearance Check" max_length="40" name="x_gegis_ins_policy_clearance_check" type="collection">
         <element label="Reviewed date" max_length="40" name="reviewed_date" type="glide_date_time"/>
-        <element label="Clearance case" mandatory="true" max_length="32" name="clearance_case" reference="x_gegis_ins_policy_clearance_case" type="reference"/>
+        <element label="Clearance case" max_length="32" name="clearance_case" reference="x_gegis_ins_policy_clearance_case" type="reference"/>
         <element label="Confidence" max_length="40" name="confidence" type="decimal"/>
         <element choice="3" label="Check type" mandatory="true" max_length="40" name="check_type" type="choice">
             <choice>
