@@ -6,7 +6,7 @@
         <element label="Collision deductible" max_length="40" name="collision_deductible" type="decimal"/>
         <element label="Full glass coverage" max_length="40" name="full_glass_coverage" type="boolean"/>
         <element label="Submission line" max_length="32" name="submission_line" reference="x_gegis_ins_policy_submission_line" type="reference"/>
-        <element label="Exposure case" mandatory="true" max_length="32" name="exposure_case" reference="x_gegis_ins_policy_exposure_case" type="reference"/>
+        <element label="Exposure case" max_length="32" name="exposure_case" reference="x_gegis_ins_policy_exposure_case" type="reference"/>
         <element choice="3" label="Deductible applies to" max_length="40" name="perils_deductible_applies_to" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Per Vehicle" sequence="10" value="per_vehicle"/>

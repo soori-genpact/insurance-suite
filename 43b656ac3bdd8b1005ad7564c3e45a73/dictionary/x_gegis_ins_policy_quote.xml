@@ -2,7 +2,7 @@
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="fd5804215db3855714dc8cb08fb66c32" label="Quote" max_length="40" name="x_gegis_ins_policy_quote" type="collection">
         <element label="Version" max_length="20" name="version" type="string"/>
         <element label="Product" max_length="32" name="product" reference="x_gegis_ins_policy_product" type="reference"/>
-        <element label="Q&amp;B case" mandatory="true" max_length="32" name="qnb_case" reference="x_gegis_ins_policy_quote_and_bind_case" type="reference"/>
+        <element label="Q&amp;B case" max_length="32" name="qnb_case" reference="x_gegis_ins_policy_quote_and_bind_case" type="reference"/>
         <element label="Terms &amp; conditions" max_length="4000" name="terms_conditions" type="string"/>
         <element choice="3" label="Currency" max_length="3" name="currency" type="choice">
             <choice>

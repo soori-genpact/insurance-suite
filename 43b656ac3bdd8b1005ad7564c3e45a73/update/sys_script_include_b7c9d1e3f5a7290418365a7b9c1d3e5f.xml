@@ -42,7 +42,66 @@
         VERSION_COPY_RULE: SCOPE + &#39;_version_copy_rule&#39;,
         SUBMISSION:        SCOPE + &#39;_submission&#39;,
         LICENCE:           SCOPE + &#39;_licence&#39;,
-        LICENCE_MODULE:    SCOPE + &#39;_licence_module&#39;
+        LICENCE_MODULE:    SCOPE + &#39;_licence_module&#39;,
+        LINE_OF_BUSINESS: SCOPE + &#39;_line_of_business&#39;,
+        JURISDICTION: SCOPE + &#39;_jurisdiction&#39;,
+        INTEGRATION_SYSTEM: SCOPE + &#39;_integration_system&#39;,
+        VALUE_MAP: SCOPE + &#39;_value_map&#39;,
+        EXTERNAL_IDENTITY: SCOPE + &#39;_external_identity&#39;,
+        INTEGRATION_PROVIDER: SCOPE + &#39;_integration_provider&#39;,
+        INTEGRATION_EVENT: SCOPE + &#39;_integration_event&#39;,
+        SCHEMA_DEFINITION: SCOPE + &#39;_schema_definition&#39;,
+        SCHEMA_NODE: SCOPE + &#39;_schema_node&#39;,
+        MAPPING: SCOPE + &#39;_mapping&#39;,
+        MAPPING_RULE: SCOPE + &#39;_mapping_rule&#39;,
+        MAPPING_TEST_CASE: SCOPE + &#39;_mapping_test_case&#39;,
+        PARTY_RELATIONSHIP: SCOPE + &#39;_party_relationship&#39;,
+        PARTY_ADDRESS: SCOPE + &#39;_party_address&#39;,
+        PRODUCT_JURISDICTION: SCOPE + &#39;_product_jurisdiction&#39;,
+        FORM: SCOPE + &#39;_form&#39;,
+        PRODUCT_FORM: SCOPE + &#39;_product_form&#39;,
+        INSURABLE_OBJECT: SCOPE + &#39;_insurable_object&#39;,
+        BUILDING: SCOPE + &#39;_building&#39;,
+        DRIVER: SCOPE + &#39;_driver&#39;,
+        CLASS_EXPOSURE: SCOPE + &#39;_class_exposure&#39;,
+        SCHEDULED_EQUIPMENT: SCOPE + &#39;_scheduled_equipment&#39;,
+        CYBER_PROFILE: SCOPE + &#39;_cyber_profile&#39;,
+        UNDERLYING_POLICY: SCOPE + &#39;_underlying_policy&#39;,
+        SUBMISSION_RISK: SCOPE + &#39;_submission_risk&#39;,
+        SUBMISSION_COVERAGE: SCOPE + &#39;_submission_coverage&#39;,
+        CHANGE_SET: SCOPE + &#39;_change_set&#39;,
+        CHANGE_ITEM: SCOPE + &#39;_change_item&#39;,
+        QUOTE_OPTION_LINE: SCOPE + &#39;_quote_option_line&#39;,
+        SUBJECTIVITY: SCOPE + &#39;_subjectivity&#39;,
+        QUOTE_TAX_FEE: SCOPE + &#39;_quote_tax_fee&#39;,
+        COMMISSION: SCOPE + &#39;_commission&#39;,
+        POLICY_TERM: SCOPE + &#39;_policy_term&#39;,
+        POLICY_VERSION: SCOPE + &#39;_policy_version&#39;,
+        POLICY_FORM: SCOPE + &#39;_policy_form&#39;,
+        CLAIM: SCOPE + &#39;_claim&#39;,
+        RENEWAL_RULE: SCOPE + &#39;_renewal_rule&#39;,
+        POLICY: SCOPE + &#39;_policy&#39;,
+        POLICY_PARTY: SCOPE + &#39;_policy_party&#39;,
+        POLICY_RISK: SCOPE + &#39;_policy_risk&#39;,
+        POLICY_COVERAGE: SCOPE + &#39;_policy_coverage&#39;,
+        POLICY_COVERAGE_TERM: SCOPE + &#39;_policy_coverage_term&#39;,
+        POLICY_TRANSACTION: SCOPE + &#39;_policy_transaction&#39;,
+        QUOTE: SCOPE + &#39;_quote&#39;,
+        QUOTE_OPTION: SCOPE + &#39;_quote_option&#39;,
+        QUOTE_OPTION_COVERAGE: SCOPE + &#39;_quote_option_coverage&#39;,
+        QUOTE_OPTION_COVERAGE_TERM: SCOPE + &#39;_quote_option_coverage_term&#39;,
+        QUOTE_RISK: SCOPE + &#39;_quote_risk&#39;,
+        SUBMISSION_LINE: SCOPE + &#39;_submission_line&#39;,
+        SUBMISSION_PARTY: SCOPE + &#39;_submission_party&#39;,
+        PRODUCT: SCOPE + &#39;_product&#39;,
+        PRODUCT_COVERAGE: SCOPE + &#39;_product_coverage&#39;,
+        LOCATION: SCOPE + &#39;_location&#39;,
+        VEHICLE: SCOPE + &#39;_vehicle&#39;,
+        PARTY: SCOPE + &#39;_party&#39;,
+        RENEWAL_CASE: SCOPE + &#39;_renewal_case&#39;,
+        EXTRACTION_FIELD: SCOPE + &#39;_extraction_field&#39;,
+        CAUSE_OF_LOSS: SCOPE + &#39;_cause_of_loss&#39;,
+        COVERAGE: SCOPE + &#39;_coverage&#39;
     };
 
     // Fail-safe defaults, mirrored from the property defaults.
@@ -173,7 +232,26 @@
         // loa_metric.value_type and loa_metric.aggregation
         COUNT:          &#39;count&#39;,
         // loa_metric.aggregation -- read the source field directly, do not roll up
-        NONE:           &#39;none&#39;
+        NONE:           &#39;none&#39;,
+        // ---- DATA MODEL V2: tokens shared by the new lifecycle / integration groups
+        INTERNAL: &#39;internal&#39;,
+        APPROVED: &#39;approved&#39;,
+        WITHDRAWN: &#39;withdrawn&#39;,
+        EXTERNAL: &#39;external&#39;,
+        MATERIAL: &#39;material&#39;,
+        NON_MATERIAL: &#39;non_material&#39;,
+        OPEN: &#39;open&#39;,
+        PENDING_ISSUE: &#39;pending_issue&#39;,
+        IN_FORCE: &#39;in_force&#39;,
+        NON_RENEWED: &#39;non_renewed&#39;,
+        RENEWED: &#39;renewed&#39;,
+        ENDORSEMENT: &#39;endorsement&#39;,
+        CANCELLATION: &#39;cancellation&#39;,
+        REINSTATEMENT: &#39;reinstatement&#39;,
+        REWRITE: &#39;rewrite&#39;,
+        REFERRED: &#39;referred&#39;,
+        QUOTED: &#39;quoted&#39;,
+        NOT_TAKEN_UP: &#39;not_taken_up&#39;
     };
 
     // submission.stage -- also the prefix namespace for activity_status values.
@@ -349,15 +427,21 @@
             UNDER_REVIEW:     &#39;under_review&#39;,
             PENDING_APPROVAL: &#39;pending_approval&#39;,
             MISSING_DATA:     &#39;missing_data&#39;,
-            APPROVED:         &#39;approved&#39;,
+            APPROVED:         SHARED.APPROVED,
             DECLINED:         SHARED.DECLINED,
             REJECTED:         SHARED.REJECTED,
             DUPLICATE:        SHARED.DUPLICATE,
             RENEWAL_DUE:      &#39;renewal_due&#39;,
-            RENEWED:          &#39;renewed&#39;,
+            RENEWED:          SHARED.RENEWED,
             BOUND:            SHARED.BOUND,
             CANCELLED:        SHARED.CANCELLED,
-            CLOSED:           SHARED.CLOSED
+            CLOSED:           SHARED.CLOSED,
+            OPEN: SHARED.OPEN,
+            REFERRED: SHARED.REFERRED,
+            QUOTED: SHARED.QUOTED,
+            NOT_TAKEN_UP: SHARED.NOT_TAKEN_UP,
+            WITHDRAWN: SHARED.WITHDRAWN,
+            LOST: &#39;lost&#39; /* v2 */
         },
 
         // x_gegis_ins_policy_policy.status -- lifecycle of the POLICY CONTRACT,
@@ -367,10 +451,12 @@
         POLICY_STATUS: {
             ACTIVE:      SHARED.ACTIVE,
             BOUND:       SHARED.BOUND,
-            IN_FORCE:    &#39;in_force&#39;,
+            IN_FORCE:    SHARED.IN_FORCE,
             CANCELLED:   SHARED.CANCELLED,
             EXPIRED:     SHARED.EXPIRED,
-            NON_RENEWED: &#39;non_renewed&#39;
+            NON_RENEWED: SHARED.NON_RENEWED,
+            PENDING_ISSUE: SHARED.PENDING_ISSUE,
+            RENEWED: SHARED.RENEWED /* v2 */
         },
 
         // x_gegis_ins_policy_quote.status -- lifecycle of the quote document.
@@ -380,7 +466,12 @@
             ISSUED:   SHARED.ISSUED,
             ACCEPTED: SHARED.ACCEPTED,
             DECLINED: SHARED.DECLINED,
-            EXPIRED:  SHARED.EXPIRED
+            EXPIRED:  SHARED.EXPIRED,
+            RATED: &#39;rated&#39;,
+            REFERRED: SHARED.REFERRED,
+            APPROVED: SHARED.APPROVED,
+            SUPERSEDED: SHARED.SUPERSEDED,
+            BOUND: SHARED.BOUND /* v2 */
         },
 
         // x_gegis_ins_policy_quote_option.status -- lifecycle of ONE priced
@@ -403,7 +494,7 @@
         // seeding it as a breakup row would double-count the total.
         PREMIUM_COMPONENT: {
             WRITTEN_PREMIUM: &#39;written_premium&#39;,
-            ENDORSEMENT:     &#39;endorsement&#39;,
+            ENDORSEMENT:     SHARED.ENDORSEMENT,
             SURCHARGES:      &#39;surcharges&#39;,
             FEES:            &#39;fees&#39;,
             TRIA:            &#39;tria&#39;,
@@ -613,8 +704,8 @@
         // party_created = true. This is the axis that decides whether selection
         // writes to the registry.
         PARTY_MATCH_SOURCE_TYPE: {
-            INTERNAL: &#39;internal&#39;,
-            EXTERNAL: &#39;external&#39;
+            INTERNAL: SHARED.INTERNAL,
+            EXTERNAL: SHARED.EXTERNAL
         },
 
         // party_match.source -- WHICH system produced the candidate. Kept
@@ -775,9 +866,10 @@
         SUBMISSION_TYPE: {
             NEW_BUSINESS:  SHARED.NEW_BUSINESS,
             RENEWAL:       SHARED.RENEWAL,
-            ENDORSEMENT:   &#39;endorsement&#39;,
-            CANCELLATION:  &#39;cancellation&#39;,
-            REINSTATEMENT: &#39;reinstatement&#39;
+            ENDORSEMENT:   SHARED.ENDORSEMENT,
+            CANCELLATION:  SHARED.CANCELLATION,
+            REINSTATEMENT: SHARED.REINSTATEMENT,
+            REWRITE: SHARED.REWRITE /* v2 */
         },
 
         // line_of_business on policy, product, quote_option, existing_policy,
@@ -1090,7 +1182,7 @@
         TRANSACTION_STATUS: {
             DRAFT:            SHARED.DRAFT,
             PENDING_APPROVAL: &#39;pending_approval&#39;,
-            APPROVED:         &#39;approved&#39;,
+            APPROVED:         SHARED.APPROVED,
             COMPLETED:        &#39;completed&#39;,
             REJECTED:         SHARED.REJECTED,
             VOIDED:           &#39;voided&#39;
@@ -1267,7 +1359,7 @@
             BREACH:                            &#39;breach&#39;,
             // &#39;referred&#39; (the decision), NOT SHARED.REFERRAL (&#39;referral&#39;, the
             // case_task category). Two different words for two different things.
-            REFERRED:                          &#39;referred&#39;,
+            REFERRED:                          SHARED.REFERRED,
             REFERRED_APPROVED:                 &#39;referred_approved&#39;,
             REFERRED_APPROVED_WITH_CONDITIONS: &#39;referred_approved_with_conditions&#39;,
             REFERRED_REJECTED:                 &#39;referred_rejected&#39;,
@@ -1334,7 +1426,7 @@
             TIV_CHANGE:            &#39;tiv_change&#39;,
             PROPERTY_COUNT_CHANGE: &#39;property_count_change&#39;,
             RENEWAL:               SHARED.RENEWAL,
-            ENDORSEMENT:           &#39;endorsement&#39;,
+            ENDORSEMENT:           SHARED.ENDORSEMENT,
             // Trigger layer (UWTriggerReasonResolver / business rules 4-6):
             // applies_to=loa for the two underwriter-assignment codes, both for
             // the manual-correction code - see the seed script comment for why.
@@ -1404,8 +1496,8 @@
             FULL_UW:      SHARED.FULL_RE_UNDERWRITING,
             FAST_TRACK:   &#39;fast_track&#39;,
             AUTO_APPROVE: SHARED.AUTO_RENEW,
-            MATERIAL:     &#39;material&#39;,
-            NON_MATERIAL: &#39;non_material&#39;
+            MATERIAL:     SHARED.MATERIAL,
+            NON_MATERIAL: SHARED.NON_MATERIAL
         },
 
         // module_plan.config_mode. In ADVANCED mode every order and restart
@@ -1419,7 +1511,7 @@
         // Applies only when submission_on_update = override; on a new
         // submission version the cases are created fresh by the plan.
         RESTART_MODE: {
-            NONE:        &#39;none&#39;,
+            NONE:        SHARED.NONE,
             OVERRIDE:    SHARED.OVERRIDE,
             NEW_VERSION: SHARED.NEW_VERSION
         },
@@ -1440,6 +1532,342 @@
             MOVE:   &#39;move&#39;,
             CANCEL: &#39;cancel&#39;,
             SKIP:   &#39;skip&#39;
+        },
+
+        // =================================================================
+        // DATA MODEL V2 - lifecycle, insurable objects, integration, mapping.
+        // Blueprint: SCRIPTS\DOCS\DATA_MODEL_BLUEPRINT.md
+        // =================================================================
+        LINE_GROUP: {
+            PROPERTY: &#39;property&#39;,
+            CASUALTY: &#39;casualty&#39;,
+            MOTOR: &#39;motor&#39;,
+            MARINE_ENERGY_AVIATION: &#39;marine_energy_aviation&#39;,
+            SPECIALTY: &#39;specialty&#39;,
+            FINANCIAL_LINES: &#39;financial_lines&#39;
+        },
+
+        JURISDICTION_TYPE: {
+            COUNTRY: &#39;country&#39;,
+            STATE_PROVINCE: &#39;state_province&#39;,
+            REGION: &#39;region&#39;
+        },
+
+        INTEGRATION_SYSTEM_TYPE: {
+            POLICY_ADMIN: &#39;policy_admin&#39;,
+            CRM: &#39;crm&#39;,
+            CLAIMS: &#39;claims&#39;,
+            RATING_ENGINE: &#39;rating_engine&#39;,
+            AI_EXTRACTION: &#39;ai_extraction&#39;,
+            DATA_PROVIDER: &#39;data_provider&#39;,
+            BROKER_PORTAL: &#39;broker_portal&#39;,
+            DOCUMENT_STORE: &#39;document_store&#39;,
+            DATA_WAREHOUSE: &#39;data_warehouse&#39;,
+            INTERNAL: SHARED.INTERNAL
+        },
+
+        ID_SCHEME: {
+            SYSTEM_ID: &#39;system_id&#39;,
+            DUNS: &#39;duns&#39;,
+            LEI: &#39;lei&#39;,
+            FEIN: &#39;fein&#39;,
+            COMPANY_REG_NO: &#39;company_reg_no&#39;,
+            NAIC: &#39;naic&#39;,
+            NPN: &#39;npn&#39;,
+            VIN: &#39;vin&#39;,
+            POLICY_NUMBER: &#39;policy_number&#39;,
+            CLAIM_NUMBER: &#39;claim_number&#39;,
+            OTHER: SHARED.OTHER
+        },
+
+        INTEGRATION_AGGREGATE: {
+            SUBMISSION: &#39;submission&#39;,
+            PARTY: &#39;party&#39;,
+            PRODUCT: &#39;product&#39;,
+            QUOTE: &#39;quote&#39;,
+            POLICY: &#39;policy&#39;,
+            RATING: &#39;rating&#39;,
+            CLAIMS: &#39;claims&#39;,
+            SANCTIONS: &#39;sanctions&#39;,
+            GEOCODE: &#39;geocode&#39;,
+            DOCUMENT: &#39;document&#39;
+        },
+
+        IMPLEMENTATION_TYPE: {
+            SCRIPT_INCLUDE: &#39;script_include&#39;,
+            REST_MESSAGE: &#39;rest_message&#39;,
+            INTEGRATION_HUB: &#39;integration_hub&#39;
+        },
+
+        INTEGRATION_EVENT_STATUS: {
+            PENDING: SHARED.PENDING,
+            PROCESSING: &#39;processing&#39;,
+            DELIVERED: &#39;delivered&#39;,
+            PROCESSED: SHARED.PROCESSED,
+            FAILED: SHARED.FAILED,
+            IGNORED: &#39;ignored&#39;
+        },
+
+        SCHEMA_FORMAT: {
+            JSON: &#39;json&#39;,
+            XML: &#39;xml&#39;,
+            ACORD_XML: &#39;acord_xml&#39;,
+            CSV: &#39;csv&#39;,
+            INTERNAL: SHARED.INTERNAL
+        },
+
+        SCHEMA_ROLE: {
+            SOURCE: &#39;source&#39;,
+            TARGET: &#39;target&#39;,
+            BOTH: &#39;both&#39;
+        },
+
+        NODE_DATA_TYPE: {
+            STRING: &#39;string&#39;,
+            INTEGER: &#39;integer&#39;,
+            DECIMAL: &#39;decimal&#39;,
+            BOOLEAN: &#39;boolean&#39;,
+            DATE: &#39;date&#39;,
+            DATETIME: &#39;datetime&#39;,
+            OBJECT: &#39;object&#39;,
+            ARRAY: &#39;array&#39;,
+            REFERENCE: &#39;reference&#39;,
+            CHOICE: &#39;choice&#39;
+        },
+
+        CARDINALITY: {
+            ZERO_ONE: &#39;zero_one&#39;,
+            ONE: &#39;one&#39;,
+            ZERO_MANY: &#39;zero_many&#39;,
+            ONE_MANY: &#39;one_many&#39;
+        },
+
+        MAPPING_TRANSFORM: {
+            DIRECT: &#39;direct&#39;,
+            CONSTANT: &#39;constant&#39;,
+            CONCAT: &#39;concat&#39;,
+            SPLIT: &#39;split&#39;,
+            VALUE_MAP: &#39;value_map&#39;,
+            LOOKUP: &#39;lookup&#39;,
+            DATE_FORMAT: &#39;date_format&#39;,
+            NUMBER_FORMAT: &#39;number_format&#39;,
+            CURRENCY_CONVERT: &#39;currency_convert&#39;,
+            CONDITIONAL: &#39;conditional&#39;,
+            SCRIPT: &#39;script&#39;
+        },
+
+        TEST_RESULT: {
+            NOT_RUN: &#39;not_run&#39;,
+            PASSED: &#39;passed&#39;,
+            FAILED: SHARED.FAILED
+        },
+
+        PARTY_RELATIONSHIP_TYPE: {
+            PARENT: &#39;parent&#39;,
+            SUBSIDIARY: &#39;subsidiary&#39;,
+            AFFILIATE: &#39;affiliate&#39;,
+            JOINT_VENTURE: &#39;joint_venture&#39;,
+            FRANCHISE: &#39;franchise&#39;,
+            OTHER: SHARED.OTHER
+        },
+
+        ADDRESS_TYPE: {
+            REGISTERED: &#39;registered&#39;,
+            MAILING: &#39;mailing&#39;,
+            BILLING: &#39;billing&#39;,
+            OPERATING: &#39;operating&#39;
+        },
+
+        FILING_STATUS: {
+            NOT_REQUIRED: &#39;not_required&#39;,
+            PENDING: SHARED.PENDING,
+            FILED: &#39;filed&#39;,
+            APPROVED: SHARED.APPROVED,
+            WITHDRAWN: SHARED.WITHDRAWN
+        },
+
+        FORM_TYPE: {
+            POLICY_FORM: &#39;policy_form&#39;,
+            ENDORSEMENT: &#39;endorsement&#39;,
+            DECLARATIONS: &#39;declarations&#39;,
+            APPLICATION: &#39;application&#39;,
+            NOTICE: &#39;notice&#39;,
+            CERTIFICATE: &#39;certificate&#39;
+        },
+
+        FORM_ISSUER: {
+            ISO: &#39;iso&#39;,
+            AAIS: &#39;aais&#39;,
+            ACORD: &#39;acord&#39;,
+            NCCI: &#39;ncci&#39;,
+            CARRIER: &#39;carrier&#39;
+        },
+
+        FORM_ATTACHMENT_RULE: {
+            MANDATORY: &#39;mandatory&#39;,
+            CONDITIONAL: &#39;conditional&#39;,
+            OPTIONAL: &#39;optional&#39;
+        },
+
+        OBJECT_TYPE: {
+            LOCATION: &#39;location&#39;,
+            BUILDING: &#39;building&#39;,
+            VEHICLE: &#39;vehicle&#39;,
+            DRIVER: &#39;driver&#39;,
+            CLASS_EXPOSURE: &#39;class_exposure&#39;,
+            SCHEDULED_EQUIPMENT: &#39;scheduled_equipment&#39;,
+            CYBER_PROFILE: &#39;cyber_profile&#39;,
+            UNDERLYING_POLICY: &#39;underlying_policy&#39;
+        },
+
+        OBJECT_STATUS: {
+            ACTIVE: SHARED.ACTIVE,
+            RETIRED: &#39;retired&#39;
+        },
+
+        ALARM_TYPE: {
+            NONE: SHARED.NONE,
+            LOCAL: &#39;local&#39;,
+            CENTRAL_STATION: &#39;central_station&#39;
+        },
+
+        GEOCODE_SOURCE: {
+            MANUAL: SHARED.MANUAL,
+            EXTRACTED: SHARED.EXTRACTED,
+            GOOGLE: &#39;google&#39;,
+            ESRI: &#39;esri&#39;,
+            HERE: &#39;here&#39;
+        },
+
+        CLASS_SCHEME: {
+            ISO_GL: &#39;iso_gl&#39;,
+            NCCI: &#39;ncci&#39;,
+            NAICS: &#39;naics&#39;,
+            SIC: &#39;sic&#39;,
+            CARRIER: &#39;carrier&#39;
+        },
+
+        PREMIUM_BASIS: {
+            PAYROLL: &#39;payroll&#39;,
+            GROSS_SALES: &#39;gross_sales&#39;,
+            AREA: &#39;area&#39;,
+            UNITS: &#39;units&#39;,
+            EACH: &#39;each&#39;,
+            ADMISSIONS: &#39;admissions&#39;
+        },
+
+        CHANGE_TYPE: {
+            ADDED: &#39;added&#39;,
+            MODIFIED: &#39;modified&#39;,
+            REMOVED: &#39;removed&#39;,
+            UNCHANGED: &#39;unchanged&#39;
+        },
+
+        RECORD_SOURCE: {
+            EXTRACTED: SHARED.EXTRACTED,
+            MANUAL: SHARED.MANUAL,
+            BASELINE: &#39;baseline&#39;,
+            EXTERNAL: SHARED.EXTERNAL
+        },
+
+        REQUESTED_COVERAGE_STATUS: {
+            REQUESTED: &#39;requested&#39;,
+            OFFERED: &#39;offered&#39;,
+            DECLINED: SHARED.DECLINED,
+            NOT_AVAILABLE: &#39;not_available&#39;
+        },
+
+        CHANGE_SET_PURPOSE: {
+            RENEWAL: SHARED.RENEWAL,
+            MTA: &#39;mta&#39;,
+            EXTRACTION_UPDATE: &#39;extraction_update&#39;
+        },
+
+        CHANGE_SET_STATUS: {
+            DRAFT: SHARED.DRAFT,
+            EVALUATED: &#39;evaluated&#39;,
+            ACCEPTED: SHARED.ACCEPTED,
+            SUPERSEDED: SHARED.SUPERSEDED
+        },
+
+        MATERIALITY: {
+            MATERIAL: SHARED.MATERIAL,
+            NON_MATERIAL: SHARED.NON_MATERIAL,
+            NONE: SHARED.NONE
+        },
+
+        CHANGE_DECISION: {
+            PENDING: SHARED.PENDING,
+            ACCEPTED: SHARED.ACCEPTED,
+            REJECTED: SHARED.REJECTED
+        },
+
+        SUBJECTIVITY_TYPE: {
+            PRE_BIND: &#39;pre_bind&#39;,
+            POST_BIND: &#39;post_bind&#39;,
+            PRE_ISSUE: &#39;pre_issue&#39;
+        },
+
+        SUBJECTIVITY_STATUS: {
+            OPEN: SHARED.OPEN,
+            RECEIVED: &#39;received&#39;,
+            WAIVED: &#39;waived&#39;,
+            CLEARED: &#39;cleared&#39;,
+            OVERDUE: &#39;overdue&#39;
+        },
+
+        TAX_TYPE: {
+            PREMIUM_TAX: &#39;premium_tax&#39;,
+            SURPLUS_LINES_TAX: &#39;surplus_lines_tax&#39;,
+            STAMPING_FEE: &#39;stamping_fee&#39;,
+            IPT: &#39;ipt&#39;,
+            POLICY_FEE: &#39;policy_fee&#39;,
+            BROKER_FEE: &#39;broker_fee&#39;,
+            FIRE_MARSHAL_TAX: &#39;fire_marshal_tax&#39;,
+            MUNICIPAL_TAX: &#39;municipal_tax&#39;
+        },
+
+        COMMISSION_TYPE: {
+            BASE: &#39;base&#39;,
+            CONTINGENT: &#39;contingent&#39;,
+            OVERRIDE: SHARED.OVERRIDE
+        },
+
+        POLICY_TERM_STATUS: {
+            PENDING_ISSUE: SHARED.PENDING_ISSUE,
+            IN_FORCE: SHARED.IN_FORCE,
+            EXPIRED: SHARED.EXPIRED,
+            CANCELLED: SHARED.CANCELLED,
+            NON_RENEWED: SHARED.NON_RENEWED,
+            RENEWED: SHARED.RENEWED
+        },
+
+        POLICY_VERSION_STATUS: {
+            DRAFT: SHARED.DRAFT,
+            ISSUED: SHARED.ISSUED,
+            SUPERSEDED: SHARED.SUPERSEDED,
+            REVERSED: &#39;reversed&#39;
+        },
+
+        SYSTEM_OF_RECORD: {
+            LOCAL: &#39;local&#39;,
+            EXTERNAL: SHARED.EXTERNAL
+        },
+
+        TRANSACTION_TYPE: {
+            NEW_BUSINESS: SHARED.NEW_BUSINESS,
+            RENEWAL: SHARED.RENEWAL,
+            ENDORSEMENT: SHARED.ENDORSEMENT,
+            CANCELLATION: SHARED.CANCELLATION,
+            REINSTATEMENT: SHARED.REINSTATEMENT,
+            REWRITE: SHARED.REWRITE
+        },
+
+        CLAIM_STATUS: {
+            OPEN: SHARED.OPEN,
+            CLOSED: SHARED.CLOSED,
+            REOPENED: &#39;reopened&#39;,
+            DENIED: &#39;denied&#39;
         },
 
         // module_plan.line_of_business carries the LINE_OF_BUSINESS values
@@ -1609,6 +2037,6 @@
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
         <sys_update_name>sys_script_include_b7c9d1e3f5a7290418365a7b9c1d3e5f</sys_update_name>
         <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
-        <sys_updated_on>2026-09-21 12:00:00</sys_updated_on>
+        <sys_updated_on>2026-10-05 22:00:00</sys_updated_on>
     </sys_script_include>
 </record_update>
