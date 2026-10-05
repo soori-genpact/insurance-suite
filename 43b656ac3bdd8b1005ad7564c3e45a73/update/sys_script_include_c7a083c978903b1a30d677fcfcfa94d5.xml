@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.RenewalDecisionService</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Evaluates an expiring policy_term against x_gegis_ins_policy_renewal_rule (lead time, loss ratio, claims, MTAs, rate change, premium band) and returns auto_renew / full_re_underwriting / do_not_renew with the evidence.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>RenewalDecisionService</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var RenewalDecisionService = Class.create();
+RenewalDecisionService.prototype = {
+
+    initialize: function () {
+        this.C = Constants.CHOICE;
+        this.T = Constants.TABLE;
+    },
+
+    // Most specific active rule wins: product &gt; business line &gt; catch-all, then priority.
+    findRule: function (policyGr) {
+        var best = null, bestScore = -1;
+        var r = new GlideRecord(this.T.RENEWAL_RULE);
+        r.addQuery(&#39;active&#39;, true);
+        r.orderBy(&#39;priority&#39;);
+        r.query();
+        while (r.next()) {
+            var score = 0;
+            if (r.getValue(&#39;product&#39;)) {
+                if (r.getValue(&#39;product&#39;) !== policyGr.getValue(&#39;product&#39;)) continue;
+                score += 4;
+            }
+            if (r.getValue(&#39;business_line&#39;)) {
+                if (r.getValue(&#39;business_line&#39;) !== policyGr.getValue(&#39;business_line&#39;)) continue;
+                score += 2;
+            }
+            if (score &gt; bestScore) {
+                best = this._copy(r);
+                bestScore = score;
+            }
+        }
+        return best;
+    },
+
+    // Evidence for an expiring term.
+    metrics: function (termGr) {
+        var termId = termGr.getUniqueValue();
+        var premium = parseFloat(termGr.getValue(&#39;written_premium&#39;)) || 0;
+        var incurred = 0, claims = 0, mtas = 0;
+        var cl = new GlideAggregate(this.T.CLAIM);
+        cl.addQuery(&#39;policy_term&#39;, termId);
+        cl.addAggregate(&#39;COUNT&#39;);
+        cl.addAggregate(&#39;SUM&#39;, &#39;incurred_amount&#39;);
+        cl.query();
+        if (cl.next()) {
+            claims = parseInt(cl.getAggregate(&#39;COUNT&#39;), 10) || 0;
+            incurred = parseFloat(cl.getAggregate(&#39;SUM&#39;, &#39;incurred_amount&#39;)) || 0;
+        }
+        var tx = new GlideAggregate(this.T.POLICY_TRANSACTION);
+        tx.addQuery(&#39;policy_term&#39;, termId);
+        tx.addQuery(&#39;type&#39;, this.C.TRANSACTION_TYPE.ENDORSEMENT);
+        tx.addAggregate(&#39;COUNT&#39;);
+        tx.query();
+        if (tx.next())
+            mtas = parseInt(tx.getAggregate(&#39;COUNT&#39;), 10) || 0;
+        return {
+            written_premium: premium,
+            incurred: incurred,
+            loss_ratio: premium &gt; 0 ? Math.round(incurred / premium * 10000) / 100 : 0,
+            claim_count: claims,
+            mta_count: mtas
+        };
+    },
+
+    // Returns { decision, rule, metrics, reasons[] }. rateChangePct is optional input
+    // (requested change from the broker / rating), compared to max_rate_change_pct.
+    evaluate: function (termId, rateChangePct) {
+        var term = new GlideRecord(this.T.POLICY_TERM);
+        if (!term.get(termId))
+            throw new Error(&#39;[RenewalDecisionService] policy_term not found: &#39; + termId);
+        var policy = new GlideRecord(this.T.POLICY);
+        policy.get(term.getValue(&#39;policy&#39;));
+        var rule = this.findRule(policy);
+        var m = this.metrics(term);
+        m.rate_change_pct = parseFloat(rateChangePct) || 0;
+        if (!rule)
+            return { decision: this.C.SYSTEM_DECISION.FULL_RE_UNDERWRITING, rule: null, metrics: m, reasons: [&#39;no renewal rule matches - full re-underwriting by default&#39;] };
+
+        var reasons = [];
+        this._check(reasons, rule.max_loss_ratio, m.loss_ratio, &#39;loss ratio &#39; + m.loss_ratio + &#39;% &gt; &#39; + rule.max_loss_ratio + &#39;%&#39;);
+        this._check(reasons, rule.max_claim_count, m.claim_count, m.claim_count + &#39; claims &gt; &#39; + rule.max_claim_count);
+        this._check(reasons, rule.max_mta_count, m.mta_count, m.mta_count + &#39; MTAs &gt; &#39; + rule.max_mta_count);
+        this._check(reasons, rule.max_rate_change_pct, Math.abs(m.rate_change_pct), &#39;rate change &#39; + m.rate_change_pct + &#39;% beyond &#39; + rule.max_rate_change_pct + &#39;%&#39;);
+        if (rule.min_premium !== &#39;&#39; &amp;&amp; m.written_premium &lt; parseFloat(rule.min_premium))
+            reasons.push(&#39;premium below &#39; + rule.min_premium);
+        if (rule.max_premium !== &#39;&#39; &amp;&amp; m.written_premium &gt; parseFloat(rule.max_premium))
+            reasons.push(&#39;premium above &#39; + rule.max_premium);
+        return {
+            decision: reasons.length ? rule.decision_otherwise : rule.decision_when_met,
+            rule: rule.sys_id,
+            metrics: m,
+            reasons: reasons.length ? reasons : [&#39;all criteria of &quot;&#39; + rule.name + &#39;&quot; met&#39;]
+        };
+    },
+
+    // Fills a renewal_case from its policy&#39;s expiring term and stamps the system decision.
+    applyToRenewalCase: function (renewalCaseId) {
+        var rc = new GlideRecord(this.T.RENEWAL_CASE);
+        if (!rc.get(renewalCaseId) || !rc.getValue(&#39;policy_term&#39;))
+            return null;
+        var res = this.evaluate(rc.getValue(&#39;policy_term&#39;), rc.getValue(&#39;rate_change_pct&#39;));
+        rc.setValue(&#39;renewal_rule&#39;, res.rule || &#39;&#39;);
+        rc.setValue(&#39;loss_ratio&#39;, res.metrics.loss_ratio);
+        rc.setValue(&#39;claim_count&#39;, res.metrics.claim_count);
+        rc.setValue(&#39;mta_count&#39;, res.metrics.mta_count);
+        rc.setValue(&#39;system_decision&#39;, res.decision);
+        rc.update();
+        return res;
+    },
+
+    _check: function (reasons, limit, actual, msg) {
+        if (limit === &#39;&#39; || limit === null || limit === undefined)
+            return;
+        if (actual &gt; parseFloat(limit))
+            reasons.push(msg);
+    },
+
+    _copy: function (r) {
+        var o = { sys_id: r.getUniqueValue() };
+        var f = [&#39;name&#39;, &#39;max_loss_ratio&#39;, &#39;max_claim_count&#39;, &#39;max_mta_count&#39;, &#39;max_rate_change_pct&#39;, &#39;material_change_pct&#39;,
+            &#39;min_premium&#39;, &#39;max_premium&#39;, &#39;decision_when_met&#39;, &#39;decision_otherwise&#39;, &#39;lead_time_days&#39;, &#39;notification_days&#39;];
+        for (var i = 0; i &lt; f.length; i++)
+            o[f[i]] = r.getValue(f[i]) === null ? &#39;&#39; : String(r.getValue(f[i]));
+        return o;
+    },
+
+    type: &#39;RenewalDecisionService&#39;
+};
+</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-10-05 22:00:00</sys_created_on>
+        <sys_id>c7a083c978903b1a30d677fcfcfa94d5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>RenewalDecisionService</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_c7a083c978903b1a30d677fcfcfa94d5</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-10-05 22:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>

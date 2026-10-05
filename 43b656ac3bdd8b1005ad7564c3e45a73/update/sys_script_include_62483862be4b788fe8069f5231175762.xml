@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.LocalRatingProvider</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Default RatingProvider: rates a quote_option_line from its selected quote_option_coverage premiums, applies the discretionary adjustment, commission, taxes and fees, and stores technical vs commercial premium and rate adequacy. Replaceable by an external rating engine through integration_provider.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>LocalRatingProvider</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var LocalRatingProvider = Class.create();
+LocalRatingProvider.prototype = {
+
+    initialize: function () {},
+
+    // RatingProvider contract: rate(quoteOptionLineId) -&gt; result object, and the
+    // line is updated. Technical premium = sum of the line&#39;s selected coverage
+    // premiums (already priced from the product catalogue / rate tables);
+    // commercial = technical + the underwriter&#39;s discretionary adjustment.
+    rate: function (lineId) {
+        var line = new GlideRecord(Constants.TABLE.QUOTE_OPTION_LINE);
+        if (!line.get(lineId))
+            throw new Error(&#39;[LocalRatingProvider] quote_option_line not found: &#39; + lineId);
+
+        var technical = 0;
+        var cov = new GlideRecord(Constants.TABLE.QUOTE_OPTION_COVERAGE);
+        cov.addQuery(&#39;quote_option_line&#39;, lineId);
+        cov.addQuery(&#39;selected&#39;, true);
+        cov.query();
+        while (cov.next())
+            technical += parseFloat(cov.getValue(&#39;premium&#39;)) || 0;
+
+        var adjustment = parseFloat(line.getValue(&#39;adjustment_amount&#39;)) || 0;
+        var commercial = technical + adjustment;
+        var commissionRate = parseFloat(line.getValue(&#39;commission_rate&#39;)) || 0;
+        var commission = this._round(commercial * commissionRate / 100);
+
+        var taxes = 0;
+        var tf = new GlideAggregate(Constants.TABLE.QUOTE_TAX_FEE);
+        tf.addQuery(&#39;quote_option_line&#39;, lineId);
+        tf.addAggregate(&#39;SUM&#39;, &#39;amount&#39;);
+        tf.query();
+        if (tf.next())
+            taxes = parseFloat(tf.getAggregate(&#39;SUM&#39;, &#39;amount&#39;)) || 0;
+
+        var result = {
+            technical_premium: this._round(technical),
+            commercial_premium: this._round(commercial),
+            rate_adequacy: technical &gt; 0 ? this._round(commercial / technical * 100) : &#39;&#39;,
+            commission_amount: commission,
+            tax_fee_total: this._round(taxes),
+            total_premium: this._round(commercial + taxes)
+        };
+        for (var k in result) {
+            if (result.hasOwnProperty(k))
+                line.setValue(k, result[k]);
+        }
+        line.setValue(&#39;rated_on&#39;, new GlideDateTime());
+        line.setValue(&#39;status&#39;, Constants.CHOICE.QUOTE_OPTION_STATUS.ACTIVE);
+        line.update();
+        return result;
+    },
+
+    // Re-rates every line of a quote option and rolls the totals up onto it.
+    rateOption: function (quoteOptionId) {
+        var total = 0, written = 0;
+        var line = new GlideRecord(Constants.TABLE.QUOTE_OPTION_LINE);
+        line.addQuery(&#39;quote_option&#39;, quoteOptionId);
+        line.query();
+        while (line.next()) {
+            var r = this.rate(line.getUniqueValue());
+            total += r.total_premium;
+            written += r.commercial_premium;
+        }
+        var qo = new GlideRecord(Constants.TABLE.QUOTE_OPTION);
+        if (qo.get(quoteOptionId)) {
+            qo.setValue(&#39;written_premium&#39;, this._round(written));
+            qo.setValue(&#39;total_premium&#39;, this._round(total));
+            qo.update();
+        }
+        return { written_premium: this._round(written), total_premium: this._round(total) };
+    },
+
+    _round: function (n) {
+        return Math.round((parseFloat(n) || 0) * 100) / 100;
+    },
+
+    type: &#39;LocalRatingProvider&#39;
+};
+</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-10-05 22:00:00</sys_created_on>
+        <sys_id>62483862be4b788fe8069f5231175762</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>LocalRatingProvider</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_62483862be4b788fe8069f5231175762</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-10-05 22:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>

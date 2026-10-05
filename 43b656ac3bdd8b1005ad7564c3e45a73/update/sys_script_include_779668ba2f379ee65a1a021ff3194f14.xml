@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.PolicyLifecycleService</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Policy contract lifecycle: issue new business, endorse (MTA), renew (new term), cancel and reinstate. Every transaction creates an immutable policy_version, a policy_transaction and the version snapshot (risks, coverages, terms, parties, forms), and keeps the policy header rollups current.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>PolicyLifecycleService</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var PolicyLifecycleService = Class.create();
+
+// submission_party.role -&gt; policy_party.party_role (one ACORD-aligned vocabulary).
+PolicyLifecycleService.ROLE_MAP = {
+    primary_insured: &#39;named_insured&#39;,
+    co_applicant: &#39;named_insured&#39;,
+    secondary_insured: &#39;additional_insured&#39;,
+    additional_insured: &#39;additional_insured&#39;,
+    interest_holder: &#39;loss_payee&#39;,
+    broker: &#39;broker&#39;,
+    producer: &#39;broker&#39;,
+    premium_payer: &#39;policyholder&#39;
+};
+
+PolicyLifecycleService.prototype = {
+
+    initialize: function () {
+        this.C = Constants.CHOICE;
+        this.T = Constants.TABLE;
+        this.policies = new LocalPolicyProvider();
+    },
+
+    // ------------------------------------------------------------- transactions
+    // New business from an accepted quote option. opts: { submission, policyNumber, effectiveDate, expiryDate }
+    issueNewBusiness: function (quoteOptionId, opts) {
+        opts = opts || {};
+        var qo = this._get(this.T.QUOTE_OPTION, quoteOptionId, &#39;quote_option&#39;);
+        var quote = this._get(this.T.QUOTE, qo.getValue(&#39;quote&#39;), &#39;quote&#39;);
+        var submissionId = opts.submission || quote.getValue(&#39;submission&#39;) || &#39;&#39;;
+        var eff = opts.effectiveDate || quote.getValue(&#39;effective_date&#39;);
+        var exp = opts.expiryDate || quote.getValue(&#39;expiration_date&#39;) || this._plusYears(eff, 1);
+        var total = this._optionTotal(qo);
+
+        var policy = new GlideRecord(this.T.POLICY);
+        policy.initialize();
+        policy.setValue(&#39;insured&#39;, quote.getValue(&#39;insured&#39;));
+        policy.setValue(&#39;insured_name&#39;, quote.insured.getDisplayValue());
+        policy.setValue(&#39;product&#39;, qo.getValue(&#39;product&#39;) || quote.getValue(&#39;product&#39;));
+        policy.setValue(&#39;business_line&#39;, this._businessLine(qo));
+        policy.setValue(&#39;quote&#39;, quote.getUniqueValue());
+        policy.setValue(&#39;quote_option&#39;, qo.getUniqueValue());
+        policy.setValue(&#39;originating_submission&#39;, submissionId);
+        policy.setValue(&#39;currency&#39;, quote.getValue(&#39;currency&#39;));
+        policy.setValue(&#39;system_of_record&#39;, this.C.SYSTEM_OF_RECORD.LOCAL);
+        policy.setValue(&#39;inception_date&#39;, eff);
+        policy.setValue(&#39;status&#39;, this.C.POLICY_STATUS.PENDING_ISSUE);
+        policy.setValue(&#39;policy_number&#39;, opts.policyNumber || &#39;&#39;);
+        var policyId = policy.insert();
+        if (!policy.getValue(&#39;policy_number&#39;)) {
+            policy.setValue(&#39;policy_number&#39;, policy.getValue(&#39;number&#39;));
+            policy.update();
+        }
+
+        var term = this._newTerm(policyId, 1, eff, exp, submissionId, &#39;&#39;, total, quote.getValue(&#39;currency&#39;));
+        var version = this._newVersion(policyId, term, 1, eff, this.C.TRANSACTION_TYPE.NEW_BUSINESS, total, total, submissionId, quoteOptionId, &#39;New business&#39;);
+        this._snapshotFromQuoteOption(version, qo, submissionId);
+        this._transaction(policyId, term, version, this.C.TRANSACTION_TYPE.NEW_BUSINESS, eff, total, submissionId, quoteOptionId, &#39;Policy issued&#39;);
+        this._activate(policyId, term, version);
+        return { policy: policyId, term: term, version: version };
+    },
+
+    // Mid-term adjustment. opts: { effectiveDate, quoteOption (re-priced terms) | null, submission, reason }
+    endorse: function (policyId, opts) {
+        opts = opts || {};
+        var cur = this._current(policyId);
+        var eff = opts.effectiveDate || this._today();
+        var prevTotal = parseFloat(cur.version.getValue(&#39;total_premium&#39;)) || 0;
+        var newTotal = opts.quoteOption ? this._optionTotal(this._get(this.T.QUOTE_OPTION, opts.quoteOption, &#39;quote_option&#39;)) : prevTotal;
+        var delta = this._proRata(newTotal - prevTotal, cur.term, eff);
+        var version = this._newVersion(policyId, cur.term.getUniqueValue(), this._nextVersionNo(cur.term.getUniqueValue()), eff,
+            this.C.TRANSACTION_TYPE.ENDORSEMENT, newTotal, delta, opts.submission || &#39;&#39;, opts.quoteOption || &#39;&#39;, opts.reason || &#39;Mid-term adjustment&#39;);
+        if (opts.quoteOption)
+            this._snapshotFromQuoteOption(version, this._get(this.T.QUOTE_OPTION, opts.quoteOption, &#39;quote_option&#39;), opts.submission || &#39;&#39;);
+        else
+            this._cloneSnapshot(cur.version.getUniqueValue(), version);
+        this._transaction(policyId, cur.term.getUniqueValue(), version, this.C.TRANSACTION_TYPE.ENDORSEMENT, eff, delta, opts.submission || &#39;&#39;, opts.quoteOption || &#39;&#39;, opts.reason || &#39;Endorsement&#39;);
+        this._supersede(cur.version);
+        this._addToTermPremium(cur.term, delta);
+        this._activate(policyId, cur.term.getUniqueValue(), version);
+        return { policy: policyId, term: cur.term.getUniqueValue(), version: version, premium_delta: delta };
+    },
+
+    // Renewal = a new term. opts: { quoteOption, submission }
+    renew: function (policyId, opts) {
+        opts = opts || {};
+        var cur = this._current(policyId);
+        var eff = cur.term.getValue(&#39;expiry_date&#39;);
+        var exp = this._plusYears(eff, 1);
+        var qo = opts.quoteOption ? this._get(this.T.QUOTE_OPTION, opts.quoteOption, &#39;quote_option&#39;) : null;
+        var total = qo ? this._optionTotal(qo) : (parseFloat(cur.version.getValue(&#39;total_premium&#39;)) || 0);
+        var termNo = (parseInt(cur.term.getValue(&#39;term_number&#39;), 10) || 1) + 1;
+        var term = this._newTerm(policyId, termNo, eff, exp, opts.submission || &#39;&#39;, cur.term.getUniqueValue(), total, cur.term.getValue(&#39;currency&#39;));
+        var version = this._newVersion(policyId, term, 1, eff, this.C.TRANSACTION_TYPE.RENEWAL, total, total, opts.submission || &#39;&#39;, opts.quoteOption || &#39;&#39;, &#39;Renewal term &#39; + termNo);
+        if (qo)
+            this._snapshotFromQuoteOption(version, qo, opts.submission || &#39;&#39;);
+        else
+            this._cloneSnapshot(cur.version.getUniqueValue(), version);
+        this._transaction(policyId, term, version, this.C.TRANSACTION_TYPE.RENEWAL, eff, total, opts.submission || &#39;&#39;, opts.quoteOption || &#39;&#39;, &#39;Renewed&#39;);
+        cur.term.setValue(&#39;status&#39;, this.C.POLICY_TERM_STATUS.RENEWED);
+        cur.term.update();
+        this._supersede(cur.version);
+        this._activate(policyId, term, version);
+        return { policy: policyId, term: term, version: version };
+    },
+
+    // opts: { effectiveDate, reason }. Return premium is pro-rata unearned.
+    cancel: function (policyId, opts) {
+        opts = opts || {};
+        var cur = this._current(policyId);
+        var eff = opts.effectiveDate || this._today();
+        var total = parseFloat(cur.version.getValue(&#39;total_premium&#39;)) || 0;
+        var refund = -this._proRata(total, cur.term, eff);
+        var version = this._newVersion(policyId, cur.term.getUniqueValue(), this._nextVersionNo(cur.term.getUniqueValue()), eff,
+            this.C.TRANSACTION_TYPE.CANCELLATION, total + refund, refund, &#39;&#39;, &#39;&#39;, opts.reason || &#39;Cancellation&#39;);
+        this._cloneSnapshot(cur.version.getUniqueValue(), version);
+        this._transaction(policyId, cur.term.getUniqueValue(), version, this.C.TRANSACTION_TYPE.CANCELLATION, eff, refund, &#39;&#39;, &#39;&#39;, opts.reason || &#39;Cancelled&#39;);
+        this._supersede(cur.version);
+        cur.term.setValue(&#39;status&#39;, this.C.POLICY_TERM_STATUS.CANCELLED);
+        cur.term.setValue(&#39;cancellation_date&#39;, eff);
+        cur.term.setValue(&#39;cancellation_reason&#39;, opts.reason || &#39;&#39;);
+        cur.term.update();
+        this._addToTermPremium(cur.term, refund);
+        this._activate(policyId, cur.term.getUniqueValue(), version, this.C.POLICY_STATUS.CANCELLED);
+        return { policy: policyId, version: version, premium_delta: refund };
+    },
+
+    reinstate: function (policyId, opts) {
+        opts = opts || {};
+        var cur = this._current(policyId);
+        var eff = opts.effectiveDate || cur.term.getValue(&#39;cancellation_date&#39;) || this._today();
+        var cancelledTotal = parseFloat(cur.version.getValue(&#39;total_premium&#39;)) || 0;
+        var prior = this._previousVersion(cur.version);
+        var restored = prior ? (parseFloat(prior.getValue(&#39;total_premium&#39;)) || 0) : cancelledTotal;
+        var delta = restored - cancelledTotal;
+        var version = this._newVersion(policyId, cur.term.getUniqueValue(), this._nextVersionNo(cur.term.getUniqueValue()), eff,
+            this.C.TRANSACTION_TYPE.REINSTATEMENT, restored, delta, &#39;&#39;, &#39;&#39;, opts.reason || &#39;Reinstatement&#39;);
+        this._cloneSnapshot(cur.version.getUniqueValue(), version);
+        this._transaction(policyId, cur.term.getUniqueValue(), version, this.C.TRANSACTION_TYPE.REINSTATEMENT, eff, delta, &#39;&#39;, &#39;&#39;, opts.reason || &#39;Reinstated&#39;);
+        this._supersede(cur.version);
+        cur.term.setValue(&#39;status&#39;, this.C.POLICY_TERM_STATUS.IN_FORCE);
+        cur.term.setValue(&#39;cancellation_date&#39;, &#39;&#39;);
+        cur.term.update();
+        this._addToTermPremium(cur.term, delta);
+        this._activate(policyId, cur.term.getUniqueValue(), version);
+        return { policy: policyId, version: version, premium_delta: delta };
+    },
+
+    // ------------------------------------------------------------- building blocks
+    _newTerm: function (policyId, termNo, eff, exp, submissionId, renewedFrom, premium, currency) {
+        var t = new GlideRecord(this.T.POLICY_TERM);
+        t.initialize();
+        t.setValue(&#39;policy&#39;, policyId);
+        t.setValue(&#39;term_number&#39;, termNo);
+        t.setValue(&#39;effective_date&#39;, eff);
+        t.setValue(&#39;expiry_date&#39;, exp);
+        t.setValue(&#39;status&#39;, this.C.POLICY_TERM_STATUS.IN_FORCE);
+        t.setValue(&#39;written_premium&#39;, premium);
+        t.setValue(&#39;currency&#39;, currency || &#39;&#39;);
+        t.setValue(&#39;originating_submission&#39;, submissionId || &#39;&#39;);
+        t.setValue(&#39;renewed_from_term&#39;, renewedFrom || &#39;&#39;);
+        t.setValue(&#39;system_of_record&#39;, this.C.SYSTEM_OF_RECORD.LOCAL);
+        return t.insert();
+    },
+
+    _newVersion: function (policyId, termId, versionNo, eff, txType, total, delta, submissionId, quoteOptionId, summary) {
+        var p = this._get(this.T.POLICY, policyId, &#39;policy&#39;);
+        var v = new GlideRecord(this.T.POLICY_VERSION);
+        v.initialize();
+        v.setValue(&#39;policy&#39;, policyId);
+        v.setValue(&#39;policy_term&#39;, termId);
+        v.setValue(&#39;version_number&#39;, versionNo);
+        v.setValue(&#39;transaction_effective_date&#39;, eff);
+        v.setValue(&#39;transaction_type&#39;, txType);
+        v.setValue(&#39;status&#39;, this.C.POLICY_VERSION_STATUS.ISSUED);
+        v.setValue(&#39;is_current&#39;, false);
+        v.setValue(&#39;total_premium&#39;, this._round(total));
+        v.setValue(&#39;premium_delta&#39;, this._round(delta));
+        v.setValue(&#39;currency&#39;, p.getValue(&#39;currency&#39;));
+        v.setValue(&#39;business_line&#39;, p.getValue(&#39;business_line&#39;));
+        v.setValue(&#39;product&#39;, p.getValue(&#39;product&#39;));
+        v.setValue(&#39;source_submission&#39;, submissionId || &#39;&#39;);
+        v.setValue(&#39;source_quote_option&#39;, quoteOptionId || &#39;&#39;);
+        v.setValue(&#39;change_summary&#39;, summary || &#39;&#39;);
+        v.setValue(&#39;issued_on&#39;, new GlideDateTime());
+        v.setValue(&#39;system_of_record&#39;, this.C.SYSTEM_OF_RECORD.LOCAL);
+        return v.insert();
+    },
+
+    _transaction: function (policyId, termId, versionId, type, eff, delta, submissionId, quoteOptionId, description) {
+        var tx = new GlideRecord(this.T.POLICY_TRANSACTION);
+        tx.initialize();
+        tx.setValue(&#39;policy&#39;, policyId);
+        tx.setValue(&#39;policy_term&#39;, termId);
+        tx.setValue(&#39;policy_version&#39;, versionId);
+        tx.setValue(&#39;type&#39;, type);
+        tx.setValue(&#39;status&#39;, this.C.TRANSACTION_STATUS.COMPLETED);
+        tx.setValue(&#39;effective_date&#39;, eff);
+        tx.setValue(&#39;premium_delta&#39;, this._round(delta));
+        tx.setValue(&#39;submission&#39;, submissionId || &#39;&#39;);
+        tx.setValue(&#39;quote_option&#39;, quoteOptionId || &#39;&#39;);
+        tx.setValue(&#39;name&#39;, description);
+        tx.setValue(&#39;description&#39;, description);
+        tx.setValue(&#39;processed_on&#39;, new GlideDateTime());
+        return tx.insert();
+    },
+
+    // Policy header = rollup of the current term/version (kept for existing UI).
+    _activate: function (policyId, termId, versionId, policyStatus) {
+        var v = this._get(this.T.POLICY_VERSION, versionId, &#39;policy_version&#39;);
+        v.setValue(&#39;is_current&#39;, true);
+        v.update();
+        var t = this._get(this.T.POLICY_TERM, termId, &#39;policy_term&#39;);
+        var p = this._get(this.T.POLICY, policyId, &#39;policy&#39;);
+        p.setValue(&#39;current_term&#39;, termId);
+        p.setValue(&#39;current_version&#39;, versionId);
+        p.setValue(&#39;effective_date&#39;, t.getValue(&#39;effective_date&#39;));
+        p.setValue(&#39;expiry_date&#39;, t.getValue(&#39;expiry_date&#39;));
+        p.setValue(&#39;total_premium&#39;, v.getValue(&#39;total_premium&#39;));
+        p.setValue(&#39;status&#39;, policyStatus || this.C.POLICY_STATUS.IN_FORCE);
+        p.update();
+        new IntegrationEventPublisher().publish({
+            eventType: &#39;policy.&#39; + v.getValue(&#39;transaction_type&#39;),
+            aggregate: &#39;policy_version&#39;, table: this.T.POLICY_VERSION, sysId: versionId
+        });
+    },
+
+    _supersede: function (versionGr) {
+        versionGr.setValue(&#39;status&#39;, this.C.POLICY_VERSION_STATUS.SUPERSEDED);
+        versionGr.setValue(&#39;is_current&#39;, false);
+        versionGr.update();
+    },
+
+    // Quote option -&gt; policy version snapshot: risks, coverages, terms, parties, forms, commissions.
+    _snapshotFromQuoteOption: function (versionId, qo, submissionId) {
+        var v = this._get(this.T.POLICY_VERSION, versionId, &#39;policy_version&#39;);
+        var policyId = v.getValue(&#39;policy&#39;);
+        var riskMap = {};
+        var qr = new GlideRecord(this.T.QUOTE_RISK);
+        qr.addQuery(&#39;quote&#39;, qo.getValue(&#39;quote&#39;));
+        qr.query();
+        while (qr.next()) {
+            var pr = new GlideRecord(this.T.POLICY_RISK);
+            pr.initialize();
+            pr.setValue(&#39;policy&#39;, policyId);
+            pr.setValue(&#39;policy_version&#39;, versionId);
+            var fields = [&#39;name&#39;, &#39;risk_type&#39;, &#39;construction&#39;, &#39;occupancy&#39;, &#39;protection&#39;, &#39;exposure&#39;, &#39;location&#39;, &#39;insurable_object&#39;];
+            for (var i = 0; i &lt; fields.length; i++)
+                pr.setValue(fields[i], qr.getValue(fields[i]));
+            pr.setValue(&#39;sum_insured&#39;, this._riskValue(qo.getUniqueValue(), qr.getUniqueValue()));
+            riskMap[qr.getUniqueValue()] = pr.insert();
+        }
+        var qc = new GlideRecord(this.T.QUOTE_OPTION_COVERAGE);
+        qc.addQuery(&#39;quote_option&#39;, qo.getUniqueValue());
+        qc.addQuery(&#39;selected&#39;, true);
+        qc.query();
+        while (qc.next()) {
+            var pc = new GlideRecord(this.T.POLICY_COVERAGE);
+            pc.initialize();
+            pc.setValue(&#39;policy&#39;, policyId);
+            pc.setValue(&#39;policy_version&#39;, versionId);
+            pc.setValue(&#39;coverage&#39;, qc.getValue(&#39;coverage&#39;));
+            pc.setValue(&#39;name&#39;, qc.getValue(&#39;name&#39;));
+            pc.setValue(&#39;coverage_premium&#39;, qc.getValue(&#39;premium&#39;));
+            pc.setValue(&#39;policy_risk&#39;, riskMap[qc.getValue(&#39;quote_risk&#39;)] || &#39;&#39;);
+            pc.setValue(&#39;status&#39;, this.C.POLICY_COVERAGE_STATUS.ACTIVE);
+            var pcId = pc.insert();
+            this._termRow(policyId, versionId, pcId, &#39;Limit&#39;, this.C.POLICY_TERM_TYPE.LIMIT, qc.getValue(&#39;limit&#39;));
+            this._termRow(policyId, versionId, pcId, &#39;Deductible&#39;, this.C.POLICY_TERM_TYPE.DEDUCTIBLE, qc.getValue(&#39;deductible&#39;));
+            var qt = new GlideRecord(this.T.QUOTE_OPTION_COVERAGE_TERM);
+            qt.addQuery(&#39;quote_option_coverage&#39;, qc.getUniqueValue());
+            qt.query();
+            while (qt.next()) {
+                var termType = String(qt.coverage_term.term_type || &#39;&#39;);
+                if (termType === this.C.POLICY_TERM_TYPE.LIMIT || termType === this.C.POLICY_TERM_TYPE.DEDUCTIBLE)
+                    continue;   // already carried by the limit / deductible rows above
+                this._termRow(policyId, versionId, pcId, qt.getValue(&#39;name&#39;), this.C.POLICY_TERM_TYPE.SUBLIMIT, qt.getValue(&#39;term_value&#39;));
+            }
+        }
+        if (submissionId)
+            this._partiesFromSubmission(policyId, versionId, submissionId);
+        this._formsFromProduct(versionId, qo.getValue(&#39;product&#39;) || v.getValue(&#39;product&#39;));
+        var cm = new GlideRecord(this.T.COMMISSION);
+        cm.addQuery(&#39;quote_option_line.quote_option&#39;, qo.getUniqueValue());
+        cm.query();
+        while (cm.next()) {
+            var c2 = new GlideRecord(this.T.COMMISSION);
+            c2.initialize();
+            var cf = [&#39;producer&#39;, &#39;commission_type&#39;, &#39;rate&#39;, &#39;amount&#39;, &#39;split_pct&#39;];
+            for (var j = 0; j &lt; cf.length; j++)
+                c2.setValue(cf[j], cm.getValue(cf[j]));
+            c2.setValue(&#39;policy_version&#39;, versionId);
+            c2.insert();
+        }
+    },
+
+    _termRow: function (policyId, versionId, policyCoverageId, name, type, value) {
+        if (value === null || value === undefined || value === &#39;&#39;)
+            return;
+        var t = new GlideRecord(this.T.POLICY_COVERAGE_TERM);
+        t.initialize();
+        t.setValue(&#39;policy_coverage&#39;, policyCoverageId);
+        t.setValue(&#39;policy_version&#39;, versionId);
+        t.setValue(&#39;term_name&#39;, name);
+        t.setValue(&#39;term_type&#39;, type);
+        t.setValue(&#39;selected_value&#39;, value);
+        t.setValue(&#39;selected_label&#39;, String(value));
+        t.insert();
+    },
+
+    _partiesFromSubmission: function (policyId, versionId, submissionId) {
+        var sp = new GlideRecord(this.T.SUBMISSION_PARTY);
+        sp.addQuery(&#39;submission&#39;, submissionId);
+        sp.query();
+        while (sp.next()) {
+            var role = PolicyLifecycleService.ROLE_MAP[sp.getValue(&#39;role&#39;)];
+            if (!role || !sp.getValue(&#39;organization&#39;))
+                continue;
+            var pp = new GlideRecord(this.T.POLICY_PARTY);
+            pp.initialize();
+            pp.setValue(&#39;policy&#39;, policyId);
+            pp.setValue(&#39;policy_version&#39;, versionId);
+            pp.setValue(&#39;account&#39;, sp.getValue(&#39;organization&#39;));
+            pp.setValue(&#39;name&#39;, sp.organization.getDisplayValue());
+            pp.setValue(&#39;party_role&#39;, role);
+            pp.setValue(&#39;is_primary&#39;, sp.getValue(&#39;role&#39;) === &#39;primary_insured&#39;);
+            pp.insert();
+        }
+    },
+
+    _formsFromProduct: function (versionId, productId) {
+        if (!productId)
+            return;
+        var pf = new GlideRecord(this.T.PRODUCT_FORM);
+        pf.addQuery(&#39;product&#39;, productId);
+        pf.addQuery(&#39;active&#39;, true);
+        pf.addQuery(&#39;attachment_rule&#39;, this.C.FORM_ATTACHMENT_RULE.MANDATORY);
+        pf.orderBy(&#39;display_order&#39;);
+        pf.query();
+        while (pf.next()) {
+            var f = new GlideRecord(this.T.POLICY_FORM);
+            f.initialize();
+            f.setValue(&#39;policy_version&#39;, versionId);
+            f.setValue(&#39;form&#39;, pf.getValue(&#39;form&#39;));
+            f.setValue(&#39;product_form&#39;, pf.getUniqueValue());
+            f.setValue(&#39;edition_date&#39;, pf.form.edition_date.toString());
+            f.setValue(&#39;sequence&#39;, pf.getValue(&#39;display_order&#39;));
+            f.insert();
+        }
+    },
+
+    // Copies every snapshot row of one version onto another (unchanged MTA, cancel, reinstate).
+    _cloneSnapshot: function (fromVersionId, toVersionId) {
+        var riskMap = {}, covMap = {};
+        var self = this;
+        function copy(table, extra, onCopied) {
+            var src = new GlideRecord(table);
+            src.addQuery(&#39;policy_version&#39;, fromVersionId);
+            src.query();
+            while (src.next()) {
+                var dst = new GlideRecord(table);
+                dst.initialize();
+                var els = src.getElements();
+                for (var i = 0; i &lt; els.length; i++) {
+                    var n = els[i].getName();
+                    if (n.indexOf(&#39;sys_&#39;) === 0 || n === &#39;number&#39;)
+                        continue;
+                    dst.setValue(n, src.getValue(n));
+                }
+                dst.setValue(&#39;policy_version&#39;, toVersionId);
+                if (extra)
+                    extra(src, dst);
+                var newId = dst.insert();
+                if (onCopied)
+                    onCopied(src.getUniqueValue(), newId);
+            }
+        }
+        copy(this.T.POLICY_RISK, null, function (o, n) { riskMap[o] = n; });
+        copy(this.T.POLICY_COVERAGE, function (s, d) { d.setValue(&#39;policy_risk&#39;, riskMap[s.getValue(&#39;policy_risk&#39;)] || &#39;&#39;); }, function (o, n) { covMap[o] = n; });
+        copy(this.T.POLICY_COVERAGE_TERM, function (s, d) { d.setValue(&#39;policy_coverage&#39;, covMap[s.getValue(&#39;policy_coverage&#39;)] || &#39;&#39;); });
+        copy(this.T.POLICY_PARTY);
+        copy(this.T.POLICY_FORM);
+        copy(this.T.COMMISSION);
+        return self;
+    },
+
+    // ------------------------------------------------------------- helpers
+    _current: function (policyId) {
+        var term = this.policies.getCurrentTerm(policyId);
+        var version = this.policies.getCurrentVersion(policyId);
+        if (!term || !version)
+            throw new Error(&#39;[PolicyLifecycleService] policy has no current term/version: &#39; + policyId);
+        return { term: term, version: version };
+    },
+
+    _previousVersion: function (versionGr) {
+        var v = new GlideRecord(this.T.POLICY_VERSION);
+        v.addQuery(&#39;policy_term&#39;, versionGr.getValue(&#39;policy_term&#39;));
+        v.addQuery(&#39;version_number&#39;, &#39;&lt;&#39;, versionGr.getValue(&#39;version_number&#39;));
+        v.addQuery(&#39;transaction_type&#39;, &#39;!=&#39;, this.C.TRANSACTION_TYPE.CANCELLATION);
+        v.orderByDesc(&#39;version_number&#39;);
+        v.setLimit(1);
+        v.query();
+        return v.next() ? v : null;
+    },
+
+    _nextVersionNo: function (termId) {
+        var ga = new GlideAggregate(this.T.POLICY_VERSION);
+        ga.addQuery(&#39;policy_term&#39;, termId);
+        ga.addAggregate(&#39;MAX&#39;, &#39;version_number&#39;);
+        ga.query();
+        return ga.next() ? (parseInt(ga.getAggregate(&#39;MAX&#39;, &#39;version_number&#39;), 10) || 0) + 1 : 1;
+    },
+
+    _optionTotal: function (qo) {
+        var ga = new GlideAggregate(this.T.QUOTE_OPTION_LINE);
+        ga.addQuery(&#39;quote_option&#39;, qo.getUniqueValue());
+        ga.addAggregate(&#39;SUM&#39;, &#39;commercial_premium&#39;);
+        ga.query();
+        var lines = ga.next() ? parseFloat(ga.getAggregate(&#39;SUM&#39;, &#39;commercial_premium&#39;)) || 0 : 0;
+        return lines || parseFloat(qo.getValue(&#39;written_premium&#39;)) || parseFloat(qo.getValue(&#39;total_premium&#39;)) || 0;
+    },
+
+    _riskValue: function (quoteOptionId, quoteRiskId) {
+        var ga = new GlideAggregate(this.T.QUOTE_OPTION_COVERAGE);
+        ga.addQuery(&#39;quote_option&#39;, quoteOptionId);
+        ga.addQuery(&#39;quote_risk&#39;, quoteRiskId);
+        ga.addQuery(&#39;selected&#39;, true);
+        ga.addAggregate(&#39;SUM&#39;, &#39;limit&#39;);
+        ga.query();
+        return ga.next() ? parseFloat(ga.getAggregate(&#39;SUM&#39;, &#39;limit&#39;)) || 0 : 0;
+    },
+
+    _businessLine: function (qo) {
+        var line = new GlideRecord(this.T.QUOTE_OPTION_LINE);
+        line.addQuery(&#39;quote_option&#39;, qo.getUniqueValue());
+        line.addNotNullQuery(&#39;business_line&#39;);
+        line.setLimit(1);
+        line.query();
+        if (line.next())
+            return line.getValue(&#39;business_line&#39;);
+        var p = new GlideRecord(this.T.PRODUCT);
+        return p.get(qo.getValue(&#39;product&#39;)) ? p.getValue(&#39;business_line&#39;) : &#39;&#39;;
+    },
+
+    _addToTermPremium: function (termGr, delta) {
+        termGr.setValue(&#39;written_premium&#39;, this._round((parseFloat(termGr.getValue(&#39;written_premium&#39;)) || 0) + delta));
+        termGr.update();
+    },
+
+    // Share of an annual amount for the days from eff to term expiry.
+    _proRata: function (amount, termGr, eff) {
+        var start = new GlideDateTime(termGr.getValue(&#39;effective_date&#39;) + &#39; 12:00:00&#39;).getNumericValue();
+        var end = new GlideDateTime(termGr.getValue(&#39;expiry_date&#39;) + &#39; 12:00:00&#39;).getNumericValue();
+        var from = new GlideDateTime(eff + &#39; 12:00:00&#39;).getNumericValue();
+        if (end &lt;= start)
+            return this._round(amount);
+        var share = Math.max(0, Math.min(1, (end - from) / (end - start)));
+        return this._round(amount * share);
+    },
+
+    _plusYears: function (dateStr, n) {
+        var g = new GlideDateTime(dateStr + &#39; 12:00:00&#39;);
+        g.addYearsUTC(n);
+        return g.getDate().getValue();
+    },
+
+    _today: function () {
+        return new GlideDateTime().getLocalDate().getValue();
+    },
+
+    _round: function (n) {
+        return Math.round((parseFloat(n) || 0) * 100) / 100;
+    },
+
+    _get: function (table, id, label) {
+        var gr = new GlideRecord(table);
+        if (!id || !gr.get(id))
+            throw new Error(&#39;[PolicyLifecycleService] &#39; + label + &#39; not found: &#39; + id);
+        return gr;
+    },
+
+    type: &#39;PolicyLifecycleService&#39;
+};
+</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-10-05 22:00:00</sys_created_on>
+        <sys_id>779668ba2f379ee65a1a021ff3194f14</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>PolicyLifecycleService</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_779668ba2f379ee65a1a021ff3194f14</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-10-05 22:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>

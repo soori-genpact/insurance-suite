@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.LocalPolicyProvider</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Default PolicyProvider over the local policy / policy_term / policy_version tables: resolves the current term and version, and returns a version snapshot as canonical JSON. Replaceable by a PAS-backed provider; external rows are read-only projections.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>LocalPolicyProvider</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var LocalPolicyProvider = Class.create();
+LocalPolicyProvider.prototype = {
+
+    initialize: function () {
+        this.serializer = new AggregateSerializer();
+    },
+
+    // PolicyProvider contract ------------------------------------------------
+    // ref: policy sys_id, policy_number or external_ref.
+    getPolicy: function (ref) {
+        var gr = new GlideRecord(Constants.TABLE.POLICY);
+        if (gr.get(ref))
+            return gr;
+        var q = new GlideRecord(Constants.TABLE.POLICY);
+        q.addQuery(&#39;policy_number&#39;, ref).addOrCondition(&#39;external_ref&#39;, ref);
+        q.setLimit(1);
+        q.query();
+        return q.next() ? q : null;
+    },
+
+    getCurrentTerm: function (policyId) {
+        var p = this.getPolicy(policyId);
+        if (p &amp;&amp; p.getValue(&#39;current_term&#39;))
+            return this._get(Constants.TABLE.POLICY_TERM, p.getValue(&#39;current_term&#39;));
+        var t = new GlideRecord(Constants.TABLE.POLICY_TERM);
+        t.addQuery(&#39;policy&#39;, p ? p.getUniqueValue() : policyId);
+        t.orderByDesc(&#39;term_number&#39;);
+        t.setLimit(1);
+        t.query();
+        return t.next() ? t : null;
+    },
+
+    // Current version of the policy, or the version in force on asOfDate (yyyy-mm-dd).
+    getCurrentVersion: function (policyId, asOfDate) {
+        var p = this.getPolicy(policyId);
+        if (!p)
+            return null;
+        if (!asOfDate &amp;&amp; p.getValue(&#39;current_version&#39;))
+            return this._get(Constants.TABLE.POLICY_VERSION, p.getValue(&#39;current_version&#39;));
+        var v = new GlideRecord(Constants.TABLE.POLICY_VERSION);
+        v.addQuery(&#39;policy&#39;, p.getUniqueValue());
+        v.addQuery(&#39;status&#39;, &#39;IN&#39;, [Constants.CHOICE.POLICY_VERSION_STATUS.ISSUED, Constants.CHOICE.POLICY_VERSION_STATUS.SUPERSEDED].join(&#39;,&#39;));
+        if (asOfDate)
+            v.addQuery(&#39;transaction_effective_date&#39;, &#39;&lt;=&#39;, asOfDate);
+        v.orderByDesc(&#39;transaction_effective_date&#39;);
+        v.orderByDesc(&#39;version_number&#39;);
+        v.setLimit(1);
+        v.query();
+        return v.next() ? v : null;
+    },
+
+    getVersionSnapshot: function (versionId) {
+        return this.serializer.serialize(&#39;policy_version&#39;, versionId);
+    },
+
+    isExternal: function (policyId) {
+        var p = this.getPolicy(policyId);
+        return !!p &amp;&amp; p.getValue(&#39;system_of_record&#39;) === Constants.CHOICE.SYSTEM_OF_RECORD.EXTERNAL;
+    },
+
+    _get: function (table, id) {
+        var gr = new GlideRecord(table);
+        return gr.get(id) ? gr : null;
+    },
+
+    type: &#39;LocalPolicyProvider&#39;
+};
+</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-10-05 22:00:00</sys_created_on>
+        <sys_id>825ed69d8f2d13d416ea632ceb5424c8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>LocalPolicyProvider</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_825ed69d8f2d13d416ea632ceb5424c8</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-10-05 22:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>

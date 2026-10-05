@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.IntegrationRegistry</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Resolves the provider (local script include, REST message or IntegrationHub spoke) that serves an aggregate (party, policy, product, rating, claims, sanctions, geocode, document) from x_gegis_ins_policy_integration_provider. Domain code asks the registry, never a concrete class: dependency inversion so any aggregate can live in an external system.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>IntegrationRegistry</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var IntegrationRegistry = Class.create();
+
+// Default local implementations, used when no active integration_provider row
+// exists for an aggregate. Adding an external system is a row, not a code change.
+IntegrationRegistry.LOCAL_DEFAULTS = {
+    rating: &#39;LocalRatingProvider&#39;,
+    policy: &#39;LocalPolicyProvider&#39;
+};
+
+IntegrationRegistry.prototype = {
+
+    initialize: function () {
+        this._cache = {};
+    },
+
+    // Active provider row for an aggregate: lowest priority wins, default breaks ties.
+    getProviderRecord: function (aggregate) {
+        var gr = new GlideRecord(Constants.TABLE.INTEGRATION_PROVIDER);
+        gr.addQuery(&#39;aggregate&#39;, aggregate);
+        gr.addQuery(&#39;active&#39;, true);
+        gr.orderBy(&#39;priority&#39;);
+        gr.orderByDesc(&#39;is_default&#39;);
+        gr.setLimit(1);
+        gr.query();
+        return gr.next() ? gr : null;
+    },
+
+    // Returns an object exposing the aggregate&#39;s provider contract.
+    //   script_include  -&gt; an instance of that class (same scope)
+    //   rest_message    -&gt; a proxy: call(httpMethodName, params) -&gt; parsed JSON
+    //   integration_hub -&gt; a proxy: call(actionScopedName, inputs) -&gt; outputs
+    getProvider: function (aggregate) {
+        if (this._cache[aggregate])
+            return this._cache[aggregate];
+
+        var row = this.getProviderRecord(aggregate);
+        var type = row ? String(row.getValue(&#39;implementation_type&#39;)) : Constants.CHOICE.IMPLEMENTATION_TYPE.SCRIPT_INCLUDE;
+        var impl = row ? String(row.getValue(&#39;implementation&#39;) || &#39;&#39;) : (IntegrationRegistry.LOCAL_DEFAULTS[aggregate] || &#39;&#39;);
+        if (!impl)
+            throw new Error(&#39;[IntegrationRegistry] no provider configured for aggregate &#39; + aggregate);
+
+        var provider;
+        if (type === Constants.CHOICE.IMPLEMENTATION_TYPE.SCRIPT_INCLUDE)
+            provider = this._instantiate(impl);
+        else if (type === Constants.CHOICE.IMPLEMENTATION_TYPE.REST_MESSAGE)
+            provider = this._restProxy(impl);
+        else
+            provider = this._flowActionProxy(impl);
+
+        provider.providerSysId = row ? row.getUniqueValue() : &#39;&#39;;
+        this._cache[aggregate] = provider;
+        return provider;
+    },
+
+    _instantiate: function (impl) {
+        var name = impl.indexOf(&#39;.&#39;) &gt; -1 ? impl.split(&#39;.&#39;).pop() : impl;
+        var ctor = x_gegis_ins_policy[name];
+        if (typeof ctor !== &#39;function&#39;)
+            throw new Error(&#39;[IntegrationRegistry] script include not found: &#39; + impl);
+        return new ctor();
+    },
+
+    _restProxy: function (restMessageName) {
+        return {
+            type: &#39;rest_message&#39;,
+            call: function (httpMethodName, params) {
+                var rm = new sn_ws.RESTMessageV2(restMessageName, httpMethodName);
+                for (var k in (params || {})) {
+                    if (params.hasOwnProperty(k))
+                        rm.setStringParameterNoEscape(k, String(params[k]));
+                }
+                if (params &amp;&amp; params.body)
+                    rm.setRequestBody(typeof params.body === &#39;string&#39; ? params.body : JSON.stringify(params.body));
+                var res = rm.execute();
+                var status = res.getStatusCode();
+                if (status &lt; 200 || status &gt;= 300)
+                    throw new Error(&#39;[IntegrationRegistry] &#39; + restMessageName + &#39;.&#39; + httpMethodName + &#39; HTTP &#39; + status);
+                var body = res.getBody();
+                return body ? JSON.parse(body) : {};
+            }
+        };
+    },
+
+    _flowActionProxy: function (actionScopedName) {
+        return {
+            type: &#39;integration_hub&#39;,
+            call: function (inputs) {
+                return sn_fd.FlowAPI.getRunner().action(actionScopedName).inForeground().withInputs(inputs || {}).run().getOutputs();
+            }
+        };
+    },
+
+    type: &#39;IntegrationRegistry&#39;
+};
+</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-10-05 22:00:00</sys_created_on>
+        <sys_id>170d292c31fca2ea122e00890a60484c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>IntegrationRegistry</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_170d292c31fca2ea122e00890a60484c</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-10-05 22:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>

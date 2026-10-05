@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.MappingEngine</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>SAP BTP style message-mapping runtime: applies x_gegis_ins_policy_mapping_rule rows (direct, constant, concat, split, value_map, lookup, date/number format, conditional, script) with context handling for repeating nodes. Produces target rows; callers decide where to write.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>MappingEngine</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var MappingEngine = Class.create();
+MappingEngine.prototype = {
+
+    initialize: function () {
+        this.values = new ValueMapper();
+        this.TX = Constants.CHOICE.MAPPING_TRANSFORM;
+    },
+
+    // mappingRef: mapping.code or sys_id. source: parsed payload object.
+    // Returns { mapping, rows: [{ rule, target_path, target_table, target_column,
+    //   value, context_index }], errors: [] }. Nothing is written - the caller
+    // (ExtractionApplier, renewal baseline copy, an inbound PAS sync) decides.
+    transform: function (mappingRef, source) {
+        var mapping = this._mapping(mappingRef);
+        var result = { mapping: mapping ? mapping.getUniqueValue() : &#39;&#39;, rows: [], errors: [] };
+        if (!mapping) {
+            result.errors.push(&#39;mapping not found: &#39; + mappingRef);
+            return result;
+        }
+        var rule = new GlideRecord(Constants.TABLE.MAPPING_RULE);
+        rule.addQuery(&#39;mapping&#39;, mapping.getUniqueValue());
+        rule.addQuery(&#39;active&#39;, true);
+        rule.orderBy(&#39;sequence&#39;);
+        rule.query();
+        while (rule.next())
+            this._apply(rule, source, result);
+        return result;
+    },
+
+    // Groups rows into records: { &#39;&lt;table&gt;#&lt;context_index&gt;&#39;: { table, index, values:{col:val} } }
+    toRecords: function (rows) {
+        var out = {};
+        for (var i = 0; i &lt; rows.length; i++) {
+            var r = rows[i];
+            if (!r.target_table || !r.target_column)
+                continue;
+            var key = r.target_table + &#39;#&#39; + r.context_index;
+            if (!out[key])
+                out[key] = { table: r.target_table, index: r.context_index, values: {} };
+            out[key].values[r.target_column] = r.value;
+        }
+        return out;
+    },
+
+    _mapping: function (ref) {
+        var gr = new GlideRecord(Constants.TABLE.MAPPING);
+        if (gr.get(ref))
+            return gr;
+        gr = new GlideRecord(Constants.TABLE.MAPPING);
+        gr.addQuery(&#39;code&#39;, ref);
+        gr.addQuery(&#39;active&#39;, true);
+        gr.orderByDesc(&#39;version&#39;);
+        gr.setLimit(1);
+        gr.query();
+        return gr.next() ? gr : null;
+    },
+
+    _apply: function (rule, source, result) {
+        var ctxPath = String(rule.getValue(&#39;context_path&#39;) || &#39;&#39;);
+        var contexts = ctxPath ? this._resolve(source, ctxPath) : [source];
+        if (!Array.isArray(contexts))
+            contexts = contexts === undefined || contexts === null ? [] : [contexts];
+        for (var i = 0; i &lt; contexts.length; i++) {
+            var ctx = contexts[i];
+            if (!this._conditionMet(String(rule.getValue(&#39;condition&#39;) || &#39;&#39;), ctx, source))
+                continue;
+            var value;
+            try {
+                value = this._value(rule, ctx, source);
+            } catch (e) {
+                result.errors.push(rule.getValue(&#39;target_path&#39;) + &#39;: &#39; + e.message);
+                continue;
+            }
+            if (value === undefined || value === null || value === &#39;&#39;)
+                value = String(rule.getValue(&#39;default_value&#39;) || &#39;&#39;);
+            if (value === &#39;&#39; &amp;&amp; [&#39;1&#39;, &#39;true&#39;].indexOf(String(rule.getValue(&#39;mandatory&#39;))) &gt; -1) {
+                result.errors.push(rule.getValue(&#39;target_path&#39;) + &#39;: mandatory value missing (context &#39; + i + &#39;)&#39;);
+                continue;
+            }
+            result.rows.push({
+                rule: rule.getUniqueValue(),
+                target_path: String(rule.getValue(&#39;target_path&#39;)),
+                target_table: String(rule.getValue(&#39;target_table&#39;) || &#39;&#39;),
+                target_column: String(rule.getValue(&#39;target_column&#39;) || &#39;&#39;),
+                value: value,
+                context_index: ctxPath ? i : 0
+            });
+        }
+    },
+
+    _value: function (rule, ctx, root) {
+        var t = String(rule.getValue(&#39;transform&#39;) || this.TX.DIRECT);
+        var param = String(rule.getValue(&#39;transform_param&#39;) || &#39;&#39;);
+        var v = this._read(ctx, root, String(rule.getValue(&#39;source_path&#39;) || &#39;&#39;));
+        switch (t) {
+            case this.TX.DIRECT:
+                return v;
+            case this.TX.CONSTANT:
+                return param;
+            case this.TX.CONCAT:
+                var parts = [v];
+                var more = String(rule.getValue(&#39;source_paths&#39;) || &#39;&#39;).split(&#39;,&#39;);
+                for (var i = 0; i &lt; more.length; i++) {
+                    if (more[i].trim())
+                        parts.push(this._read(ctx, root, more[i].trim()));
+                }
+                return parts.filter(function (p) { return p !== undefined &amp;&amp; p !== null &amp;&amp; p !== &#39;&#39;; }).join(param || &#39; &#39;);
+            case this.TX.SPLIT:
+                var sp = param.split(&#39;|&#39;);
+                var pieces = String(v == null ? &#39;&#39; : v).split(sp[0] || &#39;,&#39;);
+                return (pieces[parseInt(sp[1], 10) || 0] || &#39;&#39;).trim();
+            case this.TX.VALUE_MAP:
+                return this.values.map(String(rule.getValue(&#39;value_map_scheme&#39;) || &#39;&#39;), v, false, false);
+            case this.TX.LOOKUP:
+                return this._lookup(param, v);
+            case this.TX.DATE_FORMAT:
+                return this._isoDate(v);
+            case this.TX.NUMBER_FORMAT:
+                var n = parseFloat(String(v == null ? &#39;&#39; : v).replace(/[^0-9.\-]/g, &#39;&#39;));
+                return isNaN(n) ? &#39;&#39; : String(n);
+            case this.TX.CURRENCY_CONVERT:
+                return String(v == null ? &#39;&#39; : v).trim().toLowerCase().substring(0, 3);
+            case this.TX.CONDITIONAL:
+                return v ? param : &#39;&#39;;
+            case this.TX.SCRIPT:
+                var ev = new GlideScopedEvaluator();
+                ev.putVariable(&#39;value&#39;, v);
+                ev.putVariable(&#39;context&#39;, ctx);
+                ev.putVariable(&#39;source&#39;, root);
+                return ev.evaluateScript(rule, &#39;transform_param&#39;, null);
+            default:
+                throw new Error(&#39;unknown transform &#39; + t);
+        }
+    },
+
+    // &#39;$.&#39; prefix = from the payload root; otherwise relative to the context item.
+    _read: function (ctx, root, p) {
+        if (!p)
+            return undefined;
+        if (p.indexOf(&#39;$.&#39;) === 0)
+            return this._resolve(root, p.substring(2));
+        return this._resolve(ctx, p);
+    },
+
+    // Dotted path with [] for arrays: &#39;locations[].address.city&#39; returns an array.
+    _resolve: function (obj, p) {
+        var segs = String(p).split(&#39;.&#39;);
+        var cur = [obj];
+        var fanned = false;
+        for (var i = 0; i &lt; segs.length; i++) {
+            var seg = segs[i];
+            var isArr = /\[\]$/.test(seg);
+            var key = seg.replace(/\[\]$/, &#39;&#39;);
+            var next = [];
+            for (var j = 0; j &lt; cur.length; j++) {
+                var o = cur[j];
+                if (o === null || o === undefined)
+                    continue;
+                var val = key ? o[key] : o;
+                if (isArr) {
+                    fanned = true;
+                    if (Array.isArray(val))
+                        next = next.concat(val);
+                } else {
+                    next.push(val);
+                }
+            }
+            cur = next;
+        }
+        return fanned ? cur : cur[0];
+    },
+
+    // condition: &#39;path=value&#39; or &#39;path!=value&#39; (path read like source_path).
+    _conditionMet: function (cond, ctx, root) {
+        if (!cond)
+            return true;
+        var neg = cond.indexOf(&#39;!=&#39;) &gt; -1;
+        var parts = cond.split(neg ? &#39;!=&#39; : &#39;=&#39;);
+        var actual = String(this._read(ctx, root, parts[0].trim()) || &#39;&#39;);
+        var expected = String(parts[1] || &#39;&#39;).trim();
+        return neg ? actual !== expected : actual === expected;
+    },
+
+    // param &#39;table.field&#39; - returns the sys_id of the first record whose field = value.
+    _lookup: function (param, v) {
+        if (!v)
+            return &#39;&#39;;
+        var dot = param.lastIndexOf(&#39;.&#39;);
+        var gr = new GlideRecord(param.substring(0, dot));
+        if (!gr.isValid())
+            throw new Error(&#39;lookup table invalid: &#39; + param);
+        gr.addQuery(param.substring(dot + 1), v);
+        gr.setLimit(1);
+        gr.query();
+        return gr.next() ? gr.getUniqueValue() : &#39;&#39;;
+    },
+
+    // Accepts yyyy-mm-dd, mm/dd/yyyy, dd-mm-yyyy, dd.mm.yyyy, ISO date-times.
+    _isoDate: function (v) {
+        var s = String(v == null ? &#39;&#39; : v).trim();
+        var m;
+        if ((m = s.match(/^(\d{4})-(\d{2})-(\d{2})/)))
+            return m[1] + &#39;-&#39; + m[2] + &#39;-&#39; + m[3];
+        if ((m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/)))
+            return m[3] + &#39;-&#39; + (&#39;0&#39; + m[1]).slice(-2) + &#39;-&#39; + (&#39;0&#39; + m[2]).slice(-2);
+        if ((m = s.match(/^(\d{1,2})[.\-](\d{1,2})[.\-](\d{4})$/)))
+            return m[3] + &#39;-&#39; + (&#39;0&#39; + m[2]).slice(-2) + &#39;-&#39; + (&#39;0&#39; + m[1]).slice(-2);
+        return &#39;&#39;;
+    },
+
+    type: &#39;MappingEngine&#39;
+};
+</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-10-05 22:00:00</sys_created_on>
+        <sys_id>489628d04d29e31d0342b9fd3146db85</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>MappingEngine</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_489628d04d29e31d0342b9fd3146db85</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-10-05 22:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>

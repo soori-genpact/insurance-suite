@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.ValueMapper</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Translates code values between schemes (ACORD, carrier, AI, legacy choice lists) through x_gegis_ins_policy_value_map, with a per-transaction cache. External codes are never stored as extra columns.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>ValueMapper</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var ValueMapper = Class.create();
+ValueMapper.prototype = {
+
+    initialize: function () {
+        this._cache = {};
+    },
+
+    // scheme: value_map.scheme (e.g. &#39;acord_lob_code&#39;, &#39;legacy_lob&#39;, &#39;acord_construction&#39;).
+    // reverse=true maps target -&gt; source. Returns &#39;&#39; when no mapping exists unless
+    // passthrough=true, in which case the input value is returned unchanged.
+    map: function (scheme, value, reverse, passthrough) {
+        var table = this._load(scheme);
+        var key = String(value == null ? &#39;&#39; : value).trim();
+        var hit = reverse ? table.reverse[key.toLowerCase()] : table.forward[key.toLowerCase()];
+        if (hit !== undefined)
+            return hit;
+        return passthrough ? key : &#39;&#39;;
+    },
+
+    has: function (scheme, value) {
+        return this._load(scheme).forward[String(value).trim().toLowerCase()] !== undefined;
+    },
+
+    _load: function (scheme) {
+        if (this._cache[scheme])
+            return this._cache[scheme];
+        var t = { forward: {}, reverse: {} };
+        var gr = new GlideRecord(Constants.TABLE.VALUE_MAP);
+        gr.addQuery(&#39;scheme&#39;, scheme);
+        gr.addQuery(&#39;active&#39;, true);
+        gr.query();
+        while (gr.next()) {
+            var src = String(gr.getValue(&#39;source_value&#39;) || &#39;&#39;);
+            var tgt = String(gr.getValue(&#39;target_value&#39;) || &#39;&#39;);
+            t.forward[src.toLowerCase()] = tgt;
+            if (t.reverse[tgt.toLowerCase()] === undefined)
+                t.reverse[tgt.toLowerCase()] = src;
+        }
+        this._cache[scheme] = t;
+        return t;
+    },
+
+    type: &#39;ValueMapper&#39;
+};
+</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-10-05 22:00:00</sys_created_on>
+        <sys_id>de75f9f19d21c05d4f4acffdf56cba13</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ValueMapper</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_de75f9f19d21c05d4f4acffdf56cba13</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-10-05 22:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>

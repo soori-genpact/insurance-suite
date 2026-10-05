@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.AggregateSerializer</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Serialises Submission, Quote, Policy (version) and Product aggregates to versioned canonical JSON (codes not labels, ISO dates and currency) from a declarative tree definition. Used by exports, integration events and change-set baselines.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>AggregateSerializer</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var AggregateSerializer = Class.create();
+
+AggregateSerializer.SCHEMA_VERSION = &#39;1.0&#39;;
+
+// Declarative aggregate trees. A child is { table, parent (field on the child
+// that points at the parent row), as (JSON key), children }. Adding a child
+// table to an export is one line here - nothing else changes.
+AggregateSerializer.TREES = {
+    submission: {
+        table: &#39;SUBMISSION&#39;,
+        children: [
+            { table: &#39;SUBMISSION_LINE&#39;, parent: &#39;submission&#39;, as: &#39;lines&#39;, children: [
+                { table: &#39;SUBMISSION_RISK&#39;, parent: &#39;submission_line&#39;, as: &#39;risks&#39; },
+                { table: &#39;SUBMISSION_COVERAGE&#39;, parent: &#39;submission_line&#39;, as: &#39;coverages&#39; }
+            ] },
+            { table: &#39;SUBMISSION_PARTY&#39;, parent: &#39;submission&#39;, as: &#39;parties&#39; },
+            { table: &#39;CHANGE_SET&#39;, parent: &#39;submission&#39;, as: &#39;change_sets&#39;, children: [
+                { table: &#39;CHANGE_ITEM&#39;, parent: &#39;change_set&#39;, as: &#39;items&#39; }
+            ] }
+        ]
+    },
+    quote: {
+        table: &#39;QUOTE&#39;,
+        children: [
+            { table: &#39;QUOTE_RISK&#39;, parent: &#39;quote&#39;, as: &#39;risks&#39; },
+            { table: &#39;QUOTE_OPTION&#39;, parent: &#39;quote&#39;, as: &#39;options&#39;, children: [
+                { table: &#39;QUOTE_OPTION_LINE&#39;, parent: &#39;quote_option&#39;, as: &#39;lines&#39;, children: [
+                    { table: &#39;COMMISSION&#39;, parent: &#39;quote_option_line&#39;, as: &#39;commissions&#39; }
+                ] },
+                { table: &#39;QUOTE_OPTION_COVERAGE&#39;, parent: &#39;quote_option&#39;, as: &#39;coverages&#39;, children: [
+                    { table: &#39;QUOTE_OPTION_COVERAGE_TERM&#39;, parent: &#39;quote_option_coverage&#39;, as: &#39;terms&#39; }
+                ] },
+                { table: &#39;QUOTE_TAX_FEE&#39;, parent: &#39;quote_option&#39;, as: &#39;taxes_fees&#39; },
+                { table: &#39;SUBJECTIVITY&#39;, parent: &#39;quote_option&#39;, as: &#39;subjectivities&#39; }
+            ] }
+        ]
+    },
+    policy_version: {
+        table: &#39;POLICY_VERSION&#39;,
+        children: [
+            { table: &#39;POLICY_PARTY&#39;, parent: &#39;policy_version&#39;, as: &#39;parties&#39; },
+            { table: &#39;POLICY_RISK&#39;, parent: &#39;policy_version&#39;, as: &#39;risks&#39; },
+            { table: &#39;POLICY_COVERAGE&#39;, parent: &#39;policy_version&#39;, as: &#39;coverages&#39;, children: [
+                { table: &#39;POLICY_COVERAGE_TERM&#39;, parent: &#39;policy_coverage&#39;, as: &#39;terms&#39; }
+            ] },
+            { table: &#39;POLICY_FORM&#39;, parent: &#39;policy_version&#39;, as: &#39;forms&#39; },
+            { table: &#39;COMMISSION&#39;, parent: &#39;policy_version&#39;, as: &#39;commissions&#39; }
+        ]
+    },
+    policy: {
+        table: &#39;POLICY&#39;,
+        children: [
+            { table: &#39;POLICY_TERM&#39;, parent: &#39;policy&#39;, as: &#39;terms&#39;, children: [
+                { table: &#39;POLICY_VERSION&#39;, parent: &#39;policy_term&#39;, as: &#39;versions&#39; },
+                { table: &#39;CLAIM&#39;, parent: &#39;policy_term&#39;, as: &#39;claims&#39; }
+            ] },
+            { table: &#39;POLICY_TRANSACTION&#39;, parent: &#39;policy&#39;, as: &#39;transactions&#39; }
+        ]
+    },
+    product: {
+        table: &#39;PRODUCT&#39;,
+        children: [
+            { table: &#39;PRODUCT_COVERAGE&#39;, parent: &#39;product&#39;, as: &#39;coverages&#39; },
+            { table: &#39;PRODUCT_FORM&#39;, parent: &#39;product&#39;, as: &#39;forms&#39; },
+            { table: &#39;PRODUCT_JURISDICTION&#39;, parent: &#39;product&#39;, as: &#39;jurisdictions&#39; }
+        ]
+    }
+};
+
+AggregateSerializer.prototype = {
+
+    initialize: function () {},
+
+    // aggregate: key of TREES; sysId: root record. Returns the canonical object.
+    serialize: function (aggregate, sysId) {
+        var tree = AggregateSerializer.TREES[aggregate];
+        if (!tree)
+            throw new Error(&#39;[AggregateSerializer] unknown aggregate &#39; + aggregate);
+        var root = new GlideRecord(Constants.TABLE[tree.table]);
+        if (!root.get(sysId))
+            return null;
+        return {
+            schema: &#39;policy_suite.&#39; + aggregate,
+            schema_version: AggregateSerializer.SCHEMA_VERSION,
+            generated_on: new GlideDateTime().getValue().replace(&#39; &#39;, &#39;T&#39;) + &#39;Z&#39;,
+            data: this._node(root, tree.children || [])
+        };
+    },
+
+    toJson: function (aggregate, sysId) {
+        return JSON.stringify(this.serialize(aggregate, sysId));
+    },
+
+    _node: function (gr, children) {
+        var out = this._fields(gr);
+        for (var i = 0; i &lt; children.length; i++) {
+            var c = children[i];
+            var rows = [];
+            var child = new GlideRecord(Constants.TABLE[c.table]);
+            if (!child.isValid() || !child.isValidField(c.parent))
+                continue;
+            child.addQuery(c.parent, gr.getUniqueValue());
+            child.orderBy(&#39;sys_created_on&#39;);
+            child.query();
+            while (child.next())
+                rows.push(this._node(child, c.children || []));
+            out[c.as] = rows;
+        }
+        return out;
+    },
+
+    // Codes, not labels. References carry the sys_id plus a display snapshot so
+    // a consumer without access to our tables can still read the export.
+    _fields: function (gr) {
+        var out = { sys_id: gr.getUniqueValue() };
+        var els = gr.getElements();
+        for (var i = 0; i &lt; els.length; i++) {
+            var el = els[i];
+            var name = el.getName();
+            if (name.indexOf(&#39;sys_&#39;) === 0)
+                continue;
+            var ed = el.getED();
+            var type = String(ed.getInternalType());
+            var v = el.getValue();
+            if (v === null || v === undefined || v === &#39;&#39;)
+                continue;
+            if (type === &#39;reference&#39;)
+                out[name] = { sys_id: String(v), display: String(el.getDisplayValue()) };
+            else if (type === &#39;boolean&#39;)
+                out[name] = String(v) === &#39;true&#39; || String(v) === &#39;1&#39;;
+            else if (type === &#39;integer&#39; || type === &#39;decimal&#39; || type === &#39;float&#39; || type === &#39;currency&#39;)
+                out[name] = parseFloat(v);
+            else if (type === &#39;glide_date_time&#39;)
+                out[name] = String(v).replace(&#39; &#39;, &#39;T&#39;) + &#39;Z&#39;;
+            else
+                out[name] = String(v);
+        }
+        return out;
+    },
+
+    type: &#39;AggregateSerializer&#39;
+};
+</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-10-05 22:00:00</sys_created_on>
+        <sys_id>151e0a3c42b1df26be23ac101827cec9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>AggregateSerializer</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_151e0a3c42b1df26be23ac101827cec9</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-10-05 22:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>

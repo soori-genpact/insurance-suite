@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.IntegrationEventPublisher</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Writes outbound/inbound domain events to x_gegis_ins_policy_integration_event (outbox/inbox) with canonical payload, SHA-256 hash and correlation id. No synchronous cross-system call inside business logic.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>IntegrationEventPublisher</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var IntegrationEventPublisher = Class.create();
+IntegrationEventPublisher.prototype = {
+
+    initialize: function () {
+        this.serializer = new AggregateSerializer();
+    },
+
+    // Outbox. opts: { eventType, aggregate, table, sysId, system, correlationId, payload }
+    // payload defaults to the canonical aggregate snapshot when the aggregate is serialisable.
+    publish: function (opts) {
+        var payload = opts.payload;
+        if (payload === undefined &amp;&amp; opts.aggregate &amp;&amp; AggregateSerializer.TREES[opts.aggregate])
+            payload = this.serializer.serialize(opts.aggregate, opts.sysId);
+        return this._write(Constants.CHOICE.DIRECTION.OUTBOUND, opts, payload);
+    },
+
+    // Inbox with idempotency: the same correlation id + payload hash is recorded
+    // once; a replay returns the existing event marked as already handled.
+    receive: function (opts) {
+        var body = typeof opts.payload === &#39;string&#39; ? opts.payload : JSON.stringify(opts.payload || {});
+        var hash = this.hash(body);
+        if (opts.correlationId) {
+            var dupe = new GlideRecord(Constants.TABLE.INTEGRATION_EVENT);
+            dupe.addQuery(&#39;direction&#39;, Constants.CHOICE.DIRECTION.INBOUND);
+            dupe.addQuery(&#39;correlation_id&#39;, opts.correlationId);
+            dupe.addQuery(&#39;payload_hash&#39;, hash);
+            dupe.setLimit(1);
+            dupe.query();
+            if (dupe.next())
+                return { sys_id: dupe.getUniqueValue(), duplicate: true };
+        }
+        return { sys_id: this._write(Constants.CHOICE.DIRECTION.INBOUND, opts, body), duplicate: false };
+    },
+
+    markProcessed: function (eventId, ok, error) {
+        var gr = new GlideRecord(Constants.TABLE.INTEGRATION_EVENT);
+        if (!gr.get(eventId))
+            return false;
+        gr.setValue(&#39;status&#39;, ok ? Constants.CHOICE.INTEGRATION_EVENT_STATUS.PROCESSED : Constants.CHOICE.INTEGRATION_EVENT_STATUS.FAILED);
+        gr.setValue(&#39;attempts&#39;, (parseInt(gr.getValue(&#39;attempts&#39;), 10) || 0) + 1);
+        gr.setValue(&#39;last_error&#39;, error ? String(error).substring(0, 4000) : &#39;&#39;);
+        gr.setValue(&#39;processed_on&#39;, new GlideDateTime());
+        gr.update();
+        return true;
+    },
+
+    hash: function (text) {
+        return new GlideDigest().getSHA256Hex(String(text));
+    },
+
+    _write: function (direction, opts, payload) {
+        var body = typeof payload === &#39;string&#39; ? payload : JSON.stringify(payload === undefined ? {} : payload);
+        var gr = new GlideRecord(Constants.TABLE.INTEGRATION_EVENT);
+        gr.initialize();
+        gr.setValue(&#39;direction&#39;, direction);
+        gr.setValue(&#39;event_type&#39;, opts.eventType);
+        if (opts.aggregate)
+            gr.setValue(&#39;aggregate&#39;, opts.aggregate === &#39;policy_version&#39; ? Constants.CHOICE.INTEGRATION_AGGREGATE.POLICY : opts.aggregate);
+        gr.setValue(&#39;table_name&#39;, opts.table || &#39;&#39;);
+        gr.setValue(&#39;record_sys_id&#39;, opts.sysId || &#39;&#39;);
+        if (opts.system)
+            gr.setValue(&#39;integration_system&#39;, opts.system);
+        gr.setValue(&#39;correlation_id&#39;, opts.correlationId || gs.generateGUID());
+        gr.setValue(&#39;payload&#39;, body);
+        gr.setValue(&#39;payload_hash&#39;, this.hash(body));
+        gr.setValue(&#39;status&#39;, Constants.CHOICE.INTEGRATION_EVENT_STATUS.PENDING);
+        gr.setValue(&#39;attempts&#39;, 0);
+        return gr.insert();
+    },
+
+    type: &#39;IntegrationEventPublisher&#39;
+};
+</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-10-05 22:00:00</sys_created_on>
+        <sys_id>273fa3453a7bc6c6ac85645f84f119a0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>IntegrationEventPublisher</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_273fa3453a7bc6c6ac85645f84f119a0</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-10-05 22:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_gegis_ins_policy.ChangeSetService</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Builds the What Changed comparison for renewal / MTA submissions: policy snapshot (baseline version) vs submission (and PAS latest when supplied), per insurable object and coverage, then classifies materiality from the matching renewal_rule.</description>
+        <mobile_callable>false</mobile_callable>
+        <name>ChangeSetService</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script>var ChangeSetService = Class.create();
+ChangeSetService.DEFAULT_MATERIAL_PCT = 10;
+
+ChangeSetService.prototype = {
+
+    initialize: function () {
+        this.C = Constants.CHOICE;
+        this.T = Constants.TABLE;
+    },
+
+    // Compares the submission with its baseline policy version (Policy Snapshot)
+    // and, optionally, PAS latest values keyed by canonical path.
+    // opts: { pasValues: { &#39;&lt;canonical_path&gt;&#39;: value } }
+    build: function (submissionId, opts) {
+        opts = opts || {};
+        var sub = new GlideRecord(this.T.SUBMISSION);
+        if (!sub.get(submissionId))
+            throw new Error(&#39;[ChangeSetService] submission not found: &#39; + submissionId);
+        var baseline = sub.getValue(&#39;baseline_policy_version&#39;);
+        if (!baseline)
+            throw new Error(&#39;[ChangeSetService] submission &#39; + sub.getValue(&#39;number&#39;) + &#39; has no baseline_policy_version&#39;);
+
+        this._supersedeOpen(submissionId);
+        var cs = new GlideRecord(this.T.CHANGE_SET);
+        cs.initialize();
+        cs.setValue(&#39;submission&#39;, submissionId);
+        cs.setValue(&#39;baseline_policy_version&#39;, baseline);
+        cs.setValue(&#39;purpose&#39;, sub.getValue(&#39;submission_type&#39;) === this.C.SUBMISSION_TYPE.RENEWAL ? this.C.CHANGE_SET_PURPOSE.RENEWAL : this.C.CHANGE_SET_PURPOSE.MTA);
+        cs.setValue(&#39;status&#39;, this.C.CHANGE_SET_STATUS.DRAFT);
+        var csId = cs.insert();
+
+        var items = this._riskItems(baseline, submissionId).concat(this._coverageItems(baseline, submissionId));
+        var pas = opts.pasValues || {};
+        var threshold = this._threshold(baseline);
+        var material = 0;
+        for (var i = 0; i &lt; items.length; i++) {
+            var it = items[i];
+            it.pas = pas[it.path] !== undefined ? String(pas[it.path]) : &#39;&#39;;
+            this._classify(it, threshold);
+            if (it.material)
+                material++;
+            this._writeItem(csId, it);
+        }
+
+        cs.get(csId);
+        cs.setValue(&#39;item_count&#39;, items.length);
+        cs.setValue(&#39;material_count&#39;, material);
+        cs.setValue(&#39;materiality&#39;, material ? this.C.MATERIALITY.MATERIAL :
+            (this._anyChange(items) ? this.C.MATERIALITY.NON_MATERIAL : this.C.MATERIALITY.NONE));
+        cs.setValue(&#39;status&#39;, this.C.CHANGE_SET_STATUS.EVALUATED);
+        cs.setValue(&#39;evaluated_on&#39;, new GlideDateTime());
+        cs.setValue(&#39;summary&#39;, this._summary(items, material, threshold));
+        cs.update();
+
+        sub.setValue(&#39;change_set&#39;, csId);
+        sub.update();
+        return csId;
+    },
+
+    // Policy snapshot risks (by insurable object) vs submission risks.
+    _riskItems: function (baseline, submissionId) {
+        var base = {}, cur = {}, out = [];
+        var pr = new GlideRecord(this.T.POLICY_RISK);
+        pr.addQuery(&#39;policy_version&#39;, baseline);
+        pr.query();
+        while (pr.next()) {
+            var k = pr.getValue(&#39;insurable_object&#39;) || pr.getValue(&#39;location&#39;) || pr.getUniqueValue();
+            base[k] = { label: pr.getValue(&#39;name&#39;), value: parseFloat(pr.getValue(&#39;sum_insured&#39;)) || 0, id: pr.getUniqueValue(), table: this.T.POLICY_RISK };
+        }
+        var sr = new GlideRecord(this.T.SUBMISSION_RISK);
+        sr.addQuery(&#39;submission&#39;, submissionId);
+        sr.query();
+        while (sr.next()) {
+            var k2 = sr.getValue(&#39;insurable_object&#39;);
+            cur[k2] = { label: sr.insurable_object.getDisplayValue(), value: parseFloat(sr.getValue(&#39;declared_value&#39;)) || 0, id: sr.getUniqueValue(), table: this.T.SUBMISSION_RISK };
+        }
+        return this._diff(base, cur, function (k, label) { return &#39;risks[&#39; + label + &#39;].declared_value&#39;; });
+    },
+
+    // Bound coverage limits vs requested limits, keyed by master coverage.
+    _coverageItems: function (baseline, submissionId) {
+        var base = {}, cur = {};
+        var pc = new GlideRecord(this.T.POLICY_COVERAGE_TERM);
+        pc.addQuery(&#39;policy_version&#39;, baseline);
+        pc.addQuery(&#39;term_type&#39;, this.C.POLICY_TERM_TYPE.LIMIT);
+        pc.query();
+        while (pc.next()) {
+            var k = pc.policy_coverage.coverage.toString();
+            if (!k) continue;
+            base[k] = { label: pc.policy_coverage.coverage.getDisplayValue(), value: (base[k] ? base[k].value : 0) + (parseFloat(pc.getValue(&#39;selected_value&#39;)) || 0), id: pc.getValue(&#39;policy_coverage&#39;), table: this.T.POLICY_COVERAGE };
+        }
+        var sc = new GlideRecord(this.T.SUBMISSION_COVERAGE);
+        sc.addQuery(&#39;submission&#39;, submissionId);
+        sc.query();
+        while (sc.next()) {
+            var k2 = sc.getValue(&#39;coverage&#39;);
+            if (!k2) continue;
+            cur[k2] = { label: sc.coverage.getDisplayValue(), value: (cur[k2] ? cur[k2].value : 0) + (parseFloat(sc.getValue(&#39;requested_limit&#39;)) || 0), id: sc.getUniqueValue(), table: this.T.SUBMISSION_COVERAGE };
+        }
+        return this._diff(base, cur, function (k, label) { return &#39;coverages[&#39; + label + &#39;].limit.amount&#39;; });
+    },
+
+    _diff: function (base, cur, pathFn) {
+        var out = [], k;
+        for (k in base) {
+            if (!base.hasOwnProperty(k)) continue;
+            var b = base[k], c = cur[k];
+            out.push({
+                path: pathFn(k, b.label), label: b.label,
+                table: c ? c.table : b.table, record: c ? c.id : b.id,
+                baseline: b.value, submission: c ? c.value : &#39;&#39;,
+                type: !c ? this.C.CHANGE_TYPE.REMOVED : (b.value === c.value ? this.C.CHANGE_TYPE.UNCHANGED : this.C.CHANGE_TYPE.MODIFIED)
+            });
+        }
+        for (k in cur) {
+            if (!cur.hasOwnProperty(k) || base[k]) continue;
+            out.push({ path: pathFn(k, cur[k].label), label: cur[k].label, table: cur[k].table, record: cur[k].id,
+                baseline: &#39;&#39;, submission: cur[k].value, type: this.C.CHANGE_TYPE.ADDED });
+        }
+        return out;
+    },
+
+    _classify: function (it, threshold) {
+        it.delta = &#39;&#39;;
+        it.material = false;
+        it.reason = &#39;&#39;;
+        if (it.type === this.C.CHANGE_TYPE.ADDED || it.type === this.C.CHANGE_TYPE.REMOVED) {
+            it.material = true;
+            it.reason = it.type + &#39; since the policy snapshot&#39;;
+        } else if (it.type === this.C.CHANGE_TYPE.MODIFIED) {
+            it.delta = it.baseline ? Math.round((it.submission - it.baseline) / it.baseline * 10000) / 100 : 100;
+            it.material = Math.abs(it.delta) &gt;= threshold;
+            it.reason = &#39;value changed &#39; + it.delta + &#39;% (threshold &#39; + threshold + &#39;%)&#39;;
+        }
+        if (it.pas !== &#39;&#39; &amp;&amp; String(it.pas) !== String(it.baseline)) {
+            it.material = true;
+            it.reason += (it.reason ? &#39;; &#39; : &#39;&#39;) + &#39;PAS latest differs from the policy snapshot&#39;;
+        }
+    },
+
+    _writeItem: function (csId, it) {
+        var ci = new GlideRecord(this.T.CHANGE_ITEM);
+        ci.initialize();
+        ci.setValue(&#39;change_set&#39;, csId);
+        ci.setValue(&#39;canonical_path&#39;, it.path);
+        ci.setValue(&#39;entity_label&#39;, it.label);
+        ci.setValue(&#39;table_name&#39;, it.table);
+        ci.setValue(&#39;record_sys_id&#39;, it.record);
+        ci.setValue(&#39;baseline_value&#39;, String(it.baseline));
+        ci.setValue(&#39;pas_value&#39;, it.pas);
+        ci.setValue(&#39;submission_value&#39;, String(it.submission));
+        ci.setValue(&#39;change_type&#39;, it.type);
+        ci.setValue(&#39;delta_pct&#39;, it.delta);
+        ci.setValue(&#39;is_material&#39;, it.material);
+        ci.setValue(&#39;materiality_reason&#39;, it.reason);
+        ci.setValue(&#39;decision&#39;, this.C.CHANGE_DECISION.PENDING);
+        ci.insert();
+    },
+
+    _threshold: function (baselineVersionId) {
+        var v = new GlideRecord(this.T.POLICY_VERSION);
+        if (v.get(baselineVersionId)) {
+            var p = new GlideRecord(this.T.POLICY);
+            if (p.get(v.getValue(&#39;policy&#39;))) {
+                var rule = new RenewalDecisionService().findRule(p);
+                if (rule &amp;&amp; rule.material_change_pct !== &#39;&#39;)
+                    return parseFloat(rule.material_change_pct);
+            }
+        }
+        return ChangeSetService.DEFAULT_MATERIAL_PCT;
+    },
+
+    _supersedeOpen: function (submissionId) {
+        var cs = new GlideRecord(this.T.CHANGE_SET);
+        cs.addQuery(&#39;submission&#39;, submissionId);
+        cs.addQuery(&#39;status&#39;, &#39;!=&#39;, this.C.CHANGE_SET_STATUS.SUPERSEDED);
+        cs.query();
+        while (cs.next()) {
+            cs.setValue(&#39;status&#39;, this.C.CHANGE_SET_STATUS.SUPERSEDED);
+            cs.update();
+        }
+    },
+
+    _anyChange: function (items) {
+        for (var i = 0; i &lt; items.length; i++)
+            if (items[i].type !== this.C.CHANGE_TYPE.UNCHANGED) return true;
+        return false;
+    },
+
+    _summary: function (items, material, threshold) {
+        var counts = {};
+        for (var i = 0; i &lt; items.length; i++)
+            counts[items[i].type] = (counts[items[i].type] || 0) + 1;
+        var parts = [];
+        for (var k in counts)
+            if (counts.hasOwnProperty(k)) parts.push(counts[k] + &#39; &#39; + k);
+        return items.length + &#39; compared (&#39; + parts.join(&#39;, &#39;) + &#39;); &#39; + material + &#39; material at &#39; + threshold + &#39;% threshold.&#39;;
+    },
+
+    type: &#39;ChangeSetService&#39;
+};
+</script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Palakala.SurenderReddy</sys_created_by>
+        <sys_created_on>2026-10-05 22:00:00</sys_created_on>
+        <sys_id>4ce0f4c1cc04fa61a012706010b33d36</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ChangeSetService</sys_name>
+        <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
+        <sys_update_name>sys_script_include_4ce0f4c1cc04fa61a012706010b33d36</sys_update_name>
+        <sys_updated_by>Palakala.SurenderReddy</sys_updated_by>
+        <sys_updated_on>2026-10-05 22:00:00</sys_updated_on>
+    </sys_script_include>
+</record_update>
