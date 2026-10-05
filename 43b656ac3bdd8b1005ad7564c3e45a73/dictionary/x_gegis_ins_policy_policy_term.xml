@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="878d76922f7f64c367d4c3bcf198b6e9" label="Policy Term" max_length="40" name="x_gegis_ins_policy_policy_term" type="collection">
+        <element label="Written Premium" max_length="40" name="written_premium" type="decimal"/>
+        <element label="Last Synced" max_length="40" name="last_synced_on" type="glide_date_time"/>
+        <element default="1" label="Term" mandatory="true" max_length="40" name="term_number" type="integer"/>
+        <element default="javascript:global.getNextObjNumberPadded();" display="true" label="Number" max_length="40" name="number" type="string"/>
+        <element choice="1" label="Currency" max_length="40" name="currency" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="EUR" sequence="30" value="eur"/>
+                <element inactive_on_update="false" label="CHF" sequence="70" value="chf"/>
+                <element inactive_on_update="false" label="JPY" sequence="60" value="jpy"/>
+                <element inactive_on_update="false" label="GBP" sequence="20" value="gbp"/>
+                <element inactive_on_update="false" label="AUD" sequence="50" value="aud"/>
+                <element inactive_on_update="false" label="USD" sequence="10" value="usd"/>
+                <element inactive_on_update="false" label="CAD" sequence="40" value="cad"/>
+            </choice>
+        </element>
+        <element label="Renewed From Term" max_length="32" name="renewed_from_term" reference="x_gegis_ins_policy_policy_term" type="reference"/>
+        <element label="Cancellation Date" max_length="40" name="cancellation_date" type="glide_date"/>
+        <element label="Originating Submission" max_length="32" name="originating_submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element label="Expiry Date" mandatory="true" max_length="40" name="expiry_date" type="glide_date"/>
+        <element label="Cancellation Reason" max_length="400" name="cancellation_reason" type="string"/>
+        <element choice="3" default="local" label="System of Record" max_length="40" name="system_of_record" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="External System" sequence="20" value="external"/>
+                <element inactive_on_update="false" label="Policy Suite (Local)" sequence="10" value="local"/>
+            </choice>
+        </element>
+        <element label="Effective Date" mandatory="true" max_length="40" name="effective_date" type="glide_date"/>
+        <element choice="3" default="pending_issue" label="Status" mandatory="true" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Expired" sequence="30" value="expired"/>
+                <element inactive_on_update="false" label="Renewed" sequence="60" value="renewed"/>
+                <element inactive_on_update="false" label="Pending Issue" sequence="10" value="pending_issue"/>
+                <element inactive_on_update="false" label="Non-Renewed" sequence="50" value="non_renewed"/>
+                <element inactive_on_update="false" label="In Force" sequence="20" value="in_force"/>
+                <element inactive_on_update="false" label="Cancelled" sequence="40" value="cancelled"/>
+            </choice>
+        </element>
+        <element label="Policy" mandatory="true" max_length="32" name="policy" reference="x_gegis_ins_policy_policy" type="reference"/>
+        <index name="index">
+            <element name="originating_submission"/>
+        </index>
+        <index name="index2">
+            <element name="policy"/>
+        </index>
+        <index name="index3">
+            <element name="renewed_from_term"/>
+        </index>
+    </element>
+</database>

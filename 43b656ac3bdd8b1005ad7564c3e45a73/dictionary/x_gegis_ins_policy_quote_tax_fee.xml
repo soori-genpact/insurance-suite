@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="6da2c8ba522551bf00bbfaeeb265bf68" label="Quote Tax / Fee" max_length="40" name="x_gegis_ins_policy_quote_tax_fee" type="collection">
+        <element label="Basis Amount" max_length="40" name="basis_amount" type="decimal"/>
+        <element label="Quote Option Line" max_length="32" name="quote_option_line" reference="x_gegis_ins_policy_quote_option_line" type="reference"/>
+        <element default="100" label="Sequence" max_length="40" name="sequence" type="integer"/>
+        <element label="Amount" mandatory="true" max_length="40" name="amount" type="decimal"/>
+        <element label="Rate %" max_length="40" name="rate" type="decimal"/>
+        <element label="Quote Option" mandatory="true" max_length="32" name="quote_option" reference="x_gegis_ins_policy_quote_option" type="reference"/>
+        <element label="Jurisdiction" max_length="32" name="jurisdiction" reference="x_gegis_ins_policy_jurisdiction" type="reference"/>
+        <element choice="3" display="true" label="Tax / Fee" mandatory="true" max_length="40" name="tax_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Policy Fee" sequence="50" value="policy_fee"/>
+                <element inactive_on_update="false" label="Municipal Tax" sequence="80" value="municipal_tax"/>
+                <element inactive_on_update="false" label="Insurance Premium Tax (IPT)" sequence="40" value="ipt"/>
+                <element inactive_on_update="false" label="Fire Marshal Tax" sequence="70" value="fire_marshal_tax"/>
+                <element inactive_on_update="false" label="Stamping Fee" sequence="30" value="stamping_fee"/>
+                <element inactive_on_update="false" label="Premium Tax" sequence="10" value="premium_tax"/>
+                <element inactive_on_update="false" label="Broker Fee" sequence="60" value="broker_fee"/>
+                <element inactive_on_update="false" label="Surplus Lines Tax" sequence="20" value="surplus_lines_tax"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="jurisdiction"/>
+        </index>
+        <index name="index2">
+            <element name="quote_option"/>
+        </index>
+        <index name="index3">
+            <element name="quote_option_line"/>
+        </index>
+    </element>
+</database>

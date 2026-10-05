@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="f9b0afb4e733b39794b1c0410a6f2126" extends="x_gegis_ins_policy_insurable_object" label="Building" max_length="40" name="x_gegis_ins_policy_building" type="collection">
+        <element label="Business Income Value" max_length="40" name="bi_value" type="decimal"/>
+        <element label="Stories" max_length="40" name="stories" type="integer"/>
+        <element label="Building Value" max_length="40" name="building_value" type="decimal"/>
+        <element label="Square Footage" max_length="40" name="square_footage" type="decimal"/>
+        <element choice="1" label="Construction Class" max_length="40" name="construction_class" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Fire Resistive" sequence="10" value="fire_resistive"/>
+                <element inactive_on_update="false" label="Non-Combustible" sequence="50" value="non_combustible"/>
+                <element inactive_on_update="false" label="Masonry" sequence="30" value="masonry"/>
+                <element inactive_on_update="false" label="Frame" sequence="60" value="frame"/>
+                <element inactive_on_update="false" label="Joisted Masonry" sequence="40" value="joisted_masonry"/>
+                <element inactive_on_update="false" label="Modified Fire Resistive" sequence="20" value="modified_fire_resistive"/>
+            </choice>
+        </element>
+        <element choice="1" label="Protection" max_length="40" name="protection" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Sprinklered" sequence="10" value="sprinklered"/>
+                <element inactive_on_update="false" label="Partial Sprinkler" sequence="30" value="partial_sprinkler"/>
+                <element inactive_on_update="false" label="Fire Alarm Only" sequence="40" value="fire_alarm_only"/>
+                <element inactive_on_update="false" label="No Sprinkler" sequence="20" value="no_sprinkler"/>
+                <element inactive_on_update="false" label="Full Suppression System" sequence="50" value="full_suppression"/>
+            </choice>
+        </element>
+        <element label="Building Number" max_length="40" name="building_number" type="integer"/>
+        <element label="Year Built" max_length="40" name="year_built" type="integer"/>
+        <element label="Location" max_length="32" name="location" reference="x_gegis_ins_policy_location" type="reference"/>
+        <element label="Contents Value" max_length="40" name="contents_value" type="decimal"/>
+        <element choice="1" label="Occupancy" max_length="40" name="occupancy" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Education" sequence="80" value="education"/>
+                <element inactive_on_update="false" label="Retail/Mall" sequence="10" value="retail_mall"/>
+                <element inactive_on_update="false" label="Restaurant" sequence="60" value="restaurant"/>
+                <element inactive_on_update="false" label="IT/Office" sequence="40" value="it_office"/>
+                <element inactive_on_update="false" label="Warehouse" sequence="20" value="warehouse"/>
+                <element inactive_on_update="false" label="Hospitality" sequence="90" value="hospitality"/>
+                <element inactive_on_update="false" label="Healthcare" sequence="70" value="healthcare"/>
+                <element inactive_on_update="false" label="Manufacturing" sequence="50" value="manufacturing"/>
+                <element inactive_on_update="false" label="Office" sequence="30" value="office"/>
+            </choice>
+        </element>
+        <element label="Roof Type" max_length="60" name="roof_type" type="string"/>
+        <element label="Sprinkler %" max_length="40" name="sprinkler_pct" type="decimal"/>
+        <element label="Sprinklered" max_length="40" name="sprinklered" type="boolean"/>
+        <element label="Roof Year" max_length="40" name="roof_year" type="integer"/>
+        <element choice="1" label="Alarm" max_length="40" name="alarm_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Central Station" sequence="30" value="central_station"/>
+                <element inactive_on_update="false" label="None" sequence="10" value="none"/>
+                <element inactive_on_update="false" label="Local" sequence="20" value="local"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="location"/>
+        </index>
+    </element>
+</database>

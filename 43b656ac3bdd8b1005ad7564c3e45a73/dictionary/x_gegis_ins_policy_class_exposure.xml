@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="1eadb38e0192f99a0be05d63e3569978" extends="x_gegis_ins_policy_insurable_object" label="Class Exposure" max_length="40" name="x_gegis_ins_policy_class_exposure" type="collection">
+        <element label="Payroll" max_length="40" name="payroll" type="decimal"/>
+        <element label="Business Line" max_length="32" name="business_line" reference="x_gegis_ins_policy_line_of_business" type="reference"/>
+        <element label="Rate" max_length="40" name="rate" type="decimal"/>
+        <element choice="3" label="Class Scheme" mandatory="true" max_length="40" name="class_scheme" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="SIC" sequence="40" value="sic"/>
+                <element inactive_on_update="false" label="NCCI" sequence="20" value="ncci"/>
+                <element inactive_on_update="false" label="ISO GL" sequence="10" value="iso_gl"/>
+                <element inactive_on_update="false" label="NAICS" sequence="30" value="naics"/>
+                <element inactive_on_update="false" label="Carrier" sequence="50" value="carrier"/>
+            </choice>
+        </element>
+        <element label="Exposure Amount" max_length="40" name="exposure_amount" type="decimal"/>
+        <element label="Employees" max_length="40" name="employee_count" type="integer"/>
+        <element label="Jurisdiction" max_length="32" name="jurisdiction" reference="x_gegis_ins_policy_jurisdiction" type="reference"/>
+        <element label="Location" max_length="32" name="location" reference="x_gegis_ins_policy_location" type="reference"/>
+        <element label="Class Code" mandatory="true" max_length="20" name="class_code" type="string"/>
+        <element choice="1" label="Premium Basis" max_length="40" name="premium_basis" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Each" sequence="50" value="each"/>
+                <element inactive_on_update="false" label="Area (per 1,000 sq ft)" sequence="30" value="area"/>
+                <element inactive_on_update="false" label="Payroll" sequence="10" value="payroll"/>
+                <element inactive_on_update="false" label="Units" sequence="40" value="units"/>
+                <element inactive_on_update="false" label="Gross Sales" sequence="20" value="gross_sales"/>
+                <element inactive_on_update="false" label="Admissions" sequence="60" value="admissions"/>
+            </choice>
+        </element>
+        <element label="Class Description" max_length="200" name="class_description" type="string"/>
+        <index name="index">
+            <element name="business_line"/>
+        </index>
+        <index name="index2">
+            <element name="jurisdiction"/>
+        </index>
+        <index name="index3">
+            <element name="location"/>
+        </index>
+    </element>
+</database>

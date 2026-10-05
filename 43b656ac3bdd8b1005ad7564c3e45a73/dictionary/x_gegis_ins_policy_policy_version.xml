@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="3a2f496a2149b4627bcb703989e51620" label="Policy Version" max_length="40" name="x_gegis_ins_policy_policy_version" type="collection">
+        <element choice="3" default="draft" label="Status" mandatory="true" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Draft" sequence="10" value="draft"/>
+                <element inactive_on_update="false" label="Reversed" sequence="40" value="reversed"/>
+                <element inactive_on_update="false" label="Superseded" sequence="30" value="superseded"/>
+                <element inactive_on_update="false" label="Issued" sequence="20" value="issued"/>
+            </choice>
+        </element>
+        <element label="Product" max_length="32" name="product" reference="x_gegis_ins_policy_product" type="reference"/>
+        <element label="Source Submission" max_length="32" name="source_submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element label="Source Quote Option" max_length="32" name="source_quote_option" reference="x_gegis_ins_policy_quote_option" type="reference"/>
+        <element label="Premium Change" max_length="40" name="premium_delta" type="decimal"/>
+        <element label="External Reference" max_length="200" name="external_ref" type="string"/>
+        <element label="Issued On" max_length="40" name="issued_on" type="glide_date_time"/>
+        <element default="javascript:global.getNextObjNumberPadded();" display="true" label="Number" max_length="40" name="number" type="string"/>
+        <element label="Policy" mandatory="true" max_length="32" name="policy" reference="x_gegis_ins_policy_policy" type="reference"/>
+        <element choice="1" label="Currency" max_length="40" name="currency" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="AUD" sequence="50" value="aud"/>
+                <element inactive_on_update="false" label="USD" sequence="10" value="usd"/>
+                <element inactive_on_update="false" label="CHF" sequence="70" value="chf"/>
+                <element inactive_on_update="false" label="CAD" sequence="40" value="cad"/>
+                <element inactive_on_update="false" label="EUR" sequence="30" value="eur"/>
+                <element inactive_on_update="false" label="GBP" sequence="20" value="gbp"/>
+                <element inactive_on_update="false" label="JPY" sequence="60" value="jpy"/>
+            </choice>
+        </element>
+        <element choice="3" label="Transaction Type" mandatory="true" max_length="40" name="transaction_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="New Business" sequence="10" value="new_business"/>
+                <element inactive_on_update="false" label="Reinstatement" sequence="50" value="reinstatement"/>
+                <element inactive_on_update="false" label="Cancellation" sequence="40" value="cancellation"/>
+                <element inactive_on_update="false" label="Endorsement (MTA)" sequence="30" value="endorsement"/>
+                <element inactive_on_update="false" label="Rewrite" sequence="60" value="rewrite"/>
+                <element inactive_on_update="false" label="Renewal" sequence="20" value="renewal"/>
+            </choice>
+        </element>
+        <element label="Business Line" max_length="32" name="business_line" reference="x_gegis_ins_policy_line_of_business" type="reference"/>
+        <element label="Effective From" mandatory="true" max_length="40" name="transaction_effective_date" type="glide_date"/>
+        <element label="Last Synced" max_length="40" name="last_synced_on" type="glide_date_time"/>
+        <element label="Total Premium" max_length="40" name="total_premium" type="decimal"/>
+        <element label="Sync Hash" max_length="64" name="sync_hash" type="string"/>
+        <element label="Current" max_length="40" name="is_current" type="boolean"/>
+        <element choice="3" default="local" label="System of Record" max_length="40" name="system_of_record" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Policy Suite (Local)" sequence="10" value="local"/>
+                <element inactive_on_update="false" label="External System" sequence="20" value="external"/>
+            </choice>
+        </element>
+        <element label="Change Summary" max_length="4000" name="change_summary" type="string"/>
+        <element label="Policy Term" mandatory="true" max_length="32" name="policy_term" reference="x_gegis_ins_policy_policy_term" type="reference"/>
+        <element default="1" label="Version" mandatory="true" max_length="40" name="version_number" type="integer"/>
+        <index name="index">
+            <element name="business_line"/>
+        </index>
+        <index name="index2">
+            <element name="policy"/>
+        </index>
+        <index name="index3">
+            <element name="policy_term"/>
+        </index>
+        <index name="index4">
+            <element name="product"/>
+        </index>
+        <index name="index5">
+            <element name="source_quote_option"/>
+        </index>
+        <index name="index6">
+            <element name="source_submission"/>
+        </index>
+    </element>
+</database>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="bc302ab30f28dc32929c524be2d46a51" label="Jurisdiction" max_length="40" name="x_gegis_ins_policy_jurisdiction" type="collection">
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element choice="1" label="Default Currency" max_length="40" name="currency" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="JPY" sequence="60" value="jpy"/>
+                <element inactive_on_update="false" label="USD" sequence="10" value="usd"/>
+                <element inactive_on_update="false" label="AUD" sequence="50" value="aud"/>
+                <element inactive_on_update="false" label="EUR" sequence="30" value="eur"/>
+                <element inactive_on_update="false" label="GBP" sequence="20" value="gbp"/>
+                <element inactive_on_update="false" label="CAD" sequence="40" value="cad"/>
+                <element inactive_on_update="false" label="CHF" sequence="70" value="chf"/>
+            </choice>
+        </element>
+        <element label="Country Code (ISO 3166-1)" mandatory="true" max_length="2" name="country_code" type="string"/>
+        <element display="true" label="Name" mandatory="true" max_length="100" name="name" type="string"/>
+        <element label="Subdivision Code (ISO 3166-2)" max_length="10" name="subdivision_code" type="string"/>
+        <element label="Parent Jurisdiction" max_length="32" name="parent" reference="x_gegis_ins_policy_jurisdiction" type="reference"/>
+        <element label="Code" mandatory="true" max_length="20" name="code" type="string"/>
+        <element choice="3" label="Type" mandatory="true" max_length="40" name="jurisdiction_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Region" sequence="30" value="region"/>
+                <element inactive_on_update="false" label="State / Province" sequence="20" value="state_province"/>
+                <element inactive_on_update="false" label="Country" sequence="10" value="country"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="parent"/>
+        </index>
+    </element>
+</database>

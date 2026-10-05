@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="721f513fee08c9f6039f6a85e8edac5d" label="Schema Definition" max_length="40" name="x_gegis_ins_policy_schema_definition" type="collection">
+        <element choice="3" default="draft" label="Status" mandatory="true" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Draft" sequence="10" value="draft"/>
+                <element inactive_on_update="false" label="Archived" sequence="30" value="archived"/>
+                <element inactive_on_update="false" label="Published" sequence="20" value="published"/>
+            </choice>
+        </element>
+        <element choice="3" label="Format" mandatory="true" max_length="40" name="format" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="JSON" sequence="10" value="json"/>
+                <element inactive_on_update="false" label="XML" sequence="20" value="xml"/>
+                <element inactive_on_update="false" label="Internal Table" sequence="50" value="internal"/>
+                <element inactive_on_update="false" label="CSV" sequence="40" value="csv"/>
+                <element inactive_on_update="false" label="ACORD XML" sequence="30" value="acord_xml"/>
+            </choice>
+        </element>
+        <element label="Description" max_length="1000" name="description" type="string"/>
+        <element choice="3" label="Role" mandatory="true" max_length="40" name="schema_role" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Source and Target" sequence="30" value="both"/>
+                <element inactive_on_update="false" label="Target" sequence="20" value="target"/>
+                <element inactive_on_update="false" label="Source" sequence="10" value="source"/>
+            </choice>
+        </element>
+        <element display="true" label="Name" mandatory="true" max_length="200" name="name" type="string"/>
+        <element label="Code" mandatory="true" max_length="60" name="code" type="string"/>
+        <element label="Integration System" max_length="32" name="integration_system" reference="x_gegis_ins_policy_integration_system" type="reference"/>
+        <element label="Version" mandatory="true" max_length="20" name="version" type="string"/>
+        <element label="Root Table" max_length="80" name="root_table" type="string"/>
+        <index name="index">
+            <element name="integration_system"/>
+        </index>
+    </element>
+</database>

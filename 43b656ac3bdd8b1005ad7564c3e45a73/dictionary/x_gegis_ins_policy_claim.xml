@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="02a0b60f3cc42df3ea44c9b0bced9579" label="Claim" max_length="40" name="x_gegis_ins_policy_claim" type="collection">
+        <element label="Insurable Object" max_length="32" name="insurable_object" reference="x_gegis_ins_policy_insurable_object" type="reference"/>
+        <element label="Integration System" max_length="32" name="integration_system" reference="x_gegis_ins_policy_integration_system" type="reference"/>
+        <element default="javascript:global.getNextObjNumberPadded();" display="true" label="Number" max_length="40" name="number" type="string"/>
+        <element label="Incurred" max_length="40" name="incurred_amount" type="decimal"/>
+        <element label="Paid" max_length="40" name="paid_amount" type="decimal"/>
+        <element label="Description" max_length="1000" name="description" type="string"/>
+        <element label="Date of Loss" mandatory="true" max_length="40" name="date_of_loss" type="glide_date"/>
+        <element label="External Reference" max_length="200" name="external_ref" type="string"/>
+        <element label="Outstanding Reserve" max_length="40" name="reserve_amount" type="decimal"/>
+        <element label="Claim Number" mandatory="true" max_length="60" name="claim_number" type="string"/>
+        <element label="Reported" max_length="40" name="reported_date" type="glide_date"/>
+        <element label="Last Synced" max_length="40" name="last_synced_on" type="glide_date_time"/>
+        <element choice="1" label="Currency" max_length="40" name="currency" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="CAD" sequence="40" value="cad"/>
+                <element inactive_on_update="false" label="JPY" sequence="60" value="jpy"/>
+                <element inactive_on_update="false" label="EUR" sequence="30" value="eur"/>
+                <element inactive_on_update="false" label="CHF" sequence="70" value="chf"/>
+                <element inactive_on_update="false" label="AUD" sequence="50" value="aud"/>
+                <element inactive_on_update="false" label="GBP" sequence="20" value="gbp"/>
+                <element inactive_on_update="false" label="USD" sequence="10" value="usd"/>
+            </choice>
+        </element>
+        <element label="Recoveries" max_length="40" name="recovery_amount" type="decimal"/>
+        <element label="Policy" max_length="32" name="policy" reference="x_gegis_ins_policy_policy" type="reference"/>
+        <element label="In Litigation" max_length="40" name="in_litigation" type="boolean"/>
+        <element label="Cause of Loss" max_length="32" name="cause_of_loss" reference="x_gegis_ins_policy_cause_of_loss" type="reference"/>
+        <element label="Policy Term" max_length="32" name="policy_term" reference="x_gegis_ins_policy_policy_term" type="reference"/>
+        <element choice="3" default="open" label="Status" mandatory="true" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Denied" sequence="40" value="denied"/>
+                <element inactive_on_update="false" label="Reopened" sequence="30" value="reopened"/>
+                <element inactive_on_update="false" label="Closed" sequence="20" value="closed"/>
+                <element inactive_on_update="false" label="Open" sequence="10" value="open"/>
+            </choice>
+        </element>
+        <element label="Catastrophe Code" max_length="40" name="catastrophe_code" type="string"/>
+        <index name="index">
+            <element name="cause_of_loss"/>
+        </index>
+        <index name="index2">
+            <element name="insurable_object"/>
+        </index>
+        <index name="index3">
+            <element name="integration_system"/>
+        </index>
+        <index name="index4">
+            <element name="policy"/>
+        </index>
+        <index name="index5">
+            <element name="policy_term"/>
+        </index>
+    </element>
+</database>

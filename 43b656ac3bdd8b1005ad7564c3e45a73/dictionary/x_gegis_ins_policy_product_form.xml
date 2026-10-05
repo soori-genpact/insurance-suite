@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="bfb6edfd26c52ea9bab8a72aada1c1cc" label="Product Form" max_length="40" name="x_gegis_ins_policy_product_form" type="collection">
+        <element default="100" label="Display Order" max_length="40" name="display_order" type="integer"/>
+        <element label="Condition" max_length="1000" name="condition" type="string"/>
+        <element choice="3" default="mandatory" label="Attachment Rule" mandatory="true" max_length="40" name="attachment_rule" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Optional" sequence="30" value="optional"/>
+                <element inactive_on_update="false" label="Conditional" sequence="20" value="conditional"/>
+                <element inactive_on_update="false" label="Mandatory" sequence="10" value="mandatory"/>
+            </choice>
+        </element>
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element display="true" label="Form" mandatory="true" max_length="32" name="form" reference="x_gegis_ins_policy_form" type="reference"/>
+        <element label="Product Coverage" max_length="32" name="product_coverage" reference="x_gegis_ins_policy_product_coverage" type="reference"/>
+        <element label="Product" mandatory="true" max_length="32" name="product" reference="x_gegis_ins_policy_product" type="reference"/>
+        <index name="index">
+            <element name="form"/>
+        </index>
+        <index name="index2">
+            <element name="product"/>
+        </index>
+        <index name="index3">
+            <element name="product_coverage"/>
+        </index>
+    </element>
+</database>

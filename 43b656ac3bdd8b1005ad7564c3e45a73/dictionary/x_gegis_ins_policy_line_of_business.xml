@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="9bbca0d106ab512c2cc110f83e458188" label="Line of Business" max_length="40" name="x_gegis_ins_policy_line_of_business" type="collection">
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element display="true" label="Name" mandatory="true" max_length="100" name="name" type="string"/>
+        <element label="ACORD LOB Code" max_length="20" name="acord_lob_code" type="string"/>
+        <element default="100" label="Display Order" max_length="40" name="display_order" type="integer"/>
+        <element label="Code" mandatory="true" max_length="40" name="code" type="string"/>
+        <element label="Description" max_length="1000" name="description" type="string"/>
+        <element label="Allowed Object Types" max_length="255" name="allowed_object_types" type="string"/>
+        <element choice="3" label="Line Group" mandatory="true" max_length="40" name="line_group" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Property" sequence="10" value="property"/>
+                <element inactive_on_update="false" label="Specialty" sequence="50" value="specialty"/>
+                <element inactive_on_update="false" label="Casualty" sequence="20" value="casualty"/>
+                <element inactive_on_update="false" label="Marine, Energy &amp; Aviation" sequence="40" value="marine_energy_aviation"/>
+                <element inactive_on_update="false" label="Financial Lines" sequence="60" value="financial_lines"/>
+                <element inactive_on_update="false" label="Motor" sequence="30" value="motor"/>
+            </choice>
+        </element>
+        <element label="Parent Line" max_length="32" name="parent" reference="x_gegis_ins_policy_line_of_business" type="reference"/>
+        <index name="index">
+            <element name="parent"/>
+        </index>
+    </element>
+</database>

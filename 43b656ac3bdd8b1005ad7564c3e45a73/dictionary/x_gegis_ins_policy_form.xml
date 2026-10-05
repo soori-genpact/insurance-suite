@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="97198273cd612f9561c24b8292e52077" label="Form" max_length="40" name="x_gegis_ins_policy_form" type="collection">
+        <element label="Form Number" mandatory="true" max_length="40" name="form_number" type="string"/>
+        <element choice="3" label="Form Type" mandatory="true" max_length="40" name="form_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Application" sequence="40" value="application"/>
+                <element inactive_on_update="false" label="Declarations" sequence="30" value="declarations"/>
+                <element inactive_on_update="false" label="Policy Form" sequence="10" value="policy_form"/>
+                <element inactive_on_update="false" label="Certificate" sequence="60" value="certificate"/>
+                <element inactive_on_update="false" label="Endorsement" sequence="20" value="endorsement"/>
+                <element inactive_on_update="false" label="Notice" sequence="50" value="notice"/>
+            </choice>
+        </element>
+        <element choice="3" default="draft" label="Status" mandatory="true" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Draft" sequence="10" value="draft"/>
+                <element inactive_on_update="false" label="Archived" sequence="30" value="archived"/>
+                <element inactive_on_update="false" label="Published" sequence="20" value="published"/>
+            </choice>
+        </element>
+        <element display="true" label="Form Name" mandatory="true" max_length="200" name="form_name" type="string"/>
+        <element label="Description" max_length="1000" name="description" type="string"/>
+        <element label="Business Line" max_length="32" name="business_line" reference="x_gegis_ins_policy_line_of_business" type="reference"/>
+        <element label="Edition" max_length="10" name="edition_date" type="string"/>
+        <element choice="3" label="Issuer" mandatory="true" max_length="40" name="issuer" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="AAIS" sequence="20" value="aais"/>
+                <element inactive_on_update="false" label="NCCI" sequence="40" value="ncci"/>
+                <element inactive_on_update="false" label="ISO" sequence="10" value="iso"/>
+                <element inactive_on_update="false" label="ACORD" sequence="30" value="acord"/>
+                <element inactive_on_update="false" label="Carrier" sequence="50" value="carrier"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="business_line"/>
+        </index>
+    </element>
+</database>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="447c32613a8c66b7d395c713862ef717" label="Subjectivity" max_length="40" name="x_gegis_ins_policy_subjectivity" type="collection">
+        <element label="Cleared On" max_length="40" name="cleared_on" type="glide_date_time"/>
+        <element choice="3" default="open" label="Status" mandatory="true" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Waived" sequence="30" value="waived"/>
+                <element inactive_on_update="false" label="Overdue" sequence="50" value="overdue"/>
+                <element inactive_on_update="false" label="Received" sequence="20" value="received"/>
+                <element inactive_on_update="false" label="Cleared" sequence="40" value="cleared"/>
+                <element inactive_on_update="false" label="Open" sequence="10" value="open"/>
+            </choice>
+        </element>
+        <element label="Subjectivity" mandatory="true" max_length="200" name="name" type="string"/>
+        <element label="Evidence Document" max_length="32" name="document" reference="x_gegis_ins_policy_document" type="reference"/>
+        <element label="Quote Option Line" max_length="32" name="quote_option_line" reference="x_gegis_ins_policy_quote_option_line" type="reference"/>
+        <element label="Due Date" max_length="40" name="due_date" type="glide_date"/>
+        <element label="Policy" max_length="32" name="policy" reference="x_gegis_ins_policy_policy" type="reference"/>
+        <element label="Description" max_length="1000" name="description" type="string"/>
+        <element label="Quote Option" mandatory="true" max_length="32" name="quote_option" reference="x_gegis_ins_policy_quote_option" type="reference"/>
+        <element choice="3" label="Type" mandatory="true" max_length="40" name="subjectivity_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Post-Bind" sequence="20" value="post_bind"/>
+                <element inactive_on_update="false" label="Pre-Bind" sequence="10" value="pre_bind"/>
+                <element inactive_on_update="false" label="Pre-Issue" sequence="30" value="pre_issue"/>
+            </choice>
+        </element>
+        <element label="Cleared By" max_length="32" name="cleared_by" reference="sys_user" type="reference"/>
+        <element default="javascript:global.getNextObjNumberPadded();" display="true" label="Number" max_length="40" name="number" type="string"/>
+        <index name="index">
+            <element name="cleared_by"/>
+        </index>
+        <index name="index2">
+            <element name="document"/>
+        </index>
+        <index name="index3">
+            <element name="policy"/>
+        </index>
+        <index name="index4">
+            <element name="quote_option"/>
+        </index>
+        <index name="index5">
+            <element name="quote_option_line"/>
+        </index>
+    </element>
+</database>

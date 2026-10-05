@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="4e1f3dcb949ab590d8db3de5b6fa2e1b" label="Integration Provider" max_length="40" name="x_gegis_ins_policy_integration_provider" type="collection">
+        <element label="Implementation" mandatory="true" max_length="200" name="implementation" type="string"/>
+        <element choice="3" label="Implementation Type" mandatory="true" max_length="40" name="implementation_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="IntegrationHub Spoke" sequence="30" value="integration_hub"/>
+                <element inactive_on_update="false" label="REST Message" sequence="20" value="rest_message"/>
+                <element inactive_on_update="false" label="Script Include" sequence="10" value="script_include"/>
+            </choice>
+        </element>
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element default="100" label="Priority" max_length="40" name="priority" type="integer"/>
+        <element label="Integration System" mandatory="true" max_length="32" name="integration_system" reference="x_gegis_ins_policy_integration_system" type="reference"/>
+        <element label="Description" max_length="1000" name="description" type="string"/>
+        <element choice="3" label="Aggregate" mandatory="true" max_length="40" name="aggregate" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Document" sequence="100" value="document"/>
+                <element inactive_on_update="false" label="Rating" sequence="60" value="rating"/>
+                <element inactive_on_update="false" label="Policy" sequence="50" value="policy"/>
+                <element inactive_on_update="false" label="Geocode" sequence="90" value="geocode"/>
+                <element inactive_on_update="false" label="Sanctions" sequence="80" value="sanctions"/>
+                <element inactive_on_update="false" label="Quote" sequence="40" value="quote"/>
+                <element inactive_on_update="false" label="Product" sequence="30" value="product"/>
+                <element inactive_on_update="false" label="Submission" sequence="10" value="submission"/>
+                <element inactive_on_update="false" label="Claims" sequence="70" value="claims"/>
+                <element inactive_on_update="false" label="Party" sequence="20" value="party"/>
+            </choice>
+        </element>
+        <element label="Default Provider" max_length="40" name="is_default" type="boolean"/>
+        <element display="true" label="Name" mandatory="true" max_length="100" name="name" type="string"/>
+        <index name="index">
+            <element name="integration_system"/>
+        </index>
+    </element>
+</database>
