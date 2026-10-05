@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="819c00f41e1cc0b317f639d8669e4be1" label="Submission Coverage" max_length="40" name="x_gegis_ins_policy_submission_coverage" type="collection">
+        <element label="Submission Risk" max_length="32" name="submission_risk" reference="x_gegis_ins_policy_submission_risk" type="reference"/>
+        <element choice="3" default="requested" label="Status" mandatory="true" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Not Available" sequence="40" value="not_available"/>
+                <element inactive_on_update="false" label="Declined" sequence="30" value="declined"/>
+                <element inactive_on_update="false" label="Offered" sequence="20" value="offered"/>
+                <element inactive_on_update="false" label="Requested" sequence="10" value="requested"/>
+            </choice>
+        </element>
+        <element label="Requested Deductible" max_length="40" name="requested_deductible" type="decimal"/>
+        <element choice="1" label="Currency" max_length="40" name="currency" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="USD" sequence="10" value="usd"/>
+                <element inactive_on_update="false" label="CHF" sequence="70" value="chf"/>
+                <element inactive_on_update="false" label="JPY" sequence="60" value="jpy"/>
+                <element inactive_on_update="false" label="CAD" sequence="40" value="cad"/>
+                <element inactive_on_update="false" label="EUR" sequence="30" value="eur"/>
+                <element inactive_on_update="false" label="AUD" sequence="50" value="aud"/>
+                <element inactive_on_update="false" label="GBP" sequence="20" value="gbp"/>
+            </choice>
+        </element>
+        <element label="Product Coverage" max_length="32" name="product_coverage" reference="x_gegis_ins_policy_product_coverage" type="reference"/>
+        <element label="Requested Sublimit" max_length="40" name="requested_sublimit" type="decimal"/>
+        <element display="true" label="Requested As" max_length="200" name="requested_name" type="string"/>
+        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element label="Coverage" max_length="32" name="coverage" reference="x_gegis_ins_policy_coverage" type="reference"/>
+        <element choice="1" label="Limit Basis" max_length="40" name="limit_basis" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Per Location" sequence="20" value="per_location"/>
+                <element inactive_on_update="false" label="Per Occurrence" sequence="10" value="per_occurrence"/>
+                <element inactive_on_update="false" label="Combined Single Limit" sequence="50" value="combined_single_limit"/>
+                <element inactive_on_update="false" label="Per Item" sequence="40" value="per_item"/>
+                <element inactive_on_update="false" label="Aggregate" sequence="30" value="aggregate"/>
+            </choice>
+        </element>
+        <element default="100" label="Display Order" max_length="40" name="display_order" type="integer"/>
+        <element label="Submission Line" mandatory="true" max_length="32" name="submission_line" reference="x_gegis_ins_policy_submission_line" type="reference"/>
+        <element choice="1" label="Source" max_length="40" name="source" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="External System" sequence="40" value="external"/>
+                <element inactive_on_update="false" label="Baseline Policy" sequence="30" value="baseline"/>
+                <element inactive_on_update="false" label="Manual" sequence="20" value="manual"/>
+                <element inactive_on_update="false" label="Extracted" sequence="10" value="extracted"/>
+            </choice>
+        </element>
+        <element label="Requested Limit" max_length="40" name="requested_limit" type="decimal"/>
+        <index name="index">
+            <element name="coverage"/>
+        </index>
+        <index name="index2">
+            <element name="product_coverage"/>
+        </index>
+        <index name="index3">
+            <element name="submission"/>
+        </index>
+        <index name="index4">
+            <element name="submission_line"/>
+        </index>
+        <index name="index5">
+            <element name="submission_risk"/>
+        </index>
+    </element>
+</database>

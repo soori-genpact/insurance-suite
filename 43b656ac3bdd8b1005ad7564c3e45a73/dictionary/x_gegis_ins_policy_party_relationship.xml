@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="ebab138a77efbe77abc950aed99cb8ae" label="Party Relationship" max_length="40" name="x_gegis_ins_policy_party_relationship" type="collection">
+        <element display="true" label="Party" mandatory="true" max_length="32" name="party" reference="x_gegis_ins_policy_party" type="reference"/>
+        <element choice="1" label="Source" max_length="40" name="source" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Baseline Policy" sequence="30" value="baseline"/>
+                <element inactive_on_update="false" label="Manual" sequence="20" value="manual"/>
+                <element inactive_on_update="false" label="External System" sequence="40" value="external"/>
+                <element inactive_on_update="false" label="Extracted" sequence="10" value="extracted"/>
+            </choice>
+        </element>
+        <element choice="3" label="Relationship" mandatory="true" max_length="40" name="relationship_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Parent" sequence="10" value="parent"/>
+                <element inactive_on_update="false" label="Other" sequence="60" value="other"/>
+                <element inactive_on_update="false" label="Subsidiary" sequence="20" value="subsidiary"/>
+                <element inactive_on_update="false" label="Franchise" sequence="50" value="franchise"/>
+                <element inactive_on_update="false" label="Joint Venture" sequence="40" value="joint_venture"/>
+                <element inactive_on_update="false" label="Affiliate" sequence="30" value="affiliate"/>
+            </choice>
+        </element>
+        <element label="Ownership %" max_length="40" name="ownership_percent" type="decimal"/>
+        <element label="End Date" max_length="40" name="end_date" type="glide_date"/>
+        <element label="Effective Date" max_length="40" name="effective_date" type="glide_date"/>
+        <element label="Related Party" mandatory="true" max_length="32" name="related_party" reference="x_gegis_ins_policy_party" type="reference"/>
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <index name="index">
+            <element name="party"/>
+        </index>
+        <index name="index2">
+            <element name="related_party"/>
+        </index>
+    </element>
+</database>

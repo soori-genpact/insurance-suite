@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="c77bdbe6fd4146d7f18e1969e6d20437" label="Integration Event" max_length="40" name="x_gegis_ins_policy_integration_event" type="collection">
+        <element choice="1" label="Aggregate" max_length="40" name="aggregate" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Claims" sequence="70" value="claims"/>
+                <element inactive_on_update="false" label="Product" sequence="30" value="product"/>
+                <element inactive_on_update="false" label="Document" sequence="100" value="document"/>
+                <element inactive_on_update="false" label="Party" sequence="20" value="party"/>
+                <element inactive_on_update="false" label="Rating" sequence="60" value="rating"/>
+                <element inactive_on_update="false" label="Geocode" sequence="90" value="geocode"/>
+                <element inactive_on_update="false" label="Policy" sequence="50" value="policy"/>
+                <element inactive_on_update="false" label="Submission" sequence="10" value="submission"/>
+                <element inactive_on_update="false" label="Quote" sequence="40" value="quote"/>
+                <element inactive_on_update="false" label="Sanctions" sequence="80" value="sanctions"/>
+            </choice>
+        </element>
+        <element label="Table" max_length="80" name="table_name" type="string"/>
+        <element label="Correlation ID" max_length="100" name="correlation_id" type="string"/>
+        <element label="Processed On" max_length="40" name="processed_on" type="glide_date_time"/>
+        <element choice="3" label="Direction" mandatory="true" max_length="40" name="direction" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Inbound" sequence="10" value="inbound"/>
+                <element inactive_on_update="false" label="Outbound" sequence="20" value="outbound"/>
+            </choice>
+        </element>
+        <element label="Integration System" max_length="32" name="integration_system" reference="x_gegis_ins_policy_integration_system" type="reference"/>
+        <element choice="3" default="pending" label="Status" mandatory="true" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Delivered" sequence="30" value="delivered"/>
+                <element inactive_on_update="false" label="Ignored" sequence="60" value="ignored"/>
+                <element inactive_on_update="false" label="Processing" sequence="20" value="processing"/>
+                <element inactive_on_update="false" label="Pending" sequence="10" value="pending"/>
+                <element inactive_on_update="false" label="Failed" sequence="50" value="failed"/>
+                <element inactive_on_update="false" label="Processed" sequence="40" value="processed"/>
+            </choice>
+        </element>
+        <element label="Record" max_length="32" name="record_sys_id" type="string"/>
+        <element default="0" label="Attempts" max_length="40" name="attempts" type="integer"/>
+        <element label="Payload Hash" max_length="64" name="payload_hash" type="string"/>
+        <element label="Event Type" mandatory="true" max_length="100" name="event_type" type="string"/>
+        <element default="javascript:global.getNextObjNumberPadded();" display="true" label="Number" max_length="40" name="number" type="string"/>
+        <element label="Payload" max_length="65000" name="payload" type="string"/>
+        <element label="Last Error" max_length="4000" name="last_error" type="string"/>
+        <index name="index">
+            <element name="integration_system"/>
+        </index>
+    </element>
+</database>

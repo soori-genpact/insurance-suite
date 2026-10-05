@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="09746aa5b4890a64479e2bb4b15e8261" label="Party Address" max_length="40" name="x_gegis_ins_policy_party_address" type="collection">
+        <element label="Jurisdiction" max_length="32" name="jurisdiction" reference="x_gegis_ins_policy_jurisdiction" type="reference"/>
+        <element label="State / Province" max_length="40" name="state" type="string"/>
+        <element label="Zip / Postal Code" max_length="40" name="zip" type="string"/>
+        <element display="true" label="Street" max_length="255" name="street" type="string"/>
+        <element label="Party" mandatory="true" max_length="32" name="party" reference="x_gegis_ins_policy_party" type="reference"/>
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="City" max_length="100" name="city" type="string"/>
+        <element label="Country" max_length="40" name="country" type="string"/>
+        <element label="Primary" max_length="40" name="is_primary" type="boolean"/>
+        <element choice="3" label="Address Type" mandatory="true" max_length="40" name="address_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Billing" sequence="30" value="billing"/>
+                <element inactive_on_update="false" label="Registered" sequence="10" value="registered"/>
+                <element inactive_on_update="false" label="Mailing" sequence="20" value="mailing"/>
+                <element inactive_on_update="false" label="Operating" sequence="40" value="operating"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="jurisdiction"/>
+        </index>
+        <index name="index2">
+            <element name="party"/>
+        </index>
+    </element>
+</database>

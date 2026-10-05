@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="bf3b4451c2289b190d96ffd02a23e447" label="Change Set" max_length="40" name="x_gegis_ins_policy_change_set" type="collection">
+        <element default="0" label="Material Items" max_length="40" name="material_count" type="integer"/>
+        <element choice="3" label="Purpose" mandatory="true" max_length="40" name="purpose" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Mid-Term Adjustment" sequence="20" value="mta"/>
+                <element inactive_on_update="false" label="Renewal" sequence="10" value="renewal"/>
+                <element inactive_on_update="false" label="Extraction Update" sequence="30" value="extraction_update"/>
+            </choice>
+        </element>
+        <element label="Summary" max_length="4000" name="summary" type="string"/>
+        <element default="0" label="Items" max_length="40" name="item_count" type="integer"/>
+        <element label="Evaluated On" max_length="40" name="evaluated_on" type="glide_date_time"/>
+        <element choice="1" label="Materiality" max_length="40" name="materiality" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Material" sequence="10" value="material"/>
+                <element inactive_on_update="false" label="No Change" sequence="30" value="none"/>
+                <element inactive_on_update="false" label="Non-Material" sequence="20" value="non_material"/>
+            </choice>
+        </element>
+        <element label="Baseline Policy Version" max_length="32" name="baseline_policy_version" reference="x_gegis_ins_policy_policy_version" type="reference"/>
+        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element choice="3" default="draft" label="Status" mandatory="true" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Evaluated" sequence="20" value="evaluated"/>
+                <element inactive_on_update="false" label="Draft" sequence="10" value="draft"/>
+                <element inactive_on_update="false" label="Superseded" sequence="40" value="superseded"/>
+                <element inactive_on_update="false" label="Accepted" sequence="30" value="accepted"/>
+            </choice>
+        </element>
+        <element default="javascript:global.getNextObjNumberPadded();" display="true" label="Number" max_length="40" name="number" type="string"/>
+        <index name="index">
+            <element name="baseline_policy_version"/>
+        </index>
+        <index name="index2">
+            <element name="submission"/>
+        </index>
+    </element>
+</database>

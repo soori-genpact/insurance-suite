@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="2b6c06d8c066bf7d20b169a04be29f7f" label="Change Item" max_length="40" name="x_gegis_ins_policy_change_item" type="collection">
+        <element label="Submission Value" max_length="1000" name="submission_value" type="string"/>
+        <element label="Record" max_length="32" name="record_sys_id" type="string"/>
+        <element label="Material" max_length="40" name="is_material" type="boolean"/>
+        <element label="Entity" max_length="200" name="entity_label" type="string"/>
+        <element label="Policy Snapshot Value" max_length="1000" name="baseline_value" type="string"/>
+        <element label="Materiality Reason" max_length="400" name="materiality_reason" type="string"/>
+        <element display="true" label="Canonical Path" mandatory="true" max_length="400" name="canonical_path" type="string"/>
+        <element label="Table" max_length="80" name="table_name" type="string"/>
+        <element choice="3" default="pending" label="Decision" max_length="40" name="decision" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Pending" sequence="10" value="pending"/>
+                <element inactive_on_update="false" label="Rejected" sequence="30" value="rejected"/>
+                <element inactive_on_update="false" label="Accepted" sequence="20" value="accepted"/>
+            </choice>
+        </element>
+        <element choice="3" label="Change Type" mandatory="true" max_length="40" name="change_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Added" sequence="10" value="added"/>
+                <element inactive_on_update="false" label="Modified" sequence="20" value="modified"/>
+                <element inactive_on_update="false" label="Unchanged" sequence="40" value="unchanged"/>
+                <element inactive_on_update="false" label="Removed" sequence="30" value="removed"/>
+            </choice>
+        </element>
+        <element label="Delta %" max_length="40" name="delta_pct" type="decimal"/>
+        <element label="PAS Latest Value" max_length="1000" name="pas_value" type="string"/>
+        <element label="Change Set" mandatory="true" max_length="32" name="change_set" reference="x_gegis_ins_policy_change_set" type="reference"/>
+        <index name="index">
+            <element name="change_set"/>
+        </index>
+    </element>
+</database>

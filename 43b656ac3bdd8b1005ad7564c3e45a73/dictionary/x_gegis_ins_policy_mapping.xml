@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="09a18e1a0d567e89768e003ab9f8deb6" label="Mapping" max_length="40" name="x_gegis_ins_policy_mapping" type="collection">
+        <element default="1" label="Version" max_length="40" name="version" type="integer"/>
+        <element label="Effective Date" max_length="40" name="effective_date" type="glide_date"/>
+        <element label="Code" mandatory="true" max_length="60" name="code" type="string"/>
+        <element label="Source Schema" mandatory="true" max_length="32" name="source_schema" reference="x_gegis_ins_policy_schema_definition" type="reference"/>
+        <element choice="3" default="draft" label="Status" mandatory="true" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Archived" sequence="30" value="archived"/>
+                <element inactive_on_update="false" label="Published" sequence="20" value="published"/>
+                <element inactive_on_update="false" label="Draft" sequence="10" value="draft"/>
+            </choice>
+        </element>
+        <element label="Business Line" max_length="32" name="business_line" reference="x_gegis_ins_policy_line_of_business" type="reference"/>
+        <element label="Target Schema" mandatory="true" max_length="32" name="target_schema" reference="x_gegis_ins_policy_schema_definition" type="reference"/>
+        <element label="Description" max_length="1000" name="description" type="string"/>
+        <element display="true" label="Name" mandatory="true" max_length="200" name="name" type="string"/>
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <index name="index">
+            <element name="business_line"/>
+        </index>
+        <index name="index2">
+            <element name="source_schema"/>
+        </index>
+        <index name="index3">
+            <element name="target_schema"/>
+        </index>
+    </element>
+</database>

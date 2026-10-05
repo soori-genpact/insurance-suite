@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="f702eb9e7e246430f2376a6c4f046e90" label="Insurable Object" max_length="40" name="x_gegis_ins_policy_insurable_object" type="collection">
+        <element label="Owner" max_length="32" name="owner_party" reference="x_gegis_ins_policy_party" type="reference"/>
+        <element label="Parent Object" max_length="32" name="parent_object" reference="x_gegis_ins_policy_insurable_object" type="reference"/>
+        <element label="Name" mandatory="true" max_length="200" name="name" type="string"/>
+        <element label="External Reference" max_length="200" name="external_ref" type="string"/>
+        <element label="Integration System" max_length="32" name="integration_system" reference="x_gegis_ins_policy_integration_system" type="reference"/>
+        <element label="Description" max_length="1000" name="description" type="string"/>
+        <element choice="3" label="Object Type" mandatory="true" max_length="40" name="object_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Class Exposure" sequence="50" value="class_exposure"/>
+                <element inactive_on_update="false" label="Building" sequence="20" value="building"/>
+                <element inactive_on_update="false" label="Scheduled Equipment" sequence="60" value="scheduled_equipment"/>
+                <element inactive_on_update="false" label="Vehicle" sequence="30" value="vehicle"/>
+                <element inactive_on_update="false" label="Cyber Profile" sequence="70" value="cyber_profile"/>
+                <element inactive_on_update="false" label="Location" sequence="10" value="location"/>
+                <element inactive_on_update="false" label="Driver" sequence="40" value="driver"/>
+                <element inactive_on_update="false" label="Underlying Policy" sequence="80" value="underlying_policy"/>
+            </choice>
+        </element>
+        <element default="javascript:global.getNextObjNumberPadded();" display="true" label="Number" max_length="40" name="number" type="string"/>
+        <element choice="3" default="active" label="Status" mandatory="true" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Active" sequence="10" value="active"/>
+                <element inactive_on_update="false" label="Retired" sequence="20" value="retired"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="integration_system"/>
+        </index>
+        <index name="index2">
+            <element name="owner_party"/>
+        </index>
+        <index name="index3">
+            <element name="parent_object"/>
+        </index>
+    </element>
+</database>

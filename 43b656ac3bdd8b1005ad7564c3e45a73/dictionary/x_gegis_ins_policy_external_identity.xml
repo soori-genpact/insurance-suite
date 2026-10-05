@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="93eb56a779b0f903e3a322014833e182" label="External Identity" max_length="40" name="x_gegis_ins_policy_external_identity" type="collection">
+        <element label="Record" mandatory="true" max_length="32" name="record_sys_id" type="string"/>
+        <element label="Table" mandatory="true" max_length="80" name="table_name" type="string"/>
+        <element choice="3" label="ID Scheme" mandatory="true" max_length="40" name="id_scheme" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="NPN" sequence="70" value="npn"/>
+                <element inactive_on_update="false" label="LEI" sequence="30" value="lei"/>
+                <element inactive_on_update="false" label="Other" sequence="110" value="other"/>
+                <element inactive_on_update="false" label="System ID" sequence="10" value="system_id"/>
+                <element inactive_on_update="false" label="NAIC" sequence="60" value="naic"/>
+                <element inactive_on_update="false" label="DUNS" sequence="20" value="duns"/>
+                <element inactive_on_update="false" label="Claim Number" sequence="100" value="claim_number"/>
+                <element inactive_on_update="false" label="Company Registration No." sequence="50" value="company_reg_no"/>
+                <element inactive_on_update="false" label="VIN" sequence="80" value="vin"/>
+                <element inactive_on_update="false" label="Policy Number" sequence="90" value="policy_number"/>
+                <element inactive_on_update="false" label="FEIN / TIN" sequence="40" value="fein"/>
+            </choice>
+        </element>
+        <element label="Integration System" mandatory="true" max_length="32" name="integration_system" reference="x_gegis_ins_policy_integration_system" type="reference"/>
+        <element display="true" label="External ID" mandatory="true" max_length="200" name="external_id" type="string"/>
+        <element label="Valid From" max_length="40" name="valid_from" type="glide_date"/>
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Primary" max_length="40" name="is_primary" type="boolean"/>
+        <element label="Last Synced" max_length="40" name="last_synced_on" type="glide_date_time"/>
+        <element label="Valid To" max_length="40" name="valid_to" type="glide_date"/>
+        <index name="index">
+            <element name="integration_system"/>
+        </index>
+    </element>
+</database>

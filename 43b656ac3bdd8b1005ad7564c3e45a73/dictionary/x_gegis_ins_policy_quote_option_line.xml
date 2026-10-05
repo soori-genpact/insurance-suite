@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="8ba5361a2331c12b3bfb8ec322720709" label="Quote Option Line" max_length="40" name="x_gegis_ins_policy_quote_option_line" type="collection">
+        <element label="Technical Premium" max_length="40" name="technical_premium" type="decimal"/>
+        <element display="true" label="Product" mandatory="true" max_length="32" name="product" reference="x_gegis_ins_policy_product" type="reference"/>
+        <element label="Rating Reference" max_length="100" name="rating_reference" type="string"/>
+        <element label="Submission Line" max_length="32" name="submission_line" reference="x_gegis_ins_policy_submission_line" type="reference"/>
+        <element label="Rating Provider" max_length="32" name="rating_provider" reference="x_gegis_ins_policy_integration_provider" type="reference"/>
+        <element label="Rated On" max_length="40" name="rated_on" type="glide_date_time"/>
+        <element label="Adjustment" max_length="40" name="adjustment_amount" type="decimal"/>
+        <element choice="1" label="Currency" max_length="40" name="currency" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="GBP" sequence="20" value="gbp"/>
+                <element inactive_on_update="false" label="USD" sequence="10" value="usd"/>
+                <element inactive_on_update="false" label="JPY" sequence="60" value="jpy"/>
+                <element inactive_on_update="false" label="AUD" sequence="50" value="aud"/>
+                <element inactive_on_update="false" label="CAD" sequence="40" value="cad"/>
+                <element inactive_on_update="false" label="EUR" sequence="30" value="eur"/>
+                <element inactive_on_update="false" label="CHF" sequence="70" value="chf"/>
+            </choice>
+        </element>
+        <element label="Adjustment Reason" max_length="400" name="adjustment_reason" type="string"/>
+        <element label="Commission %" max_length="40" name="commission_rate" type="decimal"/>
+        <element choice="3" default="draft" label="Status" mandatory="true" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Archived" sequence="40" value="archived"/>
+                <element inactive_on_update="false" label="Draft" sequence="10" value="draft"/>
+                <element inactive_on_update="false" label="Superseded" sequence="30" value="superseded"/>
+                <element inactive_on_update="false" label="Active" sequence="20" value="active"/>
+            </choice>
+        </element>
+        <element label="Commission" max_length="40" name="commission_amount" type="decimal"/>
+        <element label="Adjustment Approved By" max_length="32" name="adjustment_authority" reference="sys_user" type="reference"/>
+        <element label="Rate Adequacy %" max_length="40" name="rate_adequacy" type="decimal"/>
+        <element label="Business Line" max_length="32" name="business_line" reference="x_gegis_ins_policy_line_of_business" type="reference"/>
+        <element label="Total Payable" max_length="40" name="total_premium" type="decimal"/>
+        <element label="Quote Option" mandatory="true" max_length="32" name="quote_option" reference="x_gegis_ins_policy_quote_option" type="reference"/>
+        <element label="Commercial Premium" max_length="40" name="commercial_premium" type="decimal"/>
+        <element label="Taxes &amp; Fees" max_length="40" name="tax_fee_total" type="decimal"/>
+        <index name="index">
+            <element name="adjustment_authority"/>
+        </index>
+        <index name="index2">
+            <element name="business_line"/>
+        </index>
+        <index name="index3">
+            <element name="product"/>
+        </index>
+        <index name="index4">
+            <element name="quote_option"/>
+        </index>
+        <index name="index5">
+            <element name="rating_provider"/>
+        </index>
+        <index name="index6">
+            <element name="submission_line"/>
+        </index>
+    </element>
+</database>

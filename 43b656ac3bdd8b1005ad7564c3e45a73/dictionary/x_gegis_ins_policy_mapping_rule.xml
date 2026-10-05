@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="a35a2e4ed94d32b91760f02aac5f44a1" label="Mapping Rule" max_length="40" name="x_gegis_ins_policy_mapping_rule" type="collection">
+        <element label="Value Map Scheme" max_length="60" name="value_map_scheme" type="string"/>
+        <element label="Description" max_length="1000" name="description" type="string"/>
+        <element label="Source Path" max_length="400" name="source_path" type="string"/>
+        <element label="Mapping" mandatory="true" max_length="32" name="mapping" reference="x_gegis_ins_policy_mapping" type="reference"/>
+        <element label="Condition" max_length="1000" name="condition" type="string"/>
+        <element label="Mandatory" max_length="40" name="mandatory" type="boolean"/>
+        <element label="Context Path" max_length="400" name="context_path" type="string"/>
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Default Value" max_length="400" name="default_value" type="string"/>
+        <element label="Transform Parameter" max_length="1000" name="transform_param" type="string"/>
+        <element display="true" label="Target Path" mandatory="true" max_length="400" name="target_path" type="string"/>
+        <element label="Target Table" max_length="80" name="target_table" type="string"/>
+        <element label="Additional Source Paths" max_length="1000" name="source_paths" type="string"/>
+        <element choice="3" default="direct" label="Transform" mandatory="true" max_length="40" name="transform" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Date Format" sequence="70" value="date_format"/>
+                <element inactive_on_update="false" label="Concatenate" sequence="30" value="concat"/>
+                <element inactive_on_update="false" label="Script" sequence="110" value="script"/>
+                <element inactive_on_update="false" label="Constant" sequence="20" value="constant"/>
+                <element inactive_on_update="false" label="Direct" sequence="10" value="direct"/>
+                <element inactive_on_update="false" label="Conditional" sequence="100" value="conditional"/>
+                <element inactive_on_update="false" label="Lookup" sequence="60" value="lookup"/>
+                <element inactive_on_update="false" label="Value Map" sequence="50" value="value_map"/>
+                <element inactive_on_update="false" label="Currency Convert" sequence="90" value="currency_convert"/>
+                <element inactive_on_update="false" label="Number Format" sequence="80" value="number_format"/>
+                <element inactive_on_update="false" label="Split" sequence="40" value="split"/>
+            </choice>
+        </element>
+        <element default="100" label="Sequence" max_length="40" name="sequence" type="integer"/>
+        <element label="Target Column" max_length="80" name="target_column" type="string"/>
+        <index name="index">
+            <element name="mapping"/>
+        </index>
+    </element>
+</database>

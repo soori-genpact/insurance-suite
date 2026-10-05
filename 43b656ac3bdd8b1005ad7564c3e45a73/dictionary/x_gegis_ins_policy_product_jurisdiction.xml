@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="9ba40a1e176e451753d1e04354205874" label="Product Jurisdiction" max_length="40" name="x_gegis_ins_policy_product_jurisdiction" type="collection">
+        <element label="Filed On" max_length="40" name="filed_on" type="glide_date"/>
+        <element label="Rate Filing Number" max_length="60" name="rate_filing_number" type="string"/>
+        <element label="Form Filing Number" max_length="60" name="form_filing_number" type="string"/>
+        <element label="Approved On" max_length="40" name="approved_on" type="glide_date"/>
+        <element choice="3" default="not_required" label="Filing Status" mandatory="true" max_length="40" name="filing_status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Approved" sequence="40" value="approved"/>
+                <element inactive_on_update="false" label="Filed" sequence="30" value="filed"/>
+                <element inactive_on_update="false" label="Pending" sequence="20" value="pending"/>
+                <element inactive_on_update="false" label="Not Required" sequence="10" value="not_required"/>
+                <element inactive_on_update="false" label="Withdrawn" sequence="50" value="withdrawn"/>
+            </choice>
+        </element>
+        <element display="true" label="Product" mandatory="true" max_length="32" name="product" reference="x_gegis_ins_policy_product" type="reference"/>
+        <element label="Jurisdiction" mandatory="true" max_length="32" name="jurisdiction" reference="x_gegis_ins_policy_jurisdiction" type="reference"/>
+        <element label="Effective Date" max_length="40" name="effective_date" type="glide_date"/>
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <index name="index">
+            <element name="jurisdiction"/>
+        </index>
+        <index name="index2">
+            <element name="product"/>
+        </index>
+    </element>
+</database>

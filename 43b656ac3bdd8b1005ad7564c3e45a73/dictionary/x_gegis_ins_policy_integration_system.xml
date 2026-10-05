@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="ed718232f8cde63de9c9a9af578ef655" label="Integration System" max_length="40" name="x_gegis_ins_policy_integration_system" type="collection">
+        <element display="true" label="Name" mandatory="true" max_length="100" name="name" type="string"/>
+        <element label="Base URL" max_length="255" name="base_url" type="string"/>
+        <element label="Code" mandatory="true" max_length="40" name="code" type="string"/>
+        <element choice="3" label="System Type" mandatory="true" max_length="40" name="system_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Data Warehouse" sequence="90" value="data_warehouse"/>
+                <element inactive_on_update="false" label="Data Provider" sequence="60" value="data_provider"/>
+                <element inactive_on_update="false" label="Document Store" sequence="80" value="document_store"/>
+                <element inactive_on_update="false" label="Claims" sequence="30" value="claims"/>
+                <element inactive_on_update="false" label="CRM" sequence="20" value="crm"/>
+                <element inactive_on_update="false" label="Policy Administration (PAS)" sequence="10" value="policy_admin"/>
+                <element inactive_on_update="false" label="AI Extraction" sequence="50" value="ai_extraction"/>
+                <element inactive_on_update="false" label="Internal (Policy Suite)" sequence="100" value="internal"/>
+                <element inactive_on_update="false" label="Broker Portal" sequence="70" value="broker_portal"/>
+                <element inactive_on_update="false" label="Rating Engine" sequence="40" value="rating_engine"/>
+            </choice>
+        </element>
+        <element label="Description" max_length="1000" name="description" type="string"/>
+        <element label="Vendor" max_length="100" name="vendor" type="string"/>
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+    </element>
+</database>

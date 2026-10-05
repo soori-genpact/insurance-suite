@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="790f1ee5768379451c4dfc8cad887def" label="Submission Risk" max_length="40" name="x_gegis_ins_policy_submission_risk" type="collection">
+        <element choice="1" label="Currency" max_length="40" name="currency" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="USD" sequence="10" value="usd"/>
+                <element inactive_on_update="false" label="JPY" sequence="60" value="jpy"/>
+                <element inactive_on_update="false" label="GBP" sequence="20" value="gbp"/>
+                <element inactive_on_update="false" label="AUD" sequence="50" value="aud"/>
+                <element inactive_on_update="false" label="CAD" sequence="40" value="cad"/>
+                <element inactive_on_update="false" label="CHF" sequence="70" value="chf"/>
+                <element inactive_on_update="false" label="EUR" sequence="30" value="eur"/>
+            </choice>
+        </element>
+        <element choice="1" label="Source" max_length="40" name="source" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Manual" sequence="20" value="manual"/>
+                <element inactive_on_update="false" label="External System" sequence="40" value="external"/>
+                <element inactive_on_update="false" label="Extracted" sequence="10" value="extracted"/>
+                <element inactive_on_update="false" label="Baseline Policy" sequence="30" value="baseline"/>
+            </choice>
+        </element>
+        <element label="Submission Line" max_length="32" name="submission_line" reference="x_gegis_ins_policy_submission_line" type="reference"/>
+        <element display="true" label="Insurable Object" mandatory="true" max_length="32" name="insurable_object" reference="x_gegis_ins_policy_insurable_object" type="reference"/>
+        <element label="Declared Value" max_length="40" name="declared_value" type="decimal"/>
+        <element label="Notes" max_length="1000" name="notes" type="string"/>
+        <element choice="1" label="Change vs Baseline" max_length="40" name="change_status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Removed" sequence="30" value="removed"/>
+                <element inactive_on_update="false" label="Modified" sequence="20" value="modified"/>
+                <element inactive_on_update="false" label="Added" sequence="10" value="added"/>
+                <element inactive_on_update="false" label="Unchanged" sequence="40" value="unchanged"/>
+            </choice>
+        </element>
+        <element label="Submission" mandatory="true" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
+        <element default="100" label="Sequence" max_length="40" name="sequence" type="integer"/>
+        <index name="index">
+            <element name="insurable_object"/>
+        </index>
+        <index name="index2">
+            <element name="submission"/>
+        </index>
+        <index name="index3">
+            <element name="submission_line"/>
+        </index>
+    </element>
+</database>

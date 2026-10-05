@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="3c420b6a36a1f52cae519a2eedd71326" label="Mapping Test Case" max_length="40" name="x_gegis_ins_policy_mapping_test_case" type="collection">
+        <element choice="3" default="not_run" label="Last Result" max_length="40" name="last_result" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Passed" sequence="20" value="passed"/>
+                <element inactive_on_update="false" label="Failed" sequence="30" value="failed"/>
+                <element inactive_on_update="false" label="Not Run" sequence="10" value="not_run"/>
+            </choice>
+        </element>
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Last Run" max_length="40" name="last_run_on" type="glide_date_time"/>
+        <element display="true" label="Name" mandatory="true" max_length="200" name="name" type="string"/>
+        <element label="Mapping" mandatory="true" max_length="32" name="mapping" reference="x_gegis_ins_policy_mapping" type="reference"/>
+        <element label="Last Run Message" max_length="4000" name="last_run_message" type="string"/>
+        <element label="Expected Output" max_length="65000" name="expected_output" type="string"/>
+        <element label="Input Payload" max_length="65000" name="input_payload" type="string"/>
+        <index name="index">
+            <element name="mapping"/>
+        </index>
+    </element>
+</database>
