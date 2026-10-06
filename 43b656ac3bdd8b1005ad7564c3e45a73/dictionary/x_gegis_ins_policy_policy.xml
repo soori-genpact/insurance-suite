@@ -13,6 +13,7 @@
                 <element inactive_on_update="false" label="AUD" sequence="50" value="aud"/>
             </choice>
         </element>
+        <element label="Quote" max_length="32" name="quote" reference="x_gegis_ins_policy_quote" type="reference"/>
         <element label="Quote option" max_length="32" name="quote_option" reference="x_gegis_ins_policy_quote_option" type="reference"/>
         <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" display="true" label="Number" max_length="40" name="number" type="string"/>
         <element label="Originating submission" max_length="32" name="originating_submission" reference="x_gegis_ins_policy_submission" type="reference"/>
@@ -52,6 +53,7 @@
             </choice>
         </element>
         <element label="Broker" max_length="32" name="broker" reference="x_gegis_ins_policy_party" type="reference"/>
+        <element label="Originating Q&amp;B" max_length="32" name="originating_qnb_case" reference="x_gegis_ins_policy_quote_and_bind_case" type="reference"/>
         <element label="Policy number" mandatory="true" max_length="40" name="policy_number" type="string"/>
         <element label="Total premium" max_length="40" name="total_premium" type="decimal"/>
         <element label="Insured Name" max_length="200" name="insured_name" type="string"/>
@@ -92,11 +94,17 @@
         <index name="index6">
             <element name="integration_system"/>
         </index>
+        <index name="index7">
+            <element name="originating_qnb_case"/>
+        </index>
         <index name="index8">
             <element name="originating_submission"/>
         </index>
         <index name="index9">
             <element name="product"/>
+        </index>
+        <index name="index10">
+            <element name="quote"/>
         </index>
         <index name="index11">
             <element name="quote_option"/>

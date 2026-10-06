@@ -21,7 +21,8 @@
         <element label="Submission" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
         <element label="Product" max_length="32" name="product" reference="x_gegis_ins_policy_product" type="reference"/>
         <element label="Total premium" max_length="40" name="total_premium" type="decimal"/>
-        <element label="Insured" max_length="32" name="insured" reference="x_gegis_ins_policy_party" type="reference"/>
+        <element label="Insured" max_length="32" name="insured" reference="x_gegis_ins_policy_party" type="reference"/>
+        <element label="Q&amp;B case" max_length="32" name="qnb_case" reference="x_gegis_ins_policy_quote_and_bind_case" type="reference"/>
         <element choice="3" label="Currency" max_length="3" name="currency" type="choice">
             <choice>
                 <element inactive_on_update="false" label="CHF" sequence="70" value="chf"/>
@@ -41,7 +42,10 @@
         </index>
         <index name="index2">
             <element name="product"/>
-        </index>
+        </index>
+        <index name="index3">
+            <element name="qnb_case"/>
+        </index>
         <index name="index4">
             <element name="submission"/>
         </index>

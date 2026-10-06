@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="457eebddf80da1e8e0bee55f040a5337" label="Loss Record" max_length="40" name="x_gegis_ins_policy_loss_record" type="collection">
-        <element label="Description" max_length="2000" name="description" type="string"/>
+        <element label="Description" max_length="2000" name="description" type="string"/>
+        <element label="Risk case" max_length="32" name="risk_case" reference="x_gegis_ins_policy_risk_case" type="reference"/>
         <element label="Total paid + O/S" max_length="40" name="total_paid_and_outstanding" type="decimal"/>
         <element label="O/S (USD)" max_length="40" name="losses_outstanding_usd" type="decimal"/>
         <element label="No. of losses" max_length="40" name="total_number_of_losses" type="integer"/>
@@ -30,7 +31,8 @@
             </choice>
         </element>
         <element label="Date of loss" max_length="40" name="date_of_loss" type="glide_date"/>
-        <index name="index">
+        <index name="index">
+            <element name="risk_case"/>
         </index>
     </element>
 </database>
