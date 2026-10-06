@@ -255,7 +255,7 @@
         COUNT:          &#39;count&#39;,
         // loa_metric.aggregation -- read the source field directly, do not roll up
         NONE:           &#39;none&#39;,
-        // ---- DATA MODEL V2: tokens shared by the new lifecycle / integration groups
+        // ---- tokens shared by the policy lifecycle, insurable object, integration and mapping groups
         PROPERTY: &#39;property&#39;,
         CASUALTY: &#39;casualty&#39;,
         MOTOR: &#39;motor&#39;,
@@ -491,7 +491,7 @@
             QUOTED: SHARED.QUOTED,
             NOT_TAKEN_UP: SHARED.NOT_TAKEN_UP,
             WITHDRAWN: SHARED.WITHDRAWN,
-            LOST: &#39;lost&#39; /* v2 */
+            LOST: &#39;lost&#39;
         },
 
         // x_gegis_ins_policy_policy.status -- lifecycle of the POLICY CONTRACT,
@@ -506,7 +506,7 @@
             EXPIRED:     SHARED.EXPIRED,
             NON_RENEWED: SHARED.NON_RENEWED,
             PENDING_ISSUE: SHARED.PENDING_ISSUE,
-            RENEWED: SHARED.RENEWED /* v2 */
+            RENEWED: SHARED.RENEWED
         },
 
         // x_gegis_ins_policy_quote.status -- lifecycle of the quote document.
@@ -521,7 +521,7 @@
             REFERRED: SHARED.REFERRED,
             APPROVED: SHARED.APPROVED,
             SUPERSEDED: SHARED.SUPERSEDED,
-            BOUND: SHARED.BOUND /* v2 */
+            BOUND: SHARED.BOUND
         },
 
         // x_gegis_ins_policy_quote_option.status -- lifecycle of ONE priced
@@ -919,7 +919,7 @@
             ENDORSEMENT:   SHARED.ENDORSEMENT,
             CANCELLATION:  SHARED.CANCELLATION,
             REINSTATEMENT: SHARED.REINSTATEMENT,
-            REWRITE: SHARED.REWRITE /* v2 */
+            REWRITE: SHARED.REWRITE
         },
 
         // line_of_business on policy, product, quote_option, existing_policy,
@@ -1028,7 +1028,7 @@
             PER_CLAIM: &#39;per_claim&#39;,
             PER_BUILDING: &#39;per_building&#39;,
             PER_PERSON: &#39;per_person&#39;,
-            EACH_EMPLOYEE: &#39;each_employee&#39; /* v2 */
+            EACH_EMPLOYEE: &#39;each_employee&#39;
         },
 
         // coverage.valuation_basis -- how a loss is valued at settlement.
@@ -1060,7 +1060,7 @@
             SUBLIMIT:       &#39;sublimit&#39;,
             WAITING_PERIOD: SHARED.WAITING_PERIOD,
             COINSURANCE:    &#39;coinsurance&#39;,
-            RETENTION: &#39;retention&#39; /* v2 */
+            RETENTION: &#39;retention&#39;
         },
 
         // coverage_term.data_type -- how a term&#39;s VALUE is stored and rendered.
@@ -1592,8 +1592,7 @@
         },
 
         // =================================================================
-        // DATA MODEL V2 - lifecycle, insurable objects, integration, mapping.
-        // Blueprint: SCRIPTS\DOCS\DATA_MODEL_BLUEPRINT.md
+        // POLICY LIFECYCLE, INSURABLE OBJECTS, COVERAGE LEVELS, INTEGRATION, MAPPING
         // =================================================================
         LINE_GROUP: {
             PROPERTY: SHARED.PROPERTY,

@@ -55,7 +55,7 @@ AcordRenderer.prototype = {
         this._parties(x, parties, &#39;party_role&#39;, &#39;account&#39;);
         x.push(&#39;&lt;CommlPolicy&gt;&#39;);
         x.push(this._t(&#39;PolicyNumber&#39;, header ? header.policy_number : (v.policy ? v.policy.display : &#39;&#39;)));
-        x.push(this._t(&#39;LOBCd&#39;, this._lob(v.business_line)));
+        x.push(this._t(&#39;LOBCd&#39;, this._lob(v.business_line, v.line_of_business)));
         x.push(&#39;&lt;ContractTerm&gt;&#39; + this._t(&#39;EffectiveDt&#39;, v.transaction_effective_date) + &#39;&lt;/ContractTerm&gt;&#39;);
         x.push(&#39;&lt;CurrentTermAmt&gt;&#39; + this._t(&#39;Amt&#39;, v.total_premium) + &#39;&lt;/CurrentTermAmt&gt;&#39;);
         x.push(this._t(&#39;PolicyStatusCd&#39;, v.status));
@@ -82,7 +82,7 @@ AcordRenderer.prototype = {
             x.push(this._t(&#39;OptionName&#39;, opts[i].name));
             var lines = opts[i].lines || [];
             for (var j = 0; j &lt; lines.length; j++) {
-                x.push(&#39;&lt;LineOfBusiness&gt;&#39; + this._t(&#39;LOBCd&#39;, this._lob(lines[j].business_line)) +
+                x.push(&#39;&lt;LineOfBusiness&gt;&#39; + this._t(&#39;LOBCd&#39;, this._lob(lines[j].business_line, lines[j].line_of_business)) +
                     &#39;&lt;FullTermAmt&gt;&#39; + this._t(&#39;Amt&#39;, lines[j].commercial_premium) + &#39;&lt;/FullTermAmt&gt;&lt;/LineOfBusiness&gt;&#39;);
             }
             this._coverages(x, opts[i].coverages || [], &#39;terms&#39;, &#39;term_value&#39;, &#39;coverage&#39;);
@@ -93,12 +93,12 @@ AcordRenderer.prototype = {
     _submission: function (x, s) {
         this._parties(x, s.parties || [], &#39;role&#39;, &#39;organization&#39;);
         x.push(&#39;&lt;CommlPolicy&gt;&#39;);
-        x.push(this._t(&#39;LOBCd&#39;, this._lob(s.business_line)));
+        x.push(this._t(&#39;LOBCd&#39;, this._lob(s.business_line, s.line_of_business)));
         x.push(&#39;&lt;ContractTerm&gt;&#39; + this._t(&#39;EffectiveDt&#39;, s.target_effective_date) + this._t(&#39;ExpirationDt&#39;, s.target_expiration_date) + &#39;&lt;/ContractTerm&gt;&#39;);
         x.push(&#39;&lt;/CommlPolicy&gt;&#39;);
         var lines = s.lines || [];
         for (var i = 0; i &lt; lines.length; i++) {
-            x.push(&#39;&lt;LineOfBusiness&gt;&#39; + this._t(&#39;LOBCd&#39;, this._lob(lines[i].business_line)));
+            x.push(&#39;&lt;LineOfBusiness&gt;&#39; + this._t(&#39;LOBCd&#39;, this._lob(lines[i].business_line, lines[i].line_of_business)));
             this._coverages(x, lines[i].coverages || [], &#39;terms&#39;, &#39;requested_value&#39;, &#39;coverage&#39;);
             x.push(&#39;&lt;/LineOfBusiness&gt;&#39;);
         }
@@ -106,7 +106,7 @@ AcordRenderer.prototype = {
 
     _product: function (x, p) {
         x.push(&#39;&lt;ProductInfo&gt;&#39; + this._t(&#39;ProductCd&#39;, p.product_code) + this._t(&#39;ProductDesc&#39;, p.product_name) +
-            this._t(&#39;LOBCd&#39;, this._lob(p.business_line)) + &#39;&lt;/ProductInfo&gt;&#39;);
+            this._t(&#39;LOBCd&#39;, this._lob(p.business_line, p.line_of_business)) + &#39;&lt;/ProductInfo&gt;&#39;);
     },
 
     _parties: function (x, parties, roleField, refField) {
@@ -159,9 +159,17 @@ AcordRenderer.prototype = {
         return null;
     },
 
-    _lob: function (ref) {
-        if (!ref)
-            return &#39;&#39;;
+    _lob: function (ref, legacyValue) {
+        if (!ref) {
+            var code = legacyValue ? this.values.map(&#39;legacy_lob&#39;, legacyValue, false, false) : &#39;&#39;;
+            if (!code)
+                return &#39;&#39;;
+            var byCode = new GlideRecord(Constants.TABLE.LINE_OF_BUSINESS);
+            byCode.addQuery(&#39;code&#39;, code);
+            byCode.setLimit(1);
+            byCode.query();
+            return byCode.next() ? String(byCode.getValue(&#39;acord_lob_code&#39;) || code) : code;
+        }
         var gr = new GlideRecord(Constants.TABLE.LINE_OF_BUSINESS);
         if (!gr.get(ref.sys_id || ref))
             return &#39;&#39;;

@@ -13,12 +13,12 @@
         <client_callable>false</client_callable>
         <collection>x_gegis_ins_policy_submission</collection>
         <condition>current.status.changes()</condition>
-        <description>Outbox event submission.&lt;status&gt; with the canonical submission aggregate on every status change.</description>
+        <description>On every submission status change, records an outbound integration event (submission.&lt;status&gt;) carrying the full submission.</description>
         <execute_function>false</execute_function>
         <filter_condition/>
         <is_rest>false</is_rest>
         <message/>
-        <name>V2 publish submission events</name>
+        <name>Publish submission status event</name>
         <order>200</order>
         <priority>100</priority>
         <rest_method/>
@@ -35,7 +35,7 @@
         <sys_created_on>2026-10-05 22:00:00</sys_created_on>
         <sys_id>6b8c1ec45ed23a7ca8cd86ee38b1e04a</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name>V2 publish submission events</sys_name>
+        <sys_name>Publish submission status event</sys_name>
         <sys_package display_value="Policy Suite" source="x_gegis_ins_policy">43b656ac3bdd8b1005ad7564c3e45a73</sys_package>
         <sys_policy/>
         <sys_scope display_value="Policy Suite">43b656ac3bdd8b1005ad7564c3e45a73</sys_scope>
