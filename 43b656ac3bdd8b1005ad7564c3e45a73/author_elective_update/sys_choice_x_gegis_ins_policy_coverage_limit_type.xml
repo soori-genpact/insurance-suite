@@ -58,6 +58,25 @@
             <element>limit_type</element>
             <hint/>
             <inactive>false</inactive>
+            <label>Each Vehicle</label>
+            <language>en</language>
+            <name>x_gegis_ins_policy_coverage</name>
+            <sequence>20</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-10-06 03:47:11</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-10-06 03:47:11</sys_updated_on>
+            <value>per_vehicle</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>limit_type</element>
+            <hint/>
+            <inactive>false</inactive>
             <label>Aggregate</label>
             <language>en</language>
             <name>x_gegis_ins_policy_coverage</name>
@@ -71,6 +90,44 @@
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2026-08-08 10:40:21</sys_updated_on>
             <value>aggregate</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>limit_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Each Accident</label>
+            <language>en</language>
+            <name>x_gegis_ins_policy_coverage</name>
+            <sequence>30</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-10-06 03:47:11</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-10-06 03:47:11</sys_updated_on>
+            <value>per_accident</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>limit_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Each Claim</label>
+            <language>en</language>
+            <name>x_gegis_ins_policy_coverage</name>
+            <sequence>40</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-10-06 03:47:11</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-10-06 03:47:11</sys_updated_on>
+            <value>per_claim</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
             <dependent_value/>
@@ -109,6 +166,63 @@
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2026-08-08 10:40:21</sys_updated_on>
             <value>combined_single_limit</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>limit_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Per Building</label>
+            <language>en</language>
+            <name>x_gegis_ins_policy_coverage</name>
+            <sequence>50</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-10-06 03:47:11</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-10-06 03:47:11</sys_updated_on>
+            <value>per_building</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>limit_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Each Person</label>
+            <language>en</language>
+            <name>x_gegis_ins_policy_coverage</name>
+            <sequence>60</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-10-06 03:47:12</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-10-06 03:47:12</sys_updated_on>
+            <value>per_person</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>limit_type</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Each Employee</label>
+            <language>en</language>
+            <name>x_gegis_ins_policy_coverage</name>
+            <sequence>70</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-10-06 03:47:12</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-10-06 03:47:12</sys_updated_on>
+            <value>each_employee</value>
         </sys_choice>
     </sys_choice>
 </record_update>

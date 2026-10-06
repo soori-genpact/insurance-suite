@@ -13,7 +13,6 @@
                 <element inactive_on_update="false" label="AUD" sequence="50" value="aud"/>
             </choice>
         </element>
-        <element label="Quote" max_length="32" name="quote" reference="x_gegis_ins_policy_quote" type="reference"/>
         <element label="Quote option" max_length="32" name="quote_option" reference="x_gegis_ins_policy_quote_option" type="reference"/>
         <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" display="true" label="Number" max_length="40" name="number" type="string"/>
         <element label="Originating submission" max_length="32" name="originating_submission" reference="x_gegis_ins_policy_submission" type="reference"/>
@@ -23,16 +22,17 @@
         <element label="Current Term" max_length="32" name="current_term" reference="x_gegis_ins_policy_policy_term" type="reference"/>
         <element label="External Reference" max_length="200" name="external_ref" type="string"/>
         <element label="Current Version" max_length="32" name="current_version" reference="x_gegis_ins_policy_policy_version" type="reference"/>
+        <element label="Jurisdiction" max_length="32" name="jurisdiction" reference="x_gegis_ins_policy_jurisdiction" type="reference"/>
         <element choice="3" label="Status" mandatory="true" max_length="40" name="status" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Cancelled" sequence="40" value="cancelled"/>
                 <element inactive_on_update="false" label="In-Force" sequence="30" value="in_force"/>
                 <element inactive_on_update="false" label="Renewed" sequence="30" value="renewed"/>
                 <element inactive_on_update="false" label="Non-Renewed" sequence="60" value="non_renewed"/>
-                <element inactive_on_update="false" label="Bound" sequence="20" value="bound"/>
+                <element inactive="true" inactive_on_update="true" label="Bound" sequence="20" value="bound"/>
                 <element inactive_on_update="false" label="Pending Issue" sequence="20" value="pending_issue"/>
                 <element inactive_on_update="false" label="Expired" sequence="50" value="expired"/>
-                <element inactive_on_update="false" label="Active" sequence="10" value="active"/>
+                <element inactive="true" inactive_on_update="true" label="Active" sequence="10" value="active"/>
             </choice>
         </element>
         <element choice="3" label="Line of business" max_length="40" name="line_of_business" type="choice">
@@ -53,7 +53,6 @@
             </choice>
         </element>
         <element label="Broker" max_length="32" name="broker" reference="x_gegis_ins_policy_party" type="reference"/>
-        <element label="Originating Q&amp;B" max_length="32" name="originating_qnb_case" reference="x_gegis_ins_policy_quote_and_bind_case" type="reference"/>
         <element label="Policy number" mandatory="true" max_length="40" name="policy_number" type="string"/>
         <element label="Total premium" max_length="40" name="total_premium" type="decimal"/>
         <element label="Insured Name" max_length="200" name="insured_name" type="string"/>
@@ -95,7 +94,7 @@
             <element name="integration_system"/>
         </index>
         <index name="index7">
-            <element name="originating_qnb_case"/>
+            <element name="jurisdiction"/>
         </index>
         <index name="index8">
             <element name="originating_submission"/>
@@ -104,12 +103,9 @@
             <element name="product"/>
         </index>
         <index name="index10">
-            <element name="quote"/>
-        </index>
-        <index name="index11">
             <element name="quote_option"/>
         </index>
-        <index name="index12">
+        <index name="index11">
             <element name="renewed_from"/>
         </index>
     </element>

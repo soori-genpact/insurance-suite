@@ -2,7 +2,17 @@
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="fd5804215db3855714dc8cb08fb66c32" label="Quote" max_length="40" name="x_gegis_ins_policy_quote" type="collection">
         <element label="Expiration date" max_length="40" name="expiration_date" type="glide_date"/>
         <element label="Effective date" max_length="40" name="effective_date" type="glide_date"/>
+        <element label="Broker Decision On" max_length="40" name="broker_decision_on" type="glide_date_time"/>
         <element label="Version" max_length="20" name="version" type="string"/>
+        <element choice="3" default="pending" label="Broker Decision" max_length="40" name="broker_decision" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Declined" sequence="30" value="declined"/>
+                <element inactive_on_update="false" label="Accepted" sequence="20" value="accepted"/>
+                <element inactive_on_update="false" label="No Response" sequence="50" value="no_response"/>
+                <element inactive_on_update="false" label="Counter Offer" sequence="40" value="counter_offer"/>
+                <element inactive_on_update="false" label="Pending" sequence="10" value="pending"/>
+            </choice>
+        </element>
         <element label="Valid until" max_length="40" name="valid_until" type="glide_date"/>
         <element choice="3" label="Status" mandatory="true" max_length="40" name="status" type="choice">
             <choice>
@@ -18,11 +28,13 @@
                 <element inactive_on_update="false" label="Referred" sequence="30" value="referred"/>
             </choice>
         </element>
+        <element label="Quote Letter" max_length="32" name="quote_document" reference="x_gegis_ins_policy_document" type="reference"/>
         <element label="Submission" max_length="32" name="submission" reference="x_gegis_ins_policy_submission" type="reference"/>
         <element label="Product" max_length="32" name="product" reference="x_gegis_ins_policy_product" type="reference"/>
         <element label="Total premium" max_length="40" name="total_premium" type="decimal"/>
         <element label="Insured" max_length="32" name="insured" reference="x_gegis_ins_policy_party" type="reference"/>
-        <element label="Q&amp;B case" max_length="32" name="qnb_case" reference="x_gegis_ins_policy_quote_and_bind_case" type="reference"/>
+        <element label="Broker Decision Reason" max_length="1000" name="broker_decision_reason" type="string"/>
+        <element label="Issued On" max_length="40" name="issued_on" type="glide_date_time"/>
         <element choice="3" label="Currency" max_length="3" name="currency" type="choice">
             <choice>
                 <element inactive_on_update="false" label="CHF" sequence="70" value="chf"/>
@@ -44,7 +56,7 @@
             <element name="product"/>
         </index>
         <index name="index3">
-            <element name="qnb_case"/>
+            <element name="quote_document"/>
         </index>
         <index name="index4">
             <element name="submission"/>

@@ -1,26 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="4b3d8039c93e288696d3fdc13dda2d53" label="Policy Coverage" max_length="40" name="x_gegis_ins_policy_policy_coverage" type="collection">
-        <element label="Policy" mandatory="true" max_length="32" name="policy" reference="x_gegis_ins_policy_policy" type="reference"/>
+        <element label="Coverage premium" max_length="40" name="coverage_premium" type="decimal"/>
         <element label="Coverage" mandatory="true" max_length="32" name="coverage" reference="x_gegis_ins_policy_coverage" type="reference"/>
-        <element label="Policy risk" mandatory="true" max_length="32" name="policy_risk" reference="x_gegis_ins_policy_policy_risk" type="reference"/>
-        <element choice="3" label="Status" mandatory="true" max_length="40" name="status" type="choice">
+        <element choice="3" default="line" label="Applies At" max_length="40" name="scope_level" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Cancelled" sequence="20" value="cancelled"/>
-                <element inactive_on_update="false" label="Active" sequence="10" value="active"/>
-                <element inactive_on_update="false" label="Expired" sequence="30" value="expired"/>
+                <element inactive_on_update="false" label="Policy (all lines)" sequence="10" value="policy"/>
+                <element inactive_on_update="false" label="Location / Building / Vehicle / Object" sequence="40" value="insurable_object"/>
+                <element inactive_on_update="false" label="Jurisdiction" sequence="30" value="jurisdiction"/>
+                <element inactive_on_update="false" label="Line of Business" sequence="20" value="line"/>
             </choice>
         </element>
+        <element label="Insurable Object" max_length="32" name="insurable_object" reference="x_gegis_ins_policy_insurable_object" type="reference"/>
+        <element label="Policy risk" mandatory="true" max_length="32" name="policy_risk" reference="x_gegis_ins_policy_policy_risk" type="reference"/>
+        <element label="Parent Coverage" max_length="32" name="parent_coverage" reference="x_gegis_ins_policy_policy_coverage" type="reference"/>
+        <element label="Policy Version" max_length="32" name="policy_version" reference="x_gegis_ins_policy_policy_version" type="reference"/>
         <element label="Mandatory" max_length="40" name="mandatory" type="boolean"/>
+        <element choice="3" label="Status" mandatory="true" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Expired" sequence="30" value="expired"/>
+                <element inactive_on_update="false" label="Cancelled" sequence="20" value="cancelled"/>
+                <element inactive_on_update="false" label="Active" sequence="10" value="active"/>
+            </choice>
+        </element>
         <element display="true" label="Name" max_length="200" name="name" type="string"/>
-        <element label="Coverage premium" max_length="40" name="coverage_premium" type="decimal"/>
+        <element label="Policy" mandatory="true" max_length="32" name="policy" reference="x_gegis_ins_policy_policy" type="reference"/>
+        <element label="Jurisdiction" max_length="32" name="jurisdiction" reference="x_gegis_ins_policy_jurisdiction" type="reference"/>
         <index name="index">
             <element name="coverage"/>
         </index>
         <index name="index2">
-            <element name="policy"/>
+            <element name="insurable_object"/>
         </index>
         <index name="index3">
+            <element name="jurisdiction"/>
+        </index>
+        <index name="index4">
+            <element name="parent_coverage"/>
+        </index>
+        <index name="index5">
+            <element name="policy"/>
+        </index>
+        <index name="index6">
             <element name="policy_risk"/>
+        </index>
+        <index name="index7">
+            <element name="policy_version"/>
         </index>
     </element>
 </database>

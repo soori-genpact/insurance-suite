@@ -1,23 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="15cb9299b0261745182f5996ba9aea48" label="Policy Party" max_length="40" name="x_gegis_ins_policy_policy_party" type="collection">
-        <element label="Is primary" max_length="40" name="is_primary" type="boolean"/>
-        <element label="Policy" mandatory="true" max_length="32" name="policy" reference="x_gegis_ins_policy_policy" type="reference"/>
+        <element choice="1" label="Interest Type" max_length="40" name="interest_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Certificate Holder" sequence="40" value="certificate_holder"/>
+                <element inactive_on_update="false" label="Lienholder" sequence="30" value="lienholder"/>
+                <element inactive_on_update="false" label="Additional Interest" sequence="50" value="additional_interest"/>
+                <element inactive_on_update="false" label="Loss Payee" sequence="20" value="loss_payee"/>
+                <element inactive_on_update="false" label="Mortgagee" sequence="10" value="mortgagee"/>
+            </choice>
+        </element>
         <element display="true" label="Name" max_length="200" name="name" type="string"/>
         <element label="Account" mandatory="true" max_length="32" name="account" reference="x_gegis_ins_policy_party" type="reference"/>
         <element choice="3" label="Party role" mandatory="true" max_length="40" name="party_role" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Loss Payee" sequence="20" value="loss_payee"/>
+                <element inactive_on_update="false" label="Co-Applicant" sequence="30" value="co_applicant"/>
                 <element inactive_on_update="false" label="Broker" sequence="30" value="broker"/>
-                <element inactive_on_update="false" label="Policyholder" sequence="10" value="policyholder"/>
-                <element inactive_on_update="false" label="Named Insured" sequence="40" value="named_insured"/>
+                <element inactive_on_update="false" label="Interest Holder" sequence="60" value="interest_holder"/>
+                <element inactive_on_update="false" label="Producer" sequence="80" value="producer"/>
+                <element inactive_on_update="false" label="Premium Payer" sequence="90" value="premium_payer"/>
                 <element inactive_on_update="false" label="Additional Insured" sequence="50" value="additional_insured"/>
+                <element inactive_on_update="false" label="Loss Payee" sequence="20" value="loss_payee"/>
+                <element inactive_on_update="false" label="Secondary Insured" sequence="40" value="secondary_insured"/>
+                <element inactive="true" inactive_on_update="true" label="Policyholder" sequence="10" value="policyholder"/>
+                <element inactive_on_update="false" label="Third Party" sequence="100" value="third_party"/>
+                <element inactive="true" inactive_on_update="true" label="Named Insured" sequence="40" value="named_insured"/>
+                <element inactive_on_update="false" label="Primary Insured" sequence="20" value="primary_insured"/>
             </choice>
         </element>
+        <element label="Is primary" max_length="40" name="is_primary" type="boolean"/>
+        <element label="Policy" mandatory="true" max_length="32" name="policy" reference="x_gegis_ins_policy_policy" type="reference"/>
+        <element label="Policy Version" max_length="32" name="policy_version" reference="x_gegis_ins_policy_policy_version" type="reference"/>
         <index name="index">
             <element name="account"/>
         </index>
         <index name="index2">
             <element name="policy"/>
+        </index>
+        <index name="index3">
+            <element name="policy_version"/>
         </index>
     </element>
 </database>

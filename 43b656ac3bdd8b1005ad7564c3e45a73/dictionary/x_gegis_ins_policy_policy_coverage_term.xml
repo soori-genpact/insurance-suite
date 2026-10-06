@@ -1,20 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="d0f6c569ee97180ced55d78d03f5530d" label="Policy Coverage Term" max_length="40" name="x_gegis_ins_policy_policy_coverage_term" type="collection">
-        <element display="true" label="Term name" mandatory="true" max_length="200" name="term_name" type="string"/>
-        <element label="Selected label" max_length="200" name="selected_label" type="string"/>
-        <element choice="3" label="Term type" mandatory="true" max_length="40" name="term_type" type="choice">
+        <element choice="1" label="Basis" max_length="40" name="limit_basis" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Limit" sequence="10" value="limit"/>
-                <element inactive_on_update="false" label="Sublimit" sequence="30" value="sublimit"/>
-                <element inactive_on_update="false" label="Deductible" sequence="20" value="deductible"/>
-                <element inactive_on_update="false" label="Coinsurance" sequence="50" value="coinsurance"/>
-                <element inactive_on_update="false" label="Waiting Period" sequence="40" value="waiting_period"/>
+                <element inactive_on_update="false" label="Per Building" sequence="90" value="per_building"/>
+                <element inactive_on_update="false" label="Per Occurrence" sequence="10" value="per_occurrence"/>
+                <element inactive_on_update="false" label="Combined Single Limit" sequence="50" value="combined_single_limit"/>
+                <element inactive_on_update="false" label="Per Location" sequence="20" value="per_location"/>
+                <element inactive_on_update="false" label="Each Claim" sequence="80" value="per_claim"/>
+                <element inactive_on_update="false" label="Each Employee" sequence="110" value="each_employee"/>
+                <element inactive_on_update="false" label="Per Item" sequence="40" value="per_item"/>
+                <element inactive_on_update="false" label="Each Accident" sequence="70" value="per_accident"/>
+                <element inactive_on_update="false" label="Each Person" sequence="100" value="per_person"/>
+                <element inactive_on_update="false" label="Aggregate" sequence="30" value="aggregate"/>
+                <element inactive_on_update="false" label="Each Vehicle" sequence="60" value="per_vehicle"/>
             </choice>
         </element>
-        <element label="Policy coverage" mandatory="true" max_length="32" name="policy_coverage" reference="x_gegis_ins_policy_policy_coverage" type="reference"/>
+        <element label="Minimum" max_length="40" name="minimum_amount" type="decimal"/>
+        <element label="Within Term" max_length="32" name="parent_term" reference="x_gegis_ins_policy_policy_coverage_term" type="reference"/>
+        <element label="Maximum" max_length="40" name="maximum_amount" type="decimal"/>
         <element label="Selected value" max_length="40" name="selected_value" type="decimal"/>
+        <element choice="1" label="Currency" max_length="40" name="currency" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="CAD" sequence="40" value="cad"/>
+                <element inactive_on_update="false" label="CHF" sequence="70" value="chf"/>
+                <element inactive_on_update="false" label="EUR" sequence="30" value="eur"/>
+                <element inactive_on_update="false" label="JPY" sequence="60" value="jpy"/>
+                <element inactive_on_update="false" label="GBP" sequence="20" value="gbp"/>
+                <element inactive_on_update="false" label="USD" sequence="10" value="usd"/>
+                <element inactive_on_update="false" label="AUD" sequence="50" value="aud"/>
+            </choice>
+        </element>
+        <element label="Insurable Object" max_length="32" name="insurable_object" reference="x_gegis_ins_policy_insurable_object" type="reference"/>
+        <element label="Jurisdiction" max_length="32" name="jurisdiction" reference="x_gegis_ins_policy_jurisdiction" type="reference"/>
+        <element display="true" label="Term name" mandatory="true" max_length="200" name="term_name" type="string"/>
+        <element choice="3" default="line" label="Applies At" max_length="40" name="scope_level" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Location / Building / Vehicle / Object" sequence="40" value="insurable_object"/>
+                <element inactive_on_update="false" label="Policy (all lines)" sequence="10" value="policy"/>
+                <element inactive_on_update="false" label="Jurisdiction" sequence="30" value="jurisdiction"/>
+                <element inactive_on_update="false" label="Line of Business" sequence="20" value="line"/>
+            </choice>
+        </element>
+        <element label="Percentage" max_length="40" name="percentage" type="decimal"/>
+        <element label="Policy Version" max_length="32" name="policy_version" reference="x_gegis_ins_policy_policy_version" type="reference"/>
+        <element label="Coverage Term" max_length="32" name="coverage_term" reference="x_gegis_ins_policy_coverage_term" type="reference"/>
+        <element choice="3" label="Term type" mandatory="true" max_length="40" name="term_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Coinsurance" sequence="50" value="coinsurance"/>
+                <element inactive_on_update="false" label="Waiting Period" sequence="40" value="waiting_period"/>
+                <element inactive_on_update="false" label="Sublimit" sequence="30" value="sublimit"/>
+                <element inactive_on_update="false" label="Deductible" sequence="20" value="deductible"/>
+                <element inactive_on_update="false" label="Limit" sequence="10" value="limit"/>
+                <element inactive_on_update="false" label="Self-Insured Retention" sequence="20" value="retention"/>
+            </choice>
+        </element>
+        <element label="Selected label" max_length="200" name="selected_label" type="string"/>
+        <element label="Peril" max_length="32" name="cause_of_loss" reference="x_gegis_ins_policy_cause_of_loss" type="reference"/>
+        <element label="Policy coverage" mandatory="true" max_length="32" name="policy_coverage" reference="x_gegis_ins_policy_policy_coverage" type="reference"/>
         <index name="index">
+            <element name="cause_of_loss"/>
+        </index>
+        <index name="index2">
+            <element name="coverage_term"/>
+        </index>
+        <index name="index3">
+            <element name="insurable_object"/>
+        </index>
+        <index name="index4">
+            <element name="jurisdiction"/>
+        </index>
+        <index name="index5">
+            <element name="parent_term"/>
+        </index>
+        <index name="index6">
             <element name="policy_coverage"/>
+        </index>
+        <index name="index7">
+            <element name="policy_version"/>
         </index>
     </element>
 </database>

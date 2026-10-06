@@ -1,30 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="64fda1abcfcecc9ae195204e35ad153f" label="Quote Option Coverage" max_length="40" name="x_gegis_ins_policy_quote_option_coverage" type="collection">
-        <element label="Deductible" max_length="20" name="deductible" type="decimal"/>
-        <element label="Limit" max_length="20" name="limit" type="decimal"/>
         <element label="Display Order" max_length="40" name="display_order" type="integer"/>
-        <element label="Coverage" mandatory="true" max_length="32" name="coverage" reference="x_gegis_ins_policy_coverage" type="reference"/>
-        <element label="Premium" max_length="20" name="premium" type="decimal"/>
-        <element label="Product coverage" mandatory="true" max_length="32" name="product_coverage" reference="x_gegis_ins_policy_product_coverage" type="reference"/>
+        <element label="Limit" max_length="20" name="limit" type="decimal"/>
         <element label="Quote Option" mandatory="true" max_length="32" name="quote_option" reference="x_gegis_ins_policy_quote_option" type="reference"/>
-        <element label="Selected" max_length="40" name="selected" type="boolean"/>
-        <element label="Quote option coverage category" max_length="32" name="quote_option_coverage_category" reference="x_gegis_ins_policy_quote_option_coverage_category" type="reference"/>
         <element label="Quote risk" mandatory="true" max_length="32" name="quote_risk" reference="x_gegis_ins_policy_quote_risk" type="reference"/>
+        <element label="Insurable Object" max_length="32" name="insurable_object" reference="x_gegis_ins_policy_insurable_object" type="reference"/>
         <element display="true" label="Name" max_length="200" name="name" type="string"/>
+        <element label="Coverage" mandatory="true" max_length="32" name="coverage" reference="x_gegis_ins_policy_coverage" type="reference"/>
+        <element label="Selected" max_length="40" name="selected" type="boolean"/>
+        <element label="Quote Option Line" max_length="32" name="quote_option_line" reference="x_gegis_ins_policy_quote_option_line" type="reference"/>
+        <element label="Premium" max_length="20" name="premium" type="decimal"/>
+        <element choice="3" default="line" label="Applies At" max_length="40" name="scope_level" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Location / Building / Vehicle / Object" sequence="40" value="insurable_object"/>
+                <element inactive_on_update="false" label="Jurisdiction" sequence="30" value="jurisdiction"/>
+                <element inactive_on_update="false" label="Line of Business" sequence="20" value="line"/>
+                <element inactive_on_update="false" label="Policy (all lines)" sequence="10" value="policy"/>
+            </choice>
+        </element>
+        <element label="Jurisdiction" max_length="32" name="jurisdiction" reference="x_gegis_ins_policy_jurisdiction" type="reference"/>
+        <element label="Deductible" max_length="20" name="deductible" type="decimal"/>
+        <element label="Product coverage" mandatory="true" max_length="32" name="product_coverage" reference="x_gegis_ins_policy_product_coverage" type="reference"/>
+        <element label="Parent Coverage" max_length="32" name="parent_coverage" reference="x_gegis_ins_policy_quote_option_coverage" type="reference"/>
+        <element label="Requested Coverage" max_length="32" name="submission_coverage" reference="x_gegis_ins_policy_submission_coverage" type="reference"/>
+        <element label="Quote option coverage category" max_length="32" name="quote_option_coverage_category" reference="x_gegis_ins_policy_quote_option_coverage_category" type="reference"/>
         <index name="index">
             <element name="coverage"/>
         </index>
         <index name="index2">
-            <element name="product_coverage"/>
+            <element name="insurable_object"/>
         </index>
         <index name="index3">
-            <element name="quote_option"/>
+            <element name="jurisdiction"/>
         </index>
         <index name="index4">
-            <element name="quote_option_coverage_category"/>
+            <element name="parent_coverage"/>
         </index>
         <index name="index5">
+            <element name="product_coverage"/>
+        </index>
+        <index name="index6">
+            <element name="quote_option"/>
+        </index>
+        <index name="index7">
+            <element name="quote_option_coverage_category"/>
+        </index>
+        <index name="index8">
+            <element name="quote_option_line"/>
+        </index>
+        <index name="index9">
             <element name="quote_risk"/>
+        </index>
+        <index name="index10">
+            <element name="submission_coverage"/>
         </index>
     </element>
 </database>

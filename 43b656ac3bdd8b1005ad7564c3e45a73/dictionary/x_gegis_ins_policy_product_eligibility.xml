@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="587689a18292e937ffb3fb77fdae506e" label="Product Eligibility" max_length="40" name="x_gegis_ins_policy_product_eligibility" type="collection">
+        <element label="Product" mandatory="true" max_length="32" name="product" reference="x_gegis_ins_policy_product" type="reference"/>
+        <element choice="3" default="eligibility" label="Rule Type" mandatory="true" max_length="40" name="rule_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Referral Trigger" sequence="30" value="referral"/>
+                <element inactive_on_update="false" label="Eligibility" sequence="20" value="eligibility"/>
+                <element inactive_on_update="false" label="Appetite" sequence="10" value="appetite"/>
+            </choice>
+        </element>
+        <element label="Jurisdiction" max_length="32" name="jurisdiction" reference="x_gegis_ins_policy_jurisdiction" type="reference"/>
+        <element choice="3" default="refer" label="Outcome If Failed" mandatory="true" max_length="40" name="outcome_if_failed" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Decline" sequence="10" value="decline"/>
+                <element inactive_on_update="false" label="Warn" sequence="30" value="warn"/>
+                <element inactive_on_update="false" label="Refer to Underwriter" sequence="20" value="refer"/>
+            </choice>
+        </element>
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Message" max_length="400" name="message" type="string"/>
+        <element default="100" label="Sequence" max_length="40" name="sequence" type="integer"/>
+        <element label="UW Rule Group" max_length="32" name="uw_rule_group" reference="x_gegis_ins_policy_uw_rule_group_definition" type="reference"/>
+        <element display="true" label="Rule" mandatory="true" max_length="200" name="name" type="string"/>
+        <element choice="1" label="Applies To Object" max_length="40" name="applies_to_object_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Vehicle" sequence="30" value="vehicle"/>
+                <element inactive_on_update="false" label="Location" sequence="10" value="location"/>
+                <element inactive_on_update="false" label="Class Exposure" sequence="50" value="class_exposure"/>
+                <element inactive_on_update="false" label="Building" sequence="20" value="building"/>
+                <element inactive_on_update="false" label="Underlying Policy" sequence="80" value="underlying_policy"/>
+                <element inactive_on_update="false" label="Cyber Profile" sequence="70" value="cyber_profile"/>
+                <element inactive_on_update="false" label="Driver" sequence="40" value="driver"/>
+                <element inactive_on_update="false" label="Scheduled Equipment" sequence="60" value="scheduled_equipment"/>
+            </choice>
+        </element>
+        <element label="Condition (encoded query on the risk)" max_length="1000" name="condition" type="string"/>
+        <index name="index">
+            <element name="jurisdiction"/>
+        </index>
+        <index name="index2">
+            <element name="product"/>
+        </index>
+        <index name="index3">
+            <element name="uw_rule_group"/>
+        </index>
+    </element>
+</database>
